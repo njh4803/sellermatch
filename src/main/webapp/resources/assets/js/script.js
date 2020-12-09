@@ -147,62 +147,62 @@ $(document).ready(function() {
     });
 
 /* Search header start */
-// (function() {
-//     var isAnimating;
-//     var morphSearch = document.getElementById('morphsearch'),
-//     input = morphSearch.querySelector('input.morphsearch-input'),
-//     ctrlClose = morphSearch.querySelector('span.morphsearch-close'),
-//     isOpen = isAnimating = false,
-//     isHideAnimate = morphsearch.querySelector('.morphsearch-form'),
-//         // show/hide search area
-//         toggleSearch = function(evt) {
-//             // return if open and the input gets focused
-//             if (evt.type.toLowerCase() === 'focus' && isOpen) return false;
-//
-//             var offsets = morphsearch.getBoundingClientRect();
-//             if (isOpen) {
-//                 classie.remove(morphSearch, 'open');
-//
-//                 // trick to hide input text once the search overlay closes
-//                 // todo: hardcoded times, should be done after transition ends
-//                 //if( input.value !== '' ) {
-//                     setTimeout(function() {
-//                         classie.add(morphSearch, 'hideInput');
-//                         setTimeout(function() {
-//                             classie.add(isHideAnimate, 'p-absolute');
-//                             classie.remove(morphSearch, 'hideInput');
-//                             input.value = '';
-//                         }, 300);
-//                     }, 500);
-//                 //}
-//
-//                 input.blur();
-//             } else {
-//                 classie.remove(isHideAnimate, 'p-absolute');
-//                 classie.add(morphSearch, 'open');
-//             }
-//             isOpen = !isOpen;
-//         };
-//
-//     // events
-//     input.addEventListener('focus', toggleSearch);
-//     ctrlClose.addEventListener('click', toggleSearch);
-//     // esc key closes search overlay
-//     // keyboard navigation events
-//     document.addEventListener('keydown', function(ev) {
-//         var keyCode = ev.keyCode || ev.which;
-//         if (keyCode === 27 && isOpen) {
-//             toggleSearch(ev);
-//         }
-//     });
-//     var morphSearch_search = document.getElementsByClassName('morphsearch-search');
-//     $(".morphsearch-search").on('click', toggleSearch);
-//
-//     /***** for demo purposes only: don't allow to submit the form *****/
-//     morphSearch.querySelector('button[type="submit"]').addEventListener('click', function(ev) {
-//         ev.preventDefault();
-//     });
-// })();
+(function() {
+    var isAnimating;
+    var morphSearch = document.getElementById('morphsearch'),
+    input = morphSearch.querySelector('input.morphsearch-input'),
+    ctrlClose = morphSearch.querySelector('span.morphsearch-close'),
+    isOpen = isAnimating = false,
+    isHideAnimate = morphsearch.querySelector('.morphsearch-form'),
+        // show/hide search area
+        toggleSearch = function(evt) {
+            // return if open and the input gets focused
+            if (evt.type.toLowerCase() === 'focus' && isOpen) return false;
+
+            var offsets = morphsearch.getBoundingClientRect();
+            if (isOpen) {
+                classie.remove(morphSearch, 'open');
+
+                // trick to hide input text once the search overlay closes
+                // todo: hardcoded times, should be done after transition ends
+                //if( input.value !== '' ) {
+                    setTimeout(function() {
+                        classie.add(morphSearch, 'hideInput');
+                        setTimeout(function() {
+                            classie.add(isHideAnimate, 'p-absolute');
+                            classie.remove(morphSearch, 'hideInput');
+                            input.value = '';
+                        }, 300);
+                    }, 500);
+                //}
+
+                input.blur();
+            } else {
+                classie.remove(isHideAnimate, 'p-absolute');
+                classie.add(morphSearch, 'open');
+            }
+            isOpen = !isOpen;
+        };
+
+    // events
+    input.addEventListener('focus', toggleSearch);
+    ctrlClose.addEventListener('click', toggleSearch);
+    // esc key closes search overlay
+    // keyboard navigation events
+    document.addEventListener('keydown', function(ev) {
+        var keyCode = ev.keyCode || ev.which;
+        if (keyCode === 27 && isOpen) {
+            toggleSearch(ev);
+        }
+    });
+    var morphSearch_search = document.getElementsByClassName('morphsearch-search');
+    $(".morphsearch-search").on('click', toggleSearch);
+
+    /***** for demo purposes only: don't allow to submit the form *****/
+    morphSearch.querySelector('button[type="submit"]').addEventListener('click', function(ev) {
+        ev.preventDefault();
+    });
+})();
 /* Search header end */
 
 // toggle full screen
@@ -245,47 +245,3 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
 /*Gradient Color*/
 
 
-/*Normal Color */
-$(".color-1").click(function() {
-    $("#color").attr("href", "assets/css/color/color-1.css");
-    return false;
-});
-$(".color-2").click(function() {
-    $("#color").attr("href", "assets/css/color/color-2.css");
-    return false;
-});
-$(".color-3").click(function() {
-    $("#color").attr("href", "assets/css/color/color-3.css");
-    return false;
-});
-$(".color-4").click(function() {
-    $("#color").attr("href", "assets/css/color/color-4.css");
-    return false;
-});
-$(".color-5").click(function() {
-    $("#color").attr("href", "assets/css/color/color-5.css");
-    return false;
-});
-$(".color-6").click(function() {
-    $("#color").attr("href", "assets/css/color/color-6.css");
-    return false;
-});
-
-
-$('.color-picker').animate({
-    right: '-239px'
-});
-
-$('.color-picker a.handle').click(function(e) {
-    e.preventDefault();
-    var div = $('.color-picker');
-    if (div.css('right') === '-239px') {
-        $('.color-picker').animate({
-            right: '0px'
-        });
-    } else {
-        $('.color-picker').animate({
-            right: '-239px'
-        });
-    }
-});

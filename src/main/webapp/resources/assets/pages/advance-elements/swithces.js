@@ -66,11 +66,11 @@ $(document).ready(function() {
 	var cities = new Bloodhound({
 		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
-		prefetch: 'cities.json'
+		prefetch: 'assets/pages/advance-elements/cities.json'
 	});
 	cities.initialize();
 
-	elt = $('.color-tags > input');
+	var elt = $('.color-tags > input');
 	elt.tagsinput({
 		tagClass: function(item) {
 			switch (item.continent) {

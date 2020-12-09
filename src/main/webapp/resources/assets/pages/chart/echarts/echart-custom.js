@@ -10,14 +10,14 @@ $(document).ready(function() {
 
  function dashboardEcharts() {
     /*line chart*/
-  var myChart = echarts.init(document.getElementById('main'));
-
+var myChart = echarts.init(document.getElementById('main')); 
+        
     var option = {
-
+        
     tooltip : {
         trigger: 'axis'
     },
-
+    
     legend: {
         data:['abc','def','pqr']
     },
@@ -74,15 +74,15 @@ $(document).ready(function() {
             data:[1320, 1132, 601, 234, 120, 90, 20]
         }
     ]
-  };
+};
 
-  // Load data into the ECharts instance
-  myChart.setOption(option);
-  // myChart.setTheme({color:['#2196F3','#4CAF50','#ff5252']});
+        // Load data into the ECharts instance 
+        myChart.setOption(option); 
+        // myChart.setTheme({color:['#2196F3','#4CAF50','#ff5252']});
 
 
 /*circle chart*/
-var myChart = echarts.init(document.getElementById('pie-chart'));
+var myChart = echarts.init(document.getElementById('pie-chart')); 
 
 var idx = 1;
 var option_dt = {
@@ -142,7 +142,7 @@ var option_dt = {
                     mark : {show: false},
                     dataView : {show: false, readOnly: true},
                     magicType : {
-                        show: true,
+                        show: true, 
                             itemSize:12,
                             itemGap: 12,
                         type: ['pie', 'funnel'],
@@ -179,7 +179,7 @@ var option_dt = {
                                     data:[{value: 35,  name:'Micromax'}, {value: 16,  name:'Xolo'}, {value: 27,  name:'Lenevo'}, {value: 29,  name:'Sony'}, {value: 12,  name:'Others'}]
                                 }
                             ]
-                    },
+                    }, 
                 {
                     series : [
                         {
@@ -205,10 +205,10 @@ var option_dt = {
 myChart.setOption(option_dt);
 
 /*server-load*/
- var myChartGauge = echarts.init(document.getElementById('server-load'));
-
+ var myChartGauge = echarts.init(document.getElementById('server-load')); 
+        
         var optionGauge = {
-
+                        
                 tooltip : {
                     formatter: "{b} : {c}%"
                 },
@@ -259,21 +259,21 @@ myChart.setOption(option_dt);
                                 fontSize : 20
                             }
                         },
-
+                       
                         data:[{value: 50, name: 'Server Load (MB)'}]
                     }
              ]
 };
 
  gauge_load_chart(optionGauge);
-var timeTicket = setInterval(function (){
-
-  gauge_load_chart(optionGauge);
-},2000);
+// var timeTicket = setInterval(function (){
+//
+//   gauge_load_chart(optionGauge);
+// },2000);
 
 
 function gauge_load_chart(optionGauge){
-
+  
     optionGauge.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
     myChartGauge.setOption(optionGauge,true);
 }
@@ -283,13 +283,13 @@ function gauge_load_chart(optionGauge){
 
 
 /*bar chart*/
- var myChart = echarts.init(document.getElementById('bar_chart'));
+ var myChart = echarts.init(document.getElementById('bar_chart')); 
 
  option = {
     tooltip : {
         trigger: 'axis',
-        axisPointer : {
-            type : 'shadow'
+        axisPointer : {           
+            type : 'shadow'        
         },
         formatter: function (params){
             return params[0].name + '<br/>'
@@ -347,7 +347,7 @@ function gauge_load_chart(optionGauge){
                     barBorderWidth: 3,
                     barBorderRadius:0,
                     label : {
-                        show: true,
+                        show: true, 
                         position: 'top',
                         formatter: function (params) {
                             for (var i = 0, l = option.xAxis[0].data.length; i < l; i++) {
@@ -365,12 +365,12 @@ function gauge_load_chart(optionGauge){
             data:[40, 80, 50, 80,80, 70]
         }
     ]
-};
+};                
 
-  myChart.setOption(option);
+  myChart.setOption(option); 
 
   /*Scatter chart*/
-var myChart = echarts.init(document.getElementById('scatter'));
+var myChart = echarts.init(document.getElementById('scatter')); 
 
 option = {
     tooltip : {
@@ -379,7 +379,7 @@ option = {
         formatter : function (params) {
             if (params.value.length > 1) {
                 return params.seriesName + ' :<br/>'
-                   + params.value[0] + 'cm '
+                   + params.value[0] + 'cm ' 
                    + params.value[1] + 'kg ';
             }
             else {
@@ -387,7 +387,7 @@ option = {
                    + params.name + ' : '
                    + params.value + 'kg ';
             }
-        },
+        },  
         axisPointer:{
             show: true,
             type : 'cross',

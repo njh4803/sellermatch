@@ -12,10 +12,6 @@ body.fix-menu {
         width: 100%;
         z-index: 999;
     }
-    .main-menu {
-        left: 0;
-        position: fixed;
-    }
 }
 
 
@@ -268,9 +264,10 @@ body.menu-compact {
 /*===== Bottom-menu layout ===== */
 
 body.menu-bottom {
-    @extend body.fix-menu;
     .header-navbar {
         min-height: auto;
+        position: fixed !important;
+        z-index: 9999 !important;
     }
     .navbar-wrapper {
         bottom: 0;
@@ -653,6 +650,9 @@ body.horizontal-icon-fixed {
     }
     .page-header {
         margin-top: 80px;
+        @media only screen and (max-width: 768px){
+            margin-top: 0;
+        }
     }
 }
 

@@ -30,10 +30,10 @@
 .radial-bar:after {
   content: attr(data-label);
   background-color: #f0f0f0;
-  z-index: 101;
+  z-index: 90;
 }
 .radial-bar > img {
-  z-index: 102;
+  z-index: 90;
 }
 .radial-bar:after,
 .radial-bar > img {

@@ -3,6 +3,12 @@
 ==========================  **/
 
 body.dark-layout {
+    .pcoded-main-container{
+        background-color: #333;
+    }
+    .pcoded[theme-layout="vertical"] .pcoded-navbar .pcoded-item > li.active > a > .pcoded-mcaret{
+        border-right: 8px solid #333;
+    }
     background-color: #333;
     transition: all linear .3s;
     .header-navbar .navbar-wrapper,

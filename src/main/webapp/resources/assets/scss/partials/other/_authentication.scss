@@ -6,6 +6,9 @@
     background-size: cover;
     background: url(../images/bg.jpg) no-repeat center center fixed;
     height: 100%;
+    @media only screen and (max-width: 992px){
+        background:#f3f3f3 !important;
+    }
 }
 
 .auth-body {
@@ -146,11 +149,13 @@
     text-align: center;
     width: 100%;
 }
-
+.pos-relative.login{
+    position: relative !important;
+}
 .auth-box {
     background-color: #fff;
     border-radius: 8px;
-    margin: 20px 0 0 0;
+    margin: 20px 0 50px 0;
     padding: 20px;
     .confirm h3 {
         color: $primary-color;
@@ -185,8 +190,9 @@
 
 .footer {
     bottom: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
+    z-index: 9;
 }
 
 .footer p {
@@ -263,6 +269,27 @@
         margin-top: 30px;
     }
 }
-
+@media only screen and (max-width:992px){
+    .header-navbar{
+        width: 100%;
+    }
+    .auth-body .text-center img{
+        display: none;
+    }
+    .error-500, .error-503, .error-404, .error-400, .error-403, .login{
+        display: block !important;
+        position: relative !important;
+    }
+    .offline-404{
+        .auth-body {
+            margin-top: 100px;
+        }
+    }
+}
+@media only screen and (max-width:480px){
+    .auth-body{
+        margin-bottom: 45px;
+    }
+}
 
 /**====== Authentication-page css end ======**/

@@ -20,16 +20,11 @@
     bottom: 0;
     right: 30px;
 }
-.nav-tabs.md-tabs.tab-timeline a li{
+.nav-tabs.md-tabs.tab-timeline li a{
     padding: 20px 0 10px;
     color: #666666;
     font-size: 18px;
-
-    p{
-      font-size: 18px;
-    }
 }
-
 .social-timeline-left{
     position: absolute;
     top: -200px;
@@ -46,6 +41,10 @@
     height:45px;
     width: 45px;
     display: inline-block;
+    @media only screen and (max-width: 768px){
+        height:38px;
+        width: 38px;
+    }
 }
 .friend-box img{
     margin-right: 10px;
@@ -157,15 +156,21 @@
     margin: 0 auto;
     border: 4px #fff solid;
 }
-.social-timelines-left:after{
-    height: 3px;
-    width: 25%;
-    position: absolute;
-    background: #cccccc;
-    top: 20px;
-    content: "";
-    right: 0;
-    z-index: 0;
+.social-timelines-left{
+    z-index: 3;
+    &:after{
+        height: 3px;
+        width: 25%;
+        position: absolute;
+        background: #cccccc;
+        top: 20px;
+        content: "";
+        right: 0;
+        z-index: 0;
+    }
+}
+.timeline-right > div{
+    z-index: 4;
 }
 .social-timelines:before {
     position: absolute;
@@ -176,7 +181,7 @@
     z-index:0;
     height: 100%;
     top:0;
-    z-index: -1;
+    z-index: 1;
 }
 .timeline-dot{
 	&:after,&:before{

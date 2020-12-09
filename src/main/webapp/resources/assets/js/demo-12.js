@@ -11,7 +11,7 @@ $( document ).ready(function() {
 		HeaderBackground: 'theme4' ,
 		LHeaderBackground :'theme4',
 		NavbarBackground: 'theme4',
-		ActiveItemBackground: 'theme4',
+		ActiveItemBackground: 'theme5',
 		SubItemBackground: 'theme2',
 		ActiveItemStyle: 'style0',
 		ItemBorder: true,
@@ -25,7 +25,7 @@ $( document ).ready(function() {
 		VerticalNavigationView: 'view1',
 		verticalMenueffect:{
 			desktop : "shrink",
-			tablet : "push",
+			tablet : "overlay",
 			phone : "overlay",
 		},
 		defaultVerticalMenu: {

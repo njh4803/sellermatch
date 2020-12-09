@@ -80,25 +80,17 @@
 
 
           $("#interactivehover").html('');
+          var widchart = $("#power-card-chart2").width();
           var graph4 = new Rickshaw.Graph({
               element: document.getElementById("interactivehover"),
-              width: 960,
-              height: 500,
+              width: widchart,
+              height: 200,
               renderer: 'line',
               series: [{
                       color: "#c05020",
                       data: [{ x: 0, y: 20 }, { x: 1, y: 24 }, { x: 2, y: 50 }, { x: 3, y: 10 }, { x: 4, y: 60 }],
                       name: 'New York'
                   }
-                  /*, {
-                                       color: "#30c020",
-                                       data: seriesData[1],
-                                       name: 'London'
-                                       }, {
-                                       color: "#6060c0",
-                                       data: seriesData[2],
-                                       name: 'Tokyo'
-                                       }*/
               ]
           });
 

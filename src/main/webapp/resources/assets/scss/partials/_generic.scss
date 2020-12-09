@@ -644,12 +644,13 @@ $info-color;
         border: 3px solid nth($border-color, $i);
         thead {
             background-color: darken(nth($border-color, $i), 10%);
-            // border: 2px solid darken(nth($border-color, $i), 10%);
+            border: 3px solid darken(nth($border-color, $i), 10%);
         }
-        // box-sizing: border-box;
     }
 }
-
+.table-primary, .table-primary>td, .table-primary>th{
+    background-color: #1abc9c;
+}
 
 /*======= Table styling css ends  ======= */
 
@@ -792,6 +793,7 @@ $theme-border;
 
 
 /*======= All-Borders-color css ends  ======= */
+
 
 
 /**====== Generic-class css end ======**/

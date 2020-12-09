@@ -25,7 +25,7 @@ $(document).ready(function() {
     /*Pie*/
     $(".piechart").sparkline([1, 1, 2, 5], {
         type: 'pie',
-        width: '300px',
+        width: '100%',
         height: '300px',
         sliceColors: ['#9675CE', '#83D6DE', '#FEC107', '#4C5667', '#FB9678', '#01C0C8', '#F3F3F3', '#B4C1D7'],
         tooltipClassname: 'chart-sparkline'
@@ -106,6 +106,6 @@ $(document).ready(function() {
         posBarColor: '#4CD4B0',
         negBarColor: '#FDCDBE',
         zeroBarColor: '#E7DF86',
-        barWidth: 50
+        barWidth: 30
     });
 });

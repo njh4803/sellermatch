@@ -70,7 +70,7 @@
         }
         span {
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 12px;
         }
         h5 {
             display: block;
@@ -128,13 +128,9 @@
     }
     ul li {
         display: inline-block;
-        font-size: 40px;
+        font-size: 30px;
         &:last-child {
             float: right;
-            color: #666;
-        }
-        i{
-          color: $inverse-color;
         }
     }
 }
@@ -154,15 +150,6 @@
         color: darken($primary-color, 5%);
     }
 }
-
-.dark-inverse-border {
-    border-top-color: darken($default-color, 5%);
-    li,
-    i {
-        color: darken($default-color, 5%);
-    }
-}
-
 
 .large-widget-card {
     border-top: none;
@@ -232,16 +219,12 @@
     background-color: #4099FF;
 }
 
-.bg-instagram {
-    background-color: #8632fb;
-}
-
 .bg-linkein {
     background-color: #0077B5;
 }
 
-.bg-news {
-    background-color: #ff5e00;
+.bg-google-plus {
+    background-color: #d34836;
 }
 
 .widget-profile-card-1 {
@@ -570,18 +553,18 @@
 }
 
 .user-activity-card {
-    border-top-color: $inverse-color;
+    border-top-color: $info-color;
     .progress-bar-warning {
-        background-color: $inverse-color;
+        background-color: $info-color;
     }
     .card-block-big {
         padding-top: 35px;
         padding-bottom: 35px;
     }
     .user-number {
-        padding: 30px 0;
+        padding: 40px 0;
         font-weight: 600;
-        color: $inverse-color;
+        color: $info-color;
     }
     .card-footer {
         padding-top: 25px;
@@ -589,12 +572,18 @@
         font-size: 16px;
         background-color: lighten($default-color, 15%);
     }
+    .progress{
+        margin-top: 25px;
+        .progress-bar{
+            height: 10px;
+        }
+    }
     .link {
         position: absolute;
         right: 30px;
         top: 40px;
-        font-size: 30px;
-        color: $inverse-color;
+        font-size: 25px;
+        color: $info-color;
     }
 }
 

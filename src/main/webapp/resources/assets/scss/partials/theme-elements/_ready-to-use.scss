@@ -27,7 +27,7 @@
         border-top: 1px dashed $primary-color;
         padding: 20px 25px;
         button {
-            margin-bottom: 0;
+            margin: 5px;
             float: right
         }
     }
@@ -157,7 +157,7 @@
     .checkbox-toggle,
     .inline-group .radio-toggle,
     .inline-group .checkbox-toggle {
-        padding: 9px 0 8px 0px;
+        padding: 20px 0 20px 0px;
     }
     box-shadow: none;
     border: 1px solid rgba(0, 0, 0, .15);
@@ -188,6 +188,8 @@
         background-color: #fff;
         border-top: 1px dashed #1abc9c;
         padding: 20px 25px;
+        position: relative;
+        margin-top: 10px;
         button {
             float: right;
             margin-bottom: 0

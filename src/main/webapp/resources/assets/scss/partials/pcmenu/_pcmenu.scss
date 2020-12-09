@@ -1,8 +1,11 @@
 // menu title
-$menu-title: #2a394f,#624e89,#3c4fb1,#2C3E50,#2ed8b6,#3f5485; //  header theme color
-$header-theme: #2a394f,#624e89,#3c4fb1,#2C3E50,#1ABC9C,#3f5485; //  left navbar theme color
-$left-navbar-theme: #2a394f,#354052,#624e89,#2c3e50,#1ABC9C,#3c4fb1; //  active item color
-$active-item: #ff5e3a,#0096b1,#e64056,#0073aa,#1ABC9C,#967adc,#fe9375,#565a90;
+$menu-title: #2a394f,#624e89,#3c4fb1,#2C3E50,#2ed8b6,#3f5485;
+//  header theme color
+$header-theme: #1b1b1b,#624e89,#3c4fb1,#2C3E50,#1ABC9C,#3f5485;
+//  left navbar theme color
+$left-navbar-theme: #242424,#354052,#624e89,#2c3e50,#1ABC9C,#3c4fb1;
+//  active item color
+$active-item: #0096b1,#ff5e3a,#e64056,#0073aa,#1ABC9C,#967adc,#fe9375,#565a90;
 
 .pcoded {
     .pcoded-container {
@@ -758,10 +761,13 @@ $active-item: #ff5e3a,#0096b1,#e64056,#0073aa,#1ABC9C,#967adc,#fe9375,#565a90;
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
+            .pcoded-header{
+                max-width: 1200px;    
+            }
         }
 
         &[pcoded-device-type="tablet"][vertical-layout="box"] .pcoded-container {
-            max-width: 900px;
+            // max-width: 900px;
             width: 100%;
             margin: 0 auto;
         }
@@ -2399,7 +2405,7 @@ $active-item: #ff5e3a,#0096b1,#e64056,#0073aa,#1ABC9C,#967adc,#fe9375,#565a90;
     &[vertical-nav-type="collapsed"] .pcoded-navbar .pcoded-navigatio-lavel {
         opacity: 0;
         visibility: hidden;
-        /* position:absolute; */
+        position:absolute;
         transform: rotateX(90deg);
         -webkit-transform: rotateX(90deg);
         -ms-transform: rotateX(90deg);
@@ -2619,10 +2625,7 @@ $active-item: #ff5e3a,#0096b1,#e64056,#0073aa,#1ABC9C,#967adc,#fe9375,#565a90;
         }
     }
 }
-/* ####### Fullpage Navigation With Effect CSS Close Here ##########*/
-/* ################## Style Section According Navigation Type CSS Style Close Here ###############################*/
-/* ################### Componet Adjustment According RTL CSS Start hear ################## */
-/* ###################################################################################################*/
+
 /* Theme Patteren CSS Start */
 body {
     &[themebg-pattern="pattern1"] {
@@ -2670,6 +2673,9 @@ body {
             $i: index($active-item, $value);
 
             &[active-item-theme="theme#{$i}"] .pcoded-item {
+                > li.pcoded-hasmenu.active > a {
+                    background: $value !important;
+                }
                 li {
                     a {
                         // background: $value ;
@@ -2679,13 +2685,9 @@ body {
                         color: $value !important;
                     }
 
-                    &.pcoded-hasmenu.active > a {
-                        background: $value !important;
-                    }
 
                     &.pcoded-hasmenu:hover > a {
                         color: #FFF !important;
-                        font-weight: normal;
                     }
 
                     &:hover {
@@ -3028,6 +3030,24 @@ body {
             border-radius: 0 4px 4px 0;
         }
     }
+    @media screen and (max-width: 1366px){
+        .selector-toggle > a {
+            width: 50px;
+            height: 56px;
+            padding: 10px 3px;
+        }
+        &[theme-layout="horizontal"],
+        &[vertical-placement="left"] {
+            .selector-toggle > a {
+                left: -70px;
+            }
+        }
+        &[vertical-placement="right"] {
+            .selector-toggle > a {
+                right: -70px;
+            }
+        }
+    }
 }
 
 .selector-toggle > a:before {
@@ -3046,6 +3066,9 @@ body {
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     animation: mymove 1.3s infinite linear;
+    @media screen and (max-width: 1366px){
+        font-size: 21px;
+    }
 }
 
 .open .selector-toggle > a:before {
@@ -3064,6 +3087,9 @@ body {
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     animation: mymove 0s infinite linear;
+    @media screen and (max-width: 1366px){
+        font-size: 21px;
+    }
 }
 
 #styleSelector {
@@ -3974,6 +4000,7 @@ body {
     font-weight: 600;
 }
 /* fixed issue  20170319 */
+
 .pcoded {
     &[theme-layout="vertical"] {
         &[vertical-placement="right"] .pcoded-navbar .pcoded-item > li > a .pcoded-micon i {
@@ -4082,10 +4109,27 @@ body {
         &[vertical-nav-type="compact"]{
             .main-menu{
                 width:190px;
+                .main-menu-header .user-details span{
+                    font-size: 12px;
+                }
+		pcoded-badge{
+                    display: none;
+                }
             }
         }
     }
-    &.menu-bottom .navbar-wrapper{
-        z-index: 1050;
+    &.menu-bottom{
+        .navbar-wrapper{
+            z-index: 1050;
+            @media only screen and (max-width: 992px){
+                .pcoded-navbar{
+                    top:-56px;
+                }
+            }
+        }
     }
+}
+.mCSB_container,
+.mCustomScrollBox {
+    overflow: visible !important;
 }

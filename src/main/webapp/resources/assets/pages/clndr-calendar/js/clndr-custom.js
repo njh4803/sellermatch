@@ -19,16 +19,16 @@ $(document).ready(function() {
             title: "Small Cat Photo Session",
             location: "Center for Cat Photography"
         }];
-    // $("#clndr-default").clndr({
-    //     template: $("#clndr-template").html(),
-    //     events: c
-    // });
-    // $("#clndr-adjacent").clndr({
-    //     template: $("#clndr-template").html(),
-    //     events: c,
-    //     showAdjacentMonths: !0,
-    //     adjacentDaysChangeMonth: !0
-    // });
+    $("#clndr-default").clndr({
+        template: $("#clndr-template").html(),
+        events: c
+    });
+    $("#clndr-adjacent").clndr({
+        template: $("#clndr-template").html(),
+        events: c,
+        showAdjacentMonths: !0,
+        adjacentDaysChangeMonth: !0
+    });
     var d = [{
         title: "Event for day 1",
         startDate: moment().format("YYYY-MM-") + "12",
@@ -38,25 +38,24 @@ $(document).ready(function() {
         startDate: moment().format("YYYY-MM-") + "24",
         endDate: moment().format("YYYY-MM-") + "27"
     }];
-    // $("#clndr-multiday").clndr({
-    //     template: $("#clndr-template").html(),
-    //     events: d,
-    //     multiDayEvents: {
-    //         endDate: "endDate",
-    //         startDate: "startDate"
-    //     }
-    // }), $("#clndr-constraints").clndr({
-    //     template: $("#clndr-template").html(),
-    //     constraints: {
-    //         startDate: moment().format("YYYY-MM-") + "04",
-    //         endDate: moment().format("YYYY-MM-") + "24"
-    //     }
-    // }), $("#clndr-six-rows").clndr({
-    //     template: $("#clndr-template").html(),
-    //     events: c,
-    //     forceSixRows: !0
-    // }),
-    $("#clndr-selected-date").clndr({
+    $("#clndr-multiday").clndr({
+        template: $("#clndr-template").html(),
+        events: d,
+        multiDayEvents: {
+            endDate: "endDate",
+            startDate: "startDate"
+        }
+    }), $("#clndr-constraints").clndr({
+        template: $("#clndr-template").html(),
+        constraints: {
+            startDate: moment().format("YYYY-MM-") + "04",
+            endDate: moment().format("YYYY-MM-") + "24"
+        }
+    }), $("#clndr-six-rows").clndr({
+        template: $("#clndr-template").html(),
+        events: c,
+        forceSixRows: !0
+    }), $("#clndr-selected-date").clndr({
         template: $("#clndr-template").html(),
         events: c,
         trackSelectedDate: !0

@@ -35,6 +35,6 @@ public class AdminMainController {
 		
 		model.addAttribute("output", output);
 		
-		return new ModelAndView("admin/adminMain");
+		return new ModelAndView("admin/admin_main");
 	}
 }

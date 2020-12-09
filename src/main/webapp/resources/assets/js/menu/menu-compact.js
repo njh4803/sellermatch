@@ -4,7 +4,7 @@ $( document ).ready(function() {
 		themelayout: 'vertical',
 		verticalMenuplacement: 'left',		// value should be left/right
 		verticalMenulayout: 'wide',   		// value should be wide/box/widebox
-		MenuTrigger: 'click',
+		MenuTrigger: 'hover',
 		SubMenuTrigger: 'click',
 		activeMenuClass: 'active',
 		ThemeBackgroundPattern: 'pattern2',

@@ -13,7 +13,7 @@
         }
     }
     .Note-header {
-        padding: 20px 0;               
+        padding: 20px 0;
     }
     .note-write {
         position: relative;
@@ -48,6 +48,7 @@
         background: transparent;
         padding:0px 20px 0 50px;
         line-height: 35px;
+        min-height: 450px;
     }
     .Note-created__on {
         display: block;

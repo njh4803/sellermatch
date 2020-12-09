@@ -83,7 +83,7 @@ tr:first-child > td > .fc-day-grid-event {
 }
 .fc-bgevent {
     /* default look for background events */
-    
+
     background: #d8d6d6 !important;
 }
 .fc-state-default {
@@ -170,9 +170,12 @@ tr:first-child > td > .fc-day-grid-event {
 }
 .clndr .clndr-grid .days .day.event .day-number,
 .clndr .clndr-grid .days .empty.event .day-number {
-    border: 1px solid #F6BB42;
+    border: 1px solid #37bc9b;
     border-radius: 50%;
-    padding: 6px 9px
+    padding: 6px 9px;
+    @media only screen and (max-width: 573px){
+        padding: 0 2px;
+    }
 }
 .clndr.clndr-grid.days.day.adjacent-month.day-number,
 .clndr.clndr-grid.days.day.inactive.day-number,
