@@ -46,6 +46,6 @@
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/simple-line-icons.css">
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ionicons.css">
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/jquery.mCustomScrollbar.css">
-
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>

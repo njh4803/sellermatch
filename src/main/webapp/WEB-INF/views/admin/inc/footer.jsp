@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Required Jqurey -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/jquery/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/bower_components/jquery-ui/js/jquery-ui.min.js"></script>

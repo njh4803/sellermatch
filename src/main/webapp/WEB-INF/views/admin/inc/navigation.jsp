@@ -342,7 +342,7 @@
                             <div class="main-friend-list">
                                 <div class="media userlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
                                     <a class="media-left" href="#!">
-                                        <img class="media-object img-circle" src="${pageContext.request.contextPath}/${pageContext.request.contextPath}/assets/images/avatar-1.png" alt="Generic placeholder image">
+                                        <img class="media-object img-circle" src="${pageContext.request.contextPath}/assets/images/avatar-1.png" alt="Generic placeholder image">
                                         <div class="live-status bg-success"></div>
                                     </a>
                                     <div class="media-body">
