@@ -1,0 +1,130 @@
+	.table-hover th{
+		text-align: center;
+		vertical-align:middle;
+	}
+	.table-hover td{
+		text-align: center;
+		vertical-align:middle;
+	}
+	img { 
+		display: block; 
+		margin: 0px auto; 
+	}
+	.pcoded-main-container {
+	    display: block;
+	    position: relative;
+	    background: #f3f3f3;
+	    min-height: calc(100vh - 56px);
+	}
+	.form-control {
+	    font-size: 14px;
+	    border-radius: 5px;
+	    border-width: 1px;
+	}
+	.page-item.active .page-link {
+	    background-color: #808080;
+	    border-color: #808080;
+	}
+	.btn-list:hover {
+	    background-color: #ff8593;
+	    border-color: #ff8593;
+	}
+	.btn-list, .sweet-alert button.confirm, .wizard > .actions a {
+	    background-color: #ff0558;
+	    border-color: #ff0558;
+	    color: #fff;
+	    cursor: pointer;
+	    transition: all ease-in 0.3s;
+	}
+	
+	.btn-success:hover {
+	    background-color: #ff8593;
+	    border-color: #ff8593;
+	}
+	
+	.btn-success {
+		background-color: #ff0558;
+	    border-color: #ff0558;
+	    color: #fff;
+	    cursor: pointer;
+	    transition: all ease-in 0.3s;
+	}
+	
+	.btn-default {
+	    background-color: #fff;
+	    border-color: #ff0558;
+	    color: #ff0558;
+	    cursor: pointer;
+	    transition: all ease-in 0.3s;
+	    border: 2px solid;
+	}
+	.btn-success:disabled {
+	    background-color: #ff8593;
+	    border-color: #ff8593;
+	}
+	.btn-default:hover {
+	    background-color: #ff8593;
+	    border-color: #ff8593;
+	}
+	.radio .helper::after, .radio .helper::before {
+    	border: 0.125rem solid #ff0558;
+	}
+	.radio .helper::after {
+    	background-color: #ff0558;
+	}
+	.modal-header {
+   		padding: 30px;
+	}
+
+.input-group-addon {
+    background-color: #ff0558;
+    color: #fff;
+}
+.input-group-button .input-group-addon:hover {
+    background-color: #ff0558;
+    border-color: #ff0558;
+}
+
+.input-group-button .input-group-addon:hover .btn {
+    background-color: #ff0558;
+    border-color: #ff0558;
+}
+
+.btn-select > input {
+    min-width: 300px;
+}
+
+.file_input label {
+		position:relative; 
+		cursor:pointer; 
+		display:inline-block; 
+		vertical-align:middle; 
+		overflow:hidden; 
+		width:100px; 
+		height:30px; 
+		background:#777; 
+		color:#fff; 
+		text-align:center; 
+		line-height:30px; 
+		margin-top: 6px;
+		border-radius: 5px;
+		margin-left: 5px;
+	}
+	.file_input label input {
+		position:absolute; 
+		width:0; 
+		height:0; 
+		overflow:hidden;
+	}
+	.file_input input[type=text] {
+		vertical-align:middle; display:inline-block; width:400px; height:28px; line-height:28px; font-size:11px; padding:0; border:0; border:1px solid #777; padding-left: 10px;
+	}
+	.card-header {
+    margin-bottom: 10px;
+    border-bottom: 0px solid;
+	}
+	.card {
+    box-shadow: 0 0px 0px;
+    margin-bottom: 0px;
+	}
+		
