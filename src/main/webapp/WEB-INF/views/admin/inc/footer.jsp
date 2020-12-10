@@ -4,7 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Required Jqurey -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/jquery/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/popper.js/js/popper.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/bootstrap/js/bootstrap.min.js"></script>
 <!-- jquery slimscroll js -->
@@ -15,11 +15,11 @@
 <!-- classie js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/classie/js/classie.js"></script>
 <!-- Rickshow Chart js -->
-<script src="${pageContext.request.contextPath}/bower_components/d3/js/d3.js"></script>
-<script src="${pageContext.request.contextPath}/bower_components/rickshaw/js/rickshaw.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/d3/js/d3.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/rickshaw/js/rickshaw.js"></script>
 <!-- Morris Chart js -->
-<script src="${pageContext.request.contextPath}/bower_components/raphael/js/raphael.min.js"></script>
-<script src="${pageContext.request.contextPath}/bower_components/morris.js/js/morris.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/raphael/js/raphael.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/morris.js/js/morris.js"></script>
 <!-- Horizontal-Timeline js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/horizontal-timeline/js/main.js"></script>
 <!-- amchart js -->
@@ -27,6 +27,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/amchart/js/serial.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/amchart/js/light.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/dashboard/amchart/js/custom-amchart.js"></script>
+<!-- jquery file upload js -->
+<script src="${pageContext.request.contextPath}/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/pages/filer/custom-filer.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/pages/filer/jquery.fileuploads.init.js" type="text/javascript"></script>
 <!-- i18next.min.js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/i18next/js/i18next.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
@@ -37,10 +41,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/script.js"></script>
 
 <!-- pcmenu js -->
-<script src="${pageContext.request.contextPath}/assets/js/pcoded.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/demo-12.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/pcoded.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/demo-12.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.mousewheel.min.js"></script>
 </body>
 
 </html>

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/division/css/style.css">
 <%@ include file="inc/navigation.jsp"%>
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -37,26 +39,31 @@
                                                     <div class="card-block">
                                                         <h4 class="sub-title">Basic Inputs</h4>
                                                         <form>
-															<div class="form-group row">
-                                                                <label  for="profile_img"  class="col-sm-2 col-form-label">프로필 사진</label>
-                                                                <div class="col-sm-10">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">프로필 사진</label>
+                                                                <div class="col-sm-10 file_input">
                                                                 	<div class="input-group">
-	                                                                    <div class="image-upload">
-																			<img id="profile_img" style="width: 150px; height: 150px;"
-																				src="${pageContext.request.contextPath}/assets/images/user.png">
-												
-												
-																		</div>
-																		<input id="photo" type="file" name="photo"
-																			accept="image/jpg, image/gif, image/png" />
+                                                                		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
+									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
+									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+									                                    </div>
+									                                    <div style="display: flow-root;">
+									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
+										                                	<label>
+										                                		파일 선택
+										                                		<input id = "image" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+										                                	</label>
+									                                    </div>
 																	</div>
                                                                 </div>
                                                             </div>
+                                                            
+                                                            
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">아아디</label>
+                                                                <label class="col-sm-2 col-form-label">아이디</label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="input-group">
-	                                                                    <input type="text" class="form-control">
+	                                                                    <input type="text" class="form-control" placeholder="이메일 입력">
 	                                                                    <span
 																			id="guide" class="input-group-btn">
 																			<button type="button" id="idCheck"
@@ -68,9 +75,17 @@
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">비밀번호</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="password" class="form-control">
+                                                                    <input type="password" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+																<label for="user_pw_confirm" class="col-sm-2 control-label">비밀번호
+																	확인</label>
+																<div class="col-sm-10">
+																	<input type="password" name="user_pw_confirm" class="form-control"
+																		id="user_pw_confirm" placeholder="영문,숫자,특수문자 조합 최대 30글자" />
+																</div>
+															</div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">이름</label>
                                                                 <div class="col-sm-10">
@@ -78,11 +93,33 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">닉네임</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">산업분류</label>
                                                                 <div class="col-sm-10">
-                                                                    <label><input type="checkbox">공산품</label>
-                                                                    <label><input type="checkbox">농수산품</label>
-                                                                </div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input type="checkbox">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>공산품</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input type="checkbox">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>농수산품</span>
+	                                                                    </label>
+                                                                	</div>
+                                                         		</div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">국가</label>
@@ -95,13 +132,25 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="email" class="col-sm-2 col-form-label">이메일</label>
+																<label for="email" class="col-sm-2 col-form-label">이메일 인증</label>
 																<div class="col-sm-10">
 																	<div class="input-group">
 																		<input type="text" name="email" class="form-control" id="email" />
 																		<span class="input-group-btn">
 																			<button type="button" id="emailCheck"
-																				class="btn form-bg-primary">중복검사</button>
+																				class="btn form-bg-primary">인증 번호 발송</button>
+																		</span>
+																	</div>
+																</div>
+															</div>
+															<div class="form-group row">
+																<label for="" class="col-sm-2 col-form-label"></label>
+																<div class="col-sm-10">
+																	<div class="input-group">
+																		<input type="text" name="" class="form-control" id="" />
+																		<span class="input-group-btn">
+																			<button type="button" id=""
+																				class="btn form-bg-primary">인증 번호 확인</button>
 																		</span>
 																	</div>
 																</div>
@@ -113,7 +162,35 @@
 																		placeholder="`-`없이 숫자만 입력" />
 																</div>
 															</div>
-                                                            
+															<div class="form-group row">
+																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호</label>
+																<div class="col-sm-4">
+																	<div class="input-group">
+																		<input type="text" name="postcode" class="form-control"
+																			id="postcode" maxlength="5" readonly> <span
+																			class="input-group-btn">
+																			<button type="button" class="btn form-bg-primary postcode-finder"
+																				data-postcode="postcode" data-addr1="addr1"
+																				data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
+																		</span>
+																	</div>
+																</div>
+															</div>
+															<div class="form-group row">
+																<label for="address" class="col-sm-2 control-label">주소</label>
+																<div class="col-sm-10 col-sm-offset-2">
+																	<input type="text" name="addr1" class="form-control" id="addr1"
+																		readonly />
+																</div>
+															</div>
+															<div class="form-group row">
+																<label for="address" class="col-sm-2 control-label">상세주소</label>
+																<div class="col-sm-10 col-sm-offset-2">
+																	<input type="text" name="addr2" class="form-control" id="addr2"
+																		placeholder="나머지 주소" />
+																</div>
+															</div>
+                                                            <!-- 회원가입 form end -->
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -130,21 +207,30 @@
                 </div>
             </div>
 <script>
-	$(function() {
-		$("#photo").on('change', function() {
-			readURL(this);
-		});
-	});
 	
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
+$(document).ready(function() {
+	$("#image").on("change", handleImgfileSelect);
+	
+}); // end ready...
 
-			reader.onload = function(e) {
-				$('#profile_img').attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
+function handleImgfileSelect(e) {
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+	
+	filesArr.forEach(function(f) {
+		if(!f.type.match("image.*")) {
+			return;
 		}
-	}
+		sel_file = f;
+		
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			$("#img").attr("src", e.target.result);
+		}
+		reader.readAsDataURL(f);
+	}) 
+}
 </script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
 <%@ include file="inc/footer.jsp"%>

@@ -40,6 +40,9 @@
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/style.css">
       <!--color css-->
+      <!-- jquery file upload Frame work -->
+	  <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+	  <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 
 
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/linearicons.css">

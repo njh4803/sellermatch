@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemlistMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="MemlistMap"
+        type="kr.co.wesellglobal.sellermatch.model.Memlist">
+        <result property="id"   column="id" />
+        <result property="name"     column="name" />
+        <result property="email"   column="email" />
+        <result property="country" column="country" />
+        <result property="password" column="password" />
+    </resultMap>
+    
+    <!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="selectOneMember"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.Memlist"
+    	resultMap="MemlistMap">
+    	SELECT 
+    		*
+    	FROM MemList
+    	WHERE id = #{id}
+    </select>
+    
+    
+
+</mapper>

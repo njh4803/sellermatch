@@ -610,7 +610,7 @@
                                             </ul> -->
                                         </li>
                                         <li class="">
-                                            <a href="javascript:void(0)" >
+                                            <a href="${pageContext.request.contextPath}/admin/memberList" >
                                                 <span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.page_layout.horizontal.main">회원조회</span>
                                                 <span class="pcoded-mcaret"></span>
