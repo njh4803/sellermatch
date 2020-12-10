@@ -521,16 +521,7 @@
                                                                         <td>$112,000</td>
                                                                     </tr>
                                                                 </tbody>
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Position</th>
-                                                                        <th>Office</th>
-                                                                        <th>Age</th>
-                                                                        <th>Start date</th>
-                                                                        <th>Salary</th>
-                                                                    </tr>
-                                                                </tfoot>
+                                                                <tfoot><tr class="footable-paging"><td colspan="5"><ul class="pagination"><li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">«</font></font></a></li><li class="footable-page-nav disabled" data-page="prev"><a class="footable-page-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">‹</font></font></a></li><li class="footable-page visible active" data-page="1"><a class="footable-page-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></a></li><li class="footable-page visible" data-page="2"><a class="footable-page-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></a></li><li class="footable-page-nav" data-page="next"><a class="footable-page-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">›</font></font></a></li><li class="footable-page-nav" data-page="last"><a class="footable-page-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">»</font></font></a></li></ul><div class="divider"></div><span class="label label-default"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1/2</font></font></span></td></tr></tfoot>
                                                             </table>
                                                         </div>
                                                     </div>
