@@ -2,22 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="MemlistMapper">
+<mapper namespace="MemListMapper">
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-    <resultMap id="MemlistMap"
-        type="kr.co.wesellglobal.sellermatch.model.Memlist">
-        <result property="id"   column="id" />
-        <result property="name"     column="name" />
-        <result property="email"   column="email" />
-        <result property="country" column="country" />
-        <result property="password" column="password" />
+    <resultMap id="MemListMap"
+        type="kr.co.wesellglobal.sellermatch.model.MemList">
+        <result property="memIdx"   column="memIdx" />
+        <result property="memId"     column="memId" />
+        <result property="memPw"   column="memPw" />
+        <result property="memState" column="memState" />
+        <result property="memClass" column="memClass" />
+        <result property="memClassSdate" column="memClassSdate" />
+        <result property="memClassEdate" column="memClassEdate" />
+        <result property="memSort" column="memSort" />
+        <result property="memIndus" column="memIndus" />
+        <result property="memCountry" column="memCountry" />
+        <result property="memNation" column="memNation" />
+        <result property="memAddr" column="memAddr" />
+        <result property="memAddr2" column="memAddr2" />
+        <result property="memPost" column="memPost" />
+        <result property="memTel" column="memTel" />
+        <result property="memName" column="memName" />
+        <result property="memRname" column="memRname" />
+        <result property="memNick" column="memNick" />
+        <result property="memPhoto" column="memPhoto" />
+        <result property="memImg" column="memImg" />
+        <result property="memIp" column="memIp" />
+        <result property="memLoginDate" column="memLoginDate" />
+        <result property="memOutDate" column="memOutDate" />
+        <result property="memDate" column="memDate" />
+        <result property="memEditDate" column="memEditDate" />
+        <result property="MemAuthPw" column="MemAuthPw" />
+        <result property="memXxx" column="memXxx" />
     </resultMap>
     
     <!-- 단일행 조회를 위한 기능 정의 -->
     <select id="selectOneMember"
-    	parameterType="kr.co.wesellglobal.sellermatch.model.Memlist"
-    	resultMap="MemlistMap">
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
+    	resultMap="MemListMap">
     	SELECT 
     		*
     	FROM MemList

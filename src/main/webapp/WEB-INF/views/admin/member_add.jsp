@@ -48,7 +48,7 @@
 									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 									                                    </div>
 									                                    <div style="display: flow-root;">
-									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
+									                                    	<input id = "file_route" type="text" name="memPhoto" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
 										                                	<label>
 										                                		파일 선택
 										                                		<input id = "image" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
@@ -63,7 +63,7 @@
                                                                 <label class="col-sm-2 col-form-label">아이디</label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="input-group">
-	                                                                    <input type="text" class="form-control" placeholder="이메일 입력">
+	                                                                    <input type="text" name="memId" class="form-control" placeholder="이메일 입력">
 	                                                                    <span
 																			id="guide" class="input-group-btn">
 																			<button type="button" id="idCheck"
@@ -75,7 +75,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">비밀번호</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="password" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
+                                                                    <input type="password" name="memPw" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -89,13 +89,13 @@
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">이름</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control">
+                                                                    <input type="text" class="form-control" name="memName">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">닉네임</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control">
+                                                                    <input type="text" class="form-control" name="memNick">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -103,7 +103,7 @@
                                                                 <div class="col-sm-10">
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input type="checkbox">
+	                                                                    	<input type="checkbox" name="memIndus">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -112,7 +112,7 @@
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input type="checkbox">
+	                                                                    	<input type="checkbox" name="memIndus">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -124,7 +124,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">국가</label>
                                                                 <div class="col-sm-10">
-                                                                    <select name="select" class="form-control">
+                                                                    <select name="memCountry" class="form-control">
 						                                                <option value="opt1">선택하세요.</option>
 						                                                <option value="opt2">대한민국</option>
 						                                                <option value="opt3">베트남</option>
@@ -135,7 +135,7 @@
 																<label for="email" class="col-sm-2 col-form-label">이메일 인증</label>
 																<div class="col-sm-10">
 																	<div class="input-group">
-																		<input type="text" name="email" class="form-control" id="email" />
+																		<input type="text" name="" class="form-control" id="" />
 																		<span class="input-group-btn">
 																			<button type="button" id="emailCheck"
 																				class="btn form-bg-primary">인증 번호 발송</button>
@@ -158,7 +158,7 @@
                                                             <div class="form-group row">
 																<label for="phone" class="col-sm-2 col-form-label">연락처</label>
 																<div class="col-sm-10">
-																	<input type="text" name="phone" class="form-control" id="phone"
+																	<input type="text" name="memTel" class="form-control" id="phone"
 																		placeholder="`-`없이 숫자만 입력" />
 																</div>
 															</div>
@@ -166,7 +166,7 @@
 																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호</label>
 																<div class="col-sm-4">
 																	<div class="input-group">
-																		<input type="text" name="postcode" class="form-control"
+																		<input type="text" name="memPost" class="form-control"
 																			id="postcode" maxlength="5" readonly> <span
 																			class="input-group-btn">
 																			<button type="button" class="btn form-bg-primary postcode-finder"
@@ -179,19 +179,23 @@
 															<div class="form-group row">
 																<label for="address" class="col-sm-2 control-label">주소</label>
 																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="addr1" class="form-control" id="addr1"
+																	<input type="text" name="memAddr" class="form-control" id="addr1"
 																		readonly />
 																</div>
 															</div>
 															<div class="form-group row">
 																<label for="address" class="col-sm-2 control-label">상세주소</label>
 																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="addr2" class="form-control" id="addr2"
+																	<input type="text" name="memAddr2" class="form-control" id="addr2"
 																		placeholder="나머지 주소" />
 																</div>
 															</div>
-                                                            <!-- 회원가입 form end -->
+															<div style="text-align-last: center;">
+																<input class="btn form-bg-primary" type="submit" value="등록">
+																<input class="btn form-bg-submit" type="reset" value="취소">
+															</div>
                                                                 </form>
+                                                                <!-- 회원가입 form end -->
                                                             </div>
                                                         </div>
                                                     </div>

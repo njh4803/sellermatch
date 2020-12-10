@@ -4,7 +4,7 @@ import lombok.Data;
 
 //회원리스트 
 @Data
-public class Memlist {
+public class MemList {
 
  // 자동번호 
  private int memIdx;
@@ -82,7 +82,7 @@ public class Memlist {
  private String memEditDate;
 
  // 인증비밀번호 난수
- private String memPw2;
+ private String MemAuthPw;
 
  // 예비컬럼 
  private String memXxx;
