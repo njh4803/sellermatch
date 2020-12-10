@@ -2,6 +2,7 @@ package kr.co.wesellglobal.sellermatch.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.wesellglobal.sellermatch.model.MemList;
 import kr.co.wesellglobal.sellermatch.model.Users;
+import kr.co.wesellglobal.sellermatch.service.MemListService;
 import kr.co.wesellglobal.sellermatch.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +23,8 @@ public class AdminMemberController {
 	
 	@Autowired
 	TestService testService;
+	@Autowired
+	MemListService memListService;
 	
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
 	public ModelAndView adminMember(Model model) {
@@ -40,7 +45,18 @@ public class AdminMemberController {
 	
 	@RequestMapping(value = "/admin/memberList", method = RequestMethod.GET)
 	public ModelAndView adminMemberList(Model model) {
+		MemList input = new MemList();
 		
+		//목록조회
+		
+		List<MemList> output = null;
+		try {
+			output = memListService.getMemberList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
 		
 		return new ModelAndView("admin/member_list");
 	}

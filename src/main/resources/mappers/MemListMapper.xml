@@ -5,47 +5,65 @@
 <mapper namespace="MemListMapper">
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-    <resultMap id="MemListMap"
+    <resultMap id="memListMap"
         type="kr.co.wesellglobal.sellermatch.model.MemList">
-        <result property="memIdx"   column="memIdx" />
-        <result property="memId"     column="memId" />
-        <result property="memPw"   column="memPw" />
-        <result property="memState" column="memState" />
-        <result property="memClass" column="memClass" />
-        <result property="memClassSdate" column="memClassSdate" />
-        <result property="memClassEdate" column="memClassEdate" />
-        <result property="memSort" column="memSort" />
-        <result property="memIndus" column="memIndus" />
-        <result property="memCountry" column="memCountry" />
-        <result property="memNation" column="memNation" />
-        <result property="memAddr" column="memAddr" />
-        <result property="memAddr2" column="memAddr2" />
-        <result property="memPost" column="memPost" />
-        <result property="memTel" column="memTel" />
-        <result property="memName" column="memName" />
-        <result property="memRname" column="memRname" />
-        <result property="memNick" column="memNick" />
-        <result property="memPhoto" column="memPhoto" />
-        <result property="memImg" column="memImg" />
-        <result property="memIp" column="memIp" />
-        <result property="memLoginDate" column="memLoginDate" />
-        <result property="memOutDate" column="memOutDate" />
-        <result property="memDate" column="memDate" />
-        <result property="memEditDate" column="memEditDate" />
-        <result property="MemAuthPw" column="MemAuthPw" />
-        <result property="memXxx" column="memXxx" />
+        <result property="memIdx"   column="mem_idx" />
+        <result property="memId"     column="mem_id" />
+        <result property="memPw"   column="mem_pw" />
+        <result property="memState" column="mem_state" />
+        <result property="memClass" column="mem_class" />
+        <result property="memClassSdate" column="mem_class_sdate" />
+        <result property="memClassEdate" column="mem_class_edate" />
+        <result property="memSort" column="mem_sort" />
+        <result property="memIndus" column="mem_indus" />
+        <result property="memCountry" column="mem_country" />
+        <result property="memNation" column="mem_nation" />
+        <result property="memAddr" column="mem_addr" />
+        <result property="memAddr2" column="mem_addr2" />
+        <result property="memPost" column="mem_post" />
+        <result property="memTel" column="mem_tel" />
+        <result property="memName" column="mem_name" />
+        <result property="memRname" column="mem_rname" />
+        <result property="memNick" column="mem_nick" />
+        <result property="memPhoto" column="mem_photo" />
+        <result property="memImg" column="mem_img" />
+        <result property="memIp" column="mem_ip" />
+        <result property="memLoginDate" column="mem_login_date" />
+        <result property="memOutDate" column="mem_out_date" />
+        <result property="memDate" column="mem_date" />
+        <result property="memEditDate" column="mem_edit_date" />
+        <result property="MemAuthPw" column="Mem_auth_pw" />
+        <result property="memXxx" column="mem_xxx" />
     </resultMap>
     
-    <!-- 단일행 조회를 위한 기능 정의 -->
-    <select id="selectOneMember"
+    <insert id="insertItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
-    	resultMap="MemListMap">
-    	SELECT 
-    		*
-    	FROM MemList
-    	WHERE id = #{id}
-    </select>
+    	useGeneratedKeys="true"
+    	keyProperty="memIdx">
+    	INSERT INTO MemList
+    		(``Mem_id`, `Mem_pw`, `Mem_state`, `Mem_class`, `Mem_sort`, `Mem_indus`, `Mem_country`, 
+    		`Mem_nation`, `Mem_addr`, `Mem_addr2`, `Mem_post`, `Mem_tel`, `Mem_name`, `Mem_rname`, `Mem_nick`, 
+    		`Mem_photo`, `Mem_img`, `Mem_ip`, `Mem_date`, `Mem_XXX`)
+    	 VALUES 
+    	 	(#{memId}, md5(#{memPw}), #{memState}, #{memClass}, #{memSort}, #{memIndus}, #{memCountry}, 
+    	 	#{memNation}, #{memAddr}, #{memAddr2}, #{memPost}, #{memTel}, #{memName}, #{memRname}, #{memNick}, 
+    	 	#{memPhoto}, #{memImg}, #{memIp}, now(), #{memXxx});
+
+    </insert>
     
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
+    	resultMap="memListMap">
+    	SELECT 
+    		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
+    		mem_sort, mem_indus, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
+    		mem_name, mem_rname, mem_nick, mem_photo, mem_img, mem_ip, mem_login_date, mem_out_date, 
+    		mem_date, mem_edit_date, Mem_auth_pw
+    	FROM MemList
+		ORDER BY mem_date DESC
+    	
+    </select>
     
 
 </mapper>
