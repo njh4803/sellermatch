@@ -65,5 +65,11 @@
     	
     </select>
     
+    <!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="idCheck"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
+    	resultType="int">
+    	SELECT COUNT(*) FROM MemList WHERE mem_id=#{memId}
+    </select>
 
 </mapper>

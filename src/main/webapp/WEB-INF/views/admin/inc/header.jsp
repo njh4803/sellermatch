@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
+
 <head>
 	<title>셀러매치</title>
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
@@ -50,5 +52,11 @@
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ionicons.css">
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/jquery.mCustomScrollbar.css">
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  
+	  <!-- AjaxHelper -->
+	  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css">
+	  
+	  <!-- sweetalert css -->
+	  <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.min.css" />
   </head>
   <body>

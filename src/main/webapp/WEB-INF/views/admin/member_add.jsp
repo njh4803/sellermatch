@@ -60,10 +60,10 @@
                                                             
                                                             
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">아이디</label>
+                                                                <label for="memId" class="col-sm-2 col-form-label">아이디</label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="input-group">
-	                                                                    <input type="text" name="memId" class="form-control" placeholder="이메일 입력">
+	                                                                    <input id="memId" type="text" name="memId" class="form-control" placeholder="이메일 입력">
 	                                                                    <span
 																			id="guide" class="input-group-btn">
 																			<button type="button" id="idCheck"
@@ -210,7 +210,7 @@
                     </div>
                 </div>
             </div>
-<script>
+<script type="text/javascript">
 	
 $(document).ready(function() {
 	$("#image").on("change", handleImgfileSelect);
@@ -232,8 +232,25 @@ function handleImgfileSelect(e) {
 			$("#img").attr("src", e.target.result);
 		}
 		reader.readAsDataURL(f);
-	}) 
-}
+	});
+};
+
+$(function(){
+	$("#idCheck").click(function(e) {
+	    const memId = $("#memId").val();
+
+	    if (!memId) {
+	    	swal('알림', '아이디를 입력하세요.', 'warning');
+	        return;
+	    }
+	    
+	    $.post(ROOT_URL + '/admin/member/idCheck', {
+	    	memId: memId
+	    }, function(json) {
+	    	swal('확인', '사용가능한 아이디 입니다.', 'success');
+	    });
+	});
+});
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
