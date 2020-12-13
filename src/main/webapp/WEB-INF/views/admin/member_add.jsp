@@ -13,16 +13,17 @@
 
 /* 에러 메시지에 대한 글자 색상 */
 .error {
-	border-color: red;
+	color: red;
 }
 
 /* 에러가 발생한 <input>태그 */
 input.error {
-	background-color: red;
+	
 }
 /* 에러메시지가 표시중인 <label> 태그 */
 label.error {
 	font-size: 10px;
+	color: red;
 	display: inline-block;
 	padding: 5px 10px;
 	margin: 0;
@@ -88,25 +89,28 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                	<div class="input-group">
+                                                                	<div class="form-group">
 	                                                                    <input id="memId" type="text" name="memId" class="form-control" placeholder="이메일 입력">
-	                                                                    <span
+	                                                                    <!-- <span
 																			id="guide" class="input-group-btn">
 																			<button type="button" id="idCheck"
 																				class="btn form-bg-primary">중복검사</button>
-																		</span>
+																		</span> -->
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">비밀번호</label>
+                                                                <label class="col-sm-2 col-form-label">비밀번호
+                                                                	<span class="identify">*</span>
+                                                                </label>
                                                                 <div class="col-sm-10">
                                                                     <input type="password" id="memPw" name="memPw" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="memPw_confirm" class="col-sm-2 control-label">비밀번호
-																	확인</label>
+																<label for="memPw_confirm" class="col-sm-2 control-label">비밀번호 확인
+																	<span class="identify">*</span>
+																</label>
 																<div class="col-sm-10">
 																	<input type="password" name="memPw_confirm" class="form-control"
 																		id="memPw_confirm" placeholder="영문,숫자,특수문자 조합 최대 30글자" />
@@ -115,13 +119,13 @@ label.error {
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">이름</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="memName">
+                                                                    <input type="text" class="form-control" name="memName" id="memName">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">닉네임</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="memNick">
+                                                                    <input type="text" class="form-control" name="memNick" id="memNick">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -129,7 +133,7 @@ label.error {
                                                                 <div class="col-sm-10">
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input type="checkbox" name="memIndus">
+	                                                                    	<input type="checkbox" name="memIndus" id="memIndus">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -138,7 +142,7 @@ label.error {
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input type="checkbox" name="memIndus">
+	                                                                    	<input id="memIndus" type="checkbox" name="memIndus">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -150,7 +154,7 @@ label.error {
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">국가</label>
                                                                 <div class="col-sm-10">
-                                                                    <select name="memCountry" class="form-control">
+                                                                    <select id="memCountry" name="memCountry" class="form-control">
 						                                                <option value="opt1">선택하세요.</option>
 						                                                <option value="opt2">대한민국</option>
 						                                                <option value="opt3">베트남</option>
@@ -158,10 +162,10 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="email" class="col-sm-2 col-form-label">이메일 인증</label>
+																<label for="memEmail" class="col-sm-2 col-form-label">이메일 인증</label>
 																<div class="col-sm-10">
 																	<div class="input-group">
-																		<input type="text" name="" class="form-control" id="" />
+																		<input type="text" name="memEmail" class="form-control" id="memEmail" />
 																		<span class="input-group-btn">
 																			<button type="button" id="emailCheck"
 																				class="btn form-bg-primary">인증 번호 발송</button>
@@ -182,14 +186,18 @@ label.error {
 																</div>
 															</div>
                                                             <div class="form-group row">
-																<label for="phone" class="col-sm-2 col-form-label">연락처</label>
+																<label for="memTel" class="col-sm-2 col-form-label">연락처
+																	<span class="identify">*</span>
+																</label>
 																<div class="col-sm-10">
-																	<input type="text" name="memTel" class="form-control" id="phone"
+																	<input type="text" name="memTel" class="form-control" id="memTel"
 																		placeholder="`-`없이 숫자만 입력" />
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호</label>
+																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호
+																	<span class="identify">*</span>
+																</label>
 																<div class="col-sm-4">
 																	<div class="input-group">
 																		<input type="text" name="memPost" class="form-control"
@@ -203,16 +211,18 @@ label.error {
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label">주소</label>
+																<label for="address" class="col-sm-2 control-label">주소
+																	<span class="identify">*</span>
+																</label>
 																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr" class="form-control" id="addr1"
+																	<input type="text" name="memAddr" class="form-control" id="memAddr"
 																		readonly />
 																</div>
 															</div>
 															<div class="form-group row">
 																<label for="address" class="col-sm-2 control-label">상세주소</label>
 																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr2" class="form-control" id="addr2"
+																	<input type="text" name="memAddr2" class="form-control" id="memAddr2"
 																		placeholder="나머지 주소" />
 																</div>
 															</div>
@@ -262,33 +272,6 @@ function handleImgfileSelect(e) {
 };
 
 $(function(){
-	/* 플러그인의 기본 설정 옵션 추가 */
-	jQuery.validator.setDefaults({
-		onkeyup : true,		// 키보드입력시 검사
-		onclick : false,		// <input>태그 클릭시 검사
-		onfocusout : true,		// 포커스가 빠져나올 때 검사
-		showErrors : function(errorMap, errorList) {	// 에러 발생시 호출되는 함수 재정의
-			// 에러가 있을 때만..
-			if (this.numberOfInvalids()) {
-				// 0번째 에러 메시지에 대한 javascript 기본 alert 함수 사용
-				//alert(errorList[0].message);
-				// 0번째 에러 발생 항목에 포커스 지정
-				$(errorList[0].element).focus();
-				/* swal({
-					title : "에러",
-					text : errorList[0].message,
-					type : "error"
-				}).then(function(result) {
-					// 창이 닫히는 애니메이션의 시간이 있으므로,
-					// 0.1초의 딜레이 적용 후 포커스 이동
-					setTimeout(function() {
-						$(errorList[0].element).val('');
-						$(errorList[0].element).focus();
-					}, 100);
-				}); */
-			}
-		}
-	});
 
 	$.validator.addMethod("kor", function(value, element) {
 		return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
@@ -310,12 +293,12 @@ $(function(){
         rules: {
             // [아이디] 필수 + 알파벳,숫자 조합만 허용
             memId: {
-                required: true, alphanumeric: true, minlength: 4, maxlength: 30,
+                required: true, email: true, minlength: 4, maxlength: 30, 
                 remote : {
-                    url : ROOT_URL + '/rest/idCheck_jquery',
+                    url : ROOT_URL + '/admin/member/idCheck',
                     type : 'post',
                     data : {
-                        user_id : function() {
+                    	memId : function() {
                             return $("#memId").val();
                         }
                     }
@@ -325,10 +308,8 @@ $(function(){
             memPw: { required: true, minlength: 4, maxlength: 30 },
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
             memPw_confirm: { required: true, equalTo: '#memPw' },
-            // [이름] 필수
-            userName: { required: true, kor: true, minlength: 2, maxlength: 30 },
             // [이메일] 필수 + 이메일 형식 일치 필요
-            email: {
+            memEmail: {
                 required: true, email: true, maxlength: 255,
                 remote : {
                     url : ROOT_URL + '/rest/emailCheck_jquery',
@@ -341,24 +322,20 @@ $(function(){
                 }
             },
             // [연락처] 필수
-            phone: { required: true, phone: true, minlength: 9, maxlength: 11 },
-            // [생년월일] 필수 + 날짜 형식 일치 필요
-            birthday: { required: true, date: true },
+            memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
             // [우편번호] 필수 입력
             postcode: 'required',
             // [주소1] 우편번호가 입력된 경우만 필수
-            addr1: 'required',
-            // [주소2] 우편번호가 입력된 경우만 필수
-            addr2: 'required',
+            memAddr: 'required',
             
         },
         messages: {
         	memId: {
                 required: '아이디를 입력하세요.',
-                alphanumeric: '아이디는 영어,숫자만 입력 가능합니다.',
-                minlength: '아이디는 최소 {0}글자 이상 입력하셔야 합니다.',
-                maxlength: '아이디는 최대 {0}글자까지 가능합니다.',
-                remote: '이미 사용중인 아이디 입니다.'
+                email: '아이디는 이메일만 입력 가능합니다.',
+                minlength: '아이디는 최소 {4}글자 이상 입력하셔야 합니다.',
+                maxlength: '아이디는 최대 {30}글자까지 가능합니다.',
+                remote: '이미 사용중인 이메일 입니다.'
             },
             memPw: {
                 required: '비밀번호를 입력하세요.',
@@ -369,32 +346,21 @@ $(function(){
                 required: '비밀번호 확인값을 입력하세요.',
                 equalTo: '비밀번호 확인이 잘못되었습니다.',
             },
-            userName: {
-                required: '이름을 입력하세요.',
-                kor: '이름은 한글만 입력 가능합니다.',
-                minlength: '이름은 최소 {0}글자 이상 입력하셔야 합니다.',
-                maxlength: '이름은 최대 {0}글자까지 가능합니다.',
-            },
             email: {
                 required: '이메일을 입력하세요.',
                 email: '이메일 형식이 잘못되었습니다.',
                 maxlength: '이메일은 최대 {0}글자까지 가능합니다.',
                 remote: '이미 사용중인 이메일 입니다.'
             },
-            phone: {
+            memTel: {
                 required: '연락처를 입력하세요.',
                 phone: '연락처 형식이 잘못되었습니다.',
-                minlength: '연락처는 최소 {0}글자 이상 입력하셔야 합니다.',
-                maxlength: '연락처는 최대 {0}글자까지 가능합니다.',
-            },
-            birthday: {
-                required: '생년월일을 입력하세요.',
-                date: '생년월일의 형식이 잘못되었습니다.',
+                minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
+                maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
             },
             postcode: '우편번호를 입력해 주세요.',
-            addr1: '기본주소를 입력해 주세요.',
-            addr2: '상세주소를 입력해 주세요.',
-        },
+            memAddr: '기본주소를 입력해 주세요.',
+        }
     });
     
     $('#join_form').ajaxForm({
@@ -410,8 +376,8 @@ $(function(){
             });
         },
     });
-	
-	$("#idCheck").click(function(e) {
+	//유효성 검사 아이디 중복 검사 알림창으로 확인하기
+/* 	$("#idCheck").click(function(e) {
 	    const memId = $("#memId").val();
 
 	    if (!memId) {
@@ -424,7 +390,7 @@ $(function(){
 	    }, function(json) {
 	    	swal('확인', '사용가능한 아이디 입니다.', 'success');
 	    });
-	});
+	}); */
 });
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

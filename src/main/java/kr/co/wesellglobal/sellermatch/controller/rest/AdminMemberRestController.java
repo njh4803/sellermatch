@@ -1,9 +1,13 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,25 +40,28 @@ public class AdminMemberRestController {
 	@Autowired
 	WebHelper webHelper;
 	
+	/** 아이디 중복검사 (jQuery Form Validate 플러그인용) */
+	// controller에서 out 객체의 출력결과를 웹브라우저에게 전달할 수 있게 하는 옵션
+	@ResponseBody
 	@RequestMapping(value = "/admin/member/idCheck", method = RequestMethod.POST)
-	public Map<String, Object> idCheck(@RequestParam(value = "memId", required = false) String memId) {
-
-		if (!regexHelper.isValue(memId)) {
-			return webHelper.getJsonWarning("아이디를 입력하세요.");
-		}
-		if (!regexHelper.isEmail(memId)) {
-			return webHelper.getJsonWarning("아이디는 이메일만 입력 가능합니다.");
-		}
+	public void idUniqueCheckjQuery(HttpServletResponse response,
+			// 아이디
+			@RequestParam(value = "memId", required = false) String memId) {
 
 		MemList input = new MemList();
 		input.setMemId(memId);
+		String result = "true";
 
 		try {
 			memListService.idCheck(input);
 		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
+			result = "false";
 		}
 
-		return webHelper.getJsonData();
+		// out객체를 생성하여 문자열을 직접 출력함
+		try {
+			response.getWriter().print(result);
+		} catch (IOException e) {
+		}
 	}
 }

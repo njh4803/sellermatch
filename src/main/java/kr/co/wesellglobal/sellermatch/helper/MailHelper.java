@@ -13,8 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MailHelper {
     // --> import org.springframework.mail.javamail.JavaMailSender;
+	// 환경 설정 정보를 저장하고 있는 객체 선언
     JavaMailSender mailSender;
 
+    // 환경 설정 객체를 root-context.xml로 부터 주입 받아 멤버변수에 참조시킨다.
     public MailHelper(JavaMailSender sender) {
         this.mailSender = sender;
     }
@@ -50,7 +52,7 @@ public class MailHelper {
         
         // 제목, 내용, 수신자, 발신자 설정
         helper.setSubject(subject);
-        helper.setText(content, true);
+        helper.setText(content, true);	// true는 content에서 HTML태그를 허용하겠다는 의미
         helper.setFrom(new InternetAddress(sender));
         helper.setTo(new InternetAddress(receiver));
         

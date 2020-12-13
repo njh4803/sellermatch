@@ -6,61 +6,51 @@ $(function () {
 
     $.ajaxSetup({
         /** ajax 기본 옵션 */
-        cache: false, // 캐쉬 사용 금지 처리
-        dataType: 'json', // 읽어올 내용 형식 (html,xml,json)
-        timeout: 30000, // 타임아웃 (30초)
+        cache : false, // 캐쉬 사용 금지 처리
+        dataType : 'json', // 읽어올 내용 형식 (html,xml,json)
+        timeout : 30000, // 타임아웃 (30초)
 
         // 통신 시작전 실행할 기능 (ex: 로딩바 표시)
-        beforeSend: function () {
+        beforeSend : function() {
             // 현재 통신중인 대상 페이지를 로그로 출력함
-            console.log('>> Ajax 통신 시작 >> ' + this.url);
+            console.log(">> Ajax 통신 시작 >> " + this.url);
             loader.show();
         },
         // 통신 실패시 호출될 함수 (파라미터는 에러내용)
-        error: function (error) {
+        error : function(error) {
             // 404 -> Page Not Found
             // 50x -> Server Error(웹 프로그램 에러)
             // 200, 0 -> 내용의 형식 에러(JSON,XML)
-            console.log('>> 에러!!!! >> ' + error.status);
-
+            console.log(">> 에러!!!! >> " + error.status);
+            
             // 서버에서 반환하는 json 데이터가 존재한다면?
             if (error.responseJSON) {
                 // 서버에서 반환하는 json 데이터에 rt라는 key가 있다면?
-                if (error.responseJSON.rt) {
+            	if (error.responseJSON.rt) {
                     // 해당 내용을 메시지로 표시하고 처리 중단.
-                    if (swal !== undefined) {
-                        swal('알림', error.responseJSON.rt, 'error');
-                    } else {
-                        alert(error.responseJSON.rt);
-                    }
-
-                    return;
-                }
+					console.log(error.response.rt);
+            		return;
+            	}
             }
 
-            var error_msg = '[' + error.status + '] ' + error.statusText;
+            var error_msg = "[" + error.status + "] " + error.statusText;
 
             var code = parseInt(error.status / 100);
-            if (code == 4) {
-                // 400번대의 에러인 경우
-                error_msg = '잘못된 요청입니다.\n' + error_msg;
+            if (code == 4) { // 400번대의 에러인 경우
+                error_msg = "잘못된 요청입니다.\n" + error_msg;
             } else if (code == 5) {
-                error_msg = '서버의 응답이 없습니다.\n' + error_msg;
+                error_msg = "서버의 응답이 없습니다.\n" + error_msg;
             } else if (code == 2 || code == 0) {
-                error_msg = '서버의 응답이 잘못되었습니다.\n' + error_msg;
+                error_msg = "서버의 응답이 잘못되었습니다.\n" + error_msg;
             }
+			console.log(error_msg);
 
-            if (swal !== undefined) {
-                swal('알림', error_msg, 'error');
-            } else {
-                alert(eerror_msg);
-            }
         },
         // 성공,실패에 상관 없이 맨 마지막에 무조건 호출됨 ex) 로딩바 닫기
-        complete: function () {
-            console.log('>> Ajax 통신 종료!!!!');
+        complete : function() {
+            console.log(">> Ajax 통신 종료!!!!");
             loader.hide();
-        },
+        }
     });
 });
 

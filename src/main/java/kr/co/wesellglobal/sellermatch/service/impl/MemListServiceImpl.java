@@ -53,8 +53,6 @@ public class MemListServiceImpl implements MemListService{
 			log.error(e.getLocalizedMessage());
 			throw new Exception("아이디 중복검사에 실패했습니다.");
 		}
-		
 	}
-
 
 }
