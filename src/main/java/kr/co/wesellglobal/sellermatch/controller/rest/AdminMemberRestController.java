@@ -1,5 +1,6 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
+import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.MemList;
 import kr.co.wesellglobal.sellermatch.model.Users;
@@ -63,5 +66,28 @@ public class AdminMemberRestController {
 			response.getWriter().print(result);
 		} catch (IOException e) {
 		}
+	}
+	
+	@RequestMapping(value = "/admin/member/idCheck", method = RequestMethod.POST)
+	public Map<String, Object> join(@RequestParam(value = "memPhoto", defaultValue = "user.png") MultipartFile memPhoto){
+		/** 1) 업로드 처리 */
+		// 업로드 결과가 저장된 Beans를 리턴받는다.
+		UploadItem item = null;
+		
+		try {
+			item = webHelper.saveMultipartFile(memPhoto);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		//Map<String, Object> data = new HashMap<String, Object>();
+		//data.put("item", item);
+
+		/** 4) 결과 표시 */
+		return webHelper.getJsonData();
 	}
 }

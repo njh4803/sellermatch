@@ -63,7 +63,7 @@ label.error {
                                                     </div>
                                                     <div class="card-block">
                                                         <h4 class="sub-title">Basic Inputs</h4>
-                                                        <form id="join_form" name="join_form">
+                                                        <form action="${pageContext.request.contextPath}/admin/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">프로필 사진</label>
                                                                 <div class="col-sm-10 file_input">
