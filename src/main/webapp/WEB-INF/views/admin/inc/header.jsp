@@ -58,5 +58,8 @@
 	  
 	  <!-- sweetalert css -->
 	  <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.min.css" />
+	  
+	  <!-- bootstrap css -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
   <body>

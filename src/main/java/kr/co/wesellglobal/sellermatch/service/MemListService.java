@@ -12,4 +12,8 @@ public interface MemListService {
 	
 	public void addMember(MemList input) throws Exception;
 	
+	public MemList getMember(MemList input) throws Exception;
+	
+	public void editMember(MemList input) throws Exception;
+	
 }

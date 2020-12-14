@@ -65,15 +65,36 @@
     	
     </select>
     
+    <select id="selectItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
+    	resultMap="memListMap">
+    	SELECT 
+    		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
+    		mem_sort, mem_indus, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
+    		mem_name, mem_rname, mem_nick, mem_photo, mem_img, mem_ip, mem_login_date, mem_out_date, 
+    		mem_date, mem_edit_date, Mem_auth_pw
+    	FROM MemList
+    	WHERE mem_id = #{memId}
+    </select>
+    
     <!-- 단일행 조회를 위한 기능 정의 -->
     <select id="idCheck"
     	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
     	resultType="int">
-    	SELECT COUNT(*) FROM MemList WHERE mem_id=#{memId}
+    	SELECT COUNT(*) FROM MemList WHERE mem_id = #{memId}
     </select>
-    
-    <update id="setEmailAuth" parameterType="kr.co.wesellglobal.sellermatch.model.MemList">
-		UPDATE MemList SET Mem_auth_pw = #{userPw} where userId = #{userId} and email = #{email}
+	
+	<update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.MemList">
+		UPDATE MemList 
+		SET 
+			<if test="memPw != ' ' and memPw != null">
+				mem_pw = md5(#{memPw}), 
+			</if>
+		    mem_state = #{memState}, mem_class = #{memClass}, mem_sort = #{memSort}, mem_indus = #{memIndus}, 
+		    mem_country = #{memCountry}, mem_nation = #{memNation}, mem_addr = #{memAddr}, mem_addr2 = #{memAddr2}, mem_post =  #{memPost}, 
+    	 	mem_tel = #{memTel}, mem_name = #{memName}, mem_rname = #{memRname}, mem_nick = #{memNick}, mem_photo = #{memPhoto}, mem_img = #{memImg}, 
+    	 	mem_ip = #{memIp}, mem_edit_date = now()
+		where mem_id = #{memId}
 	</update>
 
 </mapper>

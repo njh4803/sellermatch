@@ -1,8 +1,6 @@
 package kr.co.wesellglobal.sellermatch.controller;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -203,10 +201,95 @@ public class AdminMemberController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-
-		
-
 		/** 4) 결과 표시 */
 		return new ModelAndView("admin/admin_main");
+	}
+	
+	@RequestMapping(value = "/admin/member/edit", method = RequestMethod.GET)
+	public ModelAndView adminMemberEdit(Model model, @RequestParam(value = "memId") String memId) {
+		MemList input = new MemList();
+		input.setMemId(memId);
+		//목록조회
+		
+		MemList output = null;
+		try {
+			output = memListService.getMember(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("admin/member_edit");
+	}
+	
+	@RequestMapping(value = "/admin/member/editOk", method = RequestMethod.POST)
+	public ModelAndView editOk(@RequestParam(value = "memPhoto") MultipartFile memPhoto,
+			@RequestParam(value = "memId", required = false) String memId,
+			@RequestParam(value = "memPw_confirm") String memPw,
+			@RequestParam(value = "memName") String memName,
+			@RequestParam(value = "memNick", required = false) String memNick,
+			@RequestParam(value = "memTel", required = false) String memTel,
+			@RequestParam(value = "memRname") String memRname,
+			@RequestParam(value = "memIndus") String memIndus,
+			@RequestParam(value = "memCountry") String memCountry,
+			@RequestParam(value = "memPost", required = false) String memPost,
+			@RequestParam(value = "memAddr", required = false) String memAddr,
+			@RequestParam(value = "memAddr2") String memAddr2) {
+		
+		/** 1) 업로드 처리 */
+		// 업로드 결과가 저장된 Beans를 리턴받는다.
+		UploadItem item = null;
+		MemList input = new MemList();
+		
+		input.setMemPhoto("user.png");
+		input.setMemImg("user.png");
+		input.setMemNation("서울");
+		
+		if (memPhoto.getSize() > 0) {
+			
+			try {
+				item = webHelper.saveMultipartFile(memPhoto);
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+			input.setMemPhoto(item.getFilePath());
+		}
+		
+		
+		input.setMemId(memId);
+		// 공백이나 null이 아니면
+		if (regexHelper.isValue(memPw)) {
+			input.setMemPw(memPw);
+		}
+		input.setMemName(memName);
+		input.setMemNick(memNick);
+		input.setMemTel(memTel);
+		input.setMemRname(memRname);
+		input.setMemClass("0");
+		input.setMemSort("일반");
+		input.setMemIndus(memIndus);
+		input.setMemCountry(memCountry);
+		input.setMemPost(memPost);
+		input.setMemAddr(memAddr);
+		input.setMemAddr2(memAddr2);
+		
+		input.setMemState("0");
+		input.setMemIp("49.247.0.132");
+		input.setMemXxx("");
+		
+		try {
+			memListService.editMember(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 4) 결과 표시 */
+		return new ModelAndView("admin/member_edit");
 	}
 }
