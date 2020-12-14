@@ -73,10 +73,10 @@ label.error {
 									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 									                                    </div>
 									                                    <div style="display: flow-root;">
-									                                    	<input id = "file_route" type="text" name="memPhoto" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
+									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
 										                                	<label>
 										                                		파일 선택
-										                                		<input id = "image" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+										                                		<input id = "image" name="memPhoto" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
 										                                	</label>
 									                                    </div>
 																	</div>
@@ -133,7 +133,7 @@ label.error {
                                                                 <div class="col-sm-10">
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input type="checkbox" name="memIndus" id="memIndus">
+	                                                                    	<input type="checkbox" name="memIndus" id="memIndus" value="01">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -142,7 +142,7 @@ label.error {
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="memIndus" type="checkbox" name="memIndus">
+	                                                                    	<input id="memIndus" type="checkbox" name="memIndus" value="02">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -155,9 +155,9 @@ label.error {
                                                                 <label class="col-sm-2 col-form-label">국가</label>
                                                                 <div class="col-sm-10">
                                                                     <select id="memCountry" name="memCountry" class="form-control">
-						                                                <option value="opt1">선택하세요.</option>
-						                                                <option value="opt2">대한민국</option>
-						                                                <option value="opt3">베트남</option>
+						                                                <option value="">선택하세요.</option>
+						                                                <option value="대한민국">대한민국</option>
+						                                                <option value="베트남">베트남</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
@@ -167,7 +167,7 @@ label.error {
 																	<div class="input-group">
 																		<input type="text" name="memEmail" class="form-control" id="memEmail" />
 																		<span class="input-group-btn">
-																			<button type="button" id="emailCheck"
+																			<button type="button" id="sendAuthEmail"
 																				class="btn form-bg-primary">인증 번호 발송</button>
 																		</span>
 																	</div>
@@ -177,9 +177,9 @@ label.error {
 																<label for="" class="col-sm-2 col-form-label"></label>
 																<div class="col-sm-10">
 																	<div class="input-group">
-																		<input type="text" name="" class="form-control" id="" />
+																		<input type="text" name="auth_confirm" class="form-control" id="auth_confirm" />
 																		<span class="input-group-btn">
-																			<button type="button" id=""
+																			<button type="button" id="authConfirm"
 																				class="btn form-bg-primary">인증 번호 확인</button>
 																		</span>
 																	</div>
@@ -227,9 +227,10 @@ label.error {
 																</div>
 															</div>
 															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="등록">
+																<input class="btn form-bg-primary" type="" value="등록">
 																<input class="btn form-bg-submit" type="reset" value="취소">
 															</div>
+															<input type="hidden" name="memRname">
                                                                 </form>
                                                                 <!-- 회원가입 form end -->
                                                             </div>
@@ -308,19 +309,6 @@ $(function(){
             memPw: { required: true, minlength: 4, maxlength: 30 },
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
             memPw_confirm: { required: true, equalTo: '#memPw' },
-            // [이메일] 필수 + 이메일 형식 일치 필요
-            memEmail: {
-                required: true, email: true, maxlength: 255,
-                remote : {
-                    url : ROOT_URL + '/rest/emailCheck_jquery',
-                    type : 'post',
-                    data : {
-                        email : function() {
-                            return $("#email").val();
-                        }
-                    }
-                }
-            },
             // [연락처] 필수
             memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
             // [우편번호] 필수 입력
@@ -391,6 +379,39 @@ $(function(){
 	    	swal('확인', '사용가능한 아이디 입니다.', 'success');
 	    });
 	}); */
+	$("#sendAuthEmail").click(function(e) {
+	    const memEmail = $("#memEmail").val();
+	
+	    if (!memEmail) {
+	    	swal('알림', '이메일을 입력하세요.', 'warning');
+	        return;
+	    }
+	    
+	    $.post(ROOT_URL + '/admin/member/sendAuthEmail', {
+	    	memEmail: memEmail
+	    }, function(json) {
+	    	swal('확인', '인증번호가 발송되었습니다.', 'success');
+	    });
+	});
+	$("#authConfirm").click(function(e) {
+	    const auth_confirm = $("#auth_confirm").val();
+	
+	    if (!auth_confirm) {
+	    	swal('알림', '인증번호를 입력하세요.', 'warning');
+	        return;
+	    }
+	    
+	    $.post(ROOT_URL + '/admin/member/authConfirm', {
+	    	auth_confirm: auth_confirm
+	    }, function(json) {
+	    	if (json.result == "0") {
+	    		swal('알림', '인증실패', 'warning');
+			} else {
+		    	swal('확인', '인증이 확인되었습니다.', 'success');
+		    	$("#memRname").val(json.result);
+			}
+	    });
+	});
 });
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -28,8 +28,12 @@
 	   <prop key="encType">UTF-8</prop>
 	   <prop key="smtpHost">smtp.gmail.com</prop>
 	   <prop key="smtpPort">465</prop>
-	   <prop key="smtpUsername">dw3937@gmail.com</prop>
-	   <prop key="smtpPassword">rjhlppxnzvacstxh</prop>
+	   <prop key="smtpUsername">njh4803@gmail.com</prop>
+	   <prop key="smtpPassword">nomuqsathmjosxyc</prop>
+	   <!-- 업로드 디렉토리 -->
+	   <prop key="uploadDir">/usr/local/img</prop>
+	   <!-- 업로드 디렉토리에 대한 WebPath (server.xml에 명시한 Path값과 일치해야한다. -->
+	   <prop key="uploadPath">/img</prop>
 	</util:properties>
     
     
@@ -55,6 +59,8 @@
 	<!-- WebHelper 주입 설정 -->
 	<bean id="webHelper" class="kr.co.wesellglobal.sellermatch.helper.WebHelper">
 		<property name="encType" value="#{config['encType']}"/>
+		<property name="uploadDir" value="#{config['uploadDir']}"/>
+		<property name="uploadPath" value="#{config['uploadPath']}"/>
 	</bean>
 	
 	<!-- RegexHelper 주입 설정 -->

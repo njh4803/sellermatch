@@ -371,6 +371,23 @@ public class WebHelper {
         // 세션을 저장한다.
         this.session.setAttribute(key, value);
     }
+    
+    /**
+     * 세션값을 저장한다.
+     *
+     * @param key   - 세션이름
+     * @param value - 저장할 데이터
+     * @param maxInactiveInterval - 세션 유효시간(분단위)
+     */
+    public void setSession(String key, Object value, int maxInactiveInterval) {
+        // 세션의 기록 정보를 로그로 남긴다.
+        log.debug(String.format("(s) <-- %s = %s", key, value.toString()));
+        // 세션 유효시간 설정(분단위, 기본값 5분)
+        this.session.setMaxInactiveInterval(maxInactiveInterval);
+        
+        // 세션을 저장한다.
+        this.session.setAttribute(key, value);
+    }
 
     /**
      * 세션값을 조회한다.
@@ -958,15 +975,4 @@ public class WebHelper {
         return uploadList;
     }
 
-	public String getUploadUrl(String filePath1) {
-		// URL상의 업로드 폴더와 파일 이름을 결합하여 파일 객체 생성
-        File f = new File(this.uploadPath, filePath1);
-        // 결합된 경로 추출
-        String path = f.getPath();
-        // window의 경우 경로 구문을 역슬래시로 하는데, 이는 웹에 노출할 수 있는 형태가 아니므로
-        // 역슬래시를 슬래시로 변환하여 반환한다.
-        return path.replace("\\", "/");
-	}
-
-	
 }

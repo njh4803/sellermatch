@@ -13,8 +13,5 @@ public class UploadItem {
     private String contentType;     // 파일의 형식
     private long fileSize;          // 파일의 용량
     private String filePath;        // 서버상의 파일 경로
-    private String thumbnailPath;   // 썸네일 이미지 경로
-    private String fileUrl1;
-    private String fileUrl2;		// 서버상의 원본 이미지 URL
-    private String thumbnailUrl;    // 썸네일 이미지 URL
+    private String fileUrl;		// 서버상의 원본 이미지 URL
 }

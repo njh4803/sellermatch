@@ -8,6 +8,8 @@ public interface MemListService {
 	
 	public List<MemList> getMemberList(MemList input) throws Exception;
 
-	public void idCheck(MemList input) throws Exception;;
+	public void idCheck(MemList input) throws Exception;
+	
+	public void addMember(MemList input) throws Exception;
 	
 }

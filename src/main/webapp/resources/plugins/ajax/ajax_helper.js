@@ -56,7 +56,7 @@ $(function () {
 
 // jQuery Ajax가 restful을 처리할 수 있도록 기능 확장.
 // 출처: https://stackoverflow.com/
-jQuery.each(['put', 'delete'], function (i, method) {
+/*jQuery.each(['put', 'delete'], function (i, method) {
     jQuery[method] = function (url, data, callback, type) {
         if (jQuery.isFunction(data)) {
             type = type || callback;
@@ -72,7 +72,7 @@ jQuery.each(['put', 'delete'], function (i, method) {
             success: callback,
         });
     };
-});
+});*/
 
 // HTML 특수문자를 원래의 구문으로 되돌리는 함수.
 function htmlspecialchar_decode(content) {
