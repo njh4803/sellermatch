@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProdListMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="prodListMap"
+        type="kr.co.wesellglobal.sellermatch.model.ProdList">
+        <result property="prodIdx"   column="Prod_idx" />
+        <result property="prodNum"     column="Prod_num" />
+        <result property="prodName"   column="Prod_name" />
+        <result property="prodPrice" column="Prod_price" />
+        <result property="prodQty" column="Prod_qty" />
+        <result property="prodDetail" column="Prod_detail" />
+        <result property="prodPhoto" column="Prod_photo" />
+        <result property="prodDetailImg" column="Prod_detail_img" />
+        <result property="prodKeyword" column="Prod_keyword" />
+        <result property="prodState" column="Prod_state" />
+        <result property="prodRegDate" column="Prod_reg_date" />
+        <result property="prodEndDate" column="Prod_end_date" />
+        <result property="prodMemId" column="Prod_Mem_id" />
+        <result property="prodIndusA" column="Prod_indusA" />
+        <result property="prodIndusB" column="Prod_indusB" />
+        <result property="prodIndusC" column="Prod_indusC" />
+        <result property="prodXxx" column="Prod_XXX" />
+    </resultMap>
+    
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProdList"
+    	useGeneratedKeys="true"
+    	keyProperty="prodIdx">
+    	INSERT INTO ProdList
+    		(`Prod_num`, `Prod_name`, `Prod_price`, `Prod_qty`, `Prod_detail`, `Prod_photo`, `Prod_detail_img`, 
+    		`Prod_keyword`, `Prod_state`, `Prod_reg_date`, `Prod_end_date`, `Prod_Mem_id`, `Prod_indusA`, `Prod_indusB`, 
+    		`Prod_indusC`, `Prod_XXX`)
+    	 VALUES 
+    	 	(#{prodNum}, #{prodName}, #{prodPrice}, #{prodQty}, #{prodDetail}, #{prodPhoto}, #{prodDetailImg}, 
+    	 	#{prodKeyword}, #{prodState}, now(), #{prodEndDate}, #{prodMemId}, #{prodIndusA}, #{prodIndusB}, 
+    	 	#{prodIndusC}, #{prodXxx});
+
+    </insert>
+
+</mapper>

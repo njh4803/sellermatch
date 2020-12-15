@@ -33,7 +33,7 @@ $(document).ready(function(){
         limit: null,
         maxSize: null,
         extensions: null,
-        changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag & Drop files here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn btn btn-primary waves-effect waves-light">Browse Files</a></div></div>',
+        changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>여기에 파일을 끌어다 놓기</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn btn btn-primary waves-effect waves-light">파일 선택</a></div></div>',
         showThumbs: true,
         theme: "dragdropbox",
         templates: {
@@ -97,7 +97,7 @@ $(document).ready(function(){
             dragLeave: null,
             drop: null,
         },
-        uploadFile: {
+/*        uploadFile: {
             url: "../plugins/jquery.filer/php/upload.php",
             data: null,
             type: 'POST',
@@ -132,7 +132,7 @@ $(document).ready(function(){
 				type: "image/jpg",
 				file: "assets/images/file-upload/Desert.jpg"
 			}
-		],
+		],*/
         addMore: false,
         clipBoardPaste: true,
         excludeName: null,
@@ -142,10 +142,10 @@ $(document).ready(function(){
         beforeSelect: null,
         onSelect: null,
         afterShow: null,
-        onRemove: function(itemEl, file, id, listEl, boxEl, newInputEl, inputEl){
+/*        onRemove: function(itemEl, file, id, listEl, boxEl, newInputEl, inputEl){
             var file = file.name;
             $.post('../plugins/jquery.filer/php/remove_file.php', {file: file});
-        },
+        },*/
         onEmpty: null,
         options: null,
         captions: {

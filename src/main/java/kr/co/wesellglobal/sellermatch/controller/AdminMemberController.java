@@ -102,6 +102,7 @@ public class AdminMemberController {
 		}
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/admin/member/sendAuthEmail", method = RequestMethod.POST)
 	public Map<String, Object> sendAuthEmail(HttpSession session,
 			@RequestParam(value = "memEmail", required = false) String memEmail) {
@@ -129,16 +130,15 @@ public class AdminMemberController {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
-
+		
 		return webHelper.getJsonData();
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/admin/member/authConfirm", method = RequestMethod.POST)
 	public Map<String, Object> authConfirm(@RequestParam(value = "auth_confirm", required = false) String auth_confirm) {
-		
 		String result = "0";
-		
-		if (auth_confirm == webHelper.getSession("emailAuth")) {
+		if (auth_confirm.equals(webHelper.getSession("emailAuth"))) {
 			webHelper.removeSession("emailAuth");
 			result = "1";
 		}

@@ -3,7 +3,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="inc/header.jsp"%>
+<%@ include file="inc/header.jsp"%> 
+<!-- bootstrap css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
 .table-center th{
 	text-align: center;
@@ -254,4 +256,6 @@
             </div>
         </div>
     </div>
+<!-- bootstrap js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <%@ include file="inc/footer.jsp"%>
