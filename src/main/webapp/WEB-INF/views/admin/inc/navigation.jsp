@@ -658,6 +658,29 @@
                                         <li class=" ">
                                             <a href="${pageContext.request.contextPath}/admin/product" >
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar">상품등록</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="${pageContext.request.contextPath}/admin/productList" >
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar-inverse">상품조회</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" >
+                                        <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">프로필 관리</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="${pageContext.request.contextPath}/admin/product" >
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.navigate.navbar">판매자 프로필관리</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
@@ -666,13 +689,6 @@
                                             <a href="${pageContext.request.contextPath}/admin/product" >
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext" data-i18n="nav.navigate.navbar-inverse">공급자 프로필관리</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="${pageContext.request.contextPath}/admin/product" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar-with-elements">공급자 상품관리</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>

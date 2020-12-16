@@ -86,7 +86,7 @@ label.error {
 									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
 										                                	<label>
 										                                		파일 선택
-										                                		<input id = "image" name="prodPhoto" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+										                                		<input id = "image" name="prodPhoto" value="" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
 										                                	</label>
 									                                    </div>
 																	</div>
@@ -329,16 +329,14 @@ $(function(){
             //return $(form).valid();
         },
         success: function(json) {
-            swal('알림', '회원가입이 완료되었습니다. 로그인 해 주세요.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/login';
+            swal('알림', '상품이 등록되었습니다.', 'success').then(function(result) {
+                window.location = ROOT_URL + '/admin/productList';
             });
         },
     });
 });
 </script>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <!-- CKEditor js -->
 <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
 <%@ include file="inc/footer.jsp"%>

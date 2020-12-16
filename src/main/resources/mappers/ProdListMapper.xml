@@ -23,6 +23,7 @@
         <result property="prodIndusA" column="Prod_indusA" />
         <result property="prodIndusB" column="Prod_indusB" />
         <result property="prodIndusC" column="Prod_indusC" />
+        <result property="listImg" column="list_img" />
         <result property="prodXxx" column="Prod_XXX" />
     </resultMap>
     
@@ -38,7 +39,37 @@
     	 	(#{prodNum}, #{prodName}, #{prodPrice}, #{prodQty}, #{prodDetail}, #{prodPhoto}, #{prodDetailImg}, 
     	 	#{prodKeyword}, #{prodState}, now(), #{prodEndDate}, #{prodMemId}, #{prodIndusA}, #{prodIndusB}, 
     	 	#{prodIndusC}, #{prodXxx});
-
     </insert>
+    
+    <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProdList">
+		UPDATE ProdList 
+		SET 
+		    Prod_name = #{prodName}, Prod_price = #{prodPrice}, Prod_qty = #{prodQty}, Prod_detail = #{prodDetail}, 
+		    Prod_photo = #{prodPhoto}, Prod_detail_img = #{prodDetailImg}, Prod_keyword = #{prodKeyword}, Prod_state = #{prodState},  
+    	 	Prod_end_date = #{prodEndDate}, Prod_indusA = #{prodIndusA}, Prod_indusB = #{prodIndusB}, Prod_indusC = #{prodIndusC}
+		where Prod_num = #{prodNum}
+	</update>
+    
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProdList"
+    	resultMap="prodListMap">
+    	SELECT 
+	   		Prod_idx, Prod_num, Prod_name, Prod_price, Prod_qty, Prod_detail, Prod_photo,
+	   		Prod_detail_img, Prod_keyword, Prod_state, Prod_reg_date, Prod_end_date, Prod_Mem_id, 
+	   		Prod_indusA, Prod_indusB, Prod_indusC
+    	FROM ProdList
+		ORDER BY prod_idx DESC
+    </select>
+    
+    <select id="selectItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProdList"
+    	resultMap="prodListMap">
+    	SELECT 
+    		Prod_idx, Prod_num, Prod_name, Prod_price, Prod_qty, Prod_detail, Prod_photo, 
+	   		Prod_detail_img as list_img, Prod_keyword, Prod_state, Prod_reg_date, date_format(Prod_end_date,'%Y-%m-%d') as Prod_end_date, Prod_Mem_id, 
+	   		Prod_indusA, Prod_indusB, Prod_indusC
+    	FROM ProdList
+    	WHERE Prod_num = #{prodNum}
+    </select>
 
 </mapper>

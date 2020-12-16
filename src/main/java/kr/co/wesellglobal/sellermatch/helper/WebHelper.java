@@ -929,6 +929,7 @@ public class WebHelper {
         
         // 절대경로에서 이미 root-context에 지정되어 있는 업로드 폴더 경로를 삭제한다.
         String filePath = absPath.replace(this.uploadDir, "");
+        filePath = filePath.replace("/", "");
         
         // 리턴할 정보를 구성한다.
         item = new UploadItem();

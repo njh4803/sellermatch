@@ -55,4 +55,15 @@ public class ProdList {
 
 	    // 예비컬럼 
 	    private String prodXxx;
+	    
+	    // 파일명을 배열로 담은 상세페이지 이미지
+	    private String[] listImg_list;
+	    
+	    public void setListImg(String prodDetailImg) {
+			this.listImg_list = prodDetailImg.split(",");
+		}
+		
+		public String[] getListImg() {
+			return listImg_list;
+		}
 }
