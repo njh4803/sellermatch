@@ -159,8 +159,7 @@ public class AdminProductController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/admin/product/editOk", method = RequestMethod.POST)
-	public Map<String, Object> editOk(@RequestParam(value = "prodPhoto") MultipartFile prodPhoto,
-			@RequestParam(value = "files") MultipartFile[] prodDetailImg,
+	public Map<String, Object> editOk(
 			@RequestParam(value = "prodName", required = false) String prodName,
 			@RequestParam(value = "prodPrice", required = false) int prodPrice,
 			@RequestParam(value = "prodQty", required = false) int prodQty,
@@ -169,29 +168,9 @@ public class AdminProductController {
 			@RequestParam(value = "prodEndDate") String prodEndDate,
 			@RequestParam(value = "prodIndusA") String prodIndusA,
 			@RequestParam(value = "prodIndusB") String prodIndusB,
-			@RequestParam(value = "prodIndusC", required = false) String prodIndusC,
-			@RequestParam(value = "defaultPhoto") String defaultPhoto,
-			@RequestParam(value = "defaultDetail") String defaultDetail) {
-		/** 1) 업로드 처리 */
-		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		UploadItem item = null;
-		List<UploadItem> imgItem = null;
-		String str = "";
-		
-		try {
-			imgItem = webHelper.saveMultipartFile(prodDetailImg);
-			for (int i = 0; i < prodDetailImg.length; i++) {
-				str += imgItem.get(i).getFilePath() + ",";
-			}
-			item = webHelper.saveMultipartFile(prodPhoto);
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+			@RequestParam(value = "prodIndusC", required = false) String prodIndusC) {
 		ProdList input = new ProdList();
-
+		
 		input.setProdNum("123213");
 		input.setProdName(prodName);
 		input.setProdPrice(prodPrice);
@@ -202,8 +181,6 @@ public class AdminProductController {
 		input.setProdIndusA(prodIndusA);
 		input.setProdIndusB(prodIndusB);
 		input.setProdIndusC(prodIndusC);
-		input.setProdPhoto(item.getFilePath());
-		input.setProdDetailImg(str);
 		input.setProdState("1");
 		input.setProdMemId("njh4803@gmail.com");
 		input.setProdXxx("");

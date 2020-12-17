@@ -73,7 +73,7 @@ label.error {
                                                     </div>
                                                     <div class="card-block">
                                                         <h4 class="sub-title">Basic Inputs</h4>
-                                                        <form action="${pageContext.request.contextPath}/admin/product/editOk" id="prod_form" name="prod_form" method="post" enctype="multipart/form-data">
+                                                        <form action="${pageContext.request.contextPath}/admin/product/prodPhotoChange" id="prod_form1" name="prod_form1" method="post" enctype="multipart/form-data">
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">상품 대표 사진</label>
                                                                 <div class="col-sm-10 file_input">
@@ -92,7 +92,9 @@ label.error {
 																	</div>
                                                                 </div>
                                                             </div>
+                                                       	</form>
                                                             <!-- File upload card start -->
+                                                        <form action="${pageContext.request.contextPath}/admin/product/editOk" id="prod_form2" name="prod_form2" method="post" enctype="multipart/form-data">
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">상품 상세 사진</label>
                                                                 <div class="col-sm-10">
@@ -132,10 +134,10 @@ label.error {
 												                    </div>
 											                    </div>										                    
 											                    </div>
-											                    
 											                </div>
+											            </form>
 											                <!-- File upload card end -->
-                                                            
+                                                        <form action="${pageContext.request.contextPath}/admin/product/editOk" id="prod_form" name="prod_form" method="post">
                                                             <div class="form-group row">
                                                                 <label for="prodName" class="col-sm-2 col-form-label">상품명
                                                                 	<span class="identify">*</span>
@@ -233,6 +235,8 @@ label.error {
 																	<textarea class="form-control" style="width: 100%; height: 300px" name="prodDetail" id="editor">${output.prodDetail}</textarea>
 																</div>
 															</div>
+															<input type="hidden" name="prodNum" class="form-control" id="prodNum"
+																		value="${output.prodNum}"/>
 															<div style="text-align-last: center;">
 																<input class="btn form-bg-primary" type="submit" value="수정">
 																<input class="btn form-bg-submit" type="reset" value="취소">
@@ -384,11 +388,49 @@ $(function(){
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
             //return $(form).valid();
-            alert($("div").hasClass("jFilerImg-box"));
-            alert($("#img").attr("data-value"));
+            
         },
         success: function(json) {
-            swal('알림', '상품이 등록되었습니다.', 'success').then(function(result) {
+            const defaultPhoto = $("#file_route").val();
+            const defaultDetail = $("div").hasClass("jFilerImg-box");
+            const prodPhoto = $("#image").val();
+            
+			if (defaultPhoto != '') {
+            	/* $.post(ROOT_URL + '/admin/product/prodPhotoChange', {
+            		prodPhoto: auth_confirm
+        	    }, function(json) {
+        	    	if (json.result == "0") {
+        	    		swal('알림', '인증실패', 'warning');
+        			} else {
+        		    	swal('확인', '인증이 확인되었습니다.', 'success');
+        		    	$("#memRname").val(json.result);
+        			}
+        	    }); */
+        	    const form1 = $('#prod_form1');
+        	    const input = $("<input>");
+                input.attr({
+                    type: 'hidden',
+                    name: 'prodNum',
+                    value: $("#prodNum").val()
+                })
+                form1.append(input);
+        	    $('#prod_form1').submit();
+			}
+            
+			if (defaultDetail == 'false') {
+				$.post(ROOT_URL + '/admin/product/ImgChange', {
+					prodDetailImg: auth_confirm
+        	    }, function(json) {
+        	    	if (json.result == "0") {
+        	    		swal('알림', '인증실패', 'warning');
+        			} else {
+        		    	swal('확인', '인증이 확인되었습니다.', 'success');
+        		    	$("#memRname").val(json.result);
+        			}
+        	    });
+			}
+        	
+            swal('알림', '상품정보가 수정되었습니다.', 'success').then(function(result) {
                 window.location = ROOT_URL + '/admin/productList';
             });
         },

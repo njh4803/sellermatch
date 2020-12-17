@@ -45,9 +45,23 @@
 		UPDATE ProdList 
 		SET 
 		    Prod_name = #{prodName}, Prod_price = #{prodPrice}, Prod_qty = #{prodQty}, Prod_detail = #{prodDetail}, 
-		    Prod_photo = #{prodPhoto}, Prod_detail_img = #{prodDetailImg}, Prod_keyword = #{prodKeyword}, Prod_state = #{prodState},  
-    	 	Prod_end_date = #{prodEndDate}, Prod_indusA = #{prodIndusA}, Prod_indusB = #{prodIndusB}, Prod_indusC = #{prodIndusC}
+		    Prod_keyword = #{prodKeyword}, Prod_state = #{prodState}, Prod_end_date = #{prodEndDate}, Prod_indusA = #{prodIndusA}, 
+		    Prod_indusB = #{prodIndusB}, Prod_indusC = #{prodIndusC}
 		where Prod_num = #{prodNum}
+	</update>
+	
+	<update id="updatePhoto" parameterType="kr.co.wesellglobal.sellermatch.model.ProdList">
+		UPDATE ProdList 
+		SET 
+	    	Prod_photo = #{prodPhoto}
+		WHERE Prod_num = #{prodNum}
+	</update>
+	
+	<update id="updateImg" parameterType="kr.co.wesellglobal.sellermatch.model.ProdList">
+		UPDATE ProdList 
+		SET 
+	    	Prod_detail_img = #{prodDetailImg}
+		WHERE Prod_num = #{prodNum}
 	</update>
     
     <select id="selectList"

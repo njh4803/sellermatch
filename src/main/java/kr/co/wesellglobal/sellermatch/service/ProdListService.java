@@ -13,5 +13,9 @@ public interface ProdListService {
 	public ProdList getProduct(ProdList input) throws Exception;
 	
 	public void editProduct(ProdList input) throws Exception;
+
+	public void editProductImg(ProdList input) throws Exception;
+
+	public void editProductPhoto(ProdList input) throws Exception;
 	
 }
