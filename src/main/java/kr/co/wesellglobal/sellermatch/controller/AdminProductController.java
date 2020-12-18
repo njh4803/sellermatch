@@ -1,7 +1,11 @@
 package kr.co.wesellglobal.sellermatch.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -80,7 +84,8 @@ public class AdminProductController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/admin/product/add", method = RequestMethod.POST)
-	public Map<String, Object> adminProductAdd(@RequestParam(value = "prodPhoto") MultipartFile prodPhoto,
+	public Map<String, Object> adminProductAdd(
+			@RequestParam(value = "prodPhoto") MultipartFile prodPhoto,
 			@RequestParam(value = "files[]") MultipartFile[] prodDetailImg,
 			@RequestParam(value = "prodName", required = false) String prodName,
 			@RequestParam(value = "prodPrice", required = false) int prodPrice,
@@ -97,6 +102,10 @@ public class AdminProductController {
 		List<UploadItem> imgItem = null;
 		String str = "";
 		
+		// 상품번호 생성
+		String prodNum = String.format("%d%d%s", System.currentTimeMillis());
+		log.debug("prodNum = " + prodNum);
+		
 		try {
 			imgItem = webHelper.saveMultipartFile(prodDetailImg);
 			for (int i = 0; i < prodDetailImg.length; i++) {
@@ -111,7 +120,7 @@ public class AdminProductController {
 		
 		ProdList input = new ProdList();
 
-		input.setProdNum("123213");
+		input.setProdNum(prodNum);
 		input.setProdName(prodName);
 		input.setProdPrice(prodPrice);
 		input.setProdQty(prodQty);
