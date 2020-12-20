@@ -28,6 +28,16 @@ label.error {
 	padding: 5px 10px;
 	margin: 0;
 }
+
+.content{
+    outline: 2px dashed #92b0b3 ;
+    outline-offset:-10px;  
+    text-align: center;
+    transition: all .15s ease-in-out;
+    width: 300px;
+    height: 300px;
+    background-color: gray;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
                     <div class="pcoded-content">
@@ -65,7 +75,7 @@ label.error {
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">프로필 사진</label>
                                                                 <div class="col-sm-10 file_input">
-                                                                	<div class="input-group">
+                                                                	<div class="input-group profile">
                                                                 		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
 									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
 									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
@@ -80,8 +90,6 @@ label.error {
 																	</div>
                                                                 </div>
                                                             </div>
-                                                            
-                                                            
                                                             <div class="form-group row">
                                                                 <label for="memId" class="col-sm-2 col-form-label">아이디
                                                                 	<span class="identify">*</span>
@@ -127,35 +135,22 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">산업분류</label>
-                                                                <div class="col-sm-10">
-                                                                	<div class="checkbox-fade fade-in-primary">
-	                                                                    <label>
-	                                                                    	<input type="checkbox" name="memIndus" id="memIndus" value="01">
-	                                                                    	<span class="cr">
-	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                                                    	</span>
-	                                                                    	<span>공산품</span>
-	                                                                    </label>
-                                                                	</div>
-                                                                	<div class="checkbox-fade fade-in-primary">
-	                                                                    <label>
-	                                                                    	<input id="memIndus" type="checkbox" name="memIndus" value="02">
-	                                                                    	<span class="cr">
-	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                                                    	</span>
-	                                                                    	<span>농수산품</span>
-	                                                                    </label>
-                                                                	</div>
-                                                         		</div>
-                                                            </div>
-                                                            <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">국가</label>
                                                                 <div class="col-sm-10">
                                                                     <select id="memCountry" name="memCountry" class="form-control">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="대한민국">대한민국</option>
 						                                                <option value="베트남">베트남</option>
+						                                            </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">지역</label>
+                                                                <div class="col-sm-10">
+                                                                    <select id="memNation" name="memNation" class="form-control">
+						                                                <option value="">선택하세요.</option>
+						                                                <option value="02">서울</option>
+						                                                <option value="032">인천</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
@@ -228,7 +223,7 @@ label.error {
 																<input class="btn form-bg-primary" type="submit" value="등록">
 																<input class="btn form-bg-submit" type="reset" value="취소">
 															</div>
-															<input type="hidden" name="memRname">
+															<input type="hidden" name="memRname" id="memRname" readonly="readonly">
                                                                 </form>
                                                                 <!-- 회원가입 form end -->
                                                             </div>
@@ -256,6 +251,7 @@ function handleImgfileSelect(e) {
 	var files = e.target.files;
 	var filesArr = Array.prototype.slice.call(files);
 	
+	
 	filesArr.forEach(function(f) {
 		if(!f.type.match("image.*")) {
 			return;
@@ -271,6 +267,55 @@ function handleImgfileSelect(e) {
 };
 
 $(function(){
+	
+	$('.profile')
+	  .on("dragover", dragOver)
+	  .on("dragleave", dragOver)
+	  .on("drop", uploadFiles);
+
+	function dragOver(e){
+	  e.stopPropagation();
+	  e.preventDefault();
+	  if (e.type == "dragover") {
+	    $(e.target).css({
+	      //"background-color": "black",
+	      "outline-offset": "-20px"
+	    });
+	  } else {
+	      $(e.target).css({
+	      //"background-color": "gray",
+	      "outline-offset": "-10px"
+	    });
+	  }
+	}
+
+	function uploadFiles(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	    dragOver(e);
+	  
+	    e.dataTransfer = e.originalEvent.dataTransfer;
+	    var files = e.target.files || e.dataTransfer.files;
+	    var filesArr = Array.prototype.slice.call(files);
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				return;
+			}
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#img").attr("src", e.target.result);
+			}
+			javascript:document.getElementById('file_route').value= f.name;
+			console.log(this.name);
+			console.log(e.name);
+			console.log(this.name);
+			console.log(e.name);
+			reader.readAsDataURL(f);
+		});
+		
+	}
 
 	$.validator.addMethod("kor", function(value, element) {
 		return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);

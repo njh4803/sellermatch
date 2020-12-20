@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="inc/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/division/css/style.css">
 <style>
@@ -30,87 +30,91 @@ label.error {
 	padding: 5px 10px;
 	margin: 0;
 }
-
-.table-center th{
-	text-align: center;
+.jFiler-input-dragDrop {
+    width: 100%;
+    background-color: #fafafa;
+}
+.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+	height: 300px;
 }
 </style>
-<%@ include file="inc/navigation.jsp"%>
-    <!-- Pre-loader start -->
-    <div class="theme-loader">
-        <div class="ball-scale">
-            <div></div>
-        </div>
-    </div>
-    <!-- Pre-loader end -->
-
-    <div id="pcoded" class="pcoded">
-        <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
-                    <div class="pcoded-content">
-                        <div class="pcoded-inner-content">
-
-                            <!-- Main-body start -->
-                            <div class="main-body">
+<div class="mask"></div>
+<div id="popup_area">
+	<div class="wishListWindow" style="display: none;" id="wishList">
+		<img src="${pageContext.request.contextPath}/img/ico_close.png"
+			class="close">
+		<div class="empty"></div>
+		<div class="area-80 layer-center">
+			<div>
                                 <div class="page-wrapper">
-                                    <!-- Page-header start -->
-                                    <div class="page-header">
-                                        <div class="page-header-title">
-                                            <h4>Basic DataTables</h4>
-                                            <span>Basic initialisation of DataTables</span>
-                                        </div>
-                                        <div class="page-header-breadcrumb">
-                                            <ul class="breadcrumb-title">
-                                                <li class="breadcrumb-item">
-                                                    <a href="index.html">
-                                                        <i class="icofont icofont-home"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a href="#!">Data Table</a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a href="#!">Basic Initialization</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- Page-header end -->
-                                    <!-- Page-body start -->
-                                    <div class="page-body">
+                                <div class="page-header">
+								    <div class="page-header-title">
+								        <h4>회원관리</h4>
+								    </div>
+								    <div class="page-header-breadcrumb">
+								        <ul class="breadcrumb-title">
+								            <li class="breadcrumb-item">
+								                <a href="index.html">
+								                    <i class="icofont icofont-home"></i>
+								                </a>
+								            </li>
+								            <li class="breadcrumb-item"><a href="#!">상품관리(프로젝트)</a>
+								            </li>
+								            <li class="breadcrumb-item"><a href="#!">공급자 상품등록</a>
+								            </li>
+								        </ul>
+								    </div>
+								</div>
+								    <div class="page-body">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <!-- Zero config.table start -->
+                                                <!-- Basic Form Inputs card start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        
+                                                        <h5>상품 등록</h5>
+                                                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
                                                     </div>
                                                     <div class="card-block">
                                                         <h4 class="sub-title">Basic Inputs</h4>
-                                                        <form action="${pageContext.request.contextPath}/admin/member/editOk" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
+                                                        <form action="${pageContext.request.contextPath}/admin/product/add" id="prod_form" name="prod_form" method="post" enctype="multipart/form-data">
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">프로필 사진</label>
+                                                                <label class="col-sm-2 col-form-label">상품 대표 사진</label>
                                                                 <div class="col-sm-10 file_input">
                                                                 	<div class="input-group">
                                                                 		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
 									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-									                                    	src="../../../upload/${output.memPhoto}"/>
+									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 									                                    </div>
 									                                    <div style="display: flow-root;">
 									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
 										                                	<label>
 										                                		파일 선택
-										                                		<input id = "image" name="memPhoto" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+										                                		<input id = "image" name="prodPhoto" value="" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
 										                                	</label>
 									                                    </div>
 																	</div>
                                                                 </div>
                                                             </div>
+                                                            <!-- File upload card start -->
                                                             <div class="form-group row">
-                                                                <label for="memId" class="col-sm-2 col-form-label">아이디
+                                                                <label class="col-sm-2 col-form-label">상품 상세 사진</label>
+                                                                <div class="col-sm-10">
+                                                                <div class="form-group">
+												                    <div class="card-block">
+												                        <input type="file" name="files[]" id="filer_input1" multiple="multiple">
+												                    </div>
+											                    </div>
+											                    </div>
+											                </div>
+											                <!-- File upload card end -->
+                                                            
+                                                            <div class="form-group row">
+                                                                <label for="prodName" class="col-sm-2 col-form-label">상품명
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="memId" type="text" name="memId" class="form-control" placeholder="이메일 입력" value="${output.memId}" readonly="readonly">
+	                                                                    <input id="prodName" type="text" name="prodName" class="form-control" placeholder="이메일 입력">
 	                                                                    <!-- <span
 																			id="guide" class="input-group-btn">
 																			<button type="button" id="idCheck"
@@ -120,38 +124,32 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">비밀번호 변경
+                                                                <label class="col-sm-2 col-form-label">상품가격
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
+                                                                    <input type="number" id="prodPrice" name="prodPrice" class="form-control" pattern="#,###">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="memPw_confirm" class="col-sm-2 control-label">비밀번호 확인
+																<label for="prodQty" class="col-sm-2 control-label">상품 개수
 																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
-																	<input type="password" name="memPw_confirm" class="form-control"
-																		id="memPw_confirm" placeholder="영문,숫자,특수문자 조합 최대 30글자" />
+																	<input type="number" name="prodQty" class="form-control"
+																		id="prodQty" min="0" pattern="#,###" />
 																</div>
 															</div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">이름</label>
+                                                                <label class="col-sm-2 col-form-label">모집마감일</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="memName" id="memName" value="${output.memName}">
+                                                                    <input type="date" class="form-control" name="prodEndDate" id="prodEndDate">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">닉네임</label>
+                                                                <label class="col-sm-2 col-form-label">산업 대분류</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="memNick" id="memNick" value="${output.memNick}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">국가</label>
-                                                                <div class="col-sm-10">
-                                                                    <select id="memCountry" name="memCountry" class="form-control">
+                                                                    <select id="prodIndusA" name="prodIndusA" class="form-control">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="대한민국">대한민국</option>
 						                                                <option value="베트남">베트남</option>
@@ -159,111 +157,73 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">지역</label>
+                                                                <label class="col-sm-2 col-form-label">산업 중분류</label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="memNation" name="memNation" class="form-control">
+                                                                    <select id="prodIndusB" name="prodIndusB" class="form-control">
 						                                                <option value="">선택하세요.</option>
-						                                                <option value="02">서울</option>
-						                                                <option value="032">인천</option>
+						                                                <option value="대한민국">대한민국</option>
+						                                                <option value="베트남">베트남</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="memEmail" class="col-sm-2 col-form-label">이메일 인증</label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="memEmail" class="form-control" id="memEmail" />
-																		<span class="input-group-btn">
-																			<button type="button" id="sendAuthEmail"
-																				class="btn form-bg-primary">인증 번호 발송</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="" class="col-sm-2 col-form-label"></label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="auth_confirm" class="form-control" id="auth_confirm" />
-																		<span class="input-group-btn">
-																			<button type="button" id="authConfirm"
-																				class="btn form-bg-primary">인증 번호 확인</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
+                                                                <label class="col-sm-2 col-form-label">산업 소분류</label>
+                                                                <div class="col-sm-10">
+                                                                    <select id="prodIndusC" name="prodIndusC" class="form-control">
+						                                                <option value="">선택하세요.</option>
+						                                                <option value="대한민국">대한민국</option>
+						                                                <option value="베트남">베트남</option>
+						                                            </select>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-group row">
-																<label for="memTel" class="col-sm-2 col-form-label">연락처
+																<label for="prodKeyword" class="col-sm-2 col-form-label">상품 키워드
 																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
-																	<input type="text" name="memTel" class="form-control" id="memTel" value="${output.memTel}"
-																		placeholder="`-`없이 숫자만 입력" />
+																	<input type="text" name="prodKeyword" class="form-control" id="prodKeyword"
+																		placeholder="`,`로 구분" />
 																</div>
 															</div>
 															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호
+																<label for="prodDetail" class="col-sm-2 col-form-label">상품 상세내용
 																	<span class="identify">*</span>
 																</label>
-																<div class="col-sm-4">
-																	<div class="input-group">
-																		<input type="text" name="memPost" class="form-control" value="${output.memPost}"
-																			id="postcode" maxlength="5" readonly> <span
-																			class="input-group-btn">
-																			<button type="button" class="btn form-bg-primary postcode-finder"
-																				data-postcode="postcode" data-addr1="addr1"
-																				data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label">주소
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr" class="form-control" id="memAddr" value="${output.memAddr}"
-																		readonly />
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label">상세주소</label>
-																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr2" class="form-control" id="memAddr2" value="${output.memAddr2}"
-																		placeholder="나머지 주소" />
+																<div class="col-sm-10">
+																	<textarea class="form-control" style="width: 100%; height: 300px" name="prodDetail" id="editor"></textarea>
 																</div>
 															</div>
 															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="수정">
+																<input class="btn form-bg-primary" type="submit" value="등록">
 																<input class="btn form-bg-submit" type="reset" value="취소">
 															</div>
-															<input type="hidden" name="memRname" id="memRname" readonly="readonly">
                                                                 </form>
                                                                 <!-- 회원가입 form end -->
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <!-- Zero config.table end -->
-                                                <!-- Language - Comma Decimal Place table end -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Page-body end -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                                <!-- Basic Form Inputs card end -->                                            
+                                            
+									    	</div>
+										</div>
+									</div>
+                            <!-- navigation 종료 태그 -->
             </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+	</div>
+</div>
 <script type="text/javascript">
+
 	
 $(document).ready(function() {
 	$("#image").on("change", handleImgfileSelect);
 	
+	// 3. CKEditor5를 생성할 textarea 지정
+	ClassicEditor
+	    .create( document.querySelector( '#editor' ) )
+	    .catch( error => {
+	        console.error( error );
+	    } );
 }); // end ready...
 
 function handleImgfileSelect(e) {
@@ -304,14 +264,23 @@ $(function(){
 		*/
 		
         rules: {
+            // [아이디] 필수 + 알파벳,숫자 조합만 허용
+            memId: {
+                required: true, email: true, minlength: 4, maxlength: 30, 
+                remote : {
+                    url : ROOT_URL + '/admin/member/idCheck',
+                    type : 'post',
+                    data : {
+                    	memId : function() {
+                            return $("#memId").val();
+                        }
+                    }
+                }
+            },
             // [비밀번호] 필수 + 글자수 길이 제한
-            memPw: { minlength: 4, maxlength: 30 },
+            memPw: { required: true, minlength: 4, maxlength: 30 },
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
-            memPw_confirm: { equalTo: '#memPw' },
-         	// [국가] 필수
-            memCountry: 'required',
-         	// [지역] 필수
-            memNation: 'required',
+            memPw_confirm: { required: true, equalTo: '#memPw' },
             // [연락처] 필수
             memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
             // [우편번호] 필수 입력
@@ -351,59 +320,29 @@ $(function(){
             },
             postcode: '우편번호를 입력해 주세요.',
             memAddr: '기본주소를 입력해 주세요.',
-            memCountry: '국가를 선택해주세요.',
-            memNation: '지역을 선택해주세요.',
         }
     });
     
-    $('#join_form').ajaxForm({
+    $('#prod_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            return $(form).valid();
+            //return $(form).valid();
         },
         success: function(json) {
-            swal('알림', '회원이 등록되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/admin/memberList';
+            swal('알림', '상품이 등록되었습니다.', 'success').then(function(result) {
+                window.location = ROOT_URL + '/admin/productList';
             });
         },
     });
-	$("#sendAuthEmail").click(function(e) {
-	    const memEmail = $("#memEmail").val();
-	
-	    if (!memEmail) {
-	    	swal('알림', '이메일을 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/sendAuthEmail', {
-	    	memEmail: memEmail
-	    }, function(json) {
-	    	swal('확인', '인증번호가 발송되었습니다.', 'success');
-	    });
-	});
-	$("#authConfirm").click(function(e) {
-	    const auth_confirm = $("#auth_confirm").val();
-	
-	    if (!auth_confirm) {
-	    	swal('알림', '인증번호를 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/authConfirm', {
-	    	auth_confirm: auth_confirm
-	    }, function(json) {
-	    	if (json.result == "0") {
-	    		swal('알림', '인증실패', 'warning');
-			} else {
-		    	swal('확인', '인증이 확인되었습니다.', 'success');
-		    	$("#memRname").val(json.result);
-			}
-	    });
-	});
 });
+
+			</div>
+		</div>
+	</div>
+</div>
 </script>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
-<%@ include file="inc/footer.jsp"%>
+
+<!-- CKEditor js -->
+<script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>

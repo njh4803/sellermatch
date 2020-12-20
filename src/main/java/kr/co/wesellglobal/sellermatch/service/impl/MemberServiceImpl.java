@@ -6,23 +6,23 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.wesellglobal.sellermatch.model.MemList;
-import kr.co.wesellglobal.sellermatch.service.MemListService;
+import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class MemListServiceImpl implements MemListService{
+public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	SqlSession sqlSession;
 
 	@Override
-	public List<MemList> getMemberList(MemList input) throws Exception {
-		List<MemList> result = null;
+	public List<MemberDto> getMemberList(MemberDto input) throws Exception {
+		List<MemberDto> result = null;
 		
 		try {
-			result = sqlSession.selectList("MemListMapper.selectList", input);
+			result = sqlSession.selectList("MemberMapper.selectList", input);
 			if(result == null) {
 				throw new NullPointerException("result=0");
 			}
@@ -38,11 +38,11 @@ public class MemListServiceImpl implements MemListService{
 	}
 
 	@Override
-	public void idCheck(MemList input) throws Exception {
+	public void idCheck(MemberDto input) throws Exception {
 		int result = 0;
 
 		try {
-			result = sqlSession.selectOne("MemListMapper.idCheck", input);
+			result = sqlSession.selectOne("MemberMapper.idCheck", input);
 			if (result > 0) {
 				throw new NullPointerException("result=" + result);
 			}
@@ -56,11 +56,11 @@ public class MemListServiceImpl implements MemListService{
 	}
 
 	@Override
-	public void addMember(MemList input) throws Exception {
+	public void addMember(MemberDto input) throws Exception {
 		int result = 0;
 
 		try {
-			result = sqlSession.insert("MemListMapper.insertItem", input);
+			result = sqlSession.insert("MemberMapper.insertItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -75,11 +75,11 @@ public class MemListServiceImpl implements MemListService{
 	}
 
 	@Override
-	public MemList getMember(MemList input) throws Exception {
-		MemList result = null;
+	public MemberDto getMember(MemberDto input) throws Exception {
+		MemberDto result = null;
 
 		try {
-			result = sqlSession.selectOne("MemListMapper.selectItem", input);
+			result = sqlSession.selectOne("MemberMapper.selectItem", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -94,11 +94,11 @@ public class MemListServiceImpl implements MemListService{
 	}
 
 	@Override
-	public void editMember(MemList input) throws Exception {
+	public void editMember(MemberDto input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("MemListMapper.updateItem", input);
+			result = sqlSession.update("MemberMapper.updateItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -109,6 +109,31 @@ public class MemListServiceImpl implements MemListService{
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 수정에 실패했습니다.");
 		}
+		
+	}
+
+	@Override
+	public MemberDto login(MemberDto input) throws Exception {
+		MemberDto result = null;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.login", input);
+
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+
+			// 조회에 성공하면 result에 저장되어 있는 PK를 활용하여 로그인 시간을 갱신한다.
+			sqlSession.update("MemberMapper.updateLoginDate", result);
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("아이디나 비밀번호가 잘못되었습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+
+		return result;
 		
 	}
 

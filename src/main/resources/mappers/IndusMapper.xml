@@ -6,7 +6,7 @@
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
     <resultMap id="indusListMap"
-        type="kr.co.wesellglobal.sellermatch.model.IndusList">
+        type="kr.co.wesellglobal.sellermatch.model.IndusDto">
         <result property="indusIdx"   column="indus_idx" />
         <result property="indusId"     column="indus_id" />
         <result property="indusName"   column="indus_name" />
@@ -14,7 +14,7 @@
     </resultMap>
     
     <select id="selectList"
-    	parameterType="kr.co.wesellglobal.sellermatch.model.IndusList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.IndusDto"
     	resultMap="indusListMap">
     	SELECT 
 	   		indus_idx, indus_id, indus_name, indus_reg_date
@@ -22,7 +22,7 @@
     </select>
     
     <select id="selectItem"
-    	parameterType="kr.co.wesellglobal.sellermatch.model.IndusList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.IndusDto"
     	resultMap="indusListMap">
     	SELECT 
     		indus_idx, indus_id, indus_name, indus_reg_date

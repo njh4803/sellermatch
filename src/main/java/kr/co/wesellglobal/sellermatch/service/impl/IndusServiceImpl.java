@@ -6,24 +6,24 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.wesellglobal.sellermatch.model.IndusList;
-import kr.co.wesellglobal.sellermatch.service.IndusListService;
+import kr.co.wesellglobal.sellermatch.model.IndusDto;
+import kr.co.wesellglobal.sellermatch.service.IndusService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class IndusListServiceImpl implements IndusListService{
+public class IndusServiceImpl implements IndusService{
 	
 	@Autowired
 	SqlSession sqlSession;
 
 
 	@Override
-	public List<IndusList> getIndusList(IndusList input) throws Exception {
-		List<IndusList> result = null;
+	public List<IndusDto> getIndusList(IndusDto input) throws Exception {
+		List<IndusDto> result = null;
 		
 		try {
-			result = sqlSession.selectList("IndusListMapper.selectList", input);
+			result = sqlSession.selectList("IndusMapper.selectList", input);
 			if(result == null) {
 				throw new NullPointerException("result=0");
 			}
@@ -39,17 +39,17 @@ public class IndusListServiceImpl implements IndusListService{
 	}
 
 	@Override
-	public void addIndus(IndusList input) throws Exception {
+	public void addIndus(IndusDto input) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public IndusList getIndus(IndusList input) throws Exception {
-		IndusList result = null;
+	public IndusDto getIndus(IndusDto input) throws Exception {
+		IndusDto result = null;
 
 		try {
-			result = sqlSession.selectOne("IndusListMapper.selectItem", input);
+			result = sqlSession.selectOne("IndusMapper.selectItem", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -64,7 +64,7 @@ public class IndusListServiceImpl implements IndusListService{
 	}
 
 	@Override
-	public void editIndus(IndusList input) throws Exception {
+	public void editIndus(IndusDto input) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}

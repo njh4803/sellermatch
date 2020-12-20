@@ -66,6 +66,10 @@
 <!-- sweetalert js -->
 <script src="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.all.min.js"></script>
 
+<!-- modal js -->
+<script src="${pageContext.request.contextPath}/assets/js/layer_popup.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/Obj.min.js"></script>
+
 </body>
 
 </html>

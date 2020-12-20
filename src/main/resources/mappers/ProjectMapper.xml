@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProjectMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="ProjectMap"
+        type="kr.co.wesellglobal.sellermatch.model.ProjectDto">
+        <result property="projIdx"   column="proj_idx" />
+        <result property="projId"   column="proj_id" />
+        <result property="projMemId"   column="proj_mem_id" />
+        <result property="projTitle"   column="proj_title" />
+        <result property="projSort"   column="proj_sort" />
+        <result property="projIndus" column="proj_indus" />
+        <result property="projPrice" column="proj_price" />
+        <result property="projMargin" column="proj_margin" />
+        <result property="projNation" column="proj_nation" />
+        <result property="projSupplyType" column="proj_supply_type" />
+        <result property="projRecruitNum" column="proj_recruit_num" />
+        <result property="projDetail" column="proj_detail" />
+        <result property="projDetailImg" column="proj_detail_img" />
+        <result property="projRequire" column="proj_require" />
+        <result property="projKeyword" column="proj_keyword" />
+        <result property="projFile" column="proj_file" />
+        <result property="projState" column="proj_state" />
+        <result property="projRegDate" column="proj_reg_date" />
+        <result property="projEndDate" column="proj_end_date" />
+        <result property="projEditDate" column="proj_edit_date" />
+        <result property="listImg" column="list_img" />
+        <result property="projXxx" column="proj_XXX" />
+    </resultMap>
+    
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
+    	useGeneratedKeys="true"
+    	keyProperty="projIdx">
+    	INSERT INTO ProjectList
+    		(`proj_id`, `proj_mem_id`, `proj_title`, `proj_sort`, `proj_indus`, `proj_price`, `proj_margin`, 
+    		`proj_nation`, `proj_supply_type`, `proj_recruit_num`, `proj_detail`, `proj_detail_img`, `proj_require`, `proj_keyword`, `proj_file`, 
+    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`)
+    	 VALUES 
+    	 	(#{projId}, #{projMemId}, #{projTitle}, #{projSort}, #{projIndus}, #{projPrice}, #{projMargin}, 
+    	 	#{projNation}, #{projSupplyType}, #{projRecruitNum}, #{projDetail}, #{projDetailImg}, #{projRequire}, #{projKeyword}, 
+    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate});
+    </insert>
+    
+    <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
+		UPDATE ProjectList 
+		SET 
+		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
+		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
+		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_detail_img = #{projDetailImg}, proj_require = #{projRequire}, proj_keyword = #{projKeyword}, 
+		    proj_file = #{projFile}, proj_state = #{projState}, proj_end_date = #{projEndDate}, proj_edit_date = now()
+		where proj_id = #{projId}
+	</update>
+	
+	<update id="updateFile" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
+		UPDATE ProjectList 
+		SET 
+	    	proj_file = #{projFile}
+		WHERE proj_id = #{projId}
+	</update>
+	
+	<update id="updateImg" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
+		UPDATE ProjectList 
+		SET 
+	    	proj_detail_img = #{projDetailImg}
+		WHERE proj_id = #{projId}
+	</update>
+    
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
+    	resultMap="ProjectMap">
+    	SELECT 
+	   		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
+    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_keyword, proj_file, 
+    		proj_state, proj_reg_date, proj_end_date, proj_edit_date
+    	FROM ProjectList
+		ORDER BY proj_idx DESC
+    </select>
+    
+    <select id="selectItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
+    	resultMap="ProjectMap">
+    	SELECT 
+    		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
+    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_keyword, proj_file, 
+    		proj_state, proj_reg_date, proj_end_date, proj_edit_date
+    	FROM ProjectList
+    	WHERE proj_id = #{projId}
+    </select>
+
+</mapper>

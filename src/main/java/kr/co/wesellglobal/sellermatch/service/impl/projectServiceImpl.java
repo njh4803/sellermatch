@@ -6,24 +6,23 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.wesellglobal.sellermatch.model.MemList;
-import kr.co.wesellglobal.sellermatch.model.ProdList;
-import kr.co.wesellglobal.sellermatch.service.ProdListService;
+import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class ProdListServiceImpl implements ProdListService{
+public class projectServiceImpl implements ProjectService{
 	
 	@Autowired
 	SqlSession sqlSession;
 
 	@Override
-	public List<ProdList> getProductList(ProdList input) throws Exception {
-		List<ProdList> result = null;
+	public List<ProjectDto> getProjectList(ProjectDto input) throws Exception {
+		List<ProjectDto> result = null;
 		
 		try {
-			result = sqlSession.selectList("ProdListMapper.selectList", input);
+			result = sqlSession.selectList("ProjectMapper.selectList", input);
 			if(result == null) {
 				throw new NullPointerException("result=0");
 			}
@@ -39,11 +38,11 @@ public class ProdListServiceImpl implements ProdListService{
 	}
 
 	@Override
-	public void addProduct(ProdList input) throws Exception {
+	public void addProject(ProjectDto input) throws Exception {
 		int result = 0;
 
 		try {
-			result = sqlSession.insert("ProdListMapper.insertItem", input);
+			result = sqlSession.insert("ProjectMapper.insertItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -58,11 +57,11 @@ public class ProdListServiceImpl implements ProdListService{
 	}
 
 	@Override
-	public ProdList getProduct(ProdList input) throws Exception {
-		ProdList result = null;
+	public ProjectDto getProject(ProjectDto input) throws Exception {
+		ProjectDto result = null;
 
 		try {
-			result = sqlSession.selectOne("ProdListMapper.selectItem", input);
+			result = sqlSession.selectOne("ProjectMapper.selectItem", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -77,11 +76,11 @@ public class ProdListServiceImpl implements ProdListService{
 	}
 
 	@Override
-	public void editProduct(ProdList input) throws Exception {
+	public void editProject(ProjectDto input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("ProdListMapper.updateItem", input);
+			result = sqlSession.update("ProjectMapper.updateItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -96,11 +95,11 @@ public class ProdListServiceImpl implements ProdListService{
 	}
 
 	@Override
-	public void editProductImg(ProdList input) throws Exception {
+	public void editProjectImg(ProjectDto input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("ProdListMapper.updateImg", input);
+			result = sqlSession.update("ProjectMapper.updateImg", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -115,11 +114,11 @@ public class ProdListServiceImpl implements ProdListService{
 	}
 
 	@Override
-	public void editProductPhoto(ProdList input) throws Exception {
+	public void editProjectFile(ProjectDto input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("ProdListMapper.updatePhoto", input);
+			result = sqlSession.update("ProjectMapper.updateFile", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}

@@ -4,7 +4,7 @@ import lombok.Data;
 
 //산업리스트 
 @Data
-public class IndusList {
+public class IndusDto {
 
 	// 자동번호 
 	private int indusIdx;

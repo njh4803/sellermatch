@@ -5,24 +5,18 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
-import kr.co.wesellglobal.sellermatch.model.IndusList;
-import kr.co.wesellglobal.sellermatch.model.MemList;
-import kr.co.wesellglobal.sellermatch.model.ProdList;
-import kr.co.wesellglobal.sellermatch.model.Users;
-import kr.co.wesellglobal.sellermatch.service.IndusListService;
-import kr.co.wesellglobal.sellermatch.service.ProdListService;
+import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.service.IndusService;
+import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import kr.co.wesellglobal.sellermatch.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,9 +27,9 @@ public class UploadController {
 	@Autowired
 	TestService testService;
 	@Autowired
-	ProdListService prodListService;
+	ProjectService projectService;
 	@Autowired
-	IndusListService indusListService;
+	IndusService indusService;
 	@Autowired
 	RegexHelper regexHelper;
 	@Autowired
@@ -49,7 +43,7 @@ public class UploadController {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		UploadItem item = null;
-		ProdList input = new ProdList();
+		ProjectDto input = new ProjectDto();
 		
 		try {
 				item = webHelper.saveMultipartFile(prodPhoto);
@@ -59,11 +53,10 @@ public class UploadController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		input.setProdNum(prodNum);
-		input.setProdPhoto(item.getFilePath());
+		input.setProjId(prodNum);
 		
 		try {
-			prodListService.editProductPhoto(input);
+			projectService.editProjectFile(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -78,7 +71,7 @@ public class UploadController {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		List<UploadItem> imgItem = null;
-		ProdList input = new ProdList();
+		ProjectDto input = new ProjectDto();
 		String str = "";
 		
 		try {
@@ -91,11 +84,11 @@ public class UploadController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		input.setProdNum(prodNum);
-		input.setProdDetailImg(str);
+		input.setProjId(prodNum);
+		input.setProjDetailImg(str);
 
 		try {
-			prodListService.editProductImg(input);
+			projectService.editProjectImg(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

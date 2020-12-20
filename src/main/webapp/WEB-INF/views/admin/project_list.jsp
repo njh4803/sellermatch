@@ -10,6 +10,45 @@
 .table-center th{
 	text-align: center;
 }
+
+/* modal css */
+*{margin:0; padding:0;}
+#modal{
+  display:none;
+  position:fixed; 
+  width:100%; height:100%;
+  top:0; left:0; 
+  background:rgba(0,0,0,0.3);
+}
+.modal-con{
+  display:none;
+  position:fixed;
+  top:50%; left:50%;
+  transform: translate(-50%,-50%);
+  max-width: 60%;
+  min-height: 30%;
+  background:#fff;
+}
+.modal-con .title{
+  font-size:20px; 
+  padding: 20px; 
+  background : #1abc9c;
+}
+.modal-con .con{
+  font-size:15px; line-height:1.3;
+  padding: 30px;
+}
+.modal-con .close{
+  display:block;
+  position:absolute;
+  width:30px; height:30px;
+  border-radius:50%; 
+  border: 3px solid #000;
+  text-align:center; line-height: 30px;
+  text-decoration:none;
+  color:#000; font-size:20px; font-weight: bold;
+  right:10px; top:10px;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -19,7 +58,6 @@
         </div>
     </div>
     <!-- Pre-loader end -->
-
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
@@ -57,52 +95,71 @@
                                                 <!-- Zero config.table start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        
+                                                    	<!-- <a href="javascript:openModal('modal1');" class="button modal-open">프로젝트 등록</a> -->
+                                                    	<button class="btn form-bg-primary wl-btn">프로젝트 등록</button>
+                                                    	<div id="modal"></div>
+														<div class="modal-con modal1">
+															<a href="javascript:;" class="close">X</a>
+															<p class="title">제목</p>
+															<div class="con">
+																Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+															</div>
+														</div>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
                                                             <table id="simpletable" class="table-center table table-striped table-bordered nowrap text-center">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>상품번호</th>
-                                                                        <th>상품명</th>
+                                                                        <th>번호</th>
+                                                                        <th>프로젝트번호</th>
+                                                                        <th>아이디</th>
+                                                                        <th>제목</th>
+                                                                        <th>회원분류</th>
+                                                                        <th>산업분류</th>
                                                                         <th>상품가격</th>
-                                                                        <th>상품 개수</th>
-                                                                        <th>상세내용</th>
-                                                                        <th>대표사진</th>
-                                                                        <th>상세이미지</th>
-                                                                        <th>키워드</th>
-                                                                        <th>상품상태</th>
-                                                                        <th>상품등록일</th>
+                                                                        <th>판매마진</th>
+                                                                        <th>등록지역</th>
+                                                                        <th>공급방법</th>
                                                                         <th>모집마감일</th>
-                                                                        <th>공급자</th>
-                                                                        <th>산업분류A</th>
-                                                                        <th>산업분류B</th>
-                                                                        <th>산업분류C</th>
+                                                                        <th>모집인원 </th>
+                                                                        <th>상세설명</th>
+                                                                        <th>필수요건</th>
+                                                                        <th>키워드</th>
+                                                                        <th>상세사진</th>
+                                                                        <th>첨부파일 </th>
+                                                                        <th>프로젝트 상태</th>
+                                                                        <th>등록일</th>
+                                                                        <th>수정일</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 <c:forEach var="output" items="${output}" varStatus="status">
 	                                                                    <tr>
+	                                                                    	<td>${output.projIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="${pageContext.request.contextPath}/admin/product/edit?prodNum=${output.prodNum}">
-	                                                                        		${output.prodNum}
+	                                                                        	<a href="${pageContext.request.contextPath}/admin/project/edit?projId=${output.projId}">
+	                                                                        		${output.projId}
 	                                                                        	</a>		
 	                                                                        </td>
-	                                                                        <td>${output.prodName}</td>
-	                                                                        <td>${output.prodPrice}</td>
-	                                                                        <td>${output.prodQty}</td>
-	                                                                        <td>${output.prodDetail}</td>
-	                                                                        <td>${output.prodPhoto}</td>
-	                                                                        <td>${output.prodDetailImg}</td>
-	                                                                        <td>${output.prodKeyword}</td>
-	                                                                        <td>${output.prodState}</td>
-	                                                                        <td>${output.prodRegDate}</td>
-	                                                                        <td>${output.prodEndDate}</td>
-	                                                                        <td>${output.prodMemId}</td>
-	                                                                        <td>${output.prodIndusA}</td>
-	                                                                        <td>${output.prodIndusB}</td>
-	                                                                        <td>${output.prodIndusC}</td>
+	                                                                        <td>${output.projMemId}</td>
+	                                                                        <td>${output.projTitle}</td>
+	                                                                        <td>${output.projSort}</td>
+	                                                                        <td>${output.projIndus}</td>
+	                                                                        <td>${output.projPrice}</td>
+	                                                                        <td>${output.projMargin}</td>
+	                                                                        <td>${output.projNation}</td>
+	                                                                        <td>${output.projSupplyType}</td>
+	                                                                        <td>${output.projEndDate}</td>
+	                                                                        <td>${output.projRecruitNum}</td>
+	                                                                        <td>${output.projDetail}</td>
+	                                                                        <td>${output.projRequire}</td>
+	                                                                        <td>${output.projKeyword}</td>
+	                                                                        <td>${output.projDetailImg}</td>
+	                                                                        <td>${output.projFile}</td>
+	                                                                        <td>${output.projState}</td>
+	                                                                        <td>${output.projRegDate}</td>
+	                                                                        <td>${output.projEditDate}</td>
 	                                                                    </tr>
                                                                 </c:forEach>
                                                                 </tbody>
@@ -244,6 +301,25 @@
             </div>
         </div>
     </div>
+<script type="text/javascript">
+function openModal(modalname){
+	document.get
+	$("#modal").fadeIn(300);
+	$("."+modalname).fadeIn(300);
+}
+$(function(){
+	$("#modal, .close").on('click',function(){
+		$("#modal").fadeOut(300);
+		$(".modal-con").fadeOut(300);
+	});
+	
+	
+	$("#projectBtn").on("click", function(){
+		
+	});
+});
+
+</script>
 <!-- bootstrap js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <%@ include file="inc/footer.jsp"%>

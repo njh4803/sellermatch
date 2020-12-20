@@ -547,7 +547,7 @@
                             </div>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation" menu-title-theme="theme5">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="active pcoded-trigger">
+                                <li class="pcoded-trigger">
                                     <a href="#">
                                         <span class="pcoded-micon"><i class="ti-home"></i></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">대시보드</span>
@@ -648,28 +648,12 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)" >
+                                <li class="pcoded-trigger">
+                                    <a href="${pageContext.request.contextPath}/admin/projectList" >
                                         <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">상품관리(프로젝트)</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">프로젝트관리</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="${pageContext.request.contextPath}/admin/product" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar">상품등록</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="${pageContext.request.contextPath}/admin/productList" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar-inverse">상품조회</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)" >

@@ -64,6 +64,7 @@
                                                             <table id="simpletable" class="table-center table table-striped table-bordered nowrap text-center">
                                                                 <thead>
                                                                     <tr>
+                                                                    	<th>번호</th>
                                                                         <th>아이디</th>
                                                                         <th>비밀번호</th>
                                                                         <th>회원상태</th>
@@ -71,7 +72,6 @@
                                                                         <th>유료시작일</th>
                                                                         <th>유료종료일</th>
                                                                         <th>회원분류</th>
-                                                                        <th>산업분류</th>
                                                                         <th>국가</th>
                                                                         <th>지역</th>
                                                                         <th>주소</th>
@@ -90,6 +90,7 @@
                                                                 <tbody>
                                                                 <c:forEach var="output" items="${output}" varStatus="status">
 	                                                                    <tr>
+	                                                                    	<td>${output.memIdx}</td>
 	                                                                        <td>
 	                                                                        	<a href="${pageContext.request.contextPath}/admin/member/edit?memId=${output.memId}">
 	                                                                        		${output.memId}
@@ -101,7 +102,6 @@
 	                                                                        <td>${output.memClassSdate}</td>
 	                                                                        <td>${output.memClassEdate}</td>
 	                                                                        <td>${output.memSort}</td>
-	                                                                        <td>${output.memIndus}</td>
 	                                                                        <td>${output.memCountry}</td>
 	                                                                        <td>${output.memNation}</td>
 	                                                                        <td>${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
@@ -121,49 +121,6 @@
                                                                 <tfoot>
                                                                 	<tr class="footable-paging">
                                                                 		<td colspan="21">
-                                                                			<!-- <ul class="pagination">
-                                                                				<li class="footable-page-nav disabled" data-page="first">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">«</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page-nav disabled" data-page="prev">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">‹</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page visible active" data-page="1">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">1</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page visible" data-page="2">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">2</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page-nav" data-page="next">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">›</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page-nav" data-page="last">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">»</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                			</ul>
-                                                                			<div class="divider"></div>
-                                                                			<span class="label label-default">
-                                                                				<font style="vertical-align: inherit;">
-                                                                				<font style="vertical-align: inherit;">1/2</font></font>
-                                                                			</span> -->
                                                                 			<div class="col-lg-12 col-md-12 col-sm12 text-center">
 																				<ul class="pagination">
 																				<!-- 페이지 번호 구현 -->

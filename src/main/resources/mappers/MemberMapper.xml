@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="MemListMapper">
+<mapper namespace="MemberMapper">
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-    <resultMap id="memListMap"
-        type="kr.co.wesellglobal.sellermatch.model.MemList">
+    <resultMap id="MemberMap"
+        type="kr.co.wesellglobal.sellermatch.model.MemberDto">
         <result property="memIdx"   column="mem_idx" />
         <result property="memId"     column="mem_id" />
         <result property="memPw"   column="mem_pw" />
@@ -15,7 +15,6 @@
         <result property="memClassSdate" column="mem_class_sdate" />
         <result property="memClassEdate" column="mem_class_edate" />
         <result property="memSort" column="mem_sort" />
-        <result property="memIndus" column="mem_indus" />
         <result property="memCountry" column="mem_country" />
         <result property="memNation" column="mem_nation" />
         <result property="memAddr" column="mem_addr" />
@@ -26,75 +25,91 @@
         <result property="memRname" column="mem_rname" />
         <result property="memNick" column="mem_nick" />
         <result property="memPhoto" column="mem_photo" />
-        <result property="memImg" column="mem_img" />
         <result property="memIp" column="mem_ip" />
         <result property="memLoginDate" column="mem_login_date" />
         <result property="memOutDate" column="mem_out_date" />
         <result property="memDate" column="mem_date" />
         <result property="memEditDate" column="mem_edit_date" />
-        <result property="MemAuthPw" column="Mem_auth_pw" />
-        <result property="memXxx" column="mem_xxx" />
     </resultMap>
     
     <insert id="insertItem"
-    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
     	useGeneratedKeys="true"
     	keyProperty="memIdx">
     	INSERT INTO MemList
-    		(`Mem_id`, `Mem_pw`, `Mem_state`, `Mem_class`, `Mem_sort`, `Mem_indus`, `Mem_country`, 
+    		(`Mem_id`, `Mem_pw`, `Mem_state`, `Mem_class`, `Mem_sort`, `Mem_country`, 
     		`Mem_nation`, `Mem_addr`, `Mem_addr2`, `Mem_post`, `Mem_tel`, `Mem_name`, `Mem_rname`, `Mem_nick`, 
-    		`Mem_photo`, `Mem_img`, `Mem_ip`, `Mem_date`, `Mem_XXX`)
+    		`Mem_photo`, `Mem_ip`, `Mem_date`)
     	 VALUES 
-    	 	(#{memId}, md5(#{memPw}), #{memState}, #{memClass}, #{memSort}, #{memIndus}, #{memCountry}, 
+    	 	(#{memId}, md5(#{memPw}), #{memState}, #{memClass}, #{memSort}, #{memCountry}, 
     	 	#{memNation}, #{memAddr}, #{memAddr2}, #{memPost}, #{memTel}, #{memName}, #{memRname}, #{memNick}, 
-    	 	#{memPhoto}, #{memImg}, #{memIp}, now(), #{memXxx});
+    	 	#{memPhoto}, #{memIp}, now());
 
     </insert>
     
     <!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList"
-    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
-    	resultMap="memListMap">
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	resultMap="MemberMap">
     	SELECT 
     		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
-    		mem_sort, mem_indus, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
-    		mem_name, mem_rname, mem_nick, mem_photo, mem_img, mem_ip, mem_login_date, mem_out_date, 
-    		mem_date, mem_edit_date, Mem_auth_pw
+    		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
+    		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
+    		mem_date, mem_edit_date
     	FROM MemList
 		ORDER BY mem_date DESC
     	
     </select>
     
     <select id="selectItem"
-    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
-    	resultMap="memListMap">
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	resultMap="MemberMap">
     	SELECT 
     		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
-    		mem_sort, mem_indus, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
-    		mem_name, mem_rname, mem_nick, mem_photo, mem_img, mem_ip, mem_login_date, mem_out_date, 
-    		mem_date, mem_edit_date, Mem_auth_pw
+    		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
+    		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
+    		mem_date, mem_edit_date
     	FROM MemList
     	WHERE mem_id = #{memId}
     </select>
     
     <!-- 단일행 조회를 위한 기능 정의 -->
     <select id="idCheck"
-    	parameterType="kr.co.wesellglobal.sellermatch.model.MemList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
     	resultType="int">
     	SELECT COUNT(*) FROM MemList WHERE mem_id = #{memId}
     </select>
 	
-	<update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.MemList">
+	<update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
 		UPDATE MemList 
 		SET 
 			<if test="memPw != ' ' and memPw != null">
 				mem_pw = md5(#{memPw}), 
 			</if>
-		    mem_state = #{memState}, mem_class = #{memClass}, mem_sort = #{memSort}, mem_indus = #{memIndus}, 
+		    mem_state = #{memState}, mem_class = #{memClass}, mem_sort = #{memSort},  
 		    mem_country = #{memCountry}, mem_nation = #{memNation}, mem_addr = #{memAddr}, mem_addr2 = #{memAddr2}, mem_post =  #{memPost}, 
-    	 	mem_tel = #{memTel}, mem_name = #{memName}, mem_rname = #{memRname}, mem_nick = #{memNick}, mem_photo = #{memPhoto}, mem_img = #{memImg}, 
+    	 	mem_tel = #{memTel}, mem_name = #{memName}, mem_rname = #{memRname}, mem_nick = #{memNick}, mem_photo = #{memPhoto}, 
     	 	mem_ip = #{memIp}, mem_edit_date = now()
 		where mem_id = #{memId}
+	</update>
+	
+		<!-- 로그인 조회 -->
+	<select id="login"
+		parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+		resultMap="MemberMap">
+		SELECT 
+			mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
+    		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
+    		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
+    		mem_date, mem_edit_date
+		FROM MemList
+		WHERE mem_id=#{memId} AND mem_pw=MD5(#{memPw})
+	</select>
+
+	<!-- 최근 로그인 시간 갱신 -->
+	<update id="updateLoginDate"
+		parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
+		UPDATE MemList SET mem_login_date = now() WHERE mem_id=#{memId}
 	</update>
 
 </mapper>
