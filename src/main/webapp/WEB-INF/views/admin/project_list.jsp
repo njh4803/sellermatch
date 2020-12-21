@@ -4,50 +4,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%> 
+<%@ include file="../modal/projectAdd.jsp"%>
+<%@ include file="../modal/projectEdit.jsp"%>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/division/css/style.css">
 <style>
 .table-center th{
 	text-align: center;
-}
-
-/* modal css */
-*{margin:0; padding:0;}
-#modal{
-  display:none;
-  position:fixed; 
-  width:100%; height:100%;
-  top:0; left:0; 
-  background:rgba(0,0,0,0.3);
-}
-.modal-con{
-  display:none;
-  position:fixed;
-  top:50%; left:50%;
-  transform: translate(-50%,-50%);
-  max-width: 60%;
-  min-height: 30%;
-  background:#fff;
-}
-.modal-con .title{
-  font-size:20px; 
-  padding: 20px; 
-  background : #1abc9c;
-}
-.modal-con .con{
-  font-size:15px; line-height:1.3;
-  padding: 30px;
-}
-.modal-con .close{
-  display:block;
-  position:absolute;
-  width:30px; height:30px;
-  border-radius:50%; 
-  border: 3px solid #000;
-  text-align:center; line-height: 30px;
-  text-decoration:none;
-  color:#000; font-size:20px; font-weight: bold;
-  right:10px; top:10px;
 }
 </style>
 <%@ include file="inc/navigation.jsp"%>
@@ -95,16 +60,8 @@
                                                 <!-- Zero config.table start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                    	<!-- <a href="javascript:openModal('modal1');" class="button modal-open">프로젝트 등록</a> -->
-                                                    	<button class="btn form-bg-primary wl-btn">프로젝트 등록</button>
-                                                    	<div id="modal"></div>
-														<div class="modal-con modal1">
-															<a href="javascript:;" class="close">X</a>
-															<p class="title">제목</p>
-															<div class="con">
-																Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-															</div>
-														</div>
+                                                    	<!-- Trigger the modal with a button -->
+														<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectModal">Open Modal</button>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
@@ -138,9 +95,7 @@
 	                                                                    <tr>
 	                                                                    	<td>${output.projIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="${pageContext.request.contextPath}/admin/project/edit?projId=${output.projId}">
-	                                                                        		${output.projId}
-	                                                                        	</a>		
+	                                                                        	<a href="javascript:void(0);" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
 	                                                                        </td>
 	                                                                        <td>${output.projMemId}</td>
 	                                                                        <td>${output.projTitle}</td>
@@ -302,24 +257,56 @@
         </div>
     </div>
 <script type="text/javascript">
-function openModal(modalname){
-	document.get
-	$("#modal").fadeIn(300);
-	$("."+modalname).fadeIn(300);
-}
-$(function(){
-	$("#modal, .close").on('click',function(){
-		$("#modal").fadeOut(300);
-		$(".modal-con").fadeOut(300);
-	});
+$(document).on("click",".p-modal",function(event){
+	var parent = event.target.parentNode;
+	var tr = parent.parentNode;
+	var projIdx = tr.children[0].innerText;
+	var projId = tr.children[1].innerText;
+	var projMemId = tr.children[2].innerText;
+	var projTitle = tr.children[3].innerText;
+	var projSort = tr.children[4].innerText;
+	var projIndus = tr.children[5].innerText;
+	var projPrice = tr.children[6].innerText;
+	var projMargin = tr.children[7].innerText;
+	var projNation = tr.children[8].innerText;
+	var projSupplyType = tr.children[9].innerText;
+	var projEndDate = tr.children[10].innerText;
+	var projRecruitNum = tr.children[11].innerText;
+	var projDetail = tr.children[12].innerText;
+	var projRequire = tr.children[13].innerText;
+	var projKeyword = tr.children[14].innerText;
+	var projDetailImg = tr.children[15].innerText;
+	var projFile = tr.children[16].innerText;
+	var projState = tr.children[17].innerText;
+	var projEditDate = tr.children[18].innerText;
+	
+	$("#editModal .modal-body #projIdx").val(projIdx);
+	$("#editModal .modal-body #projId").val(projId);
+	$("#editModal .modal-body #projMemId").val(projMemId);
+	$("#editModal .modal-body #projTitle").val(projTitle);
+	$("#editModal .modal-body #projSort").val(projSort);
+	$("#editModal .modal-body #projIndus").val(projIndus);
+	$("#editModal .modal-body #projPrice").val(projPrice);
+	$("#editModal .modal-body #projMargin").val(projMargin);
+	$("#editModal .modal-body #projNation").val(projNation);
+	$("#editModal .modal-body #projSupplyType").val(projSupplyType);
+	$("#editModal .modal-body #projEndDate").val(projEndDate);
+	$("#editModal .modal-body #projRecruitNum").val(projRecruitNum);
+	$("#editModal .modal-body #projDetail").text(projDetail);
+	$("#editModal .modal-body #projRequire").val(projRequire);
+	$("#editModal .modal-body #projKeyword").val(projKeyword);
+	$("#editModal .modal-body #projDetailImg").val(projDetailImg);
+	$("#editModal .modal-body #projFile").val(projFile);
+	$("#editModal .modal-body #projState").val(projState);
+	$("#editModal .modal-body #projEditDate").val(projEditDate);
 	
 	
-	$("#projectBtn").on("click", function(){
-		
-	});
+	
 });
 
 </script>
 <!-- bootstrap js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- CKEditor js -->
+<script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
 <%@ include file="inc/footer.jsp"%>

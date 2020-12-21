@@ -133,55 +133,19 @@ public class AdminProjectController {
 		return webHelper.getJsonData();
 	}
 	
-	@RequestMapping(value = "/admin/project/edit", method = RequestMethod.GET)
-	public ModelAndView adminProductEdit(Model model, @RequestParam(value = "prodNum") String prodNum) {
-		ProjectDto input = new ProjectDto();
-		IndusDto input2 = new IndusDto();
-		input.setProjId(prodNum);
-		
-		ProjectDto output = null;
-		List<IndusDto> output2 = null;
-		try {
-			output = projectService.getProject(input);
-			output2 = indusService.getIndusList(input2);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("output", output);
-		model.addAttribute("output2", output2);
-		
-		return new ModelAndView("admin/product_edit");
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/admin/project/editOk", method = RequestMethod.POST)
-	public Map<String, Object> editOk(
-			@RequestParam(value = "prodName", required = false) String prodName,
-			@RequestParam(value = "prodPrice", required = false) int prodPrice,
-			@RequestParam(value = "prodQty", required = false) int prodQty,
-			@RequestParam(value = "prodDetail", required = false) String prodDetail,
-			@RequestParam(value = "prodKeyword", required = false) String prodKeyword,
-			@RequestParam(value = "prodEndDate") String prodEndDate,
-			@RequestParam(value = "prodIndusA") String prodIndusA,
-			@RequestParam(value = "prodIndusB") String prodIndusB,
-			@RequestParam(value = "prodIndusC", required = false) String prodIndusC) {
-		ProjectDto input = new ProjectDto();
-		
-		input.setProjPrice(prodPrice);
-		input.setProjDetail(prodDetail);
-		input.setProjKeyword(prodKeyword);
-		input.setProjEndDate(prodEndDate);
-		input.setProjState("1");
-		input.setProjMemId("njh4803@gmail.com");
-		input.setProjXxx("");
-		
-		try {
-			projectService.editProject(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-		return webHelper.getJsonData();
-	}
+	/*
+	 * @RequestMapping(value = "/admin/project/edit", method = RequestMethod.GET)
+	 * public ModelAndView adminProductEdit(Model model, @RequestParam(value =
+	 * "prodNum") String prodNum) { ProjectDto input = new ProjectDto(); IndusDto
+	 * input2 = new IndusDto(); input.setProjId(prodNum);
+	 * 
+	 * ProjectDto output = null; List<IndusDto> output2 = null; try { output =
+	 * projectService.getProject(input); output2 =
+	 * indusService.getIndusList(input2); } catch (Exception e) {
+	 * e.printStackTrace(); }
+	 * 
+	 * model.addAttribute("output", output); model.addAttribute("output2", output2);
+	 * 
+	 * return new ModelAndView("admin/product_edit"); }
+	 */
 }

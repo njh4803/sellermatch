@@ -3,7 +3,6 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="ko">
-<%@ include file="../../popup/layerpop.jsp"%>
 <head>
 	<title>셀러매치</title>
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
@@ -59,7 +58,5 @@
 	  <!-- sweetalert css -->
 	  <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.min.css" />
 	  
-	  <!-- modal css -->
-	  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/layer_popup.css" />
   </head>
   <body>

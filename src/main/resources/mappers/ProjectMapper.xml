@@ -73,7 +73,7 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
     	resultMap="ProjectMap">
     	SELECT 
-	   		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
+	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_keyword, proj_file, 
     		proj_state, proj_reg_date, proj_end_date, proj_edit_date
     	FROM ProjectList

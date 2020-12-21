@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-	<title>LIVV</title>
+	<title>SellerMatch</title>
 	<!-- tset -->
 	<!-- Meta -->
     <meta charset="utf-8">
