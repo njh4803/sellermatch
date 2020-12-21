@@ -44,27 +44,22 @@ public class AdminProjectRestController {
 	@Autowired
 	MailHelper mailHelper;
 	
-	@RequestMapping(value = "/admin/project/edit", method = RequestMethod.GET)
-	public Map<String, Object> adminProductEdit(Model model, @RequestParam(value = "prodNum") String prodNum) {
-		ProjectDto input = new ProjectDto();
-		IndusDto input2 = new IndusDto();
-		input.setProjId(prodNum);
-		
-		ProjectDto output = null;
-		List<IndusDto> output2 = null;
-		try {
-			output = projectService.getProject(input);
-			output2 = indusService.getIndusList(input2);
-		} catch (Exception e) {
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-		
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("output", output);
-		data.put("output2", output2);
-		
-		return webHelper.getJsonData(data);
-	}
+	/*
+	 * @RequestMapping(value = "/admin/project/edit", method = RequestMethod.GET)
+	 * public Map<String, Object> adminProductEdit(Model model, @RequestParam(value
+	 * = "prodNum") String prodNum) { ProjectDto input = new ProjectDto(); IndusDto
+	 * input2 = new IndusDto(); input.setProjId(prodNum);
+	 * 
+	 * ProjectDto output = null; List<IndusDto> output2 = null; try { output =
+	 * projectService.getProject(input); output2 =
+	 * indusService.getIndusList(input2); } catch (Exception e) { return
+	 * webHelper.getJsonError(e.getLocalizedMessage()); }
+	 * 
+	 * Map<String, Object> data = new HashMap<String, Object>(); data.put("output",
+	 * output); data.put("output2", output2);
+	 * 
+	 * return webHelper.getJsonData(data); }
+	 */
 	
 	@RequestMapping(value = "/admin/project/edit", method = RequestMethod.POST)
 	public Map<String, Object> editOk(
@@ -83,10 +78,23 @@ public class AdminProjectRestController {
 			@RequestParam(value = "projRequire", required = false) String projRequire,
 			@RequestParam(value = "projKeyword", required = false) String projKeyword,
 			@RequestParam(value = "projDetailImg", required = false) String projDetailImg,
-			@RequestParam(value = "projFile", required = false) String projFile,
+			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
 			@RequestParam(value = "projState", required = false) String projState) {
-		ProjectDto input = new ProjectDto();
+		/** 1) 업로드 처리 */
+		// 업로드 결과가 저장된 Beans를 리턴받는다.
+		UploadItem item = null;
 		
+		try {
+			if (projFile != null) {
+				item = webHelper.saveMultipartFile(projFile);
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		ProjectDto input = new ProjectDto();
 		input.setProjId(projId);
 		input.setProjMemId(projMemId);
 		input.setProjTitle(projTitle);
@@ -98,11 +106,13 @@ public class AdminProjectRestController {
 		input.setProjSupplyType(projSupplyType);
 		input.setProjEndDate(projEndDate);
 		input.setProjRecruitNum(projRecruitNum);
-		input.setProjDetail(projDetailImg);
+		input.setProjDetail(projDetail);
 		input.setProjRequire(projRequire);
 		input.setProjKeyword(projKeyword);
 		input.setProjDetailImg(projDetailImg);
-		input.setProjFile(projFile);
+		if (projFile != null) {
+			input.setProjFile(item.getFilePath());
+		}
 		input.setProjState(projState);
 		
 		try {

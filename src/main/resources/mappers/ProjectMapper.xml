@@ -27,7 +27,7 @@
         <result property="projRegDate" column="proj_reg_date" />
         <result property="projEndDate" column="proj_end_date" />
         <result property="projEditDate" column="proj_edit_date" />
-        <result property="listImg" column="list_img" />
+        <result property="projIndusName" column="proj_indus_name" />
         <result property="projXxx" column="proj_XXX" />
     </resultMap>
     
@@ -51,7 +51,10 @@
 		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
 		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
 		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_detail_img = #{projDetailImg}, proj_require = #{projRequire}, proj_keyword = #{projKeyword}, 
-		    proj_file = #{projFile}, proj_state = #{projState}, proj_end_date = #{projEndDate}, proj_edit_date = now()
+		    <if test="projFile != '' and projFile != null">
+		    	proj_file = #{projFile}, 
+		    </if>
+		    proj_state = #{projState}, proj_end_date = #{projEndDate}, proj_edit_date = now()
 		where proj_id = #{projId}
 	</update>
 	
@@ -73,10 +76,12 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
     	resultMap="ProjectMap">
     	SELECT 
-	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
+	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_keyword, proj_file, 
-    		proj_state, proj_reg_date, proj_end_date, proj_edit_date
-    	FROM ProjectList
+    		proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
+    	FROM ProjectList p
+        INNER JOIN IndusList i
+        ON p.proj_indus = i.indus_id
 		ORDER BY proj_idx DESC
     </select>
     
@@ -86,7 +91,7 @@
     	SELECT 
     		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_keyword, proj_file, 
-    		proj_state, proj_reg_date, proj_end_date, proj_edit_date
+    		proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
     	FROM ProjectList
     	WHERE proj_id = #{projId}
     </select>

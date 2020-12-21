@@ -86,7 +86,10 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projState" type="text" name="projState" class="form-control">
+	                                                                    <select id="projState" name="projState" class="form-control">
+							                                                <option value="0">중지</option>
+							                                                <option value="1">정상</option>
+							                                            </select>
 																	</div>
                                                                 </div>
                                                             </div>
@@ -96,7 +99,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projRegDate" type="datetime" name="projRegDate" class="form-control">
+	                                                                    <input id="projRegDate" type="datetime" name="projRegDate" class="form-control" readonly>
 																	</div>
                                                                 </div>
                                                             </div>
@@ -106,7 +109,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projEditDate" type="datetime" name="projEditDate" class="form-control">
+	                                                                    <input id="projEditDate" type="datetime" name="projEditDate" class="form-control" readonly>
 																	</div>
                                                                 </div>
                                                             </div>
@@ -116,7 +119,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projMemId" type="text" name="projMemId" class="form-control">
+	                                                                    <input id="projMemId" type="text" name="projMemId" class="form-control" readonly>
 																	</div>
                                                                 </div>
                                                             </div>
@@ -126,7 +129,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projSort" type="text" name="projSort" class="form-control">
+	                                                                    <input id="projSort" type="text" name="projSort" class="form-control" readonly>
 																	</div>
                                                                 </div>
                                                             </div>
@@ -387,8 +390,8 @@ $(function(){
             //return $(form).valid();
         },
         success: function(json) {
-            swal('알림', '상품이 등록되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/admin/productList';
+            swal('알림', '프로젝트가 수정되었습니다.', 'success').then(function(result) {
+                window.location = ROOT_URL + '/admin/projectList';
             });
         },
     });

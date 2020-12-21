@@ -122,6 +122,16 @@ public class WebHelper {
     }
     
     /**
+     * 고유ID 값을 생성해준다.
+     *
+     * @param tableName - 데이터베이스 테이블명
+     * @param sortNum - 분류번호
+     */
+    public String getUniqueId(String tableName, int sortNum) {
+        return String.format("%s%d%d", tableName, sortNum, System.currentTimeMillis());
+    }
+    
+    /**
      * 업로드 폴더 하위에 저장되어 있는 파일이름을 전달받아 Web에서 접근 가능한 경로로 리턴한다.
      */
     public String getUploadPath(String filePath) {

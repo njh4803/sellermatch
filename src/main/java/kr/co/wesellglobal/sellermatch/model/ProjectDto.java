@@ -9,7 +9,7 @@ public class ProjectDto {
 	// 자동번호 
 	private int projIdx;
 	
-	// 프로젝트고유번호 
+	// 프로젝트고유번호
 	private String projId;
 	
 	// 회원고유번호 
@@ -69,14 +69,96 @@ public class ProjectDto {
 	// 예비컬럼 
 	private String projXxx;
 
+	
+	
+	
+	
 	// 상세사진 리스트
-	private String[] listImg_list;
-		    
-	public void setListImg(String projDetailImg) {
-		this.listImg_list = projDetailImg.split(",");
+	private String[] listImgList;
+	
+	// 키워드 리스트
+	private String[] projKeywordList;
+	
+	// 상품분류 문자로 치환
+	private String projIndusName;
+	
+	public void setListImg(String[] listImgList) {
+		this.listImgList = listImgList;
 	}
 			
 	public String[] getListImg() {
-		return listImg_list;
+		this.listImgList = projDetailImg.split(",");
+		return listImgList;
+	}
+			
+	public String getProjIndusName() {
+		return projIndusName;
+	}
+	
+	public String getProjSortName() {
+		if (this.projSort == "1") {
+			return "공급자";
+		}
+		if (this.projSort == "2") {
+			return "판매자";
+		}
+		return "일반";
+	}
+	
+	public String getProjSupplyTypeName() {
+		if (this.projSupplyType.equals("1")) {
+			return "OEM";
+		}
+		if (this.projSupplyType.equals("2")) {
+			return "위탁판매";
+		}
+		if (this.projSupplyType.equals("3")) {
+			return "도매공급";
+		}
+		if (this.projSupplyType.equals("4")) {
+			return "운영대행";
+		}
+		if (this.projSupplyType.equals("5")) {
+			return "경매공급";
+		}
+		return "기타";
+	}
+	
+	public String getProjStateName() {
+		if (this.projState == "1") {
+			return "정상";
+		}
+		return "중지";
+	}
+	
+	public String getProjMarginName() {
+		if (this.projMargin == 10) {
+			return "10% 미만";
+		}
+		if (this.projMargin == 20) {
+			return "11% ~ 20%";
+		}
+		if (this.projMargin == 30) {
+			return "21% ~ 30%";
+		}
+		return "30% 초과";
+	}
+	
+	public String getProjNationName() {
+		if (this.projNation.equals("02")) {
+			return "서울";
+		}
+		if (this.projNation.equals("031")) {
+			return "경기";
+		}
+		if (this.projNation.equals("032")) {
+			return "인천";
+		}
+		return "해외";
+	}
+	
+	public String[] getProjKeywordList() {
+		this.projKeywordList = this.projKeyword.split(",");
+		return this.projKeywordList;
 	}
 }

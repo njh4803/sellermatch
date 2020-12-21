@@ -3,9 +3,10 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="inc/header.jsp"%> 
-<%@ include file="../modal/projectAdd.jsp"%>
+<%@ include file="inc/header.jsp"%>
 <%@ include file="../modal/projectEdit.jsp"%>
+<%@ include file="../modal/projectAdd.jsp"%>
+
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
@@ -95,24 +96,28 @@
 	                                                                    <tr>
 	                                                                    	<td>${output.projIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="javascript:void(0);" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
+	                                                                        	<a href="javascript:void(0);" data-hidden="${output.projIndus}" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
 	                                                                        </td>
 	                                                                        <td>${output.projMemId}</td>
 	                                                                        <td>${output.projTitle}</td>
-	                                                                        <td>${output.projSort}</td>
-	                                                                        <td>${output.projIndus}</td>
+	                                                                        <td data-value="${output.projSort}">${output.projSortName}</td>
+	                                                                        <td data-value="${output.projIndus}">${output.projIndusName}</td>
 	                                                                        <td>${output.projPrice}</td>
-	                                                                        <td>${output.projMargin}</td>
-	                                                                        <td>${output.projNation}</td>
-	                                                                        <td>${output.projSupplyType}</td>
+	                                                                        <td data-value="${output.projMargin}">${output.projMarginName}</td>
+	                                                                        <td data-value="${output.projNation}">${output.projNationName}</td>
+	                                                                        <td data-value="${output.projSupplyType}">${output.projSupplyTypeName}</td>
 	                                                                        <td>${output.projEndDate}</td>
 	                                                                        <td>${output.projRecruitNum}</td>
 	                                                                        <td>${output.projDetail}</td>
 	                                                                        <td>${output.projRequire}</td>
-	                                                                        <td>${output.projKeyword}</td>
+	                                                                        <td>
+	                                                                        <c:forEach var="keyword" items="${output.projKeywordList}">
+	                                                                        	${keyword}
+	                                                                        </c:forEach>
+	                                                                        </td>
 	                                                                        <td>${output.projDetailImg}</td>
 	                                                                        <td>${output.projFile}</td>
-	                                                                        <td>${output.projState}</td>
+	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
 	                                                                        <td>${output.projRegDate}</td>
 	                                                                        <td>${output.projEditDate}</td>
 	                                                                    </tr>
@@ -264,12 +269,12 @@ $(document).on("click",".p-modal",function(event){
 	var projId = tr.children[1].innerText;
 	var projMemId = tr.children[2].innerText;
 	var projTitle = tr.children[3].innerText;
-	var projSort = tr.children[4].innerText;
-	var projIndus = tr.children[5].innerText;
+	var projSort = tr.children[4].getAttribute("data-value");
+	var projIndus = tr.children[5].getAttribute("data-value");
 	var projPrice = tr.children[6].innerText;
-	var projMargin = tr.children[7].innerText;
-	var projNation = tr.children[8].innerText;
-	var projSupplyType = tr.children[9].innerText;
+	var projMargin = tr.children[7].getAttribute("data-value");
+	var projNation = tr.children[8].getAttribute("data-value");
+	var projSupplyType = tr.children[9].getAttribute("data-value");
 	var projEndDate = tr.children[10].innerText;
 	var projRecruitNum = tr.children[11].innerText;
 	var projDetail = tr.children[12].innerText;
@@ -277,8 +282,11 @@ $(document).on("click",".p-modal",function(event){
 	var projKeyword = tr.children[14].innerText;
 	var projDetailImg = tr.children[15].innerText;
 	var projFile = tr.children[16].innerText;
-	var projState = tr.children[17].innerText;
-	var projEditDate = tr.children[18].innerText;
+	var projState = tr.children[17].getAttribute("data-value");
+	var projRegDate = tr.children[18].innerText;
+	var projEditDate = tr.children[19].innerText;
+	
+	
 	
 	$("#editModal .modal-body #projIdx").val(projIdx);
 	$("#editModal .modal-body #projId").val(projId);
@@ -298,6 +306,7 @@ $(document).on("click",".p-modal",function(event){
 	$("#editModal .modal-body #projDetailImg").val(projDetailImg);
 	$("#editModal .modal-body #projFile").val(projFile);
 	$("#editModal .modal-body #projState").val(projState);
+	$("#editModal .modal-body #projRegDate").val(projRegDate);
 	$("#editModal .modal-body #projEditDate").val(projEditDate);
 	
 	
