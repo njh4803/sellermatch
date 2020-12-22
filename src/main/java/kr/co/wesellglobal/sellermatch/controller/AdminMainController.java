@@ -38,17 +38,6 @@ public class AdminMainController {
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public ModelAndView adminMain(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
-		Users input = new Users();
-		input.setId(1);
-		Users output = null;
-		
-		try {
-			output = testService.getUsers(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("output", output);
 		
 		if (member == null) {
 			return new ModelAndView("admin/admin_login");

@@ -57,7 +57,7 @@
     
     <select id="selectList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.PpProfileDto"
-    	resultMap="ProjectMap">
+    	resultMap="PpProfileMap">
     	SELECT 
 	   		pp_idx, pp_id, pp_proj_id, pp_mem_id, pp_grade, pp_intro, pp_nation, pp_biz_num, pp_biz_sort, pp_profit, 
     		pp_profit_chk_date, pp_biz_certi, pp_prod_certi, pp_indus, pp_ch, pp_photo, pp_state, pp_reg_date, pp_edit_date 
@@ -69,7 +69,7 @@
     
     <select id="selectItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.PpProfileDto"
-    	resultMap="ProjectMap">
+    	resultMap="PpProfileMap">
     	SELECT 
     		pp_idx, pp_id, pp_proj_id, pp_mem_id, pp_grade, pp_intro, pp_nation, pp_biz_num, pp_biz_sort, pp_profit, 
     		pp_profit_chk_date, pp_biz_certi, pp_prod_certi, pp_indus, pp_ch, pp_photo as pp_photo_list, pp_state, pp_reg_date, 
