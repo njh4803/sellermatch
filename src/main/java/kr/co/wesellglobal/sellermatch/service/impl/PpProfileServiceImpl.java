@@ -6,23 +6,28 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.wesellglobal.sellermatch.model.PpProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.model.SellerProfileDto;
+import kr.co.wesellglobal.sellermatch.service.PpProfileService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
+import kr.co.wesellglobal.sellermatch.service.SellerProfileService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class projectServiceImpl implements ProjectService{
+public class PpProfileServiceImpl implements PpProfileService{
 	
 	@Autowired
 	SqlSession sqlSession;
 
+
 	@Override
-	public List<ProjectDto> getProjectList(ProjectDto input) throws Exception {
-		List<ProjectDto> result = null;
+	public List<PpProfileDto> getPpProfileList(PpProfileDto input) throws Exception {
+		List<PpProfileDto> result = null;
 		
 		try {
-			result = sqlSession.selectList("ProjectMapper.selectList", input);
+			result = sqlSession.selectList("PpProfileMapper.selectList", input);
 			if(result == null) {
 				throw new NullPointerException("result=0");
 			}
@@ -38,11 +43,11 @@ public class projectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public void addProject(ProjectDto input) throws Exception {
+	public void addPpProfile(PpProfileDto input) throws Exception {
 		int result = 0;
 
 		try {
-			result = sqlSession.insert("ProjectMapper.insertItem", input);
+			result = sqlSession.insert("PpProfileMapper.insertItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -57,11 +62,11 @@ public class projectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public ProjectDto getProject(ProjectDto input) throws Exception {
-		ProjectDto result = null;
+	public PpProfileDto getPpProfile(PpProfileDto input) throws Exception {
+		PpProfileDto result = null;
 
 		try {
-			result = sqlSession.selectOne("ProjectMapper.selectItem", input);
+			result = sqlSession.selectOne("PpProfileMapper.selectItem", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -76,11 +81,11 @@ public class projectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public void editProject(ProjectDto input) throws Exception {
+	public void editPpProfile(PpProfileDto input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("ProjectMapper.updateItem", input);
+			result = sqlSession.update("PpProfileMapper.updateItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}

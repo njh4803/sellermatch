@@ -13,9 +13,5 @@ public interface ProjectService {
 	public ProjectDto getProject(ProjectDto input) throws Exception;
 	
 	public void editProject(ProjectDto input) throws Exception;
-
-	public void editProjectImg(ProjectDto input) throws Exception;
-
-	public void editProjectFile(ProjectDto input) throws Exception;
 	
 }

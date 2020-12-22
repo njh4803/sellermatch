@@ -7,22 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.model.SellerProfileDto;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
+import kr.co.wesellglobal.sellermatch.service.SellerProfileService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class projectServiceImpl implements ProjectService{
+public class SellerProfileServiceImpl implements SellerProfileService{
 	
 	@Autowired
 	SqlSession sqlSession;
 
 	@Override
-	public List<ProjectDto> getProjectList(ProjectDto input) throws Exception {
-		List<ProjectDto> result = null;
+	public List<SellerProfileDto> getSellerProfileList(SellerProfileDto input) throws Exception {
+		List<SellerProfileDto> result = null;
 		
 		try {
-			result = sqlSession.selectList("ProjectMapper.selectList", input);
+			result = sqlSession.selectList("SellerProfileMapper.selectList", input);
 			if(result == null) {
 				throw new NullPointerException("result=0");
 			}
@@ -38,11 +40,11 @@ public class projectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public void addProject(ProjectDto input) throws Exception {
+	public void addSellerProfile(SellerProfileDto input) throws Exception {
 		int result = 0;
 
 		try {
-			result = sqlSession.insert("ProjectMapper.insertItem", input);
+			result = sqlSession.insert("SellerProfileMapper.insertItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -57,11 +59,11 @@ public class projectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public ProjectDto getProject(ProjectDto input) throws Exception {
-		ProjectDto result = null;
+	public SellerProfileDto getSellerProfile(SellerProfileDto input) throws Exception {
+		SellerProfileDto result = null;
 
 		try {
-			result = sqlSession.selectOne("ProjectMapper.selectItem", input);
+			result = sqlSession.selectOne("SellerProfileMapper.selectItem", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
@@ -76,11 +78,11 @@ public class projectServiceImpl implements ProjectService{
 	}
 
 	@Override
-	public void editProject(ProjectDto input) throws Exception {
+	public void editSellerProfile(SellerProfileDto input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.update("ProjectMapper.updateItem", input);
+			result = sqlSession.update("SellerProfileMapper.updateItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
