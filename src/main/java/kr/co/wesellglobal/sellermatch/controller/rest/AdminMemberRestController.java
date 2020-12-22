@@ -114,7 +114,7 @@ public class AdminMemberRestController {
 	}
 	
 	@RequestMapping(value = "/admin/member/join", method = RequestMethod.POST)
-	public Map<String, Object> join(@RequestParam(value = "memPhoto") MultipartFile memPhoto,
+	public Map<String, Object> join(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
 			@RequestParam(value = "memId", required = false) String memId,
 			@RequestParam(value = "memPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName") String memName,
@@ -172,16 +172,15 @@ public class AdminMemberRestController {
 
 	
 	@RequestMapping(value = "/admin/member/editOk", method = RequestMethod.POST)
-	public Map<String, Object> editOk(@RequestParam(value = "memPhoto") MultipartFile memPhoto,
+	public Map<String, Object> editOk(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
 			@RequestParam(value = "memId", required = false) String memId,
-			@RequestParam(value = "memPw_confirm") String memPw,
+			@RequestParam(value = "memPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName") String memName,
 			@RequestParam(value = "memNick", required = false) String memNick,
 			@RequestParam(value = "memTel", required = false) String memTel,
 			@RequestParam(value = "memRname") String memRname,
-			@RequestParam(value = "memIndus") String memIndus,
-			@RequestParam(value = "memNation") String memNation,
 			@RequestParam(value = "memCountry") String memCountry,
+			@RequestParam(value = "memNation") String memNation,
 			@RequestParam(value = "memPost", required = false) String memPost,
 			@RequestParam(value = "memAddr", required = false) String memAddr,
 			@RequestParam(value = "memAddr2") String memAddr2) {
@@ -189,26 +188,23 @@ public class AdminMemberRestController {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		UploadItem item = null;
-		MemberDto input = new MemberDto();
-		
-		input.setMemPhoto("user.png");
-		input.setMemNation("서울");
-		
-		if (memPhoto.getSize() > 0) {
 			
-			try {
+		try {
+			if (memPhoto != null) {
 				item = webHelper.saveMultipartFile(memPhoto);
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-				return webHelper.getJsonError(e.getLocalizedMessage());
-			} catch (Exception e) {
-				e.printStackTrace();
-				return webHelper.getJsonError(e.getLocalizedMessage());
 			}
-			input.setMemPhoto(item.getFilePath());
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
-		
+		MemberDto input = new MemberDto();
+		if (memPhoto != null) {
+			input.setMemPhoto(item.getFilePath());
+		}
 		input.setMemId(memId);
 		// 공백이나 null이 아니면
 		if (regexHelper.isValue(memPw)) {
@@ -227,7 +223,6 @@ public class AdminMemberRestController {
 		input.setMemAddr2(memAddr2);
 		input.setMemState("0");
 		input.setMemIp("49.247.0.132");
-		input.setMemXxx("");
 		
 		try {
 			memberService.editMember(input);

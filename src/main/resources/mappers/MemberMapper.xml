@@ -88,7 +88,10 @@
 			</if>
 		    mem_state = #{memState}, mem_class = #{memClass}, mem_sort = #{memSort},  
 		    mem_country = #{memCountry}, mem_nation = #{memNation}, mem_addr = #{memAddr}, mem_addr2 = #{memAddr2}, mem_post =  #{memPost}, 
-    	 	mem_tel = #{memTel}, mem_name = #{memName}, mem_rname = #{memRname}, mem_nick = #{memNick}, mem_photo = #{memPhoto}, 
+    	 	mem_tel = #{memTel}, mem_name = #{memName}, mem_rname = #{memRname}, mem_nick = #{memNick}, 
+    	 	<if test="memPhoto != '' and memPhoto != null">
+    	 		mem_photo = #{memPhoto}, 
+    	 	</if>
     	 	mem_ip = #{memIp}, mem_edit_date = now()
 		where mem_id = #{memId}
 	</update>

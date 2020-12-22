@@ -74,7 +74,7 @@ public class ProjectDto {
 	
 	
 	// 상세사진 리스트
-	private String[] listImgList;
+	private String[] projDetailImgList;
 	
 	// 키워드 리스트
 	private String[] projKeywordList;
@@ -82,13 +82,12 @@ public class ProjectDto {
 	// 상품분류 문자로 치환
 	private String projIndusName;
 	
-	public void setListImg(String[] listImgList) {
-		this.listImgList = listImgList;
+	public void setProjDetailImgList(String projDetailImg) {
+		this.projDetailImgList = projDetailImg.split(",");
 	}
 			
-	public String[] getListImg() {
-		this.listImgList = projDetailImg.split(",");
-		return listImgList;
+	public String[] getProjDetailImgList() {
+		return this.projDetailImgList;
 	}
 			
 	public String getProjIndusName() {

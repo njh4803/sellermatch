@@ -34,27 +34,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home(Locale locale, Model model) {
-		log.debug("Hello Spring");
-		
-		Users input = new Users();
-		input.setId(1);
-		Users output = null;
-		
-		try {
-			output = testService.getUsers(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("output", output);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
+	public ModelAndView home(Model model) {
 		
 		return new ModelAndView("home");
 	}

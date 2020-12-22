@@ -1,0 +1,12 @@
+* {box-sizing:border-box;}
+html, body, header, nav, section, aside, footer, address,article, h1,h2,h3,h4,h5,h6,p,a, ul,ol,li,table,th,tr,td,dl,dd,dt,form,fieldset,legend,input,select,option,
+button,label,em,span,strong,tfoot,thead,tbody,textarea,img,video,q,blockqute,div {
+    margin:0; padding:0; line-height:1.0;
+    font-weight:normal; font-style:normal;
+    font-size:100%; border:0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+ul,ol,li {list-style:none;}
+table,tr,td,th {border-collapse:collapse;}
+a {text-decoration:none; color:#000;}
+legend {display:none;}

@@ -28,6 +28,7 @@
         <result property="projEndDate" column="proj_end_date" />
         <result property="projEditDate" column="proj_edit_date" />
         <result property="projIndusName" column="proj_indus_name" />
+        <result property="projDetailImgList" column="proj_detail_img_list" />
         <result property="projXxx" column="proj_XXX" />
     </resultMap>
     
@@ -50,26 +51,15 @@
 		SET 
 		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
 		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
-		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_detail_img = #{projDetailImg}, proj_require = #{projRequire}, proj_keyword = #{projKeyword}, 
+		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_require = #{projRequire}, proj_keyword = #{projKeyword},
+		    <if test="projDetailImg !='' and projDetailImg != null">
+		    	 proj_detail_img = #{projDetailImg},
+		    </if> 
 		    <if test="projFile != '' and projFile != null">
 		    	proj_file = #{projFile}, 
 		    </if>
 		    proj_state = #{projState}, proj_end_date = #{projEndDate}, proj_edit_date = now()
 		where proj_id = #{projId}
-	</update>
-	
-	<update id="updateFile" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
-		UPDATE ProjectList 
-		SET 
-	    	proj_file = #{projFile}
-		WHERE proj_id = #{projId}
-	</update>
-	
-	<update id="updateImg" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
-		UPDATE ProjectList 
-		SET 
-	    	proj_detail_img = #{projDetailImg}
-		WHERE proj_id = #{projId}
 	</update>
     
     <select id="selectList"
@@ -77,7 +67,7 @@
     	resultMap="ProjectMap">
     	SELECT 
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
-    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_keyword, proj_file, 
+    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
     		proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
     	FROM ProjectList p
         INNER JOIN IndusList i
@@ -90,7 +80,7 @@
     	resultMap="ProjectMap">
     	SELECT 
     		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
-    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_keyword, proj_file, 
+    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
     		proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
     	FROM ProjectList
     	WHERE proj_id = #{projId}

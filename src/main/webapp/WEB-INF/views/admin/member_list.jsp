@@ -4,11 +4,48 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%> 
+<%@ include file="../modal/memberEdit.jsp"%>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/division/css/style.css">
 <style>
 .table-center th{
 	text-align: center;
+}
+
+/* 필수항목 표시를 위한 `*` */
+.identify {
+	font-size: 14px;
+	color: #f00;
+}
+
+/* 에러 메시지에 대한 글자 색상 */
+.error {
+	color: red;
+}
+
+/* 에러가 발생한 <input>태그 */
+input.error {
+	
+}
+/* 에러메시지가 표시중인 <label> 태그 */
+label.error {
+	font-size: 10px;
+	color: red;
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0;
+}
+.jFiler-input-dragDrop {
+    width: 100%;
+    background-color: #fafafa;
+}
+.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+	height: 300px;
+}
+.modal-header {
+	display: block;
 }
 </style>
 <%@ include file="inc/navigation.jsp"%>
@@ -92,22 +129,22 @@
 	                                                                    <tr>
 	                                                                    	<td>${output.memIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="${pageContext.request.contextPath}/admin/member/edit?memId=${output.memId}">
-	                                                                        		${output.memId}
-	                                                                        	</a>		
+	                                                                        	<a href="javascript:void(0)" class="m-modal" data-toggle="modal" data-target="#memberModal">${output.memId}</a>		
 	                                                                        </td>
 	                                                                        <td>${output.memPw}</td>
-	                                                                        <td>${output.memState}</td>
-	                                                                        <td>${output.memClass}</td>
+	                                                                        <td  data-value="${output.memState}">${output.memStateName}</td>
+	                                                                        <td data-value="${output.memClass}">${output.memClassName}</td>
 	                                                                        <td>${output.memClassSdate}</td>
 	                                                                        <td>${output.memClassEdate}</td>
-	                                                                        <td>${output.memSort}</td>
-	                                                                        <td>${output.memCountry}</td>
-	                                                                        <td>${output.memNation}</td>
-	                                                                        <td>${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
-	                                                                        <td>${output.memTel}</td>
-	                                                                        <td>${output.memName}</td>
-	                                                                        <td>${output.memRname}</td>
+	                                                                        <td data-value="${output.memSort}">
+	                                                                       		<a href="javascript:void(0)" class="profile-modal" data-toggle="modal" data-target="#profileModal">${output.memSortName}</a>
+	                                                                       	</td>
+	                                                                        <td data-value="${output.memCountry}">${output.memCountryName}</td>
+	                                                                        <td data-value="${output.memNation}">${output.memNationName}</td>
+	                                                                        <td data-value="${output.memAddr}">${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
+	                                                                        <td data-value="${output.memAddr2}">${output.memTel}</td>
+	                                                                        <td data-value="${output.memPost}">${output.memName}</td>
+	                                                                        <td data-value="${output.memRname}">${output.memRnameName}</td>
 	                                                                        <td>${output.memNick}</td>
 	                                                                        <td>${output.memPhoto}</td>
 	                                                                        <td>${output.memIp}</td>
@@ -213,6 +250,91 @@
             </div>
         </div>
     </div>
+<script type="text/javascript">
+$(document).on("click",".m-modal",function(event){
+	var parent = event.target.parentNode;
+	var tr = parent.parentNode;
+	var memIdx = tr.children[0].innerText;
+	var memId = tr.children[1].innerText;
+	var memPw = tr.children[2].innerText;
+	var memState = tr.children[3].getAttribute("data-value");
+	var memClass = tr.children[4].getAttribute("data-value");
+	var memClassSdate = tr.children[5].innerText;
+	var memClassEdate = tr.children[6].innerText;
+	var memSort = tr.children[7].getAttribute("data-value");
+	var memCountry = tr.children[8].getAttribute("data-value");
+	var memNation = tr.children[9].getAttribute("data-value");
+	var memPost = tr.children[12].getAttribute("data-value");
+	var memAddr = tr.children[10].getAttribute("data-value");
+	var memAddr2 = tr.children[11].getAttribute("data-value");
+	var memTel = tr.children[11].innerText;
+	var memName = tr.children[12].innerText;
+	var memRname = tr.children[13].getAttribute("data-value");
+	var memNick = tr.children[14].innerText;
+	var memPhoto = tr.children[15].innerText;
+	var memIp = tr.children[16].innerText;
+	var memLoginDate = tr.children[17].innerText;
+	var memOutDate = tr.children[18].innerText;
+	var memEditDate = tr.children[19].innerText;
+	console.log("memClassSdate = " + memClassSdate);
+	console.log("memAddr = " + memAddr);
+	console.log("memAddr2 = " + memAddr2);
+	
+	
+	
+	$("#memberModal .modal-body #memId").val(memId);
+	$("#memberModal .modal-body #memState").val(memState);
+	$("#memberModal .modal-body #memClass").val(memClass);
+	$("#memberModal .modal-body #memClassSdate").val(memClassSdate);
+	$("#memberModal .modal-body #memClassEdate").val(memClassEdate);
+	$("#memberModal .modal-body #memSort").val(memSort);
+	$("#memberModal .modal-body #memCountry").val(memCountry);
+	$("#memberModal .modal-body #memNation").val(memNation);
+	$("#memberModal .modal-body #postcode").val(memPost);
+	$("#memberModal .modal-body #memAddr").val(memAddr);
+	$("#memberModal .modal-body #memAddr2").val(memAddr2);
+	$("#memberModal .modal-body #memTel").val(memTel);
+	$("#memberModal .modal-body #memName").text(memName);
+	$("#memberModal .modal-body #memRname").val(memRname);
+	$("#memberModal .modal-body #memNick").val(memNick);
+	$("#memberModal .modal-body #img").attr("src", "../../../upload/"+memPhoto);
+	$("#memberModal .modal-body #memLoginDate").val(memLoginDate);
+	$("#memberModal .modal-body #memOutDate").val(memOutDate);
+	$("#memberModal .modal-body #memEditDate").val(memEditDate);
+	$("#memberModal .modal-body #memIp").val(memIp);
+	
+	if (memRname != '') {
+		$("#memberModal .modal-body #emailBox").remove();
+		$("#memberModal .modal-body #emailBox2").remove();
+	}
+
+});
+$(document).on("click",".profile-modal",function(event){
+	var parent = event.target.parentNode;
+	var tr = parent.parentNode;
+	var memSort = tr.children[7].getAttribute("data-value");
+	if (memSort == '1' || memSort == '2') {
+		$.get(ROOT_URL + "/admin/profile/"+memSort, {
+        	cart_num: cart_num,
+        	orderOption: JSON.stringify(orderOption),
+        	orderPrice: orderPrice,
+        	is_direct_order: 'N',
+        	product_num: product_num
+        }, function(json) {
+            swal({
+                title: '확인',
+                text: '수정되었습니다.'
+            }).then(function(result) {
+                $('html, body').animate({scrollTop : 0}, 400);
+                window.location.href = ROOT_URL+"/detailBasket.do?product_num="+product_num;
+            });
+        });
+	}
+});
+</script>
 <!-- bootstrap js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
 <%@ include file="inc/footer.jsp"%>

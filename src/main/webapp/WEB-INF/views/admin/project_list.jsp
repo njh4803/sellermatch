@@ -96,7 +96,7 @@
 	                                                                    <tr>
 	                                                                    	<td>${output.projIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="javascript:void(0);" data-hidden="${output.projIndus}" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
+	                                                                        	<a href="javascript:void(0)" data-hidden="${output.projIndus}" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
 	                                                                        </td>
 	                                                                        <td>${output.projMemId}</td>
 	                                                                        <td>${output.projTitle}</td>
@@ -115,7 +115,11 @@
 	                                                                        	${keyword}
 	                                                                        </c:forEach>
 	                                                                        </td>
-	                                                                        <td>${output.projDetailImg}</td>
+	                                                                        <td data-value="${output.projDetailImgList}">
+	                                                                        <c:forEach var="detailImg" items="${output.projDetailImgList}">
+	                                                                        	${detailImg}, 
+	                                                                        </c:forEach>
+	                                                                        </td>
 	                                                                        <td>${output.projFile}</td>
 	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
 	                                                                        <td>${output.projRegDate}</td>
@@ -280,7 +284,7 @@ $(document).on("click",".p-modal",function(event){
 	var projDetail = tr.children[12].innerText;
 	var projRequire = tr.children[13].innerText;
 	var projKeyword = tr.children[14].innerText;
-	var projDetailImg = tr.children[15].innerText;
+	var projDetailImg = tr.children[15].getAttribute("data-value");
 	var projFile = tr.children[16].innerText;
 	var projState = tr.children[17].getAttribute("data-value");
 	var projRegDate = tr.children[18].innerText;

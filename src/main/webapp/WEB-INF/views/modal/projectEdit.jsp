@@ -139,7 +139,7 @@ label.error {
                                                                 <div class="col-sm-9">
                                                                 <div class="form-group">
 												                    <div class="card-block">
-												                        <input type="file" name="projDetailImg" id="filer_input1" multiple="multiple">
+												                        <input type="file" name="projDetailImg[]" id="filer_input1" multiple="multiple">
 												                    </div>
 											                    </div>
 											                    </div>

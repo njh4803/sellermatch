@@ -59,4 +59,9 @@
 	  <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.min.css" />
 	  
   </head>
+<style>
+select.form-control:not([size]):not([multiple]) {
+	height: calc(3.25rem + 2px);
+}
+</style>
   <body>

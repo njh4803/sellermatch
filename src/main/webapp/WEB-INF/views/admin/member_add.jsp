@@ -139,8 +139,8 @@ label.error {
                                                                 <div class="col-sm-10">
                                                                     <select id="memCountry" name="memCountry" class="form-control">
 						                                                <option value="">선택하세요.</option>
-						                                                <option value="대한민국">대한민국</option>
-						                                                <option value="베트남">베트남</option>
+						                                                <option value="01">대한민국</option>
+						                                                <option value="02">베트남</option>
 						                                            </select>
                                                                 </div>
                                                             </div>

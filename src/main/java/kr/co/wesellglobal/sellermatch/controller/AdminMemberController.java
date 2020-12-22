@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
@@ -35,7 +36,10 @@ public class AdminMemberController {
 	MailHelper mailHelper;
 	
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
-	public ModelAndView adminMember(Model model) {
+	public ModelAndView adminMember(Model model,  @SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return new ModelAndView("admin/admin_login");
+		}
 		Users input = new Users();
 		input.setId(1);
 		Users output = null;
@@ -52,7 +56,10 @@ public class AdminMemberController {
 	}
 	
 	@RequestMapping(value = "/admin/memberList", method = RequestMethod.GET)
-	public ModelAndView adminMemberList(Model model) {
+	public ModelAndView adminMemberList(Model model,  @SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return new ModelAndView("admin/admin_login");
+		}
 		MemberDto input = new MemberDto();
 		
 		//목록조회
@@ -71,7 +78,12 @@ public class AdminMemberController {
 
 	
 	@RequestMapping(value = "/admin/member/edit", method = RequestMethod.GET)
-	public ModelAndView adminMemberEdit(Model model, @RequestParam(value = "memId") String memId) {
+	public ModelAndView adminMemberEdit(Model model, @RequestParam(value = "memId") String memId, 
+			 @SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return new ModelAndView("admin/admin_login");
+		}
+		
 		MemberDto input = new MemberDto();
 		input.setMemId(memId);
 		//목록조회

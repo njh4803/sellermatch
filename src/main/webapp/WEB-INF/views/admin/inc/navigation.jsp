@@ -563,90 +563,12 @@
                                         </li>
                                     </ul> -->
                                 </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
+                                <li class="">
+                                    <a href="${pageContext.request.contextPath}/admin/memberList">
                                         <span class="pcoded-micon"><i class="ti-layout"></i></span>
                                         <span class="pcoded-mtext" data-i18n="nav.page_layout.main">회원관리</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                    <ul class="pcoded-submenu">
-
-                                        <li class="">
-                                            <a href="${pageContext.request.contextPath}/admin/member">
-                                                <span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
-                                                <span class="pcoded-mtext">회원등록</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                            <!-- <ul class="pcoded-submenu">
-                                                <li class=" ">
-                                                    <a href="menu-static.html" >
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext" data-i18n="nav.page_layout.vertical.static-layout">Static Layout</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-header-fixed.html">
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext"  data-i18n="nav.page_layout.vertical.header-fixed">Header Fixed</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-compact.html">
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext" data-i18n="nav.page_layout.vertical.compact">Compact</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-sidebar.html">
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext" data-i18n="nav.page_layout.vertical.sidebar-fixed">Sidebar Fixed</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-
-                                            </ul> -->
-                                        </li>
-                                        <li class="">
-                                            <a href="${pageContext.request.contextPath}/admin/memberList" >
-                                                <span class="pcoded-micon"><i class="icon-pie-chart"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.page_layout.horizontal.main">회원조회</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                            <!-- <ul class="pcoded-submenu">
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-static.html" target="_blank" >
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext" data-i18n="nav.page_layout.horizontal.static-layout">Static Layout</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-fixed.html" target="_blank" >
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext" data-i18n="nav.page_layout.horizontal.fixed-layout">Fixed layout</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-icon.html" target="_blank" >
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext" data-i18n="nav.page_layout.horizontal.static-with-icon">Static With Icon</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-icon-fixed.html" target="_blank">
-                                                        <span class="pcoded-micon"><i class="icon-chart"></i></span>
-                                                        <span class="pcoded-mtext" data-i18n="nav.page_layout.horizontal.fixed-with-icon">Fixed With Icon</span>
-                                                        <span class="pcoded-mcaret"></span>
-                                                    </a>
-                                                </li>
-                                            </ul> -->
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li class="pcoded-trigger">
                                     <a href="${pageContext.request.contextPath}/admin/projectList" >
