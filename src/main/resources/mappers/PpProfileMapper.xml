@@ -74,7 +74,7 @@
     		pp_profit_chk_date, pp_biz_certi, pp_indus, pp_ch, pp_photo as pp_photo_list, pp_state, pp_reg_date, 
     		pp_edit_date
     	FROM PpProfile
-    	WHERE pp_id = #{ppId}
+    	WHERE pp_mem_id = #{ppMemId}
     </select>
 
 </mapper>

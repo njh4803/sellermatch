@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%> 
 <%@ include file="../modal/memberEdit.jsp"%>
+<%@ include file="../modal/ppProfileEdit.jsp"%>
+<%@ include file="../modal/sellerProfileEdit.jsp"%>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
@@ -129,16 +131,28 @@ label.error {
 	                                                                    <tr>
 	                                                                    	<td>${output.memIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="javascript:void(0)" class="m-modal" data-toggle="modal" data-target="#memberModal">${output.memId}</a>		
+	                                                                        	<a href="#" onclick="return false;" class="m-modal" data-toggle="modal" data-target="#memberModal">${output.memId}</a>		
 	                                                                        </td>
 	                                                                        <td>${output.memPw}</td>
 	                                                                        <td  data-value="${output.memState}">${output.memStateName}</td>
 	                                                                        <td data-value="${output.memClass}">${output.memClassName}</td>
 	                                                                        <td>${output.memClassSdate}</td>
 	                                                                        <td>${output.memClassEdate}</td>
-	                                                                        <td data-value="${output.memSort}">
-	                                                                       		<a href="javascript:void(0)" class="profile-modal" data-toggle="modal" data-target="#profileModal">${output.memSortName}</a>
-	                                                                       	</td>
+	                                                                        <c:if test="${output.memSort == '0'}">
+		                                                                        <td data-value="${output.memSort}">${output.memSortName}</td>
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memSort == '1'}">
+	                                                                        	<td data-value="${output.memSort}">
+		                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
+		                                                                       			data-target="#p-profileModal">${output.memSortName}</a>
+		                                                                       	</td>
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memSort == '2'}">
+	                                                                        	<td data-value="${output.memSort}">
+		                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
+		                                                                       			data-target="#s-profileModal">${output.memSortName}</a>
+		                                                                       	</td>
+	                                                                        </c:if>
 	                                                                        <td data-value="${output.memCountry}">${output.memCountryName}</td>
 	                                                                        <td data-value="${output.memNation}">${output.memNationName}</td>
 	                                                                        <td data-value="${output.memAddr}">${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
@@ -313,22 +327,15 @@ $(document).on("click",".profile-modal",function(event){
 	var parent = event.target.parentNode;
 	var tr = parent.parentNode;
 	var memSort = tr.children[7].getAttribute("data-value");
+	var memId = tr.children[1].innerText;
 	if (memSort == '1' || memSort == '2') {
-		$.get(ROOT_URL + "/admin/profile/"+memSort, {
-        	cart_num: cart_num,
-        	orderOption: JSON.stringify(orderOption),
-        	orderPrice: orderPrice,
-        	is_direct_order: 'N',
-        	product_num: product_num
-        }, function(json) {
-            swal({
-                title: '확인',
-                text: '수정되었습니다.'
-            }).then(function(result) {
-                $('html, body').animate({scrollTop : 0}, 400);
-                window.location.href = ROOT_URL+"/detailBasket.do?product_num="+product_num;
-            });
-        });
+		$.get(ROOT_URL + "/admin/profile", {
+			'memSort':memSort,
+			'memId':memId
+			}, function(json) {
+				console.log(json.output);
+				
+			});
 	}
 });
 </script>

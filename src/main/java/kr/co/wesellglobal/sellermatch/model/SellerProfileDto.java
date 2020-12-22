@@ -64,13 +64,13 @@ public class SellerProfileDto {
 	 private String sellerEditDate;
 
 	// 상품분류 문자로 치환
-	 private String sellertIndusName;
+	 private String sellerIndusName;
 	 
 	// 사진 리스트
 	 private String[] sellerPhotoList;
 	 
-	 public String getSellertIndusName() {
-			return sellertIndusName;
+	 public String getSellerIndusName() {
+			return sellerIndusName;
 	 }
 	 
 	 public void setSellerPhotoList(String sellerPhoto) {
