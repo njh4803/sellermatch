@@ -57,6 +57,9 @@ public class ProjectDto {
 	// 첨부파일 계약서 등
 	private String projFile;
 	
+	// 상품 검증 미검증(0), 검증(1)
+	private String projProdCerti;
+	
 	// 프로젝트 상태 정상(1), 중지(0)
 	private String projState;
 	
@@ -155,6 +158,16 @@ public class ProjectDto {
 		}
 		return "해외";
 	}
+	
+	public String getProjProdCertiName() {
+		 if (this.projProdCerti.equals("0")) {
+			 return "미검증";
+		 }
+		 if (this.projProdCerti.equals("1")) {
+			 return "검증";
+		 }
+		 return "";
+	 }
 	
 	public String[] getProjKeywordList() {
 		this.projKeywordList = this.projKeyword.split(",");

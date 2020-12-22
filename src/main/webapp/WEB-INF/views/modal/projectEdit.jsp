@@ -247,6 +247,15 @@ label.error {
 																	</div>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+																<label for="projDetail" class="col-sm-3 col-form-label">상품 검증</label>
+																<div class="col-sm-9">
+																	<select id="projProdCerti" name="projProdCerti" class="form-control">
+						                                                <option value="0">미검증</option>
+						                                                <option value="1">검증</option>
+						                                            </select>
+																</div>
+															</div>
 															<div class="form-group row">
 																<label for="projDetail" class="col-sm-3 col-form-label">상품 상세내용
 																	<span class="identify">*</span>

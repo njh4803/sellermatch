@@ -80,12 +80,13 @@
                                                                         <th>등록지역</th>
                                                                         <th>공급방법</th>
                                                                         <th>모집마감일</th>
-                                                                        <th>모집인원 </th>
+                                                                        <th>모집인원</th>
                                                                         <th>상세설명</th>
                                                                         <th>필수요건</th>
                                                                         <th>키워드</th>
                                                                         <th>상세사진</th>
-                                                                        <th>첨부파일 </th>
+                                                                        <th>첨부파일</th>
+                                                                        <th>상품검증</th>
                                                                         <th>프로젝트 상태</th>
                                                                         <th>등록일</th>
                                                                         <th>수정일</th>
@@ -121,6 +122,7 @@
 	                                                                        </c:forEach>
 	                                                                        </td>
 	                                                                        <td>${output.projFile}</td>
+	                                                                        <td data-value="${output.projProdCerti}">${output.projProdCertiName}</td>
 	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
 	                                                                        <td>${output.projRegDate}</td>
 	                                                                        <td>${output.projEditDate}</td>
@@ -273,7 +275,7 @@ $(document).on("click",".p-modal",function(event){
 	var projId = tr.children[1].innerText;
 	var projMemId = tr.children[2].innerText;
 	var projTitle = tr.children[3].innerText;
-	var projSort = tr.children[4].getAttribute("data-value");
+	var projSort = tr.children[4].innerText;
 	var projIndus = tr.children[5].getAttribute("data-value");
 	var projPrice = tr.children[6].innerText;
 	var projMargin = tr.children[7].getAttribute("data-value");
@@ -286,9 +288,10 @@ $(document).on("click",".p-modal",function(event){
 	var projKeyword = tr.children[14].innerText;
 	var projDetailImg = tr.children[15].getAttribute("data-value");
 	var projFile = tr.children[16].innerText;
-	var projState = tr.children[17].getAttribute("data-value");
-	var projRegDate = tr.children[18].innerText;
-	var projEditDate = tr.children[19].innerText;
+	var projProdCerti = tr.children[17].getAttribute("data-value");
+	var projState = tr.children[18].getAttribute("data-value");
+	var projRegDate = tr.children[19].innerText;
+	var projEditDate = tr.children[20].innerText;
 	
 	
 	
@@ -309,6 +312,7 @@ $(document).on("click",".p-modal",function(event){
 	$("#editModal .modal-body #projKeyword").val(projKeyword);
 	$("#editModal .modal-body #projDetailImg").val(projDetailImg);
 	$("#editModal .modal-body #projFile").val(projFile);
+	$("#editModal .modal-body #projProdCerti").val(projProdCerti);
 	$("#editModal .modal-body #projState").val(projState);
 	$("#editModal .modal-body #projRegDate").val(projRegDate);
 	$("#editModal .modal-body #projEditDate").val(projEditDate);

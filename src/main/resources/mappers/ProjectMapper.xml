@@ -23,6 +23,7 @@
         <result property="projRequire" column="proj_require" />
         <result property="projKeyword" column="proj_keyword" />
         <result property="projFile" column="proj_file" />
+        <result property="projProdCerti" column="proj_prod_certi" />
         <result property="projState" column="proj_state" />
         <result property="projRegDate" column="proj_reg_date" />
         <result property="projEndDate" column="proj_end_date" />
@@ -39,11 +40,11 @@
     	INSERT INTO ProjectList
     		(`proj_id`, `proj_mem_id`, `proj_title`, `proj_sort`, `proj_indus`, `proj_price`, `proj_margin`, 
     		`proj_nation`, `proj_supply_type`, `proj_recruit_num`, `proj_detail`, `proj_detail_img`, `proj_require`, `proj_keyword`, `proj_file`, 
-    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`)
+    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`)
     	 VALUES 
     	 	(#{projId}, #{projMemId}, #{projTitle}, #{projSort}, #{projIndus}, #{projPrice}, #{projMargin}, 
     	 	#{projNation}, #{projSupplyType}, #{projRecruitNum}, #{projDetail}, #{projDetailImg}, #{projRequire}, #{projKeyword}, 
-    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate});
+    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti});
     </insert>
     
     <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
@@ -58,7 +59,7 @@
 		    <if test="projFile != '' and projFile != null">
 		    	proj_file = #{projFile}, 
 		    </if>
-		    proj_state = #{projState}, proj_end_date = #{projEndDate}, proj_edit_date = now()
+		    proj_prod_certi = #{projProdCerti}, proj_state = #{projState}, proj_end_date = #{projEndDate}, proj_edit_date = now()
 		where proj_id = #{projId}
 	</update>
     
@@ -68,7 +69,7 @@
     	SELECT 
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
-    		proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
+    		proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
     	FROM ProjectList p
         INNER JOIN IndusList i
         ON p.proj_indus = i.indus_id
@@ -81,7 +82,7 @@
     	SELECT 
     		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
-    		proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
+    		proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
     	FROM ProjectList
     	WHERE proj_id = #{projId}
     </select>

@@ -19,7 +19,6 @@
         <result property="ppProfit" column="pp_profit" />
         <result property="ppProfitChkDate" column="pp_profit_chk_date" />
         <result property="ppBizCerti" column="pp_biz_certi" />
-        <result property="ppProdCerti" column="pp_prod_certi" />
         <result property="ppIndus" column="pp_indus" />
         <result property="ppCh" column="pp_ch" />
         <result property="ppPhoto" column="pp_photo" />
@@ -33,13 +32,13 @@
     <insert id="insertItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.PpProfileDto"
     	useGeneratedKeys="true"
-    	keyProperty="projIdx">
+    	keyProperty="ppIdx">
     	INSERT INTO PpProfile 
     		(`pp_id`, `pp_proj_id`, `pp_mem_id`, `pp_grade`, `pp_intro`, `pp_nation`, `pp_biz_num`, `pp_biz_sort`, `pp_profit`, 
-    		`pp_profit_chk_date`, `pp_biz_certi`, `pp_prod_certi`, `pp_indus`, `pp_ch`, `pp_photo`, `pp_state`, `pp_reg_date`, `pp_edit_date`) 
+    		`pp_profit_chk_date`, `pp_biz_certi`, `pp_indus`, `pp_ch`, `pp_photo`, `pp_state`, `pp_reg_date`, `pp_edit_date`) 
     	VALUES 
     		(#{ppId}, #{ppProjId},, #{ppMemId}, #{ppGrade}, #{ppIntro}, #{ppNation}, #{ppBizNum}, #{ppBizSort}, #{ppProfit}, 
-    		#{ppProfitChkDate}, #{ppBizCerti}, #{ppProdCerti}, #{ppIndus}, #{ppCh}, #{ppPhoto}, #{ppState}, now(), #{ppEditDate});
+    		#{ppProfitChkDate}, #{ppBizCerti}, #{ppIndus}, #{ppCh}, #{ppPhoto}, #{ppState}, now(), #{ppEditDate});
     </insert>
     
     <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.PpProfileDto">
@@ -47,7 +46,7 @@
 		SET 
 		    pp_proj_id = #{ppProjId}, pp_mem_id = #{ppMemId}, pp_grade = #{ppGrade}, pp_intro = #{ppIntro}, pp_nation = #{ppNation},
 		    pp_biz_num = #{ppBizSort}, pp_profit = #{ppProfit}, pp_profit_chk_date = #{ppProfitChkDate}, pp_biz_certi = #{ppBizCerti}, 
-		    pp_prod_certi = #{ppProdCerti}, pp_indus = #{ppIndus}, pp_ch = #{ppCh}, pp_state = #{ppState},
+		    pp_indus = #{ppIndus}, pp_ch = #{ppCh}, pp_state = #{ppState},
 		    <if test="pp_photo !='' and pp_photo != null">
 		    	 pp_photo = #{ppPhoto},
 		    </if> 
@@ -60,7 +59,7 @@
     	resultMap="PpProfileMap">
     	SELECT 
 	   		pp_idx, pp_id, pp_proj_id, pp_mem_id, pp_grade, pp_intro, pp_nation, pp_biz_num, pp_biz_sort, pp_profit, 
-    		pp_profit_chk_date, pp_biz_certi, pp_prod_certi, pp_indus, pp_ch, pp_photo, pp_state, pp_reg_date, pp_edit_date 
+    		pp_profit_chk_date, pp_biz_certi, pp_indus, pp_ch, pp_photo, pp_state, pp_reg_date, pp_edit_date 
     	FROM PpProfile p
         INNER JOIN IndusList i
         ON p.pp_indus = i.indus_id
@@ -72,7 +71,7 @@
     	resultMap="PpProfileMap">
     	SELECT 
     		pp_idx, pp_id, pp_proj_id, pp_mem_id, pp_grade, pp_intro, pp_nation, pp_biz_num, pp_biz_sort, pp_profit, 
-    		pp_profit_chk_date, pp_biz_certi, pp_prod_certi, pp_indus, pp_ch, pp_photo as pp_photo_list, pp_state, pp_reg_date, 
+    		pp_profit_chk_date, pp_biz_certi, pp_indus, pp_ch, pp_photo as pp_photo_list, pp_state, pp_reg_date, 
     		pp_edit_date
     	FROM PpProfile
     	WHERE pp_id = #{ppId}

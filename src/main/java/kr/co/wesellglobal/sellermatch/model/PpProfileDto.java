@@ -42,9 +42,6 @@ public class PpProfileDto {
     // 사업자인증 미인증(0), 인증완료(1)
     private String ppBizCerti;
 
-    // 상품검증 미검증(0),검증(1), 여러 상품에 대한 검증을?
-    private String ppProdCerti;
-
     // 산업분류 vChar(10) : 01~9 ( 농수산물-1, 공산품-2,……..) , 별도 분류 테이블
     private String ppIndus;
     
@@ -108,16 +105,6 @@ public class PpProfileDto {
 		 }
 		 if (this.ppBizSort.equals("5")) {
 			 return "기타";
-		 }
-		 return "";
-	 }
-	 
-	 public String getPpProdCertiName() {
-		 if (this.ppProdCerti.equals("0")) {
-			 return "미검증";
-		 }
-		 if (this.ppProdCerti.equals("1")) {
-			 return "검증";
 		 }
 		 return "";
 	 }
