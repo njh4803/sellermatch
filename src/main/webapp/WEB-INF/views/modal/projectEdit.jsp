@@ -45,12 +45,12 @@ label.error {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">상세정보</h4>
         </div>
         <div class="modal-body">
 													<div class="card-block">
                                                         <h4 class="sub-title">Basic Inputs</h4>
-                                                        <form action="${pageContext.request.contextPath}/admin/project/edit" id="proj_edit_form" name="proj_edit_form" method="post" enctype="multipart/form-data">
+                                                        <form action="${pageContext.request.contextPath}/admin/project/edit" method="post" id="proj_edit_form" name="proj_edit_form" enctype="multipart/form-data">
                                                             <%-- <div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">상품 대표 사진</label>
                                                                 <div class="col-sm-9 file_input">
@@ -128,9 +128,11 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <input id="projSort" type="text" name="projSort" class="form-control" readonly>
-																	</div>
+                                                                	<select id="projSort" name="projSort" class="form-control">
+						                                                <option value="0">일반</option>
+						                                                <option value="1">공급자</option>
+						                                                <option value="2">판매자</option>
+						                                        	</select>
                                                                 </div>
                                                             </div>
                                                             <!-- File upload card start -->
@@ -225,9 +227,52 @@ label.error {
 																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-9">
-																	<input type="text" name="projKeyword" class="form-control" id="projKeyword"
-																		placeholder="`,`로 구분" />
-																</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="고경력선호">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>고경력선호</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="고마진상품">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>고마진상품</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="매출보장 판매자">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>매출보장 판매자</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="수출가능상품">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>수출가능상품</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="요즘 뜨는 제품">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>요즘 뜨는 제품</span>
+	                                                                    </label>
+                                                                	</div>
+                                                         		</div>
 															</div>
 															<div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">첨부파일</label>
@@ -248,7 +293,7 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="projDetail" class="col-sm-3 col-form-label">상품 검증</label>
+																<label for="projProdCerti" class="col-sm-3 col-form-label">상품 검증</label>
 																<div class="col-sm-9">
 																	<select id="projProdCerti" name="projProdCerti" class="form-control">
 						                                                <option value="0">미검증</option>
@@ -264,16 +309,15 @@ label.error {
 																	<textarea class="form-control" style="width: 100%; height: 300px" name="projDetail" id="projDetail"></textarea>
 																</div>
 															</div>
-															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="등록">
-																<input class="btn form-bg-submit" type="reset" value="취소">
+															<div class="modal-footer">
+																<div style="text-align-last: center;">
+																	<input class="btn form-bg-primary" type="submit" value="수정">
+																	<input class="btn form-bg-submit" type="button" value="취소" data-dismiss="modal">
+																</div>
 															</div>
                                                                 </form>
                                                                 <!-- 회원가입 form end -->
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

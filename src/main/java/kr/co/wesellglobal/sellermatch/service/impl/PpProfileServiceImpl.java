@@ -7,11 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.wesellglobal.sellermatch.model.PpProfileDto;
-import kr.co.wesellglobal.sellermatch.model.ProjectDto;
-import kr.co.wesellglobal.sellermatch.model.SellerProfileDto;
 import kr.co.wesellglobal.sellermatch.service.PpProfileService;
-import kr.co.wesellglobal.sellermatch.service.ProjectService;
-import kr.co.wesellglobal.sellermatch.service.SellerProfileService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

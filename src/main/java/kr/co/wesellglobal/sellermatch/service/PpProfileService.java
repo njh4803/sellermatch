@@ -3,6 +3,7 @@ package kr.co.wesellglobal.sellermatch.service;
 import java.util.List;
 
 import kr.co.wesellglobal.sellermatch.model.PpProfileDto;
+import kr.co.wesellglobal.sellermatch.model.SearchCriteria;
 
 public interface PpProfileService {
 	
@@ -11,6 +12,8 @@ public interface PpProfileService {
 	public void addPpProfile(PpProfileDto input) throws Exception;
 	
 	public PpProfileDto getPpProfile(PpProfileDto input) throws Exception;
+	
+	/* public void editPpProfile(PpProfileDto input) throws Exception; */
 	
 	public void editPpProfile(PpProfileDto input) throws Exception;
 	

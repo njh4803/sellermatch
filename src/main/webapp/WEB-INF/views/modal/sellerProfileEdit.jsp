@@ -10,7 +10,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">상세정보</h4>
         </div>
         <div class="modal-body">
 			<form action="${pageContext.request.contextPath}/admin/profile/editOk" id="profile_form" name="profile_form" method="post" enctype="multipart/form-data">
@@ -265,15 +265,14 @@
                                                                     <textarea id="sellerIntro" name="sellerIntro" style="width: 100%; height: 150px;" class="form-control"></textarea>
                                                                 </div>
                                                             </div>
-															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="수정">
-																<input class="btn form-bg-submit" type="reset" value="취소">
+                                                            <div class="modal-footer">
+																<div style="text-align-last: center;">
+																	<input class="btn form-bg-primary" type="submit" value="수정">
+																	<input class="btn form-bg-submit" type="button" value="취소" data-dismiss="modal">
+																</div>
 															</div>
                                                                 </form>
                                                                 <!-- 회원가입 form end -->													
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -376,51 +375,21 @@ $(function(){
         }
     });
     
-    $('#join_form').ajaxForm({
-        // submit 전에 호출된다.
-        beforeSubmit: function(arr, form, options) {
-            // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
-            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            return $(form).valid();
-        },
-        success: function(json) {
-            swal('알림', '회원정보가 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/admin/memberList';
-            });
-        },
+    $("#profile_form").submit(function(e) {
+
+        e.preventDefault();
+       
+        $.ajax({
+               type: "PUT",
+               url: url,
+               data: form.serialize(), // serializes the form's elements.
+               success: function() {
+            	   swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
+                       window.location = ROOT_URL + '/admin/memberList';
+                   });
+               }
+        });
+        
     });
-	$("#sendAuthEmail").click(function(e) {
-	    const memEmail = $("#memEmail").val();
-	
-	    if (!memEmail) {
-	    	swal('알림', '이메일을 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/sendAuthEmail', {
-	    	memEmail: memEmail
-	    }, function(json) {
-	    	swal('확인', '인증번호가 발송되었습니다.', 'success');
-	    });
-	});
-	$("#authConfirm").click(function(e) {
-	    const auth_confirm = $("#auth_confirm").val();
-	
-	    if (!auth_confirm) {
-	    	swal('알림', '인증번호를 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/authConfirm', {
-	    	auth_confirm: auth_confirm
-	    }, function(json) {
-	    	if (json.result == "0") {
-	    		swal('알림', '인증실패', 'warning');
-			} else {
-		    	swal('확인', '인증이 확인되었습니다.', 'success');
-		    	$("#memRname").val(json.result);
-			}
-	    });
-	});
 });
 </script>

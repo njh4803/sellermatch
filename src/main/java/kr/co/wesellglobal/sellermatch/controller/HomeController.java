@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.wesellglobal.sellermatch.model.Users;
-import kr.co.wesellglobal.sellermatch.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -26,8 +24,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 	
-	@Autowired
-	TestService testService;
 	
 	
 	/**

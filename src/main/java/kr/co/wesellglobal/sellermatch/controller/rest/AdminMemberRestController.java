@@ -2,39 +2,31 @@ package kr.co.wesellglobal.sellermatch.controller.rest;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
-import kr.co.wesellglobal.sellermatch.model.Users;
 import kr.co.wesellglobal.sellermatch.service.MemberService;
-import kr.co.wesellglobal.sellermatch.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
 public class AdminMemberRestController {
 	
-	@Autowired
-	TestService testService;
 	@Autowired
 	MemberService memberService;
 	@Autowired
@@ -175,12 +167,12 @@ public class AdminMemberRestController {
 	public Map<String, Object> editOk(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
 			@RequestParam(value = "memId", required = false) String memId,
 			@RequestParam(value = "memPw_confirm", required = false) String memPw,
-			@RequestParam(value = "memName") String memName,
+			@RequestParam(value = "memName", required = false) String memName,
 			@RequestParam(value = "memNick", required = false) String memNick,
 			@RequestParam(value = "memTel", required = false) String memTel,
-			@RequestParam(value = "memRname") String memRname,
-			@RequestParam(value = "memCountry") String memCountry,
-			@RequestParam(value = "memNation") String memNation,
+			@RequestParam(value = "memRname", required = false) String memRname,
+			@RequestParam(value = "memCountry", required = false) String memCountry,
+			@RequestParam(value = "memNation", required = false) String memNation,
 			@RequestParam(value = "memPost", required = false) String memPost,
 			@RequestParam(value = "memAddr", required = false) String memAddr,
 			@RequestParam(value = "memAddr2") String memAddr2) {

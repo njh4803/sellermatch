@@ -74,9 +74,10 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.SellerProfileDto"
     	resultMap="SellerProfileMap">
     	SELECT 
-    		seller_idx, seller_id, seller_mem_id, seller_grade, seller_intro, seller_ch_chk, seller_ch_chk_date, 
+    		seller_idx, seller_id, seller_mem_id, seller_grade, seller_intro, seller_ch_chk, date_format(seller_ch_chk_date, '%Y-%m-%d') as seller_ch_chk_date, 
     		seller_career, seller_sale_chk, seller_nation, seller_biz_num, seller_biz_sort, seller_biz_certi, 
-    		seller_ch, seller_indus as seller_indus_name, seller_photo as seller_photo_list, seller_state, seller_reg_date, seller_edit_date 
+    		seller_ch, seller_indus, seller_photo as seller_photo_list, seller_state, 
+    		date_format(seller_reg_date, '%Y-%m-%d') as seller_reg_date, date_format(seller_edit_date, '%Y-%m-%d') as seller_edit_date 
     	FROM SellerProfile
     	WHERE seller_mem_id = #{sellerMemId}
     </select>

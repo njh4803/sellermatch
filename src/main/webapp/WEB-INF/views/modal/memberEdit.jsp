@@ -10,7 +10,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">상세정보</h4>
         </div>
         <div class="modal-body">
 			<form action="${pageContext.request.contextPath}/admin/member/editOk" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
@@ -160,16 +160,15 @@
 																		placeholder="나머지 주소" />
 																</div>
 															</div>
-															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="수정">
-																<input class="btn form-bg-submit" type="reset" value="취소">
+															<div class="modal-footer">
+																<div style="text-align-last: center;">
+																	<input class="btn form-bg-primary" type="submit" value="수정">
+																	<input class="btn form-bg-submit" type="button" value="취소" data-dismiss="modal">
+																</div>
 															</div>
 															<input type="hidden" name="memRname" id="memRname" readonly="readonly">
                                                                 </form>
                                                                 <!-- 회원가입 form end -->													
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

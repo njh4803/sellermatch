@@ -92,19 +92,22 @@ public class ProjectDto {
 	public String[] getProjDetailImgList() {
 		return this.projDetailImgList;
 	}
-			
+	
 	public String getProjIndusName() {
 		return projIndusName;
 	}
 	
 	public String getProjSortName() {
-		if (this.projSort == "1") {
+		if (this.projSort.equals("0")) {
 			return "공급자";
 		}
-		if (this.projSort == "2") {
+		if (this.projSort.equals("1")) {
+			return "공급자";
+		}
+		if (this.projSort.equals("2")) {
 			return "판매자";
 		}
-		return "일반";
+		return "";
 	}
 	
 	public String getProjSupplyTypeName() {
@@ -127,7 +130,7 @@ public class ProjectDto {
 	}
 	
 	public String getProjStateName() {
-		if (this.projState == "1") {
+		if (this.projState.equals("1")) {
 			return "정상";
 		}
 		return "중지";
@@ -168,9 +171,4 @@ public class ProjectDto {
 		 }
 		 return "";
 	 }
-	
-	public String[] getProjKeywordList() {
-		this.projKeywordList = this.projKeyword.split(",");
-		return this.projKeywordList;
-	}
 }

@@ -548,7 +548,7 @@
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation" menu-title-theme="theme5">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-trigger">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/admin">
                                         <span class="pcoded-micon"><i class="ti-home"></i></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">대시보드</span>
                                         <span class="pcoded-mcaret"></span>
@@ -577,52 +577,13 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)" >
-                                        <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">프로필 관리</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="${pageContext.request.contextPath}/admin/product" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar">판매자 프로필관리</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="${pageContext.request.contextPath}/admin/product" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar-inverse">공급자 프로필관리</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)" >
-                                        <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">결제관리</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="navbar-light.html" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar">결제내역조회</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                	</ul>
-                                </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)" >
+                                <li class="">
+                                    <a href="${pageContext.request.contextPath}/admin/board" >
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                                         <span class="pcoded-mtext" data-i18n="nav.navigate.main">커뮤니티관리</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                    <ul class="pcoded-submenu">
+                                    <!-- <ul class="pcoded-submenu">
                                         <li class=" ">
                                             <a href="navbar-light.html" >
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -651,37 +612,21 @@
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
-                                <li class="pcoded-hasmenu">
+                                <li class="">
+                                    <a href="javascript:void(0)" >
+                                        <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">결제관리</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <li class="">
                                     <a href="javascript:void(0)" >
                                         <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
                                         <span class="pcoded-mtext" data-i18n="nav.navigate.main">통계관리</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="navbar-light.html" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar">#</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="navbar-dark.html" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar-inverse">#</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="navbar-elements.html" >
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.navigate.navbar-with-elements">#</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
                         </div>

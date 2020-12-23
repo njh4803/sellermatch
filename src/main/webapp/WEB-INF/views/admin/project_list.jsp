@@ -36,10 +36,9 @@
                                     <!-- Page-header start -->
                                     <div class="page-header">
                                         <div class="page-header-title">
-                                            <h4>Basic DataTables</h4>
-                                            <span>Basic initialisation of DataTables</span>
+                                            <h4>프로젝트 관리</h4>
                                         </div>
-                                        <div class="page-header-breadcrumb">
+                                        <!-- <div class="page-header-breadcrumb">
                                             <ul class="breadcrumb-title">
                                                 <li class="breadcrumb-item">
                                                     <a href="index.html">
@@ -51,7 +50,7 @@
                                                 <li class="breadcrumb-item"><a href="#!">Basic Initialization</a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <!-- Page-header end -->
                                     <!-- Page-body start -->
@@ -62,7 +61,7 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                     	<!-- Trigger the modal with a button -->
-														<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectModal">Open Modal</button>
+														<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
@@ -111,11 +110,7 @@
 	                                                                        <td>${output.projRecruitNum}</td>
 	                                                                        <td>${output.projDetail}</td>
 	                                                                        <td>${output.projRequire}</td>
-	                                                                        <td>
-	                                                                        <c:forEach var="keyword" items="${output.projKeywordList}">
-	                                                                        	${keyword}
-	                                                                        </c:forEach>
-	                                                                        </td>
+	                                                                        <td>${output.projKeyword}</td>
 	                                                                        <td data-value="${output.projDetailImgList}">
 	                                                                        <c:forEach var="detailImg" items="${output.projDetailImgList}">
 	                                                                        	${detailImg}, 
@@ -275,7 +270,7 @@ $(document).on("click",".p-modal",function(event){
 	var projId = tr.children[1].innerText;
 	var projMemId = tr.children[2].innerText;
 	var projTitle = tr.children[3].innerText;
-	var projSort = tr.children[4].innerText;
+	var projSort = tr.children[4].getAttribute("data-value");
 	var projIndus = tr.children[5].getAttribute("data-value");
 	var projPrice = tr.children[6].innerText;
 	var projMargin = tr.children[7].getAttribute("data-value");
@@ -309,7 +304,15 @@ $(document).on("click",".p-modal",function(event){
 	$("#editModal .modal-body #projRecruitNum").val(projRecruitNum);
 	$("#editModal .modal-body #projDetail").text(projDetail);
 	$("#editModal .modal-body #projRequire").val(projRequire);
-	$("#editModal .modal-body #projKeyword").val(projKeyword);
+	
+	// 초기화
+	$("#editModal .modal-body input[name=projKeyword]").attr('checked', false);
+	var projKeywordValue = projKeyword.split(',');
+	console.log(projKeywordValue);
+	for (var i = 0; i < projKeywordValue.length; i++) {
+		
+		$("#editModal .modal-body input[name=projKeyword][value="+projKeywordValue[i]+"]").attr('checked', true);
+	}
 	$("#editModal .modal-body #projDetailImg").val(projDetailImg);
 	$("#editModal .modal-body #projFile").val(projFile);
 	$("#editModal .modal-body #projProdCerti").val(projProdCerti);

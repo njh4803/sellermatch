@@ -47,7 +47,7 @@
 		    pp_proj_id = #{ppProjId}, pp_mem_id = #{ppMemId}, pp_grade = #{ppGrade}, pp_intro = #{ppIntro}, pp_nation = #{ppNation},
 		    pp_biz_num = #{ppBizSort}, pp_profit = #{ppProfit}, pp_profit_chk_date = #{ppProfitChkDate}, pp_biz_certi = #{ppBizCerti}, 
 		    pp_indus = #{ppIndus}, pp_ch = #{ppCh}, pp_state = #{ppState},
-		    <if test="pp_photo !='' and pp_photo != null">
+		    <if test="ppPhoto !='' and ppPhoto != null">
 		    	 pp_photo = #{ppPhoto},
 		    </if> 
 		    pp_edit_date = now()
@@ -70,9 +70,9 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.PpProfileDto"
     	resultMap="PpProfileMap">
     	SELECT 
-    		pp_idx, pp_id, pp_proj_id, pp_mem_id, pp_grade, pp_intro, pp_nation, pp_biz_num, pp_biz_sort, pp_profit, 
-    		pp_profit_chk_date, pp_biz_certi, pp_indus, pp_ch, pp_photo as pp_photo_list, pp_state, pp_reg_date, 
-    		pp_edit_date
+    		pp_idx, pp_id, pp_proj_id, pp_mem_id, pp_grade, pp_intro, pp_nation, pp_biz_num, pp_biz_sort, pp_profit,date_format(pp_profit_chk_date, '%Y-%m-%d') as pp_profit_chk_date, 
+    		pp_biz_certi, pp_indus, pp_ch, pp_photo as pp_photo_list, pp_state, date_format(pp_reg_date, '%Y-%m-%d') as pp_reg_date, 
+    		date_format(pp_edit_date, '%Y-%m-%d') as pp_edit_date
     	FROM PpProfile
     	WHERE pp_mem_id = #{ppMemId}
     </select>

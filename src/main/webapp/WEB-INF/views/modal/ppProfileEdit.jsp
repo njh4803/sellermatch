@@ -10,10 +10,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">상세정보</h4>
         </div>
         <div class="modal-body">
-			<form action="${pageContext.request.contextPath}/admin/profile/editOk" id="profile_form" name="profile_form" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/admin/profile" id="profile_form" name="profile_form" enctype="multipart/form-data">
 															<div class="form-group row">
                                                                 <label for="ppId" class="col-sm-2 col-form-label">프로필 번호
                                                                 	<span class="identify">*</span>
@@ -45,16 +45,6 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="ppState" class="col-sm-2 col-form-label">공급자 상태
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-10">
-                                                                	<div class="form-group">
-	                                                                    <input id="ppState" type="text" name="ppState" class="form-control" readonly="readonly">
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
                                                                 <label for="ppRegDate" class="col-sm-2 col-form-label">공급자 등록일
                                                                 	<span class="identify">*</span>
                                                                 </label>
@@ -75,6 +65,17 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label for="ppState" class="col-sm-2 col-form-label">공급자 상태
+                                                                	<span class="identify">*</span>
+                                                                </label>
+                                                                <div class="col-sm-10">
+                                                               		<select id="ppState" name="ppState" class="form-control">
+						                                                <option value="0">중지</option>
+						                                                <option value="1">정상</option>
+						                                            </select>
+						                                        </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">공급자 등급
                                                                 	<span class="identify">*</span>
                                                                 </label>
@@ -83,6 +84,7 @@
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="1">1등급</option>
 						                                                <option value="2">2등급</option>
+						                                                <option value="3">3등급</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
@@ -248,15 +250,14 @@
                                                                     <textarea id="ppIntro" name="ppIntro" style="width: 100%; height: 150px;" class="form-control"></textarea>
                                                                 </div>
                                                             </div>
-															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="수정">
-																<input class="btn form-bg-submit" type="reset" value="취소">
+															<div class="modal-footer">
+																<div style="text-align-last: center;">
+																	<input class="btn form-bg-primary" type="submit" value="수정">
+																	<input class="btn form-bg-submit" type="button" value="취소" data-dismiss="modal">
+																</div>
 															</div>
                                                                 </form>
                                                                 <!-- 회원가입 form end -->													
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -359,51 +360,42 @@ $(function(){
         }
     });
     
-    $('#join_form').ajaxForm({
+    
+    /* $('#profile_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
             return $(form).valid();
         },
+        type: 'PUT',
+        Content-Type: application/x-www-form-urlencoded,
         success: function(json) {
             swal('알림', '회원정보가 수정되었습니다.', 'success').then(function(result) {
                 window.location = ROOT_URL + '/admin/memberList';
             });
         },
+    }); */
+    $("#profile_form").submit(function(e) {
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var form = $(this);
+        var url = form.attr('action');
+        
+       
+        $.ajax({
+               type: "PUT",
+               url: url,
+               data: form.serialize(), // serializes the form's elements.
+               success: function() {
+            	   swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
+                       window.location = ROOT_URL + '/admin/memberList';
+                   });
+               }
+        });
+        
     });
-	$("#sendAuthEmail").click(function(e) {
-	    const memEmail = $("#memEmail").val();
-	
-	    if (!memEmail) {
-	    	swal('알림', '이메일을 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/sendAuthEmail', {
-	    	memEmail: memEmail
-	    }, function(json) {
-	    	swal('확인', '인증번호가 발송되었습니다.', 'success');
-	    });
-	});
-	$("#authConfirm").click(function(e) {
-	    const auth_confirm = $("#auth_confirm").val();
-	
-	    if (!auth_confirm) {
-	    	swal('알림', '인증번호를 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/authConfirm', {
-	    	auth_confirm: auth_confirm
-	    }, function(json) {
-	    	if (json.result == "0") {
-	    		swal('알림', '인증실패', 'warning');
-			} else {
-		    	swal('확인', '인증이 확인되었습니다.', 'success');
-		    	$("#memRname").val(json.result);
-			}
-	    });
-	});
+    
 });
 </script>
