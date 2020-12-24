@@ -578,7 +578,7 @@
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="${pageContext.request.contextPath}/admin/board" >
+                                    <a href="${pageContext.request.contextPath}/admin/boardList" >
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                                         <span class="pcoded-mtext" data-i18n="nav.navigate.main">커뮤니티관리</span>
                                         <span class="pcoded-mcaret"></span>

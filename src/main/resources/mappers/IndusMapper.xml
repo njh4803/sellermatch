@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="IndusListMapper">
+<mapper namespace="IndusMapper">
 
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
-    <resultMap id="indusListMap"
+    <resultMap id="indusMap"
         type="kr.co.wesellglobal.sellermatch.model.IndusDto">
         <result property="indusIdx"   column="indus_idx" />
         <result property="indusId"     column="indus_id" />
@@ -15,7 +15,7 @@
     
     <select id="selectList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.IndusDto"
-    	resultMap="indusListMap">
+    	resultMap="indusMap">
     	SELECT 
 	   		indus_idx, indus_id, indus_name, indus_reg_date
     	FROM IndusList
@@ -23,7 +23,7 @@
     
     <select id="selectItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.IndusDto"
-    	resultMap="indusListMap">
+    	resultMap="indusMap">
     	SELECT 
     		indus_idx, indus_id, indus_name, indus_reg_date
     	FROM IndusList

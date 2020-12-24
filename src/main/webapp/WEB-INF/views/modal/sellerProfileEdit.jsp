@@ -362,21 +362,5 @@ $(function(){
         });
         
     });
-    
-/*     $('#profile_form').ajaxForm({
-        // submit 전에 호출된다.
-        beforeSubmit: function(arr, form, options) {
-            // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
-            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            return $(form).valid();
-        },
-        method: "PUT",
-        data: form.serialize(),
-        success: function(json) {
-        	swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/admin/memberList';
-            });
-        },
-    }); */
 });
 </script>

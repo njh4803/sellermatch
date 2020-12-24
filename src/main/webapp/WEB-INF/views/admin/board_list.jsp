@@ -4,8 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%>
-<%@ include file="../modal/projectEdit.jsp"%>
-<%@ include file="../modal/projectAdd.jsp"%>
+<%@ include file="../modal/boardEdit.jsp"%>
+<%@ include file="../modal/boardAdd.jsp"%>
 
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -36,7 +36,7 @@
                                     <!-- Page-header start -->
                                     <div class="page-header">
                                         <div class="page-header-title">
-                                            <h4>프로젝트 관리</h4>
+                                            <h4>게시판 관리</h4>
                                         </div>
                                         <!-- <div class="page-header-breadcrumb">
                                             <ul class="breadcrumb-title">
@@ -61,7 +61,7 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                     	<!-- Trigger the modal with a button -->
-														<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button>
+														<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boardAddModal">게시판 등록</button>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
@@ -69,58 +69,38 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>번호</th>
-                                                                        <th>프로젝트번호</th>
-                                                                        <th>아이디</th>
+                                                                        <th>게시판번호</th>
                                                                         <th>제목</th>
-                                                                        <th>회원분류</th>
-                                                                        <th>산업분류</th>
-                                                                        <th>상품가격</th>
-                                                                        <th>판매마진</th>
-                                                                        <th>등록지역</th>
-                                                                        <th>공급방법</th>
-                                                                        <th>모집마감일</th>
-                                                                        <th>모집인원</th>
-                                                                        <th>상세설명</th>
-                                                                        <th>필수요건</th>
-                                                                        <th>키워드</th>
-                                                                        <th>상세사진</th>
-                                                                        <th>첨부파일</th>
-                                                                        <th>상품검증</th>
-                                                                        <th>프로젝트 상태</th>
-                                                                        <th>등록일</th>
-                                                                        <th>수정일</th>
+                                                                        <th>내용</th>
+                                                                        <th>작성자</th>
+                                                                        <th>게시판 유형</th>
+                                                                        <th>질문유형</th>
+                                                                        <th>이메일</th>
+                                                                        <th>조회수</th>
+                                                                        <th>등록일시</th>
+                                                                        <th>수정일시</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 <c:forEach var="output" items="${output}" varStatus="status">
 	                                                                    <tr>
-	                                                                    	<td>${output.projIdx}</td>
+	                                                                    	<td>${output.boardIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="javascript:void(0)" data-hidden="${output.projIndus}" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
+	                                                                        	<a href="javascript:void(0)" class="b-modal" data-toggle="modal" data-target="#boardModal">${output.boardId}</a>		
 	                                                                        </td>
-	                                                                        <td>${output.projMemId}</td>
-	                                                                        <td>${output.projTitle}</td>
-	                                                                        <td data-value="${output.projSort}">${output.projSortName}</td>
-	                                                                        <td data-value="${output.projIndus}">${output.projIndusName}</td>
-	                                                                        <td>${output.projPrice}</td>
-	                                                                        <td data-value="${output.projMargin}">${output.projMarginName}</td>
-	                                                                        <td data-value="${output.projNation}">${output.projNationName}</td>
-	                                                                        <td data-value="${output.projSupplyType}">${output.projSupplyTypeName}</td>
-	                                                                        <td>${output.projEndDate}</td>
-	                                                                        <td>${output.projRecruitNum}</td>
-	                                                                        <td>${output.projDetail}</td>
-	                                                                        <td>${output.projRequire}</td>
-	                                                                        <td>${output.projKeyword}</td>
-	                                                                        <td data-value="${output.projDetailImgList}">
-	                                                                        <c:forEach var="detailImg" items="${output.projDetailImgList}">
-	                                                                        	${detailImg}, 
-	                                                                        </c:forEach>
+	                                                                        <td>${output.boardTitle}</td>
+	                                                                        <td>${output.boardContents}</td>
+	                                                                        <td>${output.boardWriter}</td>
+	                                                                        <td data-value="${output.boardType}">${output.boardTypeName}</td>
+	                                                                        <td data-value="${output.boardQaType}">
+	                                                                        	<c:if test="${output.boardQaType != null}">
+	                                                                        		${output.boardQaTypeName}
+	                                                                        	</c:if>
 	                                                                        </td>
-	                                                                        <td>${output.projFile}</td>
-	                                                                        <td data-value="${output.projProdCerti}">${output.projProdCertiName}</td>
-	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
-	                                                                        <td>${output.projRegDate}</td>
-	                                                                        <td>${output.projEditDate}</td>
+	                                                                        <td>${output.boardEmail}</td>
+	                                                                        <td>${output.boardHit}</td>
+	                                                                        <td>${output.boardRegDate}</td>
+	                                                                        <td>${output.boardEditDate}</td>
 	                                                                    </tr>
                                                                 </c:forEach>
                                                                 </tbody>
@@ -263,8 +243,8 @@
         </div>
     </div>
 <script type="text/javascript">
-$(document).on("click",".p-modal",function(event){
-	var parent = event.target.parentNode;
+$(document).on("click",".b-modal",function(event){
+/* 	var parent = event.target.parentNode;
 	var tr = parent.parentNode;
 	var projIdx = tr.children[0].innerText;
 	var projId = tr.children[1].innerText;
@@ -318,7 +298,7 @@ $(document).on("click",".p-modal",function(event){
 	$("#editModal .modal-body #projProdCerti").val(projProdCerti);
 	$("#editModal .modal-body #projState").val(projState);
 	$("#editModal .modal-body #projRegDate").val(projRegDate);
-	$("#editModal .modal-body #projEditDate").val(projEditDate);
+	$("#editModal .modal-body #projEditDate").val(projEditDate); */
 	
 	
 	

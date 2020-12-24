@@ -99,7 +99,7 @@ label.error {
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
-                                                            <table id="simpletable" class="table-center table table-striped table-bordered nowrap text-center">
+                                                            <table id="simpletable" class="table-center table table-striped table-bordered text-center">
                                                                 <thead>
                                                                     <tr>
                                                                     	<th>번호</th>

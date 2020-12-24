@@ -18,21 +18,21 @@ import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
+import kr.co.wesellglobal.sellermatch.model.BoardDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.service.BoardService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class AdminProjectController {
+public class AdminBoardController {
 	
 	@Autowired
-	ProjectService projectService;
-	@Autowired
-	IndusService indusService;
+	BoardService boardService;
 	@Autowired
 	RegexHelper regexHelper;
 	@Autowired
@@ -40,24 +40,24 @@ public class AdminProjectController {
 	@Autowired
 	MailHelper mailHelper;
 	
-	@RequestMapping(value = "/admin/projectList", method = RequestMethod.GET)
-	public ModelAndView adminProjectList(Model model,  @SessionAttribute(value = "member", required = false) MemberDto member) {
+	@RequestMapping(value = "/admin/boardList", method = RequestMethod.GET)
+	public ModelAndView adminboardList(Model model,  @SessionAttribute(value = "member", required = false) MemberDto member) {
 		if (member == null) {
 			return new ModelAndView("admin/admin_login");
 		}
-		ProjectDto input = new ProjectDto();
+		BoardDto input = new BoardDto();
 		
 		//목록조회
 		
-		List<ProjectDto> output = null;
+		List<BoardDto> output = null;
 		try {
-			output = projectService.getProjectList(input);
+			output = boardService.getBoardList(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
 		
-		return new ModelAndView("admin/project_list");
+		return new ModelAndView("admin/board_list");
 	}
 }
