@@ -13,7 +13,7 @@
           <h4 class="modal-title">상세정보</h4>
         </div>
         <div class="modal-body">
-			<form action="${pageContext.request.contextPath}/admin/member/editOk" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/admin/member/editOk" id="memEdit_form" name="memEdit_form" method="post" enctype="multipart/form-data">
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">프로필 사진</label>
                                                                 <div class="col-sm-10 file_input">
@@ -212,7 +212,7 @@ $(function(){
 	});
 	
     /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-    $('#join_form').validate({
+    $('#memEdit_form').validate({
     	/* 
 			required 필수 항목으로 설정한다. (true, false)
 			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
@@ -233,23 +233,16 @@ $(function(){
             postcode: 'required',
             // [주소1] 우편번호가 입력된 경우만 필수
             memAddr: 'required',
+         	// [닉네임] 필수
+            memNick: 'required',
             
         },
         messages: {
-        	memId: {
-                required: '아이디를 입력하세요.',
-                email: '아이디는 이메일만 입력 가능합니다.',
-                minlength: '아이디는 최소 {4}글자 이상 입력하셔야 합니다.',
-                maxlength: '아이디는 최대 {30}글자까지 가능합니다.',
-                remote: '이미 사용중인 이메일 입니다.'
-            },
             memPw: {
-                required: '비밀번호를 입력하세요.',
                 minlength: '비밀번호는 최소 {0}글자 이상 입력하셔야 합니다.',
                 maxlength: '비밀번호는 최대 {0}글자까지 가능합니다.',
             },
             memPw_confirm: {
-                required: '비밀번호 확인값을 입력하세요.',
                 equalTo: '비밀번호 확인이 잘못되었습니다.',
             },
             email: {
@@ -268,10 +261,11 @@ $(function(){
             memAddr: '기본주소를 입력해 주세요.',
             memCountry: '국가를 선택해주세요.',
             memNation: '지역을 선택해주세요.',
+            memNick: '닉네임을 입력해주세요.',
         }
     });
     
-    $('#join_form').ajaxForm({
+    $('#memEdit_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
