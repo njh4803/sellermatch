@@ -66,7 +66,7 @@ public class AdminProjectRestController {
 			if (projFile != null) {
 				item = webHelper.saveMultipartFile(projFile);
 			}
-			if (projDetailImg != null || projDetailImg.length != 0) {
+			if (projDetailImg.length != 0) {
 				imgItem = webHelper.saveMultipartFile(projDetailImg);
 				for (int i = 0; i < projDetailImg.length; i++) {
 					str += imgItem.get(i).getFilePath() + ",";
@@ -144,7 +144,7 @@ public class AdminProjectRestController {
 			if (projFile != null) {
 				item = webHelper.saveMultipartFile(projFile);
 			}
-			if (projDetailImg != null || projDetailImg.length != 0) {
+			if (projDetailImg.length != 0) {
 				imgItem = webHelper.saveMultipartFile(projDetailImg);
 				for (int i = 0; i < projDetailImg.length; i++) {
 					str += imgItem.get(i).getFilePath() + ",";
@@ -172,7 +172,7 @@ public class AdminProjectRestController {
 		input.setProjRequire(projRequire);
 		input.setProjKeyword(projKeyword);
 		input.setProjProdCerti(projProdCerti);
-		if (projDetailImg != null || projDetailImg.length != 0) {
+		if (projDetailImg.length != 0) {
 			input.setProjDetailImg(str);
 		}
 		if (projFile != null) {

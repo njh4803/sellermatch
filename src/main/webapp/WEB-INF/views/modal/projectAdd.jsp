@@ -51,24 +51,6 @@ label.error {
 													<div class="card-block">
                                                         <h4 class="sub-title">Basic Inputs</h4>
                                                         <form action="${pageContext.request.contextPath}/admin/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
-                                                            <%-- <div class="form-group row">
-                                                                <label class="col-sm-3 col-form-label">상품 대표 사진</label>
-                                                                <div class="col-sm-9 file_input">
-                                                                	<div class="input-group">
-                                                                		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
-									                                    </div>
-									                                    <div style="display: flow-root;">
-									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-										                                	<label>
-										                                		파일 선택
-										                                		<input id = "image" name="prodPhoto" value="" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-										                                	</label>
-									                                    </div>
-																	</div>
-                                                                </div>
-                                                            </div> --%>
                                                             <div class="form-group row">
                                                                 <label for="projTitle" class="col-sm-3 col-form-label">프로젝트 제목
                                                                 	<span class="identify">*</span>
@@ -80,9 +62,7 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projState" class="col-sm-3 col-form-label">프로젝트 상태
-                                                                	<span class="identify">*</span>
-                                                                </label>
+                                                                <label for="projState" class="col-sm-3 col-form-label">프로젝트 상태</label>
                                                                 <div class="col-sm-9">
                                                                 	<select id="projState" name="projState" class="form-control">
 						                                                <option value="0">중지</option>
@@ -101,9 +81,7 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projSort" class="col-sm-3 col-form-label">회원분류
-                                                                	<span class="identify">*</span>
-                                                                </label>
+                                                                <label for="projSort" class="col-sm-3 col-form-label">회원분류</label>
                                                                 <div class="col-sm-9">
                                                                 	<select id="projSort" name="projSort" class="form-control">
 						                                                <option value="0">일반</option>
@@ -175,7 +153,9 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projEndDate" class="col-sm-3 col-form-label">모집마감일</label>
+                                                                <label for="projEndDate" class="col-sm-3 col-form-label">모집마감일
+                                                                	<span class="identify">*</span>
+                                                                </label>
                                                                 <div class="col-sm-9">
                                                                     <input type="date" class="form-control" name="projEndDate" id="projEndDate">
                                                                 </div>
@@ -191,9 +171,7 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="projRecruitNum" class="col-sm-3 control-label">모집인원
-																	<span class="identify">*</span>
-																</label>
+																<label for="projRecruitNum" class="col-sm-3 control-label">모집인원</label>
 																<div class="col-sm-9">
 																	<input type="number" name="projRecruitNum" class="form-control"
 																		id="projRecruitNum" min="1" value="1"/>
@@ -250,7 +228,6 @@ label.error {
 	                                                                    </label>
                                                                 	</div>
                                                          		</div>
-															</div>
 															</div>
 															<div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">첨부파일</label>
@@ -334,62 +311,82 @@ function handleImgfileSelect(e) {
 	});
 };
 
-$(function(){
 
-    /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-    $('#proj_form').validate({
-    	/* 
-			required 필수 항목으로 설정한다. (true, false)
-			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
-		*/
-		
-        rules: {
-            // [프로젝트 제목] 필수 + 알파벳,숫자 조합만 허용
-            projTitle: {
-                required: true, minlength: 5, maxlength: 100, 
-            },
-            // [상품가격] 필수
-            projState: 'required',
-            // [상품마진] 필수
-            projPrice: 'required',
-            // [등록지역] 필수
-            projMargin: 'required',
-            // [공급방법] 필수
-           	projSupplyType: 'required',
-            // [등록지역] 필수
-            projIndus: 'required',
-         	// [상품 상세내용] 필수
-            projDetail: 'required',
-        },
-        messages: {
-        	projTitle: {
-                required: '프로젝트 제목을 입력해주세요.',
-                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
-                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
-            },
-            projState: {
-                required: '프로젝트 상태를 선택해주세요.',
-            },
-            projPrice: {
-                required: '상품가격을 입력해주세요.',
-            },
-            projMargin: {
-                required: '상품마진률을 선택해주세요.',
-            },
-            projSupplyType: {
-                required: '공급방법을 선택해주세요.',
-            },
-            projDetail: '상품 상세내용를 입력해주세요.',
-            projIndus: '상품분류를 선택해주세요.',
-        }
-    });
+$(function(){
+	    /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
+	    $('#proj_form').validate({
+	    	/* 
+				required 필수 항목으로 설정한다. (true, false)
+				remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
+			*/
+			
+	        rules: {
+	        	// [아이디 중복검사]
+	        	projMemId: {
+	                required: true, email: true, 
+	                remote : {
+	                    url : ROOT_URL + '/admin/member/idExistCheck',
+	                    type : 'post',
+	                    data : {
+	                    	memId : function() {
+	                            return $("#projMemId").val();
+	                        }
+	                    }
+	                }
+	            },
+	            // [프로젝트 제목] 필수 + 알파벳,숫자 조합만 허용
+	            projTitle: {
+	                required: true, minlength: 5, maxlength: 100, 
+	            },
+	            // [상품가격] 필수
+	            projState: 'required',
+	            // [상품마진] 필수
+	            projPrice: 'required',
+	            // [등록지역] 필수
+	            projMargin: 'required',
+	            // [공급방법] 필수
+	           	projSupplyType: 'required',
+	            // [등록지역] 필수
+	            projIndus: 'required',
+	         	// [상품 상세내용] 필수
+	            projDetail: 'required',
+	            projEndDate: 'required',
+	        },
+	        messages: {
+	        	projMemId: {
+	                required: '아이디를 입력하세요.',
+	                email: '아이디는 이메일만 입력 가능합니다.',
+	                remote: '존재 하지 않는 아이디 입니다.'
+	            },
+	        	projTitle: {
+	                required: '프로젝트 제목을 입력해주세요.',
+	                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
+	                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
+	            },
+	            projState: {
+	                required: '프로젝트 상태를 선택해주세요.',
+	            },
+	            projPrice: {
+	                required: '상품가격을 입력해주세요.',
+	            },
+	            projMargin: {
+	                required: '상품마진률을 선택해주세요.',
+	            },
+	            projSupplyType: {
+	                required: '공급방법을 선택해주세요.',
+	            },
+	            projDetail: '상품 상세내용를 입력해주세요.',
+	            projIndus: '상품분류를 선택해주세요.',
+	            projEndDate: '모집마감일을 선택해주세요.',
+	        }
+	    });
     
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            //return $(form).valid();
+            return $(form).valid();
         },
         success: function(json) {
             swal('알림', '상품이 등록되었습니다.', 'success').then(function(result) {

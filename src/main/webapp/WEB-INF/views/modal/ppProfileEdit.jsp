@@ -13,7 +13,7 @@
           <h4 class="modal-title">상세정보</h4>
         </div>
         <div class="modal-body">
-			<form action="${pageContext.request.contextPath}/admin/profile" id="profile_form" name="profile_form" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/admin/profile" id="profile_form1" name="profile_form1" enctype="multipart/form-data">
 															<div class="form-group row">
                                                                 <label for="ppId" class="col-sm-2 col-form-label">프로필 번호
                                                                 	<span class="identify">*</span>
@@ -376,7 +376,7 @@ $(function(){
             });
         },
     }); */
-    $("#profile_form").submit(function(e) {
+    $("#profile_form1").submit(function(e) {
 
         e.preventDefault(); // avoid to execute the actual submit of the form.
 
@@ -387,7 +387,10 @@ $(function(){
         $.ajax({
                type: "PUT",
                url: url,
-               data: form.serialize(), // serializes the form's elements.
+               data: form.serialize(),
+               beforeSend: function() {
+	        	   return $('#profile_form1').valid();
+               },
                success: function() {
             	   swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
                        window.location = ROOT_URL + '/admin/memberList';

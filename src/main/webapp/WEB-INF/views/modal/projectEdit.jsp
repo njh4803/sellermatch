@@ -51,25 +51,7 @@ label.error {
 													<div class="card-block">
                                                         <h4 class="sub-title">Basic Inputs</h4>
                                                         <form action="${pageContext.request.contextPath}/admin/project/edit" method="post" id="proj_edit_form" name="proj_edit_form" enctype="multipart/form-data">
-                                                            <%-- <div class="form-group row">
-                                                                <label class="col-sm-3 col-form-label">상품 대표 사진</label>
-                                                                <div class="col-sm-9 file_input">
-                                                                	<div class="input-group">
-                                                                		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
-									                                    </div>
-									                                    <div style="display: flow-root;">
-									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-										                                	<label>
-										                                		파일 선택
-										                                		<input id = "image" name="prodPhoto" value="" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-										                                	</label>
-									                                    </div>
-																	</div>
-                                                                </div>
-                                                            </div> --%>
-                                                            <input type="hidden" id="projId" name="projId">
+                                                        	<input type="hidden" id="projId" name="projId">
                                                             <div class="form-group row">
                                                                 <label for="projTitle" class="col-sm-3 col-form-label">프로젝트 제목
                                                                 	<span class="identify">*</span>
@@ -81,36 +63,12 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projState" class="col-sm-3 col-form-label">프로젝트 상태
-                                                                	<span class="identify">*</span>
-                                                                </label>
+                                                                <label for="projState" class="col-sm-3 col-form-label">프로젝트 상태</label>
                                                                 <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <select id="projState" name="projState" class="form-control">
-							                                                <option value="0">중지</option>
-							                                                <option value="1">정상</option>
-							                                            </select>
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="projRegDate" class="col-sm-3 col-form-label">프로젝트 등록일
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <input id="projRegDate" type="datetime" name="projRegDate" class="form-control" readonly>
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="projEditDate" class="col-sm-3 col-form-label">프로젝트 수정일
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <input id="projEditDate" type="datetime" name="projEditDate" class="form-control" readonly>
-																	</div>
+                                                                	<select id="projState" name="projState" class="form-control">
+						                                                <option value="0">중지</option>
+						                                                <option value="1" selected="selected">정상</option>
+						                                        	</select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -119,14 +77,12 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projMemId" type="text" name="projMemId" class="form-control" readonly>
+	                                                                    <input id="projMemId" type="text" name="projMemId" class="form-control">
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projSort" class="col-sm-3 col-form-label">회원분류
-                                                                	<span class="identify">*</span>
-                                                                </label>
+                                                                <label for="projSort" class="col-sm-3 col-form-label">회원분류</label>
                                                                 <div class="col-sm-9">
                                                                 	<select id="projSort" name="projSort" class="form-control">
 						                                                <option value="0">일반</option>
@@ -141,7 +97,7 @@ label.error {
                                                                 <div class="col-sm-9">
                                                                 <div class="form-group">
 												                    <div class="card-block">
-												                        <input type="file" name="projDetailImg[]" id="filer_input1" multiple="multiple">
+												                        <input type="file" name="projDetailImg" id="filer_input1" multiple="multiple">
 												                    </div>
 											                    </div>
 											                    </div>
@@ -152,7 +108,7 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="number" id="projPrice" name="projPrice" class="form-control" pattern="#,###">
+                                                                    <input type="number" id="projPrice" name="projPrice" class="form-control" min="0" value="0">
                                                                 </div>
                                                             </div>
 															<div class="form-group row">
@@ -198,7 +154,9 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projEndDate" class="col-sm-3 col-form-label">모집마감일</label>
+                                                                <label for="projEndDate" class="col-sm-3 col-form-label">모집마감일
+                                                                	<span class="identify">*</span>
+                                                                </label>
                                                                 <div class="col-sm-9">
                                                                     <input type="date" class="form-control" name="projEndDate" id="projEndDate">
                                                                 </div>
@@ -214,15 +172,13 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="projRecruitNum" class="col-sm-3 control-label">모집인원
-																	<span class="identify">*</span>
-																</label>
+																<label for="projRecruitNum" class="col-sm-3 control-label">모집인원</label>
 																<div class="col-sm-9">
 																	<input type="number" name="projRecruitNum" class="form-control"
-																		id="projRecruitNum" min="1"/>
+																		id="projRecruitNum" min="1" value="1"/>
 																</div>
 															</div>
-                                                            <div class="form-group row">
+															<div class="form-group row">
 																<label for="projKeyword" class="col-sm-3 col-form-label">상품 키워드
 																	<span class="identify">*</span>
 																</label>
@@ -410,7 +366,7 @@ $(function(){
         beforeSubmit: function(arr, form, options) {
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            //return $(form).valid();
+            return $(form).valid();
         },
         success: function(json) {
             swal('알림', '프로젝트가 수정되었습니다.', 'success').then(function(result) {

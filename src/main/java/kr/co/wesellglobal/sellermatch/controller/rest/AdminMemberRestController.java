@@ -62,6 +62,31 @@ public class AdminMemberRestController {
 		}
 	}
 	
+	/** 아이디 존재유무검사 (jQuery Form Validate 플러그인용) */
+	// controller에서 out 객체의 출력결과를 웹브라우저에게 전달할 수 있게 하는 옵션
+	@ResponseBody
+	@RequestMapping(value = "/admin/member/idExistCheck", method = RequestMethod.POST)
+	public void idExistCheck(HttpServletResponse response,
+			// 아이디
+			@RequestParam(value = "projMemId", required = false) String projMemId) {
+
+		MemberDto input = new MemberDto();
+		input.setMemId(projMemId);
+		String result = "false";
+
+		try {
+			memberService.idCheck(input);
+		} catch (Exception e) {
+			result = "true";
+		}
+
+		// out객체를 생성하여 문자열을 직접 출력함
+		try {
+			response.getWriter().print(result);
+		} catch (IOException e) {
+		}
+	}
+	
 	@RequestMapping(value = "/admin/member/sendAuthEmail", method = RequestMethod.POST)
 	public Map<String, Object> sendAuthEmail(HttpSession session,
 			@RequestParam(value = "memEmail", required = false) String memEmail) {

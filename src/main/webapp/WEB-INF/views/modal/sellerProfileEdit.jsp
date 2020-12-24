@@ -13,7 +13,7 @@
           <h4 class="modal-title">상세정보</h4>
         </div>
         <div class="modal-body">
-			<form action="${pageContext.request.contextPath}/admin/profile/editOk" id="profile_form" name="profile_form" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/admin/profile" id="profile_form" name="profile_form" enctype="multipart/form-data">
 															<div class="form-group row">
                                                                 <label for="sellerId" class="col-sm-2 col-form-label">판매자 프로필 번호
                                                                 	<span class="identify">*</span>
@@ -316,7 +316,7 @@ $(function(){
 	});
 	
     /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-    $('#join_form').validate({
+    $('#profile_form').validate({
     	/* 
 			required 필수 항목으로 설정한다. (true, false)
 			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
@@ -324,65 +324,36 @@ $(function(){
 		
         rules: {
             // [비밀번호] 필수 + 글자수 길이 제한
-            memPw: { minlength: 4, maxlength: 30 },
-            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
-            memPw_confirm: { equalTo: '#memPw' },
-         	// [국가] 필수
-            memCountry: 'required',
-         	// [지역] 필수
-            memNation: 'required',
-            // [연락처] 필수
-            memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
-            // [우편번호] 필수 입력
-            postcode: 'required',
-            // [주소1] 우편번호가 입력된 경우만 필수
-            memAddr: 'required',
-            
+            sellerNation: 'required',
+            sellerGrade : 'required',
+            sellerIndus : 'required',
+            sellerBizNum : 'required',
+            sellerBizSort : 'required',
+            sellerIntro : 'required',
         },
         messages: {
-        	memId: {
-                required: '아이디를 입력하세요.',
-                email: '아이디는 이메일만 입력 가능합니다.',
-                minlength: '아이디는 최소 {4}글자 이상 입력하셔야 합니다.',
-                maxlength: '아이디는 최대 {30}글자까지 가능합니다.',
-                remote: '이미 사용중인 이메일 입니다.'
-            },
-            memPw: {
-                required: '비밀번호를 입력하세요.',
-                minlength: '비밀번호는 최소 {0}글자 이상 입력하셔야 합니다.',
-                maxlength: '비밀번호는 최대 {0}글자까지 가능합니다.',
-            },
-            memPw_confirm: {
-                required: '비밀번호 확인값을 입력하세요.',
-                equalTo: '비밀번호 확인이 잘못되었습니다.',
-            },
-            email: {
-                required: '이메일을 입력하세요.',
-                email: '이메일 형식이 잘못되었습니다.',
-                maxlength: '이메일은 최대 {0}글자까지 가능합니다.',
-                remote: '이미 사용중인 이메일 입니다.'
-            },
-            memTel: {
-                required: '연락처를 입력하세요.',
-                phone: '연락처 형식이 잘못되었습니다.',
-                minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
-                maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
-            },
-            postcode: '우편번호를 입력해 주세요.',
-            memAddr: '기본주소를 입력해 주세요.',
-            memCountry: '국가를 선택해주세요.',
-            memNation: '지역을 선택해주세요.',
+        	sellerNation: '판매자지역을 선택해주세요.',
+        	sellerGrade: '판매자등급을 선택해주세요.',
+        	sellerIndus : '상품분류를 선택해주세요.',
+        	sellerBizNum : '사업자 번호를 입력해주세요.',
+        	sellerBizSort : '사업자 유형을 선택해주세요.',
+        	sellerIntro : '자기소개를 입력해주세요.',
         }
     });
     
     $("#profile_form").submit(function(e) {
-
-        e.preventDefault();
+		e.preventDefault();
+		
+		var form = $(this);
+        var url = form.attr('action');
        
         $.ajax({
-               type: "PUT",
-               url: url,
-               data: form.serialize(), // serializes the form's elements.
+			   type: "PUT",
+	           url: url,
+	           data: form.serialize(),
+	           beforeSend: function() {
+	        	   return $('#profile_form').valid();
+               },
                success: function() {
             	   swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
                        window.location = ROOT_URL + '/admin/memberList';
@@ -391,5 +362,21 @@ $(function(){
         });
         
     });
+    
+/*     $('#profile_form').ajaxForm({
+        // submit 전에 호출된다.
+        beforeSubmit: function(arr, form, options) {
+            // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
+            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
+            return $(form).valid();
+        },
+        method: "PUT",
+        data: form.serialize(),
+        success: function(json) {
+        	swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
+                window.location = ROOT_URL + '/admin/memberList';
+            });
+        },
+    }); */
 });
 </script>

@@ -121,13 +121,14 @@ public class AdminProfileRestController {
 			input.setSellerBizNum(cri.getSellerBizNum());
 			input.setSellerBizSort(cri.getSellerBizSort());
 			input.setSellerBizCerti(cri.getSellerBizCerti());
+			input.setSellerGrade(cri.getSellerGrade());
 			input.setSellerCh(cri.getSellerCh());
 			input.setSellerIndus(cri.getSellerIndus());
 			//input.setSellerPhoto(cri.getSellerPhoto());
 			input.setSellerState(cri.getSellerState());
 			input.setSellerRegDate(cri.getSellerRegDate());
 			try {
-				sellerProfileService.getSellerProfile(input);
+				sellerProfileService.editSellerProfile(input);
 			} catch (Exception e) {
 				return webHelper.getJsonError(e.getLocalizedMessage());
 			}

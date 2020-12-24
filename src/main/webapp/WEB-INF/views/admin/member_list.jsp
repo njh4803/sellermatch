@@ -336,6 +336,8 @@ $(document).on("click",".profile-modal",function(event){
 					$("#p-profileModal .modal-body #ppBizSort").val(json.output.ppBizSort);
 					var ppCh = json.output.ppCh.split(',');
 					console.log(ppCh);
+					// 초기화
+					$("#p-profileModal .modal-body input[name=ppCh]").attr('checked', false);
 					for (var i = 0; i < ppCh.length; i++) {
 						$("#p-profileModal .modal-body input[name=ppCh]").eq(ppCh[i]-1).attr('checked', true);
 					}
@@ -359,10 +361,13 @@ $(document).on("click",".profile-modal",function(event){
 					$("#s-profileModal .modal-body #sellerBizNum").val(json.output.sellerBizNum);
 					$("#s-profileModal .modal-body #sellerBizSort").val(json.output.sellerBizSort);
 					var sellerCh = json.output.sellerCh.split(',');
+					// 초기화
+					$("#s-profileModal .modal-body input[name=sellerCh]").attr('checked', false);
 					console.log(sellerCh);
 					for (var i = 0; i < sellerCh.length; i++) {
-						$("#p-profileModal .modal-body input[name=sellerCh]").eq(sellerCh[i]-1).attr('checked', true);
+						$("#s-profileModal .modal-body input[name=sellerCh]").eq(sellerCh[i]-1).attr('checked', true);
 					}
+					
 					$("#s-profileModal .modal-body #sellerCareer").val(json.output.sellerCareer);
 					$("#s-profileModal .modal-body #sellerChChk").val(json.output.sellerChChk);
 					$("#s-profileModal .modal-body #sellerGrade").val(json.output.sellerGrade);
