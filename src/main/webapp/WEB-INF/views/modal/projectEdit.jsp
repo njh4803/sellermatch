@@ -247,7 +247,7 @@ label.error {
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="매출보장 판매자">
+	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="매출보장판매자">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -265,7 +265,7 @@ label.error {
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="요즘 뜨는 제품">
+	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="요즘뜨는제품">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
