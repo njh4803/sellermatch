@@ -57,7 +57,6 @@
     		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
     		mem_date, mem_edit_date
     	FROM MemList
-		ORDER BY mem_date DESC
 		<where>
 			<if test="memId != null and memId != ''">
 				OR mem_id LIKE concat('%', #{memId}, '%')
@@ -78,6 +77,7 @@
 				OR mem_addr2 LIKE concat('%', #{memAddr2}, '%')
 			</if>
 		</where>
+		ORDER BY mem_date DESC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
