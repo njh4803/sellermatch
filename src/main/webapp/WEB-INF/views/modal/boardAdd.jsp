@@ -76,7 +76,12 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                	<textarea id="boardContents" name="boardContents" class="form-control" style="width: 100%; height: 150px;"></textarea>
+                                                                	<textarea id="addBoardContents" name="boardContents" class="form-control"></textarea>
+																	<script type="text/javascript">
+																	 CKEDITOR.replace('addBoardContents'
+																	                , {height: 500                                                  
+																	                 });
+																	</script>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
