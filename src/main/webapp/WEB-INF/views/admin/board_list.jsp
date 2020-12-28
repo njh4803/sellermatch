@@ -238,63 +238,31 @@
     </div>
 <script type="text/javascript">
 $(document).on("click",".b-modal",function(event){
-/* 	var parent = event.target.parentNode;
+ 	var parent = event.target.parentNode;
 	var tr = parent.parentNode;
-	var projIdx = tr.children[0].innerText;
-	var projId = tr.children[1].innerText;
-	var projMemId = tr.children[2].innerText;
-	var projTitle = tr.children[3].innerText;
-	var projSort = tr.children[4].getAttribute("data-value");
-	var projIndus = tr.children[5].getAttribute("data-value");
-	var projPrice = tr.children[6].innerText;
-	var projMargin = tr.children[7].getAttribute("data-value");
-	var projNation = tr.children[8].getAttribute("data-value");
-	var projSupplyType = tr.children[9].getAttribute("data-value");
-	var projEndDate = tr.children[10].innerText;
-	var projRecruitNum = tr.children[11].innerText;
-	var projDetail = tr.children[12].innerText;
-	var projRequire = tr.children[13].innerText;
-	var projKeyword = tr.children[14].innerText;
-	var projDetailImg = tr.children[15].getAttribute("data-value");
-	var projFile = tr.children[16].innerText;
-	var projProdCerti = tr.children[17].getAttribute("data-value");
-	var projState = tr.children[18].getAttribute("data-value");
-	var projRegDate = tr.children[19].innerText;
-	var projEditDate = tr.children[20].innerText;
+	var boardIdx = tr.children[0].innerText;
+	var boardId = tr.children[1].innerText;
+	var boardTitle = tr.children[2].innerText;
+	var boardContents = tr.children[3].innerText;
+	var boardWriter = tr.children[4].innerText;
+	var boardType = tr.children[5].getAttribute("data-value");
+	var boardQaType = tr.children[6].getAttribute("data-value");
+	var boardEmail = tr.children[7].innerText;
+	var boardHit = tr.children[8].innerText;
+	var boardRegDate = tr.children[9].innerText;
+	var boardEditDate = tr.children[10].innerText;
 	
-	
-	
-	$("#editModal .modal-body #projIdx").val(projIdx);
-	$("#editModal .modal-body #projId").val(projId);
-	$("#editModal .modal-body #projMemId").val(projMemId);
-	$("#editModal .modal-body #projTitle").val(projTitle);
-	$("#editModal .modal-body #projSort").val(projSort);
-	$("#editModal .modal-body #projIndus").val(projIndus);
-	$("#editModal .modal-body #projPrice").val(projPrice);
-	$("#editModal .modal-body #projMargin").val(projMargin);
-	$("#editModal .modal-body #projNation").val(projNation);
-	$("#editModal .modal-body #projSupplyType").val(projSupplyType);
-	$("#editModal .modal-body #projEndDate").val(projEndDate);
-	$("#editModal .modal-body #projRecruitNum").val(projRecruitNum);
-	$("#editModal .modal-body #projDetail").text(projDetail);
-	$("#editModal .modal-body #projRequire").val(projRequire);
-	
-	// 초기화
-	$("#editModal .modal-body input[name=projKeyword]").attr('checked', false);
-	var projKeywordValue = projKeyword.split(',');
-	console.log(projKeywordValue);
-	for (var i = 0; i < projKeywordValue.length; i++) {
-		
-		$("#editModal .modal-body input[name=projKeyword][value="+projKeywordValue[i]+"]").attr('checked', true);
-	}
-	$("#editModal .modal-body #projDetailImg").val(projDetailImg);
-	$("#editModal .modal-body #projFile").val(projFile);
-	$("#editModal .modal-body #projProdCerti").val(projProdCerti);
-	$("#editModal .modal-body #projState").val(projState);
-	$("#editModal .modal-body #projRegDate").val(projRegDate);
-	$("#editModal .modal-body #projEditDate").val(projEditDate); */
-	
-	
+	$("#boardModal .modal-body #boardIdx").val(boardIdx);
+	$("#boardModal .modal-body #boardId").val(boardId);
+	$("#boardModal .modal-body #boardTitle").val(boardTitle);
+	$("#boardModal .modal-body #boardContents").val(boardContents);
+	$("#boardModal .modal-body #boardWriter").val(boardWriter);
+	$("#boardModal .modal-body #boardType").val(boardType);
+	$("#boardModal .modal-body #boardQaType").val(boardQaType);
+	$("#boardModal .modal-body #boardEmail").val(boardEmail);
+	$("#boardModal .modal-body #boardHit").val(boardHit);
+	$("#boardModal .modal-body #boardRegDate").val(boardRegDate);
+	$("#boardModal .modal-body #boardEditDate").val(boardEditDate);
 	
 });
 

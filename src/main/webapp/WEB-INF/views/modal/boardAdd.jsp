@@ -107,21 +107,13 @@ $(function(){
 		*/
 		
         rules: {
-            // [비밀번호] 필수 + 글자수 길이 제한
-            sellerNation: 'required',
-            sellerGrade : 'required',
-            sellerIndus : 'required',
-            sellerBizNum : 'required',
-            sellerBizSort : 'required',
-            sellerIntro : 'required',
+            // [제목] 필수
+            boardTitle: 'required',
+            boardContents: 'required',
         },
         messages: {
-        	sellerNation: '판매자지역을 선택해주세요.',
-        	sellerGrade: '판매자등급을 선택해주세요.',
-        	sellerIndus : '상품분류를 선택해주세요.',
-        	sellerBizNum : '사업자 번호를 입력해주세요.',
-        	sellerBizSort : '사업자 유형을 선택해주세요.',
-        	sellerIntro : '자기소개를 입력해주세요.',
+        	boardTitle: '게시판 제목을 입력해주세요.',
+        	boardContents: '게시판 내용을 입력해주세요.',
         }
     });
     

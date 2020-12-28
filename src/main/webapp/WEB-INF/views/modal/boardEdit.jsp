@@ -81,6 +81,22 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label for="boardRegDate" class="col-sm-2 col-form-label">등록일시</label>
+                                                                <div class="col-sm-10">
+                                                                	<div class="form-group">
+	                                                                    <input id="boardRegDate" type="text" name="boardRegDate" class="form-control" readonly="readonly">
+																	</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="boardEditDate" class="col-sm-2 col-form-label">수정일시</label>
+                                                                <div class="col-sm-10">
+                                                                	<div class="form-group">
+	                                                                    <input id="boardEditDate" type="text" name="boardEditDate" class="form-control" readonly="readonly">
+																	</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label for="boardType" class="col-sm-2 col-form-label">게시판 유형
                                                                 	<span class="identify">*</span>
                                                                 </label>
@@ -126,19 +142,11 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="boardRegDate" class="col-sm-2 col-form-label">등록일시</label>
+                                                                <label for="boardContents" class="col-sm-2 col-form-label">게시판 내용
+                                                                	<span class="identify">*</span>
+                                                                </label>
                                                                 <div class="col-sm-10">
-                                                                	<div class="form-group">
-	                                                                    <input id="boardRegDate" type="text" name="boardRegDate" class="form-control" readonly="readonly">
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="boardEditDate" class="col-sm-2 col-form-label">수정일시</label>
-                                                                <div class="col-sm-10">
-                                                                	<div class="form-group">
-	                                                                    <input id="boardEditDate" type="text" name="boardEditDate" class="form-control" readonly="readonly">
-																	</div>
+                                                                	<textarea id="boardContents" name="boardContents" class="form-control" style="width: 100%; height: 150px;"></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -168,22 +176,18 @@ $(function(){
 			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
 		*/
 		
-        rules: {
-            // [비밀번호] 필수 + 글자수 길이 제한
-            sellerNation: 'required',
-            sellerGrade : 'required',
-            sellerIndus : 'required',
-            sellerBizNum : 'required',
-            sellerBizSort : 'required',
-            sellerIntro : 'required',
+		rules: {
+            // [제목] 필수
+            boardTitle: 'required',
+            boardContents: 'required',
+            boardType: 'required',
+            boardQaType: 'required',
         },
         messages: {
-        	sellerNation: '판매자지역을 선택해주세요.',
-        	sellerGrade: '판매자등급을 선택해주세요.',
-        	sellerIndus : '상품분류를 선택해주세요.',
-        	sellerBizNum : '사업자 번호를 입력해주세요.',
-        	sellerBizSort : '사업자 유형을 선택해주세요.',
-        	sellerIntro : '자기소개를 입력해주세요.',
+        	boardTitle: '게시판 제목을 입력해주세요.',
+        	boardContents: '게시판 내용을 입력해주세요.',
+        	boardType : '게시판 유형을 선택해주세요.',
+        	boardQaType : '질문 유형을 선택해주세요.',
         }
     });
     
@@ -198,7 +202,7 @@ $(function(){
 	           url: url,
 	           data: form.serialize(),
 	           beforeSend: function() {
-	        	   return $('#').valid();
+	        	   return $('#board_form').valid();
                },
                success: function() {
             	   swal('알림', '게시판이 수정되었습니다.', 'success').then(function(result) {

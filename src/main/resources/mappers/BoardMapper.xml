@@ -56,9 +56,16 @@
 
 	<update id="updateItem"
 		parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto">
-		UPDATE SET BoardList
-			board_title = #{boardId}, board_contents = #{boardContents}, board_writer = #{boardWriter}, board_type = #{boardType}, 
-			board_qa_type = #{boardQaType}, board_email = #{boardEmail}, board_hit = #{boardHit}, board_edit_date = now()
+		UPDATE BoardList
+		SET
+			board_title = #{boardTitle}, 
+			board_contents=#{boardContents}, 
+			board_writer = #{boardWriter}, 
+			board_type = #{boardType}, 
+			board_qa_type = #{boardQaType}, 
+			board_email = #{boardEmail}, 
+			board_hit = #{boardHit}, 
+			board_edit_date = now()
 		WHERE board_id = #{boardId}
 	</update>
 	
