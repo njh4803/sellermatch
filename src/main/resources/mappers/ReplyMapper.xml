@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReplyMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="replyMap"
+        type="kr.co.wesellglobal.sellermatch.model.ReplyDto">
+        <result property="replyIdx"   column="reply_idx" />
+        <result property="replyId"     column="reply_id" />
+        <result property="replyWriter"   column="reply_writer" />
+        <result property="replyContents" column="reply_contents" />
+        <result property="replyProjId" column="reply_projid" />
+        <result property="replyBoardId" column="reply_board_id" />
+        <result property="replyGno" column="reply_gno" />
+         <result property="replyGseq" column="reply_gseq" />
+         <result property="replyDepth" column="reply_depth" />
+         <result property="replyPw" column="reply_pw" />
+         <result property="replyRegDate" column="reply_reg_date" />
+    </resultMap>
+    
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
+    	useGeneratedKeys="true"
+    	keyProperty="replyIdx">
+    	INSERT INTO ReplyList
+    		(`reply_id`, `reply_writer`, `reply_contents`, `reply_projid`, `reply_board_id`, `reply_gno`, 
+    		`reply_gseq`, `reply_depth`, `reply_pw`, `reply_reg_date`)
+    	 VALUES 
+    	 	(#{replyId}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, 
+    	 	#{replyGno}, #{replyGseq}, #{"replyDepth"}, #{replyPw}, now());
+    </insert>
+    
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
+    	resultMap="replyMap">
+    	SELECT 
+	   		reply_idx, reply_id, reply_writer, reply_contents, reply_projid, reply_board_id, reply_gno, reply_gseq, reply_depth, 
+	   		reply_pw, reply_reg_date
+    	FROM ReplyList
+    	
+    	<!-- <if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if> -->
+    </select>
+	
+	<!-- 게시판조회 데이터 수 조회 -->
+	<select id="selectCountAll"
+		parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM ReplyList
+	</select>
+</mapper>
