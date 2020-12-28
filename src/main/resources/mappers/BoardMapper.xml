@@ -39,6 +39,10 @@
 	   		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
 	   		board_reg_date, board_edit_date
     	FROM BoardList
+    	
+    	<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
     </select>
     
     <select id="selectItem"
@@ -57,4 +61,17 @@
 			board_qa_type = #{boardQaType}, board_email = #{boardEmail}, board_hit = #{boardHit}, board_edit_date = now()
 		WHERE board_id = #{boardId}
 	</update>
+	
+	<!-- 게시판조회 데이터 수 조회 -->
+	<select id="selectCountAll"
+		parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM BoardList
+		<!-- <where>
+			<if test="userName != null and userName != ''">
+				userName LIKE concat('%',#{userName},'%')
+			</if>
+		</where> -->
+	</select>
 </mapper>

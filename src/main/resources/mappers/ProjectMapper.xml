@@ -78,7 +78,12 @@
     	FROM ProjectList p
         INNER JOIN IndusList i
         ON p.proj_indus = i.indus_id
-		ORDER BY proj_idx DESC
+        ORDER BY proj_idx DESC
+        
+        <if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
+		
     </select>
     
     <select id="selectItem"
@@ -91,5 +96,18 @@
     	FROM ProjectList
     	WHERE proj_id = #{projId}
     </select>
+    
+    <!-- 프로젝트조회 데이터 수 조회 -->
+	<select id="selectCountAll"
+		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM ProjectList
+		<!-- <where>
+			<if test="userName != null and userName != ''">
+				userName LIKE concat('%',#{userName},'%')
+			</if>
+		</where> -->
+	</select>
 
 </mapper>

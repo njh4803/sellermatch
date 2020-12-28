@@ -14,4 +14,6 @@ public interface ProjectService {
 	
 	public void editProject(ProjectDto input) throws Exception;
 	
+	public int getProjectCount(ProjectDto input) throws Exception;
+	
 }

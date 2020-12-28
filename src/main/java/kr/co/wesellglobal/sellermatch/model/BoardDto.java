@@ -39,6 +39,23 @@ public class BoardDto {
 	// 수정일시 
 	private String boardEditDate;
 	
+	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
+	private static int offset;
+	private static int listCount;
+	
+	public static int getOffset() {
+		return offset;
+	}
+	public static void setOffset(int offset) {
+		BoardDto.offset = offset;
+	}
+	public static int getListCount() {
+		return listCount;
+	}
+	public static void setListCount(int listCount) {
+		BoardDto.listCount = listCount;
+	}
+	
 	public String getBoardTypeName() {
 		if (this.boardType.equals("1")) {
 			return "공지사항";
@@ -68,7 +85,7 @@ public class BoardDto {
 		if (this.boardQaType.equals("4")) {
 			return "반품문의";
 		}
-		if (this.boardQaType.equals("4")) {
+		if (this.boardQaType.equals("5")) {
 			return "기타문의";
 		}
 		return "";

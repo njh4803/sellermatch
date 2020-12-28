@@ -85,6 +85,23 @@ public class ProjectDto {
 	// 상품분류 문자로 치환
 	private String projIndusName;
 	
+	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
+	private static int offset;
+	private static int listCount;
+	
+	public static int getOffset() {
+		return offset;
+	}
+	public static void setOffset(int offset) {
+		ProjectDto.offset = offset;
+	}
+	public static int getListCount() {
+		return listCount;
+	}
+	public static void setListCount(int listCount) {
+		ProjectDto.listCount = listCount;
+	}
+	
 	public void setProjDetailImgList(String projDetailImg) {
 		this.projDetailImgList = projDetailImg.split(",");
 	}

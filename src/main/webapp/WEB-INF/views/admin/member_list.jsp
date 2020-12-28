@@ -179,9 +179,7 @@ label.error {
 																			        <%-- 이전 그룹으로 이동 가능하다면? --%>
 																			        <c:when test="${pageData.prevPage > 0}">
 																			            <%-- 이동할 URL 생성 --%>
-																			            <c:url value="/topSub.do" var="prevPageUrl">
-																			            	<c:param name="product_isnew" value="${product_isnew}" />
-																			            	<c:param name="category" value="${category}" />
+																			            <c:url value="/admin/memberList" var="prevPageUrl">
 																			                <c:param name="page" value="${pageData.prevPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
 																			            </c:url>
@@ -195,9 +193,7 @@ label.error {
 																			    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
 																			    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 																			        <%-- 이동할 URL 생성 --%>
-																			        <c:url value="/topSub.do" var="pageUrl">
-																			        	<c:param name="product_isnew" value="${product_isnew}" />
-																			        	<c:param name="category" value="${category}"/>
+																			        <c:url value="/admin/memberList" var="pageUrl">
 																			            <c:param name="page" value="${i}"/>
 																			            <c:param name="keyword" value="${keyword}"/>
 																			        </c:url>
@@ -220,9 +216,7 @@ label.error {
 																			        <%-- 다음 그룹으로 이동 가능하다면? --%>
 																			        <c:when test="${pageData.nextPage > 0}">
 																			            <%-- 이동할 URL 생성 --%>
-																			            <c:url value="/topSub.do" var="nextPageUrl">
-																			            	<c:param name="product_isnew" value="${product_isnew}" />
-																			            	<c:param name="category" value="${category}" />
+																			            <c:url value="/admin/memberList" var="nextPageUrl">
 																			                <c:param name="page" value="${pageData.nextPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
 																			            </c:url>

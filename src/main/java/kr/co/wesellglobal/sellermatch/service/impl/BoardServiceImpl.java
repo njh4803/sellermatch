@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.wesellglobal.sellermatch.model.BoardDto;
+import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -93,6 +94,19 @@ public class BoardServiceImpl implements BoardService{
 			throw new Exception("데이터 수정에 실패했습니다.");
 		}
 		
+	}
+
+	@Override
+	public int getBoardCount(BoardDto input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("BoardMapper.selectCountAll", input);
+		}catch(Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
 	}
 
 }

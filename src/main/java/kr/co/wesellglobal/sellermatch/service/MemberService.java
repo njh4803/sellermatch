@@ -18,4 +18,6 @@ public interface MemberService {
 	
 	public MemberDto login(MemberDto input) throws Exception;
 	
+	public int getMemberCount(MemberDto input) throws Exception;
+	
 }

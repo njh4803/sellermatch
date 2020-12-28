@@ -3,6 +3,7 @@ package kr.co.wesellglobal.sellermatch.service;
 import java.util.List;
 
 import kr.co.wesellglobal.sellermatch.model.BoardDto;
+import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 
 public interface BoardService {
 	
@@ -13,5 +14,7 @@ public interface BoardService {
 	public BoardDto getBoard(BoardDto input) throws Exception;
 	
 	public void editBoard(BoardDto input) throws Exception;
+	
+	public int getBoardCount(BoardDto input) throws Exception;
 	
 }

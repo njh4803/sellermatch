@@ -77,6 +77,23 @@ public class MemberDto {
 	
 	// 예비컬럼 
 	private String memXxx;
+	
+	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
+	private static int offset;
+	private static int listCount;
+	
+	public static int getOffset() {
+		return offset;
+	}
+	public static void setOffset(int offset) {
+		MemberDto.offset = offset;
+	}
+	public static int getListCount() {
+		return listCount;
+	}
+	public static void setListCount(int listCount) {
+		MemberDto.listCount = listCount;
+	}
 
 	
 	public String getMemStateName() {
