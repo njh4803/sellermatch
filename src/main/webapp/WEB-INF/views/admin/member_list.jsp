@@ -95,7 +95,19 @@ label.error {
                                                 <!-- Zero config.table start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        
+	                                                    <form name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/memberList">
+	                                                        <div class="form-group row">
+	                                                    		<div class="col-sm-8">
+		                                                    		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button> -->
+		                                                    	</div>
+		                                                        <div class="col-sm-4" style="float: right;">
+		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="Search here...">
+		                                							<div class="col-sm-2" style="padding: 0;">
+			                                                        	<button type="submit" class="btn btn-primary">Search</button>
+			                                                        </div>
+		                                                        </div>
+	                                                    	</div>
+	                                                    </form>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
@@ -227,11 +239,6 @@ label.error {
 																			        </c:otherwise>
 																			    </c:choose>
 																			    </ul>
-																			    <div class="divider"></div>
-	                                                                			<span class="label label-primary">
-	                                                                				<font style="vertical-align: inherit;">
-	                                                                				<font style="vertical-align: inherit;">1/2</font></font>
-	                                                                			</span>
 																			</div>
                                                                 		</td>
                                                                 	</tr>

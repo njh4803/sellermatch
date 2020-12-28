@@ -78,6 +78,23 @@
     	FROM ProjectList p
         INNER JOIN IndusList i
         ON p.proj_indus = i.indus_id
+        <where>
+        	<if test="projDetail != '' and projDetail != null">
+        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
+        	</if>
+        	<if test="projIndusName != '' and projIndusName != null">
+        		OR i.indus_name LIKE concat('%', #{projIndusName}, '%')
+        	</if>
+        	<if test="projKeyword != '' and projKeyword != null">
+        		OR proj_keyword LIKE concat('%', #{projKeyword}, '%')
+        	</if>
+        	<if test="projMemId != '' and projMemId != null">
+        		OR proj_mem_id LIKE concat('%', #{projMemId}, '%')
+        	</if>
+        	<if test="projTitle != '' and projTitle != null">
+        		OR proj_title LIKE concat('%', #{projTitle}, '%')
+        	</if>
+        </where>
         ORDER BY proj_idx DESC
         
         <if test="listCount > 0">
@@ -102,12 +119,26 @@
 		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
 		resultType="int">
 		SELECT COUNT(*)
-		FROM ProjectList
-		<!-- <where>
-			<if test="userName != null and userName != ''">
-				userName LIKE concat('%',#{userName},'%')
-			</if>
-		</where> -->
+		FROM ProjectList p
+        INNER JOIN IndusList i
+        ON p.proj_indus = i.indus_id
+		<where>
+        	<if test="projDetail != '' and projDetail != null">
+        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
+        	</if>
+        	<if test="projIndusName != '' and projIndusName != null">
+        		OR i.indus_name LIKE concat('%', #{projIndusName}, '%')
+        	</if>
+        	<if test="projKeyword != '' and projKeyword != null">
+        		OR proj_keyword LIKE concat('%', #{projKeyword}, '%')
+        	</if>
+        	<if test="projMemId != '' and projMemId != null">
+        		OR proj_mem_id LIKE concat('%', #{projMemId}, '%')
+        	</if>
+        	<if test="projTitle != '' and projTitle != null">
+        		OR proj_title LIKE concat('%', #{projTitle}, '%')
+        	</if>
+        </where>
 	</select>
 
 </mapper>

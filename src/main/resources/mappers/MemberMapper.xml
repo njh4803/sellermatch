@@ -58,7 +58,26 @@
     		mem_date, mem_edit_date
     	FROM MemList
 		ORDER BY mem_date DESC
-		
+		<where>
+			<if test="memId != null and memId != ''">
+				OR mem_id LIKE concat('%', #{memId}, '%')
+			</if>
+			<if test="memName != null and memName != ''">
+				OR mem_name LIKE concat('%', #{memName}, '%')
+			</if>
+			<if test="memNick != null and memNick != ''">
+				OR mem_nick LIKE concat('%', #{memNick}, '%')
+			</if>
+			<if test="memTel != null and memTel != ''">
+				OR mem_tel LIKE concat('%', #{memTel}, '%')
+			</if>
+			<if test="memAddr != null and memAddr != ''">
+				OR mem_addr LIKE concat('%', #{memAddr}, '%')
+			</if>
+			<if test="memAddr2 != null and memAddr2 != ''">
+				OR mem_addr2 LIKE concat('%', #{memAddr2}, '%')
+			</if>
+		</where>
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
@@ -125,11 +144,26 @@
 		resultType="int">
 		SELECT COUNT(*)
 		FROM MemList
-		<!-- <where>
-			<if test="userName != null and userName != ''">
-				userName LIKE concat('%',#{userName},'%')
+		<where>
+			<if test="memId != null and memId != ''">
+				OR mem_id LIKE concat('%', #{memId}, '%')
 			</if>
-		</where> -->
+			<if test="memName != null and memName != ''">
+				OR mem_name LIKE concat('%', #{memName}, '%')
+			</if>
+			<if test="memNick != null and memNick != ''">
+				OR mem_nick LIKE concat('%', #{memNick}, '%')
+			</if>
+			<if test="memTel != null and memTel != ''">
+				OR mem_tel LIKE concat('%', #{memTel}, '%')
+			</if>
+			<if test="memAddr != null and memAddr != ''">
+				OR mem_addr LIKE concat('%', #{memAddr}, '%')
+			</if>
+			<if test="memAddr2 != null and memAddr2 != ''">
+				OR mem_addr2 LIKE concat('%', #{memAddr2}, '%')
+			</if>
+		</where>
 	</select>
 
 </mapper>

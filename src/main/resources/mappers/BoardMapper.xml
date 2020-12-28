@@ -39,6 +39,17 @@
 	   		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
 	   		board_reg_date, board_edit_date
     	FROM BoardList
+    	<where>
+			<if test="boardTitle != null and boardTitle != ''">
+				OR board_title LIKE concat('%', #{boardTitle}, '%')
+			</if>
+			<if test="boardContents != null and boardContents != ''">
+				OR board_contents LIKE concat('%', #{boardContents}, '%')
+			</if>
+			<if test="boardWriter != null and boardWriter != ''">
+				OR board_writer LIKE concat('%', #{boardWriter}, '%')
+			</if>
+		</where>
     	
     	<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -75,10 +86,27 @@
 		resultType="int">
 		SELECT COUNT(*)
 		FROM BoardList
-		<!-- <where>
-			<if test="userName != null and userName != ''">
-				userName LIKE concat('%',#{userName},'%')
+		<where>
+			<if test="boardTitle != null and boardTitle != ''">
+				OR board_title LIKE concat('%', #{boardTitle}, '%')
 			</if>
-		</where> -->
+			<if test="boardContents != null and boardContents != ''">
+				OR board_contents LIKE concat('%', #{boardContents}, '%')
+			</if>
+			<if test="boardWriter != null and boardWriter != ''">
+				OR board_writer LIKE concat('%', #{boardWriter}, '%')
+			</if>
+		</where>
 	</select>
+	
+	<delete id="deleteItem"
+		parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto">
+        DELETE FROM BoardList
+        <where>
+            board_id IN 
+            <foreach collection="idArr" item="item" index="index" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </where>		
+	</delete>
 </mapper>

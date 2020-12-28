@@ -43,6 +43,9 @@ public class BoardDto {
 	private static int offset;
 	private static int listCount;
 	
+	/** 대량 삭제를 위한 일련번호 배열 */
+    private String[] idArr;
+	
 	public static int getOffset() {
 		return offset;
 	}

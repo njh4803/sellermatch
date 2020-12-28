@@ -83,4 +83,22 @@ public class AdminBoardRestController {
 		return webHelper.getJsonData();
 		
 	}
+	
+	@RequestMapping(value = "/admin/board", method = RequestMethod.DELETE)
+	public Map<String, Object> deleteOk(
+			@RequestParam(value = "boardId[]", required = false) String[] boardId){
+		
+		BoardDto input = new BoardDto();
+		input.setIdArr(boardId);
+		log.debug("boardId = " + boardId);
+		log.debug("boardId = " + input.getIdArr());
+		
+		try {
+			boardServiceImpl.deleteBoard(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		return webHelper.getJsonData();
+		
+	}
 }

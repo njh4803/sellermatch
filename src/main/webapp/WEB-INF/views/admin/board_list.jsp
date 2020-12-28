@@ -15,6 +15,26 @@
 .table-center th{
 	text-align: center;
 }
+
+#simpletable > tbody > tr > td .checkbox-fade{
+	margin: 0;
+}
+#simpletable > tbody > tr > td .checkbox-fade label{
+	margin: 0;
+}
+#simpletable > tbody > tr > td .checkbox-fade .cr{
+	margin: 0;
+}
+#simpletable > thead > tr > th .checkbox-fade{
+	margin: 0;
+}
+#simpletable > thead > tr > th .checkbox-fade label{
+	margin: 0;
+}
+#simpletable > thead > tr > th .checkbox-fade .cr{
+	margin: 0;
+}
+
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -61,13 +81,36 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                     	<!-- Trigger the modal with a button -->
-														<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boardAddModal">게시판 등록</button>
+                                                    	<form name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/boardList">
+															<div class="form-group row">
+	                                                    		<div class="col-sm-8">
+		                                                    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boardAddModal">게시판 등록</button>
+		                                                    		<button id="B-delBtn" type="button" class="btn btn-info btn-lg">선택 삭제</button>
+		                                                    	</div>
+		                                                        <div class="col-sm-4" style="float: right;">
+		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="Search here...">
+		                                							<div class="col-sm-2" style="padding: 0;">
+			                                                        	<button type="submit" class="btn btn-primary">Search</button>
+			                                                        </div>
+		                                                        </div>
+	                                                    	</div>
+                                                    	</form>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
                                                             <table id="simpletable" class="table-center table table-striped table-bordered text-center">
                                                                 <thead>
                                                                     <tr>
+                                                                    	<th>
+                                                                    		<div class="checkbox-fade fade-in-primary">
+			                                                                    <label>
+			                                                                    	<input id="checkAll" type="checkbox" name="sellerCh" value="1">
+			                                                                    	<span class="cr">
+			                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+			                                                                    	</span>
+			                                                                    </label>
+		                                                                	</div>
+                                                                    	</th>
                                                                         <th>번호</th>
                                                                         <th>게시판번호</th>
                                                                         <th>제목</th>
@@ -84,9 +127,19 @@
                                                                 <tbody>
                                                                 <c:forEach var="output" items="${output}" varStatus="status">
 	                                                                    <tr>
+	                                                                    	<td>
+	                                                                    		<div class="checkbox-fade fade-in-primary">
+				                                                                    <label>
+				                                                                    	<input class="check" type="checkbox">
+				                                                                    	<span class="cr">
+				                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+				                                                                    	</span>
+				                                                                    </label>
+			                                                                	</div>
+	                                                                    	</td>
 	                                                                    	<td>${output.boardIdx}</td>
 	                                                                        <td>
-	                                                                        	<a href="javascript:void(0)" class="b-modal" data-toggle="modal" data-target="#boardModal">${output.boardId}</a>		
+	                                                                        	<a href="javascript:void(0)" id="boardId${status.index}" class="b-modal" data-toggle="modal" data-target="#boardModal">${output.boardId}</a>		
 	                                                                        </td>
 	                                                                        <td>${output.boardTitle}</td>
 	                                                                        <td>${output.boardContents}</td>
@@ -206,11 +259,6 @@
 																			        </c:otherwise>
 																			    </c:choose>
 																			    </ul>
-																			    <div class="divider"></div>
-	                                                                			<span class="label label-primary">
-	                                                                				<font style="vertical-align: inherit;">
-	                                                                				<font style="vertical-align: inherit;">1/2</font></font>
-	                                                                			</span>
 																			</div>
                                                                 		</td>
                                                                 	</tr>
@@ -240,17 +288,17 @@
 $(document).on("click",".b-modal",function(event){
  	var parent = event.target.parentNode;
 	var tr = parent.parentNode;
-	var boardIdx = tr.children[0].innerText;
-	var boardId = tr.children[1].innerText;
-	var boardTitle = tr.children[2].innerText;
-	var boardContents = tr.children[3].innerText;
-	var boardWriter = tr.children[4].innerText;
-	var boardType = tr.children[5].getAttribute("data-value");
-	var boardQaType = tr.children[6].getAttribute("data-value");
-	var boardEmail = tr.children[7].innerText;
-	var boardHit = tr.children[8].innerText;
-	var boardRegDate = tr.children[9].innerText;
-	var boardEditDate = tr.children[10].innerText;
+	var boardIdx = tr.children[1].innerText;
+	var boardId = tr.children[2].innerText;
+	var boardTitle = tr.children[3].innerText;
+	var boardContents = tr.children[4].innerText;
+	var boardWriter = tr.children[5].innerText;
+	var boardType = tr.children[6].getAttribute("data-value");
+	var boardQaType = tr.children[7].getAttribute("data-value");
+	var boardEmail = tr.children[8].innerText;
+	var boardHit = tr.children[9].innerText;
+	var boardRegDate = tr.children[10].innerText;
+	var boardEditDate = tr.children[11].innerText;
 	
 	$("#boardModal .modal-body #boardIdx").val(boardIdx);
 	$("#boardModal .modal-body #boardId").val(boardId);
@@ -265,6 +313,66 @@ $(document).on("click",".b-modal",function(event){
 	$("#boardModal .modal-body #boardEditDate").val(boardEditDate);
 	
 });
+$(function(){
+	//체크박스 전체선택
+	$("#checkAll").on("click",function(){
+		var checked = this.checked;
+		console.log("checkAll = " + checked);
+		console.log("check = " + $('.check').val());
+		$('.check').each(function(){
+			this.checked = checked;
+		});
+	});
+	
+	//체크박스 단일선택
+	$(".check").click(function(){
+		//체크박스 총 갯수
+		total_len = $(".check").length;
+		//선택된 갯수
+		var len = $(".check:checked").length;
+		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+			$("#checkAll").prop('checked', true);
+		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+			$("#checkAll").prop('checked', false);	
+		}
+	});
+	
+	//선택 상품 삭제
+	$("#B-delBtn").click(function(){
+		const boardId = [];
+		const obj = $(".check:checked");
+		
+		if (obj.length < 1) {
+            swal('알림', '삭제하실 게시판을 선택해 주세요.');
+            return false;
+        }
+		
+        swal({
+            title: '확인',
+            text: '정말 삭제하시겠습니까?', 
+            type: "question",
+            showCancelButton: true
+        }).then(function(result) {
+            if (result.value) {
+                obj.each(function(i, v) {
+                	boardId.push($('#boardId'+i).text());
+                });
+                console.log("boardId = " + boardId);
+                $.delete(ROOT_URL + "/admin/board", {
+                	boardId: boardId,
+                }, function(json) {
+                    swal({
+                        title: '확인',
+                        text: '삭제되었습니다.'
+                    }).then(function(result) {
+                        window.location.href = ROOT_URL+"/admin/boardList";
+                    });
+                });
+            }
+        });		
+	});
+});
+
 
 </script>
 <!-- bootstrap js -->

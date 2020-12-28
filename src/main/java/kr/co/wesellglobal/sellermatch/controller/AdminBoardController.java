@@ -53,13 +53,18 @@ public class AdminBoardController {
 		
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
-		int listCount = 1;		// 한 페이지당 표시할 목록 수
+		int listCount = 20;		// 한 페이지당 표시할 목록 수
 		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
 		
 		// 페이지 번호를 계산한 결과가 저장될 객체
 		PageData pageData = null;
 				
 		BoardDto input = new BoardDto();
+		if (keyword != null && keyword != "") {
+			input.setBoardTitle(keyword);
+			input.setBoardContents(keyword);
+			input.setBoardWriter(keyword);
+		}
 		
 		//목록조회
 		

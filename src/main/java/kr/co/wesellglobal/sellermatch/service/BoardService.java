@@ -15,6 +15,8 @@ public interface BoardService {
 	
 	public void editBoard(BoardDto input) throws Exception;
 	
+	public void deleteBoard(BoardDto input) throws Exception;
+	
 	public int getBoardCount(BoardDto input) throws Exception;
 	
 }
