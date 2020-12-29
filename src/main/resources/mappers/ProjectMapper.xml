@@ -72,7 +72,7 @@
     	resultMap="ProjectMap">
     	SELECT 
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
-    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, 
+    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
     		proj_keyword, proj_file, proj_prod_certi, proj_state, proj_reg_date, 
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
     	FROM ProjectList p

@@ -4,8 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%>
-<%@ include file="../modal/projectEdit.jsp"%>
 <%@ include file="../modal/projectAdd.jsp"%>
+<%@ include file="../modal/projectEdit.jsp"%>
+
 
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -94,7 +95,7 @@
                                                                         <th>상세설명</th>
                                                                         <th>필수요건</th>
                                                                         <th>키워드</th>
-                                                                        <th>상세사진</th>
+                                                                        <!-- <th>상세사진</th> -->
                                                                         <th>첨부파일</th>
                                                                         <th>상품검증</th>
                                                                         <th>프로젝트 상태</th>
@@ -122,16 +123,13 @@
 	                                                                        <td>${output.projDetail}</td>
 	                                                                        <td>${output.projRequire}</td>
 	                                                                        <td>${output.projKeyword}</td>
-	                                                                        <td data-value="${output.projDetailImgList}">
-	                                                                        <c:forEach var="detailImg" items="${output.projDetailImgList}">
-	                                                                        	${detailImg}, 
-	                                                                        </c:forEach>
-	                                                                        </td>
+	                                                                        <%-- <td>${output.projDetailImg}</td> --%>
 	                                                                        <td>${output.projFile}</td>
 	                                                                        <td data-value="${output.projProdCerti}">${output.projProdCertiName}</td>
 	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
 	                                                                        <td>${output.projRegDate}</td>
 	                                                                        <td>${output.projEditDate}</td>
+	                                                                        <input type="hidden" value="${output.projDetailImg}">
 	                                                                    </tr>
                                                                 </c:forEach>
                                                                 </tbody>
@@ -281,12 +279,12 @@ $(document).on("click",".p-modal",function(event){
 	var projDetail = tr.children[12].innerText;
 	var projRequire = tr.children[13].innerText;
 	var projKeyword = tr.children[14].innerText;
-	var projDetailImg = tr.children[15].getAttribute("data-value");
-	var projFile = tr.children[16].innerText;
-	var projProdCerti = tr.children[17].getAttribute("data-value");
-	var projState = tr.children[18].getAttribute("data-value");
-	var projRegDate = tr.children[19].innerText;
-	var projEditDate = tr.children[20].innerText;
+	/* var projDetailImg = tr.children[15].getAttribute("data-value"); */
+	var projFile = tr.children[15].innerText;
+	var projProdCerti = tr.children[16].getAttribute("data-value");
+	var projState = tr.children[17].getAttribute("data-value");
+	var projRegDate = tr.children[18].innerText;
+	var projEditDate = tr.children[19].innerText;
 	
 	
 	
@@ -313,7 +311,7 @@ $(document).on("click",".p-modal",function(event){
 		
 		$("#editModal .modal-body input[name=projKeyword][value="+projKeywordValue[i]+"]").attr('checked', true);
 	}
-	$("#editModal .modal-body #projDetailImg").val(projDetailImg);
+	/* $("#editModal .modal-body #projDetailImg").val(projDetailImg); */
 	$("#editModal .modal-body #projFile").val(projFile);
 	$("#editModal .modal-body #projProdCerti").val(projProdCerti);
 	$("#editModal .modal-body #projState").val(projState);

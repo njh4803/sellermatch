@@ -7,9 +7,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,8 +40,9 @@ public class AdminBoardRestController {
 	@Autowired
 	WebHelper webHelper;
 	
-	@RequestMapping(value = "/admin/board", method = RequestMethod.POST)
-	public Map<String, Object> getBoard(
+	@ResponseBody
+	@PostMapping("/admin/board")
+	public Map<String, Object> addBoard(
 			@ModelAttribute("BoardDto") BoardDto dto) {
 		
 		BoardDto input = new BoardDto();
@@ -51,14 +54,42 @@ public class AdminBoardRestController {
 		input.setBoardType(dto.getBoardType());
 		input.setBoardWriter("관리자");
 		
+		log.debug("dto : "+ dto);
+		
 		try {
 			boardServiceImpl.addBoard(input);
+			int count = boardServiceImpl.getBoardCount(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		/* data.put("totalCount", count); */
 		return webHelper.getJsonData();
 		
 	}
+	
+	/*
+	 * @RequestMapping(value = "/admin/board", method = RequestMethod.POST) public
+	 * Map<String, Object> getBoard(
+	 * 
+	 * @ModelAttribute("BoardDto") BoardDto dto) {
+	 * 
+	 * BoardDto input = new BoardDto(); input.setBoardId(webHelper.getUniqueId("B-",
+	 * Integer.parseInt(dto.getBoardType())));
+	 * input.setBoardTitle(dto.getBoardTitle());
+	 * input.setBoardContents(dto.getBoardContents());
+	 * input.setBoardEmail(dto.getBoardEmail());
+	 * input.setBoardQaType(dto.getBoardQaType());
+	 * input.setBoardType(dto.getBoardType()); input.setBoardWriter("관리자");
+	 * 
+	 * log.debug("dto : "+ dto);
+	 * 
+	 * try { boardServiceImpl.addBoard(input); } catch (Exception e) { return
+	 * webHelper.getJsonError(e.getLocalizedMessage()); } return
+	 * webHelper.getJsonData();
+	 * 
+	 * }
+	 */
 	
 	@RequestMapping(value = "/admin/board", method = RequestMethod.PUT)
 	public Map<String, Object> editOk(

@@ -34,6 +34,9 @@
 #simpletable > thead > tr > th .checkbox-fade .cr{
 	margin: 0;
 }
+.card .card-block p{
+	margin: 0;
+}
 
 </style>
 <%@ include file="inc/navigation.jsp"%>
@@ -125,19 +128,19 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <c:forEach var="output" items="${output}" varStatus="status">
+                                                                <c:forEach var="output" items="${output}" varStatus="index">
 	                                                                    <tr>
 	                                                                    	<td>
 	                                                                    		<div class="checkbox-fade fade-in-primary">
 				                                                                    <label>
-				                                                                    	<input class="check" type="checkbox">
+				                                                                    	<input class="check" type="checkbox" data-index="${status.index}">
 				                                                                    	<span class="cr">
 				                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 				                                                                    	</span>
 				                                                                    </label>
 			                                                                	</div>
 	                                                                    	</td>
-	                                                                    	<td>${output.boardIdx}</td>
+	                                                                    	<td>${totalCount - minusCount - index.count +1}</td>
 	                                                                        <td>
 	                                                                        	<a href="javascript:void(0)" id="boardId${status.index}" class="b-modal" data-toggle="modal" data-target="#boardModal">${output.boardId}</a>		
 	                                                                        </td>
@@ -300,10 +303,14 @@ $(document).on("click",".b-modal",function(event){
 	var boardRegDate = tr.children[10].innerText;
 	var boardEditDate = tr.children[11].innerText;
 	
+	console.log("ddd :" + boardContents);
+	
 	$("#boardModal .modal-body #boardIdx").val(boardIdx);
 	$("#boardModal .modal-body #boardId").val(boardId);
 	$("#boardModal .modal-body #boardTitle").val(boardTitle);
-	$("#boardModal .modal-body #boardContents").val(boardContents);
+	/* console.log(boardContents);
+	 $("#boardModal .modal-body #boardContents").val(boardContents); */
+	 CKEDITOR.instances.boardContents.setData(boardContents);
 	$("#boardModal .modal-body #boardWriter").val(boardWriter);
 	$("#boardModal .modal-body #boardType").val(boardType);
 	$("#boardModal .modal-body #boardQaType").val(boardQaType);
@@ -341,6 +348,7 @@ $(function(){
 	$("#B-delBtn").click(function(){
 		const boardId = [];
 		const obj = $(".check:checked");
+		console.log("obj = " + obj);
 		
 		if (obj.length < 1) {
             swal('알림', '삭제하실 게시판을 선택해 주세요.');
@@ -354,8 +362,10 @@ $(function(){
             showCancelButton: true
         }).then(function(result) {
             if (result.value) {
-                obj.each(function(i, v) {
-                	boardId.push($('#boardId'+i).text());
+            	$(".check").each(function(i, v) {
+                	if (this.checked) {
+                		boardId.push($('#boardId'+i).text());
+					}
                 });
                 console.log("boardId = " + boardId);
                 $.delete(ROOT_URL + "/admin/board", {

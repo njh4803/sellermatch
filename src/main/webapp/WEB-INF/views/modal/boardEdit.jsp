@@ -116,7 +116,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<select id="boardQaType" name="boardQaType" class="form-control">
-						                                                <option value="">선택하세요.</option>
+						                                                <option>선택하세요.</option>
 						                                                <option value="1">일반문의</option>
 						                                                <option value="2">주문결제문의</option>
 						                                                <option value="3">환불문의</option>
@@ -146,7 +146,12 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                	<textarea id="boardContents" name="boardContents" class="form-control" style="width: 100%; height: 150px;"></textarea>
+                                                                	<textarea id="boardContents" name="boardContents" class="form-control"></textarea>
+                                                                	<script type="text/javascript">
+																	 CKEDITOR.replace('boardContents'
+																	                , {height: 500                                                  
+																	                 });
+																	</script>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -196,6 +201,7 @@ $(function(){
 		
 		var form = $(this);
         var url = form.attr('action');
+        
        
         $.ajax({
 			   type: "PUT",

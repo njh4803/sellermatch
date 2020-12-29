@@ -51,11 +51,11 @@ label.error {
         <div class="modal-body">
 			<form action="${pageContext.request.contextPath}/admin/board" id="boardAdd_form" name="boardAdd_form" enctype="multipart/form-data">
 															<div class="form-group row">
-                                                                <label for="boardType" class="col-sm-2 col-form-label">게시판 유형
+                                                                <label class="col-sm-2 col-form-label">게시판 유형
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                	<select id="boardType" name="boardType" class="form-control">
+                                                                	<select id="boardType2" name="boardType" class="form-control">
 						                                                <option value="1">공지사항</option>
 						                                                <option value="2">자주하는 질문</option>
 						                                            </select>
@@ -67,7 +67,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="boardTitle" type="text" name="boardTitle" class="form-control">
+	                                                                    <input id="boardTitle2" type="text" name="boardTitle" class="form-control">
 																	</div>
                                                                 </div>
                                                             </div>
@@ -127,6 +127,39 @@ $(function(){
 		
 		var form = $(this);
         var url = form.attr('action');
+		
+		var boardContents = CKEDITOR.instances.addBoardContents.getData();
+		var comunityTitle2 = $("#boardTitle2").val();
+		var type = $("#boardType2").val();
+		
+		console.log("boardContents : " + boardContents);
+		console.log("comunityTitle2 : " + comunityTitle2);
+		console.log("type : " + type);
+		
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: {boardContents : boardContents, boardTitle : comunityTitle2, boardType : type},
+			dataType: "json",
+			success: function(data){
+					console.log(data);
+					swal("알림", "게시판이 등록되었습니다.", "success");
+					
+					window.setTimeout("pageReload()", 2000);
+			}
+
+		});
+		
+		/* var form = $(this);
+        var url = form.attr('action');
+		
+        var boardContents = CKEDITOR.instances.addBoardContents.getData();
+      	
+      	form.push({boardContents : boardContents});
+      	
+      	var form = $(this);
+      	
+      	console.log("aaa : " + form.serialize());
        
         $.ajax({
 			   type: "POST",
@@ -140,8 +173,13 @@ $(function(){
                        window.location = ROOT_URL + '/admin/boardList';
                    });
                }
-        });
+        }); */
         
     });
+   
 });
+
+function pageReload() {
+	location.reload();
+}
 </script>

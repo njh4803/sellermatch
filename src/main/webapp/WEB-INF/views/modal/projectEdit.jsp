@@ -152,7 +152,7 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="number" id="projPrice" name="projPrice" class="form-control" pattern="#,###">
+                                                                    <input type="number" id="projPrice" name="projPrice" class="form-control" min="0" value="0">
                                                                 </div>
                                                             </div>
 															<div class="form-group row">
@@ -369,69 +369,55 @@ $(function(){
 	});
 	
     /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-    $('#join_form').validate({
+    $('#proj_edit_form').validate({
     	/* 
 			required 필수 항목으로 설정한다. (true, false)
 			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
 		*/
 		
-        rules: {
-            // [아이디] 필수 + 알파벳,숫자 조합만 허용
-            memId: {
-                required: true, email: true, minlength: 4, maxlength: 30, 
-                remote : {
-                    url : ROOT_URL + '/admin/member/idCheck',
-                    type : 'post',
-                    data : {
-                    	memId : function() {
-                            return $("#memId").val();
-                        }
-                    }
-                }
+		rules: {
+            // [프로젝트 제목] 필수 + 알파벳,숫자 조합만 허용
+            projTitle: {
+                required: true, minlength: 5, maxlength: 100, 
             },
-            // [비밀번호] 필수 + 글자수 길이 제한
-            memPw: { required: true, minlength: 4, maxlength: 30 },
-            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
-            memPw_confirm: { required: true, equalTo: '#memPw' },
-            // [연락처] 필수
-            memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
-            // [우편번호] 필수 입력
-            postcode: 'required',
-            // [주소1] 우편번호가 입력된 경우만 필수
-            memAddr: 'required',
-            
+            // [상품가격] 필수
+            projState: 'required',
+            // [상품마진] 필수
+            projPrice: {
+                required: true, min: 1, 
+            },
+            // [등록지역] 필수
+            projMargin: 'required',
+            // [공급방법] 필수
+           	projSupplyType: 'required',
+            // [등록지역] 필수
+            projIndus: 'required',
+         	// [상품 상세내용] 필수
+            projDetail: 'required',
+            projEndDate: 'required',
         },
         messages: {
-        	memId: {
-                required: '아이디를 입력하세요.',
-                email: '아이디는 이메일만 입력 가능합니다.',
-                minlength: '아이디는 최소 {4}글자 이상 입력하셔야 합니다.',
-                maxlength: '아이디는 최대 {30}글자까지 가능합니다.',
-                remote: '이미 사용중인 이메일 입니다.'
+        	projTitle: {
+                required: '프로젝트 제목을 입력해주세요.',
+                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
+                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
             },
-            memPw: {
-                required: '비밀번호를 입력하세요.',
-                minlength: '비밀번호는 최소 {0}글자 이상 입력하셔야 합니다.',
-                maxlength: '비밀번호는 최대 {0}글자까지 가능합니다.',
+            projState: {
+                required: '프로젝트 상태를 선택해주세요.',
             },
-            memPw_confirm: {
-                required: '비밀번호 확인값을 입력하세요.',
-                equalTo: '비밀번호 확인이 잘못되었습니다.',
+            projPrice: {
+                required: '상품가격을 입력해주세요.',
+                min: "0이상 입력해주세요.",
             },
-            email: {
-                required: '이메일을 입력하세요.',
-                email: '이메일 형식이 잘못되었습니다.',
-                maxlength: '이메일은 최대 {0}글자까지 가능합니다.',
-                remote: '이미 사용중인 이메일 입니다.'
+            projMargin: {
+                required: '상품마진률을 선택해주세요.',
             },
-            memTel: {
-                required: '연락처를 입력하세요.',
-                phone: '연락처 형식이 잘못되었습니다.',
-                minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
-                maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
+            projSupplyType: {
+                required: '공급방법을 선택해주세요.',
             },
-            postcode: '우편번호를 입력해 주세요.',
-            memAddr: '기본주소를 입력해 주세요.',
+            projDetail: '상품 상세내용를 입력해주세요.',
+            projIndus: '상품분류를 선택해주세요.',
+            projEndDate: '모집마감일을 선택해주세요.',
         }
     });
     
@@ -440,7 +426,7 @@ $(function(){
         beforeSubmit: function(arr, form, options) {
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            //return $(form).valid();
+            return $(form).valid();
         },
         success: function(json) {
             swal('알림', '프로젝트가 수정되었습니다.', 'success').then(function(result) {
