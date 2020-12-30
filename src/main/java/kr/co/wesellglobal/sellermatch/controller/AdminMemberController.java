@@ -85,4 +85,13 @@ public class AdminMemberController {
 		
 		return new ModelAndView("admin/member_list");
 	}
+	
+	
+	@RequestMapping(value = "/admin/memberAdd", method = RequestMethod.GET)
+	public ModelAndView adminMemberAdd(Model model,  @SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return new ModelAndView("admin/admin_login");
+		}
+		return new ModelAndView("admin/member_add");
+	}
 }
