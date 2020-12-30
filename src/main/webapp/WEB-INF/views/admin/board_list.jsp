@@ -6,6 +6,7 @@
 <%@ include file="inc/header.jsp"%>
 <%@ include file="../modal/boardEdit.jsp"%>
 <%@ include file="../modal/boardAdd.jsp"%>
+<%@ include file="../modal/replyDetail.jsp"%>
 
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -37,6 +38,8 @@
 .card .card-block p{
 	margin: 0;
 }
+.tab { padding-left: 1.8em; }
+.tab2 { padding-left: 1em; }
 
 </style>
 <%@ include file="inc/navigation.jsp"%>
@@ -125,6 +128,7 @@
                                                                         <th>조회수</th>
                                                                         <th>등록일시</th>
                                                                         <th>수정일시</th>
+                                                                        <th></th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -157,6 +161,11 @@
 	                                                                        <td>${output.boardHit}</td>
 	                                                                        <td>${output.boardRegDate}</td>
 	                                                                        <td>${output.boardEditDate}</td>
+	                                                                        <td>
+	                                                                        	<c:if test="${output.replyCount != 0}">
+	                                                                        		<button type="button" class="btn btn-info btn-sm replyBtn" data-toggle="modal" data-target="#replyModal">댓글 보기</button>
+	                                                                        	</c:if>
+	                                                                        </td>
 	                                                                    </tr>
                                                                 </c:forEach>
                                                                 </tbody>
@@ -319,6 +328,29 @@ $(document).on("click",".b-modal",function(event){
 	$("#boardModal .modal-body #boardRegDate").val(boardRegDate);
 	$("#boardModal .modal-body #boardEditDate").val(boardEditDate);
 	
+});
+
+$(document).on("click",".replyBtn",function(event){
+	$(".replyBox").remove();
+	var parent = event.target.parentNode;
+	var tr = parent.parentNode;
+	var boardId = tr.children[2].innerText;
+	
+	$.get(ROOT_URL + "/admin/reply", {
+    	replyBoardId: boardId,
+    }, function(json) {
+		$("#replyModal .modal-body #replyBoardId").val(json.output[0].replyBoardId);
+		$("#replyModal .modal-body #reply_form").append('<div class="row"><label class="col-sm-2 col-form-label">댓글 수&emsp;'+json.count+'</label></div>');
+    	for (var i = 0; i < json.output.length; i++) {
+    		if (json.output[i].replyDepth > 0 ) {
+    			$("#replyModal .modal-body #reply_form").append('<div class="replyBox tab"><div class="row"><span>☞'+json.output[i].replyWriter+'</span>'
+        	    		+'<span class="tab2">'+json.output[i].replyRegDate+'</span></div><div class="row"><span>'+json.output[i].replyContents+'</span></div></div>');
+			} else {
+				$("#replyModal .modal-body #reply_form").append('<div class="replyBox"><hr><div class="row"><span>'+json.output[i].replyWriter+'</span>'
+	    	    		+'<span class="tab2">'+json.output[i].replyRegDate+'</span></div><div class="row"><span>'+json.output[i].replyContents+'</span></div></div>');	
+			}
+		}
+    });
 });
 $(function(){
 	//체크박스 전체선택

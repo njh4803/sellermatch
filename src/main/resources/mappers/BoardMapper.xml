@@ -18,6 +18,7 @@
          <result property="boardHit" column="board_hit" />
          <result property="boardRegDate" column="board_reg_date" />
          <result property="boardEditDate" column="board_edit_date" />
+         <result property="replyCount" column="reply_count" />
     </resultMap>
     
     <insert id="insertItem"
@@ -36,9 +37,9 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
     	resultMap="boardMap">
     	SELECT 
-	   		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
-	   		board_reg_date, board_edit_date
-    	FROM BoardList
+	   		b.board_idx, b.board_id, b.board_title, b.board_contents, b.board_writer, b.board_type, b.board_qa_type, b.board_email, b.board_hit, 
+	   		b.board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		FROM BoardList b
     	<where>
 			<if test="boardTitle != null and boardTitle != ''">
 				OR board_title LIKE concat('%', #{boardTitle}, '%')

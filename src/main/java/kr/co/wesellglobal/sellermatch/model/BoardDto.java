@@ -39,6 +39,9 @@ public class BoardDto {
 	// 수정일시 
 	private String boardEditDate;
 	
+	// 댓글 수
+	private int replyCount;
+	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;
 	private static int listCount;

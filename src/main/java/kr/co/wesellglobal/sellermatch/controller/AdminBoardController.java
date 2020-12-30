@@ -26,6 +26,7 @@ import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.service.BoardService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
+import kr.co.wesellglobal.sellermatch.service.impl.ReplyServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -34,6 +35,8 @@ public class AdminBoardController {
 	
 	@Autowired
 	BoardService boardService;
+	@Autowired
+	ReplyServiceImpl replyServiceImpl;
 	@Autowired
 	RegexHelper regexHelper;
 	@Autowired
@@ -69,6 +72,7 @@ public class AdminBoardController {
 		//목록조회
 		
 		List<BoardDto> output = null;
+		
 		try {
 			// 전체 게시글 수 조회
 			totalCount = boardService.getBoardCount(input);
@@ -79,6 +83,7 @@ public class AdminBoardController {
 			BoardDto.setOffset(pageData.getOffset());
 			BoardDto.setListCount(pageData.getListCount());
 			output = boardService.getBoardList(input);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

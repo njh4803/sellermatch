@@ -71,6 +71,8 @@ public class AdminProjectRestController {
 		
 		UploadItem item = null;
 		
+		log.debug("projDetailImg aaa = " + projDetailImg);
+		
 		String str = "";
 		for (int i = 0; i < projDetailImg.length; i++) {
 			log.debug("projDetailImg = " + projDetailImg[i]);

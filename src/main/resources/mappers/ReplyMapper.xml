@@ -11,7 +11,7 @@
         <result property="replyId"     column="reply_id" />
         <result property="replyWriter"   column="reply_writer" />
         <result property="replyContents" column="reply_contents" />
-        <result property="replyProjId" column="reply_projid" />
+        <result property="replyProjId" column="reply_proj_id" />
         <result property="replyBoardId" column="reply_board_id" />
         <result property="replyGno" column="reply_gno" />
          <result property="replyGseq" column="reply_gseq" />
@@ -25,7 +25,7 @@
     	useGeneratedKeys="true"
     	keyProperty="replyIdx">
     	INSERT INTO ReplyList
-    		(`reply_id`, `reply_writer`, `reply_contents`, `reply_projid`, `reply_board_id`, `reply_gno`, 
+    		(`reply_id`, `reply_writer`, `reply_contents`, `reply_proj_id`, `reply_board_id`, `reply_gno`, 
     		`reply_gseq`, `reply_depth`, `reply_pw`, `reply_reg_date`)
     	 VALUES 
     	 	(#{replyId}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, 
@@ -36,9 +36,11 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
     	resultMap="replyMap">
     	SELECT 
-	   		reply_idx, reply_id, reply_writer, reply_contents, reply_projid, reply_board_id, reply_gno, reply_gseq, reply_depth, 
+	   		reply_idx, reply_id, reply_writer, reply_contents, reply_proj_id, reply_board_id, reply_gno, reply_gseq, reply_depth, 
 	   		reply_pw, reply_reg_date
     	FROM ReplyList
+    	WHERE reply_board_id = #{replyBoardId}
+    	ORDER BY reply_gno DESC, reply_gseq ASC
     	
     	<!-- <if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -51,5 +53,6 @@
 		resultType="int">
 		SELECT COUNT(*)
 		FROM ReplyList
+		WHERE reply_board_id = #{replyBoardId}
 	</select>
 </mapper>

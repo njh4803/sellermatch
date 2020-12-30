@@ -38,6 +38,18 @@ label.error {
 .modal-header {
 	display: block;
 }
+.content{
+    outline: 2px dashed #92b0b3 ;
+    outline-offset:-10px;  
+    text-align: center;
+    transition: all .15s ease-in-out;
+    height: 100%;
+    width: 19%;
+    background-color: gray;
+    margin-left: 6px;
+    float: left;
+}
+
 </style>
   <!-- Modal -->
   <div class="modal fade" id="editModal" role="dialog">
@@ -139,11 +151,22 @@ label.error {
                                                             <div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">상품 상세 사진</label>
                                                                 <div class="col-sm-9">
-                                                                <div class="form-group">
-												                    <div class="card-block">
-												                        <input type="file" name="projDetailImg[]" id="filer_input1" multiple="multiple">
+	                                                                <div class="form-group">
+													                    <div class="card-block">
+													                    	<div style="height: 100px;">
+													                    		<div class="content" style="margin-left: 0px;">
+																				</div>
+																				<div class="content">
+																				</div>
+																				<div class="content">
+																				</div>
+																				<div class="content">
+																				</div>
+																				<div class="content">
+																				</div>
+													                    	</div>
+													                    </div>
 												                    </div>
-											                    </div>
 											                    </div>
 											                </div>
 											                <!-- File upload card end -->
@@ -357,6 +380,54 @@ function handleImgfileSelect(e) {
 };
 
 $(function(){
+	var projDetailImg = [];
+	
+	$('.content')
+	  .on("dragover", dragOver)
+	  .on("dragleave", dragOver)
+	  .on("drop", uploadFiles);
+
+	function dragOver(e){
+	  e.stopPropagation();
+	  e.preventDefault();
+	  if (e.type == "dragover") {
+	    $(e.target).css({
+	      "background-color": "black",
+	      "outline-offset": "-20px"
+	    });
+	  } else {
+	      $(e.target).css({
+	      "background-color": "gray",
+	      "outline-offset": "-10px"
+	    });
+	    }
+	}
+
+	function uploadFiles(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	    dragOver(e);
+	  
+	    e.dataTransfer = e.originalEvent.dataTransfer;
+	    console.log(e.dataTransfer.files);
+	    var files = e.target.files || e.dataTransfer.files;
+	    if (files.length > 1) {
+	        alert('하나씩 첨부하세요.');
+	        return;
+	    }
+	    if (files[0].type.match(/image.*/)) {
+	                $(e.target).css({
+	            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+	            "outline": "none",
+	            "background-size": "100% 100%"
+	        });
+	    }else{
+	      alert('이미지가 아닙니다.');
+	      return;
+	    }
+	    projDetailImg.push(e.dataTransfer.files);
+	    console.log(projDetailImg);
+	}
 
 	$.validator.addMethod("kor", function(value, element) {
 		return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
@@ -399,7 +470,7 @@ $(function(){
         messages: {
         	projTitle: {
                 required: '프로젝트 제목을 입력해주세요.',
-                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
+                minlength: '제목은 최소 {5}글자 이상 입력하셔야 합니다.',
                 maxlength: '제목은 최대 {100}글자까지 가능합니다.',
             },
             projState: {

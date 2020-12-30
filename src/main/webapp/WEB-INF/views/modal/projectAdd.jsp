@@ -381,8 +381,9 @@ $(function(){
 	        }
 	    });
     
-    $('#proj_form').ajaxForm({
+     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
+        
         beforeSubmit: function(arr, form, options) {
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
@@ -394,5 +395,39 @@ $(function(){
             });
         },
     });
+/*     $("#proj_form").submit(function(e) {
+		e.preventDefault();
+		
+		var form = $(this);
+        var url = form.attr('action');
+        
+        
+        console.log("url : " + url);
+        
+        var projDetailImg = {
+       		projDetailImg : 'projDetailImg'		
+        } 
+        
+        
+        form.append(projDetailImg);
+        console.log(form.serialize());
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: form.serialize(),
+			dataType: "json",
+			success: function(data){
+					console.log(data);
+					swal("알림", "게시판이 등록되었습니다.", "success");
+					
+					window.setTimeout("pageReload()", 2000);
+			}
+
+		});
+	}); */
 });
+
+function pageReload() {
+	location.reload();
+}
 </script>
