@@ -332,6 +332,7 @@ $(document).on("click",".b-modal",function(event){
 
 $(document).on("click",".replyBtn",function(event){
 	$(".replyBox").remove();
+	$(".countBox").remove();
 	var parent = event.target.parentNode;
 	var tr = parent.parentNode;
 	var boardId = tr.children[2].innerText;
@@ -340,7 +341,7 @@ $(document).on("click",".replyBtn",function(event){
     	replyBoardId: boardId,
     }, function(json) {
 		$("#replyModal .modal-body #replyBoardId").val(json.output[0].replyBoardId);
-		$("#replyModal .modal-body #reply_form").append('<div class="row"><label class="col-sm-2 col-form-label">댓글 수&emsp;'+json.count+'</label></div>');
+		$("#replyModal .modal-body #reply_form").append('<div class="row countBox"><label class="col-sm-2 col-form-label">댓글 수&emsp;'+json.count+'</label></div>');
     	for (var i = 0; i < json.output.length; i++) {
     		if (json.output[i].replyDepth > 0 ) {
     			$("#replyModal .modal-body #reply_form").append('<div class="replyBox tab"><div class="row"><span>☞'+json.output[i].replyWriter+'</span>'

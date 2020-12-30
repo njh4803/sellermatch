@@ -51,9 +51,7 @@ label.error {
         <div class="modal-body">
 			<form action="${pageContext.request.contextPath}/admin/reply" id="reply_form" name="reply_form" enctype="multipart/form-data">
 															<div class="form-group row">
-                                                                <label for="replyBoardId" class="col-sm-2 col-form-label">게시판 번호
-                                                                	<span class="identify">*</span>
-                                                                </label>
+                                                                <label for="replyBoardId" class="col-sm-2 col-form-label">게시판 번호</label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
 	                                                                    <input id="replyBoardId" type="text" name="replyBoardId" class="form-control" readonly="readonly">
