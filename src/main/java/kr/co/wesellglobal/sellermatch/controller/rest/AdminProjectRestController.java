@@ -62,7 +62,7 @@ public class AdminProjectRestController {
 			@RequestParam(value = "projDetail", required = false) String projDetail,
 			@RequestParam(value = "projRequire", required = false) String projRequire,
 			@RequestParam(value = "projKeyword", required = false) String projKeyword,
-			@RequestParam(value = "projDetailImg", required = false) MultipartFile[] projDetailImg,
+			@RequestParam(value = "projDetailImg[]", required = false) MultipartFile[] projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
 			@RequestParam(value = "projState", required = false) String projState,
 			@RequestParam(value = "projProdCerti", required = false) String projProdCerti) throws Exception {
@@ -70,8 +70,6 @@ public class AdminProjectRestController {
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		
 		UploadItem item = null;
-		
-		log.debug("projDetailImg aaa = " + projDetailImg);
 		
 		String str = "";
 		for (int i = 0; i < projDetailImg.length; i++) {

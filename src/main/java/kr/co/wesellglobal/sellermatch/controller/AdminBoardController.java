@@ -72,6 +72,8 @@ public class AdminBoardController {
 		//목록조회
 		
 		List<BoardDto> output = null;
+		int boardCount = 0;
+		int minusCount = ((nowPage-1)*listCount);
 		
 		try {
 			// 전체 게시글 수 조회
@@ -83,12 +85,15 @@ public class AdminBoardController {
 			BoardDto.setOffset(pageData.getOffset());
 			BoardDto.setListCount(pageData.getListCount());
 			output = boardService.getBoardList(input);
+			boardCount = boardService.getBoardCount(input);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
+		model.addAttribute("boardCount", boardCount);
+		model.addAttribute("minusCount", minusCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
 		

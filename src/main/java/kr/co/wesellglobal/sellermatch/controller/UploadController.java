@@ -29,6 +29,7 @@ public class UploadController {
 	@GetMapping(value = "cnts/show", produces = {"image/jpg", "image/jpeg" })
 	public @ResponseBody byte[] show(String name) throws Exception {
 		
+		//InputStream in = new FileInputStream("/usr/local/img" + name);
 		InputStream in = new FileInputStream("C:/wesell/workspace/upload" + name);
 		// InputStream in = new FileInputStream("C:\\Users\\YW\\img/" + name);
 		// OutputStream out = new ByteArrayOutputStream();

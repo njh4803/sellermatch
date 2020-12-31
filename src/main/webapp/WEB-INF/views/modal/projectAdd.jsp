@@ -380,8 +380,40 @@ $(function(){
 	            projEndDate: '모집마감일을 선택해주세요.',
 	        }
 	    });
+	    
+	     $('#proj_form').ajaxForm({
+	         // submit 전에 호출된다.
+	        
+			
+	         beforeSubmit: function(arr, form, options) {
+	        	 var imgGet = $("#filer_input1")[0].files[0];
+	 			console.log(imgGet);
+	 			var imgGet2 = $("#filer_input1")[0].files[1];
+	 			console.log(imgGet2);
+	 			var imgGet3 = $("#filer_input1")[0].files[2];
+	 			console.log(imgGet3);
+	 			
+	 			var DetailImg = []; 
+	 		
+	 			DetailImg[0] = imgGet;
+	 			DetailImg[1] = imgGet2;
+	 			DetailImg[2] = imgGet3;
+	 			
+	 			console.log(DetailImg);
+	 			
+	 			form.append("projDetailImg", DetailImg);
+	             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
+	             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
+	             return $(form).valid();
+	         },
+	         success: function(json) {
+	             swal('알림', '상품이 등록되었습니다.', 'success').then(function(result) {
+	                 window.location = ROOT_URL + '/admin/projectList';
+	             });
+	         },
+	     });
     
-     $('#proj_form').ajaxForm({
+     /* $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         
         beforeSubmit: function(arr, form, options) {
@@ -394,37 +426,59 @@ $(function(){
                 window.location = ROOT_URL + '/admin/projectList';
             });
         },
-    });
-/*     $("#proj_form").submit(function(e) {
-		e.preventDefault();
-		
-		var form = $(this);
-        var url = form.attr('action');
-        
-        
-        console.log("url : " + url);
-        
-        var projDetailImg = {
-       		projDetailImg : 'projDetailImg'		
-        } 
-        
-        
-        form.append(projDetailImg);
-        console.log(form.serialize());
-		$.ajax({
-			type: "POST",
-			url: url,
-			data: form.serialize(),
-			dataType: "json",
-			success: function(data){
-					console.log(data);
-					swal("알림", "게시판이 등록되었습니다.", "success");
-					
-					window.setTimeout("pageReload()", 2000);
-			}
+    }); */
+//$("#proj_form").submit(function(e) {
+	
+	/// event.preventDefault(); 
+	/* var url = $("#proj_form").attr("action"); 
+	var form = $('#proj_form')[0]; 
+	var formData = new FormData(form);
+	
+	var imgGet = $("#filer_input1")[0].files[0];
+	console.log(imgGet);
+	var imgGet2 = $("#filer_input1")[0].files[1];
+	console.log(imgGet2);
+	var imgGet3 = $("#filer_input1")[0].files[2];
+	console.log(imgGet3);
+	
+	var DetailImg = []; 
 
-		});
+	DetailImg[0] = imgGet;
+	DetailImg[1] = imgGet2;
+	DetailImg[2] = imgGet3;
+	
+	console.log(DetailImg);
+	
+	formData.append("projDetailImg", DetailImg);
+	
+	$.ajax({
+		type: "POST",
+		url: url,
+		data: formData,
+		dataType: "json",
+		success: function(data){
+				console.log(data);
+				swal("알림", "게시판이 등록되었습니다.", "success");
+				
+				window.setTimeout("pageReload()", 2000);
+		}
+
 	}); */
+	
+	/* $.ajax({
+		type: "POST",
+		url: url,
+		data: formData,
+		dataType: "json",
+		success: function(data){
+				console.log(data);
+				swal("알림", "게시판이 등록되었습니다.", "success");
+				
+				window.setTimeout("pageReload()", 2000);
+		}
+
+		}); */
+	//});
 });
 
 function pageReload() {

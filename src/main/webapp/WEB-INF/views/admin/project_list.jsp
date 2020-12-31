@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/division/css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css">
 <style>
 .table-center th{
 	text-align: center;
@@ -106,7 +107,7 @@
                                                                 <tbody>
                                                                 <c:forEach var="output" items="${output}" varStatus="status">
 	                                                                    <tr>
-	                                                                    	<td>${output.projIdx}</td>
+	                                                                    	<td>${projCount - minusCount - status.count +1}</td>
 	                                                                        <td>
 	                                                                        	<a href="javascript:void(0)" data-hidden="${output.projIndus}" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
 	                                                                        </td>

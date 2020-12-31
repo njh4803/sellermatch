@@ -132,7 +132,7 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <c:forEach var="output" items="${output}" varStatus="index">
+                                                                <c:forEach var="output" items="${output}" varStatus="status">
 	                                                                    <tr>
 	                                                                    	<td>
 	                                                                    		<div class="checkbox-fade fade-in-primary">
@@ -144,7 +144,7 @@
 				                                                                    </label>
 			                                                                	</div>
 	                                                                    	</td>
-	                                                                    	<td>${totalCount - minusCount - index.count +1}</td>
+	                                                                    	<td>${boardCount - minusCount - status.count +1}</td>
 	                                                                        <td>
 	                                                                        	<a href="javascript:void(0)" id="boardId${status.index}" class="b-modal" data-toggle="modal" data-target="#boardModal">${output.boardId}</a>		
 	                                                                        </td>
@@ -333,21 +333,26 @@ $(document).on("click",".b-modal",function(event){
 $(document).on("click",".replyBtn",function(event){
 	$(".replyBox").remove();
 	$(".countBox").remove();
+	
 	var parent = event.target.parentNode;
 	var tr = parent.parentNode;
 	var boardId = tr.children[2].innerText;
+	var boardTitle = tr.children[3].innerText;
+	var boardWriter = tr.children[5].innerText;
 	
 	$.get(ROOT_URL + "/admin/reply", {
     	replyBoardId: boardId,
     }, function(json) {
+    	$("#replyModal .modal-body #replyBoardTitle").val(boardTitle);
+    	$("#replyModal .modal-body #replyBoardWriter").val(boardWriter);
 		$("#replyModal .modal-body #replyBoardId").val(json.output[0].replyBoardId);
 		$("#replyModal .modal-body #reply_form").append('<div class="row countBox"><label class="col-sm-2 col-form-label">댓글 수&emsp;'+json.count+'</label></div>');
     	for (var i = 0; i < json.output.length; i++) {
     		if (json.output[i].replyDepth > 0 ) {
-    			$("#replyModal .modal-body #reply_form").append('<div class="replyBox tab"><div class="row"><span>☞'+json.output[i].replyWriter+'</span>'
+    			$("#replyModal .modal-body #reply_form").append('<div class="replyBox tab"><div class="row"><span>☞<strong>'+json.output[i].replyWriter+'</strong></span>'
         	    		+'<span class="tab2">'+json.output[i].replyRegDate+'</span></div><div class="row"><span>'+json.output[i].replyContents+'</span></div></div>');
 			} else {
-				$("#replyModal .modal-body #reply_form").append('<div class="replyBox"><hr><div class="row"><span>'+json.output[i].replyWriter+'</span>'
+				$("#replyModal .modal-body #reply_form").append('<div class="replyBox"><hr><div class="row"><span><strong>'+json.output[i].replyWriter+'</strong></span>'
 	    	    		+'<span class="tab2">'+json.output[i].replyRegDate+'</span></div><div class="row"><span>'+json.output[i].replyContents+'</span></div></div>');	
 			}
 		}

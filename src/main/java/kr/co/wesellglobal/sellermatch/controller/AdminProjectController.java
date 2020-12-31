@@ -47,7 +47,7 @@ public class AdminProjectController {
 		}
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
-		int listCount = 20;		// 한 페이지당 표시할 목록 수
+		int listCount = 5;		// 한 페이지당 표시할 목록 수
 		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
 		
 		// 페이지 번호를 계산한 결과가 저장될 객체
@@ -63,8 +63,9 @@ public class AdminProjectController {
 		}
 		
 		//목록조회
-		
 		List<ProjectDto> output = null;
+		int projCount = 0;
+		int minusCount = ((nowPage-1)*listCount);
 		try {
 			// 전체 게시글 수 조회
 			totalCount = projectService.getProjectCount(input);
@@ -75,11 +76,14 @@ public class AdminProjectController {
 			ProjectDto.setOffset(pageData.getOffset());
 			ProjectDto.setListCount(pageData.getListCount());
 			output = projectService.getProjectList(input);
+			projCount = projectService.getProjectCount(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
+		model.addAttribute("projCount", projCount);
+		model.addAttribute("minusCount", minusCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
 		

@@ -38,6 +38,9 @@ label.error {
 .modal-header {
 	display: block;
 }
+.replyBox {
+	padding-left: 15px;
+}
 </style>
 
   <!-- Modal -->
@@ -55,6 +58,22 @@ label.error {
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
 	                                                                    <input id="replyBoardId" type="text" name="replyBoardId" class="form-control" readonly="readonly">
+																	</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="replyBoardTitle" class="col-sm-2 col-form-label">게시판 제목</label>
+                                                                <div class="col-sm-10">
+                                                                	<div class="form-group">
+	                                                                    <input id="replyBoardTitle" type="text" name="replyBoardTitle" class="form-control" readonly="readonly">
+																	</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="replyBoardWriter" class="col-sm-2 col-form-label">게시판 작성자</label>
+                                                                <div class="col-sm-10">
+                                                                	<div class="form-group">
+	                                                                    <input id="replyBoardWriter" type="text" name="replyBoardWriter" class="form-control" readonly="readonly">
 																	</div>
                                                                 </div>
                                                             </div>
