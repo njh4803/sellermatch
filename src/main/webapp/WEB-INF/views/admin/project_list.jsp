@@ -124,62 +124,18 @@
 	                                                                        <td>${output.projDetail}</td>
 	                                                                        <td>${output.projRequire}</td>
 	                                                                        <td>${output.projKeyword}</td>
-	                                                                        <%-- <td>${output.projDetailImg}</td> --%>
 	                                                                        <td>${output.projFile}</td>
 	                                                                        <td data-value="${output.projProdCerti}">${output.projProdCertiName}</td>
 	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
 	                                                                        <td>${output.projRegDate}</td>
 	                                                                        <td>${output.projEditDate}</td>
-	                                                                        <input type="hidden" value="${output.projDetailImg}">
 	                                                                    </tr>
+	                                                                    <input id="projDetailImg" type="hidden" value="${output.projDetailImg}">
                                                                 </c:forEach>
                                                                 </tbody>
                                                                 <tfoot>
                                                                 	<tr class="footable-paging">
                                                                 		<td colspan="21">
-                                                                			<!-- <ul class="pagination">
-                                                                				<li class="footable-page-nav disabled" data-page="first">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">«</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page-nav disabled" data-page="prev">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">‹</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page visible active" data-page="1">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">1</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page visible" data-page="2">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">2</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page-nav" data-page="next">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">›</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                				<li class="footable-page-nav" data-page="last">
-                                                                					<a class="footable-page-link" href="#">
-                                                                						<font style="vertical-align: inherit;">
-                                                                						<font style="vertical-align: inherit;">»</font></font>
-                                                                					</a>
-                                                                				</li>
-                                                                			</ul>
-                                                                			<div class="divider"></div>
-                                                                			<span class="label label-default">
-                                                                				<font style="vertical-align: inherit;">
-                                                                				<font style="vertical-align: inherit;">1/2</font></font>
-                                                                			</span> -->
                                                                 			<div class="col-lg-12 col-md-12 col-sm12 text-center">
 																				<ul class="pagination">
 																				<!-- 페이지 번호 구현 -->
@@ -280,7 +236,7 @@ $(document).on("click",".p-modal",function(event){
 	var projDetail = tr.children[12].innerText;
 	var projRequire = tr.children[13].innerText;
 	var projKeyword = tr.children[14].innerText;
-	/* var projDetailImg = tr.children[15].getAttribute("data-value"); */
+	var projDetailImg = $('#projDetailImg').val();
 	var projFile = tr.children[15].innerText;
 	var projProdCerti = tr.children[16].getAttribute("data-value");
 	var projState = tr.children[17].getAttribute("data-value");
@@ -312,14 +268,46 @@ $(document).on("click",".p-modal",function(event){
 		
 		$("#editModal .modal-body input[name=projKeyword][value="+projKeywordValue[i]+"]").attr('checked', true);
 	}
-	/* $("#editModal .modal-body #projDetailImg").val(projDetailImg); */
+	$("#editModal .modal-body #detailImgList").val(projDetailImg);
 	$("#editModal .modal-body #projFile").val(projFile);
 	$("#editModal .modal-body #projProdCerti").val(projProdCerti);
 	$("#editModal .modal-body #projState").val(projState);
 	$("#editModal .modal-body #projRegDate").val(projRegDate);
 	$("#editModal .modal-body #projEditDate").val(projEditDate);
 	
+	var imgBox = $("#editModal .modal-body #imgBox");
+	var imgSrcList = []; 
+	imgSrcList = projDetailImg.split('|');
+	$('#imgBox ul').remove();
+	for (var i = 0; i < imgSrcList.length-1; i++) {
+		createimgBox(imgBox,imgSrcList[i]);
+	}
 	
+	
+	function createimgBox(obj, imgSrc){
+		
+    	var tag1 = $('<ul class="jFiler-items-list jFiler-items-grid"></ul>').appendTo(obj);
+    	var tag2 = $('<li class="jFiler-item"></li>').appendTo(tag1);
+    	var tag3 = $('<div class="jFiler-item-container"></div>').appendTo(tag2);
+    	var tag4 = $('<div class="jFiler-item-inner"></div>').appendTo(tag3);
+    	var tag5 = $('<div class="jFiler-item-thumb"></div>').appendTo(tag4);
+    	var tag6 = $('<div class="jFiler-item-assets jFiler-row"></div>').appendTo(tag4);
+    	var tag7 = $('<div class="jFiler-item-status"></div>').appendTo(tag5);
+    	var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5);
+    	var tag9 = $('<div class="jFiler-item-thumb-image"></div>').appendTo(tag5);
+    	var tag10 = $('<img style="max-width: 100%" draggable="false">').appendTo(tag9);
+    	var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8);
+    	var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8);
+    	var tag13 = $('<ul class="list-inline pull-left"></ul>').appendTo(tag6);
+    	var tag14 = $('<ul class="list-inline pull-right"></ul>').appendTo(tag6);
+    	var tag15 = $('<input class="btn removeImg" type="button" value="x">').appendTo(tag14);
+    	
+    	obj.append(obj.tag1);
+    	
+    	tag10.attr('src', "/upload"+imgSrc);
+    	
+    	return tag10;
+    }
 	
 });
 

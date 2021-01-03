@@ -153,8 +153,12 @@ label.error {
                                                                 <div class="col-sm-9">
 	                                                                <div class="form-group">
 													                    <div class="card-block">
+													                    	<input type="hidden" id=detailImgList name="detailImgList">
 													                    	<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
-        																	<input type="file" name="fileUpload" id="fileUpload" style="display:none;" multiple/>
+        																	<input type="file" name="projDetailImg" id="fileUpload" style="display:none;" multiple/>
+       																	    <div id="imgBox" class="jFiler-items jFiler-row">
+																				
+																			</div>
 													                    </div>
 												                    </div>
 											                    </div>
@@ -343,7 +347,8 @@ $(document).ready(function() {
 	$("#image").on("change", handleImgfileSelect);
 	
 	//파일 업로드
-    /* var objDragAndDrop = $(".dragAndDropDiv");
+    var objDragAndDrop = $(".dragAndDropDiv");
+	var imgBox = $("#imgBox");
     
     $(document).on("dragenter",".dragAndDropDiv",function(e){
         e.stopPropagation();
@@ -359,8 +364,9 @@ $(document).ready(function() {
         $(this).css('border', '2px dotted #0B85A1');
         e.preventDefault();
         var files = e.originalEvent.dataTransfer.files;
-    
-        handleFileUpload(files,objDragAndDrop);
+        var imgListStr = $("#detailImgList").val();
+        //$('#imgBox ul').remove();
+        handleFileUpload(files,imgBox,imgListStr);
     });
     
     $(document).on('dragenter', function (e){
@@ -378,111 +384,126 @@ $(document).ready(function() {
     });
     //drag 영역 클릭시 파일 선택창
     objDragAndDrop.on('click',function (e){
-        $('input[type=file]').trigger('click');
+        $('input[name=projDetailImg]').trigger('click');
     });
 
-    $('input[type=file]').on('change', function(e) {
+    $('input[name=projDetailImg]').on('change', function(e) {
         var files = e.originalEvent.target.files;
-        handleFileUpload(files,objDragAndDrop);
+        var imgListStr = $("#detailImgList").val();
+        //$('#imgBox ul').remove();
+        handleFileUpload(files,imgBox,imgListStr);
     });
     
-    function handleFileUpload(files,obj)
-    {
-       for (var i = 0; i < files.length; i++) 
-       {
-            var fd = ('#proj_edit_form');
-            fd.append('projDetailImg', files[i]);
-     
-            var status = new createStatusbar(obj); //Using this we can set progress.
-            status.setFileNameSize(files[i].name,files[i].size);
-            //sendFileToServer(fd,status);
-     
-       }
+    function handleFileUpload(files,imgBox,imgListStr) {
+    	
+    	var imgList = [];
+    	imgList = imgListStr.split("|");
+    	
+    	if (files.length > 5 || imgList.length > 5) {
+			alert('사진은 최대 5개까지 첨부가능합니다.');
+			return;
+		}
+    	
+		for (var i = 0; i < files.length; i++) 
+		{
+			var fd = new FormData();
+		    var src_tag = new createimgBox(imgBox,files[i]); //Using this we can set progress.
+		    fd.append('detailImg', files[i]);
+		    sendFileToServer(fd,src_tag);
+		}
+		
+    }  
+
+    function createimgBox(obj, img){
+
+    	var tag1 = $('<ul class="jFiler-items-list jFiler-items-grid"></ul>').appendTo(obj);
+    	var tag2 = $('<li class="jFiler-item"></li>').appendTo(tag1);
+    	var tag3 = $('<div class="jFiler-item-container"></div>').appendTo(tag2);
+    	var tag4 = $('<div class="jFiler-item-inner"></div>').appendTo(tag3);
+    	var tag5 = $('<div class="jFiler-item-thumb"></div>').appendTo(tag4);
+    	var tag6 = $('<div class="jFiler-item-assets jFiler-row"></div>').appendTo(tag4);
+    	var tag7 = $('<div class="jFiler-item-status"></div>').appendTo(tag5);
+    	var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5);
+    	var tag9 = $('<div class="jFiler-item-thumb-image"></div>').appendTo(tag5);
+    	var tag10 = $('<img style="max-width: 100%" draggable="false">').appendTo(tag9);
+    	var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8);
+    	var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8);
+    	var tag13 = $('<ul class="list-inline pull-left"></ul>').appendTo(tag6);
+    	var tag14 = $('<ul class="list-inline pull-right"></ul>').appendTo(tag6);
+    	var tag15 = $('<input class="btn removeImg" type="button" value="x">').appendTo(tag14);
+    	
+    	obj.append(obj.tag1);
+    	
+    	const reader = new FileReader()
+    	reader.onload = function(img) {
+    	  tag10.attr('src', img.target.result);
+    	}
+    	reader.readAsDataURL(img)
+    	return tag10;
     }
-    
-    var rowCount=0;
-    function createStatusbar(obj){
-            
-        rowCount++;
-        var row="odd";
-        if(rowCount %2 ==0) row ="even";
-        this.statusbar = $("<div class='statusbar "+row+"'></div>");
-        this.filename = $("<div class='filename'></div>").appendTo(this.statusbar);
-        this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
-        this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
-        this.abort = $("<div class='abort'>중지</div>").appendTo(this.statusbar);
-        
-        obj.after(this.statusbar);
-     
-        this.setFileNameSize = function(name,size){
-            var sizeStr="";
-            var sizeKB = size/1024;
-            if(parseInt(sizeKB) > 1024){
-                var sizeMB = sizeKB/1024;
-                sizeStr = sizeMB.toFixed(2)+" MB";
-            }else{
-                sizeStr = sizeKB.toFixed(2)+" KB";
-            }
-     
-            this.filename.html(name);
-            this.size.html(sizeStr);
-        }
-        
-        this.setProgress = function(progress){       
-            var progressBarWidth =progress*this.progressBar.width()/ 100;  
-            this.progressBar.find('div').animate({ width: progressBarWidth }, 10).html(progress + "% ");
-            if(parseInt(progress) >= 100)
-            {
-                this.abort.hide();
-            }
-        }
-        
-        this.setAbort = function(jqxhr){
-            var sb = this.statusbar;
-            this.abort.click(function()
-            {
-                jqxhr.abort();
-                sb.hide();
-            });
-        }
-    }
-    
-    function sendFileToServer(formData,status)
+    function sendFileToServer(formData,src_tag)
     {
-        var uploadURL = "/fileUpload/post"; //Upload URL
-        var extraData ={}; //Extra Data.
-        var jqXHR=$.ajax({
-                xhr: function() {
-                var xhrobj = $.ajaxSettings.xhr();
-                if (xhrobj.upload) {
-                        xhrobj.upload.addEventListener('progress', function(event) {
-                            var percent = 0;
-                            var position = event.loaded || event.position;
-                            var total = event.total;
-                            if (event.lengthComputable) {
-                                percent = Math.ceil(position / total * 100);
-                            }
-                            //Set progress
-                            status.setProgress(percent);
-                        }, false);
-                    }
-                return xhrobj;
-            },
+        var uploadURL = ROOT_URL + "/admin/project/fileUpload"; //Upload URL
+        var detailImgStr = $('#detailImgList').val();
+        $.ajax({
             url: uploadURL,
             type: "POST",
             contentType:false,
             processData: false,
             cache: false,
             data: formData,
-            success: function(data){
-                status.setProgress(100);
-     
-                //$("#status1").append("File upload Done<br>");           
+            success: function(json){
+            	console.log(json.fName);
+            	var result = '';
+            	if ($('#detailImgList').val() == undefined) {
+            		$('#detailImgList').val(json.fName + '|');
+            		result = $('#detailImgList').val();
+				} else {
+					result = $('#detailImgList').val() + json.fName + '|';
+				}
+            	console.log(result);
+            	$('#detailImgList').val(result);
+            	src_tag.attr('data-src', json.fName + '|');
             }
-        }); 
-     
-        status.setAbort(jqXHR);
-    } */
+        });
+    }
+    
+    $(document).on("click",".removeImg",function(event){
+    	var parent = event.target.parentNode;
+    	console.log(parent)
+    	var imgItem = parent.parentNode.parentNode.parentNode.parentNode.parentNode;
+    	var img_src = parent.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].getAttribute('data-src') ;
+    	console.log(img_src);
+    	imgItem.remove();
+    	var imgListStr = $("#detailImgList").val();
+    	var imgList = [];
+    	var result = '';
+    	imgList = imgListStr.split("|");
+    	img_src = img_src.replace("|","");
+    	for (var i = 0; i < imgList.length-1; i++) {
+    		console.log(imgList[i]);
+    		console.log(img_src);
+    		console.log('------------------------------------------------------------------------------------------');
+			if (imgList[i] == img_src) {
+				console.log('건너뜀');
+				continue;
+			}
+			result += imgList[i]+"|";
+		}
+    	console.log(result);
+    	$('#detailImgList').val(result);
+		/* $.ajax({
+			type: "DELETE",
+			url: ROOT_URL + "/admin/project/fileUpload",
+			data: form.serialize(),
+			beforeSend: function() {
+			 
+			},
+			success: function() {
+				
+			}
+		}); */
+    });
 });
 ////////////////////////////////////////////
 function handleImgfileSelect(e) {
@@ -504,54 +525,6 @@ function handleImgfileSelect(e) {
 };
 
 $(function(){
-	var projDetailImg = [];
-	
-	$('.content')
-	  .on("dragover", dragOver)
-	  .on("dragleave", dragOver)
-	  .on("drop", uploadFiles);
-
-	function dragOver(e){
-	  e.stopPropagation();
-	  e.preventDefault();
-	  if (e.type == "dragover") {
-	    $(e.target).css({
-	      "background-color": "black",
-	      "outline-offset": "-20px"
-	    });
-	  } else {
-	      $(e.target).css({
-	      "background-color": "gray",
-	      "outline-offset": "-10px"
-	    });
-	    }
-	}
-
-	function uploadFiles(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-	    dragOver(e);
-	  
-	    e.dataTransfer = e.originalEvent.dataTransfer;
-	    console.log(e.dataTransfer.files);
-	    var files = e.target.files || e.dataTransfer.files;
-	    if (files.length > 1) {
-	        alert('하나씩 첨부하세요.');
-	        return;
-	    }
-	    if (files[0].type.match(/image.*/)) {
-	                $(e.target).css({
-	            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
-	            "outline": "none",
-	            "background-size": "100% 100%"
-	        });
-	    }else{
-	      alert('이미지가 아닙니다.');
-	      return;
-	    }
-	    projDetailImg.push(e.dataTransfer.files);
-	    console.log(projDetailImg);
-	}
 
 	$.validator.addMethod("kor", function(value, element) {
 		return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);

@@ -1,6 +1,7 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -148,28 +150,17 @@ public class AdminProjectRestController {
 			@RequestParam(value = "projDetail", required = false) String projDetail,
 			@RequestParam(value = "projRequire", required = false) String projRequire,
 			@RequestParam(value = "projKeyword", required = false) String projKeyword,
-			@RequestParam(value = "projDetailImg[]", required = false) MultipartFile[] projDetailImg,
+			@RequestParam(value = "detailImgList", required = false) String projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
 			@RequestParam(value = "projState", required = false) String projState,
 			@RequestParam(value = "projProdCerti", required = false) String projProdCerti) {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		UploadItem item = null;
-		List<UploadItem> imgItem = null;
-		
-		String str = "";
-		log.debug("projDetailImg 사이즈 = " + projDetailImg.length);
-		log.debug("projFile = " + projFile);
 		
 		try {
 			if (projFile != null) {
 				item = webHelper.saveMultipartFile(projFile);
-			}
-			if (projDetailImg.length != 0) {
-				imgItem = webHelper.saveMultipartFile(projDetailImg);
-				for (int i = 0; i < projDetailImg.length; i++) {
-					str += imgItem.get(i).getFilePath() + ",";
-				}
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
@@ -193,8 +184,8 @@ public class AdminProjectRestController {
 		input.setProjRequire(projRequire);
 		input.setProjKeyword(projKeyword);
 		input.setProjProdCerti(projProdCerti);
-		if (projDetailImg.length != 0) {
-			input.setProjDetailImg(str);
+		if (projDetailImg != "" && projDetailImg != null) {
+			input.setProjDetailImg(projDetailImg);
 		}
 		if (projFile != null) {
 			input.setProjFile(item.getFilePath());
@@ -208,5 +199,31 @@ public class AdminProjectRestController {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		return webHelper.getJsonData();
+	}
+	
+	@RequestMapping(value = "/admin/project/fileUpload", method = RequestMethod.POST)
+	public Map<String, Object> fileUpload(@RequestParam(value = "detailImg", required = false) MultipartFile detailImg){
+		/** 1) 업로드 처리 */
+		// 업로드 결과가 저장된 Beans를 리턴받는다.
+		UploadItem item = null;
+		String fName = "";
+		
+		log.debug("detailImg = " + detailImg);
+		ResponseEntity<String> insertFileName;
+		try {
+			insertFileName = new ResponseEntity<String>(
+					UploadFileUtils.uploadFile(uploadPath, detailImg.getOriginalFilename(), detailImg.getBytes()),
+					HttpStatus.CREATED);
+			fName = insertFileName.getBody();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("fName", fName);
+		return webHelper.getJsonData(data);
+		
 	}
 }

@@ -31,8 +31,8 @@
 	   <prop key="smtpUsername">njh4803@gmail.com</prop>
 	   <prop key="smtpPassword">nomuqsathmjosxyc</prop>
 	   <!-- 업로드 디렉토리 -->
-	   <!-- <prop key="uploadDir">C:/wesell/workspace/upload</prop> -->
-	   <prop key="uploadDir">/usr/local/img</prop>
+	   <prop key="uploadDir">C:/wesell/workspace/upload</prop>
+	   <!-- <prop key="uploadDir">/usr/local/img</prop> -->
 	   <!-- 업로드 디렉토리에 대한 WebPath (server.xml에 명시한 Path값과 일치해야한다. -->
 	   <prop key="uploadPath">/upload</prop>
 	</util:properties>
