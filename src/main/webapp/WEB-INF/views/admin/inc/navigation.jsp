@@ -521,18 +521,14 @@
                 </div>
             </div>
             <!-- Sidebar inner chat end-->
-            <div class="pcoded-main-container">
+            <div class="pcoded-main-container" style="background: #d5dae6;">
                 <div class="pcoded-wrapper">
                     <nav class="pcoded-navbar" pcoded-header-position="relative">
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="">
                                 <div class="main-menu-header">
-                                    <img class="img-40" src="${pageContext.request.contextPath}/assets/images/user.png" alt="User-Profile-Image">
-                                    <!-- <div class="user-details">
-                                        <span>John Doe</span>
-                                        <span id="more-details">UX Designer<i class="ti-angle-down"></i></span>
-                                    </div> -->
+                                    <a href="${pageContext.request.contextPath}/admin"><img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo_2.png" alt="User-Profile-Image" style="width: 100%;"></a>
                                 </div>
 
                                 <!-- <div class="main-menu-content">

@@ -97,11 +97,6 @@ label.error {
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
 	                                                                    <input id="memId" type="text" name="memId" class="form-control" placeholder="이메일 입력">
-	                                                                    <!-- <span
-																			id="guide" class="input-group-btn">
-																			<button type="button" id="idCheck"
-																				class="btn form-bg-primary">중복검사</button>
-																		</span> -->
 																	</div>
                                                                 </div>
                                                             </div>

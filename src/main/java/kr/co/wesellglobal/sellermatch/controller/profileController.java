@@ -23,16 +23,16 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-public class TempController {
+public class profileController {
 	
 	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/temp", method = RequestMethod.GET)
+	@RequestMapping(value = "/seller/find", method = RequestMethod.GET)
 	public ModelAndView home(Model model) {
 		
-		return new ModelAndView("main");
+		return new ModelAndView("findSeller");
 	}
 }

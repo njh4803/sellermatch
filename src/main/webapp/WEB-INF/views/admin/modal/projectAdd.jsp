@@ -38,50 +38,27 @@ label.error {
 .modal-header {
 	display: block;
 }
-.content{
-    outline: 2px dashed #92b0b3 ;
-    outline-offset:-10px;  
-    text-align: center;
-    transition: all .15s ease-in-out;
-    height: 100%;
-    width: 19%;
-    background-color: gray;
-    margin-left: 6px;
-    float: left;
-}
-
 </style>
   <!-- Modal -->
-  <div class="modal fade" id="editModal" role="dialog">
+  <div class="modal fade" id="projectModal" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">상세정보</h4>
+          <h4 class="modal-title">프로젝트 등록</h4>
         </div>
         <div class="modal-body">
 													<div class="card-block">
-                                                        <h4 class="sub-title">Basic Inputs</h4>
-                                                        <form action="${pageContext.request.contextPath}/admin/project/edit" method="post" id="proj_edit_form" name="proj_edit_form" enctype="multipart/form-data">
-                                                            <%-- <div class="form-group row">
-                                                                <label class="col-sm-3 col-form-label">상품 대표 사진</label>
-                                                                <div class="col-sm-9 file_input">
-                                                                	<div class="input-group">
-                                                                		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
-									                                    </div>
-									                                    <div style="display: flow-root;">
-									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-										                                	<label>
-										                                		파일 선택
-										                                		<input id = "image" name="prodPhoto" value="" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-										                                	</label>
-									                                    </div>
-																	</div>
+                                                        <form action="${pageContext.request.contextPath}/admin/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
+                                                        	<div class="form-group row">
+                                                                <label for="projSort" class="col-sm-3 col-form-label">프로젝트 분류</label>
+                                                                <div class="col-sm-9">
+                                                                	<select id="projSort" name="projSort" class="form-control">
+						                                                <option value="1">공급자</option>
+						                                                <option value="2">판매자</option>
+						                                        	</select>
                                                                 </div>
-                                                            </div> --%>
-                                                            <input type="hidden" id="projId" name="projId">
+                                                            </div>
                                                             <div class="form-group row">
                                                                 <label for="projTitle" class="col-sm-3 col-form-label">프로젝트 제목
                                                                 	<span class="identify">*</span>
@@ -93,36 +70,12 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projState" class="col-sm-3 col-form-label">프로젝트 상태
-                                                                	<span class="identify">*</span>
-                                                                </label>
+                                                                <label for="projState" class="col-sm-3 col-form-label">프로젝트 상태</label>
                                                                 <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <select id="projState" name="projState" class="form-control">
-							                                                <option value="0">중지</option>
-							                                                <option value="1">정상</option>
-							                                            </select>
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="projRegDate" class="col-sm-3 col-form-label">프로젝트 등록일
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <input id="projRegDate" type="datetime" name="projRegDate" class="form-control" readonly>
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="projEditDate" class="col-sm-3 col-form-label">프로젝트 수정일
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <input id="projEditDate" type="datetime" name="projEditDate" class="form-control" readonly>
-																	</div>
+                                                                	<select id="projState" name="projState" class="form-control">
+						                                                <option value="0">중지</option>
+						                                                <option value="1" selected="selected">정상</option>
+						                                        	</select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -131,36 +84,19 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projMemId" type="text" name="projMemId" class="form-control" readonly>
+	                                                                    <input id="projMemId" type="text" name="projMemId" class="form-control">
 																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="projSort" class="col-sm-3 col-form-label">회원분류
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                	<select id="projSort" name="projSort" class="form-control">
-						                                                <option value="0">일반</option>
-						                                                <option value="1">공급자</option>
-						                                                <option value="2">판매자</option>
-						                                        	</select>
                                                                 </div>
                                                             </div>
                                                             <!-- File upload card start -->
                                                             <div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">상품 상세 사진</label>
                                                                 <div class="col-sm-9">
-	                                                                <div class="form-group">
-													                    <div class="card-block">
-													                    	<input type="hidden" id=detailImgList name="detailImgList">
-													                    	<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
-        																	<input type="file" name="projDetailImg" id="fileUpload" style="display:none;" multiple/>
-       																	    <div id="imgBox" class="jFiler-items jFiler-row">
-																				
-																			</div>
-													                    </div>
+                                                                <div class="form-group">
+												                    <div class="card-block">
+												                        <input type="file" name="projDetailImg" id="filer_input1" multiple="multiple">
 												                    </div>
+											                    </div>
 											                    </div>
 											                </div>
 											                <!-- File upload card end -->
@@ -215,7 +151,9 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="projEndDate" class="col-sm-3 col-form-label">모집마감일</label>
+                                                                <label for="projEndDate" class="col-sm-3 col-form-label">모집마감일
+                                                                	<span class="identify">*</span>
+                                                                </label>
                                                                 <div class="col-sm-9">
                                                                     <input type="date" class="form-control" name="projEndDate" id="projEndDate">
                                                                 </div>
@@ -231,15 +169,13 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="projRecruitNum" class="col-sm-3 control-label">모집인원
-																	<span class="identify">*</span>
-																</label>
+																<label for="projRecruitNum" class="col-sm-3 control-label">모집인원</label>
 																<div class="col-sm-9">
 																	<input type="number" name="projRecruitNum" class="form-control"
-																		id="projRecruitNum" min="1"/>
+																		id="projRecruitNum" min="1" value="1"/>
 																</div>
 															</div>
-                                                            <div class="form-group row">
+															<div class="form-group row">
 																<label for="projKeyword" class="col-sm-3 col-form-label">상품 키워드
 																	<span class="identify">*</span>
 																</label>
@@ -346,166 +282,15 @@ label.error {
 $(document).ready(function() {
 	$("#image").on("change", handleImgfileSelect);
 	
-	//파일 업로드
-    var objDragAndDrop = $(".dragAndDropDiv");
-	var imgBox = $("#imgBox");
-    
-    $(document).on("dragenter",".dragAndDropDiv",function(e){
-        e.stopPropagation();
-        e.preventDefault();
-        $(this).css('border', '2px solid #0B85A1');
-    });
-    $(document).on("dragover",".dragAndDropDiv",function(e){
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    $(document).on("drop",".dragAndDropDiv",function(e){
-        
-        $(this).css('border', '2px dotted #0B85A1');
-        e.preventDefault();
-        var files = e.originalEvent.dataTransfer.files;
-        var imgListStr = $("#detailImgList").val();
-        //$('#imgBox ul').remove();
-        handleFileUpload(files,imgBox,imgListStr);
-    });
-    
-    $(document).on('dragenter', function (e){
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    $(document).on('dragover', function (e){
-      e.stopPropagation();
-      e.preventDefault();
-      objDragAndDrop.css('border', '2px dotted #0B85A1');
-    });
-    $(document).on('drop', function (e){
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    //drag 영역 클릭시 파일 선택창
-    objDragAndDrop.on('click',function (e){
-        $('input[name=projDetailImg]').trigger('click');
-    });
+	// 3. CKEditor5를 생성할 textarea 지정
+	/* ClassicEditor
+	    .create( document.querySelector( '#projDetail' ) )
+	    .catch( error => {
+	        console.error( error );
+	    } ); */
 
-    $('input[name=projDetailImg]').on('change', function(e) {
-        var files = e.originalEvent.target.files;
-        var imgListStr = $("#detailImgList").val();
-        //$('#imgBox ul').remove();
-        handleFileUpload(files,imgBox,imgListStr);
-    });
-    
-    function handleFileUpload(files,imgBox,imgListStr) {
-    	
-    	var imgList = [];
-    	imgList = imgListStr.split("|");
-    	
-    	if (files.length > 5 || imgList.length > 5) {
-			alert('사진은 최대 5개까지 첨부가능합니다.');
-			return;
-		}
-    	
-		for (var i = 0; i < files.length; i++) 
-		{
-			var fd = new FormData();
-		    var src_tag = new createimgBox(imgBox,files[i]); //Using this we can set progress.
-		    fd.append('detailImg', files[i]);
-		    sendFileToServer(fd,src_tag);
-		}
-		
-    }  
+}); // end ready...
 
-    function createimgBox(obj, img){
-
-    	var tag1 = $('<ul class="jFiler-items-list jFiler-items-grid"></ul>').appendTo(obj);
-    	var tag2 = $('<li class="jFiler-item"></li>').appendTo(tag1);
-    	var tag3 = $('<div class="jFiler-item-container"></div>').appendTo(tag2);
-    	var tag4 = $('<div class="jFiler-item-inner"></div>').appendTo(tag3);
-    	var tag5 = $('<div class="jFiler-item-thumb"></div>').appendTo(tag4);
-    	var tag6 = $('<div class="jFiler-item-assets jFiler-row"></div>').appendTo(tag4);
-    	var tag7 = $('<div class="jFiler-item-status"></div>').appendTo(tag5);
-    	var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5);
-    	var tag9 = $('<div class="jFiler-item-thumb-image"></div>').appendTo(tag5);
-    	var tag10 = $('<img style="max-width: 100%" draggable="false">').appendTo(tag9);
-    	var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8);
-    	var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8);
-    	var tag13 = $('<ul class="list-inline pull-left"></ul>').appendTo(tag6);
-    	var tag14 = $('<ul class="list-inline pull-right"></ul>').appendTo(tag6);
-    	var tag15 = $('<input class="btn removeImg" type="button" value="x">').appendTo(tag14);
-    	
-    	obj.append(obj.tag1);
-    	
-    	const reader = new FileReader()
-    	reader.onload = function(img) {
-    	  tag10.attr('src', img.target.result);
-    	}
-    	reader.readAsDataURL(img)
-    	return tag10;
-    }
-    function sendFileToServer(formData,src_tag)
-    {
-        var uploadURL = ROOT_URL + "/admin/project/fileUpload"; //Upload URL
-        var detailImgStr = $('#detailImgList').val();
-        $.ajax({
-            url: uploadURL,
-            type: "POST",
-            contentType:false,
-            processData: false,
-            cache: false,
-            data: formData,
-            success: function(json){
-            	console.log(json.fName);
-            	var result = '';
-            	if ($('#detailImgList').val() == undefined) {
-            		$('#detailImgList').val(json.fName + '|');
-            		result = $('#detailImgList').val();
-				} else {
-					result = $('#detailImgList').val() + json.fName + '|';
-				}
-            	console.log(result);
-            	$('#detailImgList').val(result);
-            	src_tag.attr('data-src', json.fName + '|');
-            }
-        });
-    }
-    
-    $(document).on("click",".removeImg",function(event){
-    	var parent = event.target.parentNode;
-    	console.log(parent)
-    	var imgItem = parent.parentNode.parentNode.parentNode.parentNode.parentNode;
-    	var img_src = parent.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].getAttribute('data-src') ;
-    	console.log(img_src);
-    	imgItem.remove();
-    	var imgListStr = $("#detailImgList").val();
-    	var imgList = [];
-    	var result = '';
-    	imgList = imgListStr.split("|");
-    	img_src = img_src.replace("|","");
-    	for (var i = 0; i < imgList.length-1; i++) {
-    		console.log(imgList[i]);
-    		console.log(img_src);
-    		console.log('------------------------------------------------------------------------------------------');
-			if (imgList[i] == img_src) {
-				console.log('건너뜀');
-				continue;
-			}
-			result += imgList[i]+"|";
-		}
-    	console.log(result);
-    	$('#detailImgList').val(result);
-		/* $.ajax({
-			type: "DELETE",
-			url: ROOT_URL + "/admin/project/fileUpload",
-			data: form.serialize(),
-			beforeSend: function() {
-			 
-			},
-			success: function() {
-				
-			}
-		}); */
-    });
-});
-////////////////////////////////////////////
 function handleImgfileSelect(e) {
 	var files = e.target.files;
 	var filesArr = Array.prototype.slice.call(files);
@@ -524,83 +309,94 @@ function handleImgfileSelect(e) {
 	});
 };
 
+
 $(function(){
-
-	$.validator.addMethod("kor", function(value, element) {
-		return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
-	});
-
-	$.validator.addMethod("phone", function(value, element) {
-		return this.optional(element)
-				|| /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value)
-				|| /^\d{2, 3}\d{3, 4}\d{4}$/i.test(value);
-	});
-	
-    /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-    $('#proj_edit_form').validate({
-    	/* 
-			required 필수 항목으로 설정한다. (true, false)
-			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
-		*/
-		
-		rules: {
-            // [프로젝트 제목] 필수 + 알파벳,숫자 조합만 허용
-            projTitle: {
-                required: true, minlength: 5, maxlength: 100, 
-            },
-            // [상품가격] 필수
-            projState: 'required',
-            // [상품마진] 필수
-            projPrice: {
-                required: true, min: 1, 
-            },
-            // [등록지역] 필수
-            projMargin: 'required',
-            // [공급방법] 필수
-           	projSupplyType: 'required',
-            // [등록지역] 필수
-            projIndus: 'required',
-         	// [상품 상세내용] 필수
-            projDetail: 'required',
-            projEndDate: 'required',
-        },
-        messages: {
-        	projTitle: {
-                required: '프로젝트 제목을 입력해주세요.',
-                minlength: '제목은 최소 {5}글자 이상 입력하셔야 합니다.',
-                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
-            },
-            projState: {
-                required: '프로젝트 상태를 선택해주세요.',
-            },
-            projPrice: {
-                required: '상품가격을 입력해주세요.',
-                min: "0이상 입력해주세요.",
-            },
-            projMargin: {
-                required: '상품마진률을 선택해주세요.',
-            },
-            projSupplyType: {
-                required: '공급방법을 선택해주세요.',
-            },
-            projDetail: '상품 상세내용를 입력해주세요.',
-            projIndus: '상품분류를 선택해주세요.',
-            projEndDate: '모집마감일을 선택해주세요.',
-        }
-    });
-    
-    $('#proj_edit_form').ajaxForm({
-        // submit 전에 호출된다.
-        beforeSubmit: function(arr, form, options) {
-            // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
-            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            return $(form).valid();
-        },
-        success: function(json) {
-            swal('알림', '프로젝트가 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/admin/projectList';
-            });
-        },
-    });
+	    /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
+	    $('#proj_form').validate({
+	    	/* 
+				required 필수 항목으로 설정한다. (true, false)
+				remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
+			*/
+			
+	        rules: {
+	        	// [아이디 중복검사]
+	        	projMemId: {
+	                required: true, email: true, 
+	                remote : {
+	                    url : ROOT_URL + '/admin/member/idExistCheck',
+	                    type : 'post',
+	                    data : {
+	                    	memId : function() {
+	                            return $("#projMemId").val();
+	                        }
+	                    }
+	                }
+	            },
+	            // [프로젝트 제목] 필수 + 알파벳,숫자 조합만 허용
+	            projTitle: {
+	                required: true, minlength: 5, maxlength: 100, 
+	            },
+	            // [상품가격] 필수
+	            projState: 'required',
+	            // [상품마진] 필수
+	            projPrice: 'required',
+	            // [등록지역] 필수
+	            projMargin: 'required',
+	            // [공급방법] 필수
+	           	projSupplyType: 'required',
+	            // [등록지역] 필수
+	            projIndus: 'required',
+	         	// [상품 상세내용] 필수
+	            projDetail: 'required',
+	            projEndDate: 'required',
+	        },
+	        messages: {
+	        	projMemId: {
+	                required: '아이디를 입력하세요.',
+	                email: '아이디는 이메일만 입력 가능합니다.',
+	                remote: '존재 하지 않는 아이디 입니다.'
+	            },
+	        	projTitle: {
+	                required: '프로젝트 제목을 입력해주세요.',
+	                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
+	                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
+	            },
+	            projState: {
+	                required: '프로젝트 상태를 선택해주세요.',
+	            },
+	            projPrice: {
+	                required: '상품가격을 입력해주세요.',
+	            },
+	            projMargin: {
+	                required: '상품마진률을 선택해주세요.',
+	            },
+	            projSupplyType: {
+	                required: '공급방법을 선택해주세요.',
+	            },
+	            projDetail: '상품 상세내용를 입력해주세요.',
+	            projIndus: '상품분류를 선택해주세요.',
+	            projEndDate: '모집마감일을 선택해주세요.',
+	        }
+	    });
+	    
+	     $('#proj_form').ajaxForm({
+	         // submit 전에 호출된다.
+	        
+			
+	         beforeSubmit: function(arr, form, options) {
+	             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
+	             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
+	             return $(form).valid();
+	         },
+	         success: function(json) {
+	             swal('알림', '상품이 등록되었습니다.', 'success').then(function(result) {
+	                 window.location = ROOT_URL + '/admin/projectList';
+	             });
+	         },
+	     });
 });
+
+function pageReload() {
+	location.reload();
+}
 </script>

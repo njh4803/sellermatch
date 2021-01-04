@@ -4,9 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%> 
-<%@ include file="../modal/memberEdit.jsp"%>
-<%@ include file="../modal/ppProfileEdit.jsp"%>
-<%@ include file="../modal/sellerProfileEdit.jsp"%>
+<%@ include file="modal/memberEdit.jsp"%>
+<%@ include file="modal/memberAdd.jsp"%>
+<%@ include file="modal/ppProfileEdit.jsp"%>
+<%@ include file="modal/sellerProfileEdit.jsp"%>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
@@ -49,6 +50,13 @@ label.error {
 .modal-header {
 	display: block;
 }
+.main-body .page-wrapper .page-header-title h6 {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #4a6076;
+    font-size: 14px;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -69,23 +77,15 @@ label.error {
                             <div class="main-body">
                                 <div class="page-wrapper">
                                     <!-- Page-header start -->
-                                    <div class="page-header">
-                                        <div class="page-header-title">
-                                            <h4>회원 관리</h4>
+                                    <div style="margin-bottom:20px;">
+                                        <div class="page-header-title" style="width: 100%;">
+                                        	<div class="col-sm-10" style="display: inline-block;">
+                                        		<h4>회원 관리</h4>
+                                        	</div>
+                                            <div class="col-sm-2" style="display: inline-block; text-align: right;">
+                                            	<h6><a id="logout" href="#">로그아웃</a></h6>
+                                            </div>
                                         </div>
-                                        <!-- <div class="page-header-breadcrumb">
-                                            <ul class="breadcrumb-title">
-                                                <li class="breadcrumb-item">
-                                                    <a href="index.html">
-                                                        <i class="icofont icofont-home"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a href="#!">Data Table</a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a href="#!">Basic Initialization</a>
-                                                </li>
-                                            </ul>
-                                        </div> -->
                                     </div>
                                     <!-- Page-header end -->
                                     <!-- Page-body start -->
@@ -98,12 +98,12 @@ label.error {
 	                                                    <form name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/memberList">
 	                                                        <div class="form-group row">
 	                                                    		<div class="col-sm-8">
-		                                                    		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button> -->
+		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberAddModal">회원 등록</button>
 		                                                    	</div>
 		                                                        <div class="col-sm-4" style="float: right;">
-		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="Search here...">
+		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어">
 		                                							<div class="col-sm-2" style="padding: 0;">
-			                                                        	<button type="submit" class="btn btn-primary">Search</button>
+			                                                        	<button type="submit" class="btn btn-primary">검색</button>
 			                                                        </div>
 		                                                        </div>
 	                                                    	</div>
@@ -116,25 +116,25 @@ label.error {
                                                                     <tr>
                                                                     	<th>번호</th>
                                                                         <th>아이디</th>
-                                                                        <th>비밀번호</th>
+                                                                        <th style="display: none;">비밀번호</th>
                                                                         <th>회원상태</th>
                                                                         <th>유료회원상태</th>
-                                                                        <th>유료시작일</th>
-                                                                        <th>유료종료일</th>
+                                                                        <th style="display: none;">유료시작일</th>
+                                                                        <th style="display: none;">유료종료일</th>
                                                                         <th>회원분류</th>
-                                                                        <th>국가</th>
-                                                                        <th>지역</th>
-                                                                        <th>주소</th>
-                                                                        <th>연락처</th>
+                                                                        <th style="display: none;">국가</th>
+                                                                        <th style="display: none;">지역</th>
+                                                                        <th style="display: none;">주소</th>
+                                                                        <th style="display: none;">연락처</th>
                                                                         <th>이름</th>
                                                                         <th>실명인증</th>
                                                                         <th>닉네임</th>
-                                                                        <th>대표사진</th>
-                                                                    	<th>가입 IP</th>
-                                                                    	<th>최근로그인</th>
-                                                                    	<th>회원탈퇴일</th>
+                                                                        <th style="display: none;">대표사진</th>
+                                                                    	<th style="display: none;">가입 IP</th>
+                                                                    	<th style="display: none;">최근로그인</th>
+                                                                    	<th style="display: none;">회원탈퇴일</th>
                                                                     	<th>회원등록일</th>
-                                                                    	<th>회원정보수정일</th>
+                                                                    	<th style="display: none;">회원정보수정일</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -144,11 +144,11 @@ label.error {
 	                                                                        <td>
 	                                                                        	<a href="#" onclick="return false;" class="m-modal" data-toggle="modal" data-target="#memberModal">${output.memId}</a>		
 	                                                                        </td>
-	                                                                        <td>${output.memPw}</td>
-	                                                                        <td  data-value="${output.memState}">${output.memStateName}</td>
+	                                                                        <td style="display: none;">${output.memPw}</td>
+	                                                                        <td data-value="${output.memState}">${output.memStateName}</td>
 	                                                                        <td data-value="${output.memClass}">${output.memClassName}</td>
-	                                                                        <td>${output.memClassSdate}</td>
-	                                                                        <td>${output.memClassEdate}</td>
+	                                                                        <td style="display: none;">${output.memClassSdate}</td>
+	                                                                        <td style="display: none;">${output.memClassEdate}</td>
 	                                                                        <c:if test="${output.memSort == '0'}">
 		                                                                        <td data-value="${output.memSort}">${output.memSortName}</td>
 	                                                                        </c:if>
@@ -164,19 +164,19 @@ label.error {
 		                                                                       			data-target="#s-profileModal">${output.memSortName}</a>
 		                                                                       	</td>
 	                                                                        </c:if>
-	                                                                        <td data-value="${output.memCountry}">${output.memCountryName}</td>
-	                                                                        <td data-value="${output.memNation}">${output.memNationName}</td>
-	                                                                        <td data-value="${output.memAddr}">${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
-	                                                                        <td data-value="${output.memAddr2}">${output.memTel}</td>
+	                                                                        <td style="display: none;" data-value="${output.memCountry}">${output.memCountryName}</td>
+	                                                                        <td style="display: none;" data-value="${output.memNation}">${output.memNationName}</td>
+	                                                                        <td style="display: none;" data-value="${output.memAddr}">${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
+	                                                                        <td style="display: none;" data-value="${output.memAddr2}">${output.memTel}</td>
 	                                                                        <td data-value="${output.memPost}">${output.memName}</td>
 	                                                                        <td data-value="${output.memRname}">${output.memRnameName}</td>
 	                                                                        <td>${output.memNick}</td>
-	                                                                        <td>${output.memPhoto}</td>
-	                                                                        <td>${output.memIp}</td>
-	                                                                        <td>${output.memLoginDate}</td>
-	                                                                        <td>${output.memOutDate}</td>
+	                                                                        <td style="display: none;">${output.memPhoto}</td>
+	                                                                        <td style="display: none;">${output.memIp}</td>
+	                                                                        <td style="display: none;">${output.memLoginDate}</td>
+	                                                                        <td style="display: none;">${output.memOutDate}</td>
 	                                                                        <td>${output.memDate}</td>
-	                                                                        <td>${output.memEditDate}</td>
+	                                                                        <td style="display: none;">${output.memEditDate}</td>
 	                                                                    </tr>
                                                                 </c:forEach>
                                                                 </tbody>
@@ -385,6 +385,28 @@ $(document).on("click",".profile-modal",function(event){
 				}
 			});
 	}
+
+});
+
+$(function(){
+	$("#logout").on("click", function(){
+		$.ajax({
+			type: "GET",
+			url: ROOT_URL+"/admin/member/logout",
+			dataType: "json",
+			success: function(){
+					//swal("알림", "로그아웃되었습니다.", "success");
+					swal({
+                        title: '알림',
+                        text: '로그아웃 되었습니다.',
+                       	type: 'success',
+                    }).then(function(result) {
+                    	window.location.href = ROOT_URL+"/admin/memberList";
+                    });
+			}
+
+		});
+	});	
 });
 </script>
 <!-- bootstrap js -->

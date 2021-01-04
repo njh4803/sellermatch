@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%>
-<%@ include file="../modal/boardEdit.jsp"%>
-<%@ include file="../modal/boardAdd.jsp"%>
-<%@ include file="../modal/replyDetail.jsp"%>
+<%@ include file="modal/boardEdit.jsp"%>
+<%@ include file="modal/boardAdd.jsp"%>
+<%@ include file="modal/replyDetail.jsp"%>
 
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -60,23 +60,10 @@
                             <div class="main-body">
                                 <div class="page-wrapper">
                                     <!-- Page-header start -->
-                                    <div class="page-header">
+                                    <div style="margin-bottom:20px;">
                                         <div class="page-header-title">
                                             <h4>게시판 관리</h4>
                                         </div>
-                                        <!-- <div class="page-header-breadcrumb">
-                                            <ul class="breadcrumb-title">
-                                                <li class="breadcrumb-item">
-                                                    <a href="index.html">
-                                                        <i class="icofont icofont-home"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a href="#!">Data Table</a>
-                                                </li>
-                                                <li class="breadcrumb-item"><a href="#!">Basic Initialization</a>
-                                                </li>
-                                            </ul>
-                                        </div> -->
                                     </div>
                                     <!-- Page-header end -->
                                     <!-- Page-body start -->
@@ -90,13 +77,13 @@
                                                     	<form name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/boardList">
 															<div class="form-group row">
 	                                                    		<div class="col-sm-8">
-		                                                    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boardAddModal">게시판 등록</button>
-		                                                    		<button id="B-delBtn" type="button" class="btn btn-info btn-lg">선택 삭제</button>
+		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#boardAddModal">게시판 등록</button>
+		                                                    		<button id="B-delBtn" type="button" class="btn btn-primary">선택 삭제</button>
 		                                                    	</div>
 		                                                        <div class="col-sm-4" style="float: right;">
-		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="Search here...">
+		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어">
 		                                							<div class="col-sm-2" style="padding: 0;">
-			                                                        	<button type="submit" class="btn btn-primary">Search</button>
+			                                                        	<button type="submit" class="btn btn-primary">검색</button>
 			                                                        </div>
 		                                                        </div>
 	                                                    	</div>
@@ -163,7 +150,7 @@
 	                                                                        <td>${output.boardEditDate}</td>
 	                                                                        <td>
 	                                                                        	<c:if test="${output.replyCount != 0}">
-	                                                                        		<button type="button" class="btn btn-info btn-sm replyBtn" data-toggle="modal" data-target="#replyModal">댓글 보기</button>
+	                                                                        		<button type="button" class="btn btn-primary btn-sm replyBtn" data-toggle="modal" data-target="#replyModal">댓글 보기</button>
 	                                                                        	</c:if>
 	                                                                        </td>
 	                                                                    </tr>

@@ -23,16 +23,17 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-public class TempController {
+public class boardController {
 	
 	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/temp", method = RequestMethod.GET)
-	public ModelAndView home(Model model) {
+	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	public ModelAndView join(Model model, @RequestParam(value = "boardType", required = false) String boardType) {
 		
 		return new ModelAndView("main");
 	}
+	
 }

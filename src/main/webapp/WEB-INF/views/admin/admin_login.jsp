@@ -40,7 +40,7 @@ label.error {
                     <div class="login-card card-block auth-body">
                         <form class="md-float-material" method="POST" id="login-form" action="${pageContext.request.contextPath}/admin/member/login">
                             <div class="text-center">
-                                <img src="assets/images/auth/logo.png" alt="logo.png">
+                                <img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo.png" alt="logo.png">
                             </div>
                             <div class="auth-box">
                                 <div class="row m-b-20">
@@ -78,12 +78,12 @@ label.error {
                                 </div>
                                 <hr/>
                                 <div class="row">
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <p class="text-inverse text-left m-b-0">Thank you and enjoy our website.</p>
                                         <p class="text-inverse text-left"><b>Wesellglobal Team</b></p>
                                     </div>
-                                    <div class="col-md-2">
-                                        <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
+                                    <div class="col-md-3">
+                                        <img style="width: 100%;" src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo.png" alt="small-logo.png">
                                     </div>
                                 </div>
 

@@ -23,16 +23,22 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-public class TempController {
+public class projectController {
 	
 	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/temp", method = RequestMethod.GET)
-	public ModelAndView home(Model model) {
+	@RequestMapping(value = "/project/add", method = RequestMethod.GET)
+	public ModelAndView AddProject(Model model) {
 		
-		return new ModelAndView("main");
+		return new ModelAndView("addProject");
+	}
+	
+	@RequestMapping(value = "/project/find", method = RequestMethod.GET)
+	public ModelAndView findProject(Model model, @RequestParam(value = "projSort", required = false) String projSort) {
+		
+		return new ModelAndView("findProject");
 	}
 }

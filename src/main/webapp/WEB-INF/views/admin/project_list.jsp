@@ -4,8 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%>
-<%@ include file="../modal/projectAdd.jsp"%>
-<%@ include file="../modal/projectEdit.jsp"%>
+<%@ include file="modal/projectAdd.jsp"%>
+<%@ include file="modal/projectEdit.jsp"%>
 
 
 <!-- bootstrap css -->
@@ -36,7 +36,7 @@
                             <div class="main-body">
                                 <div class="page-wrapper">
                                     <!-- Page-header start -->
-                                    <div class="page-header">
+                                    <div style="margin-bottom:20px;">
                                         <div class="page-header-title">
                                             <h4>프로젝트 관리</h4>
                                         </div>
@@ -66,20 +66,20 @@
                                                     	<form name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/projectList">
 	                                                    	<div class="form-group row">
 	                                                    		<div class="col-sm-8">
-		                                                    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button>
+		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button>
 		                                                    	</div>
 		                                                        <div class="col-sm-4" style="float: right;">
-		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="Search here...">
+		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어">
 		                                							<div class="col-sm-2" style="padding: 0;">
-			                                                        	<button type="submit" class="btn btn-primary">Search</button>
+			                                                        	<button type="submit" class="btn btn-primary">검색</button>
 			                                                        </div>
 		                                                        </div>
 	                                                    	</div>
 	                                                    </form>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
-                                                            <table id="simpletable" class="table-center table table-striped table-bordered text-center">
-                                                                <thead>
+                                                            <table id="simpletable" class="table table-bordered table-hover table-condensed table-striped text-center">
+                                                            	<thead>
                                                                     <tr>
                                                                         <th>번호</th>
                                                                         <th>프로젝트번호</th>
@@ -87,21 +87,21 @@
                                                                         <th>제목</th>
                                                                         <th>회원분류</th>
                                                                         <th>산업분류</th>
-                                                                        <th>상품가격</th>
-                                                                        <th>판매마진</th>
+                                                                        <th style="display: none;">상품가격</th>
+                                                                        <th style="display: none;">판매마진</th>
                                                                         <th>등록지역</th>
                                                                         <th>공급방법</th>
                                                                         <th>모집마감일</th>
-                                                                        <th>모집인원</th>
-                                                                        <th>상세설명</th>
-                                                                        <th>필수요건</th>
+                                                                        <th style="display: none;">모집인원</th>
+                                                                        <th style="display: none;">상세설명</th>
+                                                                        <th style="display: none;">필수요건</th>
                                                                         <th>키워드</th>
                                                                         <!-- <th>상세사진</th> -->
-                                                                        <th>첨부파일</th>
+                                                                        <th style="display: none;">첨부파일</th>
                                                                         <th>상품검증</th>
                                                                         <th>프로젝트 상태</th>
                                                                         <th>등록일</th>
-                                                                        <th>수정일</th>
+                                                                        <th style="display: none;">수정일</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -115,20 +115,20 @@
 	                                                                        <td>${output.projTitle}</td>
 	                                                                        <td data-value="${output.projSort}">${output.projSortName}</td>
 	                                                                        <td data-value="${output.projIndus}">${output.projIndusName}</td>
-	                                                                        <td>${output.projPrice}</td>
-	                                                                        <td data-value="${output.projMargin}">${output.projMarginName}</td>
+	                                                                        <td style="display: none;">${output.projPrice}</td>
+	                                                                        <td style="display: none;" data-value="${output.projMargin}">${output.projMarginName}</td>
 	                                                                        <td data-value="${output.projNation}">${output.projNationName}</td>
 	                                                                        <td data-value="${output.projSupplyType}">${output.projSupplyTypeName}</td>
 	                                                                        <td>${output.projEndDate}</td>
-	                                                                        <td>${output.projRecruitNum}</td>
-	                                                                        <td>${output.projDetail}</td>
-	                                                                        <td>${output.projRequire}</td>
+	                                                                        <td style="display: none;">${output.projRecruitNum}</td>
+	                                                                        <td style="display: none;">${output.projDetail}</td>
+	                                                                        <td style="display: none;">${output.projRequire}</td>
 	                                                                        <td>${output.projKeyword}</td>
-	                                                                        <td>${output.projFile}</td>
+	                                                                        <td style="display: none;">${output.projFile}</td>
 	                                                                        <td data-value="${output.projProdCerti}">${output.projProdCertiName}</td>
 	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
 	                                                                        <td>${output.projRegDate}</td>
-	                                                                        <td>${output.projEditDate}</td>
+	                                                                        <td style="display: none;">${output.projEditDate}</td>
 	                                                                    </tr>
 	                                                                    <input id="projDetailImg" type="hidden" value="${output.projDetailImg}">
                                                                 </c:forEach>
@@ -304,7 +304,7 @@ $(document).on("click",".p-modal",function(event){
     	
     	obj.append(obj.tag1);
     	
-    	tag10.attr('src', "/upload"+imgSrc);
+    	tag10.attr('src', "/uplode?name="+imgSrc);
     	
     	return tag10;
     }

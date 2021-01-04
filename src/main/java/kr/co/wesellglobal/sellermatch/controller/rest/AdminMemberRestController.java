@@ -131,7 +131,7 @@ public class AdminMemberRestController {
 	}
 	
 	@RequestMapping(value = "/admin/member/join", method = RequestMethod.POST)
-	public Map<String, Object> join(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
+	public Map<String, Object> adminJoin(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
 			@RequestParam(value = "memId", required = false) String memId,
 			@RequestParam(value = "memPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName") String memName,
@@ -280,6 +280,12 @@ public class AdminMemberRestController {
 
 		// 세션 저장
 		webHelper.setSession("member", output);
+		return webHelper.getJsonData();
+	}
+	/** 로그아웃 */
+	@RequestMapping(value = "/admin/member/logout", method = RequestMethod.GET)
+	public Map<String, Object> logout() {
+		webHelper.removeAllSession();
 		return webHelper.getJsonData();
 	}
 }
