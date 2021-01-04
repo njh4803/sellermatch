@@ -14,16 +14,19 @@
     
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         
-        <!--<link rel="stylesheet" type="text/css" href="/plugin/slick/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="/plugin/slick/slick-theme.css"/>-->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		
         
         <link href="${pageContext.request.contextPath}/main_assets/css/reset.css" rel="stylesheet" type="text/css">
         <link href='${pageContext.request.contextPath}/main_assets/css/custom.css' rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/7ebcbe9e0a.js" crossorigin="anonymous"></script>
         
-        <!--<script type="text/javascript" src="/js/jquery.js"></script>
-        <script type="text/javascript" src="/plugin/slick/slick.js"></script>-->    
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		
+
+		
     
 <style>
 .skip {display: none;}
