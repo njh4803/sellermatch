@@ -593,8 +593,8 @@ $(function(){
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			formData.append(param_list_name[i],param_list[i]);
-			console.log('formData')
-			console.log(formData.get('projNation'))
+			console.log('formData = 결과는 아래')
+			console.log(formData.get('projPrice'))
 		}
 		
 		
