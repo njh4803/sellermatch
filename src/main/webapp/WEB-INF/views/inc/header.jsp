@@ -69,8 +69,15 @@
        </nav>
        <div class="gnb">
             <div class="gnb_login">
-                <a href="#" data-toggle="modal" data-target="#loginModal">로그인</a>
-                <a href="${pageContext.request.contextPath}/member/join">회원가입</a>
+            	<c:choose>
+            		<c:when test="${member == null}">
+            			<a href="#" data-toggle="modal" data-target="#loginModal">로그인</a>
+	                	<a href="${pageContext.request.contextPath}/member/join">회원가입</a>
+            		</c:when>
+            		<c:otherwise>
+            			<a id="logout" href="javascript:void(0);">로그아웃</a>
+            		</c:otherwise>
+            	</c:choose>
             </div>
             <div class="gnb_project">
                 <a href="${pageContext.request.contextPath}/project/add"><i class="fas fa-bolt"></i> 프로젝트 등록</a>
@@ -79,3 +86,24 @@
    </div>
 </header>
 <body>
+<script type="text/javascript">
+$(function(){
+	$("#logout").on("click", function(){
+		$.ajax({
+			type: "GET",
+			url: ROOT_URL+"/member/logout",
+			dataType: "json",
+			success: function(json){
+				swal({
+                    title: '알림',
+                    text: '로그아웃 되었습니다.',
+                   	type: 'success',
+                }).then(function(result) {
+                	window.location.href = json.referer;
+                });
+			}
+
+		});
+	});	
+});
+</script>
