@@ -16,10 +16,10 @@
 </div>
 <div class="search_bnr">
     <div class="search_wrap">
-        <form id="search_frm" name="searchform" method="get" action="">
+        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
         <div class="input_group">
-            <input type="text" name="" user="" placeholder="매치 할 프로젝트를 입력하세요.">
-            <button type="button" class="btn_search">
+            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요.">
+            <button type="submit" class="btn_search">
                 <i class="fas fa-bolt"> 검색</i>   
             </button>    
         </div>    

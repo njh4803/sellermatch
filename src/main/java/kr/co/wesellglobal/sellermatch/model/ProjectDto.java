@@ -69,12 +69,16 @@ public class ProjectDto {
 	// 프로젝트 수정일 
 	private String projEditDate;
 	
+	// 프로젝트 조회수
+	private int projHit;
+	
 	// 예비컬럼 
 	private String projXxx;
 
 	
 	
-	
+	// 지원자 수
+	private int applyCount;
 	
 	// 상세사진 리스트
 	private String[] projDetailImgList;
@@ -116,7 +120,7 @@ public class ProjectDto {
 	
 	public String getProjSortName() {
 		if (this.projSort.equals("0")) {
-			return "공급자";
+			return "일반";
 		}
 		if (this.projSort.equals("1")) {
 			return "공급자";
@@ -163,7 +167,10 @@ public class ProjectDto {
 		if (this.projMargin == 30) {
 			return "21% ~ 30%";
 		}
-		return "30% 초과";
+		if (this.projMargin == 31) {
+			return "30% 초과";
+		}
+		return "";
 	}
 	
 	public String getProjNationName() {
@@ -175,6 +182,48 @@ public class ProjectDto {
 		}
 		if (this.projNation.equals("032")) {
 			return "인천";
+		}
+		if (this.projNation.equals("033")) {
+			return "강원";
+		}
+		if (this.projNation.equals("041")) {
+			return "충남";
+		}
+		if (this.projNation.equals("042")) {
+			return "대전";
+		}
+		if (this.projNation.equals("043")) {
+			return "충북";
+		}
+		if (this.projNation.equals("051")) {
+			return "부산";
+		}
+		if (this.projNation.equals("052")) {
+			return "울산";
+		}
+		if (this.projNation.equals("053")) {
+			return "대구";
+		}
+		if (this.projNation.equals("054")) {
+			return "경북";
+		}
+		if (this.projNation.equals("055")) {
+			return "경남";
+		}
+		if (this.projNation.equals("061")) {
+			return "전남";
+		}
+		if (this.projNation.equals("062")) {
+			return "광주";
+		}
+		if (this.projNation.equals("063")) {
+			return "전북";
+		}
+		if (this.projNation.equals("044")) {
+			return "세종특별자치시";
+		}
+		if (this.projNation.equals("064")) {
+			return "세종특별자치도";
 		}
 		return "해외";
 	}

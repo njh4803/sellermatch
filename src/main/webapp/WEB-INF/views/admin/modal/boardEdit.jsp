@@ -212,7 +212,7 @@ $(function(){
                },
                success: function() {
             	   swal('알림', '게시판이 수정되었습니다.', 'success').then(function(result) {
-                       window.location = ROOT_URL + '/admin/boardList';
+            		   location.reload();
                    });
                }
         });

@@ -31,6 +31,8 @@
         <result property="projIndusName" column="proj_indus_name" />
         <result property="projKeyword" column="proj_keyword" />
         <result property="projDetailImgList" column="proj_detail_img_list" />
+        <result property="projHit" column="proj_hit" />
+        <result property="applyCount" column="apply_count" />
         <result property="projXxx" column="proj_XXX" />
     </resultMap>
     
@@ -41,11 +43,11 @@
     	INSERT INTO ProjectList
     		(`proj_id`, `proj_mem_id`, `proj_title`, `proj_sort`, `proj_indus`, `proj_price`, `proj_margin`, 
     		`proj_nation`, `proj_supply_type`, `proj_recruit_num`, `proj_detail`, `proj_detail_img`, `proj_require`, `proj_keyword`, `proj_file`, 
-    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`)
+    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`, `proj_hit`)
     	 VALUES 
     	 	(#{projId}, #{projMemId}, #{projTitle}, #{projSort}, #{projIndus}, #{projPrice}, #{projMargin}, 
     	 	#{projNation}, #{projSupplyType}, #{projRecruitNum}, #{projDetail}, #{projDetailImg}, #{projRequire}, #{projKeyword}, 
-    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti});
+    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti}, #{projHit});
     </insert>
     
     <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
@@ -54,6 +56,7 @@
 		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
 		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
 		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_require = #{projRequire}, proj_keyword = #{projKeyword},
+		    proj_hit = #{projHit},
 		    <if test="projEndDate !='' and projEndDate != null">
 		    	proj_end_date = #{projEndDate}, 
 		    </if>
@@ -73,8 +76,9 @@
     	SELECT 
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
-    		proj_keyword, proj_file, proj_prod_certi, proj_state, proj_reg_date, 
-    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
+    		proj_keyword, proj_file, proj_prod_certi, proj_state, proj_reg_date, proj_hit,
+    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date, 
+    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count
     	FROM ProjectList p
         INNER JOIN IndusList i
         ON p.proj_indus = i.indus_id
@@ -109,7 +113,7 @@
     	SELECT 
     		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
-    		proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
+    		proj_hit, proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
     	FROM ProjectList
     	WHERE proj_id = #{projId}
     </select>

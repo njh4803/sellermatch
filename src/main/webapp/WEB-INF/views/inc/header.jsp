@@ -24,6 +24,10 @@
         <script src="https://kit.fontawesome.com/7ebcbe9e0a.js" crossorigin="anonymous"></script>
         
 		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<!-- bootstrap css -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<!-- bootstrap js -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		
 
 		
@@ -40,8 +44,10 @@
     color: #4a6076;
     font-size: 14px;
 }
+.clearfix:after { content: '';display: block; float: none; clear: both; }
 </style>
 </head>
+<%@ include file="../modal/loginModal.jsp"%>
 <header>
    <div class="header_wrap">
        <h1><a href="${pageContext.request.contextPath}/temp"><img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo_2.png" alt="sellermatch"></a></h1>
@@ -63,7 +69,7 @@
        </nav>
        <div class="gnb">
             <div class="gnb_login">
-                <a href="${pageContext.request.contextPath}/member/login">로그인</a>
+                <a href="#" data-toggle="modal" data-target="#loginModal">로그인</a>
                 <a href="${pageContext.request.contextPath}/member/join">회원가입</a>
             </div>
             <div class="gnb_project">
