@@ -285,7 +285,7 @@
 	            	<ul>
 	            		<li><input type="checkbox">전체</li>
 	            		<c:forEach var="indusList" items="${indusList}">
-	            			<li><input type="checkbox" class="check" value="${indusList.indusId}">${indusList.indusName}</li>
+	            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}">${indusList.indusName}</li>
 	            		</c:forEach>
 	            	</ul>
             	</div>
@@ -321,29 +321,29 @@
             	<div class="chk_listBox"><span>공급자검증</span>
 	            	<ul>
 	            		<li><input type="checkbox" class="check" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" value="1">신원인증</li>
-	            		<li><input type="checkbox" class="check" value="2">사업자인증</li>
-	            		<li><input type="checkbox" class="check" value="3">채널검증</li>
-	            		<li><input type="checkbox" class="check" value="4">매출검증</li>
+	            		<li><input type="checkbox" class="check" name="memRname" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" name="ppBizCerti" value="1">사업자인증</li>
+	            		<li><input type="checkbox" class="check" name="projProdCerti" value="1">상품검증</li>
+	            		<li><input type="checkbox" class="check" name="ppProfit" value="1">수익성검증</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매자검증</span>
 	            	<ul>
 	            		<li><input type="checkbox" class="check" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" value="1">신원인증</li>
-	            		<li><input type="checkbox" class="check" value="2">사업자인증</li>
-	            		<li><input type="checkbox" class="check" value="3">채널검증</li>
-	            		<li><input type="checkbox" class="check" value="4">매출검증</li>
+	            		<li><input type="checkbox" class="check" name="memRname" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" name="sellerBizCerti" value="1">사업자인증</li>
+	            		<li><input type="checkbox" class="check" name="sellerChChk" value="1">채널검증</li>
+	            		<li><input type="checkbox" class="check" name="sellerSaleChk" value="1">매출검증</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매채널</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check" name="channel" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" name="channel" value="오픈마켓">오픈마켓</li>
-	            		<li><input type="checkbox" class="check" name="channel" value="종합몰">종합몰</li>
-	            		<li><input type="checkbox" class="check" name="channel" value="폐쇄몰">폐쇄몰</li>
-	            		<li><input type="checkbox" class="check" name="channel" value="커뮤니티">커뮤니티</li>
-	            		<li><input type="checkbox" class="check" name="channel" value="SNS">SNS</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="0">전체</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="오픈마켓">오픈마켓</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="종합몰">종합몰</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="폐쇄몰">폐쇄몰</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="커뮤니티">커뮤니티</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="SNS">SNS</li>
 	            	</ul>
             	</div>
             </div>
@@ -543,8 +543,61 @@ $(function(){
 	});
 	// 체크박스 선택 검색
 	$(".check").click(function(){
-		const obj = $(".check:checked");
-		console.log(obj);
+		
+		var formData = new FormData();
+		var projSort = [];
+		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname = [];
+		var ppBizCerti = [];
+		var projProdCerti = [];
+		var ppProfit = [];
+		var sellermemRname = [];
+		var sellerBizCerti = [];
+		var sellerChChk = [];
+		var sellerSaleChk = [];
+		var projChannel = [];
+		
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
+		
+		var param_list = [projSort, projNation, projIndus, 
+			projPrice, projMargin, projSupplyType, ppmemRname, 
+			ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+			sellerBizCerti, sellerChChk, sellerSaleChk, projChannel];
+		$(".check").each(function(i,e){
+			
+			if (this.checked) {
+				var name = this.name
+				var value = this.value
+				//console.log(name);
+				var str='';
+				for (var i = 0; i < param_list_name.length; i++) {
+					console.log(param_list_name[i])
+					
+					if (param_list_name[i] == name) {
+						//str += value+", ";
+						param_list[i].push(value)
+						console.log(param_list[i])
+					}
+					
+				}
+				console.log(param_list)	
+			}
+		});
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			formData.append(param_list_name[i],param_list[i]);
+			console.log('formData')
+			console.log(formData.get('projNation'))
+		}
+		
+		
 	});
 });
 </script>    
