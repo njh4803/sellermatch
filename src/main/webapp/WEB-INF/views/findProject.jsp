@@ -248,9 +248,9 @@
 <div class="partner_bnr2">
     <div class="partner_wrap">
         <div class="partner_list vertical-middle">
-            <div class="search_chk"><input type="checkbox" value="" >전체검색</div>
-            <div class="search_chk"><input type="checkbox" value="" >판매자검색</div>
-            <div class="search_chk"><input type="checkbox" value="" >공급자검색</div>
+            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="0" >전체검색</div>
+            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="2" >판매자검색</div>
+            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="1" >공급자검색</div>
         </div>
     </div>
 </div>
@@ -261,89 +261,89 @@
             	<div class="chk_listBox basic-scroll">
             		<span>지역구분</span>
 	            	<ul>
-	            		<li><input type="checkbox" value="0">전체</li>
-	            		<li><input type="checkbox" value="02">서울</li>
-	            		<li><input type="checkbox" value="031">경기</li>
-	            		<li><input type="checkbox" value="032">인천</li>
-	            		<li><input type="checkbox" value="033">강원</li>
-	            		<li><input type="checkbox" value="041">충남</li>
-	            		<li><input type="checkbox" value="042">대전</li>
-	            		<li><input type="checkbox" value="043">충북</li>
-	            		<li><input type="checkbox" value="051">부산</li>
-	            		<li><input type="checkbox" value="052">울산</li>
-	            		<li><input type="checkbox" value="053">대구</li>
-	            		<li><input type="checkbox" value="054">경북</li>
-	            		<li><input type="checkbox" value="055">경남</li>
-	            		<li><input type="checkbox" value="061">전남</li>
-	            		<li><input type="checkbox" value="062">광주</li>
-	            		<li><input type="checkbox" value="063">전북</li>
-	            		<li><input type="checkbox" value="044">세종특별자치시</li>
-	            		<li><input type="checkbox" value="064">세종특별자치도</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="0">전체</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="02">서울</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="031">경기</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="032">인천</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="033">강원</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="041">충남</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="042">대전</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="043">충북</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="051">부산</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="052">울산</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="053">대구</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="054">경북</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="055">경남</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="061">전남</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="062">광주</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="063">전북</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="044">세종특별자치시</li>
+	            		<li><input type="checkbox" class="check" name="projNation" value="064">세종특별자치도</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>상품분류</span>
 	            	<ul>
 	            		<li><input type="checkbox">전체</li>
 	            		<c:forEach var="indusList" items="${indusList}">
-	            			<li><input type="checkbox" value="${indusList.indusId}">${indusList.indusName}</li>
+	            			<li><input type="checkbox" class="check" value="${indusList.indusId}">${indusList.indusName}</li>
 	            		</c:forEach>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>상품단가</span>
 	            	<ul>
-	            		<li><input type="checkbox" value="0">전체</li>
-	            		<li><input type="checkbox" value="9999">1만원 미만</li>
-	            		<li><input type="checkbox" value="19999">2만원 미만</li>
-	            		<li><input type="checkbox" value="49999">5만원 미만</li>
-	            		<li><input type="checkbox" value="99999">10만원 미만</li>
-	            		<li><input type="checkbox" value="100000">10만원 이상</li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="0">전체</li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="9999">1만원 미만</li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="19999">2만원 미만</li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="49999">5만원 미만</li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="99999">10만원 미만</li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="100000">10만원 이상</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매마진</span>
 	            	<ul>
-	            		<li><input type="checkbox" value="0">전체</li>
-	            		<li><input type="checkbox" value="10">10%이하</li>
-	            		<li><input type="checkbox" value="20">11%~20%</li>
-	            		<li><input type="checkbox" value="30">21%~30%</li>
-	            		<li><input type="checkbox" value="31">30%초과</li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="0">전체</li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="10">10%이하</li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="20">11%~20%</li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="30">21%~30%</li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="31">30%초과</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>공급방법</span>
 	            	<ul>
-	            		<li><input type="checkbox" value="0">전체</li>
-	            		<li><input type="checkbox" value="1">OEM</li>
-	            		<li><input type="checkbox" value="2">위탁판매</li>
-	            		<li><input type="checkbox" value="3">도매공급</li>
-	            		<li><input type="checkbox" value="4">운영대행</li>
-	            		<li><input type="checkbox" value="5">경매공급</li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="0">전체</li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="1">OEM</li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="2">위탁판매</li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="3">도매공급</li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="4">운영대행</li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="5">경매공급</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>공급자검증</span>
 	            	<ul>
-	            		<li><input type="checkbox" value="0">전체</li>
-	            		<li><input type="checkbox" value="1">신원인증</li>
-	            		<li><input type="checkbox" value="2">사업자인증</li>
-	            		<li><input type="checkbox" value="3">채널검증</li>
-	            		<li><input type="checkbox" value="4">매출검증</li>
+	            		<li><input type="checkbox" class="check" value="0">전체</li>
+	            		<li><input type="checkbox" class="check" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" value="2">사업자인증</li>
+	            		<li><input type="checkbox" class="check" value="3">채널검증</li>
+	            		<li><input type="checkbox" class="check" value="4">매출검증</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매자검증</span>
 	            	<ul>
-	            		<li><input type="checkbox" value="0">전체</li>
-	            		<li><input type="checkbox" value="1">신원인증</li>
-	            		<li><input type="checkbox" value="2">사업자인증</li>
-	            		<li><input type="checkbox" value="3">채널검증</li>
-	            		<li><input type="checkbox" value="4">매출검증</li>
+	            		<li><input type="checkbox" class="check" value="0">전체</li>
+	            		<li><input type="checkbox" class="check" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" value="2">사업자인증</li>
+	            		<li><input type="checkbox" class="check" value="3">채널검증</li>
+	            		<li><input type="checkbox" class="check" value="4">매출검증</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매채널</span>
 	            	<ul>
-	            		<li><input type="checkbox" value="0">전체</li>
-	            		<li><input type="checkbox" value="오픈마켓">오픈마켓</li>
-	            		<li><input type="checkbox" value="종합몰">종합몰</li>
-	            		<li><input type="checkbox" value="폐쇄몰">폐쇄몰</li>
-	            		<li><input type="checkbox" value="커뮤니티">커뮤니티</li>
-	            		<li><input type="checkbox" value="SNS">SNS</li>
+	            		<li><input type="checkbox" class="check" name="channel" value="0">전체</li>
+	            		<li><input type="checkbox" class="check" name="channel" value="오픈마켓">오픈마켓</li>
+	            		<li><input type="checkbox" class="check" name="channel" value="종합몰">종합몰</li>
+	            		<li><input type="checkbox" class="check" name="channel" value="폐쇄몰">폐쇄몰</li>
+	            		<li><input type="checkbox" class="check" name="channel" value="커뮤니티">커뮤니티</li>
+	            		<li><input type="checkbox" class="check" name="channel" value="SNS">SNS</li>
 	            	</ul>
             	</div>
             </div>
@@ -541,22 +541,11 @@ $(function(){
 		  nextArrow:$('.next'),
 		  prevArrow:$('.prev'),
 	});
-	/* $("#search_frm").submit(function(e) {
-		e.preventDefault();
-		
-		var form = $(this);
-        var url = form.attr('action');
-       
-        $.ajax({
-			   type: "GET",
-	           url: url,
-	           data: form.serialize(),
-               success: function() {
-            	   location.reload();
-               }
-        });
-        
-    }); */
+	// 체크박스 선택 검색
+	$(".check").click(function(){
+		const obj = $(".check:checked");
+		console.log(obj);
+	});
 });
 </script>    
     </body>
