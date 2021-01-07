@@ -195,11 +195,7 @@
         		AND sp.seller_sale_chk = #{sellerSaleChk}
         	</if>
         	
-        	<if test="memRname != '' and memRname != null and projSort == '1'">
-        		AND m.mem_rname = #{memRname} AND proj_sort = #{projSort}
-        	</if>
-        	
-        	<if test="memRname != '' and memRname != null and projSort == 2">
+        	<if test="memRname != '' and memRname != null">
         		AND m.mem_rname = #{memRname} AND proj_sort = #{projSort}
         	</if>
         	
