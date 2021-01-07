@@ -32,13 +32,12 @@
         <result property="projKeyword" column="proj_keyword" />
         <result property="projDetailImgList" column="proj_detail_img_list" />
         <result property="projHit" column="proj_hit" />
+        <result property="projChannel" column="proj_channel" />
         <result property="applyCount" column="apply_count" />
         <result property="ppBizCerti" column="pp_biz_certi" />
         <result property="ppProfit" column="pp_profit" />
-        <result property="ppCh" column="pp_ch" />
         <result property="sellerChChk" column="seller_ch_chk" />
         <result property="sellerSaleChk" column="seller_sale_chk" />
-        <result property="sellerCh" column="seller_ch" />
         <result property="memRname" column="mem_rname" />
         <result property="projXxx" column="proj_XXX" />
     </resultMap>
@@ -50,11 +49,11 @@
     	INSERT INTO ProjectList
     		(`proj_id`, `proj_mem_id`, `proj_title`, `proj_sort`, `proj_indus`, `proj_price`, `proj_margin`, 
     		`proj_nation`, `proj_supply_type`, `proj_recruit_num`, `proj_detail`, `proj_detail_img`, `proj_require`, `proj_keyword`, `proj_file`, 
-    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`, `proj_hit`)
+    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`, `proj_hit`, `proj_channel`)
     	 VALUES 
     	 	(#{projId}, #{projMemId}, #{projTitle}, #{projSort}, #{projIndus}, #{projPrice}, #{projMargin}, 
     	 	#{projNation}, #{projSupplyType}, #{projRecruitNum}, #{projDetail}, #{projDetailImg}, #{projRequire}, #{projKeyword}, 
-    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti}, #{projHit});
+    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti}, #{projHit}, #{projChannel});
     </insert>
     
     <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
@@ -63,7 +62,7 @@
 		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
 		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
 		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_require = #{projRequire}, proj_keyword = #{projKeyword},
-		    proj_hit = #{projHit},
+		    proj_hit = #{projHit}, proj_channel = #{projChannel}
 		    <if test="projEndDate !='' and projEndDate != null">
 		    	proj_end_date = #{projEndDate}, 
 		    </if>
@@ -80,37 +79,31 @@
     <select id="selectList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
     	resultMap="ProjectMap">
-    	SELECT 
+    	SELECT DISTINCT
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
     		proj_keyword, proj_file, proj_prod_certi, proj_state, proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date, 
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 
-    		m.mem_rname as mem_rname
+    		m.mem_rname as mem_rname, proj_channel
     		<if test="projSort != '' and projSort != null and projSort == 1">
 	        	, pp.pp_biz_certi as pp_biz_certi, 
-	        	pp.pp_profit as pp_profit, pp.pp_ch as pp_ch
+	        	pp.pp_profit as pp_profit
 	        </if>
 	        <if test="projSort != '' and projSort != null and projSort == 1">
 	        	,sp.seller_biz_certi as seller_biz_certi, 
 	        	sp.seller_ch_chk as seller_ch_chk, 
-	        	sp.seller_sale_chk as seller_sale_chk, 
-	        	sp.seller_ch as seller_ch
+	        	sp.seller_sale_chk as seller_sale_chk
 	        </if>
     	FROM ProjectList p
-        INNER JOIN IndusList i
-        ON p.proj_indus = i.indus_id
-        INNER JOIN MemList m
-        ON p.proj_mem_id = m.mem_id
-        <!-- 공급자인지 판매자인지 조건문으로 컴럼 projSort로 -->
-        <if test="projSort != '' and projSort != null and projSort == 1">
-        	INNER JOIN PpProfile pp
-			ON p.proj_mem_id = pp.pp_mem_id
-        </if>
-        <if test="projSort != '' and projSort != null and projSort == 2">
-        	INNER JOIN SellerProfile sp
-			ON p.proj_mem_id = sp.seller_mem_id
-        </if>
+		INNER JOIN IndusList i
+		ON p.proj_indus = i.indus_id
+		INNER JOIN MemList m
+		ON p.proj_mem_id = m.mem_id
+		INNER JOIN PpProfile pp
+		ON p.proj_xxx = pp.Pp_xxx
+		INNER JOIN SellerProfile sp
+		ON p.proj_xxx = sp.seller_xxx
         <where>
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
@@ -200,12 +193,9 @@
         	</if>
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
-        		<if test="">
-	        		AND pp.pp_ch IN
-		            <foreach collection="projChannelArr" item="item" index="index" open="(" close=")" separator=",">
-		            	#{item}
-		            </foreach>
-        		</if>
+	            <foreach collection="projChannelArr" item="item" index="index">
+	            	 AND proj_channel Like concat('%', #{item}, '%')
+	            </foreach>
         	</if>
         </where>
         ORDER BY proj_idx DESC
@@ -222,7 +212,7 @@
     	SELECT 
     		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
-    		proj_hit, proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date
+    		proj_hit, proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date, proj_channel
     	FROM ProjectList
     	WHERE proj_id = #{projId}
     </select>

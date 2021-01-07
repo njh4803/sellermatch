@@ -72,7 +72,10 @@ public class ProjectDto {
 	// 프로젝트 조회수
 	private int projHit;
 	
-	// 예비컬럼 
+	// 프로젝트 채널
+	private String projChannel;
+	
+	// 예비컬럼 // 판매자, 공급자 프로필 테이블 연결 컬럼
 	private String projXxx;
 
 	
@@ -100,7 +103,6 @@ public class ProjectDto {
 	private String sellerChChk;
 	private String sellerSaleChk;
 	private String memRname;
-	private String projChannel;
 	
 	/** 검색을 위한 배열 */
 	private String[] projSortArr;

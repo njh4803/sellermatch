@@ -62,6 +62,9 @@ public class SellerProfileDto {
 	
 	 // 판매자정보 수정일 
 	 private String sellerEditDate;
+	 
+	 // 프로젝트 등록 여부 등록(1), 미등록(0)
+	 private String sellerXxx;
 
 	// 상품분류 문자로 치환
 	 private String sellerIndusName;

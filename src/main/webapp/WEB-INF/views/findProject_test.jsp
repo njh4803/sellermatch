@@ -339,11 +339,11 @@
             	<div class="chk_listBox"><span>판매채널</span>
 	            	<ul>
 	            		<li><input type="checkbox" class="check" name="projChannel" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="오픈마켓">오픈마켓</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="종합몰">종합몰</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="폐쇄몰">폐쇄몰</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="커뮤니티">커뮤니티</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="SNS">SNS</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="1">오픈마켓</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="2">종합몰</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="3">폐쇄몰</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="4">커뮤니티</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="5">SNS</li>
 	            	</ul>
             	</div>
             </div>

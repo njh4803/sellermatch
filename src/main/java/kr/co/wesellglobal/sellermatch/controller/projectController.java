@@ -84,10 +84,6 @@ public class projectController {
 		input.setProjMarginArr(projMargin);
 		input.setProjSupplyTypeArr(projSupplyType);
 		input.setProjProdCerti(projProdCerti);
-		if (projChannel != null) {
-			input.setProjChannelArr(projChannel);
-			input.setProjSort("0");
-		}
 		input.setProjChannelArr(projChannel);
 		if (sellermemRname != null) {
 			input.setMemRname(sellermemRname);
