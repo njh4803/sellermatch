@@ -33,6 +33,13 @@
         <result property="projDetailImgList" column="proj_detail_img_list" />
         <result property="projHit" column="proj_hit" />
         <result property="applyCount" column="apply_count" />
+        <result property="ppBizCerti" column="pp_biz_certi" />
+        <result property="ppProfit" column="pp_profit" />
+        <result property="ppCh" column="pp_ch" />
+        <result property="sellerChChk" column="seller_ch_chk" />
+        <result property="sellerSaleChk" column="seller_sale_chk" />
+        <result property="sellerCh" column="seller_ch" />
+        <result property="memRname" column="mem_rname" />
         <result property="projXxx" column="proj_XXX" />
     </resultMap>
     
@@ -78,10 +85,32 @@
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
     		proj_keyword, proj_file, proj_prod_certi, proj_state, proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date, 
-    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count
+    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 
+    		m.mem_rname as mem_rname
+    		<if test="projSort != '' and projSort != null and projSort == 1">
+	        	, pp.pp_biz_certi as pp_biz_certi, 
+	        	pp.pp_profit as pp_profit, pp.pp_ch as pp_ch
+	        </if>
+	        <if test="projSort != '' and projSort != null and projSort == 1">
+	        	,sp.seller_biz_certi as seller_biz_certi, 
+	        	sp.seller_ch_chk as seller_ch_chk, 
+	        	sp.seller_sale_chk as seller_sale_chk, 
+	        	sp.seller_ch as seller_ch
+	        </if>
     	FROM ProjectList p
         INNER JOIN IndusList i
         ON p.proj_indus = i.indus_id
+        INNER JOIN MemList m
+        ON p.proj_mem_id = m.mem_id
+        <!-- 공급자인지 판매자인지 조건문으로 컴럼 projSort로 -->
+        <if test="projSort != '' and projSort != null and projSort == 1">
+        	INNER JOIN PpProfile pp
+			ON p.proj_mem_id = pp.pp_mem_id
+        </if>
+        <if test="projSort != '' and projSort != null and projSort == 2">
+        	INNER JOIN SellerProfile sp
+			ON p.proj_mem_id = sp.seller_mem_id
+        </if>
         <where>
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
@@ -97,6 +126,90 @@
         	</if>
         	<if test="projTitle != '' and projTitle != null">
         		OR proj_title LIKE concat('%', #{projTitle}, '%')
+        	</if>
+        	
+        	<if test="projSort != '' and projSort != null">
+        		AND proj_sort = #{projSort}
+        	</if>
+        	
+        	<if test="projNationArr != '' and projNationArr != null">
+        		AND proj_nation IN
+	            <foreach collection="projNationArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="projIndusArr != '' and projIndusArr != null">
+        		AND proj_indus IN
+	            <foreach collection="projIndusArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="projPriceArr != '' and projPriceArr != null">
+	            <foreach collection="projPriceArr" item="item" index="index">
+	            	<if test="item != '100000'">
+	            		AND proj_price <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '100000'">
+	            		AND proj_price <![CDATA[ >= ]]> #{item}
+	            	</if>
+	            </foreach>
+        	</if>
+        	
+        	<if test="projMarginArr != '' and projMarginArr != null">
+        		AND proj_margin IN
+	            <foreach collection="projMarginArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="projSupplyTypeArr != '' and projSupplyTypeArr != null">
+        		AND proj_supply_type IN
+	            <foreach collection="projSupplyTypeArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="projProdCerti != '' and projProdCerti != null">
+        		AND proj_prod_certi = #{projProdCerti}
+        	</if>
+        	
+        	<if test="ppBizCerti != '' and ppBizCerti != null">
+        		AND pp.pp_biz_certi = #{ppBizCerti}
+        	</if>
+        	
+        	<if test="ppProfit != '' and ppProfit != null">
+        		AND pp.pp_profit = #{ppProfit}
+        	</if>
+        	
+        	<if test="sellerBizCerti != '' and sellerBizCerti != null">
+        		AND sp.seller_biz_certi = #{sellerBizCerti}
+        	</if>
+        	
+        	<if test="sellerChChk != '' and sellerChChk != null">
+        		AND sp.seller_ch_chk = #{sellerChChk}
+        	</if>
+        	
+        	<if test="sellerSaleChk != '' and sellerSaleChk != null">
+        		AND sp.seller_sale_chk = #{sellerSaleChk}
+        	</if>
+        	
+        	<if test="memRname != '' and memRname != null and projSort == '1'">
+        		AND m.mem_rname = #{memRname} AND proj_sort = #{projSort}
+        	</if>
+        	
+        	<if test="memRname != '' and memRname != null and projSort == 2">
+        		AND m.mem_rname = #{memRname} AND proj_sort = #{projSort}
+        	</if>
+        	
+        	<if test="projChannelArr != '' and projChannelArr != null">
+        		<if test="">
+	        		AND pp.pp_ch IN
+		            <foreach collection="projChannelArr" item="item" index="index" open="(" close=")" separator=",">
+		            	#{item}
+		            </foreach>
+        		</if>
         	</if>
         </where>
         ORDER BY proj_idx DESC

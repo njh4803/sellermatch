@@ -321,7 +321,7 @@
             	<div class="chk_listBox"><span>공급자검증</span>
 	            	<ul>
 	            		<li><input type="checkbox" class="check" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" name="memRname" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" name="ppmemRname" value="1">신원인증</li>
 	            		<li><input type="checkbox" class="check" name="ppBizCerti" value="1">사업자인증</li>
 	            		<li><input type="checkbox" class="check" name="projProdCerti" value="1">상품검증</li>
 	            		<li><input type="checkbox" class="check" name="ppProfit" value="1">수익성검증</li>
@@ -330,7 +330,7 @@
             	<div class="chk_listBox"><span>판매자검증</span>
 	            	<ul>
 	            		<li><input type="checkbox" class="check" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" name="memRname" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" name="sellermemRname" value="1">신원인증</li>
 	            		<li><input type="checkbox" class="check" name="sellerBizCerti" value="1">사업자인증</li>
 	            		<li><input type="checkbox" class="check" name="sellerChChk" value="1">채널검증</li>
 	            		<li><input type="checkbox" class="check" name="sellerSaleChk" value="1">매출검증</li>
@@ -545,13 +545,34 @@ $(function(){
 	$(".check").click(function(){
 		
 		var formData = $("#search_frm");
-		var projIndus = [];
+		var projSort;
 		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname;
+		var ppBizCerti;
+		var projProdCerti;
+		var ppProfit;
+		var sellermemRname;
+		var sellerBizCerti;
+		var sellerChChk;
+		var sellerSaleChk;
+		var projChannel;
 		
 		
-		var param_list_name = ['projIndus', 'projNation'];
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
 		
-		var param_list = {projIndus, projNation};
+		var param_list = {
+				projSort, projNation, projIndus, 
+				projPrice, projMargin, projSupplyType, ppmemRname, 
+				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
+				};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
@@ -572,33 +593,17 @@ $(function(){
 			console.log("----------------")
 			console.log(param_list)
 			console.log("----------------")
-			
-			var url = formData.attr('action');
-			
-			$.ajax({
-               type: "GET",
-               url: ROOT_URL+"/project/find",
-               data: param_list,
-               success: function(json) {
-               	window.location = json.referer;
-               }
-        	});
-        
-			/*
-			$("input[name="+param_list_name[i] +"]:not(:checked)").each(function(i,e){
-				var name = this.name
-				var value = this.value
-
-				for (var i = 0; i < param_list_name.length; i++){
-					if (String(param_list_name[i]) == name) {
-						param_list[name].splice(param_list[name].indexOf(value),1)
-						console.log(param_list[name])
-					}
-					
-				}
-			});*/
 		}
+		var url = formData.attr('action');
 		
+		$.ajax({
+           type: "GET",
+           url: ROOT_URL+"/project/find",
+           data: param_list,
+           success: function(json) {
+           	
+           }
+    	});
 		
 /* 		$(".check:checked").each(function(i,e){
 			var param_list = {

@@ -93,6 +93,31 @@ public class ProjectDto {
 	private static int offset;
 	private static int listCount;
 	
+	/** 검색 결과를 위한 변수 */
+	private String ppBizCerti;
+	private String ppProfit;
+	private String sellerBizCerti;
+	private String sellerChChk;
+	private String sellerSaleChk;
+	private String memRname;
+	private String projChannel;
+	
+	/** 검색을 위한 배열 */
+	private String[] projSortArr;
+	private String[] projNationArr;
+	private String[] projIndusArr;
+	private String[] projPriceArr;
+	private String[] projMarginArr;
+	private String[] projSupplyTypeArr;
+	private String[] projProdCertiArr;
+	private String[] ppBizCertiArr;
+	private String[] ppProfitArr;
+	private String[] sellerBizCertiArr;
+	private String[] sellerChChkArr;
+	private String[] sellerSaleChkArr;
+	private String[] projChannelArr;
+	private String[] memRnameArr;
+	
 	public static int getOffset() {
 		return offset;
 	}
@@ -127,6 +152,9 @@ public class ProjectDto {
 		}
 		if (this.projSort.equals("2")) {
 			return "판매자";
+		}
+		if (this.projSort.equals("3")) {
+			return "관리자";
 		}
 		return "";
 	}

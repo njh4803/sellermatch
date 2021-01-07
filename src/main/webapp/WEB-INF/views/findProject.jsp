@@ -541,9 +541,9 @@ $(function(){
 		  nextArrow:$('.next'),
 		  prevArrow:$('.prev'),
 	});
+	
 	// 체크박스 선택 검색
 	$(".check").click(function(){
-		
 		var formData = $("#search_frm");
 		var projSort = [];
 		var projNation = [];
@@ -574,95 +574,35 @@ $(function(){
 				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
 				}
 		
-		for (var i = 0; i < param_list_name.length; i++) {
-			//초기화
-			param_list[param_list_name[i]]= [];
-			
-			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
-				var name = this.name
-				var value = this.value
-
-				param_list[name] = [];
-				for (var i = 0; i < param_list_name.length; i++){
-					if (String(param_list_name[i]) == name) {
-						param_list[name].push(value)
-						console.log(param_list[name])
-					}
-					
-				}
-			});
-			/*
-			$("input[name="+param_list_name[i] +"]:not(:checked)").each(function(i,e){
-				var name = this.name
-				var value = this.value
-
-				for (var i = 0; i < param_list_name.length; i++){
-					if (String(param_list_name[i]) == name) {
-						param_list[name].splice(param_list[name].indexOf(value),1)
-						console.log(param_list[name])
-					}
-					
-				}
-			});*/
-		}
+		//초기화
+		param_list[param_list_name[i]]= [];
 		
-		
-/* 		$(".check:checked").each(function(i,e){
-			var param_list = {
-					projSort, projNation, projIndus, 
-					projPrice, projMargin, projSupplyType, ppmemRname, 
-					ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
-					sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
-					}
-			
+		$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 			var name = this.name
 			var value = this.value
-				
-			param_list[name]=[];
+
 			for (var i = 0; i < param_list_name.length; i++){
-					
 				if (String(param_list_name[i]) == name) {
 					param_list[name].push(value)
-					console.log(param_list[name])
-						//projNation.push(value);
 				}
 				
 			}
-		}); */
-		console.log('-------------------------------')
+			
+		});
+		console.log("----------------")
 		console.log(param_list)
-		
-		//param_list_name2.push(projNation);
-		
-		//console.log(param_list_name2)
-		//console.log("----------------------")
-		
-		for (var i = 0; i < param_list_name.length; i++) {
-			const input = [];
-			input[i] = $("<input>");
-            input[i].attr({
-                type: 'hidden',
-                name: param_list_name[i],
-                value: param_list[param_list_name[i]]
-            })
-            
-
-            formData.append(input);
-			//formData.append(param_list_name[i],param_list[i]);
-		}
-		
+		console.log("----------------")
 		
 		var url = formData.attr('action');
-	        
-	       
-        $.ajax({
-               type: "GET",
-               url: url,
-               data: formData.serialize(),
-               success: function(json) {
-               	window.location = json.referer;
-               }
-        });
+		
+		$.ajax({
+              type: "GET",
+              url: ROOT_URL+"/project/find",
+              data: param_list,
+              success: function(json) {
+              	window.location = json.referer;
+              }
+       	});
 	});
 });
 </script>    
