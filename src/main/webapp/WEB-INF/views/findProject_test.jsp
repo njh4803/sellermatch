@@ -470,7 +470,17 @@
 <script type="text/javascript">
 Handlebars.registerHelper('creatPage', function (startPage, endPage) {
 	for (var i = startPage; i < endPage; i++) {
-		
+			<c:choose>
+	        <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+	        <c:when test="${pageData.nowPage == i}">
+	            <li><a><strong>${i}</strong></a></li>
+	        </c:when>
+	        <%-- 나머지 페이지의 경우 링크 적용함 --%>
+	        <c:otherwise>
+	            <li><a href="${pageUrl}">${i}</a></li>
+	        </c:otherwise>
+	    </c:choose>
+		return <li><a href="${pageUrl}">${i}</a></li>;
 	}
 });
 
