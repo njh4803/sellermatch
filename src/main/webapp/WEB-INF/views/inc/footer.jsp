@@ -30,7 +30,6 @@
 </script>
 
 <!-- AjaxHelper -->
-<script src="${pageContext.request.contextPath}/plugins/handlebars/handlebars-v4.0.11.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
 
 <!-- ajaxform -->

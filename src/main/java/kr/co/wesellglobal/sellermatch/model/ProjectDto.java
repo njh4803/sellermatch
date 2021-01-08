@@ -112,13 +112,10 @@ public class ProjectDto {
 	private String[] projMarginArr;
 	private String[] projSupplyTypeArr;
 	private String[] projProdCertiArr;
-	private String[] ppBizCertiArr;
-	private String[] ppProfitArr;
-	private String[] sellerBizCertiArr;
-	private String[] sellerChChkArr;
-	private String[] sellerSaleChkArr;
 	private String[] projChannelArr;
-	private String[] memRnameArr;
+	private String memRnameSort;
+	private String ppMemRname;
+	private String sellerMemRname;
 	
 	public static int getOffset() {
 		return offset;

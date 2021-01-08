@@ -45,7 +45,7 @@
 .container1{
 	border: 2px solid #e3e3e3;
 	margin: 0 240px;
-	height: 100%;
+	height: 400px;
 }
 .container2{
 	margin: 0 240px;
@@ -66,6 +66,7 @@
 }
 .row1{
 	height: 50px;
+	width: 97%;
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -134,8 +135,15 @@
 .titleBox{
 	font-size: 30px;
 }
-.titleBox span{
+.titleBox .pp{
+	width: 100px;
+	height: 40px;
 	color: #E62267;
+}
+.titleBox .sp{
+	width: 100px;
+	height: 40px;
+	color: #57207C;
 }
 .contentsBox{
 	text-align: left;
@@ -350,7 +358,7 @@
         </div>
     </div>
 </div>
-    <div class="page-wrapper" style="position:relative;">
+    <div class="page-wrapper" style="position:relative;" id="premium">
       <!--page slider -->
       <div class="post-slider">
         <i class="fas fa-chevron-left prev"></i>
@@ -392,83 +400,11 @@
 					</div>
 			      </div>
 			    </div>
-        	</c:forEach>	
+        	</c:forEach>
 		</div>
 	  </div>	    
       <!--post slider-->
     </div>
-<div class="partner_bnr2 height-500">
-	<div class="container2">
-		<span class="leftBox">전체 ${projCount}건</span>
-		<div class="rightBox">
-			<span>기본정렬</span>/
-			<span>마감일순</span>/
-			<span>최신등록순</span>/
-			<span>참여자순</span>/
-			<span style="margin-right: 0;">조회순</span>
-		</div>
-	</div>
-	<div class="container1">
-		<div class="container2">
-			<div class="row1">
-				<div class="leftBox">
-					<span>• 등록일 : 2020년 12월 12일</span>
-				</div>	
-				<div class="rightBox">
-					<span>+ 관심프로젝트등록</span>
-				</div>
-			</div>
-			<div class="row1 leftBox">
-				<div class="orangeBox">사업자인증</div>
-				<div class="orangeBox">신원인증</div>
-				<div class="orangeBox">수익성검증</div>
-				<div class="orangeBox">상품검증</div>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row1 leftBox">
-				<div class="titleBox"><span>공급자</span> | 다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집</div>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row1 leftBox">
-				<div class="contentsBox">선글라스를 전문적으로 생산하는 제조회사입니다. 
-				10여가지 라인업을 보유하고 있으며 재고가 풍부하여 끊임없이 공급이 가능합니다. 도매를 구하지만, 위탁판매도 구하고 있습니다
-				</div>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row1 leftBox">
-				<div class="tagContainer">
-					<div class="tagBox">#고경력선호</div>
-					<div class="tagBox">#고마진상품</div>
-					<div class="tagBox">#매출보장판매자</div>
-					<div class="tagBox">#수출가능상품</div>
-					<div class="tagBox">#요즘뜨는제품</div>
-				</div>
-			</div>
-		</div>
-		<div class="container3">
-			<div class="row1 text-left">
-				<div class="blueBox">마감 15일전</div>
-			</div>
-			<div class="row2"></div>
-			<div class="row1">
-				<span class="leftBox">모집자수</span>
-				<span class="rightBox">1명</span>
-			</div>
-			<div class="row1">
-				<span class="leftBox">지원자수</span>
-				<span class="rightBox">1명</span>
-			</div>
-			<div class="row1">
-				<span class="leftBox">지원마감일</span>
-				<span class="rightBox">2020-12-20</span>
-			</div>
-			<div class="row1">
-				<span class="leftBox">관심조회</span>
-				<span class="rightBox">1회</span>
-			</div>
-		</div>
-	</div>
-</div>
 <div class="partner_bnr2">
 	<div class="row1">
 		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
@@ -531,6 +467,158 @@
 	</div>
 </div>
 <%@ include file="inc/footer.jsp"%>
+<script type="text/javascript">
+Handlebars.registerHelper('creatPage', function (startPage, endPage) {
+	for (var i = startPage; i < endPage; i++) {
+		
+	}
+});
+
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+</script>
+<script type="text/x-handlebars-template" id="project-list-tmpl">
+<div class="container2 content">
+	<span class="leftBox">전체 {{projCount}}건</span>
+	<div class="rightBox">
+		<span>기본정렬</span>/
+		<span>마감일순</span>/
+		<span>최신등록순</span>/
+		<span>참여자순</span>/
+		<span style="margin-right: 0;">조회순</span>
+	</div>
+</div>
+{{#output}}
+<div class="container1 content">
+	<div class="container2">
+		<div class="row1">
+			<div class="leftBox">
+				<span>• 등록일 : {{projRegDate}}</span>
+			</div>	
+			<div class="rightBox">
+				<span>+ 관심프로젝트등록</span>
+			</div>
+		</div>
+		<div class="row1 leftBox">
+			{{#ifCond ppBizCerti1 '==' 1}}
+				<div class="orangeBox">공급자 사업자인증</div>
+			{{/ifCond}}
+			{{#ifCond memRname '==' 1}}
+				<div class="orangeBox">신원인증</div>
+			{{/ifCond}}
+			{{#ifCond ppProfit '==' 1}}
+				<div class="orangeBox">수익성검증</div>
+			{{/ifCond}}
+			{{#ifCond projProdCerti '==' 1}}
+				<div class="orangeBox">상품검증</div>
+			{{/ifCond}}
+			{{#ifCond sellerBizCerti '==' 1}}
+				<div class="orangeBox">판매자 사업자인증</div>
+			{{/ifCond}}
+			{{#ifCond sellerChChk '==' 1}}
+				<div class="orangeBox">채널검증</div>
+			{{/ifCond}}
+			{{#ifCond sellerSaleChk '==' 1}}
+				<div class="orangeBox">매출검증</div>
+			{{/ifCond}}
+		</div>
+		<div class="clearfix"></div>
+		<div class="row1 leftBox">
+			{{#ifCond projSort '==' 1}}
+				<div class="titleBox"><span class="pp">공급자</span> | {{projTitle}}</div>
+			{{/ifCond}}
+			{{#ifCond projSort '==' 2}}
+				<div class="titleBox"><span class="sp">판매자</span> | {{projTitle}}</div>
+			{{/ifCond}}
+		</div>
+		<div class="clearfix"></div>
+		<div class="row1 leftBox">
+			<div class="contentsBox">
+				{{projDetail}}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row1 leftBox">
+			<div class="tagContainer">
+				<div class="tagBox">#고경력선호</div>
+				<div class="tagBox">#고마진상품</div>
+				<div class="tagBox">#매출보장판매자</div>
+				<div class="tagBox">#수출가능상품</div>
+				<div class="tagBox">#요즘뜨는제품</div>
+			</div>
+		</div>
+	</div>
+	<div class="container3">
+		<div class="row1 text-left">
+			<div class="blueBox">마감 15일전</div>
+		</div>
+		<div class="row2"></div>
+		<div class="row1">
+			<span class="leftBox">모집자수</span>
+			<span class="rightBox">{{projRecruitNum}}명</span>
+		</div>
+		<div class="row1">
+			<span class="leftBox">지원자수</span>
+			<span class="rightBox">{{applyCount}}명</span>
+		</div>
+		<div class="row1">
+			<span class="leftBox">지원마감일</span>
+			<span class="rightBox">{{projEndDate}}</span>
+		</div>
+		<div class="row1">
+			<span class="leftBox">관심조회</span>
+			<span class="rightBox">{{projHit}}회</span>
+		</div>
+	</div>
+</div>
+{{/output}}
+</script>
+<script type="text/x-handlebars-template" id="page-tmpl">
+<div class="partner_bnr2">
+	<div class="row1">
+		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
+			<ul class="pagination">
+		        {{#ifCond prevPage '>' 0}}
+		            <li><a href="{{pageContext.request.contextPath}}/project/find2?page={{prevPage}}&keyword={{keyword}}">&laquo;</a></li>
+		        {{else}}
+		            <li><a>&laquo;</a></li>
+		        {{/ifCond}}
+		        {{creatPage }}
+			    {{#ifCond nextPage '>' 0}}
+		            <li><a href="{{pageContext.request.contextPath}}/project/find2?page={{nextPage}}&keyword={{keyword}}">&laquo;</a></li>
+		        {{else}}
+		            <li><a>&raquo;</a></li>
+		        {{/ifCond}}
+			</ul>
+		</div>
+	</div>
+</div>
+</script>
 <script>
 $(function(){
 	$('.post-wrapper').slick({
@@ -543,6 +631,8 @@ $(function(){
 	});
 	// 체크박스 선택 검색
 	$(".check").click(function(){
+		// 초기화
+		$(".content").remove();
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -598,67 +688,28 @@ $(function(){
 		
 		$.ajax({
            type: "GET",
-           url: ROOT_URL+"/project/find",
+           url: ROOT_URL+"/project/find2",
            data: param_list,
            success: function(json) {
-           	
+        	   	var content = json
+           		var template = Handlebars.compile($("#project-list-tmpl").html());
+           		var html = template(content);
+           		
+           		var page_content = json.pageData
+           		console.log(page_content)
+           		var page_template = Handlebars.compile($("#page-tmpl").html());
+           		var page_html = page_template(page_content);
+           		
+           		$("#premium").after(html);
+           		$("footer").before(page_html);
+           		
+           		
+           		/* var tag1 = $('<div class="partner_bnr2"></div>').appendTo($("body"));
+           		var tag2 = $('<div class="row1"></div>').appendTo(tag1);
+           		var tag3 = $('<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center"></div>').appendTo(tag2);
+           		var tag4 = $('<ul class="pagination"></ul>').appendTo(tag3); */
            }
     	});
-		
-/* 		$(".check:checked").each(function(i,e){
-			var param_list = {
-					projSort, projNation, projIndus, 
-					projPrice, projMargin, projSupplyType, ppmemRname, 
-					ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
-					sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
-					}
-			
-			var name = this.name
-			var value = this.value
-				
-			param_list[name]=[];
-			for (var i = 0; i < param_list_name.length; i++){
-					
-				if (String(param_list_name[i]) == name) {
-					param_list[name].push(value)
-					console.log(param_list[name])
-						//projNation.push(value);
-				}
-				
-			}
-		}); */
-		
-		//param_list_name2.push(projNation);
-		
-		//console.log(param_list_name2)
-		//console.log("----------------------")
-		
-		/* for (var i = 0; i < param_list_name.length; i++) {
-			const input = [];
-			input[i] = $("<input>");
-            input[i].attr({
-                type: 'hidden',
-                name: param_list_name[i],
-                value: param_list[param_list_name[i]]
-            })
-            
-
-            formData.append(input);
-			//formData.append(param_list_name[i],param_list[i]);
-		}
-		
-		
-		var url = formData.attr('action');
-	        
-	       
-        $.ajax({
-               type: "GET",
-               url: url,
-               data: formData.serialize(),
-               success: function(json) {
-               	window.location = json.referer;
-               }
-        }); */
 	});
 });
 </script>    

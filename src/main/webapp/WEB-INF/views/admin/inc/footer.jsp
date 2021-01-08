@@ -50,7 +50,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery.mousewheel.min.js"></script>
 
 <!-- AjaxHelper -->
-<script src="${pageContext.request.contextPath}/plugins/handlebars/handlebars-v4.0.11.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
 
 <!-- ajaxform -->
