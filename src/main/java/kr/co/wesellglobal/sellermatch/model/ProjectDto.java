@@ -92,7 +92,10 @@ public class ProjectDto {
 	// 상품분류 문자로 치환
 	private String projIndusName;
 	
-	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
+	// 모집마감일을 D-Day로 변환
+	private String projDday;
+	
+	/**페이지 구현을 위한 static변수*/
 	private static int offset;
 	private static int listCount;
 	
@@ -264,4 +267,9 @@ public class ProjectDto {
 		 }
 		 return "";
 	 }
+	
+	public String[] getProjKeywordList() {
+		this.projKeywordList = this.projKeyword.split(",");
+		return this.projKeywordList;
+	}
 }

@@ -256,7 +256,7 @@
 <div class="partner_bnr2">
     <div class="partner_wrap">
         <div class="partner_list vertical-middle">
-            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="0" >전체검색</div>
+            <div class="search_chk"><input type="checkbox" class="checkAll" id="projSort">전체검색</div>
             <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="2" >판매자검색</div>
             <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="1" >공급자검색</div>
         </div>
@@ -269,7 +269,7 @@
             	<div class="chk_listBox basic-scroll">
             		<span>지역구분</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check" name="projNation" value="0">전체</li>
+	            		<li><input type="checkbox" class="checkAll" id="projNation">전체</li>
 	            		<li><input type="checkbox" class="check" name="projNation" value="02">서울</li>
 	            		<li><input type="checkbox" class="check" name="projNation" value="031">경기</li>
 	            		<li><input type="checkbox" class="check" name="projNation" value="032">인천</li>
@@ -291,7 +291,7 @@
             	</div>
             	<div class="chk_listBox"><span>상품분류</span>
 	            	<ul>
-	            		<li><input type="checkbox">전체</li>
+	            		<li><input id="projIndus" class="checkAll" type="checkbox">전체</li>
 	            		<c:forEach var="indusList" items="${indusList}">
 	            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}">${indusList.indusName}</li>
 	            		</c:forEach>
@@ -299,7 +299,7 @@
             	</div>
             	<div class="chk_listBox"><span>상품단가</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="0">전체</li>
+	            		<li><input type="checkbox" class="checkAll" id="projPrice">전체</li>
 	            		<li><input type="checkbox" class="check" name="projPrice" value="9999">1만원 미만</li>
 	            		<li><input type="checkbox" class="check" name="projPrice" value="19999">2만원 미만</li>
 	            		<li><input type="checkbox" class="check" name="projPrice" value="49999">5만원 미만</li>
@@ -309,7 +309,7 @@
             	</div>
             	<div class="chk_listBox"><span>판매마진</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="0">전체</li>
+	            		<li><input type="checkbox" class="checkAll"  id="projMargin">전체</li>
 	            		<li><input type="checkbox" class="check"  name="projMargin" value="10">10%이하</li>
 	            		<li><input type="checkbox" class="check"  name="projMargin" value="20">11%~20%</li>
 	            		<li><input type="checkbox" class="check"  name="projMargin" value="30">21%~30%</li>
@@ -318,7 +318,7 @@
             	</div>
             	<div class="chk_listBox"><span>공급방법</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="0">전체</li>
+	            		<li><input type="checkbox" class="checkAll" id="projSupplyType">전체</li>
 	            		<li><input type="checkbox" class="check" name="projSupplyType" value="1">OEM</li>
 	            		<li><input type="checkbox" class="check" name="projSupplyType" value="2">위탁판매</li>
 	            		<li><input type="checkbox" class="check" name="projSupplyType" value="3">도매공급</li>
@@ -328,25 +328,25 @@
             	</div>
             	<div class="chk_listBox"><span>공급자검증</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" name="ppmemRname" value="1">신원인증</li>
-	            		<li><input type="checkbox" class="check" name="ppBizCerti" value="1">사업자인증</li>
-	            		<li><input type="checkbox" class="check" name="projProdCerti" value="1">상품검증</li>
-	            		<li><input type="checkbox" class="check" name="ppProfit" value="1">수익성검증</li>
+	            		<li><input type="checkbox" class="checkAll" id="ppmemRname">전체</li>
+	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1">사업자인증</li>
+	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1">상품검증</li>
+	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppProfit" value="1">수익성검증</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매자검증</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check" value="0">전체</li>
-	            		<li><input type="checkbox" class="check" name="sellermemRname" value="1">신원인증</li>
-	            		<li><input type="checkbox" class="check" name="sellerBizCerti" value="1">사업자인증</li>
-	            		<li><input type="checkbox" class="check" name="sellerChChk" value="1">채널검증</li>
-	            		<li><input type="checkbox" class="check" name="sellerSaleChk" value="1">매출검증</li>
+	            		<li><input type="checkbox" class="checkAll" id="sellermemRname">전체</li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1">신원인증</li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1">사업자인증</li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1">채널검증</li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1">매출검증</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매채널</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="0">전체</li>
+	            		<li><input type="checkbox" class="checkAll" id="projChannel">전체</li>
 	            		<li><input type="checkbox" class="check" name="projChannel" value="1">오픈마켓</li>
 	            		<li><input type="checkbox" class="check" name="projChannel" value="2">종합몰</li>
 	            		<li><input type="checkbox" class="check" name="projChannel" value="3">폐쇄몰</li>
@@ -405,7 +405,106 @@
 	  </div>	    
       <!--post slider-->
     </div>
-<div class="partner_bnr2">
+<div class="container2 content">
+	<span class="leftBox">전체 ${projCount}건</span>
+	<div class="rightBox">
+		<span>기본정렬</span>/
+		<span>마감일순</span>/
+		<span>최신등록순</span>/
+		<span>참여자순</span>/
+		<span style="margin-right: 0;">조회순</span>
+	</div>
+</div>
+<c:forEach var="output" items="${output}">
+	<div class="container1 content">
+		<div class="container2">
+			<div class="row1">
+				<div class="leftBox">
+					<span>• 등록일 : ${output.projRegDate}</span>
+				</div>	
+				<div class="rightBox">
+					<span>+ 관심프로젝트등록</span>
+				</div>
+			</div>
+			<div class="row1 leftBox">
+				<c:if test="${output.ppBizCerti == 1}">
+					<div class="orangeBox">공급자 사업자인증</div>
+				</c:if>
+				<c:if test="${output.memRname == 1}">
+					<div class="orangeBox">신원인증</div>
+				</c:if>
+				<c:if test="${output.ppProfit == 1}">
+					<div class="orangeBox">수익성검증</div>
+				</c:if>
+				<c:if test="${output.projProdCerti == 1}">
+					<div class="orangeBox">상품검증</div>
+				</c:if>
+				<c:if test="${output.sellerBizCerti == 1}">
+					<div class="orangeBox">판매자 사업자인증</div>
+				</c:if>
+				<c:if test="${output.sellerChChk == 1}">
+					<div class="orangeBox">채널검증</div>
+				</c:if>
+				<c:if test="${output.sellerSaleChk == 1}">
+					<div class="orangeBox">매출검증</div>
+				</c:if>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row1 leftBox">
+				<c:if test="${output.projSort == 1}">
+					<div class="titleBox"><span class="pp">공급자</span> | ${output.projTitle}</div>
+				</c:if>
+				<c:if test="${output.projSort == 2}">
+					<div class="titleBox"><span class="sp">판매자</span> | ${output.projTitle}</div>
+				</c:if>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row1 leftBox">
+				<div class="contentsBox">
+					${output.projDetail}
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="row1 leftBox">
+				<div class="tagContainer">
+					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
+	            		<div class="tagBox">#${projKeywordList}</div>
+	            	</c:forEach>
+				</div>
+			</div>
+		</div>
+		<div class="container3">
+			<div class="row1 text-left">
+				<c:choose>
+					<c:when test="${output.projDday < 0}">
+						<div class="blueBox">마감</div>
+					</c:when>
+					<c:otherwise>
+						<div class="blueBox">마감 ${output.projDday}일전</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="row2"></div>
+			<div class="row1">
+				<span class="leftBox">모집자수</span>
+				<span class="rightBox">${output.projRecruitNum}명</span>
+			</div>
+			<div class="row1">
+				<span class="leftBox">지원자수</span>
+				<span class="rightBox">${output.applyCount}명</span>
+			</div>
+			<div class="row1">
+				<span class="leftBox">지원마감일</span>
+				<span class="rightBox">${output.projEndDate}</span>
+			</div>
+			<div class="row1">
+				<span class="leftBox">관심조회</span>
+				<span class="rightBox">${output.projHit}회</span>
+			</div>
+		</div>
+	</div>
+</c:forEach>
+<div class="partner_bnr2 pageBox">
 	<div class="row1">
 		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 			<ul class="pagination">
@@ -468,20 +567,16 @@
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
-Handlebars.registerHelper('creatPage', function (startPage, endPage) {
-	for (var i = startPage; i < endPage; i++) {
-			<c:choose>
-	        <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-	        <c:when test="${pageData.nowPage == i}">
-	            <li><a><strong>${i}</strong></a></li>
-	        </c:when>
-	        <%-- 나머지 페이지의 경우 링크 적용함 --%>
-	        <c:otherwise>
-	            <li><a href="${pageUrl}">${i}</a></li>
-	        </c:otherwise>
-	    </c:choose>
-		return <li><a href="${pageUrl}">${i}</a></li>;
+Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
+	var tag = '';
+	for (var i = startPage; i < endPage+1; i++) {
+	    if (nowPage == i) {
+	    	tag += '<li><a><strong>'+i+'</strong></a></li>'
+		} else {
+			tag += '<li><a href="">'+i+'</a></li>'
+		}
 	}
+	return new Handlebars.SafeString(tag);
 });
 
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
@@ -535,7 +630,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 			</div>
 		</div>
 		<div class="row1 leftBox">
-			{{#ifCond ppBizCerti1 '==' 1}}
+			{{#ifCond ppBizCerti '==' 1}}
 				<div class="orangeBox">공급자 사업자인증</div>
 			{{/ifCond}}
 			{{#ifCond memRname '==' 1}}
@@ -575,17 +670,19 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 		<div class="clearfix"></div>
 		<div class="row1 leftBox">
 			<div class="tagContainer">
-				<div class="tagBox">#고경력선호</div>
-				<div class="tagBox">#고마진상품</div>
-				<div class="tagBox">#매출보장판매자</div>
-				<div class="tagBox">#수출가능상품</div>
-				<div class="tagBox">#요즘뜨는제품</div>
+				{{#each projKeywordList as |value key|}}
+					<div class="tagBox">&num;{{value}}</div>
+				{{/each}}
 			</div>
 		</div>
 	</div>
 	<div class="container3">
 		<div class="row1 text-left">
-			<div class="blueBox">마감 15일전</div>
+			{{#ifCond projDday '<' 0}}
+				<div class="blueBox">마감</div>
+			{{else}}
+				<div class="blueBox">마감 {{projDday}}일전</div>
+			{{/ifCond}}
 		</div>
 		<div class="row2"></div>
 		<div class="row1">
@@ -609,7 +706,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 {{/output}}
 </script>
 <script type="text/x-handlebars-template" id="page-tmpl">
-<div class="partner_bnr2">
+<div class="partner_bnr2 pageBox">
 	<div class="row1">
 		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 			<ul class="pagination">
@@ -618,7 +715,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 		        {{else}}
 		            <li><a>&laquo;</a></li>
 		        {{/ifCond}}
-		        {{creatPage }}
+		        {{creatPage startPage endPage nowPage}}
 			    {{#ifCond nextPage '>' 0}}
 		            <li><a href="{{pageContext.request.contextPath}}/project/find2?page={{nextPage}}&keyword={{keyword}}">&laquo;</a></li>
 		        {{else}}
@@ -639,10 +736,11 @@ $(function(){
 		  nextArrow:$('.next'),
 		  prevArrow:$('.prev'),
 	});
-	// 체크박스 선택 검색
-	$(".check").click(function(){
+	//체크박스 전체선택
+	$(".checkAll").click(function(){
 		// 초기화
 		$(".content").remove();
+		$(".pageBox").remove();
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -678,10 +776,32 @@ $(function(){
 			//초기화
 			param_list[param_list_name[i]]= [];
 			
+			$("input[id="+param_list_name[i] +"]").each(function(){
+				var checked = this.checked;
+				
+				if (this.id == 'ppmemRname') {
+					$("input[name=ppmemRname]").prop('checked', checked);
+					$("input[name=ppBizCerti]").prop('checked', checked);
+					$("input[name=projProdCerti]").prop('checked', checked);
+					$("input[name=ppProfit]").prop('checked', checked);
+				}
+				if (this.id == 'sellermemRname') {
+					$("input[name=sellermemRname]").prop('checked', checked);
+					$("input[name=sellerBizCerti]").prop('checked', checked);
+					$("input[name=sellerChChk]").prop('checked', checked);
+					$("input[name=sellerSaleChk]").prop('checked', checked);
+				}
+				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
+					$("input[name="+param_list_name[i] +"]").each(function(){
+						this.checked = checked;
+					});
+				}
+			});
+			
 			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 				var name = this.name
 				var value = this.value
-
+				
 				for (var i = 0; i < param_list_name.length; i++){
 					if (String(param_list_name[i]) == name) {
 						param_list[name].push(value)
@@ -712,12 +832,121 @@ $(function(){
            		
            		$("#premium").after(html);
            		$("footer").before(page_html);
+           }
+    	});
+	});
+	
+	
+	// 체크박스 선택 검색
+	$(".check").click(function(){
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var projSort;
+		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname;
+		var ppBizCerti;
+		var projProdCerti;
+		var ppProfit;
+		var sellermemRname;
+		var sellerBizCerti;
+		var sellerChChk;
+		var sellerSaleChk;
+		var projChannel;
+		
+		
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
+		
+		var param_list = {
+				projSort, projNation, projIndus, 
+				projPrice, projMargin, projSupplyType, ppmemRname, 
+				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			var data_name = $("input[name="+param_list_name[i] +"]").data('name');
+			
+			if (data_name == 'ppmemRname') {
+				var total_len = $("input[data-name=ppmemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=ppmemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#ppmemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#ppmemRname").prop('checked', false);	
+				}
+			}
+			if (data_name == 'sellermemRname') {
+				var total_len = $("input[data-name=sellermemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=sellermemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#sellermemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#sellermemRname").prop('checked', false);	
+				}
+			}
+			if (data_name != 'ppmemRname' && data_name != 'sellermemRname') {
+				//체크박스 총 개수
+				var total_len = $("input[name="+param_list_name[i] +"]").length;
+				//선택된 갯수
+				var len = $("input[name="+param_list_name[i] +"]:checked").length;
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#"+param_list_name[i]).prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#"+param_list_name[i]).prop('checked', false);	
+				}
+			}
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		var url = formData.attr('action');
+		
+		$.ajax({
+           type: "GET",
+           url: ROOT_URL+"/project/find2",
+           data: param_list,
+           success: function(json) {
+        	   	var content = json
+           		var template = Handlebars.compile($("#project-list-tmpl").html());
+           		var html = template(content);
            		
+           		var page_content = json.pageData
+           		console.log(page_content)
+           		var page_template = Handlebars.compile($("#page-tmpl").html());
+           		var page_html = page_template(page_content);
            		
-           		/* var tag1 = $('<div class="partner_bnr2"></div>').appendTo($("body"));
-           		var tag2 = $('<div class="row1"></div>').appendTo(tag1);
-           		var tag3 = $('<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center"></div>').appendTo(tag2);
-           		var tag4 = $('<ul class="pagination"></ul>').appendTo(tag3); */
+           		$("#premium").after(html);
+           		$("footer").before(page_html);
            }
     	});
 	});

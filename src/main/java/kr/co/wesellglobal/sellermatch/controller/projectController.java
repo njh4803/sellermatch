@@ -109,7 +109,6 @@ public class projectController {
 		// 목록조회
 		List<ProjectDto> output = null;
 		List<IndusDto> indusList = null;
-		int projCount = 0;
 		int minusCount = ((nowPage - 1) * listCount);
 		try {
 			// 전체 게시글 수 조회
@@ -121,7 +120,6 @@ public class projectController {
 			ProjectDto.setOffset(pageData.getOffset());
 			ProjectDto.setListCount(pageData.getListCount());
 			output = projectService.getProjectList(input);
-			projCount = projectService.getProjectCount(input);
 			indusList = indusService.getIndusList(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,7 +127,7 @@ public class projectController {
 
 		model.addAttribute("output", output);
 		model.addAttribute("indusList", indusList);
-		model.addAttribute("projCount", projCount);
+		model.addAttribute("projCount", totalCount);
 		model.addAttribute("minusCount", minusCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
@@ -140,7 +138,7 @@ public class projectController {
 	@ResponseBody
 	@RequestMapping(value = "/project/find2", method = RequestMethod.GET)
 	public Map<String, Object> findProject2(Model model,
-			@RequestParam(value = "projSort[]", required = false) String projSort,
+			@RequestParam(value = "projSort[]", required = false) String[] projSort,
 			@RequestParam(value = "projNation[]", required = false) String[] projNation,
 			@RequestParam(value = "projIndus[]", required = false) String[] projIndus,
 			@RequestParam(value = "projPrice[]", required = false) String[] projPrice,
@@ -168,7 +166,7 @@ public class projectController {
 		PageData pageData = null;
 
 		ProjectDto input = new ProjectDto();
-		//input.setProjSortArr(projSort);
+		input.setProjSortArr(projSort);
 		input.setProjNationArr(projNation);
 		input.setProjIndusArr(projIndus);
 		input.setProjPriceArr(projPrice);
