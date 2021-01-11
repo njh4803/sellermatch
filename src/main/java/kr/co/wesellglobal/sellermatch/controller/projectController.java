@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
+import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.model.SearchFind;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
@@ -44,7 +49,15 @@ public class projectController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/project/add", method = RequestMethod.GET)
-	public ModelAndView AddProject(Model model) {
+	public ModelAndView AddProject(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member,
+			HttpServletRequest request) {
+		
+		if (member == null) {
+			return webHelper.redirect(null, "로그인 후 이용가능합니다.");
+		}
+		
+		model.addAttribute("member", member);
 
 		return new ModelAndView("addProject");
 	}

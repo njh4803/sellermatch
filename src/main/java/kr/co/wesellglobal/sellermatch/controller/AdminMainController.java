@@ -36,6 +36,9 @@ public class AdminMainController {
 		if (member == null) {
 			return new ModelAndView("admin/admin_login");
 		}
+		if (!member.getMemSort().equals("3")) {
+			return webHelper.redirect(null, "관리자만 접근 가능합니다.");
+		}
 		
 		return new ModelAndView("admin/admin_main");
 	}
