@@ -66,6 +66,8 @@ public class projectController {
 			@RequestParam(value = "sellerChChk[]", required = false) String sellerChChk,
 			@RequestParam(value = "sellerSaleChk[]", required = false) String sellerSaleChk,
 			@RequestParam(value = "projChannel[]", required = false) String[] projChannel,
+			// 정렬 기준
+			@RequestParam(value = "sort", required = false) String sort,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -94,6 +96,7 @@ public class projectController {
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
+		input.setSort(sort);
 		
 		
 		
@@ -153,6 +156,8 @@ public class projectController {
 			@RequestParam(value = "sellerChChk[]", required = false) String sellerChChk,
 			@RequestParam(value = "sellerSaleChk[]", required = false) String sellerSaleChk,
 			@RequestParam(value = "projChannel[]", required = false) String[] projChannel,
+			// 정렬 기준
+			@RequestParam(value = "sort", required = false) String sort,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -181,6 +186,7 @@ public class projectController {
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
+		input.setSort(sort);
 		
 		
 		

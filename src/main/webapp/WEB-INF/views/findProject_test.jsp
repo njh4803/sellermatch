@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="inc/header.jsp"%>
 <style>
 .font-30{
@@ -87,6 +88,12 @@
 	float: right;
 	margin: 15px 15px;
 }
+.rightBox a{
+	margin: 0 15px;
+	font-weight: 0;
+	text-decoration: none;
+	color: #000;
+}
 
 .row2 .leftBox{
 	float: left;
@@ -160,6 +167,14 @@
 }
 .tagContainer{
 	padding-top: 50px;
+}
+
+.projDetail{
+	text-decoration: none;
+	color: black;
+}
+a:focus, a:hover{
+	text-decoration: none;
 }
 /* 스크롤바 디자인 */
 .chk_listBox::-webkit-scrollbar {
@@ -248,7 +263,8 @@
 		            <button type="submit" class="btn_search">
 		                <i class="fas fa-bolt"> 검색</i>   
 		            </button>    
-		        </div>    
+		        </div>
+		        <input type="hidden" value="defaultSort" id="sort" name="sort">
 		    </form>
 	    </div>    
 	</div>
@@ -408,11 +424,11 @@
 <div class="container2 content">
 	<span class="leftBox">전체 ${projCount}건</span>
 	<div class="rightBox">
-		<span>기본정렬</span>/
-		<span>마감일순</span>/
-		<span>최신등록순</span>/
-		<span>참여자순</span>/
-		<span style="margin-right: 0;">조회순</span>
+		<a href="javascript:void(0)" class="sort" id="defaultSort">기본정렬 /</a>
+		<a href="javascript:void(0)" class="sort" id="endSort">마감일순 /</a>
+		<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
+		<a href="javascript:void(0)" class="sort" id="applySort">참여자순 /</a>
+		<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
 	</div>
 </div>
 <c:forEach var="output" items="${output}">
@@ -420,7 +436,7 @@
 		<div class="container2">
 			<div class="row1">
 				<div class="leftBox">
-					<span>• 등록일 : ${output.projRegDate}</span>
+					<span pattern="yyyy-MM-dd">• 등록일 : ${output.projRegDate}</span>
 				</div>	
 				<div class="rightBox">
 					<span>+ 관심프로젝트등록</span>
@@ -452,10 +468,10 @@
 			<div class="clearfix"></div>
 			<div class="row1 leftBox">
 				<c:if test="${output.projSort == 1}">
-					<div class="titleBox"><span class="pp">공급자</span> | ${output.projTitle}</div>
+					<div class="titleBox"><a class="projDetail"><span class="pp">공급자</span> | ${output.projTitle}</a></div>
 				</c:if>
 				<c:if test="${output.projSort == 2}">
-					<div class="titleBox"><span class="sp">판매자</span> | ${output.projTitle}</div>
+					<div class="titleBox"><a class="projDetail"><span class="sp">판매자</span> | ${output.projTitle}</a></div>
 				</c:if>
 			</div>
 			<div class="clearfix"></div>
@@ -571,9 +587,9 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 	var tag = '';
 	for (var i = startPage; i < endPage+1; i++) {
 	    if (nowPage == i) {
-	    	tag += '<li><a><strong>'+i+'</strong></a></li>'
+	    	tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'><strong>'+i+'</strong></a></li>'
 		} else {
-			tag += '<li><a href="">'+i+'</a></li>'
+			tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'>'+i+'</a></li>'
 		}
 	}
 	return new Handlebars.SafeString(tag);
@@ -611,11 +627,11 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 <div class="container2 content">
 	<span class="leftBox">전체 {{projCount}}건</span>
 	<div class="rightBox">
-		<span>기본정렬</span>/
-		<span>마감일순</span>/
-		<span>최신등록순</span>/
-		<span>참여자순</span>/
-		<span style="margin-right: 0;">조회순</span>
+		<a href="javascript:void(0)" class="sort" id="defaultSort">기본정렬 /</a>
+		<a href="javascript:void(0)" class="sort" id="endSort">마감일순 /</a>
+		<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
+		<a href="javascript:void(0)" class="sort" id="applySort">참여자순 /</a>
+		<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
 	</div>
 </div>
 {{#output}}
@@ -655,10 +671,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 		<div class="clearfix"></div>
 		<div class="row1 leftBox">
 			{{#ifCond projSort '==' 1}}
-				<div class="titleBox"><span class="pp">공급자</span> | {{projTitle}}</div>
+				<div class="titleBox"><a class="projDetail"><span class="pp">공급자</span> | {{projTitle}}</a></div>
 			{{/ifCond}}
 			{{#ifCond projSort '==' 2}}
-				<div class="titleBox"><span class="sp">판매자</span> | {{projTitle}}</div>
+				<div class="titleBox"><a class="projDetail"><span class="sp">판매자</span> | {{projTitle}}</a></div>
 			{{/ifCond}}
 		</div>
 		<div class="clearfix"></div>
@@ -711,13 +727,13 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 			<ul class="pagination">
 		        {{#ifCond prevPage '>' 0}}
-		            <li><a href="{{pageContext.request.contextPath}}/project/find2?page={{prevPage}}&keyword={{keyword}}">&laquo;</a></li>
+		            <li><a href="javascript:void(0)" class="pageMove" value="{{prevPage}}">&laquo;</a></li>
 		        {{else}}
 		            <li><a>&laquo;</a></li>
 		        {{/ifCond}}
 		        {{creatPage startPage endPage nowPage}}
 			    {{#ifCond nextPage '>' 0}}
-		            <li><a href="{{pageContext.request.contextPath}}/project/find2?page={{nextPage}}&keyword={{keyword}}">&laquo;</a></li>
+		            <li><a href="javascript:void(0)" class="pageMove" value="{{nextPage}}">&raquo;</a></li>
 		        {{else}}
 		            <li><a>&raquo;</a></li>
 		        {{/ifCond}}
@@ -727,7 +743,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </div>
 </script>
 <script>
-$(function(){
+$(document).ready(function() {
 	$('.post-wrapper').slick({
 		  slidesToShow: 5,
 		  slidesToScroll: 1,
@@ -736,8 +752,12 @@ $(function(){
 		  nextArrow:$('.next'),
 		  prevArrow:$('.prev'),
 	});
-	//체크박스 전체선택
-	$(".checkAll").click(function(){
+	
+	// 페이지 이동
+	$(document).on("click", ".pageMove", function(){
+		$("#sort").val();
+		var keyword = $("input[name=keyword]").val();
+		
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
@@ -759,6 +779,114 @@ $(function(){
 		var sellerSaleChk;
 		var projChannel;
 		
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
+		
+		var param_list = {
+				projSort, projNation, projIndus, 
+				projPrice, projMargin, projSupplyType, ppmemRname, 
+				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
+				};
+		 
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			
+			$("input[id="+param_list_name[i] +"]").each(function(){
+				var checked = this.checked;
+				
+				if (this.id == 'ppmemRname') {
+					$("input[name=ppmemRname]").prop('checked', checked);
+					$("input[name=ppBizCerti]").prop('checked', checked);
+					$("input[name=projProdCerti]").prop('checked', checked);
+					$("input[name=ppProfit]").prop('checked', checked);
+				}
+				if (this.id == 'sellermemRname') {
+					$("input[name=sellermemRname]").prop('checked', checked);
+					$("input[name=sellerBizCerti]").prop('checked', checked);
+					$("input[name=sellerChChk]").prop('checked', checked);
+					$("input[name=sellerSaleChk]").prop('checked', checked);
+				}
+				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
+					$("input[name="+param_list_name[i] +"]").each(function(){
+						this.checked = checked;
+					});
+				}
+			});
+			
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		var url = formData.attr('action');
+		
+		$.ajax({
+           type: "GET",
+           url: ROOT_URL+"/project/find2",
+           data: {
+        	   param_list,
+        	   sort: $("#sort").val(),
+        	   page: $(this)[0].firstChild.data,
+        	   keyword: keyword
+           },
+           success: function(json) {
+        	   	var content = json
+           		var template = Handlebars.compile($("#project-list-tmpl").html());
+           		var html = template(content);
+           		
+           		var page_content = json.pageData
+           		console.log(page_content)
+           		var page_template = Handlebars.compile($("#page-tmpl").html());
+           		var page_html = page_template(page_content);
+           		
+           		$("#premium").after(html);
+           		$("footer").before(page_html);
+           }
+    	});
+	});
+	
+	
+	// 정렬 선택시
+	$(document).on("click", ".sort", function(){
+		var value = this.id;
+		$("#sort").val(value);
+		
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var projSort;
+		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname;
+		var ppBizCerti;
+		var projProdCerti;
+		var ppProfit;
+		var sellermemRname;
+		var sellerBizCerti;
+		var sellerChChk;
+		var sellerSaleChk;
+		var projChannel;
 		
 		var param_list_name = ['projSort', 'projNation', 'projIndus', 
 			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
@@ -819,7 +947,113 @@ $(function(){
 		$.ajax({
            type: "GET",
            url: ROOT_URL+"/project/find2",
-           data: param_list,
+           data: {
+        	   param_list,
+        	   sort: $("#sort").val()
+           },
+           success: function(json) {
+        	   	var content = json
+           		var template = Handlebars.compile($("#project-list-tmpl").html());
+           		var html = template(content);
+           		
+           		var page_content = json.pageData
+           		console.log(page_content)
+           		var page_template = Handlebars.compile($("#page-tmpl").html());
+           		var page_html = page_template(page_content);
+           		
+           		$("#premium").after(html);
+           		$("footer").before(page_html);
+           }
+    	});
+	});
+	
+	//체크박스 전체선택
+	$(".checkAll").click(function(){
+		$("#sort").val(value);
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var projSort;
+		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname;
+		var ppBizCerti;
+		var projProdCerti;
+		var ppProfit;
+		var sellermemRname;
+		var sellerBizCerti;
+		var sellerChChk;
+		var sellerSaleChk;
+		var projChannel;
+		
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
+		
+		var param_list = {
+				projSort, projNation, projIndus, 
+				projPrice, projMargin, projSupplyType, ppmemRname, 
+				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			
+			$("input[id="+param_list_name[i] +"]").each(function(){
+				var checked = this.checked;
+				
+				if (this.id == 'ppmemRname') {
+					$("input[name=ppmemRname]").prop('checked', checked);
+					$("input[name=ppBizCerti]").prop('checked', checked);
+					$("input[name=projProdCerti]").prop('checked', checked);
+					$("input[name=ppProfit]").prop('checked', checked);
+				}
+				if (this.id == 'sellermemRname') {
+					$("input[name=sellermemRname]").prop('checked', checked);
+					$("input[name=sellerBizCerti]").prop('checked', checked);
+					$("input[name=sellerChChk]").prop('checked', checked);
+					$("input[name=sellerSaleChk]").prop('checked', checked);
+				}
+				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
+					$("input[name="+param_list_name[i] +"]").each(function(){
+						this.checked = checked;
+					});
+				}
+			});
+			
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		var url = formData.attr('action');
+		
+		$.ajax({
+           type: "GET",
+           url: ROOT_URL+"/project/find2",
+           data: {
+        	   param_list,
+        	   sort: $("#sort").val()
+           },
            success: function(json) {
         	   	var content = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
@@ -934,7 +1168,10 @@ $(function(){
 		$.ajax({
            type: "GET",
            url: ROOT_URL+"/project/find2",
-           data: param_list,
+           data: {
+        	   param_list,
+        	   sort: $("#sort").val()
+           },
            success: function(json) {
         	   	var content = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());

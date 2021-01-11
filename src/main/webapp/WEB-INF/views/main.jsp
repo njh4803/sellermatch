@@ -22,7 +22,8 @@
             <button type="submit" class="btn_search">
                 <i class="fas fa-bolt"> 검색</i>   
             </button>    
-        </div>    
+        </div>
+        <input type="hidden" value="defaultSort" id="sort" name="sort">    
     </form>
     </div>    
 </div>

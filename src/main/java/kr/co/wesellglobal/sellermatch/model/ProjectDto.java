@@ -106,6 +106,7 @@ public class ProjectDto {
 	private String sellerChChk;
 	private String sellerSaleChk;
 	private String memRname;
+	private String sort;
 	
 	/** 검색을 위한 배열 */
 	private String[] projSortArr;

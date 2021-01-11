@@ -82,7 +82,7 @@
     	SELECT DISTINCT
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
-    		proj_keyword, proj_file, proj_prod_certi, proj_state, proj_reg_date, proj_hit,
+    		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 
     		m.mem_rname as mem_rname, proj_channel
@@ -222,8 +222,23 @@
         	</if>
         	
         </where>
-        ORDER BY proj_idx DESC
         
+       	<if test="sort == 'defaultSort'">
+       		ORDER BY proj_idx DESC
+       	</if>
+       	<if test="sort == 'endSort'">
+       		ORDER BY proj_end_date DESC
+       	</if>
+       	<if test="sort == 'regSort'">
+       		ORDER BY proj_reg_date DESC
+       	</if>
+       	<if test="sort == 'applySort'">
+       		ORDER BY apply_count DESC
+       	</if>
+       	<if test="sort == 'hitSort'">
+       		ORDER BY proj_hit DESC
+       	</if>
+       	
         <if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
