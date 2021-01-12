@@ -7,6 +7,8 @@
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <!-- ckeditor js -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
 <style>
 .partner_bnr {
     width: 100%;
@@ -44,6 +46,15 @@
     height: 100px;
     font-size: 20px;
 }
+.addBtn {
+	background-color: #E52867;
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    margin: 30px 0;
+}
 a {
 	text-decoration: none;
 	color: black;
@@ -70,7 +81,6 @@ a {
 .projTable td{
 	border: 2px solid #ccc;
     text-align: left;
-    padding-left: 10px;
 }
 .inputForm{
 	width: 100%;
@@ -125,6 +135,61 @@ label.error {
 .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
 	height: 300px;
 }
+.fileLable{
+	position: relative;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100px;
+    height: 30px;
+    background: #1abc9c;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 2px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.formControl{
+	width: 400px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    display: inline-block;
+    background-color: #e3e3e3;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.formControl input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.formControl input[type=text] {
+	vertical-align:middle;
+	display:inline-block;
+	width:400px;
+	height:28px;
+	line-height:28px;
+	font-size:11px;
+	padding:0;
+	border:0;
+	border:1px solid #777;
+	padding-left: 10px;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
@@ -146,239 +211,16 @@ label.error {
     <div class="partner_wrap addbox2 selectFind">
     	<input type="hidden" id="member" name="member" value="${member.memSortName}">
     	<div style="display: inline-block;">
-    		<button id="spBtn" class="default-check text-center" value="판매자"><input type="checkbox" class="findCheck spFind" value="판매자">판매자 찾기</button>
+    		<button id="spBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck spFind" value="공급자">판매자 찾기</button>
     	</div>
     	<div style="display: inline-block;">
-    		<button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" value="공급자">공급자 찾기</button>
+    		<button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" value="판매자">공급자 찾기</button>
     	</div>
     </div>
-    <div class="partner_wrap addbox2">
-    	<div class="text-center projectBox">
-			<form action="">
-	    		<table class="projTable">
-	    			<tbody>
-	    				<tr>
-	    					<td>프로젝트 제목</td>
-	    					<td>
-	    						<div class="width-70">
-	    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="[다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집]">
-	    						</div>
-	    						<div class="width-30">
-		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
-		    							<option value="" selected="selected">[기본문구선택]</option>
-	                               		<option value="판매자를 찾습니다.">판매자를 찾습니다.</option>
-	                                	<option value="판매위임합니다.">판매위임합니다.</option>
-	                                	<option value="배송대행지를 찾습니다.">배송대행지를 찾습니다.</option>
-	                              	</select>
-	    						</div>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>상품분류</td>
-	    					<td>
-	    						<select id="projIndus" name="projIndus" class="inputForm width-100">
-                                    <option value="">선택하세요.</option>
-                                    <option value="01">도서</option>
-                                    <option value="02">의류</option>
-                                </select>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>상품가격</td>
-	    					<td>
-	    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="1000000" placeholder="0">
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>판매마진</td>
-	    					<td>
-	    						<select id="projMargin" name="projMargin" class="inputForm width-100">
-                                    <option value="">선택하세요.</option>
-                                    <option value="10">10%이하</option>
-                                    <option value="20">11%~20%</option>
-                                    <option value="30">21%~30%</option>
-                                    <option value="31">30%초과</option>
-                                </select>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>등록지역</td>
-	    					<td>
-	    						<select id="projNation" name="projNation" class="inputForm width-100">
-                                    <option value="">선택하세요.</option>
-                                    <option value="02">서울</option>
-                                    <option value="031">경기</option>
-                                    <option value="032">인천</option>
-                                </select>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>공급방법</td>
-	    					<td>
-		    					<select id="projSupplyType" name="projSupplyType" class="inputForm width-100">
-	                                <option value="">선택하세요.</option>
-	                                <option value="1">OEM</option>
-	                                <option value="2">위탁판매</option>
-	                                <option value="3">도매공급</option>
-	                                <option value="4">운영대행</option>
-	                                <option value="5">경매공급</option>
-	                            </select>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>판매채널</td>
-	    					<td>
-		    					<div class="inputForm width-100">
-		    						<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="1">
-	                                	<span>오픈마켓</span>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="2">
-	                                	<span>종합몰</span>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="3">
-	                                	<span>폐쇄몰</span>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="4">
-	                                	<span>커뮤니티</span>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="5">
-	                                	<span>SNS</span>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="6">
-	                                	<span>오프라인</span>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="7">
-	                                	<span>해외</span>
-		                           	</div>
-		                        </div>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>모집마감일</td>
-	    					<td>
-	    						<input type="date" name="projEndDate" id="projEndDate" class="inputForm width-100">
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>모집인원</td>
-	    					<td>
-	    						<input type="number" name="projRecruitNum" id="projRecruitNum" class="inputForm width-100" min="1" max="100" placeholder="1"/>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>상세설명</td>
-	    					<td>[다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집]     [기본문구선택]</td>
-	    				</tr>
-	    				<tr>
-	    					<td>필수요건</td>
-	    					<td>
-	    						<div class="width-70">
-	    							<input type="text" class="inputForm" id="projRequire" name="projRequire">
-	    						</div>
-	    						<div class="width-30">
-		    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
-		    							<option value="" selected="selected">[기본문구선택]</option>
-	                               		<option value="저녁에만 거래가능합니다.">저녁에만 거래가능합니다.</option>
-	                                	<option value="필수요건입니다.">필수요건입니다.</option>
-	                                	<option value="기본문구입니다.">기본문구입니다.</option>
-	                              	</select>
-	    						</div>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>해시태그</td>
-	    					<td>
-		    					<div class="inputForm width-100">
-		    						<div class="row1">
-	                                    <label>
-	                                    	<input type="checkbox" name="projKeyword" value="고경력선호">
-	                                    	<span class="cr">
-	                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                    	</span>
-	                                    	<span>고경력선호</span>
-	                                    </label>
-	                               	</div>
-	                               	<div class="row1">
-	                                    <label>
-	                                    	<input type="checkbox" name="projKeyword" value="고마진상품">
-	                                    	<span class="cr">
-	                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                    	</span>
-	                                    	<span>고마진상품</span>
-	                                    </label>
-	                               	</div>
-	                               	<div class="row1">
-	                                    <label>
-	                                    	<input type="checkbox" name="projKeyword" value="매출보장판매자">
-	                                    	<span class="cr">
-	                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                    	</span>
-	                                    	<span>매출보장 판매자</span>
-	                                    </label>
-	                               	</div>
-	                               	<div class="row1">
-	                                    <label>
-	                                    	<input type="checkbox" name="projKeyword" value="수출가능상품">
-	                                    	<span class="cr">
-	                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                    	</span>
-	                                    	<span>수출가능상품</span>
-	                                    </label>
-	                               	</div>
-	                               	<div class="row1">
-	                                    <label>
-	                                    	<input type="checkbox" name="projKeyword" value="요즘뜨는제품">
-	                                    	<span class="cr">
-	                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                    	</span>
-	                                    	<span>요즘 뜨는 제품</span>
-	                                    </label>
-	                               	</div>
-	                            </div>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>상세사진</td>
-	    					<td>
-	    						<!-- File upload card start -->
-								<div class="row1">
-									<div class="card-block">
-										<input type="hidden" id=detailImgList name="detailImgList">
-										<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
-										<input type="file" name="projDetailImg" id="fileUpload" style="display:none;" multiple/>
-    									<div id="imgBox" class="jFiler-items jFiler-row">
-																	
-										</div>
-				                    </div>
-				                </div>
-								<!-- File upload card end -->                                                            
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>첨부파일</td>
-	    					<td>
-		    					<div class="row1">
-		    						<div style="display: flow-root;">
-	                                	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-		                             	<label>
-		                             		파일 선택
-		                             		<input id = "image" name="projFile" value="" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-		                             	</label>
-	                                </div>
-	                            </div>
-	    					</td>
-	    				</tr>
-	    			</tbody>
-	    		</table>
-	    	</form>    	
-    	</div>
+    <div id="hiddenBox" style="display: none;">
+    	<input type="hidden" id="memSort" value="${member.memSort}">
+    	<input type="hidden" id="memId" value="${member.memId}">
+    	<input type="hidden" id="indusList" value="${indusList}">
     </div>
     <div class="partner_wrap">
     	
@@ -553,37 +395,51 @@ $(document).ready(function() {
 		$(".resultText").remove();
 		var memSort = $("#member").val();
 		
-		if (memSort == "공급자") {
-			
-		}
-		
 		var value = this.value;
 		if (value != memSort) {
-			var text1 = "(귀하는 "+memSort+"입니다. "+value+"찾기만 가능합니다)"
-			var text2 = value+"찾기를 원하시면 "+value+"로 가입하세요!";
+			var text1='';
+			var text2='';
+			if (memSort == '공급자') {
+				text1 = "(귀하는 "+memSort+"입니다. 판매자찾기만 가능합니다)"
+				text2 = memSort+"찾기를 원하시면 판매자로 가입하세요!";
+			}
+			if (memSort == '판매자') {
+				text1 = "(귀하는 "+memSort+"입니다. 공급자찾기만 가능합니다)"
+				text2 = memSort+"찾기를 원하시면 공급자로 가입하세요!";
+			}
 			swal('알림', text1+'<br>'+text2, 'error')
 			this.checked = false
+			$(".projectAdd").remove();
 			return;
 		}
 		console.log($("#spBtn").val());
 		console.log(value);
 		var tag;
 		if (this.checked) {
-			if ($("#spBtn").val() != value) {
+			if ('판매자' == value) {
 				$("#spBtn").attr('disabled', true);
 				$("#spBtn").attr('class','none-check text-center');
 				$("#ppBtn").attr('class','check text-center');
 				$(".spFind").attr('disabled', true);
-				tag = '<div class="resultText">'+value+'찾기를 선택하셨습니다. (판매자입니다.)</div>';
+				tag = '<div class="resultText">공급자찾기를 선택하셨습니다. (판매자입니다.)</div>';
 			}
-			if ($("#ppBtn").val() != value) {
+			if ('공급자' == value) {
 				$("#ppBtn").attr('disabled', true);
 				$("#ppBtn").attr('class','none-check text-center');
 				$("#spBtn").attr('class','check text-center');
 				$(".ppFind").attr('disabled', true);
-				tag = '<div class="resultText">'+value+'찾기를 선택하셨습니다. (공급자입니다.)</div>';
+				tag = '<div class="resultText">판매자찾기를 선택하셨습니다. (공급자입니다.)</div>';
 			}
 			$(".selectFind").append(tag);
+			var content = {
+					memSort: $("#memSort").val(),
+					memId: $("#memId").val(),
+					indusList: $("#indusList").val()
+			}
+       		var template = Handlebars.compile($("#project-add-tmpl").html());
+       		var html = template(content);
+       		$("#hiddenBox").before(html);
+       		
 		} else {
 			$("#ppBtn").attr('disabled', false);
 			$(".ppFind").attr('disabled', false);
@@ -591,12 +447,406 @@ $(document).ready(function() {
 			$(".spFind").attr('disabled', false);
 			$("#ppBtn").attr('class','default-check text-center');
 			$("#spBtn").attr('class','default-check text-center');
+			$(".projectAdd").remove();
 		}
 	});
 	$("#projAdd").on("click", function(){
 		$(".addbox1").remove();
 	});
+	/** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
+    $('#proj_form').validate({
+    	/* 
+			required 필수 항목으로 설정한다. (true, false)
+			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
+		*/
+		
+        rules: {
+        	// [아이디 중복검사]
+        	projMemId: {
+                required: true, email: true, 
+                remote : {
+                    url : ROOT_URL + '/admin/member/idExistCheck',
+                    type : 'post',
+                    data : {
+                    	memId : function() {
+                            return $("#projMemId").val();
+                        }
+                    }
+                }
+            },
+            // [프로젝트 제목] 필수 + 알파벳,숫자 조합만 허용
+            projTitle: {
+                required: true, minlength: 5, maxlength: 100, 
+            },
+            // [상품가격] 필수
+            projState: 'required',
+            // [상품마진] 필수
+            projPrice: 'required',
+            // [등록지역] 필수
+            projMargin: 'required',
+            // [공급방법] 필수
+           	projSupplyType: 'required',
+            // [등록지역] 필수
+            projIndus: 'required',
+         	// [상품 상세내용] 필수
+            projDetail: 'required',
+            projEndDate: 'required',
+            projRecruitNum: 'required',
+            projChannel: 'required',
+            projNation: 'required',
+        },
+        messages: {
+        	projMemId: {
+                required: '아이디를 입력하세요.',
+                email: '아이디는 이메일만 입력 가능합니다.',
+                remote: '존재 하지 않는 아이디 입니다.'
+            },
+        	projTitle: {
+                required: '프로젝트 제목을 입력해주세요.',
+                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
+                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
+            },
+            projState: {
+                required: '프로젝트 상태를 선택해주세요.',
+            },
+            projPrice: {
+                required: '상품가격을 입력해주세요.',
+            },
+            projMargin: {
+                required: '상품마진률을 선택해주세요.',
+            },
+            projSupplyType: {
+                required: '공급방법을 선택해주세요.',
+            },
+            projDetail: '상품 상세내용를 입력해주세요.',
+            projIndus: '상품분류를 선택해주세요.',
+            projEndDate: '모집마감일을 선택해주세요.',
+            projRecruitNum: '모집인원을 입력해주세요.',
+            projChannel: '채널을 선택해주세요.',
+            projNation: '등록지역을 선택해주세요.',
+        }
+    });
+     
+    $("#proj_form").submit(function(e) {
+		e.preventDefault();
+		var projDetail = CKEDITOR.instances.projDetail.getData();
+       $("#projDetail").val(projDetail);
+		
+		var form = $(this);
+       var url = form.attr('action');
+       
+        $.ajax({
+			   type: "POST",
+	           url: url,
+	           data: form.serialize(),
+	           beforeSend: function() {
+	        	   return $('#proj_form').valid();
+               },
+               success: function() {
+               	swal('알림', '프로젝트가 등록되었습니다.', 'success').then(function(result) {
+                       window.location = ROOT_URL + '/temp';
+                   });
+               }
+        });
+        
+    });
 });
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	Handlebars.registerHelper('ckEditor', function () {
+		var tag = '<script type="text/javascript">'+ 'CKEDITOR.replace("projDetail")'+'</'+'script>';
+		return new Handlebars.SafeString(tag);
+	});
+
+	Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+	    switch (operator) {
+	        case '==':
+	            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+	        case '===':
+	            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+	        case '!=':
+	            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+	        case '!==':
+	            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+	        case '<':
+	            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+	        case '<=':
+	            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+	        case '>':
+	            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+	        case '>=':
+	            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+	        case '&&':
+	            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+	        case '||':
+	            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+	        default:
+	            return options.inverse(this);
+	    }
+	});	
+});
+
+</script>
+<script type="text/x-handlebars-template" id="project-add-tmpl">
+<div class="partner_wrap addbox2 projectAdd">
+    	<div class="text-center projectBox">
+			<form action="${pageContext.request.contextPath}/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="projSort" value="${memSort}">
+				<input type="hidden" name="projMemId" value="${memId}">
+				<input type="hidden" name="projState" value="2">
+	    		<table class="projTable">
+	    			<tbody>
+	    				<tr>
+	    					<td>프로젝트 제목</td>
+	    					<td>
+	    						<div class="width-70">
+	    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="[다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집]">
+	    						</div>
+	    						<div class="width-30">
+		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
+		    							<option value="" selected="selected">[기본문구선택]</option>
+	                               		<option value="판매자를 찾습니다.">판매자를 찾습니다.</option>
+	                                	<option value="판매위임합니다.">판매위임합니다.</option>
+	                                	<option value="배송대행지를 찾습니다.">배송대행지를 찾습니다.</option>
+	                              	</select>
+	    						</div>
+	    					</td>
+	    				</tr>
+	    				<tr>
+	    					<td>상품분류</td>
+	    					<td>
+	    						<select id="projIndus" name="projIndus" class="inputForm width-100">
+                                    <option value="">선택하세요.</option>
+                                    {{#indusList}}
+					           			<option value="${indusId}">${indusName}</option>
+					           		{{/indusList}}
+                                </select>
+	    					</td>
+	    				</tr>
+						{{#ifCond memSort '==' 1}}
+	    				<tr>
+	    					<td>상품가격</td>
+	    					<td>
+	    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="1000000" value="0">
+	    					</td>
+	    				</tr>
+						{{/ifCond}}
+	    				<tr>
+	    					<td>판매마진</td>
+	    					<td>
+	    						<select id="projMargin" name="projMargin" class="inputForm width-100">
+                                    <option value="">선택하세요.</option>
+                                    <option value="10">10%이하</option>
+                                    <option value="20">11%~20%</option>
+                                    <option value="30">21%~30%</option>
+                                    <option value="31">30%초과</option>
+                                </select>
+	    					</td>
+	    				</tr>
+	    				<tr>
+	    					<td>등록지역</td>
+	    					<td>
+	    						<select id="projNation" name="projNation" class="inputForm width-100">
+                                    <option value="">선택하세요.</option>
+                                    <option value="02">서울</option>
+                                    <option value="031">경기</option>
+                                    <option value="032">인천</option>
+                                    <option value="033">강원</option>
+                                    <option value="041">충남</option>
+                                    <option value="042">대전</option>
+                                    <option value="043">충북</option>
+                                    <option value="051">부산</option>
+                                    <option value="052">울산</option>
+                                    <option value="053">대구</option>
+                                    <option value="054">경북</option>
+                                    <option value="055">경남</option>
+                                    <option value="061">전남</option>
+                                    <option value="062">광주</option>
+                                    <option value="063">전북</option>
+                                    <option value="044">세종특별자치시</option>
+                                    <option value="064">세종특별자치도</option>
+                                </select>
+	    					</td>
+	    				</tr>
+	    				<tr>
+	    					<td>공급방법</td>
+	    					<td>
+		    					<select id="projSupplyType" name="projSupplyType" class="inputForm width-100">
+	                                <option value="">선택하세요.</option>
+	                                <option value="1">OEM</option>
+	                                <option value="2">위탁판매</option>
+	                                <option value="3">도매공급</option>
+	                                <option value="4">운영대행</option>
+	                                <option value="5">경매공급</option>
+	                            </select>
+	    					</td>
+	    				</tr>
+	    				<tr>
+	    					<td>판매채널</td>
+	    					<td>
+		    					<div class="inputForm width-100">
+		    						<div class="row1">
+	                                	<input type="checkbox" name="projChannel" value="1">
+	                                	<span>오픈마켓</span>
+		                           	</div>
+		                           	<div class="row1">
+	                                	<input type="checkbox" name="projChannel" value="2">
+	                                	<span>종합몰</span>
+		                           	</div>
+		                           	<div class="row1">
+	                                	<input type="checkbox" name="projChannel" value="3">
+	                                	<span>폐쇄몰</span>
+		                           	</div>
+		                           	<div class="row1">
+	                                	<input type="checkbox" name="projChannel" value="4">
+	                                	<span>커뮤니티</span>
+		                           	</div>
+		                           	<div class="row1">
+	                                	<input type="checkbox" name="projChannel" value="5">
+	                                	<span>SNS</span>
+		                           	</div>
+		                           	<div class="row1">
+	                                	<input type="checkbox" name="projChannel" value="6">
+	                                	<span>오프라인</span>
+		                           	</div>
+		                           	<div class="row1">
+	                                	<input type="checkbox" name="projChannel" value="7">
+	                                	<span>해외</span>
+		                           	</div>
+		                        </div>
+	    					</td>
+	    				</tr>
+	    				<tr>
+	    					<td>모집마감일</td>
+	    					<td>
+	    						<input type="date" name="projEndDate" id="projEndDate" class="inputForm width-100">
+	    					</td>
+	    				</tr>
+	    				<tr>
+	    					<td>모집인원</td>
+	    					<td>
+	    						<input type="number" name="projRecruitNum" id="projRecruitNum" class="inputForm width-100" min="1" max="100" value="1"/>
+	    					</td>
+	    				</tr>
+	    				<tr>
+	    					<td>상세설명</td>
+	    					<td>
+	    						<div>
+			                       	<textarea id="projDetail" name="projDetail" class="form-control"></textarea>
+									{{ckEditor}}
+	                        </div>
+   					</td>
+   				</tr>
+   				<tr>
+   					<td>필수요건</td>
+   					<td>
+   						<div class="width-70">
+   							<input type="text" class="inputForm" id="projRequire" name="projRequire">
+   						</div>
+   						<div class="width-30">
+    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
+    							<option value="" selected="selected">[기본문구선택]</option>
+                              		<option value="저녁에만 거래가능합니다.">저녁에만 거래가능합니다.</option>
+                               	<option value="필수요건입니다.">필수요건입니다.</option>
+                               	<option value="기본문구입니다.">기본문구입니다.</option>
+                             	</select>
+   						</div>
+   					</td>
+   				</tr>
+   				<tr>
+   					<td>해시태그</td>
+   					<td>
+    					<div class="inputForm width-100">
+    						<div class="row1">
+                                   <label>
+                                   	<input type="checkbox" name="projKeyword" value="고경력선호">
+                                   	<span class="cr">
+                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                   	</span>
+                                   	<span>고경력선호</span>
+                                   </label>
+                              	</div>
+                              	<div class="row1">
+                                   <label>
+                                   	<input type="checkbox" name="projKeyword" value="고마진상품">
+                                   	<span class="cr">
+                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                   	</span>
+                                   	<span>고마진상품</span>
+                                   </label>
+                              	</div>
+                              	<div class="row1">
+                                   <label>
+                                   	<input type="checkbox" name="projKeyword" value="매출보장판매자">
+                                   	<span class="cr">
+                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                   	</span>
+                                   	<span>매출보장 판매자</span>
+                                   </label>
+                              	</div>
+                              	<div class="row1">
+                                   <label>
+                                   	<input type="checkbox" name="projKeyword" value="수출가능상품">
+                                   	<span class="cr">
+                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                   	</span>
+                                   	<span>수출가능상품</span>
+                                   </label>
+                              	</div>
+                              	<div class="row1">
+                                   <label>
+                                   	<input type="checkbox" name="projKeyword" value="요즘뜨는제품">
+                                   	<span class="cr">
+                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                   	</span>
+                                   	<span>요즘 뜨는 제품</span>
+                                   </label>
+                              	</div>
+                           </div>
+   					</td>
+   				</tr>
+   				<tr>
+   					<td>상세사진</td>
+   					<td>
+   						<!-- File upload card start -->
+						<div class="row1">
+							<div class="card-block">
+								<input type="hidden" id=detailImgList name="detailImgList">
+								<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
+								<input type="file" name="projDetailImg" id="fileUpload" style="display:none;" multiple/>
+  									<div id="imgBox" class="jFiler-items jFiler-row">
+															
+								</div>
+		                    </div>
+		                </div>
+						<!-- File upload card end -->                                                            
+   					</td>
+   				</tr>
+   				<tr>
+   					<td>첨부파일</td>
+   					<td>
+    					<div class="row1">
+    						<div style="display: flex;">
+                               	<input id = "file_route" type="text" class="formControl" readonly="readonly"/>
+                             	<label class="fileLable">
+                             		파일 선택
+                             		<input id = "image" name="projFile" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+                             	</label>
+                               </div>
+                           </div>
+   					</td>
+   				</tr>
+   			</tbody>
+   		</table>
+   		<div>
+	    	<input class="addBtn" type="submit" value="프로젝트 등록">
+	    </div>
+   	</form>    	
+  	</div>
+  </div>
+
 </script>
 <!-- jquery file upload js -->
 <script src="${pageContext.request.contextPath}/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>

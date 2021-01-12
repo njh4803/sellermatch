@@ -57,7 +57,17 @@ public class projectController {
 			return webHelper.redirect(null, "로그인 후 이용가능합니다.");
 		}
 		
+		IndusDto input = new IndusDto();
+		List<IndusDto> indusList = null;
+		
+		try {
+			indusList = indusService.getIndusList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		model.addAttribute("member", member);
+		model.addAttribute("indusList", indusList);
 
 		return new ModelAndView("addProject");
 	}

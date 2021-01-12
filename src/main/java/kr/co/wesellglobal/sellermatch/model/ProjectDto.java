@@ -182,10 +182,16 @@ public class ProjectDto {
 	}
 	
 	public String getProjStateName() {
+		if (this.projState.equals("0")) {
+			return "중지";
+		}
 		if (this.projState.equals("1")) {
 			return "정상";
 		}
-		return "중지";
+		if (this.projState.equals("2")) {
+			return "대기";
+		}
+		return "";
 	}
 	
 	public String getProjMarginName() {

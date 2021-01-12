@@ -22,6 +22,29 @@
 .auth-box .row{
 	padding-bottom: 10px;
 }
+/* 필수항목 표시를 위한 `*` */
+.identify {
+	font-size: 14px;
+	color: #f00;
+}
+
+/* 에러 메시지에 대한 글자 색상 */
+.error {
+	color: red;
+}
+
+/* 에러가 발생한 <input>태그 */
+input.error {
+	
+}
+/* 에러메시지가 표시중인 <label> 태그 */
+label.error {
+	font-size: 10px;
+	color: red;
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0;
+}
 </style>
 
   <!-- Modal -->
@@ -91,7 +114,8 @@ $(document).ready(function() {
 	
 }); // end ready...
 $(function() {
-	jQuery.validator.setDefaults({
+	// 유효성검사 기본셋팅
+	/* jQuery.validator.setDefaults({
 		onkeyup : false,
 		onclick : false,
 		onfocusout : false,
@@ -111,7 +135,7 @@ $(function() {
 				});
 			}
 		}
-	});
+	}); */
 	
 	$("#login-form").validate({
 		rules : {

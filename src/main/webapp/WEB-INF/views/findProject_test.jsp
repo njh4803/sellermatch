@@ -368,6 +368,8 @@ a:focus, a:hover{
 	            		<li><input type="checkbox" class="check" name="projChannel" value="3">폐쇄몰</li>
 	            		<li><input type="checkbox" class="check" name="projChannel" value="4">커뮤니티</li>
 	            		<li><input type="checkbox" class="check" name="projChannel" value="5">SNS</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="6">오프라인</li>
+	            		<li><input type="checkbox" class="check" name="projChannel" value="7">해외</li>
 	            	</ul>
             	</div>
             </div>
