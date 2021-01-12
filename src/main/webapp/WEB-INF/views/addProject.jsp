@@ -190,6 +190,22 @@ label.error {
 	border:1px solid #777;
 	padding-left: 10px;
 }
+.projAdd{
+	background-color: #E52867;
+	color: white;
+    border-radius: 10px;
+    width: 300px;
+    height: 100px;
+    font-size: 20px;
+}
+.projAdd:disabled{
+	background-color: #e3e3e3;
+	color: black;
+}
+.projAdd button:enabled{
+	background-color: #E52867;
+	color: white;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
@@ -200,23 +216,15 @@ label.error {
     	<img src="${pageContext.request.contextPath}/main_assets/image/프로젝트등록임시이미지.PNG">
     </div>
     <div class="partner_wrap addbox1">
-    	<button id="projAdd" class="check text-center">프로젝트 등록</button>
+    	<button id="projAdd" class="projAdd text-center" disabled="disabled">프로젝트 등록</button>
     </div>
     <div class="partner_wrap addbox1">
-    	<input type="checkbox"><a href="javascript:void(0)">개인정보공개 및 등록 약관을 확인 하였음. (등록약관보기)</a>
+    	<input id="addCheck" type="checkbox"><a href="javascript:void(0)">개인정보공개 및 등록 약관을 확인 하였음. (등록약관보기)</a>
     </div>
-    <div class="partner_wrap addbox2">
-    	<hr>
+    <div id="findCheckBox">
+    	
     </div>
-    <div class="partner_wrap addbox2 selectFind">
-    	<input type="hidden" id="member" name="member" value="${member.memSortName}">
-    	<div style="display: inline-block;">
-    		<button id="spBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck spFind" value="공급자">판매자 찾기</button>
-    	</div>
-    	<div style="display: inline-block;">
-    		<button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" value="판매자">공급자 찾기</button>
-    	</div>
-    </div>
+    
     <div id="hiddenBox" style="display: none;">
     	<input type="hidden" id="memSort" value="${member.memSort}">
     	<input type="hidden" id="memId" value="${member.memId}">
@@ -229,6 +237,77 @@ label.error {
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
+
+	
+	$("#projAdd").on("click", function(){
+		$(".addbox1").remove();
+		var content = {
+				memSort: $("#memSort").val()
+		}
+   		var template = Handlebars.compile($("#project-find-tmpl").html());
+   		var html = template(content);
+   		$("#findCheckBox").append(html);
+	});
+	
+	$(document).on("click", ".findCheck", function(){
+		$(".resultText").remove();
+		var memSort = $("#member").val();
+		
+		var value = this.value;
+		if (value != memSort) {
+			var text1='';
+			var text2='';
+			if (memSort == '공급자') {
+				text1 = "(귀하는 "+memSort+"입니다. 판매자찾기만 가능합니다)"
+				text2 = memSort+"찾기를 원하시면 판매자로 가입하세요!";
+			}
+			if (memSort == '판매자') {
+				text1 = "(귀하는 "+memSort+"입니다. 공급자찾기만 가능합니다)"
+				text2 = memSort+"찾기를 원하시면 공급자로 가입하세요!";
+			}
+			swal('알림', text1+'<br>'+text2, 'error')
+			this.checked = false
+			$(".projectAdd").remove();
+			return;
+		}
+		console.log($("#spBtn").val());
+		console.log(value);
+		var tag;
+		if (this.checked) {
+			if ('판매자' == value) {
+				$("#spBtn").attr('disabled', true);
+				$("#spBtn").attr('class','none-check text-center');
+				$("#ppBtn").attr('class','check text-center');
+				$(".spFind").attr('disabled', true);
+				tag = '<div class="resultText">공급자찾기를 선택하셨습니다. (판매자입니다.)</div>';
+			}
+			if ('공급자' == value) {
+				$("#ppBtn").attr('disabled', true);
+				$("#ppBtn").attr('class','none-check text-center');
+				$("#spBtn").attr('class','check text-center');
+				$(".ppFind").attr('disabled', true);
+				tag = '<div class="resultText">판매자찾기를 선택하셨습니다. (공급자입니다.)</div>';
+			}
+			$(".selectFind").append(tag);
+			var content = {
+					memSort: $("#memSort").val(),
+					memId: $("#memId").val(),
+					indusList: $("#indusList").val()
+			}
+       		var template = Handlebars.compile($("#project-add-tmpl").html());
+       		var html = template(content);
+       		$("#hiddenBox").before(html);
+       		
+		} else {
+			$("#ppBtn").attr('disabled', false);
+			$(".ppFind").attr('disabled', false);
+			$("#spBtn").attr('disabled', false);
+			$(".spFind").attr('disabled', false);
+			$("#ppBtn").attr('class','default-check text-center');
+			$("#spBtn").attr('class','default-check text-center');
+			$(".projectAdd").remove();
+		}
+	});
 	
 	//파일 업로드
     var objDragAndDrop = $(".dragAndDropDiv");
@@ -267,11 +346,10 @@ $(document).ready(function() {
         e.preventDefault();
     });
     //drag 영역 클릭시 파일 선택창
-    objDragAndDrop.on('click',function (e){
+    $(document).on('click','.dragAndDropDiv' ,function (e){
         $('input[name=projDetailImg]').trigger('click');
     });
-
-    $('input[name=projDetailImg]').on('change', function(e) {
+    $(document).on('change','input[name=projDetailImg]' ,function (e){
         var files = e.originalEvent.target.files;
         var imgListStr = $("#detailImgList").val();
         //$('#imgBox ul').remove();
@@ -379,161 +457,90 @@ $(document).ready(function() {
     });
     // 파일 업로드 끝
     
-	$("#projAdd").on("click", function(){
-		$(".addbox1").remove();
-	});
-	
-	$("#projTitleSelect").on("change", function(){
+    $(document).on("change", "#projTitleSelect", function(){
 		$("#projTitle").val(this.value);
 	});
-	
-	$("#projRequireSelect").on("change", function(){
+	$(document).on("change", "#projRequireSelect", function(){
 		$("#projRequire").val(this.value);
 	});
+	$(document).on("click", "#addCheck", function(){
+		var check = this.checked
+		if (check) {
+			$("#projAdd").attr('disabled', false);
+		}else {
+			$("#projAdd").attr('disabled', true);
+		}
+	});
 	
-	$(".findCheck").on("click", function(){
-		$(".resultText").remove();
-		var memSort = $("#member").val();
-		
-		var value = this.value;
-		if (value != memSort) {
-			var text1='';
-			var text2='';
-			if (memSort == '공급자') {
-				text1 = "(귀하는 "+memSort+"입니다. 판매자찾기만 가능합니다)"
-				text2 = memSort+"찾기를 원하시면 판매자로 가입하세요!";
-			}
-			if (memSort == '판매자') {
-				text1 = "(귀하는 "+memSort+"입니다. 공급자찾기만 가능합니다)"
-				text2 = memSort+"찾기를 원하시면 공급자로 가입하세요!";
-			}
-			swal('알림', text1+'<br>'+text2, 'error')
-			this.checked = false
-			$(".projectAdd").remove();
-			return;
-		}
-		console.log($("#spBtn").val());
-		console.log(value);
-		var tag;
-		if (this.checked) {
-			if ('판매자' == value) {
-				$("#spBtn").attr('disabled', true);
-				$("#spBtn").attr('class','none-check text-center');
-				$("#ppBtn").attr('class','check text-center');
-				$(".spFind").attr('disabled', true);
-				tag = '<div class="resultText">공급자찾기를 선택하셨습니다. (판매자입니다.)</div>';
-			}
-			if ('공급자' == value) {
-				$("#ppBtn").attr('disabled', true);
-				$("#ppBtn").attr('class','none-check text-center');
-				$("#spBtn").attr('class','check text-center');
-				$(".ppFind").attr('disabled', true);
-				tag = '<div class="resultText">판매자찾기를 선택하셨습니다. (공급자입니다.)</div>';
-			}
-			$(".selectFind").append(tag);
-			var content = {
-					memSort: $("#memSort").val(),
-					memId: $("#memId").val(),
-					indusList: $("#indusList").val()
-			}
-       		var template = Handlebars.compile($("#project-add-tmpl").html());
-       		var html = template(content);
-       		$("#hiddenBox").before(html);
-       		
-		} else {
-			$("#ppBtn").attr('disabled', false);
-			$(".ppFind").attr('disabled', false);
-			$("#spBtn").attr('disabled', false);
-			$(".spFind").attr('disabled', false);
-			$("#ppBtn").attr('class','default-check text-center');
-			$("#spBtn").attr('class','default-check text-center');
-			$(".projectAdd").remove();
-		}
-	});
-	$("#projAdd").on("click", function(){
-		$(".addbox1").remove();
-	});
-	/** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-    $('#proj_form').validate({
-    	/* 
-			required 필수 항목으로 설정한다. (true, false)
-			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
-		*/
-		
-        rules: {
-        	// [아이디 중복검사]
-        	projMemId: {
-                required: true, email: true, 
-                remote : {
-                    url : ROOT_URL + '/admin/member/idExistCheck',
-                    type : 'post',
-                    data : {
-                    	memId : function() {
-                            return $("#projMemId").val();
-                        }
-                    }
-                }
-            },
-            // [프로젝트 제목] 필수 + 알파벳,숫자 조합만 허용
-            projTitle: {
-                required: true, minlength: 5, maxlength: 100, 
-            },
-            // [상품가격] 필수
-            projState: 'required',
-            // [상품마진] 필수
-            projPrice: 'required',
-            // [등록지역] 필수
-            projMargin: 'required',
-            // [공급방법] 필수
-           	projSupplyType: 'required',
-            // [등록지역] 필수
-            projIndus: 'required',
-         	// [상품 상세내용] 필수
-            projDetail: 'required',
-            projEndDate: 'required',
-            projRecruitNum: 'required',
-            projChannel: 'required',
-            projNation: 'required',
-        },
-        messages: {
-        	projMemId: {
-                required: '아이디를 입력하세요.',
-                email: '아이디는 이메일만 입력 가능합니다.',
-                remote: '존재 하지 않는 아이디 입니다.'
-            },
-        	projTitle: {
-                required: '프로젝트 제목을 입력해주세요.',
-                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
-                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
-            },
-            projState: {
-                required: '프로젝트 상태를 선택해주세요.',
-            },
-            projPrice: {
-                required: '상품가격을 입력해주세요.',
-            },
-            projMargin: {
-                required: '상품마진률을 선택해주세요.',
-            },
-            projSupplyType: {
-                required: '공급방법을 선택해주세요.',
-            },
-            projDetail: '상품 상세내용를 입력해주세요.',
-            projIndus: '상품분류를 선택해주세요.',
-            projEndDate: '모집마감일을 선택해주세요.',
-            projRecruitNum: '모집인원을 입력해주세요.',
-            projChannel: '채널을 선택해주세요.',
-            projNation: '등록지역을 선택해주세요.',
-        }
-    });
-     
-    $("#proj_form").submit(function(e) {
+
+    $(document).on("submit", "#proj_form", function(e){
 		e.preventDefault();
+		/** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
+	    $('#proj_form').validate({
+	    	/* 
+				required 필수 항목으로 설정한다. (true, false)
+				remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
+			*/
+			
+	        rules: {
+	            // [프로젝트 제목] 필수
+	            projTitle: {
+	                required: true, minlength: 5, maxlength: 100, 
+	            },
+	            // [상품가격] 필수
+	            projState: 'required',
+	            // [상품마진] 필수
+	            projPrice: 'required',
+	            // [등록지역] 필수
+	            projMargin: 'required',
+	            // [공급방법] 필수
+	           	projSupplyType: 'required',
+	            // [등록지역] 필수
+	            projIndus: 'required',
+	         	// [상품 상세내용] 필수
+	            projDetail: 'required',
+	            projEndDate: 'required',
+	            projRecruitNum: 'required',
+	            projChannel: 'required',
+	            projNation: 'required',
+	        },
+	        messages: {
+	        	projMemId: {
+	                required: '아이디를 입력하세요.',
+	                email: '아이디는 이메일만 입력 가능합니다.',
+	                remote: '존재 하지 않는 아이디 입니다.'
+	            },
+	        	projTitle: {
+	                required: '프로젝트 제목을 입력해주세요.',
+	                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
+	                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
+	            },
+	            projState: {
+	                required: '프로젝트 상태를 선택해주세요.',
+	            },
+	            projPrice: {
+	                required: '상품가격을 입력해주세요.',
+	            },
+	            projMargin: {
+	                required: '상품마진률을 선택해주세요.',
+	            },
+	            projSupplyType: {
+	                required: '공급방법을 선택해주세요.',
+	            },
+	            projDetail: '상품 상세내용를 입력해주세요.',
+	            projIndus: '상품분류를 선택해주세요.',
+	            projEndDate: '모집마감일을 선택해주세요.',
+	            projRecruitNum: '모집인원을 입력해주세요.',
+	            projChannel: '채널을 선택해주세요.',
+	            projNation: '등록지역을 선택해주세요.',
+	        }
+	    });
+		
 		var projDetail = CKEDITOR.instances.projDetail.getData();
-       $("#projDetail").val(projDetail);
+        $("#projDetail").val(projDetail);
 		
 		var form = $(this);
-       var url = form.attr('action');
+		var url = form.attr('action');
        
         $.ajax({
 			   type: "POST",
@@ -553,7 +560,7 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/javascript">
-$(document).ready(function() {
+$(function() {
 	Handlebars.registerHelper('ckEditor', function () {
 		var tag = '<script type="text/javascript">'+ 'CKEDITOR.replace("projDetail")'+'</'+'script>';
 		return new Handlebars.SafeString(tag);
@@ -588,6 +595,20 @@ $(document).ready(function() {
 	});	
 });
 
+</script>
+<script type="text/x-handlebars-template" id="project-find-tmpl">
+<div class="partner_wrap addbox2">
+    <hr>
+</div>
+<div class="partner_wrap addbox2 selectFind">
+	<input type="hidden" id="member" name="member" value="${member.memSortName}">
+	<div style="display: inline-block;">
+		<button id="spBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck spFind" value="공급자">판매자 찾기</button>
+	</div>
+	<div style="display: inline-block;">
+	    <button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" value="판매자">공급자 찾기</button>
+	</div>
+</div>
 </script>
 <script type="text/x-handlebars-template" id="project-add-tmpl">
 <div class="partner_wrap addbox2 projectAdd">

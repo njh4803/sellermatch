@@ -80,7 +80,7 @@
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a href="${pageContext.request.contextPath}/project/add"><i class="fas fa-bolt"></i> 프로젝트 등록</a>
+                <a id="projectInsert" href="#" data-member="${member.memId}"><i class="fas fa-bolt"></i> 프로젝트 등록</a>
             </div>
        </div>
    </div>
@@ -104,6 +104,19 @@ $(function(){
 			}
 
 		});
-	});	
+	});
+	$("#projectInsert").on("click", function(){
+		var login_id = $('#projectInsert').data('member');
+		console.log(login_id)
+		if (login_id == '') {
+			swal({
+                title: '알림',
+                text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+		} else {
+			window.location.href = ROOT_URL+'/project/add';
+		}
+	});
 });
 </script>
