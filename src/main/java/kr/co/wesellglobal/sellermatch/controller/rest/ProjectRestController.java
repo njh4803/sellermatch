@@ -191,4 +191,22 @@ public class ProjectRestController {
 		}
 		return webHelper.getJsonData();
 	}
+	
+	@RequestMapping(value = "/project/indus", method = RequestMethod.GET)
+	public Map<String, Object> getIndusList(){
+		
+		IndusDto input = new IndusDto();
+		List<IndusDto> indusList = null;
+		
+		try {
+			indusList = indusService.getIndusList(input);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("indusList", indusList);
+		
+		return webHelper.getJsonData(data);
+	}
 }

@@ -228,7 +228,7 @@ label.error {
     <div id="hiddenBox" style="display: none;">
     	<input type="hidden" id="memSort" value="${member.memSort}">
     	<input type="hidden" id="memId" value="${member.memId}">
-    	<input type="hidden" id="indusList" value="${indusList}">
+    	<input type="hidden" id="indusDto" value="${indusDto}">
     </div>
     <div class="partner_wrap">
     	
@@ -289,14 +289,21 @@ $(document).ready(function() {
 				tag = '<div class="resultText">판매자찾기를 선택하셨습니다. (공급자입니다.)</div>';
 			}
 			$(".selectFind").append(tag);
-			var content = {
-					memSort: $("#memSort").val(),
-					memId: $("#memId").val(),
-					indusList: $("#indusList").val()
-			}
-       		var template = Handlebars.compile($("#project-add-tmpl").html());
-       		var html = template(content);
-       		$("#hiddenBox").before(html);
+			$.ajax({
+				   type: "GET",
+		           url: ROOT_URL+"/project/indus",
+	               success: function(json) {
+	            	   var content = {
+	             			   memSort: $("#memSort").val(),
+	        					   memId: $("#memId").val(),
+	        					   indusList: json.indusList
+	            		}
+	              		var template = Handlebars.compile($("#project-add-tmpl").html());
+	              		var html = template(content);
+	              		$("#hiddenBox").before(html);
+	               }
+	        });
+			
        		
 		} else {
 			$("#ppBtn").attr('disabled', false);
@@ -640,9 +647,9 @@ $(function() {
 	    					<td>
 	    						<select id="projIndus" name="projIndus" class="inputForm width-100">
                                     <option value="">선택하세요.</option>
-                                    {{#indusList}}
-					           			<option value="${indusId}">${indusName}</option>
-					           		{{/indusList}}
+									{{#indusList}}
+										<option value="{{indusId}}">{{indusName}}</option>
+									{{/indusList}}
                                 </select>
 	    					</td>
 	    				</tr>

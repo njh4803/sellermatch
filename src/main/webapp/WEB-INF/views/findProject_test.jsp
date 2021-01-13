@@ -272,7 +272,7 @@ a:focus, a:hover{
 <div class="partner_bnr2">
     <div class="partner_wrap">
         <div class="partner_list vertical-middle">
-            <div class="search_chk"><input type="checkbox" class="checkAll" id="projSort">전체검색</div>
+            <!-- <div class="search_chk"><input type="checkbox" class="checkAll" id="projSort">전체검색</div> -->
             <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="2" >판매자검색</div>
             <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="1" >공급자검색</div>
         </div>
@@ -837,16 +837,13 @@ $(document).ready(function() {
 			console.log("----------------")
 		}
 		var url = formData.attr('action');
-		
+		param_list["sort"] = $("#sort").val();
+		param_list["page"] = $(this)[0].firstChild.data
+		param_list["keyword"] = keyword;
 		$.ajax({
            type: "GET",
            url: ROOT_URL+"/project/find2",
-           data: {
-        	   param_list,
-        	   sort: $("#sort").val(),
-        	   page: $(this)[0].firstChild.data,
-        	   keyword: keyword
-           },
+           data: param_list,
            success: function(json) {
         	   	var content = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
@@ -945,14 +942,11 @@ $(document).ready(function() {
 			console.log("----------------")
 		}
 		var url = formData.attr('action');
-		
+		param_list["sort"] = $("#sort").val();
 		$.ajax({
            type: "GET",
            url: ROOT_URL+"/project/find2",
-           data: {
-        	   param_list,
-        	   sort: $("#sort").val()
-           },
+           data: param_list,
            success: function(json) {
         	   	var content = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
@@ -1048,14 +1042,11 @@ $(document).ready(function() {
 			console.log("----------------")
 		}
 		var url = formData.attr('action');
-		
+		param_list["sort"] = $("#sort").val();
 		$.ajax({
            type: "GET",
            url: ROOT_URL+"/project/find2",
-           data: {
-        	   param_list,
-        	   sort: $("#sort").val()
-           },
+           data: param_list,
            success: function(json) {
         	   	var content = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
@@ -1165,15 +1156,13 @@ $(document).ready(function() {
 			console.log(param_list)
 			console.log("----------------")
 		}
+		param_list["sort"] = $("#sort").val();
 		var url = formData.attr('action');
 		
 		$.ajax({
            type: "GET",
            url: ROOT_URL+"/project/find2",
-           data: {
-        	   param_list,
-        	   sort: $("#sort").val()
-           },
+           data: param_list,
            success: function(json) {
         	   	var content = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
