@@ -348,7 +348,7 @@ a:focus, a:hover{
 	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1">신원인증</li>
 	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1">사업자인증</li>
 	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1">상품검증</li>
-	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppProfit" value="1">수익성검증</li>
+	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProfit" value="1">수익성검증</li>
 	            	</ul>
             	</div>
             	<div class="chk_listBox"><span>판매자검증</span>
@@ -445,25 +445,22 @@ a:focus, a:hover{
 				</div>
 			</div>
 			<div class="row1 leftBox">
-				<c:if test="${output.ppBizCerti == 1}">
-					<div class="orangeBox">공급자 사업자인증</div>
+				<c:if test="${output.profileBizCerti == 1}">
+					<div class="orangeBox">사업자인증</div>
 				</c:if>
 				<c:if test="${output.memRname == 1}">
 					<div class="orangeBox">신원인증</div>
 				</c:if>
-				<c:if test="${output.ppProfit == 1}">
+				<c:if test="${output.projProfit == 1}">
 					<div class="orangeBox">수익성검증</div>
 				</c:if>
 				<c:if test="${output.projProdCerti == 1}">
 					<div class="orangeBox">상품검증</div>
 				</c:if>
-				<c:if test="${output.sellerBizCerti == 1}">
-					<div class="orangeBox">판매자 사업자인증</div>
-				</c:if>
-				<c:if test="${output.sellerChChk == 1}">
+				<c:if test="${output.profileChChk == 1}">
 					<div class="orangeBox">채널검증</div>
 				</c:if>
-				<c:if test="${output.sellerSaleChk == 1}">
+				<c:if test="${output.profileSaleChk == 1}">
 					<div class="orangeBox">매출검증</div>
 				</c:if>
 			</div>
@@ -648,25 +645,22 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 			</div>
 		</div>
 		<div class="row1 leftBox">
-			{{#ifCond ppBizCerti '==' 1}}
-				<div class="orangeBox">공급자 사업자인증</div>
+			{{#ifCond profileBizCerti '==' 1}}
+				<div class="orangeBox">사업자인증</div>
 			{{/ifCond}}
 			{{#ifCond memRname '==' 1}}
 				<div class="orangeBox">신원인증</div>
 			{{/ifCond}}
-			{{#ifCond ppProfit '==' 1}}
+			{{#ifCond projProfit '==' 1}}
 				<div class="orangeBox">수익성검증</div>
 			{{/ifCond}}
 			{{#ifCond projProdCerti '==' 1}}
 				<div class="orangeBox">상품검증</div>
 			{{/ifCond}}
-			{{#ifCond sellerBizCerti '==' 1}}
-				<div class="orangeBox">판매자 사업자인증</div>
-			{{/ifCond}}
-			{{#ifCond sellerChChk '==' 1}}
+			{{#ifCond sprofileChChk '==' 1}}
 				<div class="orangeBox">채널검증</div>
 			{{/ifCond}}
-			{{#ifCond sellerSaleChk '==' 1}}
+			{{#ifCond sprofileSaleChk '==' 1}}
 				<div class="orangeBox">매출검증</div>
 			{{/ifCond}}
 		</div>
@@ -774,7 +768,7 @@ $(document).ready(function() {
 		var ppmemRname;
 		var ppBizCerti;
 		var projProdCerti;
-		var ppProfit;
+		var projProfit;
 		var sellermemRname;
 		var sellerBizCerti;
 		var sellerChChk;
@@ -783,13 +777,13 @@ $(document).ready(function() {
 		
 		var param_list_name = ['projSort', 'projNation', 'projIndus', 
 			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
-			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
 			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
 		
 		var param_list = {
 				projSort, projNation, projIndus, 
 				projPrice, projMargin, projSupplyType, ppmemRname, 
-				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
 				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
 				};
 		 
@@ -805,7 +799,7 @@ $(document).ready(function() {
 					$("input[name=ppmemRname]").prop('checked', checked);
 					$("input[name=ppBizCerti]").prop('checked', checked);
 					$("input[name=projProdCerti]").prop('checked', checked);
-					$("input[name=ppProfit]").prop('checked', checked);
+					$("input[name=projProfit]").prop('checked', checked);
 				}
 				if (this.id == 'sellermemRname') {
 					$("input[name=sellermemRname]").prop('checked', checked);
@@ -880,7 +874,7 @@ $(document).ready(function() {
 		var ppmemRname;
 		var ppBizCerti;
 		var projProdCerti;
-		var ppProfit;
+		var projProfit;
 		var sellermemRname;
 		var sellerBizCerti;
 		var sellerChChk;
@@ -889,13 +883,13 @@ $(document).ready(function() {
 		
 		var param_list_name = ['projSort', 'projNation', 'projIndus', 
 			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
-			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
 			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
 		
 		var param_list = {
 				projSort, projNation, projIndus, 
 				projPrice, projMargin, projSupplyType, ppmemRname, 
-				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
 				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
 				};
 		
@@ -910,7 +904,7 @@ $(document).ready(function() {
 					$("input[name=ppmemRname]").prop('checked', checked);
 					$("input[name=ppBizCerti]").prop('checked', checked);
 					$("input[name=projProdCerti]").prop('checked', checked);
-					$("input[name=ppProfit]").prop('checked', checked);
+					$("input[name=projProfit]").prop('checked', checked);
 				}
 				if (this.id == 'sellermemRname') {
 					$("input[name=sellermemRname]").prop('checked', checked);
@@ -980,7 +974,7 @@ $(document).ready(function() {
 		var ppmemRname;
 		var ppBizCerti;
 		var projProdCerti;
-		var ppProfit;
+		var projProfit;
 		var sellermemRname;
 		var sellerBizCerti;
 		var sellerChChk;
@@ -989,13 +983,13 @@ $(document).ready(function() {
 		
 		var param_list_name = ['projSort', 'projNation', 'projIndus', 
 			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
-			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
 			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
 		
 		var param_list = {
 				projSort, projNation, projIndus, 
 				projPrice, projMargin, projSupplyType, ppmemRname, 
-				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
 				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
 				};
 		
@@ -1010,7 +1004,7 @@ $(document).ready(function() {
 					$("input[name=ppmemRname]").prop('checked', checked);
 					$("input[name=ppBizCerti]").prop('checked', checked);
 					$("input[name=projProdCerti]").prop('checked', checked);
-					$("input[name=ppProfit]").prop('checked', checked);
+					$("input[name=projProfit]").prop('checked', checked);
 				}
 				if (this.id == 'sellermemRname') {
 					$("input[name=sellermemRname]").prop('checked', checked);
@@ -1080,7 +1074,7 @@ $(document).ready(function() {
 		var ppmemRname;
 		var ppBizCerti;
 		var projProdCerti;
-		var ppProfit;
+		var projProfit;
 		var sellermemRname;
 		var sellerBizCerti;
 		var sellerChChk;
@@ -1090,13 +1084,13 @@ $(document).ready(function() {
 		
 		var param_list_name = ['projSort', 'projNation', 'projIndus', 
 			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
-			'ppBizCerti', 'projProdCerti', 'ppProfit', 'sellermemRname', 
+			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
 			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
 		
 		var param_list = {
 				projSort, projNation, projIndus, 
 				projPrice, projMargin, projSupplyType, ppmemRname, 
-				ppBizCerti, projProdCerti, ppProfit, sellermemRname, 
+				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
 				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
 				};
 		

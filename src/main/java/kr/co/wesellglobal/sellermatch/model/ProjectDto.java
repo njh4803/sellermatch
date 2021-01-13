@@ -75,7 +75,13 @@ public class ProjectDto {
 	// 프로젝트 채널
 	private String projChannel;
 	
-	// 예비컬럼 // 판매자, 공급자 프로필 테이블 연결 컬럼
+	// 수익성 검증
+	private String projProfit;
+	
+	// 수익성 검증일
+	private String projProfitChkDate;
+	
+	// 예비컬럼
 	private String projXxx;
 
 	
@@ -100,8 +106,12 @@ public class ProjectDto {
 	private static int listCount;
 	
 	/** 검색 결과를 위한 변수 */
+	private String profileBizCerti;
+	private String profileChChk;
+	private String profileSaleChk;
+	
+	/** 검색을 위한 변수 */
 	private String ppBizCerti;
-	private String ppProfit;
 	private String sellerBizCerti;
 	private String sellerChChk;
 	private String sellerSaleChk;

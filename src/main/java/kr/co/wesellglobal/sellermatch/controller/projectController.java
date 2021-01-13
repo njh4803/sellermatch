@@ -73,7 +73,7 @@ public class projectController {
 			@RequestParam(value = "ppmemRname[]", required = false) String ppMemRname,
 			@RequestParam(value = "ppBizCerti[]", required = false) String ppBizCerti,
 			@RequestParam(value = "projProdCerti[]", required = false) String projProdCerti,
-			@RequestParam(value = "ppProfit[]", required = false) String ppProfit,
+			@RequestParam(value = "projProfit[]", required = false) String projProfit,
 			@RequestParam(value = "sellermemRname[]", required = false) String sellerMemRname,
 			@RequestParam(value = "sellerBizCerti[]", required = false) String sellerBizCerti,
 			@RequestParam(value = "sellerChChk[]", required = false) String sellerChChk,
@@ -105,7 +105,7 @@ public class projectController {
 		input.setPpMemRname(ppMemRname);
 		input.setSellerMemRname(sellerMemRname);
 		input.setPpBizCerti(ppBizCerti);
-		input.setPpProfit(ppProfit);
+		input.setProjProfit(projProfit);
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
@@ -163,7 +163,7 @@ public class projectController {
 			@RequestParam(value = "ppmemRname[]", required = false) String ppMemRname,
 			@RequestParam(value = "ppBizCerti[]", required = false) String ppBizCerti,
 			@RequestParam(value = "projProdCerti[]", required = false) String projProdCerti,
-			@RequestParam(value = "ppProfit[]", required = false) String ppProfit,
+			@RequestParam(value = "projProfit[]", required = false) String projProfit,
 			@RequestParam(value = "sellermemRname[]", required = false) String sellerMemRname,
 			@RequestParam(value = "sellerBizCerti[]", required = false) String sellerBizCerti,
 			@RequestParam(value = "sellerChChk[]", required = false) String sellerChChk,
@@ -195,7 +195,7 @@ public class projectController {
 		input.setPpMemRname(ppMemRname);
 		input.setSellerMemRname(sellerMemRname);
 		input.setPpBizCerti(ppBizCerti);
-		input.setPpProfit(ppProfit);
+		input.setProjProfit(projProfit);
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);

@@ -74,7 +74,10 @@ public class AdminProjectRestController {
 			@RequestParam(value = "projDetailImg[]", required = false) MultipartFile[] projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
 			@RequestParam(value = "projState", required = false) String projState,
-			@RequestParam(value = "projProdCerti", required = false) String projProdCerti) throws Exception {
+			@RequestParam(value = "projProdCerti", required = false) String projProdCerti,
+			@RequestParam(value = "projHit", required = false) int projHit,
+			@RequestParam(value = "projProfit", required = false) String projProfit,
+			@RequestParam(value = "ProjProfitChkDate", required = false) String projProfitChkDate) throws Exception {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		
@@ -123,6 +126,9 @@ public class AdminProjectRestController {
 		input.setProjRequire(projRequire);
 		input.setProjKeyword(projKeyword);
 		input.setProjProdCerti(projProdCerti);
+		input.setProjHit(projHit);
+		input.setProjProfit(projProfit);
+		input.setProjProfitChkDate(projProfitChkDate);
 		if (projDetailImg.length != 0) {
 			input.setProjDetailImg(str);
 		}
@@ -160,7 +166,10 @@ public class AdminProjectRestController {
 			@RequestParam(value = "detailImgList", required = false) String projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
 			@RequestParam(value = "projState", required = false) String projState,
-			@RequestParam(value = "projProdCerti", required = false) String projProdCerti) {
+			@RequestParam(value = "projProdCerti", required = false) String projProdCerti,
+			@RequestParam(value = "projHit", required = false) int projHit,
+			@RequestParam(value = "projProfit", required = false) String projProfit,
+			@RequestParam(value = "ProjProfitChkDate", required = false) String projProfitChkDate) {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		UploadItem item = null;
@@ -191,6 +200,9 @@ public class AdminProjectRestController {
 		input.setProjRequire(projRequire);
 		input.setProjKeyword(projKeyword);
 		input.setProjProdCerti(projProdCerti);
+		input.setProjHit(projHit);
+		input.setProjProfit(projProfit);
+		input.setProjProfitChkDate(projProfitChkDate);
 		if (projDetailImg != "" && projDetailImg != null) {
 			input.setProjDetailImg(projDetailImg);
 		}

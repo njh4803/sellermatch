@@ -34,11 +34,12 @@
         <result property="projHit" column="proj_hit" />
         <result property="projChannel" column="proj_channel" />
         <result property="applyCount" column="apply_count" />
-        <result property="ppBizCerti" column="pp_biz_certi" />
-        <result property="ppProfit" column="pp_profit" />
-        <result property="sellerChChk" column="seller_ch_chk" />
-        <result property="sellerSaleChk" column="seller_sale_chk" />
+        <result property="ppBizCerti" column="profile_biz_certi" />
+        <result property="sellerChChk" column="profile_ch_chk" />
+        <result property="sellerSaleChk" column="profile_sale_chk" />
         <result property="memRname" column="mem_rname" />
+        <result property="projProfit" column="proj_profit" />
+        <result property="projProfitChkDate" column="proj_profit_chk_date" />
         <result property="projXxx" column="proj_XXX" />
     </resultMap>
     
@@ -49,11 +50,11 @@
     	INSERT INTO ProjectList
     		(`proj_id`, `proj_mem_id`, `proj_title`, `proj_sort`, `proj_indus`, `proj_price`, `proj_margin`, 
     		`proj_nation`, `proj_supply_type`, `proj_recruit_num`, `proj_detail`, `proj_detail_img`, `proj_require`, `proj_keyword`, `proj_file`, 
-    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`, `proj_hit`, `proj_channel`)
+    		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`, `proj_hit`, `proj_channel`, `proj_profit`, `proj_profit_chk_date`)
     	 VALUES 
     	 	(#{projId}, #{projMemId}, #{projTitle}, #{projSort}, #{projIndus}, #{projPrice}, #{projMargin}, 
     	 	#{projNation}, #{projSupplyType}, #{projRecruitNum}, #{projDetail}, #{projDetailImg}, #{projRequire}, #{projKeyword}, 
-    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti}, #{projHit}, #{projChannel});
+    	 	#{projFile}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti}, #{projHit}, #{projChannel}, #{projProfit}, #{projProfitChkDate});
     </insert>
     
     <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto">
@@ -62,7 +63,7 @@
 		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
 		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
 		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_require = #{projRequire}, proj_keyword = #{projKeyword},
-		    proj_hit = #{projHit}, proj_channel = #{projChannel}
+		    proj_hit = #{projHit}, proj_channel = #{projChannel}, proj_profit = #{projProfit}, proj_profit_chk_date = #{projProfitChkDate}
 		    <if test="projEndDate !='' and projEndDate != null">
 		    	proj_end_date = #{projEndDate}, 
 		    </if>
@@ -84,32 +85,27 @@
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
     		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 
-    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 
+    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
     		m.mem_rname as mem_rname, proj_channel
     		<if test="ppBizCerti != '' and ppBizCerti != null">
-	        	, (SELECT pp_biz_certi from PpProfile where pp_mem_id = proj_mem_id) as pp_biz_certi
-	        </if>
-	        <if test="ppProfit != '' and ppProfit != null">
-	        	, (SELECT pp_profit from PpProfile where pp_mem_id = proj_mem_id) as pp_profit
+	        	, profile_biz_certi
 	        </if>
 	        <if test="sellerBizCerti != '' and sellerBizCerti != null">
-	        	, (SELECT seller_biz_certi from SellerProfile where seller_mem_id = proj_mem_id) as seller_biz_certi
+	        	, profile_biz_certi
 	        </if>
 	        <if test="sellerChChk != '' and sellerChChk != null">
-	        	, (SELECT seller_ch_chk from SellerProfile where seller_mem_id = proj_mem_id) as seller_ch_chk
+	        	, profile_ch_chk as seller_ch_chk
 	        </if>
 	        <if test="sellerSaleChk != '' and sellerSaleChk != null">
-	        	, (SELECT seller_sale_chk from SellerProfile where seller_mem_id = proj_mem_id) as seller_sale_chk
+	        	, profile_sale_chk as seller_sale_chk
 	        </if>
     	FROM ProjectList p
 		INNER JOIN IndusList i
 		ON p.proj_indus = i.indus_id
 		INNER JOIN MemList m
 		ON p.proj_mem_id = m.mem_id
-		INNER JOIN PpProfile pp
-		ON p.proj_xxx = pp.Pp_xxx
-		INNER JOIN SellerProfile sp
-		ON p.proj_xxx = sp.seller_xxx
+		INNER JOIN ProfileList pf
+		ON p.proj_mem_id = pf.profile_mem_id
         <where>
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
@@ -177,29 +173,24 @@
         		AND proj_prod_certi = #{projProdCerti}
         	</if>
         	
-        	<if test="ppBizCerti != '' and ppBizCerti != null">
-        		AND pp_biz_certi = #{ppBizCerti}
-        		AND EXISTS(SELECT pp_biz_certi from PpProfile where pp_mem_id = proj_mem_id)
+        	<if test="projProfit != '' and projProfit != null">
+        		AND proj_profit = #{projProfit}
         	</if>
         	
-        	<if test="ppProfit != '' and ppProfit != null">
-        		AND pp_profit = #{ppProfit}
-        		AND EXISTS(SELECT pp_profit from PpProfile where pp_mem_id = proj_mem_id)
+        	<if test="ppBizCerti != '' and ppBizCerti != null">
+        		AND profile_biz_certi = #{ppBizCerti}
         	</if>
         	
         	<if test="sellerBizCerti != '' and sellerBizCerti != null">
-        		AND seller_biz_certi = #{sellerBizCerti}
-        		AND EXISTS(SELECT seller_biz_certi from SellerProfile where seller_mem_id = proj_mem_id)
+        		AND profile_biz_certi = #{sellerBizCerti}
         	</if>
         	
         	<if test="sellerChChk != '' and sellerChChk != null">
-        		AND seller_ch_chk = #{sellerChChk}
-        		AND EXISTS(SELECT seller_ch_chk from SellerProfile where seller_mem_id = proj_mem_id)
+        		AND profile_ch_chk = #{sellerChChk}
         	</if>
         	
         	<if test="sellerSaleChk != '' and sellerSaleChk != null">
-        		AND seller_sale_chk = #{sellerSaleChk}
-        		AND EXISTS(SELECT seller_sale_chk from SellerProfile where seller_mem_id = proj_mem_id)
+        		AND profile_sale_chk = #{sellerSaleChk}
         	</if>
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
@@ -251,7 +242,8 @@
     	SELECT 
     		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
-    		proj_hit, proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date, proj_channel
+    		proj_hit, proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date, proj_channel, 
+    		proj_profit, proj_profit_chk_date
     	FROM ProjectList
     	WHERE proj_id = #{projId}
     </select>
@@ -266,10 +258,8 @@
 		ON p.proj_indus = i.indus_id
 		INNER JOIN MemList m
 		ON p.proj_mem_id = m.mem_id
-		INNER JOIN PpProfile pp
-		ON p.proj_xxx = pp.Pp_xxx
-		INNER JOIN SellerProfile sp
-		ON p.proj_xxx = sp.seller_xxx
+		INNER JOIN ProfileList pf
+		ON p.proj_mem_id = pf.profile_mem_id
         <where>
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
@@ -337,29 +327,24 @@
         		AND proj_prod_certi = #{projProdCerti}
         	</if>
         	
-        	<if test="ppBizCerti != '' and ppBizCerti != null">
-        		AND pp_biz_certi = #{ppBizCerti}
-        		AND EXISTS(SELECT pp_biz_certi from PpProfile where pp_mem_id = proj_mem_id)
+        	<if test="projProfit != '' and projProfit != null">
+        		AND proj_profit = #{projProfit}
         	</if>
         	
-        	<if test="ppProfit != '' and ppProfit != null">
-        		AND pp_profit = #{ppProfit}
-        		AND EXISTS(SELECT pp_profit from PpProfile where pp_mem_id = proj_mem_id)
+        	<if test="ppBizCerti != '' and ppBizCerti != null">
+        		AND profile_biz_certi = #{ppBizCerti}
         	</if>
         	
         	<if test="sellerBizCerti != '' and sellerBizCerti != null">
-        		AND seller_biz_certi = #{sellerBizCerti}
-        		AND EXISTS(SELECT seller_biz_certi from SellerProfile where seller_mem_id = proj_mem_id)
+        		AND profile_biz_certi = #{sellerBizCerti}
         	</if>
         	
         	<if test="sellerChChk != '' and sellerChChk != null">
-        		AND seller_ch_chk = #{sellerChChk}
-        		AND EXISTS(SELECT seller_ch_chk from SellerProfile where seller_mem_id = proj_mem_id)
+        		AND profile_ch_chk = #{sellerChChk}
         	</if>
         	
         	<if test="sellerSaleChk != '' and sellerSaleChk != null">
-        		AND seller_sale_chk = #{sellerSaleChk}
-        		AND EXISTS(SELECT seller_sale_chk from SellerProfile where seller_mem_id = proj_mem_id)
+        		AND profile_sale_chk = #{sellerSaleChk}
         	</if>
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
@@ -380,6 +365,7 @@
         	<if test="sellerMemRname != '' and sellerMemRname != null and ppMemRname == null">
 		    	AND mem_rname = #{sellerMemRname} AND proj_sort = "2"
         	</if>
+        	
         </where>
 	</select>
 
