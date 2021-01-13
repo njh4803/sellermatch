@@ -1,27 +1,21 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
-import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
-import kr.co.wesellglobal.sellermatch.model.PpProfileDto;
-import kr.co.wesellglobal.sellermatch.model.ProjectDto;
-import kr.co.wesellglobal.sellermatch.model.SearchCriteria;
-import kr.co.wesellglobal.sellermatch.model.SellerProfileDto;
+import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.service.PpProfileService;
+import kr.co.wesellglobal.sellermatch.service.ProfileService;
 import kr.co.wesellglobal.sellermatch.service.SellerProfileService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +27,8 @@ public class AdminProfileRestController {
 	SellerProfileService sellerProfileService;
 	@Autowired
 	PpProfileService ppProfileService;
+	@Autowired
+	ProfileService profileService;
 	@Autowired
 	RegexHelper regexHelper;
 	@Autowired
@@ -46,33 +42,17 @@ public class AdminProfileRestController {
 			@RequestParam(value = "memId", required = false) String memId) {
 		
 		Map<String, Object> data = new HashMap<String, Object>();
-		if (memSort.equals("1")) {
-			PpProfileDto input = new PpProfileDto();
-			input.setPpMemId(memId);
-			
-			PpProfileDto output = null;
-			
-			try {
-				output = ppProfileService.getPpProfile(input);
-			} catch (Exception e) {
-				return webHelper.getJsonError(e.getLocalizedMessage());
-			}
-			
-			
-			data.put("output", output);
-			data.put("memSort", memSort);
-			return webHelper.getJsonData(data);
-		}
-		SellerProfileDto input = new SellerProfileDto();
-		input.setSellerMemId(memId);
+		ProfileDto input = new ProfileDto();
+		input.setProfileMemId(memId);
 		
-		SellerProfileDto output = null;
+		ProfileDto output = null;
 		
 		try {
-			output = sellerProfileService.getSellerProfile(input);
+			output = profileService.getProfile(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		
 		
 		data.put("output", output);
 		data.put("memSort", memSort);
@@ -81,54 +61,34 @@ public class AdminProfileRestController {
 	
 	@RequestMapping(value = "/admin/profile", method = RequestMethod.PUT)
 	public Map<String, Object> editOk(
-			@ModelAttribute("cri") SearchCriteria cri){
+			@ModelAttribute("profileDto") ProfileDto profileDto){
 		
-		if(cri.getPpId() != null) {
-			PpProfileDto input = new PpProfileDto();
-			input.setPpId(cri.getPpId());
-			input.setPpProjId(cri.getPpProjId());
-			input.setPpMemId(cri.getPpMemId());
-			input.setPpGrade(cri.getPpGrade());
-			input.setPpIntro(cri.getPpIntro());
-			input.setPpNation(cri.getPpNation());
-			input.setPpBizNum(cri.getPpBizNum());
-			input.setPpBizSort(cri.getPpBizSort());
-			input.setPpBizCerti(cri.getPpBizCerti());
-			input.setPpProfit(cri.getPpProfit());
-			input.setPpProfitChkDate(cri.getPpProfitChkDate());
-			input.setPpIndus(cri.getPpIndus());
-			input.setPpCh(cri.getPpCh());
-			//input.setPpPhoto(cri.getPpPhoto());
-			input.setPpState(cri.getPpState());
-			input.setPpRegDate(cri.getPpRegDate());
+		if(profileDto.getProfileId() != null) {
+			ProfileDto input = new ProfileDto();
+			input.setProfileId(profileDto.getProfileId());
+			input.setProfileMemId(profileDto.getProfileMemId());
+			input.setProfileGrade(profileDto.getProfileGrade());
+			input.setProfileIntro(profileDto.getProfileIntro());
+			input.setProfileNation(profileDto.getProfileNation());
+			input.setProfileBizNum(profileDto.getProfileBizNum());
+			input.setProfileBizSort(profileDto.getProfileBizSort());
+			input.setProfileBizCerti(profileDto.getProfileBizCerti());
+			input.setProfileChChk(profileDto.getProfileChChk());
+			input.setProfileChChkDate(profileDto.getProfileChChkDate());
+			input.setProfileCareer(profileDto.getProfileCareer());
+			input.setProfileSaleChk(profileDto.getProfileSaleChk());
+			input.setProfileCh(profileDto.getProfileCh());
+			input.setProfileIndus(profileDto.getProfileIndus());
+			//input.setProfilePhoto(profileDto.getProfilePhoto);
+			input.setProfileState(profileDto.getProfileState());
+			input.setProfileRegDate(profileDto.getProfileRegDate());
+			input.setProfileSort(profileDto.getProfileSort());
+			input.setProfileHashtag(profileDto.getProfileHashtag());
+			input.setProfileHit(profileDto.getProfileHit());
+			input.setProfileRname(profileDto.getProfileRname());
+			input.setProfileVolume(profileDto.getProfileVolume());
 			try {
-				ppProfileService.editPpProfile(input);
-			} catch (Exception e) {
-				return webHelper.getJsonError(e.getLocalizedMessage());
-			}
-		}
-		
-		if(cri.getSellerId() != null) {
-			SellerProfileDto input = new SellerProfileDto();
-			input.setSellerId(cri.getSellerId());
-			input.setSellerMemId(cri.getSellerMemId());
-			input.setSellerIntro(cri.getSellerIntro());
-			input.setSellerChChk(cri.getSellerChChk());
-			input.setSellerChChkDate(cri.getSellerChChkDate());
-			input.setSellerCareer(cri.getSellerCareer());
-			input.setSellerSaleChk(cri.getSellerSaleChk());
-			input.setSellerNation(cri.getSellerNation());
-			input.setSellerBizNum(cri.getSellerBizNum());
-			input.setSellerBizSort(cri.getSellerBizSort());
-			input.setSellerBizCerti(cri.getSellerBizCerti());
-			input.setSellerGrade(cri.getSellerGrade());
-			input.setSellerCh(cri.getSellerCh());
-			input.setSellerIndus(cri.getSellerIndus());
-			//input.setSellerPhoto(cri.getSellerPhoto());
-			input.setSellerState(cri.getSellerState());
-			input.setSellerRegDate(cri.getSellerRegDate());
-			try {
-				sellerProfileService.editSellerProfile(input);
+				profileService.editProfile(input);
 			} catch (Exception e) {
 				return webHelper.getJsonError(e.getLocalizedMessage());
 			}

@@ -6,8 +6,7 @@
 <%@ include file="inc/header.jsp"%> 
 <%@ include file="modal/memberEdit.jsp"%>
 <%@ include file="modal/memberAdd.jsp"%>
-<%@ include file="modal/ppProfileEdit.jsp"%>
-<%@ include file="modal/sellerProfileEdit.jsp"%>
+<%@ include file="modal/profileEdit.jsp"%>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/pages/mnt/css/style.css">
@@ -149,21 +148,17 @@ label.error {
 	                                                                        <td data-value="${output.memClass}">${output.memClassName}</td>
 	                                                                        <td style="display: none;">${output.memClassSdate}</td>
 	                                                                        <td style="display: none;">${output.memClassEdate}</td>
-	                                                                        <c:if test="${output.memSort == '0'}">
-		                                                                        <td data-value="${output.memSort}">${output.memSortName}</td>
-	                                                                        </c:if>
-	                                                                        <c:if test="${output.memSort == '1'}">
-	                                                                        	<td data-value="${output.memSort}">
-		                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
-		                                                                       			data-target="#p-profileModal">${output.memSortName}</a>
-		                                                                       	</td>
-	                                                                        </c:if>
-	                                                                        <c:if test="${output.memSort == '2'}">
-	                                                                        	<td data-value="${output.memSort}">
-		                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
-		                                                                       			data-target="#s-profileModal">${output.memSortName}</a>
-		                                                                       	</td>
-	                                                                        </c:if>
+	                                                                        <c:choose>
+		                                                                        <c:when test="${output.memSort != '1' && output.memSort != '2'}">
+			                                                                        <td data-value="${output.memSort}">${output.memSortName}</td>
+		                                                                        </c:when>
+		                                                                        <c:otherwise>
+		                                                                        	<td data-value="${output.memSort}">
+			                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
+			                                                                       			data-target="#profileModal">${output.memSortName}</a>
+			                                                                       	</td>
+		                                                                        </c:otherwise>
+	                                                                        </c:choose>
 	                                                                        <td style="display: none;" data-value="${output.memCountry}">${output.memCountryName}</td>
 	                                                                        <td style="display: none;" data-value="${output.memNation}">${output.memNationName}</td>
 	                                                                        <td style="display: none;" data-value="${output.memAddr}">${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
@@ -305,7 +300,7 @@ $(document).on("click",".m-modal",function(event){
 	$("#memberModal .modal-body #memAddr").val(memAddr);
 	$("#memberModal .modal-body #memAddr2").val(memAddr2);
 	$("#memberModal .modal-body #memTel").val(memTel);
-	$("#memberModal .modal-body #memName").text(memName);
+	$("#memberModal .modal-body #memName").val(memName);
 	$("#memberModal .modal-body #memRname").val(memRname);
 	$("#memberModal .modal-body #memNick").val(memNick);
 	$("#memberModal .modal-body #img").attr("src", "../../../upload/"+memPhoto);
@@ -330,59 +325,44 @@ $(document).on("click",".profile-modal",function(event){
 			'memSort':memSort,
 			'memId':memId
 			}, function(json) {
-				console.log(json.output);
-				if (json.memSort == '1') {
-					$("#p-profileModal .modal-body #ppBizCerti").val(json.output.ppBizCerti);
-					$("#p-profileModal .modal-body #ppBizNum").val(json.output.ppBizNum);
-					$("#p-profileModal .modal-body #ppBizSort").val(json.output.ppBizSort);
-					var ppCh = json.output.ppCh.split(',');
-					console.log(ppCh);
-					// 초기화
-					$("#p-profileModal .modal-body input[name=ppCh]").attr('checked', false);
-					for (var i = 0; i < ppCh.length; i++) {
-						$("#p-profileModal .modal-body input[name=ppCh]").eq(ppCh[i]-1).attr('checked', true);
-					}
-					$("#p-profileModal .modal-body #ppGrade").val(json.output.ppGrade);
-					$("#p-profileModal .modal-body #ppId").val(json.output.ppId);
-					$("#p-profileModal .modal-body #ppIdx").val(json.output.ppIdx);
-					$("#p-profileModal .modal-body #ppIndus").val(json.output.ppIndus);
-					$("#p-profileModal .modal-body #ppIntro").val(json.output.ppIntro);
-					$("#p-profileModal .modal-body #ppMemId").val(json.output.ppMemId);
-					$("#p-profileModal .modal-body #ppNation").val(json.output.ppNation);
-					//$("#p-profileModal .modal-body #img").attr("src", "../../../upload/"+memPhoto);
-					$("#p-profileModal .modal-body #ppProfit").val(json.output.ppProfit);
-					$("#p-profileModal .modal-body #ppProfitChkDate").val(json.output.ppProfitChkDate);
-					$("#p-profileModal .modal-body #ppProjId").val(json.output.ppProjId);
-					$("#p-profileModal .modal-body #ppRegDate").val(json.output.ppRegDate);
-					$("#p-profileModal .modal-body #ppEditDate").val(json.output.ppEditDate);
-					$("#p-profileModal .modal-body #ppState").val(json.output.ppState);
+				$("#profileModal .modal-body .seller").show();
+				$("#profileModal .modal-body #profileCareer").val(json.output.profileCareer);
+				$("#profileModal .modal-body #profileChChk").val(json.output.profileChChk);
+				$("#profileModal .modal-body #profileSaleChk").val(json.output.profileSaleChk);
+				if (json.output.profileSort != 2) {
+					$("#profileModal .modal-body .seller").hide();
 				}
-				if (json.memSort == '2') {
-					$("#s-profileModal .modal-body #sellerBizCerti").val(json.output.sellerBizCerti);
-					$("#s-profileModal .modal-body #sellerBizNum").val(json.output.sellerBizNum);
-					$("#s-profileModal .modal-body #sellerBizSort").val(json.output.sellerBizSort);
-					var sellerCh = json.output.sellerCh.split(',');
-					// 초기화
-					$("#s-profileModal .modal-body input[name=sellerCh]").attr('checked', false);
-					console.log(sellerCh);
-					for (var i = 0; i < sellerCh.length; i++) {
-						$("#s-profileModal .modal-body input[name=sellerCh]").eq(sellerCh[i]-1).attr('checked', true);
-					}
-					
-					$("#s-profileModal .modal-body #sellerCareer").val(json.output.sellerCareer);
-					$("#s-profileModal .modal-body #sellerChChk").val(json.output.sellerChChk);
-					$("#s-profileModal .modal-body #sellerGrade").val(json.output.sellerGrade);
-					$("#s-profileModal .modal-body #sellerId").val(json.output.sellerId);
-					$("#s-profileModal .modal-body #sellerIdx").val(json.output.sellerIdx);
-					$("#s-profileModal .modal-body #sellerIntro").val(json.output.sellerIntro);
-					$("#s-profileModal .modal-body #sellerIndus").val(json.output.sellerIndus);
-					//$("#s-profileModal .modal-body #img").attr("src", "../../../upload/"+memPhoto);
-					$("#s-profileModal .modal-body #sellerMemId").val(json.output.sellerMemId);
-					$("#s-profileModal .modal-body #sellerNation").val(json.output.sellerNation);
-					$("#s-profileModal .modal-body #sellerRegDate").val(json.output.sellerRegDate);
-					$("#s-profileModal .modal-body #sellerSaleChk").val(json.output.sellerSaleChk);
-					$("#s-profileModal .modal-body #sellerState").val(json.output.sellerState);
+				$("#profileModal .modal-body #profileBizCerti").val(json.output.profileBizCerti);
+				$("#profileModal .modal-body #profileBizNum").val(json.output.profileBizNum);
+				$("#profileModal .modal-body #profileBizSort").val(json.output.profileBizSort);
+				var profileCh = json.output.profileCh.split(',');
+				// 초기화
+				$("#profileModal .modal-body input[name=profileCh]").attr('checked', false);
+				for (var i = 0; i < profileCh.length; i++) {
+					$("#profileModal .modal-body input[name=profileCh]").eq(profileCh[i]-1).attr('checked', true);
 				}
+				
+				
+				$("#profileModal .modal-body #profileGrade").val(json.output.profileGrade);
+				$("#profileModal .modal-body #profileId").val(json.output.profileId);
+				$("#profileModal .modal-body #profileIdx").val(json.output.profileIdx);
+				$("#profileModal .modal-body #profileIntro").val(json.output.profileIntro);
+				$("#profileModal .modal-body #profileIndus").val(json.output.profileIndus);
+				//$("#profileModal .modal-body #img").attr("src", "../../../upload/"+memPhoto);
+				$("#profileModal .modal-body #profileMemId").val(json.output.profileMemId);
+				$("#profileModal .modal-body #profileNation").val(json.output.profileNation);
+				$("#profileModal .modal-body #profileRegDate").val(json.output.profileRegDate);
+				$("#profileModal .modal-body #profileState").val(json.output.profileState);
+				$("#profileModal .modal-body #profileSort").val(json.output.profileSort);
+				$("#profileModal .modal-body input[name=profileSort]").val(json.output.profileSort);
+				var profileHashtag = json.output.profileHashtag.split(',');
+				// 초기화
+				$("#profileModal .modal-body input[name=profileHashtag]").attr('checked', false);
+				for (var i = 0; i < profileHashtag.length; i++) {
+					$("#profileModal .modal-body input[name=profileHashtag]").eq(profileHashtag[i]-1).attr('checked', true);
+				}
+				$("#profileModal .modal-body #profileRname").val(json.output.profileRname);
+				$("#profileModal .modal-body #profileHit").val(json.output.profileHit);
 			});
 	}
 

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProfileMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="ProfileMap"
+        type="kr.co.wesellglobal.sellermatch.model.ProfileDto">
+        <result property="profileIdx"   column="profile_idx" />
+        <result property="profileId"   column="profile_id" />
+        <result property="profileMemId"   column="profile_mem_id" />
+        <result property="profileGrade"   column="profile_grade" />
+        <result property="profileIntro"   column="profile_intro" />
+        <result property="profileChChk" column="profile_ch_chk" />
+        <result property="profileChChkDate" column="profile_ch_chk_date" />
+        <result property="profileCareer" column="profile_career" />
+        <result property="profileSaleChk" column="profile_sale_chk" />
+        <result property="profileNation" column="profile_nation" />
+        <result property="profileBizNum" column="profile_biz_num" />
+        <result property="profileBizSort" column="profile_biz_sort" />
+        <result property="profileBizCerti" column="profile_biz_certi" />
+        <result property="profileCh" column="profile_ch" />
+        <result property="profileIndus" column="profile_indus" />
+        <result property="profilePhoto" column="profile_photo" />
+        <result property="profileState" column="profile_state" />
+        <result property="profileRegDate" column="profile_reg_date" />
+        <result property="profileEditDate" column="profile_edit_date" />
+        <result property="profileHashtag" column="Profile_hashtag" />
+        <result property="profileRname" column="profile_rname" />
+        <result property="profileSort" column="profile_sort" />
+        <result property="profileHit" column="profile_hit" />
+        <result property="profileIndusName" column="profile_indus_name" />
+        <result property="profilePhotoList" column="profile_photo_list" />
+    </resultMap>
+    
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto"
+    	useGeneratedKeys="true"
+    	keyProperty="profileIdx">
+    	INSERT INTO ProfileList 
+    		(`profile_id`, `profile_mem_id`, `profile_grade`, `profile_intro`, `profile_ch_chk`, `profile_ch_chk_date`, 
+    		`profile_career`, `profile_sale_chk`, `profile_nation`, `profile_biz_num`, `profile_biz_sort`, `profile_biz_certi`, 
+    		`profile_ch`, `profile_indus`, `profile_photo`, `profile_state`, `profile_reg_date`, `profile_edit_date`, 
+    		`Profile_hashtag`, `profile_rname`, `profile_sort`, `profile_hit`) 
+    	VALUES 
+    		(#{profileId}, #{profileMemId},, #{profileGrade}, #{profileIntro}, #{profileChChk}, #{profileChChkDate}, #{profileCareer}, 
+    		#{profileSaleChk}, #{profileNation}, #{profileBizNum}, #{profileBizSort}, #{profileBizCerti}, #{profileCh}, #{profileIndus}, 
+    		#{profilePhoto}, #{profileState}, now(), #{profileEditDate}, #{profileHashtag}, #{profileRname}, #{profileSort}, #{profileHit});
+    </insert>
+    
+    <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto">
+		UPDATE ProfileList 
+		SET 
+		    profile_mem_id = #{profileMemId}, profile_grade = #{profileGrade}, profile_intro = #{profileIntro}, 
+		    <if test="profileChChkDate !='' and profileChChkDate != null">
+		    	profile_ch_chk_date = #{profileChChkDate}, 		    
+		    </if>
+		    <if test="profileSort == 2">
+		    	profile_ch_chk = #{profileChChk}, profile_career = #{profileCareer}, profile_sale_chk = #{profileSaleChk}, 
+		    </if>
+		    profile_nation = #{profileNation}, 
+		    profile_biz_num = #{profileBizNum}, profile_biz_sort = #{profileBizSort}, profile_biz_certi = #{profileBizCerti}, profile_ch = #{profileCh},
+		    <if test="profilePhoto !='' and profilePhoto != null">
+		    	 profile_photo = #{profilePhoto},
+		    </if> 
+		    profile_indus = #{profileIndus}, profile_state = #{profileState}, profile_edit_date = now(),
+		    Profile_hashtag = #{profileHashtag}, profile_rname = #{profileRname}, profile_sort = #{profileSort}, profile_hit = #{profileHit}
+		where profile_id = #{profileId}
+	</update>
+    
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto"
+    	resultMap="ProfileMap">
+    	SELECT 
+	   		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, profile_ch_chk_date, 
+    		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
+    		profile_ch, profile_indus as profile_indus_name, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		Profile_hashtag, profile_rname, profile_sort, profile_hit
+    	FROM ProfileList s
+        INNER JOIN IndusList i
+        ON s.profile_indus = i.indus_id
+		ORDER BY profile_idx DESC
+    </select>
+    
+    <select id="selectItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto"
+    	resultMap="ProfileMap">
+    	SELECT 
+    		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, date_format(profile_ch_chk_date, '%Y-%m-%d') as profile_ch_chk_date, 
+    		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
+    		profile_ch, profile_indus, profile_photo as profile_photo_list, profile_state, 
+    		profile_reg_date, date_format(profile_edit_date, '%Y-%m-%d') as profile_edit_date,
+    		Profile_hashtag, profile_rname, profile_sort, profile_hit
+    	FROM ProfileList
+    	WHERE profile_mem_id = #{profileMemId}
+    </select>
+
+</mapper>

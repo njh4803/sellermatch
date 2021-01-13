@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
   <!-- Modal -->
-  <div class="modal fade" id="s-profileModal" role="dialog">
+  <div class="modal fade" id="profileModal" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -15,73 +15,85 @@
         <div class="modal-body">
 			<form action="${pageContext.request.contextPath}/admin/profile" id="profile_form" name="profile_form" enctype="multipart/form-data">
 															<div class="form-group row">
-                                                                <label for="sellerId" class="col-sm-2 col-form-label">판매자 프로필 번호
+                                                                <label class="col-sm-2 col-form-label">프로필 분류
+                                                                	<span class="identify">*</span>
+                                                                </label>
+                                                                <input type="hidden" name="profileSort">
+                                                                <div class="col-sm-10">
+                                                                    <select id="profileSort" class="form-control" disabled="disabled">
+						                                                <option value="1">공급자</option>
+						                                                <option value="2">판매자</option>
+						                                            </select>
+                                                                </div>
+                                                            </div>
+															<div class="form-group row">
+                                                                <label for="profileId" class="col-sm-2 col-form-label">프로필 번호
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="sellerId" type="text" name="sellerId" class="form-control" readonly="readonly">
+	                                                                    <input id="profileId" type="text" name="profileId" class="form-control" readonly="readonly">
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="sellerMemId" class="col-sm-2 col-form-label">판매자 아이디
+                                                                <label for="profileMemId" class="col-sm-2 col-form-label">아이디
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="sellerMemId" type="text" name="sellerMemId" class="form-control" readonly="readonly">
+	                                                                    <input id="profileMemId" type="text" name="profileMemId" class="form-control" readonly="readonly">
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="sellerState" class="col-sm-2 col-form-label">판매자 상태
+                                                                <label for="profileState" class="col-sm-2 col-form-label">프로필 상태
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="sellerState" type="text" name="sellerState" class="form-control" readonly="readonly">
+	                                                                    <input id="profileState" type="text" name="profileState" class="form-control" readonly="readonly">
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="sellerRegDate" class="col-sm-2 col-form-label">판매자 등록일
+                                                                <label for="profileRegDate" class="col-sm-2 col-form-label">프로필 등록일
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="sellerRegDate" type="date" name="sellerRegDate" class="form-control" readonly="readonly">
+	                                                                    <input id="profileRegDate" type="date" name="profileRegDate" class="form-control" readonly="readonly">
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="sellerEditDate" class="col-sm-2 col-form-label">판매자정보 수정일
+                                                                <label for="profileEditDate" class="col-sm-2 col-form-label">프로필정보 수정일
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="sellerEditDate" type="date" name="sellerEditDate" class="form-control" readonly="readonly">
+	                                                                    <input id="profileEditDate" type="date" name="profileEditDate" class="form-control" readonly="readonly">
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">판매자 등급
+                                                                <label class="col-sm-2 col-form-label">회원등급
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="sellerGrade" name="sellerGrade" class="form-control">
+                                                                    <select id="profileGrade" name="profileGrade" class="form-control">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="1">1등급</option>
 						                                                <option value="2">2등급</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
+                                                            <div class="form-group row seller">
                                                                 <label class="col-sm-2 col-form-label">판매 경력
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="sellerCareer" name="sellerCareer" class="form-control">
+                                                                    <select id="profileCareer" name="profileCareer" class="form-control">
 						                                                <option value="0">경력없음</option>
 						                                                <option value="1">1개월 이상</option>
 						                                                <option value="3">3개월 이상</option>
@@ -91,34 +103,36 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">판매자 지역
+                                                                <label class="col-sm-2 col-form-label">등록자 지역
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="sellerNation" name="sellerNation" class="form-control">
+                                                                    <select id="profileNation" name="profileNation" class="form-control">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="02">서울</option>
 						                                                <option value="031">경기</option>
 						                                                <option value="032">인천</option>
+						                                                <option value="033">강원</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">상품분류</label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="sellerIndus" name="sellerIndus" class="form-control">
+                                                                    <select id="profileIndus" name="profileIndus" class="form-control">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="01">도서</option>
 						                                                <option value="02">의류</option>
+						                                                <option value="03">잡화</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
                                                              <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">판매 채널</label>
+                                                                <label class="col-sm-2 col-form-label">채널</label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="sellerCh" type="checkbox" name="sellerCh" value="1">
+	                                                                    	<input id="profileCh" type="checkbox" name="profileCh" value="1">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -127,7 +141,7 @@
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="sellerCh" type="checkbox" name="sellerCh" value="2">
+	                                                                    	<input id="profileCh" type="checkbox" name="profileCh" value="2">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -136,7 +150,7 @@
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="sellerCh" type="checkbox" name="sellerCh" value="3">
+	                                                                    	<input id="profileCh" type="checkbox" name="profileCh" value="3">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -145,7 +159,7 @@
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="sellerCh" type="checkbox" name="sellerCh" value="4">
+	                                                                    	<input id="profileCh" type="checkbox" name="profileCh" value="4">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -154,7 +168,7 @@
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="sellerCh" type="checkbox" name="sellerCh" value="5">
+	                                                                    	<input id="profileCh" type="checkbox" name="profileCh" value="5">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -163,7 +177,7 @@
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="sellerCh" type="checkbox" name="sellerCh" value="6">
+	                                                                    	<input id="profileCh" type="checkbox" name="profileCh" value="6">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -172,7 +186,7 @@
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="sellerCh" type="checkbox" name="sellerCh" value="7">
+	                                                                    	<input id="profileCh" type="checkbox" name="profileCh" value="7">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
@@ -182,32 +196,82 @@
                                                          		</div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">채널</label>
+                                                                <div class="col-sm-10">
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="1">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>해시태그1</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="2">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>해시태그2</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="3">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>해시태그3</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="4">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>해시태그4</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="5">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>해시태그5</span>
+	                                                                    </label>
+                                                                	</div>
+                                                         		</div>
+                                                            </div>
+                                                            <div class="form-group row seller">
                                                                 <label class="col-sm-2 col-form-label">채널 검증
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="sellerChChk" name="sellerChChk" class="form-control">
+                                                                    <select id="profileChChk" name="profileChChk" class="form-control">
 						                                                <option value="0">미검증</option>
 						                                                <option value="1">검증</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
-                                                                <label for="sellerChChkDate" class="col-sm-2 col-form-label">채널 검증일
+                                                            <div class="form-group row seller">
+                                                                <label for="profileChChkDate" class="col-sm-2 col-form-label">채널 검증일
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="sellerChChkDate" type="date" name="sellerChChkDate" class="form-control">
+	                                                                    <input id="profileChChkDate" type="date" name="profileChChkDate" class="form-control">
 																	</div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="sellerBizNum" class="col-sm-2 col-form-label">사업자 번호
+																<label for="profileBizNum" class="col-sm-2 col-form-label">사업자 번호
 																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
-																	<input type="text" name="sellerBizNum" class="form-control" id="sellerBizNum" />
+																	<input type="text" name="profileBizNum" class="form-control" id="profileBizNum" />
 																</div>
 															</div>
 															<div class="form-group row">
@@ -215,7 +279,7 @@
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="sellerBizSort" name="sellerBizSort" class="form-control">
+                                                                    <select id="profileBizSort" name="profileBizSort" class="form-control">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="1">법인사업자</option>
 						                                                <option value="2">개인사업자</option>
@@ -230,29 +294,48 @@
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <select id="sellerBizCerti" name="sellerBizCerti" class="form-control">
+                                                                    <select id="profileBizCerti" name="profileBizCerti" class="form-control">
+						                                                <option value="0">미인증</option>
+						                                                <option value="1">인증</option>
+						                                            </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row seller">
+                                                                <label class="col-sm-2 col-form-label">매출 검증
+                                                                	<span class="identify">*</span>
+                                                                </label>
+                                                                <div class="col-sm-10">
+                                                                    <select id="profileSaleChk" name="profileSaleChk" class="form-control">
+						                                                <option value="0">미검증</option>
+						                                                <option value="1">검증</option>
+						                                            </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">신원 인증
+                                                                	<span class="identify">*</span>
+                                                                </label>
+                                                                <div class="col-sm-10">
+                                                                    <select id="profileRname" name="profileRname" class="form-control">
 						                                                <option value="0">미인증</option>
 						                                                <option value="1">인증</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">매출 검증
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-10">
-                                                                    <select id="sellerSaleChk" name="sellerSaleChk" class="form-control">
-						                                                <option value="0">미검증</option>
-						                                                <option value="1">검증</option>
-						                                            </select>
-                                                                </div>
-                                                            </div>
+																<label for="profileHit" class="col-sm-2 col-form-label">프로필 조회수
+																	<span class="identify">*</span>
+																</label>
+																<div class="col-sm-10">
+																	<input type="text" name="profileHit" class="form-control" id="profileHit" readonly="readonly"/>
+																</div>
+															</div>
 															<div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">판매자 소개 사진</label>
+                                                                <label class="col-sm-2 col-form-label">프로필 소개 사진</label>
                                                                 <div class="col-sm-10">
                                                                 <div class="form-group">
 												                    <div class="card-block">
-												                        <input type="file" name="sellerPhoto[]" id="filer_input1" multiple="multiple">
+												                        <input type="file" name="profilePhoto[]" id="filer_input1" multiple="multiple">
 												                    </div>
 											                    </div>
 											                    </div>
@@ -262,7 +345,7 @@
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <textarea id="sellerIntro" name="sellerIntro" style="width: 100%; height: 150px;" class="form-control"></textarea>
+                                                                    <textarea id="profileIntro" name="profileIntro" style="width: 100%; height: 150px;" class="form-control"></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -324,20 +407,20 @@ $(function(){
 		
         rules: {
             // [비밀번호] 필수 + 글자수 길이 제한
-            sellerNation: 'required',
-            sellerGrade : 'required',
-            sellerIndus : 'required',
-            sellerBizNum : 'required',
-            sellerBizSort : 'required',
-            sellerIntro : 'required',
+            profileNation: 'required',
+            profileGrade : 'required',
+            profileIndus : 'required',
+            profileBizNum : 'required',
+            profileBizSort : 'required',
+            profileIntro : 'required',
         },
         messages: {
-        	sellerNation: '판매자지역을 선택해주세요.',
-        	sellerGrade: '판매자등급을 선택해주세요.',
-        	sellerIndus : '상품분류를 선택해주세요.',
-        	sellerBizNum : '사업자 번호를 입력해주세요.',
-        	sellerBizSort : '사업자 유형을 선택해주세요.',
-        	sellerIntro : '자기소개를 입력해주세요.',
+        	profileNation: '판매자지역을 선택해주세요.',
+        	profileGrade: '판매자등급을 선택해주세요.',
+        	profileIndus : '상품분류를 선택해주세요.',
+        	profileBizNum : '사업자 번호를 입력해주세요.',
+        	profileBizSort : '사업자 유형을 선택해주세요.',
+        	profileIntro : '자기소개를 입력해주세요.',
         }
     });
     
