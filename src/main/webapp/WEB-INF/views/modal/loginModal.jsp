@@ -114,29 +114,6 @@ $(document).ready(function() {
 	
 }); // end ready...
 $(function() {
-	// 유효성검사 기본셋팅
-	/* jQuery.validator.setDefaults({
-		onkeyup : false,
-		onclick : false,
-		onfocusout : false,
-		showErrors : function(errorMap, errorList) {
-			if (this.numberOfInvalids()) {
-				//alert(errorList[0].message);
-				//$(errorList[0].element).focus();
-				swal({
-					title : "에러",
-					text : errorList[0].message,
-					type : "error"
-				}).then(function(result) {
-					setTimeout(function() {
-						$(errorList[0].element).val('');
-						$(errorList[0].element).focus();
-					}, 100);
-				});
-			}
-		}
-	}); */
-	
 	$("#login-form").validate({
 		rules : {
 			memId : { required: true, email: true, },

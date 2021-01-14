@@ -250,12 +250,12 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="memId" class="col-sm-2 col-form-label">아이디
+                                                                <label for="memberId" class="col-sm-2 col-form-label">아이디
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="memId" type="text" name="memId" class="form-control" placeholder="이메일 입력">
+	                                                                    <input id="memberId" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
 																	</div>
                                                                 </div>
                                                             </div>
@@ -485,10 +485,7 @@ $(document).ready(function() {
 			}
 	    });
 	});
-    
-    $(document).on("submit", "#join_form", function(e){
-		e.preventDefault();
-		
+	$(document).on("focus", "#join_form", function(e){
 		$.validator.addMethod("kor", function(value, element) {
 			return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
 		});
@@ -508,15 +505,15 @@ $(document).ready(function() {
 			
 	        rules: {
 	            // [아이디] 필수 + 알파벳,숫자 조합만 허용
-	            memId: {
+	            memberId: {
 	                required: true, email: true, minlength: 4, maxlength: 30, 
 	                remote : {
 	                    url : ROOT_URL + '/member/idCheck',
 	                    type : 'post',
 	                    data : {
-	                    	memId : function() {
-	                            return $("#memId").val();
-	                        }
+	                    	memberId : function() {
+                            return $('#memberId').val();
+                        }
 	                    }
 	                }
 	            },
@@ -533,7 +530,7 @@ $(document).ready(function() {
 	            
 	        },
 	        messages: {
-	        	memId: {
+	        	memberId: {
 	                required: '아이디를 입력하세요.',
 	                email: '아이디는 이메일만 입력 가능합니다.',
 	                minlength: '아이디는 최소 {4}글자 이상 입력하셔야 합니다.',
@@ -565,6 +562,11 @@ $(document).ready(function() {
 	            memAddr: '기본주소를 입력해 주세요.',
 	        }
 	    });
+	});
+    
+    $(document).on("submit", "#join_form", function(e){
+		e.preventDefault();
+		console.log('123213123')
 	    var form = $(this);
 		var url = form.attr('action');
        

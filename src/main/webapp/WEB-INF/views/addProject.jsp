@@ -236,7 +236,7 @@ label.error {
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
-
+$(document).ready(function() {
 
 	
 	$("#projAdd").on("click", function(){
@@ -478,70 +478,72 @@ label.error {
 			$("#projAdd").attr('disabled', true);
 		}
 	});
-	
-
-    $(document).on("submit", "#proj_form", function(e){
-		e.preventDefault();
+	$(document).on("focus", "#proj_form", function(e){
 		/** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-	    $('#proj_form').validate({
-	    	/* 
+		$('#proj_form').validate({
+			/* 
 				required 필수 항목으로 설정한다. (true, false)
 				remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
 			*/
 			
-	        rules: {
-	            // [프로젝트 제목] 필수
-	            projTitle: {
-	                required: true, minlength: 5, maxlength: 100, 
-	            },
-	            // [상품가격] 필수
-	            projState: 'required',
-	            // [상품마진] 필수
-	            projPrice: 'required',
-	            // [등록지역] 필수
-	            projMargin: 'required',
-	            // [공급방법] 필수
-	           	projSupplyType: 'required',
-	            // [등록지역] 필수
-	            projIndus: 'required',
-	         	// [상품 상세내용] 필수
-	            projDetail: 'required',
-	            projEndDate: 'required',
-	            projRecruitNum: 'required',
-	            projChannel: 'required',
-	            projNation: 'required',
-	        },
-	        messages: {
-	        	projMemId: {
-	                required: '아이디를 입력하세요.',
-	                email: '아이디는 이메일만 입력 가능합니다.',
-	                remote: '존재 하지 않는 아이디 입니다.'
-	            },
-	        	projTitle: {
-	                required: '프로젝트 제목을 입력해주세요.',
-	                minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
-	                maxlength: '제목은 최대 {100}글자까지 가능합니다.',
-	            },
-	            projState: {
-	                required: '프로젝트 상태를 선택해주세요.',
-	            },
-	            projPrice: {
-	                required: '상품가격을 입력해주세요.',
-	            },
-	            projMargin: {
-	                required: '상품마진률을 선택해주세요.',
-	            },
-	            projSupplyType: {
-	                required: '공급방법을 선택해주세요.',
-	            },
-	            projDetail: '상품 상세내용를 입력해주세요.',
-	            projIndus: '상품분류를 선택해주세요.',
-	            projEndDate: '모집마감일을 선택해주세요.',
-	            projRecruitNum: '모집인원을 입력해주세요.',
-	            projChannel: '채널을 선택해주세요.',
-	            projNation: '등록지역을 선택해주세요.',
-	        }
-	    });
+		    rules: {
+		        // [프로젝트 제목] 필수
+		        projTitle: {
+		            required: true, minlength: 5, maxlength: 100, 
+		        },
+		        // [상품가격] 필수
+		        projState: 'required',
+		        // [상품마진] 필수
+		        projPrice: 'required',
+		        // [등록지역] 필수
+		        projMargin: 'required',
+		        // [공급방법] 필수
+		       	projSupplyType: 'required',
+		        // [등록지역] 필수
+		        projIndus: 'required',
+		     	// [상품 상세내용] 필수
+		        projDetail: 'required',
+		        projEndDate: 'required',
+		        projRecruitNum: 'required',
+		        projChannel: 'required',
+		        projNation: 'required',
+		    },
+		    messages: {
+		    	projMemId: {
+		            required: '아이디를 입력하세요.',
+		            email: '아이디는 이메일만 입력 가능합니다.',
+		            remote: '존재 하지 않는 아이디 입니다.'
+		        },
+		    	projTitle: {
+		            required: '프로젝트 제목을 입력해주세요.',
+		            minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
+		            maxlength: '제목은 최대 {100}글자까지 가능합니다.',
+		        },
+		        projState: {
+		            required: '프로젝트 상태를 선택해주세요.',
+		        },
+		        projPrice: {
+		            required: '상품가격을 입력해주세요.',
+		        },
+		        projMargin: {
+		            required: '상품마진률을 선택해주세요.',
+		        },
+		        projSupplyType: {
+		            required: '공급방법을 선택해주세요.',
+		        },
+		        projDetail: '상품 상세내용를 입력해주세요.',
+		        projIndus: '상품분류를 선택해주세요.',
+		        projEndDate: '모집마감일을 선택해주세요.',
+		        projRecruitNum: '모집인원을 입력해주세요.',
+		        projChannel: '채널을 선택해주세요.',
+		        projNation: '등록지역을 선택해주세요.',
+		    }
+		});
+	});
+
+    $(document).on("submit", "#proj_form", function(e){
+		e.preventDefault();
+		
 		
 		/* ckEditor 적용 */
 		//var projDetail = CKEDITOR.instances.projDetail.getData();
