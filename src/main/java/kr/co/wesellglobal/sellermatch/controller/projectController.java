@@ -53,10 +53,6 @@ public class projectController {
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			HttpServletRequest request) {
 		
-		if (member == null) {
-			return webHelper.redirect(null, "로그인 후 이용가능합니다.");
-		}
-		
 		model.addAttribute("member", member);
 
 		return new ModelAndView("addProject");

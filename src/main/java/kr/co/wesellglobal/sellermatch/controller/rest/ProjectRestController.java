@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +31,7 @@ import kr.co.wesellglobal.sellermatch.helper.UploadFileUtils;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
+import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.model.SearchFind;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
@@ -57,6 +59,7 @@ public class ProjectRestController {
 	
 	@RequestMapping(value = "/project/add", method = RequestMethod.POST)
 	public Map<String, Object> projectAdd(
+			@SessionAttribute(value = "member", required = false) MemberDto member,
 			@RequestParam(value = "projId", required = false) String projId,
 			@RequestParam(value = "projMemId", required = false) String projMemId,
 			@RequestParam(value = "projTitle", required = false) String projTitle,
@@ -93,7 +96,7 @@ public class ProjectRestController {
 		
 		ProjectDto input = new ProjectDto();
 		input.setProjId(webHelper.getUniqueId("P-", Integer.parseInt(projSort)));
-		input.setProjMemId(projMemId);
+		input.setProjMemId(member.getMemId());
 		input.setProjTitle(projTitle);
 		input.setProjSort(projSort);
 		input.setProjIndus(projIndus);

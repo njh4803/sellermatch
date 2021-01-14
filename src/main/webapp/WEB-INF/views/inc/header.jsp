@@ -72,7 +72,7 @@
             	<c:choose>
             		<c:when test="${member == null}">
             			<a href="#" data-toggle="modal" data-target="#loginModal">로그인</a>
-	                	<a href="${pageContext.request.contextPath}/member/join">회원가입</a>
+	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
             			<a id="logout" href="javascript:void(0);">로그아웃</a>

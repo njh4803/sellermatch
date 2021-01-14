@@ -178,11 +178,11 @@
         	</if>
         	
         	<if test="ppBizCerti != '' and ppBizCerti != null">
-        		AND profile_biz_certi = #{ppBizCerti}
+        		AND profile_biz_certi = #{ppBizCerti} And proj_sort = 1
         	</if>
         	
         	<if test="sellerBizCerti != '' and sellerBizCerti != null">
-        		AND profile_biz_certi = #{sellerBizCerti}
+        		AND profile_biz_certi = #{sellerBizCerti} And proj_sort = 2
         	</if>
         	
         	<if test="sellerChChk != '' and sellerChChk != null">
@@ -332,11 +332,11 @@
         	</if>
         	
         	<if test="ppBizCerti != '' and ppBizCerti != null">
-        		AND profile_biz_certi = #{ppBizCerti}
+        		AND profile_biz_certi = #{ppBizCerti} And proj_sort = 1
         	</if>
         	
         	<if test="sellerBizCerti != '' and sellerBizCerti != null">
-        		AND profile_biz_certi = #{sellerBizCerti}
+        		AND profile_biz_certi = #{sellerBizCerti} And proj_sort = 2
         	</if>
         	
         	<if test="sellerChChk != '' and sellerChChk != null">

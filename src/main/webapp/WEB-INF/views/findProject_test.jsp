@@ -749,112 +749,6 @@ $(document).ready(function() {
 		  prevArrow:$('.prev'),
 	});
 	
-	// 페이지 이동
-	$(document).on("click", ".pageMove", function(){
-		$("#sort").val();
-		var keyword = $("input[name=keyword]").val();
-		
-		// 초기화
-		$(".content").remove();
-		$(".pageBox").remove();
-		
-		var formData = $("#search_frm");
-		var projSort;
-		var projNation = [];
-		var projIndus = [];
-		var projPrice = [];
-		var projMargin = [];
-		var projSupplyType = [];
-		var ppmemRname;
-		var ppBizCerti;
-		var projProdCerti;
-		var projProfit;
-		var sellermemRname;
-		var sellerBizCerti;
-		var sellerChChk;
-		var sellerSaleChk;
-		var projChannel;
-		
-		var param_list_name = ['projSort', 'projNation', 'projIndus', 
-			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
-			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
-			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
-		
-		var param_list = {
-				projSort, projNation, projIndus, 
-				projPrice, projMargin, projSupplyType, ppmemRname, 
-				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
-				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
-				};
-		 
-		
-		for (var i = 0; i < param_list_name.length; i++) {
-			//초기화
-			param_list[param_list_name[i]]= [];
-			
-			$("input[id="+param_list_name[i] +"]").each(function(){
-				var checked = this.checked;
-				
-				if (this.id == 'ppmemRname') {
-					$("input[name=ppmemRname]").prop('checked', checked);
-					$("input[name=ppBizCerti]").prop('checked', checked);
-					$("input[name=projProdCerti]").prop('checked', checked);
-					$("input[name=projProfit]").prop('checked', checked);
-				}
-				if (this.id == 'sellermemRname') {
-					$("input[name=sellermemRname]").prop('checked', checked);
-					$("input[name=sellerBizCerti]").prop('checked', checked);
-					$("input[name=sellerChChk]").prop('checked', checked);
-					$("input[name=sellerSaleChk]").prop('checked', checked);
-				}
-				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
-					$("input[name="+param_list_name[i] +"]").each(function(){
-						this.checked = checked;
-					});
-				}
-			});
-			
-			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
-				var name = this.name
-				var value = this.value
-				
-				for (var i = 0; i < param_list_name.length; i++){
-					if (String(param_list_name[i]) == name) {
-						param_list[name].push(value)
-					}
-					
-				}
-				
-			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
-		}
-		var url = formData.attr('action');
-		param_list["sort"] = $("#sort").val();
-		param_list["page"] = $(this)[0].firstChild.data
-		param_list["keyword"] = keyword;
-		$.ajax({
-           type: "GET",
-           url: ROOT_URL+"/project/find2",
-           data: param_list,
-           success: function(json) {
-        	   	var content = json
-           		var template = Handlebars.compile($("#project-list-tmpl").html());
-           		var html = template(content);
-           		
-           		var page_content = json.pageData
-           		console.log(page_content)
-           		var page_template = Handlebars.compile($("#page-tmpl").html());
-           		var page_html = page_template(page_content);
-           		
-           		$("#premium").after(html);
-           		$("footer").before(page_html);
-           }
-    	});
-	});
-	
-	
 	// 정렬 선택시
 	$(document).on("click", ".sort", function(){
 		var value = this.id;
@@ -959,7 +853,7 @@ $(document).ready(function() {
 	
 	//체크박스 전체선택
 	$(".checkAll").click(function(){
-		$("#sort").val(value);
+		$("#sort").val();
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
@@ -1153,6 +1047,87 @@ $(document).ready(function() {
 		param_list["sort"] = $("#sort").val();
 		var url = formData.attr('action');
 		
+		$.ajax({
+           type: "GET",
+           url: ROOT_URL+"/project/find2",
+           data: param_list,
+           success: function(json) {
+        	   	var content = json
+           		var template = Handlebars.compile($("#project-list-tmpl").html());
+           		var html = template(content);
+           		
+           		var page_content = json.pageData
+           		console.log(page_content)
+           		var page_template = Handlebars.compile($("#page-tmpl").html());
+           		var page_html = page_template(page_content);
+           		
+           		$("#premium").after(html);
+           		$("footer").before(page_html);
+           }
+    	});
+	});
+	
+	// 페이지 이동
+	$(document).on("click", ".pageMove", function(){
+		var keyword = $("input[name=keyword]").val();
+		 
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var projSort;
+		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname;
+		var ppBizCerti;
+		var projProdCerti;
+		var projProfit;
+		var sellermemRname;
+		var sellerBizCerti;
+		var sellerChChk;
+		var sellerSaleChk;
+		var projChannel;
+		
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
+		
+		var param_list = {
+				projSort, projNation, projIndus, 
+				projPrice, projMargin, projSupplyType, ppmemRname, 
+				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
+				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+						console.log("----------------")
+						console.log(param_list[name])
+						console.log("----------------")
+					}
+					
+				}
+				
+			});
+		}
+		var url = formData.attr('action');
+		param_list["sort"] = $("#sort").val();
+		param_list["page"] = $(this)[0].firstChild.data
+		param_list["keyword"] = keyword;
 		$.ajax({
            type: "GET",
            url: ROOT_URL+"/project/find2",

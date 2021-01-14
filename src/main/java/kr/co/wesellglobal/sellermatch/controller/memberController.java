@@ -27,4 +27,10 @@ public class memberController {
 		
 		return new ModelAndView("join");
 	}
+	
+	@RequestMapping(value = "/member/joinMain", method = RequestMethod.GET)
+	public ModelAndView joinMain(Model model) {
+		
+		return new ModelAndView("joinMain");
+	}
 }

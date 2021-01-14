@@ -236,7 +236,7 @@ label.error {
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
-$(document).ready(function() {
+
 
 	
 	$("#projAdd").on("click", function(){
@@ -294,9 +294,9 @@ $(document).ready(function() {
 		           url: ROOT_URL+"/project/indus",
 	               success: function(json) {
 	            	   var content = {
-	             			   memSort: $("#memSort").val(),
-	        					   memId: $("#memId").val(),
-	        					   indusList: json.indusList
+		             		memSort: $("#memSort").val(),
+		        			memId: $("#memId").val(),
+		        			indusList: json.indusList
 	            		}
 	              		var template = Handlebars.compile($("#project-add-tmpl").html());
 	              		var html = template(content);
@@ -543,8 +543,9 @@ $(document).ready(function() {
 	        }
 	    });
 		
-		var projDetail = CKEDITOR.instances.projDetail.getData();
-        $("#projDetail").val(projDetail);
+		/* ckEditor 적용 */
+		//var projDetail = CKEDITOR.instances.projDetail.getData();
+        //$("#projDetail").val(projDetail);
 		
 		var form = $(this);
 		var url = form.attr('action');
@@ -621,8 +622,8 @@ $(function() {
 <div class="partner_wrap addbox2 projectAdd">
     	<div class="text-center projectBox">
 			<form action="${pageContext.request.contextPath}/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="projSort" value="${memSort}">
-				<input type="hidden" name="projMemId" value="${memId}">
+				<input type="hidden" name="projSort" value="{{memSort}}">
+				<input type="hidden" name="projMemId" value="{{memId}}">
 				<input type="hidden" name="projState" value="2">
 	    		<table class="projTable">
 	    			<tbody>
@@ -762,8 +763,8 @@ $(function() {
 	    					<td>상세설명</td>
 	    					<td>
 	    						<div>
-			                       	<textarea id="projDetail" name="projDetail" class="form-control"></textarea>
-									{{ckEditor}}
+			                       	<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"></textarea>
+									
 	                        </div>
    					</td>
    				</tr>
