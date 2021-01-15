@@ -252,7 +252,49 @@ label.error {
     	<input type="hidden" id="memSort">
     </div>
     <div class="partner_wrap join-temp-Box">
-    	
+    	<div class="joinForm">
+    	<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
+																<input type="hidden" id="memSort" value="0">
+                                                            <div class="form-group row">
+                                                                <label for="memberId" class="col-sm-2 colForm-label">아이디
+                                                                	<span class="identify">*</span>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                	<div class="form-group">
+	                                                                    <input id="memberId" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
+																	</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 colForm-label">비밀번호
+                                                                	<span class="identify">*</span>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="비밀번호를 입력해주세요. (6자 이상)">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+																<label for="memPw_confirm" class="col-sm-2 colForm-label">비밀번호 확인
+																	<span class="identify">*</span>
+																</label>
+																<div class="col-sm-9">
+																	<input type="password" name="memPw_confirm" class="form-control"
+																		id="memPw_confirm" placeholder="비밀번호를 한번 더 입력해주세요." />
+																</div>
+															</div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 colForm-label">닉네임</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" name="memNick" id="memNick" 
+                                                                    placeholder="별명을 입력하세요. 회사명 등 정보성 닉네임을 입력하시면 이용제한을 받을 수 있습니다.">
+                                                                </div>
+                                                            </div>
+                                                            <div style="text-align-last: center;">
+																<button class="join-btn" type="submit">가입하기</button>
+															</div>
+                                                                </form>
+                                                                <!-- 회원가입 form end -->
+    	</div>
     </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
@@ -285,14 +327,14 @@ $(document).ready(function() {
 				$("#memSort").val("2");
 				tag = '<div class="resultText">공급자가입을 선택하셨습니다. <span>검증된 고매출 판매자를 찾아 매출을 올려보세요!</span></div>';
 			}
-			
+			/* 
 			var content = {
              		memSort: $("#memSort").val(),
         			tag: tag
         		}
        		var template = Handlebars.compile($("#project-join-tmpl").html());
        		var html = template(content);
-       		$(".join-temp-Box").append(html);
+       		$(".join-temp-Box").append(html); */
        		
 		} else {
 			$("#ppBtn").attr('disabled', false);
@@ -496,166 +538,7 @@ $(document).ready(function() {
 
 </script>
 <script type="text/x-handlebars-template" id="project-join-tmpl">
-<div class="joinForm">
-    	<div class="resultBox">
-    		{{createTag tag}}
-    	</div>
-    	<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
-																<input type="hidden" id="memSort" value="{{memSort}}">
-                                                            <%-- <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">프로필 사진</label>
-                                                                <div class="col-sm-10 file_input">
-                                                                	<div class="input-group profile">
-                                                                		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
-									                                    </div>
-									                                    <div style="display: flow-root;">
-									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-										                                	<label class="fileLable">
-										                                		파일 선택
-										                                		<input id = "image" name="memPhoto" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-										                                	</label>
-									                                    </div>
-																	</div>
-                                                                </div>
-                                                            </div> --%>
-                                                            <div class="form-group row">
-                                                                <label for="memberId" class="col-sm-2 colForm-label">아이디
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                	<div class="form-group">
-	                                                                    <input id="memberId" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">비밀번호
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="비밀번호를 입력해주세요. (6자 이상)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-																<label for="memPw_confirm" class="col-sm-2 colForm-label">비밀번호 확인
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-9">
-																	<input type="password" name="memPw_confirm" class="form-control"
-																		id="memPw_confirm" placeholder="비밀번호를 한번 더 입력해주세요." />
-																</div>
-															</div>
-                                                            <!-- <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">이름</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="memName" id="memName">
-                                                                </div>
-                                                            </div> -->
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">닉네임</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" name="memNick" id="memNick" 
-                                                                    placeholder="별명을 입력하세요. 회사명 등 정보성 닉네임을 입력하시면 이용제한을 받을 수 있습니다.">
-                                                                </div>
-                                                            </div>
-                                                            <!-- <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">국가</label>
-                                                                <div class="col-sm-10">
-                                                                    <select id="memCountry" name="memCountry" class="form-control">
-						                                                <option value="">선택하세요.</option>
-						                                                <option value="01">대한민국</option>
-						                                                <option value="02">베트남</option>
-						                                            </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">지역</label>
-                                                                <div class="col-sm-10">
-                                                                    <select id="memNation" name="memNation" class="form-control">
-						                                                <option value="">선택하세요.</option>
-						                                                <option value="02">서울</option>
-						                                                <option value="032">인천</option>
-						                                            </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-																<label for="memEmail" class="col-sm-2 colForm-label">이메일 인증</label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="memEmail" class="form-control" id="memEmail" />
-																		<span class="input-group-btn">
-																			<button type="button" id="sendAuthEmail"
-																				class="btn form-bg-primary">인증 번호 발송</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="" class="col-sm-2 colForm-label"></label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="auth_confirm" class="form-control" id="auth_confirm" />
-																		<span class="input-group-btn">
-																			<button type="button" id="authConfirm"
-																				class="btn form-bg-primary">인증 번호 확인</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-                                                            <div class="form-group row">
-																<label for="memTel" class="col-sm-2 colForm-label">연락처
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-10">
-																	<input type="text" name="memTel" class="form-control" id="memTel"
-																		placeholder="`-`없이 숫자만 입력" />
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="memPost" class="form-control"
-																			id="postcode" maxlength="5" readonly> <span
-																			class="input-group-btn">
-																			<button type="button" class="btn form-bg-primary postcode-finder"
-																				data-postcode="postcode" data-addr1="addr1"
-																				data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label">주소
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr" class="form-control" id="memAddr"
-																		readonly />
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label">상세주소</label>
-																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr2" class="form-control" id="memAddr2"
-																		placeholder="나머지 주소" />
-																</div>
-															</div>
-															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="등록">
-																<input class="btn form-bg-submit" type="reset" value="취소">
-															</div>
-															<input type="hidden" name="memRname" id="memRname" readonly="readonly"> -->
-															<div style="text-align-last: center;">
-																<button class="join-btn" type="submit">가입하기</button>
-															</div>
-                                                                </form>
-                                                                <!-- 회원가입 form end -->
-    	</div>
+
 </script>    
     </body>
 </html>

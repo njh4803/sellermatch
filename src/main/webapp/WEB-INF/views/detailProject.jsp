@@ -3,6 +3,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <style>
+.font-30{
+	font-size: 30px;
+}
 .partner_bnr {
     width: 100%;
     padding-top: 180px;
@@ -13,247 +16,397 @@
     padding-bottom: 100px;
     text-align: center;
 }
-.check{
-	background-color: #E52867;
-    color: white;
-    border-radius: 10px;
-    width: 300px;
+.search_chk{
+	width: 400px;
     height: 100px;
-    font-size: 20px;
+    background-color: #d6d6d6;
+    display: inline-block;
+    border-radius: 20px;
+    text-align: center;
+	padding: 40px 0;
+    margin: 0 40px;
 }
-.default-check{
-	background-color: white;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #e3e3e3;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+.chk_list_container{
+	height: 150px;
+	margin: 0 260px;
 }
-.none-check{
-	background-color: #e3e3e3;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #e3e3e3;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+.chk_listBox{
+	display: inline-block;
+	overflow-x:hidden;
+	overflow-y:auto;
+	width:12.27%;
+	height:200px;
+	border: 1px solid #e3e3e3;
+	text-align: left;
+	margin-right: -5px;
 }
-.addBtn {
-	background-color: #E52867;
-    color: white;
-    border-radius: 10px;
-    width: 150px;
-    height: 50px;
-    font-size: 20px;
-    margin: 30px 0;
+.container1{
+	border: 2px solid #e3e3e3;
+	margin: 0 240px;
+	height: 400px;
 }
-a {
+.container2{
+	margin: 0 240px;
+	height: 50px;
+}
+.container1 .container2{
+	margin: 0;
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+.container3{
+	border-left: 2px solid #e3e3e3;
+    height: 100%;
+    width: 30%;
+    float: right;
+    padding: 60px;
+}
+.row1{
+	height: 50px;
+	width: 97%;
+	margin-left: 0;
+	margin-right: 0;
+}
+.row2{
+	height: 25px;
+	margin-left: 0;
+	margin-right: 0;
+}
+.height-500{
+	height: 500px;
+	margin: 0;
+}
+.leftBox{
+	float: left;
+	margin: 3px 15px;
+}
+.rightBox{
+	float: right;
+	margin: 15px 15px;
+}
+.rightBox a{
+	margin: 0 15px;
+	font-weight: 0;
+	text-decoration: none;
+	color: #000;
+}
+
+.row2 .leftBox{
+	float: left;
+	padding: 0 5px;
+	margin:0;
+}
+.row2 .rightBox{
+	float: right;
+	padding: 0 5px;
+	margin:0;
+}
+.margin-0{
+	margin:0;
+}
+.sortBox span{
+	margin: 0 10px;
+}
+.p-findBtn{
+	background-color: #E62267;
+	color: white;
+	width: 100px;
+	height: 40px;
+}
+.s-findBtn{
+	background-color: #57207C;
+	color: white;
+	width: 100px;
+	height: 40px;
+}
+.orangeBox{
+	background-color: #ED7D31;
+	color: white;
+	display: inline-block;
+	border-radius: 5px;
+	padding: 15px 15px;
+	margin-right: 10px;
+}
+.blueBox{
+	background-color: #71A6DB;
+	color: white;
+	display: inline-block;
+	border-radius: 1px;
+	padding: 15px 15px;
+	margin-right: 10px;
+}
+.titleBox{
+	font-size: 30px;
+}
+.titleBox .pp{
+	width: 100px;
+	height: 40px;
+	color: #E62267;
+}
+.titleBox .sp{
+	width: 100px;
+	height: 40px;
+	color: #57207C;
+}
+.contentsBox{
+	text-align: left;
+	background-color: #F2F2F2;
+	padding: 15px;
+	border-radius: 10px;
+	min-height: 100px;
+	max-height: 100px;
+}
+.tagBox{
+	display: inline-block;
+	color: #7F7F7F;
+	margin-right: 10px;
+}
+.tagContainer{
+	padding-top: 50px;
+}
+
+.projDetail a{
 	text-decoration: none;
 	color: black;
 }
-.partner_bnr .partner_wrap h2 {
-    font-size: 30px;
-    line-height: 60px;
-    font-weight: 700;
-    margin-bottom: 10px;
+a:focus, a:hover{
+	text-decoration: none;
 }
-.partner_bnr .partner_wrap {
-    width: 1280px;
-    margin: 40px auto;
-    text-align: center;
+/* 스크롤바 디자인 */
+.chk_listBox::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+  background: #ffffff;
 }
-.projectBox{
-	display: inline-block;
-}
-.projTable{
-	border: 2px solid #ccc;
-	width: 700px;
-    height: 700px;
-}
-.projTable td{
-	border: 2px solid #ccc;
-    text-align: left;
-}
-.inputForm{
-	width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.width-70{
-	width: 70%;
-	float: left;
-}
-.width-30{
-	width: 30%;
-	display: inline-block;
-}
-.row1{
-	display: inline-block;
-}
-/* 필수항목 표시를 위한 `*` */
-.identify {
-	font-size: 14px;
-	color: #f00;
-}
+.chk_listBox::-webkit-scrollbar-thumb {
+  border-radius: 3.5px;
+  background-color: #D9D9D9;
 
-/* 에러 메시지에 대한 글자 색상 */
-.error {
-	color: red;
+  .chk_listBox:hover {
+    background-color: #adb5bd;
+  }
 }
-
-/* 에러가 발생한 <input>태그 */
-input.error {
-	
+.chk_listBox::-webkit-scrollbar-track {
+  background: #ffffff;
 }
-/* 에러메시지가 표시중인 <label> 태그 */
-label.error {
-	font-size: 10px;
-	color: red;
-	display: inline-block;
-	padding: 5px 10px;
-	margin: 0;
+/*post slider*/
+.post-slider{
+  width:90%;
+  margin:0px auto;
+  position:relative;
 }
-.jFiler-input-dragDrop {
-    width: 100%;
-    background-color: #fafafa;
+.post-slider .silder-title{
+  text-align:center;
+  margin:30px auto;
 }
-.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
-	height: 300px;
+.post-slider .next{
+  position:absolute;
+  top:50%;
+  right:30px;
+  font-size:2em;
+  color:gray;
+  cursor: pointer;
 }
-.fileLable{
-	position: relative;
+.post-slider .prev{
+  position:absolute;
+  top:50%;
+  left:30px;
+  font-size:2em;
+  color:gray;
     cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    overflow: hidden;
+}
+.post-slider .post-wrapper{
+
+  width:84%;
+  height:350px;
+  margin:0px auto;
+  overflow: hidden;
+  padding:10px 0px 10px 0px;
+}
+.post-slider .post-wrapper .post{
+  width:300px;
+  height:300px;
+  margin:0px 10px;
+  display:inline-block;
+  background:white;
+  border-radius: 5px;
+}
+.post-slider .post-wrapper .post .post-info{
+  font-size:15px;
+  height:100%;
+  padding-left:10px;
+  border: 2px solid #e3e3e3;
+}
+.post-slider .post-wrapper .post .slider-image{
+  width:100%;
+  height:300px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  display: none;
+}
+.infoBox{
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  border: 1px solid #e3e3e3;
+  background-color: #D9D9D9;
+  height: 50px;
+  padding-top: 10px;
+  margin-right: 20px;
+}
+.infoBox span{
+	color: #aaa;
+}
+.infoBox2{
+  display: inline-block;
+  width: 200px;
+  text-align: left;
+  border: 1px solid #e3e3e3;
+  height: 50px;
+  padding-top: 15px;
+  padding-right: 10px;
+  margin-right: 20px;
+}
+.infoBox2 span{
+	margin: 20px;
+}
+.profileImgBox{
     width: 100px;
-    height: 30px;
-    background: #1abc9c;
-    color: #fff;
-    text-align: center;
-    line-height: 30px;
-    margin-top: 2px;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-.formControl{
-	width: 400px;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
+    height: 100px;
+    border: 1px solid black;
     display: inline-block;
-    background-color: #e3e3e3;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-}
-.formControl input {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-}
-.formControl input[type=text] {
-	vertical-align:middle;
-	display:inline-block;
-	width:400px;
-	height:28px;
-	line-height:28px;
-	font-size:11px;
-	padding:0;
-	border:0;
-	border:1px solid #777;
-	padding-left: 10px;
-}
-.joinForm {
-	border: 2px solid #ccc;
-	border-radius: 10px;
-	width: 700px;
-    text-align: left;
-    display: inline-block;
-    padding: 50px;
-    padding-top: 0;
-}
-.resultBox{
-	text-align: left;
-	padding: 50px 0;
-}
-
-.resultBox .resultText span{
-	color: blue;
-}
-.colForm-label{
-	width: 122px;
-	padding-right: 0;
-}
-.join-btn{
-    display: inline-block;
-    width: 300px;
-    height: 40px;
-    color: white;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    padding: 6px 12px;
-    font-size: 17px;
-    line-height: 1.42857143;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 </style>
 <div class="partner_bnr">
-    <div class="partner_wrap">
-        <h2>공급자 또는 판매자 중 하나를 선택하세요</h2>
-        <h3>아래 간단한 내용만 입력하면, 회원가입이 완료됩니다!</h3>
-    </div>
-    <div id="findCheckBox">
-    	<div class="partner_wrap addbox2">
-		    <hr>
+</div>
+<div class="container1 content">
+	<div class="container2">
+		<input type="hidden" id="projId${status.index}" value="${output.projId}">
+		<div class="row1">
 		</div>
-		<div class="partner_wrap addbox2 selectProfile">
-			<div style="display: inline-block;">
-				<button id="spBtn" class="default-check text-center" value="판매자"><input type="checkbox" class="findCheck spFind" value="판매자">판매자 가입</button>
+		<div class="row1 leftBox">
+			<c:choose>
+				<c:when test="${output.projDday < 0}">
+					<div class="blueBox">마감</div>
+				</c:when>
+				<c:otherwise>
+					<div class="blueBox">마감 ${output.projDday}일전</div>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="projKeywordList" items="${output.projKeywordList}">
+           		<div class="tagBox">#${projKeywordList}</div>
+           	</c:forEach>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row1 leftBox projDetail"  data-index="${status.index}">
+			<div class="titleBox">${output.projTitle}</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row1 leftBox">
+			<div class="infoBox">
+				<div><span>상품분류</span></div>
+				<div>${output.projIndusName}</div>
 			</div>
-			<div style="display: inline-block;">
-			    <button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" value="공급자">공급자 가입</button>
+			<div class="infoBox">
+				<div><span>상품단가</span></div>
+				<div>${output.projPrice}</div>
+			</div>
+			<div class="infoBox">
+				<div><span>판매마진</span></div>
+				<div>${output.projMarginName}</div>
+			</div>
+			<div class="infoBox">
+				<div><span>등록지역</span></div>
+				<div>${output.projNationName}</div>
 			</div>
 		</div>
-    </div>
-    
-    <div id="hiddenBox" style="display: none;">
-    	<input type="hidden" id="memSort">
-    </div>
-    <div class="partner_wrap join-temp-Box">
-    	
-    </div>
+		<div class="row1 leftBox">
+			<div class="infoBox2">
+				<div><span>공급방법</span>${output.projSupplyTypeName}</div>
+			</div>
+			<div class="infoBox2">
+				<div><span>모집마감</span>${output.projEndDate}일</div>
+			</div>
+			<div class="infoBox2">
+				<div><span>모집인원</span>${output.projRecruitNum}명</div>
+			</div>
+			<div class="infoBox2">
+				<div><span>지원자수</span>${output.applyCount}명</div>
+			</div>
+		</div>
+		<div class="row1 leftBox">
+			<div class="infoBox2" style="width: 100%;">
+				<div><span>판매채널</span>
+				<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
+           			<c:choose>
+           				<c:when test="${status.last}">
+           					${projChannelList} 
+           				</c:when>
+           				<c:otherwise>
+           					${projChannelList}, 
+           				</c:otherwise>
+           			</c:choose>
+           		</c:forEach>
+           		</div>
+			</div>
+		</div>
+		<div class="row1 leftBox">
+			<div class="infoBox2" style="width: 100%;">
+				<div><span>검증내용</span>
+				<c:if test="${output.profileBizCerti == 1}"> 
+					사업자인증
+				</c:if>
+				<c:if test="${output.memRname == 1}">
+					신원인증
+				</c:if>
+				<c:if test="${output.projProfit == 1}">
+					수익성검증
+				</c:if>
+				<c:if test="${output.projProdCerti == 1}"> 
+					상품검증
+				</c:if>
+				<c:if test="${output.profileChChk == 1}">
+					채널검증
+				</c:if>
+				<c:if test="${output.profileSaleChk == 1}">
+					매출검증
+				</c:if>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container3">
+		<div class="row1 text-left">
+			<div class="blueBox">등록자</div> ${output.memNick}
+		</div>
+		<div class="row1 text-left">
+			<div class="profileImgBox">${output.profilePhoto}</div>
+			<div style="vertical-align: middle;float: right;">${output.profileIntro}</div>
+			${output.projAddCount}
+		</div>
+	</div>
+</div>
+<div class="container1">
+	<ul class="nav nav-tabs togtab">
+		<li class="active togli"><a target="idf" data-toggle="tab">&nbsp;아이디
+				찾기</a></li>
+		<li class="togli"><a target="pwdf" data-toggle="tab">비밀번호
+				찾기</a></li>
+	
+	</ul>
+	
+	<div id="idf">
+		아이디찾기
+	</div>
+	<div style="height: 1000px;">
+		 
+	</div>
+	<div id="pwdf">
+		비밀번호찾기
+	</div>
+</div>
+<div class="partner_bnr">
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -23,6 +23,7 @@ import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.model.SearchFind;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
@@ -239,5 +240,24 @@ public class projectController {
 		data.put("keyword", keyword);
 
 		return webHelper.getJsonData(data);
+	}
+	
+	@RequestMapping(value = "/project/detail", method = RequestMethod.GET)
+	public ModelAndView detailProject(Model model,
+			@RequestParam(value = "projId", required = false) String projId) {
+		ProjectDto input = new ProjectDto();
+		input.setProjId(projId);
+		
+		ProjectDto output = null;
+		
+		try {
+			output = projectService.getProject(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+
+		return new ModelAndView("detailProject");
 	}
 }

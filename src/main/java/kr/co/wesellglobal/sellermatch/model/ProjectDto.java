@@ -84,6 +84,12 @@ public class ProjectDto {
 	// 예비컬럼
 	private String projXxx;
 
+	// 회원이름
+	private String memName;
+	private String memNick;
+	private String profileIntro;
+	private String profilePhoto;
+	private String projAddCount;
 	
 	
 	// 지원자 수
@@ -94,6 +100,9 @@ public class ProjectDto {
 	
 	// 키워드 리스트
 	private String[] projKeywordList;
+	
+	// 채널 리스트
+	private String[] projChannelList;
 	
 	// 상품분류 문자로 치환
 	private String projIndusName;
@@ -288,5 +297,34 @@ public class ProjectDto {
 	public String[] getProjKeywordList() {
 		this.projKeywordList = this.projKeyword.split(",");
 		return this.projKeywordList;
+	}
+	
+	public String[] getProjChannelList() {
+		this.projChannelList = this.projChannel.split(",");
+		for (int i = 0; i < this.projChannelList.length; i++) {
+			if (this.projChannelList[i].equals("1")) {
+				this.projChannelList[i] = "오픈마켓";
+			}
+			if (this.projChannelList[i].equals("2")) {
+				this.projChannelList[i] = "종합몰";
+			}
+			if (this.projChannelList[i].equals("3")) {
+				this.projChannelList[i] = "폐쇄몰";
+			}
+			if (this.projChannelList[i].equals("4")) {
+				this.projChannelList[i] = "커뮤니티";
+			}
+			if (this.projChannelList[i].equals("5")) {
+				this.projChannelList[i] = "SNS";
+			}
+			if (this.projChannelList[i].equals("6")) {
+				this.projChannelList[i] = "오프라인";
+			}
+			if (this.projChannelList[i].equals("7")) {
+				this.projChannelList[i] = "해외";
+			}
+		}
+		
+		return this.projChannelList;
 	}
 }

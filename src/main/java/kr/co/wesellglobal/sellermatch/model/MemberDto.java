@@ -27,7 +27,7 @@ public class MemberDto {
 	// 유료종료일 
 	private String memClassEdate;
 	
-	// 회원분류 공급자, 셀러, 일반(기본선택)
+	// 회원분류 공급자, 셀러, 일반(기본선택), 관리자
 	private String memSort;
 	
 	// 국가 
@@ -127,12 +127,18 @@ public class MemberDto {
 	
 	public String getMemSortName() {
 		if (this.memSort.equals("1")) {
+			return "일반";
+		}
+		if (this.memSort.equals("1")) {
 			return "공급자";
 		}
 		if (this.memSort.equals("2")) {
 			return "판매자";
 		}
-		return "일반";
+		if (this.memSort.equals("3")) {
+			return "관리자";
+		}
+		return "";
 	}
 	
 	public String getMemNationName() {

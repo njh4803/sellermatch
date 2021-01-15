@@ -41,6 +41,12 @@
         <result property="projProfit" column="proj_profit" />
         <result property="projProfitChkDate" column="proj_profit_chk_date" />
         <result property="projXxx" column="proj_XXX" />
+        <!--  -->
+        <result property="memNick" column="mem_nick" />
+        <result property="memName" column="mem_name" />
+        <result property="profileIntro" column="profile_intro" />
+        <result property="profilePhoto" column="profile_photo" />
+        <result property="projAddCount" column="proj_add_count" />
     </resultMap>
     
     <insert id="insertItem"
@@ -240,11 +246,21 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
     	resultMap="ProjectMap">
     	SELECT 
-    		proj_id, proj_mem_id, proj_title, proj_sort, proj_indus, proj_price, proj_margin, 
-    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img as proj_detail_img_list, proj_require, proj_keyword, proj_file, 
-    		proj_hit, proj_prod_certi, proj_state, proj_reg_date, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, proj_edit_date, proj_channel, 
-    		proj_profit, proj_profit_chk_date
-    	FROM ProjectList
+    		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
+    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
+    		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
+    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 
+    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
+    		mem_rname, proj_channel, profile_biz_certi, profile_ch_chk as seller_ch_chk, profile_sale_chk as seller_sale_chk,
+    		mem_nick, mem_name, profile_intro, profile_photo,
+    		(SELECT COUNT(*) FROM ProjectList where proj_mem_id = mem_id) as proj_add_count
+    	FROM ProjectList p
+		INNER JOIN IndusList i
+		ON p.proj_indus = i.indus_id
+		INNER JOIN MemList m
+		ON p.proj_mem_id = m.mem_id
+		INNER JOIN ProfileList pf
+		ON p.proj_mem_id = pf.profile_mem_id
     	WHERE proj_id = #{projId}
     </select>
     

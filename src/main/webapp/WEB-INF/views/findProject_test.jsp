@@ -169,7 +169,7 @@
 	padding-top: 50px;
 }
 
-.projDetail{
+.projDetail a{
 	text-decoration: none;
 	color: black;
 }
@@ -382,7 +382,7 @@ a:focus, a:hover{
         <i class="fas fa-chevron-left prev"></i>
         <i class="fas fa-chevron-right next"></i>
         <div class="post-wrapper">
-        	<c:forEach var="output" items="${output}">
+        	<c:forEach var="output" items="${output}" varStatus="status">
         		<div class="post">
 			      <div class="post-info">
 			        <div class="row1">
@@ -433,9 +433,10 @@ a:focus, a:hover{
 		<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
 	</div>
 </div>
-<c:forEach var="output" items="${output}">
+<c:forEach var="output" items="${output}" varStatus="status">
 	<div class="container1 content">
 		<div class="container2">
+			<input type="hidden" id="projId${status.index}" value="${output.projId}">
 			<div class="row1">
 				<div class="leftBox">
 					<span pattern="yyyy-MM-dd">• 등록일 : ${output.projRegDate}</span>
@@ -465,12 +466,12 @@ a:focus, a:hover{
 				</c:if>
 			</div>
 			<div class="clearfix"></div>
-			<div class="row1 leftBox">
+			<div class="row1 leftBox projDetail"  data-index="${status.index}">
 				<c:if test="${output.projSort == 1}">
-					<div class="titleBox"><a class="projDetail"><span class="pp">공급자</span> | ${output.projTitle}</a></div>
+					<div class="titleBox"><a><span class="pp">공급자</span> | ${output.projTitle}</a></div>
 				</c:if>
 				<c:if test="${output.projSort == 2}">
-					<div class="titleBox"><a class="projDetail"><span class="sp">판매자</span> | ${output.projTitle}</a></div>
+					<div class="titleBox"><a><span class="sp">판매자</span> | ${output.projTitle}</a></div>
 				</c:if>
 			</div>
 			<div class="clearfix"></div>
@@ -635,6 +636,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </div>
 {{#output}}
 <div class="container1 content">
+	<input type="hidden" id="projId{{@key}}" value="{{projId}}">
 	<div class="container2">
 		<div class="row1">
 			<div class="leftBox">
@@ -665,12 +667,12 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 			{{/ifCond}}
 		</div>
 		<div class="clearfix"></div>
-		<div class="row1 leftBox">
+		<div class="row1 leftBox projDetail" data-index="{{@key}}">
 			{{#ifCond projSort '==' 1}}
-				<div class="titleBox"><a class="projDetail"><span class="pp">공급자</span> | {{projTitle}}</a></div>
+				<div class="titleBox"><a<span class="pp">공급자</span> | {{projTitle}}</a></div>
 			{{/ifCond}}
 			{{#ifCond projSort '==' 2}}
-				<div class="titleBox"><a class="projDetail"><span class="sp">판매자</span> | {{projTitle}}</a></div>
+				<div class="titleBox"><a><span class="sp">판매자</span> | {{projTitle}}</a></div>
 			{{/ifCond}}
 		</div>
 		<div class="clearfix"></div>
@@ -747,6 +749,15 @@ $(document).ready(function() {
 		  autoplaySpeed: 2000,
 		  nextArrow:$('.next'),
 		  prevArrow:$('.prev'),
+	});
+	
+	$(document).on("click", ".projDetail", function(){
+		
+		var idx = $(this).data('index');
+		var projId = $("#projId"+idx).val();
+		console.log(projId);
+		console.log(idx);
+		window.location.href = ROOT_URL+"/project/detail?projId="+projId;
 	});
 	
 	// 정렬 선택시
