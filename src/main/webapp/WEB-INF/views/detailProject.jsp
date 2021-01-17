@@ -260,7 +260,6 @@ a:focus, a:hover{
 }
 .infoBox2{
   display: inline-block;
-  width: 200px;
   text-align: left;
   border: 1px solid #e3e3e3;
   height: 50px;
@@ -276,6 +275,23 @@ a:focus, a:hover{
     height: 100px;
     border: 1px solid black;
     display: inline-block;
+}
+</style>
+<style media="screen">
+.a {
+	width: 100%;
+	text-align: left;
+	height: 50px;
+}
+b {
+	display: inline-block;
+	margin-left: 50px;
+	padding-top: 15px;
+	cursor: pointer;
+}
+.window {
+	width: 100%;
+	height: 200px;
 }
 </style>
 <div class="partner_bnr">
@@ -382,28 +398,31 @@ a:focus, a:hover{
 		</div>
 		<div class="row1 text-left">
 			<div class="profileImgBox">${output.profilePhoto}</div>
-			<div style="vertical-align: middle;float: right;">${output.profileIntro}</div>
+			<div style="display:inline-block; vertical-align: middle;float: right;">${output.profileIntro}</div>
 			${output.projAddCount}
 		</div>
 	</div>
 </div>
-<div class="container1">
-	<ul class="nav nav-tabs togtab">
-		<li class="active togli"><a target="idf" data-toggle="tab">&nbsp;아이디
-				찾기</a></li>
-		<li class="togli"><a target="pwdf" data-toggle="tab">비밀번호
-				찾기</a></li>
-	
-	</ul>
-	
-	<div id="idf">
-		아이디찾기
+<div class="container1" style="height: auto;">
+	<div class="a">
+		<b id="bt01">상세정보</b>
+		<b id="bt02">필수요건</b>
+		<b id="bt03">문의하기</b>
+		<b id="bt04">후기</b>
 	</div>
-	<div style="height: 1000px;">
-		 
-	</div>
-	<div id="pwdf">
-		비밀번호찾기
+	<div class="b">
+		<div class="window" id="window1">
+			${output.projDetail}
+		</div>
+		<div class="window" id="window2">
+			${output.projRequire}
+		</div>
+		<div class="window" id="window3">
+			문의하기
+		</div>
+		<div class="window" id="window4">
+			후기
+		</div>
 	</div>
 </div>
 <div class="partner_bnr">
@@ -413,6 +432,23 @@ a:focus, a:hover{
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
 <script>
 $(document).ready(function() {
+	
+	$(document).on("click", "#bt01" ,function(){
+		var position = $("#window1").offset(); /* 함수 position에 #window1의 위치를 담는다 */
+		$("html").stop().animate({scrollTop:(position.top-130)}, 500); /* 문서의 스크롤 위치를 애니메이션으로 이동 -> 그 위치는 함수 position(#window1의 좌표값)의 top값 */
+	});
+	$(document).on("click", "#bt02" ,function(){
+		var position = $("#window2").offset();
+		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
+	});
+	$(document).on("click", "#bt03" ,function(){
+		var position = $("#window3").offset();
+		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
+	});
+	$(document).on("click", "#bt04" ,function(){
+		var position = $("#window4").offset();
+		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
+	});
 	
 	$(document).on("change", "#image" ,handleImgfileSelect);
 	
