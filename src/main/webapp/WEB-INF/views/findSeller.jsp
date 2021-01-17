@@ -45,7 +45,6 @@
 }
 .container1{
 	border: 2px solid #e3e3e3;
-	margin: 0 240px;
 	height: 400px;
 }
 .container2{

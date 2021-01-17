@@ -42,7 +42,6 @@
 }
 .container1{
 	border: 2px solid #e3e3e3;
-	margin: 0 240px;
 	height: 400px;
 }
 .container2{
@@ -51,16 +50,25 @@
 }
 .container1 .container2{
 	margin: 0;
-    width: 70%;
-    height: 100%;
+    width: 844px;
+    height: 396px;
     float: left;
 }
 .container3{
 	border-left: 2px solid #e3e3e3;
-    height: 100%;
-    width: 30%;
+	border-bottom: 2px solid #e3e3e3;
+    height: 278px;
+    width: 362px;
     float: right;
-    padding: 60px;
+    padding: 20px;
+}
+.container4{
+	border-left: 2px solid #e3e3e3;
+	border-bottom: 2px solid #e3e3e3;
+    height: 310px;
+    width: 362px;
+    float: right;
+    padding: 20px;
 }
 .row1{
 	height: 50px;
@@ -276,18 +284,40 @@ a:focus, a:hover{
     border: 1px solid black;
     display: inline-block;
 }
+.intro{
+	display: inline-block;
+    vertical-align: middle;
+    width: 126px;
+    margin-left: 10px;
+    font-size: 10px;
+    color: #aaa;
+}
 </style>
 <style media="screen">
 .a {
 	width: 100%;
-	text-align: left;
-	height: 50px;
+	border-bottom: 3px solid black;
 }
 b {
 	display: inline-block;
-	margin-left: 50px;
-	padding-top: 15px;
-	cursor: pointer;
+    text-align: center;
+    padding-top: 7px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border-bottom: 1px solid black;
+}
+b:active {
+	background-color: #e3e3e3;
+	border: 1px solid black;
+}
+b:hover {
+	background-color: #e3e3e3;
+	border: 1px solid black;
+}
+#bt01 {
+	background-color: #e3e3e3;
+	border: 1px solid black;
 }
 .window {
 	width: 100%;
@@ -295,133 +325,152 @@ b {
 }
 </style>
 <div class="partner_bnr">
-</div>
-<div class="container1 content">
-	<div class="container2">
-		<input type="hidden" id="projId${status.index}" value="${output.projId}">
-		<div class="row1">
-		</div>
-		<div class="row1 leftBox">
-			<c:choose>
-				<c:when test="${output.projDday < 0}">
-					<div class="blueBox">마감</div>
-				</c:when>
-				<c:otherwise>
-					<div class="blueBox">마감 ${output.projDday}일전</div>
-				</c:otherwise>
-			</c:choose>
-			<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-           		<div class="tagBox">#${projKeywordList}</div>
-           	</c:forEach>
-		</div>
-		<div class="clearfix"></div>
-		<div class="row1 leftBox projDetail"  data-index="${status.index}">
-			<div class="titleBox">${output.projTitle}</div>
-		</div>
-		<div class="clearfix"></div>
-		<div class="row1 leftBox">
-			<div class="infoBox">
-				<div><span>상품분류</span></div>
-				<div>${output.projIndusName}</div>
+    <div class="partner_wrap" style="text-align: left;">
+		<div class="container1 content clearfix">
+			<div class="container2 clearfix">
+				<input type="hidden" id="projId${status.index}" value="${output.projId}">
+				<div class="row1">
+				</div>
+				<div class="row1 leftBox">
+					<c:choose>
+						<c:when test="${output.projDday < 0}">
+							<div class="blueBox">마감</div>
+						</c:when>
+						<c:otherwise>
+							<div class="blueBox">마감 ${output.projDday}일전</div>
+						</c:otherwise>
+					</c:choose>
+					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
+		           		<div class="tagBox">#${projKeywordList}</div>
+		           	</c:forEach>
+				</div>
+				<div class="clearfix"></div>
+				<div class="row1 leftBox projDetail"  data-index="${status.index}">
+					<div class="titleBox">${output.projTitle}</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="row1 leftBox">
+					<div class="infoBox">
+						<div><span>상품분류</span></div>
+						<div>${output.projIndusName}</div>
+					</div>
+					<div class="infoBox">
+						<div><span>상품단가</span></div>
+						<div>${output.projPrice}</div>
+					</div>
+					<div class="infoBox">
+						<div><span>판매마진</span></div>
+						<div>${output.projMarginName}</div>
+					</div>
+					<div class="infoBox">
+						<div><span>등록지역</span></div>
+						<div>${output.projNationName}</div>
+					</div>
+				</div>
+				<div class="row1 leftBox">
+					<div class="infoBox2">
+						<div><span>공급방법</span>${output.projSupplyTypeName}</div>
+					</div>
+					<div class="infoBox2">
+						<div><span>모집마감</span>${output.projEndDate}일</div>
+					</div>
+					<div class="infoBox2">
+						<div><span>모집인원</span>${output.projRecruitNum}명</div>
+					</div>
+					<div class="infoBox2">
+						<div><span>지원자수</span>${output.applyCount}명</div>
+					</div>
+				</div>
+				<div class="row1 leftBox">
+					<div class="infoBox2" style="width: 100%;">
+						<div><span>판매채널</span>
+						<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
+		           			<c:choose>
+		           				<c:when test="${status.last}">
+		           					${projChannelList} 
+		           				</c:when>
+		           				<c:otherwise>
+		           					${projChannelList}, 
+		           				</c:otherwise>
+		           			</c:choose>
+		           		</c:forEach>
+		           		</div>
+					</div>
+				</div>
+				<div class="row1 leftBox">
+					<div class="infoBox2" style="width: 100%;">
+						<div><span>검증내용</span>
+						<c:if test="${output.profileBizCerti == 1}"> 
+							사업자인증
+						</c:if>
+						<c:if test="${output.memRname == 1}">
+							신원인증
+						</c:if>
+						<c:if test="${output.projProfit == 1}">
+							수익성검증
+						</c:if>
+						<c:if test="${output.projProdCerti == 1}"> 
+							상품검증
+						</c:if>
+						<c:if test="${output.profileChChk == 1}">
+							채널검증
+						</c:if>
+						<c:if test="${output.profileSaleChk == 1}">
+							매출검증
+						</c:if>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="infoBox">
-				<div><span>상품단가</span></div>
-				<div>${output.projPrice}</div>
+			<div class="container3">
+				<div class="row1 text-left">
+					<div class="blueBox">등록자</div> ${output.memNick}
+				</div>
+				<div class="text-left">
+					<img class="profileImgBox"  src="${output.profilePhoto}">
+					<div class="intro">${output.profileIntro}</div>
+				</div>
+				<div class="row1 leftBox">
+					<div>
+						프로젝트 등록 ${output.projAddCount}건
+					</div>
+					<div>
+						프로젝트 거래 0건
+					</div>
+				</div>
 			</div>
-			<div class="infoBox">
-				<div><span>판매마진</span></div>
-				<div>${output.projMarginName}</div>
-			</div>
-			<div class="infoBox">
-				<div><span>등록지역</span></div>
-				<div>${output.projNationName}</div>
-			</div>
-		</div>
-		<div class="row1 leftBox">
-			<div class="infoBox2">
-				<div><span>공급방법</span>${output.projSupplyTypeName}</div>
-			</div>
-			<div class="infoBox2">
-				<div><span>모집마감</span>${output.projEndDate}일</div>
-			</div>
-			<div class="infoBox2">
-				<div><span>모집인원</span>${output.projRecruitNum}명</div>
-			</div>
-			<div class="infoBox2">
-				<div><span>지원자수</span>${output.applyCount}명</div>
-			</div>
-		</div>
-		<div class="row1 leftBox">
-			<div class="infoBox2" style="width: 100%;">
-				<div><span>판매채널</span>
-				<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
-           			<c:choose>
-           				<c:when test="${status.last}">
-           					${projChannelList} 
-           				</c:when>
-           				<c:otherwise>
-           					${projChannelList}, 
-           				</c:otherwise>
-           			</c:choose>
-           		</c:forEach>
-           		</div>
-			</div>
-		</div>
-		<div class="row1 leftBox">
-			<div class="infoBox2" style="width: 100%;">
-				<div><span>검증내용</span>
-				<c:if test="${output.profileBizCerti == 1}"> 
-					사업자인증
-				</c:if>
-				<c:if test="${output.memRname == 1}">
-					신원인증
-				</c:if>
-				<c:if test="${output.projProfit == 1}">
-					수익성검증
-				</c:if>
-				<c:if test="${output.projProdCerti == 1}"> 
-					상품검증
-				</c:if>
-				<c:if test="${output.profileChChk == 1}">
-					채널검증
-				</c:if>
-				<c:if test="${output.profileSaleChk == 1}">
-					매출검증
-				</c:if>
+			<div class="container4">
+				<div class="row1 text-left">
+					<div class="blueBox">등록자</div> ${output.memNick}
+				</div>
+				<div class="text-left">
+					<img class="profileImgBox"  src="${output.profilePhoto}">
+					<div class="intro">${output.profileIntro}</div>
+					${output.projAddCount}
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container3">
-		<div class="row1 text-left">
-			<div class="blueBox">등록자</div> ${output.memNick}
-		</div>
-		<div class="row1 text-left">
-			<div class="profileImgBox">${output.profilePhoto}</div>
-			<div style="display:inline-block; vertical-align: middle;float: right;">${output.profileIntro}</div>
-			${output.projAddCount}
-		</div>
-	</div>
-</div>
-<div class="container1" style="height: auto;">
-	<div class="a">
-		<b id="bt01">상세정보</b>
-		<b id="bt02">필수요건</b>
-		<b id="bt03">문의하기</b>
-		<b id="bt04">후기</b>
-	</div>
-	<div class="b">
-		<div class="window" id="window1">
-			${output.projDetail}
-		</div>
-		<div class="window" id="window2">
-			${output.projRequire}
-		</div>
-		<div class="window" id="window3">
-			문의하기
-		</div>
-		<div class="window" id="window4">
-			후기
+		<div class="container1" style="height: auto;">
+			<div class="a">
+				<b id="bt01">상세정보</b>
+				<b id="bt02">필수요건</b>
+				<b id="bt03">문의하기</b>
+				<b id="bt04">후기</b>
+			</div>
+			<div class="b">
+				<div class="window" id="window1">
+					${output.projDetail}
+				</div>
+				<div class="window" id="window2">
+					${output.projRequire}
+				</div>
+				<div class="window" id="window3">
+					문의하기
+				</div>
+				<div class="window" id="window4">
+					후기
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -436,18 +485,34 @@ $(document).ready(function() {
 	$(document).on("click", "#bt01" ,function(){
 		var position = $("#window1").offset(); /* 함수 position에 #window1의 위치를 담는다 */
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500); /* 문서의 스크롤 위치를 애니메이션으로 이동 -> 그 위치는 함수 position(#window1의 좌표값)의 top값 */
+		$("b").css("background-color", "#fff");
+		$("b").css("border", "0");
+		$("#bt01").css("background-color", "#e3e3e3");
+		$("#bt01").css("border", "1px solid black");
 	});
 	$(document).on("click", "#bt02" ,function(){
 		var position = $("#window2").offset();
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
+		$("b").css("background-color", "#fff");
+		$("b").css("border", "0");
+		$("#bt02").css("background-color", "#e3e3e3");
+		$("#bt02").css("border", "1px solid black");
 	});
 	$(document).on("click", "#bt03" ,function(){
 		var position = $("#window3").offset();
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
+		$("b").css("background-color", "#fff");
+		$("b").css("border", "0");
+		$("#bt03").css("background-color", "#e3e3e3");
+		$("#bt03").css("border", "1px solid black");
 	});
 	$(document).on("click", "#bt04" ,function(){
 		var position = $("#window4").offset();
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
+		$("b").css("background-color", "#fff");
+		$("b").css("border", "0");
+		$("#bt04").css("background-color", "#e3e3e3");
+		$("#bt04").css("border", "1px solid black");
 	});
 	
 	$(document).on("change", "#image" ,handleImgfileSelect);
