@@ -23,5 +23,45 @@ public class ApplyDto {
 
     // 프로필고유번호 공급자냐 셀러냐 로그인에 따라 변동: Seller_id or Pp_id
     private String applyProfile;
+    
+    // 지원유형 1-지원, 2-제안
+	private String applyType;
 	
+	// 계약진행상태 0-거절, 1-취소  2- 지원  3- 제안 4 - 대기 5- 계약
+	private String applyProjState;
+	
+	// 지원자 닉네임
+	private String memNick;
+	
+	// 지원자 프로필사진
+	private String profilePhoto;
+	
+	// 해시태그 해시태그(검색 키워드) 구분자(,)
+    private String profileHashtag;
+    
+    // 해시태그 리스트
+ 	private String[] profileHashtagList;
+ 	
+ 	public String[] getProfileHashtagList() {
+		 this.profileHashtagList = profileHashtag.split(",");
+		for (int i = 0; i < this.profileHashtagList.length; i++) {
+			if (this.profileHashtagList[i].equals("1")) {
+				this.profileHashtagList[i] = "채널검증셀러";
+			}
+			if (this.profileHashtagList[i].equals("2")) {
+				this.profileHashtagList[i] = "매출검증셀러";
+			}
+			if (this.profileHashtagList[i].equals("3")) {
+				this.profileHashtagList[i] = "경력 1년미만 검출셀러";
+			}
+			if (this.profileHashtagList[i].equals("4")) {
+				this.profileHashtagList[i] = "사업자인증셀러";
+			}
+			if (this.profileHashtagList[i].equals("5")) {
+				this.profileHashtagList[i] = "신원인증셀러";
+			}
+		}
+		
+		return this.profileHashtagList;
+	}
 }

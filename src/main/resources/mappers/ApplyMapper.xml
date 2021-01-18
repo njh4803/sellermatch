@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ApplyMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="applyMap"
+        type="kr.co.wesellglobal.sellermatch.model.ApplyDto">
+        <result property="applyIdx"   column="apply_idx" />
+        <result property="applyId"     column="apply_id" />
+        <result property="applyProjId"   column="apply_proj_id" />
+        <result property="applyMemId" column="apply_mem_id" />
+        <result property="applyRegDate"   column="apply_reg_date" />
+        <result property="applyProfile"     column="apply_Profile" />
+        <result property="applyType"   column="apply_type" />
+        <result property="applyProjState" column="apply_proj_state" />
+        <result property="memNick" column="mem_nick" />
+        <result property="profilePhoto" column="profile_photo" />
+        <result property="profilePhoto" column="profile_photo" />
+        <result property="profileHashtag" column="Profile_hashtag" />
+    </resultMap>
+    
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
+    	resultMap="applyMap">
+    	SELECT 
+	   		apply_idx, apply_id, apply_proj_id, apply_mem_id, apply_reg_date, 
+	   		apply_Profile, apply_type, apply_proj_state, mem_nick, profile_photo, Profile_hashtag
+    	FROM ApplyList a
+		INNER JOIN ProjectList p
+		ON p.proj_id = a.Apply_proj_id
+        INNER JOIN MemList m
+		ON a.apply_mem_id = m.mem_id
+        INNER JOIN ProfileList pf
+		ON a.apply_mem_id = pf.profile_mem_id
+		where apply_proj_id = #{applyProjId}
+    </select>
+    
+    <select id="selectItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
+    	resultMap="applyMap">
+    	SELECT 
+    		apply_idx, apply_id, apply_proj_id, apply_mem_id, apply_reg_date, 
+	   		apply_Profile, apply_type, apply_proj_state, mem_nick, profile_photo, Profile_hashtag
+    	FROM ApplyList
+    </select>
+
+</mapper>

@@ -507,15 +507,30 @@ a:focus, a:hover{
 					<button class="scrapBtn">스크랩</button>
 				</div>
 				<div class="text-center">
-					<div class="applyNum">총 지원자 13명</div>
+					<div class="applyNum">총 지원자 ${output.applyCount}명</div>
 				</div>
-				<div class="text-center">
-					<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
-					<div class="applyNick">
-						<div>(${output.memNick})</div>
-						<div class="applyTag">억단위 매출</div>
-					</div>
-				</div>
+				<c:choose>
+					<c:when test="${output.applyCount > 0}">
+						<div class="text-center">
+						<c:forEach var="applyDto" items="${applyDto}">
+							<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+							<div class="applyNick">
+								<div>( ${applyDto.memNick} )</div>
+								<div class="applyTag">
+									<c:forEach var="hashtag" items="${applyDto.profileHashtagList}">
+		        						# ${hashtag}
+		        					</c:forEach>
+								</div>
+							</div>
+						</c:forEach>	
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="text-center">
+							<div>지원자 없음</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<div style="margin-top: 50px;">

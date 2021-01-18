@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,11 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
+import kr.co.wesellglobal.sellermatch.model.ApplyDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
-import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
-import kr.co.wesellglobal.sellermatch.model.SearchFind;
+import kr.co.wesellglobal.sellermatch.service.ApplyService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +37,8 @@ public class projectController {
 
 	@Autowired
 	ProjectService projectService;
+	@Autowired
+	ApplyService applyService;
 	@Autowired
 	IndusService indusService;
 	@Autowired
@@ -246,17 +246,22 @@ public class projectController {
 	public ModelAndView detailProject(Model model,
 			@RequestParam(value = "projId", required = false) String projId) {
 		ProjectDto input = new ProjectDto();
+		ApplyDto input2 = new ApplyDto();
 		input.setProjId(projId);
+		input2.setApplyProjId(projId);
 		
 		ProjectDto output = null;
+		List<ApplyDto> applyDto = null;
 		
 		try {
 			output = projectService.getProject(input);
+			applyDto = applyService.getApplyList(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
+		model.addAttribute("applyDto", applyDto);
 
 		return new ModelAndView("detailProject");
 	}
