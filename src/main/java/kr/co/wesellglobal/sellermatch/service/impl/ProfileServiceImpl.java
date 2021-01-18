@@ -94,4 +94,17 @@ public class ProfileServiceImpl implements ProfileService{
 		
 	}
 
+	@Override
+	public int getProfileCount(ProfileDto input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("ProfileMapper.selectCountAll", input);
+		}catch(Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
 }

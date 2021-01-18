@@ -47,6 +47,7 @@
         <result property="profileIntro" column="profile_intro" />
         <result property="profilePhoto" column="profile_photo" />
         <result property="projAddCount" column="proj_add_count" />
+        <result property="contractCount" column="contract_count" />
     </resultMap>
     
     <insert id="insertItem"
@@ -253,7 +254,8 @@
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, profile_ch_chk as seller_ch_chk, profile_sale_chk as seller_sale_chk,
     		mem_nick, mem_name, profile_intro, profile_photo,
-    		(SELECT COUNT(*) FROM ProjectList where proj_mem_id = mem_id) as proj_add_count
+    		(SELECT COUNT(*) FROM ProjectList where proj_mem_id = mem_id) as proj_add_count, 
+    		(SELECT COUNT(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
     	FROM ProjectList p
 		INNER JOIN IndusList i
 		ON p.proj_indus = i.indus_id

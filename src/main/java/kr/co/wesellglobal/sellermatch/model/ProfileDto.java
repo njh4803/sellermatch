@@ -2,7 +2,7 @@ package kr.co.wesellglobal.sellermatch.model;
 
 import lombok.Data;
 
-//판매자프로필 
+//프로필 
 @Data
 public class ProfileDto {
 
@@ -32,6 +32,7 @@ public class ProfileDto {
 
     // 판매 경력 경력없음(0)1개월이상(1), 3개월이상(3),6개월이상(6),1년이상(9)
     private String profileCareer;
+    private String profileCareerName;
 
     // 판매자 매출 검증 미검증(0),검증(1)
     private String profileSaleChk;
@@ -41,12 +42,14 @@ public class ProfileDto {
 
     // 등록지역 국번
     private String profileNation;
+    private String profileNationName;
 
     // 사업자번호 
     private String profileBizNum;
 
     // 사업자분류 법인사업자(1), 개인사업자(2), 간이과세자(3), 개인(4), 기타(5)
     private String profileBizSort;
+    private String profileBizSortName;
 
     // 사업자인증 미인증(0), 인증완료(1)
     private String profileBizCerti;
@@ -77,6 +80,28 @@ public class ProfileDto {
 
     // 조회수 프로필 조회수
     private int profileHit;
+    
+    // 회원 닉네임
+    private String memNick;
+    
+    // 신원 인증
+    private String memRname;
+    
+    // 프로젝트 등록 수
+    private int projAddCount;
+    
+    // 프로젝트 요청(제안)받은 수
+    private int recommendCount;
+    
+    // 프로젝트 계약된 수
+    private int contractCount;
+    
+    
+    
+    
+    /**페이지 구현을 위한 static변수*/
+	private static int offset;
+	private static int listCount;
 	
 	 // 상품분류 문자로 치환
 	 private String profileIndusName;
@@ -84,19 +109,70 @@ public class ProfileDto {
 	 // 사진 리스트
 	 private String[] profilePhotoList;
 	 
-	 public String getprofileIndusName() {
+	// 채널 리스트
+	private String[] profileChannelList;
+	
+	// 해시태그 리스트
+	private String[] profileHashtagList;
+	
+	/** 검색을 위한 변수 */
+	private String sort;
+	
+	/** 검색을 위한 배열 */
+	private String[] profileNationArr;
+	private String[] profileIndusArr;
+	private int[] profileChannelArr;
+	private String[] profileBizSortArr;
+	 
+	 public static int getOffset() {
+			return offset;
+		}
+		public static void setOffset(int offset) {
+			ProfileDto.offset = offset;
+		}
+		public static int getListCount() {
+			return listCount;
+		}
+		public static void setListCount(int listCount) {
+			ProfileDto.listCount = listCount;
+		}
+	 
+	 public String getProfileIndusName() {
 			return profileIndusName;
 	 }
 	 
-	 public void setprofilePhotoList(String profilePhoto) {
+	 public String[] getProfileHashtagList() {
+		 this.profileHashtagList = profileHashtag.split(",");
+		for (int i = 0; i < this.profileHashtagList.length; i++) {
+			if (this.profileHashtagList[i].equals("1")) {
+				this.profileHashtagList[i] = "채널검증셀러";
+			}
+			if (this.profileHashtagList[i].equals("2")) {
+				this.profileHashtagList[i] = "매출검증셀러";
+			}
+			if (this.profileHashtagList[i].equals("3")) {
+				this.profileHashtagList[i] = "경력 1년미만 검출셀러";
+			}
+			if (this.profileHashtagList[i].equals("4")) {
+				this.profileHashtagList[i] = "사업자인증셀러";
+			}
+			if (this.profileHashtagList[i].equals("5")) {
+				this.profileHashtagList[i] = "신원인증셀러";
+			}
+		}
+		
+		return this.profileHashtagList;
+	}
+	 
+	 public void setProfilePhotoList(String profilePhoto) {
 		 this.profilePhotoList = profilePhoto.split(",");
 	 }
 			
-	 public String[] getprofilePhotoList() {
+	 public String[] getProfilePhotoList() {
 		 return this.profilePhotoList;
 	 }
 	 
-	 public String getprofileChChkName() {
+	 public String getProfileChChkName() {
 		 if (this.profileChChk.equals("0")) {
 			 return "미검증";
 		 }
@@ -106,26 +182,26 @@ public class ProfileDto {
 		 return "";
 	 }
 	 
-	 public String getprofileCareerName() {
-		 if (this.profileCareer.equals("0")) {
-			 return "경력없음";
+	 public String getProfileCareerName() {
+		 if (this.profileCareerName.equals("0")) {
+			 return this.profileCareerName = "경력없음";
 		 }
-		 if (this.profileCareer.equals("1")) {
-			 return "1개월 이상";
+		 if (this.profileCareerName.equals("1")) {
+			 return this.profileCareerName = "1개월 이상";
 		 }
-		 if (this.profileCareer.equals("3")) {
-			 return "3개월 이상";
+		 if (this.profileCareerName.equals("3")) {
+			 return this.profileCareerName = "3개월 이상";
 		 }
-		 if (this.profileCareer.equals("6")) {
-			 return "6개월 이상";
+		 if (this.profileCareerName.equals("6")) {
+			 return this.profileCareerName = "6개월 이상";
 		 }
-		 if (this.profileCareer.equals("9")) {
-			 return "1년 이상";
+		 if (this.profileCareerName.equals("9")) {
+			 return this.profileCareerName = "1년 이상";
 		 }
 		 return "";
 	 }
 	 
-	 public String getprofileSaleChkName() {
+	 public String getProfileSaleChkName() {
 		 if (this.profileSaleChk.equals("0")) {
 			 return "미검증";
 		 }
@@ -135,39 +211,81 @@ public class ProfileDto {
 		 return "";
 	 }
 	 
-	 public String getprofileNationName() {
-		 if (this.profileNation.equals("02")) {
-			 return "서울";
+	 public String getProfileNationName() {
+		 if (this.profileNationName.equals("02")) {
+			 return this.profileNationName = "서울";
 		 }
-		 if (this.profileNation.equals("031")) {
-			 return "경기";
+		 if (this.profileNationName.equals("031")) {
+			 return this.profileNationName = "경기";
 		 }
-		 if (this.profileNation.equals("032")) {
-			 return "인천";
+		 if (this.profileNationName.equals("032")) {
+			 return this.profileNationName = "인천";
 		 }
-		 return "해외";
+		 if (this.profileNationName.equals("033")) {
+			return this.profileNationName = "강원";
+		}
+		if (this.profileNationName.equals("041")) {
+			return this.profileNationName = "충남";
+		}
+		if (this.profileNationName.equals("042")) {
+			return this.profileNationName = "대전";
+		}
+		if (this.profileNationName.equals("043")) {
+			return this.profileNationName = "충북";
+		}
+		if (this.profileNationName.equals("051")) {
+			return this.profileNationName = "부산";
+		}
+		if (this.profileNationName.equals("052")) {
+			return this.profileNationName = "울산";
+		}
+		if (this.profileNationName.equals("053")) {
+			return this.profileNationName = "대구";
+		}
+		if (this.profileNationName.equals("054")) {
+			return this.profileNationName = "경북";
+		}
+		if (this.profileNationName.equals("055")) {
+			return this.profileNationName = "경남";
+		}
+		if (this.profileNationName.equals("061")) {
+			return this.profileNationName = "전남";
+		}
+		if (this.profileNationName.equals("062")) {
+			return this.profileNationName = "광주";
+		}
+		if (this.profileNationName.equals("063")) {
+			return this.profileNationName = "전북";
+		}
+		if (this.profileNationName.equals("044")) {
+			return this.profileNationName = "세종특별자치시";
+		}
+		if (this.profileNationName.equals("064")) {
+			return this.profileNationName = "세종특별자치도";
+		}
+		 return this.profileNationName = "해외";
 	 }
 	 
-	 public String getprofileBizSortName() {
-		 if (this.profileBizSort.equals("1")) {
-			 return "법인사업자";
+	 public String getProfileBizSortName() {
+		 if (this.profileBizSortName.equals("1")) {
+			 return this.profileBizSortName = "법인사업자";
 		 }
-		 if (this.profileBizSort.equals("2")) {
-			 return "개인사업자";
+		 if (this.profileBizSortName.equals("2")) {
+			 return this.profileBizSortName = "개인사업자";
 		 }
-		 if (this.profileBizSort.equals("3")) {
-			 return "간이과세자";
+		 if (this.profileBizSortName.equals("3")) {
+			 return this.profileBizSortName = "간이과세자";
 		 }
-		 if (this.profileBizSort.equals("4")) {
-			 return "개인";
+		 if (this.profileBizSortName.equals("4")) {
+			 return this.profileBizSortName = "개인";
 		 }
-		 if (this.profileBizSort.equals("5")) {
-			 return "기타";
+		 if (this.profileBizSortName.equals("5")) {
+			 return this.profileBizSortName = "기타";
 		 }
-		 return "";
+		 return this.profileBizSortName = "";
 	 }
 	 
-	 public String getprofileBizCertiName() {
+	 public String getProfileBizCertiName() {
 		 if (this.profileBizCerti.equals("0")) {
 			 return "미인증";
 		 }
@@ -177,7 +295,7 @@ public class ProfileDto {
 		 return "";
 	 }
 	 
-	 public String getprofileStateName() {
+	 public String getProfileStateName() {
 		 if (this.profileState.equals("0")) {
 			 return "중지";
 		 }
@@ -186,4 +304,33 @@ public class ProfileDto {
 		 }
 		 return "";
 	 }
+	 
+	public String[] getProfileChannelList() {
+		this.profileChannelList = this.profileCh.split(",");
+		for (int i = 0; i < this.profileChannelList.length; i++) {
+			if (this.profileChannelList[i].equals("1")) {
+				this.profileChannelList[i] = "오픈마켓";
+			}
+			if (this.profileChannelList[i].equals("2")) {
+				this.profileChannelList[i] = "종합몰";
+			}
+			if (this.profileChannelList[i].equals("3")) {
+				this.profileChannelList[i] = "폐쇄몰";
+			}
+			if (this.profileChannelList[i].equals("4")) {
+				this.profileChannelList[i] = "커뮤니티";
+			}
+			if (this.profileChannelList[i].equals("5")) {
+				this.profileChannelList[i] = "SNS";
+			}
+			if (this.profileChannelList[i].equals("6")) {
+				this.profileChannelList[i] = "오프라인";
+			}
+			if (this.profileChannelList[i].equals("7")) {
+				this.profileChannelList[i] = "해외";
+			}
+		}
+		
+		return this.profileChannelList;
+	}
 }

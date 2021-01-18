@@ -89,7 +89,11 @@ public class ProjectDto {
 	private String memNick;
 	private String profileIntro;
 	private String profilePhoto;
-	private String projAddCount;
+	
+	// 프로젝트 계약된 수
+    private int contractCount;
+    // 프로젝트 등록 수
+	private int projAddCount;
 	
 	
 	// 지원자 수

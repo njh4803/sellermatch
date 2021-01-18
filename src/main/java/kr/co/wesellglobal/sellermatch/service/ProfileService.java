@@ -12,6 +12,8 @@ public interface ProfileService {
 	
 	public ProfileDto getProfile(ProfileDto input) throws Exception;
 	
+	public int getProfileCount(ProfileDto input) throws Exception;
+	
 	public void editProfile(ProfileDto input) throws Exception;
 	
 }

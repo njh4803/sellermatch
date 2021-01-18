@@ -381,64 +381,64 @@ a:focus, a:hover{
     margin: 0 0 15px 15px;
 }
 </style>
-<div class="partner_bnr">
+<div class="partner_bnr clearfix">
     <div class="partner_wrap" style="text-align: left;">
         <div class="partner_list" style="display: inline-block;">
             <div class="chk_list_container">
             	<div class="chk_listBox">
             		<span>사업자구분</span>
 	            	<ul class="biz-chk">
-	            		<li><input type="checkbox" class="checkAll" id="">전체</li>
-	            		<li><input type="checkbox" class="check" name="" value="01">법인사업자</li>
-	            		<li><input type="checkbox" class="check" name="" value="02">개인사업자</li>
-	            		<li><input type="checkbox" class="check" name="" value="03">간이과세자</li>
-	            		<li><input type="checkbox" class="check" name="" value="04">개인(사업자없음)</li>
+	            		<li><input type="checkbox" class="checkAll" id="profileBizSort">전체</li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="1">법인사업자</li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="2">개인사업자</li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="3">간이과세자</li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="4">개인(사업자없음)</li>
 	            	</ul>
             	</div>
             	<hr>
             	<div class="chk_listBox basic-scroll">
             		<span>지역구분</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projNation">전체</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="02">서울</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="031">경기</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="032">인천</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="033">강원</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="041">충남</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="042">대전</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="043">충북</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="051">부산</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="052">울산</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="053">대구</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="054">경북</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="055">경남</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="061">전남</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="062">광주</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="063">전북</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="044">세종특별자치시</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="064">세종특별자치도</li>
+	            		<li><input type="checkbox" class="checkAll" id="profileNation">전체</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="02">서울</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="031">경기</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="032">인천</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="033">강원</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="041">충남</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="042">대전</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="043">충북</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="051">부산</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="052">울산</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="053">대구</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="054">경북</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="055">경남</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="061">전남</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="062">광주</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="063">전북</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="044">세종특별자치시</li>
+	            		<li><input type="checkbox" class="check" name="profileNation" value="064">세종특별자치도</li>
 	            	</ul>
             	</div>
             	<hr>
             	<div class="chk_listBox"><span>상품분류</span>
 	            	<ul>
-	            		<li><input id="projIndus" class="checkAll" type="checkbox">전체</li>
+	            		<li><input id="profileIndus" class="checkAll" type="checkbox">전체</li>
 	            		<c:forEach var="indusList" items="${indusList}">
-	            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}">${indusList.indusName}</li>
+	            			<li><input type="checkbox" class="check" name="profileIndus" value="${indusList.indusId}">${indusList.indusName}</li>
 	            		</c:forEach>
 	            	</ul>
             	</div>
             	<hr>
             	<div class="chk_listBox"><span>판매채널</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projChannel">전체</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="1">오픈마켓</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="2">종합몰</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="3">폐쇄몰</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="4">커뮤니티</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="5">SNS</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="6">오프라인</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="7">해외</li>
+	            		<li><input type="checkbox" class="checkAll" id="profileChannel">전체</li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="1">오픈마켓</li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="2">종합몰</li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="3">폐쇄몰</li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="4">커뮤니티</li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="5">SNS</li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="6">오프라인</li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="7">해외</li>
 	            	</ul>
             	</div>
             </div>
@@ -452,30 +452,32 @@ a:focus, a:hover{
         		<div>
         			<form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
         				<button type="submit" class="searchBtn"></button>
-        				<input class="search" type="search">
+        				<input class="search" type="search" name="keyword">
+        				<input type="hidden" value="defaultSort" id="sort" name="sort">
         			</form>
         		</div>
         	</div>
-        	<div class="right-box">
+        	<div class="right-box content">
 	        	<div class="sortBox">
 	        		<div class="leftBox">
-	        			총 판매자 수 : 0명
+	        			총 판매자 수 : ${totalCount}명
 	        		</div>
 	        		<div class="rightBox">
-	        			<a href="javascript:void(0)" class="sort" id="defaultSort">기본정렬 /</a>
-						<a href="javascript:void(0)" class="sort" id="endSort">마감일순 /</a>
+	        			<a href="javascript:void(0)" class="sort" id="defaultSort">기본순 /</a>
+						<a href="javascript:void(0)" class="sort" id="volumeSort">매출순 /</a>
 						<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
-						<a href="javascript:void(0)" class="sort" id="applySort">참여자순 /</a>
+						<a href="javascript:void(0)" class="sort" id="recommendSort">요청 받은 순 /</a>
 						<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
 	        		</div>
 	        	</div>
 	        </div>
-	        <div class="right-box">
+	        <!-- <div class="right-box content">
 	        	<div class="leftBox">
 					<span>총 : 0건</span>
 				</div>	
-	        </div>
-	        <div class="right-box clearfix">
+	        </div> -->
+	        <c:forEach var="output" items="${output}" varStatus="status">
+	        <div class="right-box content clearfix">
 	        	<div class="sellerInfoBox">
 	        		<button class="scrapBtn"></button>
 	        		<div class="imgBox">
@@ -487,37 +489,86 @@ a:focus, a:hover{
 		        			<div style="display: inline-block;">신원(x), 사업자(o), 채널(x), 매출(o)</div> -->
 		        			<div class="clearfix">
 		        				<div class="leftBox margin-0">
-				        			<span class="nick">닉(주)위셀글로벌</span>
+				        			<span class="nick">${output.memNick}</span>
 				        		</div>
 				        		<div class="leftBox margin-0">
-				        			<span class="auth">신원(x), </span>
-				        			<span class="auth">사업자(o), </span>
-				        			<span class="auth">채널(x), </span>
-				        			<span class="auth">매출(o)</span>
+				        			<span class="auth">
+				        				신원(
+				        				<c:if test="${output.memRname == 1}">
+				        					o
+				        				</c:if>
+				        				<c:if test="${output.memRname == 0}">
+				        					x
+				        				</c:if>
+				        				), 
+				        			</span>
+				        			
+				        			<span class="auth">
+				        				사업자(
+				        				<c:if test="${output.profileBizCerti == 1}">
+				        					o
+				        				</c:if>
+				        				<c:if test="${output.profileBizCerti == 0}">
+				        					x
+				        				</c:if>
+				        				), 
+				        			</span>
+				        			
+				        			<span class="auth">
+					        			채널(
+					        			<c:if test="${output.profileChChk == 1}">
+				        					o
+				        				</c:if>
+				        				<c:if test="${output.profileChChk == 0}">
+				        					x
+				        				</c:if>
+					        			), 
+				        			</span>
+				        			<span class="auth">
+					        			매출(
+					        			<c:if test="${output.profileSaleChk == 1}">
+				        					o
+				        				</c:if>
+				        				<c:if test="${output.profileSaleChk == 0}">
+				        					x
+				        				</c:if>
+					        			)
+				        			</span>
 				        		</div>
 		        			</div>
 		        			<div class="clearfix">
 		        				<div class="leftBox">
-		        					<strong>신규이지만, 성실함과 꾸준함 그리고 유료광고로 매출 보장합니다.</strong>
+		        					<strong>${output.profileIntro}</strong>
 		        				</div>
 		        			</div>
 		        			<div class="clearfix">
 		        				<div class="leftBox margin-0">
-				        			<div class="indus">도서 분야</div>
+				        			<div class="indus">${output.profileIndusName} 분야</div>
 				        		</div>
 				        		<div class="leftBox margin-0">
 				        			<div class="span-box">
-					        			<span>서울지역 /</span>
-					        			<span>법인사업자 /</span>
-					        			<span>오픈마켓, 종합몰, 폐쇄몰</span>
+					        			<span>${output.profileNationName} /</span>
+					        			<span>${output.profileBizSortName} /</span>
+					        			<span>
+						        			<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status">
+						        				<c:choose>
+						        					<c:when test="${!status.last}">
+						        						${profileChannel}, 
+						        					</c:when>
+						        					<c:otherwise>
+						        						${profileChannel}
+						        					</c:otherwise>
+						        				</c:choose>
+						        			</c:forEach>
+					        			</span>
 				        			</div>
 				        		</div>
 		        			</div>
 		        			<div class="clearfix">
 		        				<div class="leftBox margin-0">
-		        					<div class="seller-tag">#채널검증셀러</div>
-		        					<div class="seller-tag">#경력 1년미만 검출셀러</div>
-		        					<div class="seller-tag">#매출검증셀러</div>
+		        					<c:forEach var="hashtag" items="${output.profileHashtagList}">
+		        						<div class="seller-tag"># ${hashtag}</div>
+		        					</c:forEach>
 				        		</div>
 		        			</div>
 		        		</div>
@@ -527,7 +578,7 @@ a:focus, a:hover{
 				        			<span class="projInfo">계약 프로젝트</span>
 				        		</div>
 				        		<div class="rightBox margin-0">
-				        			<span>0건</span>
+				        			<span>${output.contractCount}건</span>
 				        		</div>
 		        			</div>
 		        			<hr>
@@ -536,7 +587,7 @@ a:focus, a:hover{
 				        			<span class="projInfo">등록 프로젝트</span>
 				        		</div>
 				        		<div class="rightBox margin-0">
-				        			<span>0건</span>
+				        			<span>${output.projAddCount}건</span>
 				        		</div>
 		        			</div>
 		        			<hr>
@@ -545,7 +596,7 @@ a:focus, a:hover{
 				        			<span class="projInfo">요청 받은 수</span>
 				        		</div>
 				        		<div class="rightBox margin-0">
-				        			<span>0건</span>
+				        			<span>${output.recommendCount}건</span>
 				        		</div>
 		        			</div>
 		        			<hr>
@@ -563,7 +614,7 @@ a:focus, a:hover{
 				        			<span class="projInfo">매출규모</span>
 				        		</div>
 				        		<div class="rightBox margin-0">
-				        			<span>연 0 원</span>
+				        			<span>연 ${output.profileVolume} 원</span>
 				        		</div>
 		        			</div>
 		        			<hr>
@@ -572,7 +623,7 @@ a:focus, a:hover{
 				        			<span class="projInfo">판매경력</span>
 				        		</div>
 				        		<div class="rightBox margin-0">
-				        			<span>12년 7개월</span>
+				        			<span>${output.profileCareerName}</span>
 				        		</div>
 		        			</div>
 		        			<hr>
@@ -580,8 +631,9 @@ a:focus, a:hover{
 		        	</div>
 	        	</div>
 	        </div>
+	        </c:forEach>
 	        <!-- 페이징 -->
-	        <div class="rightBox" style="margin-right: -15px;">
+	        <div class="rightBox pageBox" style="margin-right: -15px;">
 				<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 					<ul class="pagination">
 					<!-- 페이지 번호 구현 -->
@@ -590,7 +642,7 @@ a:focus, a:hover{
 				        <%-- 이전 그룹으로 이동 가능하다면? --%>
 				        <c:when test="${pageData.prevPage > 0}">
 				            <%-- 이동할 URL 생성 --%>
-				            <c:url value="/project/find" var="prevPageUrl">
+				            <c:url value="/seller/find" var="prevPageUrl">
 				                <c:param name="page" value="${pageData.prevPage}" />
 				                <c:param name="keyword" value="${keyword}" />
 				            </c:url>
@@ -604,7 +656,7 @@ a:focus, a:hover{
 				    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
 				    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 				        <%-- 이동할 URL 생성 --%>
-				        <c:url value="/project/find" var="pageUrl">
+				        <c:url value="/seller/find" var="pageUrl">
 				            <c:param name="page" value="${i}"/>
 				            <c:param name="keyword" value="${keyword}"/>
 				        </c:url>
@@ -627,7 +679,7 @@ a:focus, a:hover{
 				        <%-- 다음 그룹으로 이동 가능하다면? --%>
 				        <c:when test="${pageData.nextPage > 0}">
 				            <%-- 이동할 URL 생성 --%>
-				            <c:url value="/project/find" var="nextPageUrl">
+				            <c:url value="/seller/find" var="nextPageUrl">
 				                <c:param name="page" value="${pageData.nextPage}" />
 				                <c:param name="keyword" value="${keyword}" />
 				            </c:url>
@@ -644,7 +696,560 @@ a:focus, a:hover{
     </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
+<script type="text/javascript">
+Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
+	var tag = '';
+	for (var i = startPage; i < endPage+1; i++) {
+	    if (nowPage == i) {
+	    	tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'><strong>'+i+'</strong></a></li>'
+		} else {
+			tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'>'+i+'</a></li>'
+		}
+	}
+	return new Handlebars.SafeString(tag);
+});
+
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+</script>
+<script type="text/x-handlebars-template" id="page-tmpl">
+	<div class="rightBox pageBox" style="margin-right: -15px;">
+		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
+			<ul class="pagination">
+		        {{#ifCond prevPage '>' 0}}
+		            <li><a href="javascript:void(0)" class="pageMove" value="{{prevPage}}">&laquo;</a></li>
+		        {{else}}
+		            <li><a>&laquo;</a></li>
+		        {{/ifCond}}
+		        {{creatPage startPage endPage nowPage}}
+			    {{#ifCond nextPage '>' 0}}
+		            <li><a href="javascript:void(0)" class="pageMove" value="{{nextPage}}">&raquo;</a></li>
+		        {{else}}
+		            <li><a>&raquo;</a></li>
+		        {{/ifCond}}
+			</ul>
+		</div>
+	</div>
+</script>
+<script type="text/x-handlebars-template" id="seller-list-tmpl">
+        	<div class="right-box content">
+	        	<div class="sortBox">
+	        		<div class="leftBox">
+	        			총 판매자 수 : {{totalCount}}명
+	        		</div>
+	        		<div class="rightBox">
+	        			<a href="javascript:void(0)" class="sort" id="defaultSort">기본순 /</a>
+						<a href="javascript:void(0)" class="sort" id="volumeSort">매출순 /</a>
+						<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
+						<a href="javascript:void(0)" class="sort" id="recommendSort">요청 받은 순 /</a>
+						<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
+	        		</div>
+	        	</div>
+	        </div>
+	        {{#output}}
+	        <div class="right-box content clearfix">
+	        	<div class="sellerInfoBox">
+	        		<button class="scrapBtn"></button>
+	        		<div class="imgBox">
+	        			<img class="profile" src="/local_assets/img/profile.png">
+	        		</div>
+	        		<div class="sellerInfo">
+		        		<div class="leftBox">
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<span class="nick">{{memNick}}</span>
+				        		</div>
+				        		<div class="leftBox margin-0">
+				        			<span class="auth">
+				        				신원(
+										{{#ifCond memRname '==' 1}}
+				        					o
+				        				{{/ifCond}}
+				        				{{#ifCond memRname '==' 0}}
+				        					x
+				        				{{/ifCond}}
+				        				), 
+				        			</span>
+				        			
+				        			<span class="auth">
+				        				사업자(
+				        				{{#ifCond profileBizCerti '==' 1}}
+				        					o
+				        				{{/ifCond}}
+				        				{{#ifCond profileBizCerti '==' 0}}
+				        					x
+				        				{{/ifCond}}
+				        				), 
+				        			</span>
+				        			
+				        			<span class="auth">
+					        			채널(
+										{{#ifCond profileChChk '==' 1}}
+				        					o
+				        				{{/ifCond}}
+				        				{{#ifCond profileChChk '==' 0}}
+				        					x
+				        				{{/ifCond}}
+					        			), 
+				        			</span>
+				        			<span class="auth">
+					        			매출(
+										{{#ifCond profileSaleChk '==' 1}}
+				        					o
+				        				{{/ifCond}}
+				        				{{#ifCond profileSaleChk '==' 0}}
+				        					x
+				        				{{/ifCond}}
+					        			)
+				        			</span>
+				        		</div>
+		        			</div>
+		        			<div class="clearfix">
+		        				<div class="leftBox">
+		        					<strong>{{profileIntro}}</strong>
+		        				</div>
+		        			</div>
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<div class="indus">{{profileIndusName}} 분야</div>
+				        		</div>
+				        		<div class="leftBox margin-0">
+				        			<div class="span-box">
+					        			<span>{{profileNationName}} /</span>
+					        			<span>{{profileBizSortName}} /</span>
+					        			<span>
+											{{#each profileChannelList as |value key|}}
+						        				{{#if @last}}
+						        					{{value}}
+						        				{{else}}
+						        					{{value}}, 
+						        				{{/if}}
+											{{/each}}
+					        			</span>
+				        			</div>
+				        		</div>
+		        			</div>
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+									{{#each profileHashtagList as |value key|}}
+		        						<div class="seller-tag"># {{value}}</div>
+		        					{{/each}}
+				        		</div>
+		        			</div>
+		        		</div>
+		        		<div class="rightBox">
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<span class="projInfo">계약 프로젝트</span>
+				        		</div>
+				        		<div class="rightBox margin-0">
+				        			<span>{{contractCount}}건</span>
+				        		</div>
+		        			</div>
+		        			<hr>
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<span class="projInfo">등록 프로젝트</span>
+				        		</div>
+				        		<div class="rightBox margin-0">
+				        			<span>{{projAddCount}}건</span>
+				        		</div>
+		        			</div>
+		        			<hr>
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<span class="projInfo">요청 받은 수</span>
+				        		</div>
+				        		<div class="rightBox margin-0">
+				        			<span>{{recommendCount}}건</span>
+				        		</div>
+		        			</div>
+		        			<hr>
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<span class="projInfo">판매채널</span>
+				        		</div>
+				        		<div class="rightBox margin-0">
+				        			<span>오픈마켓 외 2채널</span>
+				        		</div>
+		        			</div>
+		        			<hr>
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<span class="projInfo">매출규모</span>
+				        		</div>
+				        		<div class="rightBox margin-0">
+				        			<span>연 {{profileVolume}} 원</span>
+				        		</div>
+		        			</div>
+		        			<hr>
+		        			<div class="clearfix">
+		        				<div class="leftBox margin-0">
+				        			<span class="projInfo">판매경력</span>
+				        		</div>
+				        		<div class="rightBox margin-0">
+				        			<span>{{profileCareerName}}</span>
+				        		</div>
+		        			</div>
+		        			<hr>
+		        		</div>
+		        	</div>
+	        	</div>
+	        </div>
+			{{/output}}
+</script>
 <script>
+$(document).ready(function() {
+	// 정렬 선택시
+	$(document).on("click", ".sort", function(){
+		var value = this.id;
+		$("#sort").val(value);
+		
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var profileBizSort;
+		var profileNation;
+		var profileIndus;
+		var profileChannel;
+		
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
+			'profileChannel'];
+		
+		var param_list = {
+				profileBizSort, profileNation, profileIndus, profileChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			
+			$("input[id="+param_list_name[i] +"]").each(function(){
+				var checked = this.checked;
+				
+			});
+			
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		var url = formData.attr('action');
+		param_list["sort"] = $("#sort").val();
+		$.ajax({
+	       type: "GET",
+	       url: ROOT_URL+"/seller/find2",
+	       data: param_list,
+	       success: function(json) {
+	    	   console.log(json);
+	    	   	var content = json
+	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		var page_content = json.pageData
+	       		console.log(page_content)
+	       		var page_template = Handlebars.compile($("#page-tmpl").html());
+	       		var page_html = page_template(page_content);
+	       		
+	       		$(".search-box").after(page_html);
+	       		$(".search-box").after(html);
+	       		
+	       }
+		});
+	});
+	
+	//체크박스 전체선택
+	$(".checkAll").click(function(){
+		$("#sort").val();
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var profileBizSort;
+		var profileNation;
+		var profileIndus;
+		var profileChannel;
+		
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
+			'profileChannel'];
+		
+		var param_list = {
+				profileBizSort, profileNation, profileIndus, profileChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			
+			$("input[id="+param_list_name[i] +"]").each(function(){
+				var checked = this.checked;
+				
+				if (this.id == 'ppmemRname') {
+					$("input[name=ppmemRname]").prop('checked', checked);
+					$("input[name=ppBizCerti]").prop('checked', checked);
+					$("input[name=projProdCerti]").prop('checked', checked);
+					$("input[name=projProfit]").prop('checked', checked);
+				}
+				if (this.id == 'sellermemRname') {
+					$("input[name=sellermemRname]").prop('checked', checked);
+					$("input[name=sellerBizCerti]").prop('checked', checked);
+					$("input[name=sellerChChk]").prop('checked', checked);
+					$("input[name=sellerSaleChk]").prop('checked', checked);
+				}
+				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
+					$("input[name="+param_list_name[i] +"]").each(function(){
+						this.checked = checked;
+					});
+				}
+			});
+			
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		var url = formData.attr('action');
+		param_list["sort"] = $("#sort").val();
+		$.ajax({
+	       type: "GET",
+	       url: ROOT_URL+"/seller/find2",
+	       data: param_list,
+	       success: function(json) {
+	    	   console.log(json);
+	    	   	var content = json
+	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		var page_content = json.pageData
+	       		console.log(page_content)
+	       		var page_template = Handlebars.compile($("#page-tmpl").html());
+	       		var page_html = page_template(page_content);
+	       		
+	       		$(".search-box").after(page_html);
+	       		$(".search-box").after(html);
+	       		
+	       }
+		});
+	});
+	
+	
+	// 체크박스 선택 검색
+	$(".check").click(function(){
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var profileBizSort;
+		var profileNation;
+		var profileIndus;
+		var profileChannel;
+		
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
+			'profileChannel'];
+		
+		var param_list = {
+				profileBizSort, profileNation, profileIndus, profileChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			var data_name = $("input[name="+param_list_name[i] +"]").data('name');
+			
+			if (data_name == 'ppmemRname') {
+				var total_len = $("input[data-name=ppmemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=ppmemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#ppmemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#ppmemRname").prop('checked', false);	
+				}
+			}
+			if (data_name == 'sellermemRname') {
+				var total_len = $("input[data-name=sellermemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=sellermemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#sellermemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#sellermemRname").prop('checked', false);	
+				}
+			}
+			if (data_name != 'ppmemRname' && data_name != 'sellermemRname') {
+				//체크박스 총 개수
+				var total_len = $("input[name="+param_list_name[i] +"]").length;
+				//선택된 갯수
+				var len = $("input[name="+param_list_name[i] +"]:checked").length;
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#"+param_list_name[i]).prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#"+param_list_name[i]).prop('checked', false);	
+				}
+			}
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		param_list["sort"] = $("#sort").val();
+		var url = formData.attr('action');
+		
+		$.ajax({
+	       type: "GET",
+	       url: ROOT_URL+"/seller/find2",
+	       data: param_list,
+	       success: function(json) {
+	    	   console.log(json);
+	    	   	var content = json
+	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		var page_content = json.pageData
+	       		console.log(page_content)
+	       		var page_template = Handlebars.compile($("#page-tmpl").html());
+	       		var page_html = page_template(page_content);
+	       		
+	       		$(".search-box").after(page_html);
+	       		$(".search-box").after(html);
+	       		
+	       }
+		});
+	});
+	
+	// 페이지 이동
+	$(document).on("click", ".pageMove", function(){
+		var keyword = $("input[name=keyword]").val();
+		 
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		
+		var formData = $("#search_frm");
+		var profileBizSort;
+		var profileNation;
+		var profileIndus;
+		var profileChannel;
+		
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
+			'profileChannel'];
+		
+		var param_list = {
+				profileBizSort, profileNation, profileIndus, profileChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+						console.log("----------------")
+						console.log(param_list[name])
+						console.log("----------------")
+					}
+					
+				}
+				
+			});
+		}
+		var url = formData.attr('action');
+		param_list["sort"] = $("#sort").val();
+		param_list["page"] = $(this)[0].firstChild.data
+		param_list["keyword"] = keyword;
+		$.ajax({
+	       type: "GET",
+	       url: ROOT_URL+"/seller/find2",
+	       data: param_list,
+	       success: function(json) {
+	    	   console.log(json);
+	    	   	var content = json
+	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		var page_content = json.pageData
+	       		console.log(page_content)
+	       		var page_template = Handlebars.compile($("#page-tmpl").html());
+	       		var page_html = page_template(page_content);
+	       		
+	       		$(".search-box").after(page_html);
+	       		$(".search-box").after(html);
+	       		
+	       }
+		});
+	});
+});
 </script>    
     </body>
 </html>

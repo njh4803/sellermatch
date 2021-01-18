@@ -281,8 +281,20 @@ a:focus, a:hover{
 .profileImgBox{
     width: 100px;
     height: 100px;
-    border: 1px solid black;
     display: inline-block;
+    border-radius: 70%;
+    overflow: hidden;
+    border: 1px solid #e3e3e3;
+    margin: 15px;
+}
+.miniImgBox{
+  	width: 60px;
+    height: 60px;
+    display: inline-block;
+    border-radius: 70%;
+    overflow: hidden;
+    border: 1px solid #e3e3e3;
+    margin: 15px;
 }
 .intro{
 	display: inline-block;
@@ -321,7 +333,37 @@ b:hover {
 }
 .window {
 	width: 100%;
-	height: 200px;
+}
+.tabName{
+	font-size: 25px;
+}
+.tabContent {
+    padding: 20px;
+    border: 1px solid black;
+    min-height: 150px;
+    margin: 16px 0;
+}
+.applyBtn{
+	color: white;
+    width: 180px;
+    height: 50px;
+    font-size: 18px;
+    display: inline-block;
+    background-color: #00B0F0;
+    float: left;
+    margin-left: 20px;
+}
+.scrapBtn{
+	width: 100px;
+	height: 50px;
+	font-size: 18px;
+    display: inline-block;
+    background-color: #e3e3e3;
+    float: left;
+}
+.applyNum{
+	margin-top: 40px;
+	font-size: 18px;
 }
 </style>
 <div class="partner_bnr">
@@ -427,30 +469,33 @@ b:hover {
 					<div class="blueBox">등록자</div> ${output.memNick}
 				</div>
 				<div class="text-left">
-					<img class="profileImgBox"  src="${output.profilePhoto}">
+					<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
 					<div class="intro">${output.profileIntro}</div>
 				</div>
-				<div class="row1 leftBox">
+				<div class="row1 text-center leftBox">
 					<div>
 						프로젝트 등록 ${output.projAddCount}건
 					</div>
 					<div>
-						프로젝트 거래 0건
+						프로젝트 거래 ${output.contractCount}건
 					</div>
 				</div>
 			</div>
 			<div class="container4">
 				<div class="row1 text-left">
-					<div class="blueBox">등록자</div> ${output.memNick}
+					<button class="applyBtn">프로젝트 지원하기</button>
+					<button class="scrapBtn">스크랩</button>
 				</div>
-				<div class="text-left">
-					<img class="profileImgBox"  src="${output.profilePhoto}">
+				<div class="text-center">
+					<div class="applyNum">총 지원자 13명</div>
+				</div>
+				<div class="text-center">
+					<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
 					<div class="intro">${output.profileIntro}</div>
-					${output.projAddCount}
 				</div>
 			</div>
 		</div>
-		<div class="container1" style="height: auto;">
+		<div style="margin-top: 50px;">
 			<div class="a">
 				<b id="bt01">상세정보</b>
 				<b id="bt02">필수요건</b>
@@ -459,16 +504,27 @@ b:hover {
 			</div>
 			<div class="b">
 				<div class="window" id="window1">
-					${output.projDetail}
+					<div class="tabContent">
+						${output.projDetail}
+					</div>
 				</div>
 				<div class="window" id="window2">
-					${output.projRequire}
+					<div class="tabName">필수요건</div>
+					<div class="tabContent">
+						${output.projRequire}
+					</div>
 				</div>
 				<div class="window" id="window3">
-					문의하기
+					<div class="tabName">문의하기</div>
+					<div class="tabContent">
+						문의하기 부분
+					</div>
 				</div>
 				<div class="window" id="window4">
-					후기
+					<div class="tabName">후기</div>
+					<div class="tabContent">
+						후기 부분
+					</div>
 				</div>
 			</div>
 		</div>

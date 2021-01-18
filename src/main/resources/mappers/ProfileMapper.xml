@@ -15,10 +15,13 @@
         <result property="profileChChk" column="profile_ch_chk" />
         <result property="profileChChkDate" column="profile_ch_chk_date" />
         <result property="profileCareer" column="profile_career" />
+        <result property="profileCareerName" column="profile_career_name" />
         <result property="profileSaleChk" column="profile_sale_chk" />
         <result property="profileNation" column="profile_nation" />
+        <result property="profileNationName" column="profile_nation_name" />
         <result property="profileBizNum" column="profile_biz_num" />
         <result property="profileBizSort" column="profile_biz_sort" />
+        <result property="profileBizSortName" column="profile_biz_sort_name" />
         <result property="profileBizCerti" column="profile_biz_certi" />
         <result property="profileCh" column="profile_ch" />
         <result property="profileIndus" column="profile_indus" />
@@ -30,8 +33,14 @@
         <result property="profileRname" column="profile_rname" />
         <result property="profileSort" column="profile_sort" />
         <result property="profileHit" column="profile_hit" />
+        <result property="profileVolume" column="profile_volume" />
         <result property="profileIndusName" column="profile_indus_name" />
         <result property="profilePhotoList" column="profile_photo_list" />
+        <result property="memNick" column="mem_nick" />
+        <result property="memRname" column="mem_rname" />
+        <result property="projAddCount" column="proj_add_count" />
+        <result property="recommendCount" column="recommend_count" />
+        <result property="contractCount" column="contract_count" />
     </resultMap>
     
     <insert id="insertItem"
@@ -74,13 +83,78 @@
     	resultMap="ProfileMap">
     	SELECT 
 	   		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, profile_ch_chk_date, 
-    		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
-    		profile_ch, profile_indus as profile_indus_name, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
-    		Profile_hashtag, profile_rname, profile_sort, profile_hit
-    	FROM ProfileList s
-        INNER JOIN IndusList i
-        ON s.profile_indus = i.indus_id
-		ORDER BY profile_idx DESC
+    		profile_career, profile_career as profile_career_name, profile_sale_chk, profile_nation, profile_nation as profile_nation_name, 
+    		profile_biz_num, profile_biz_sort, profile_biz_sort profile_biz_sort_name, profile_biz_certi, 
+    		profile_ch, i.indus_name as profile_indus_name, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
+    		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
+		FROM ProfileList s
+		INNER JOIN IndusList i
+		ON s.profile_indus = i.indus_id
+		INNER JOIN MemList m
+		ON s.profile_mem_id = m.mem_id
+		
+		<where>
+			<if test="memNick != '' and memNick != null">
+        		OR mem_nick LIKE concat('%', #{memNick}, '%')
+        	</if>
+        	<if test="profileMemId != '' and profileMemId != null">
+        		OR profile_mem_id LIKE concat('%', #{profileMemId}, '%')
+        	</if>
+        	<if test="profileIntro != '' and profileIntro != null">
+        		OR profile_intro LIKE concat('%', #{profileIntro}, '%')
+        	</if>
+        	
+        	<if test="profileBizSortArr != '' and profileBizSortArr != null">
+        		AND profile_biz_sort IN
+	            <foreach collection="profileBizSortArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileNationArr != '' and profileNationArr != null">
+        		AND profile_nation IN
+	            <foreach collection="profileNationArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileIndusArr != '' and profileIndusArr != null">
+        		AND profile_indus IN
+	            <foreach collection="profileIndusArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileChannelArr != '' and profileChannelArr != null">
+        		AND profile_ch IN
+	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+		</where>
+		
+		<if test="sort == 'defaultSort'">
+       		ORDER BY profile_idx DESC
+       	</if>
+       	<if test="sort == 'volumeSort'">
+       		ORDER BY profile_volume DESC
+       	</if>
+       	<if test="sort == 'regSort'">
+       		ORDER BY profile_reg_date DESC
+       	</if>
+       	<if test="sort == 'recommendSort'">
+       		ORDER BY recommend_count DESC
+       	</if>
+       	<if test="sort == 'hitSort'">
+       		ORDER BY profile_hit DESC
+       	</if>
+       	
+        <if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
     </select>
     
     <select id="selectItem"
@@ -95,5 +169,57 @@
     	FROM ProfileList
     	WHERE profile_mem_id = #{profileMemId}
     </select>
-
+    
+	<!-- 데이터 수 조회 -->
+	<select id="selectCountAll"
+		parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM ProfileList s
+		INNER JOIN IndusList i
+		ON s.profile_indus = i.indus_id
+		INNER JOIN MemList m
+		ON s.profile_mem_id = m.mem_id
+		
+		<where>
+			<if test="memNick != '' and memNick != null">
+        		OR mem_nick LIKE concat('%', #{memNick}, '%')
+        	</if>
+        	<if test="profileMemId != '' and profileMemId != null">
+        		OR profile_mem_id LIKE concat('%', #{profileMemId}, '%')
+        	</if>
+        	<if test="profileIntro != '' and profileIntro != null">
+        		OR profile_intro LIKE concat('%', #{profileIntro}, '%')
+        	</if>
+        	
+        	<if test="profileBizSortArr != '' and profileBizSortArr != null">
+        		AND profile_biz_sort IN
+	            <foreach collection="profileBizSortArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileNationArr != '' and profileNationArr != null">
+        		AND profile_nation IN
+	            <foreach collection="profileNationArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileIndusArr != '' and profileIndusArr != null">
+        		AND profile_indus IN
+	            <foreach collection="profileIndusArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileChannelArr != '' and profileChannelArr != null">
+        		AND profile_Ch IN
+	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+		</where>
+		
+	</select>
 </mapper>
