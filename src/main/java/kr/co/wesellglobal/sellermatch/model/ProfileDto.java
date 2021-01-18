@@ -183,19 +183,19 @@ public class ProfileDto {
 	 }
 	 
 	 public String getProfileCareerName() {
-		 if (this.profileCareerName.equals("0")) {
+		 if (this.profileCareer.equals("0")) {
 			 return this.profileCareerName = "경력없음";
 		 }
-		 if (this.profileCareerName.equals("1")) {
+		 if (this.profileCareer.equals("1")) {
 			 return this.profileCareerName = "1개월 이상";
 		 }
-		 if (this.profileCareerName.equals("3")) {
+		 if (this.profileCareer.equals("3")) {
 			 return this.profileCareerName = "3개월 이상";
 		 }
-		 if (this.profileCareerName.equals("6")) {
+		 if (this.profileCareer.equals("6")) {
 			 return this.profileCareerName = "6개월 이상";
 		 }
-		 if (this.profileCareerName.equals("9")) {
+		 if (this.profileCareer.equals("9")) {
 			 return this.profileCareerName = "1년 이상";
 		 }
 		 return "";
@@ -212,74 +212,74 @@ public class ProfileDto {
 	 }
 	 
 	 public String getProfileNationName() {
-		 if (this.profileNationName.equals("02")) {
+		 if (this.profileNation.equals("02")) {
 			 return this.profileNationName = "서울";
 		 }
-		 if (this.profileNationName.equals("031")) {
+		 if (this.profileNation.equals("031")) {
 			 return this.profileNationName = "경기";
 		 }
-		 if (this.profileNationName.equals("032")) {
+		 if (this.profileNation.equals("032")) {
 			 return this.profileNationName = "인천";
 		 }
-		 if (this.profileNationName.equals("033")) {
+		 if (this.profileNation.equals("033")) {
 			return this.profileNationName = "강원";
 		}
-		if (this.profileNationName.equals("041")) {
+		if (this.profileNation.equals("041")) {
 			return this.profileNationName = "충남";
 		}
-		if (this.profileNationName.equals("042")) {
+		if (this.profileNation.equals("042")) {
 			return this.profileNationName = "대전";
 		}
-		if (this.profileNationName.equals("043")) {
+		if (this.profileNation.equals("043")) {
 			return this.profileNationName = "충북";
 		}
-		if (this.profileNationName.equals("051")) {
+		if (this.profileNation.equals("051")) {
 			return this.profileNationName = "부산";
 		}
-		if (this.profileNationName.equals("052")) {
+		if (this.profileNation.equals("052")) {
 			return this.profileNationName = "울산";
 		}
-		if (this.profileNationName.equals("053")) {
+		if (this.profileNation.equals("053")) {
 			return this.profileNationName = "대구";
 		}
-		if (this.profileNationName.equals("054")) {
+		if (this.profileNation.equals("054")) {
 			return this.profileNationName = "경북";
 		}
-		if (this.profileNationName.equals("055")) {
+		if (this.profileNation.equals("055")) {
 			return this.profileNationName = "경남";
 		}
-		if (this.profileNationName.equals("061")) {
+		if (this.profileNation.equals("061")) {
 			return this.profileNationName = "전남";
 		}
-		if (this.profileNationName.equals("062")) {
+		if (this.profileNation.equals("062")) {
 			return this.profileNationName = "광주";
 		}
-		if (this.profileNationName.equals("063")) {
+		if (this.profileNation.equals("063")) {
 			return this.profileNationName = "전북";
 		}
-		if (this.profileNationName.equals("044")) {
+		if (this.profileNation.equals("044")) {
 			return this.profileNationName = "세종특별자치시";
 		}
-		if (this.profileNationName.equals("064")) {
+		if (this.profileNation.equals("064")) {
 			return this.profileNationName = "세종특별자치도";
 		}
 		 return this.profileNationName = "해외";
 	 }
 	 
 	 public String getProfileBizSortName() {
-		 if (this.profileBizSortName.equals("1")) {
+		 if (this.profileBizSort.equals("1")) {
 			 return this.profileBizSortName = "법인사업자";
 		 }
-		 if (this.profileBizSortName.equals("2")) {
+		 if (this.profileBizSort.equals("2")) {
 			 return this.profileBizSortName = "개인사업자";
 		 }
-		 if (this.profileBizSortName.equals("3")) {
+		 if (this.profileBizSort.equals("3")) {
 			 return this.profileBizSortName = "간이과세자";
 		 }
-		 if (this.profileBizSortName.equals("4")) {
+		 if (this.profileBizSort.equals("4")) {
 			 return this.profileBizSortName = "개인";
 		 }
-		 if (this.profileBizSortName.equals("5")) {
+		 if (this.profileBizSort.equals("5")) {
 			 return this.profileBizSortName = "기타";
 		 }
 		 return this.profileBizSortName = "";

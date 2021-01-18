@@ -63,10 +63,13 @@
     padding: 20px;
 }
 .container4{
-	border-left: 2px solid #e3e3e3;
-	border-bottom: 2px solid #e3e3e3;
+    border-left: 2px solid #e3e3e3;
+    border-bottom: 2px solid #e3e3e3;
+    border-right: 2px solid #e3e3e3;
     height: 310px;
-    width: 362px;
+    width: 364px;
+    margin-right: -2px;
+    background-color: white;
     float: right;
     padding: 20px;
 }
@@ -310,20 +313,20 @@ a:focus, a:hover{
 	width: 100%;
 	border-bottom: 3px solid black;
 }
-b {
+.c {
 	display: inline-block;
     text-align: center;
     padding-top: 7px;
     cursor: pointer;
     width: 100px;
     height: 30px;
-    border-bottom: 1px solid black;
+    margin-bottom: -2px;
 }
-b:active {
+.c:active {
 	background-color: #e3e3e3;
 	border: 1px solid black;
 }
-b:hover {
+.c:hover {
 	background-color: #e3e3e3;
 	border: 1px solid black;
 }
@@ -358,12 +361,29 @@ b:hover {
 	height: 50px;
 	font-size: 18px;
     display: inline-block;
-    background-color: #e3e3e3;
+    background-color: white;
     float: left;
+    border: 1px solid #e3e3e3;
 }
 .applyNum{
-	margin-top: 40px;
+	margin: 30px;
 	font-size: 18px;
+}
+.applyNick{
+	display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    font-size: 10px;
+    text-align: left;
+    color: #00B0F0;
+    margin: 20px 0;
+}
+.applyTag{
+	display: inline-block;
+	margin: 15px 0;
+    font-size: 10px;
+    text-align: left;
+    color: #aaa;
 }
 </style>
 <div class="partner_bnr">
@@ -491,16 +511,19 @@ b:hover {
 				</div>
 				<div class="text-center">
 					<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
-					<div class="intro">${output.profileIntro}</div>
+					<div class="applyNick">
+						<div>(${output.memNick})</div>
+						<div class="applyTag">억단위 매출</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div style="margin-top: 50px;">
 			<div class="a">
-				<b id="bt01">상세정보</b>
-				<b id="bt02">필수요건</b>
-				<b id="bt03">문의하기</b>
-				<b id="bt04">후기</b>
+				<span class="c" id="bt01">상세정보</span>
+				<span class="c" id="bt02">필수요건</span>
+				<span class="c" id="bt03">문의하기</span>
+				<span class="c" id="bt04">후기</span>
 			</div>
 			<div class="b">
 				<div class="window" id="window1">
@@ -541,32 +564,32 @@ $(document).ready(function() {
 	$(document).on("click", "#bt01" ,function(){
 		var position = $("#window1").offset(); /* 함수 position에 #window1의 위치를 담는다 */
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500); /* 문서의 스크롤 위치를 애니메이션으로 이동 -> 그 위치는 함수 position(#window1의 좌표값)의 top값 */
-		$("b").css("background-color", "#fff");
-		$("b").css("border", "0");
+		$(".c").css("background-color", "#fff");
+		$(".c").css("border", "0");
 		$("#bt01").css("background-color", "#e3e3e3");
 		$("#bt01").css("border", "1px solid black");
 	});
 	$(document).on("click", "#bt02" ,function(){
 		var position = $("#window2").offset();
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
-		$("b").css("background-color", "#fff");
-		$("b").css("border", "0");
+		$(".c").css("background-color", "#fff");
+		$(".c").css("border", "0");
 		$("#bt02").css("background-color", "#e3e3e3");
 		$("#bt02").css("border", "1px solid black");
 	});
 	$(document).on("click", "#bt03" ,function(){
 		var position = $("#window3").offset();
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
-		$("b").css("background-color", "#fff");
-		$("b").css("border", "0");
+		$(".c").css("background-color", "#fff");
+		$(".c").css("border", "0");
 		$("#bt03").css("background-color", "#e3e3e3");
 		$("#bt03").css("border", "1px solid black");
 	});
 	$(document).on("click", "#bt04" ,function(){
 		var position = $("#window4").offset();
 		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
-		$("b").css("background-color", "#fff");
-		$("b").css("border", "0");
+		$(".c").css("background-color", "#fff");
+		$(".c").css("border", "0");
 		$("#bt04").css("background-color", "#e3e3e3");
 		$("#bt04").css("border", "1px solid black");
 	});
