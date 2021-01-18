@@ -472,7 +472,7 @@ b:hover {
 					<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
 					<div class="intro">${output.profileIntro}</div>
 				</div>
-				<div class="row1 text-center leftBox">
+				<div class="row1 text-left leftBox">
 					<div>
 						프로젝트 등록 ${output.projAddCount}건
 					</div>
