@@ -80,7 +80,9 @@
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a id="projectInsert" href="#" data-member="${member.memId}"><i class="fas fa-bolt"></i> 프로젝트 등록</a>
+                <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}">
+                	<i class="fas fa-bolt"></i> 프로젝트 등록
+                </a>
             </div>
        </div>
    </div>

@@ -14,6 +14,11 @@
     padding-top: 180px;
     padding-bottom: 100px;
 }
+.partner_bnr .partner_wrap {
+    width: 1903px;
+    margin: 0 auto;
+    text-align: left;
+}
 .partner_bnr2 {
     width: 100%;
     padding-bottom: 100px;
@@ -37,7 +42,7 @@
 	display: inline-block;
 	overflow-x:hidden;
 	overflow-y:auto;
-	width:12.27%;
+	width:12.66%;
 	height:200px;
 	border: 1px solid #e3e3e3;
 	text-align: left;
@@ -172,6 +177,7 @@
 .projDetail a{
 	text-decoration: none;
 	color: black;
+	cursor: pointer;
 }
 a:focus, a:hover{
 	text-decoration: none;
@@ -250,334 +256,333 @@ a:focus, a:hover{
 }
 </style>
 <div class="partner_bnr">
-    <div class="partner_wrap">
-        <span class="font-30">프로젝트 찾기</span>
-    </div>
-</div>
-<div class="partner_bnr2">
-	<div class="search_bnr">
-	    <div class="search_wrap">
-	        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
-		        <div class="input_group">
-		            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요.">
-		            <button type="submit" class="btn_search">
-		                <i class="fas fa-bolt"> 검색</i>   
-		            </button>    
+	<div class="partner_wrap">
+		<div class="partner_bnr2">
+			<div class="search_bnr">
+			    <div class="search_wrap">
+			        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
+				        <div class="input_group">
+				            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요.">
+				            <button type="submit" class="btn_search">
+				                <i class="fas fa-bolt"> 검색</i>   
+				            </button>    
+				        </div>
+				        <input type="hidden" value="defaultSort" id="sort" name="sort">
+				    </form>
+			    </div>    
+			</div>
+		</div>
+		<div class="partner_bnr2">
+		    <div class="partner_wrap" style="text-align: center;">
+		        <div class="partner_list vertical-middle">
+		            <!-- <div class="search_chk"><input type="checkbox" class="checkAll" id="projSort">전체검색</div> -->
+		            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="2" >판매자검색</div>
+		            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="1" >공급자검색</div>
 		        </div>
-		        <input type="hidden" value="defaultSort" id="sort" name="sort">
-		    </form>
-	    </div>    
-	</div>
-</div>
-<div class="partner_bnr2">
-    <div class="partner_wrap">
-        <div class="partner_list vertical-middle">
-            <!-- <div class="search_chk"><input type="checkbox" class="checkAll" id="projSort">전체검색</div> -->
-            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="2" >판매자검색</div>
-            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="1" >공급자검색</div>
-        </div>
-    </div>
-</div>
-<div class="partner_bnr2">
-    <div class="partner_wrap">
-        <div class="partner_list">
-            <div class="chk_list_container">
-            	<div class="chk_listBox basic-scroll">
-            		<span>지역구분</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projNation">전체</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="02">서울</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="031">경기</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="032">인천</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="033">강원</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="041">충남</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="042">대전</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="043">충북</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="051">부산</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="052">울산</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="053">대구</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="054">경북</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="055">경남</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="061">전남</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="062">광주</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="063">전북</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="044">세종특별자치시</li>
-	            		<li><input type="checkbox" class="check" name="projNation" value="064">세종특별자치도</li>
-	            	</ul>
-            	</div>
-            	<div class="chk_listBox"><span>상품분류</span>
-	            	<ul>
-	            		<li><input id="projIndus" class="checkAll" type="checkbox">전체</li>
-	            		<c:forEach var="indusList" items="${indusList}">
-	            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}">${indusList.indusName}</li>
-	            		</c:forEach>
-	            	</ul>
-            	</div>
-            	<div class="chk_listBox"><span>상품단가</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projPrice">전체</li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="9999">1만원 미만</li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="19999">2만원 미만</li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="49999">5만원 미만</li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="99999">10만원 미만</li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="100000">10만원 이상</li>
-	            	</ul>
-            	</div>
-            	<div class="chk_listBox"><span>판매마진</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll"  id="projMargin">전체</li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="10">10%이하</li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="20">11%~20%</li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="30">21%~30%</li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="31">30%초과</li>
-	            	</ul>
-            	</div>
-            	<div class="chk_listBox"><span>공급방법</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projSupplyType">전체</li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="1">OEM</li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="2">위탁판매</li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="3">도매공급</li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="4">운영대행</li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="5">경매공급</li>
-	            	</ul>
-            	</div>
-            	<div class="chk_listBox"><span>공급자검증</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="ppmemRname">전체</li>
-	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1">신원인증</li>
-	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1">사업자인증</li>
-	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1">상품검증</li>
-	            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProfit" value="1">수익성검증</li>
-	            	</ul>
-            	</div>
-            	<div class="chk_listBox"><span>판매자검증</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="sellermemRname">전체</li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1">신원인증</li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1">사업자인증</li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1">채널검증</li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1">매출검증</li>
-	            	</ul>
-            	</div>
-            	<div class="chk_listBox"><span>판매채널</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projChannel">전체</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="1">오픈마켓</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="2">종합몰</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="3">폐쇄몰</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="4">커뮤니티</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="5">SNS</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="6">오프라인</li>
-	            		<li><input type="checkbox" class="check" name="projChannel" value="7">해외</li>
-	            	</ul>
-            	</div>
-            </div>
-        </div>
-    </div>
-</div>
-    <div class="page-wrapper" style="position:relative;" id="premium">
-      <!--page slider -->
-      <div class="post-slider">
-        <i class="fas fa-chevron-left prev"></i>
-        <i class="fas fa-chevron-right next"></i>
-        <div class="post-wrapper">
-        	<c:forEach var="output" items="${output}" varStatus="status">
-        		<div class="post">
-			      <div class="post-info">
-			        <div class="row1">
-			        	<c:if test="${output.projSort == 1}">
-			        		<button class="p-findBtn">${output.projSortName} 찾기</button>
-			        	</c:if>
-			        	<c:if test="${output.projSort == 2}">
-			        		<button class="s-findBtn">${output.projSortName} 찾기</button>
-			        	</c:if>
-			        </div>
-			        <div class="row1">
-			        	${output.projNationName}지역
-			        </div>
-			        <div class="row1">
-			        	${output.projTitle}
-			        </div>
-			        <hr>
-					<div class="row2">
-						<span class="leftBox margin-0">모집자수</span>
-						<span class="rightBox margin-0">${output.projRecruitNum}명</span>
-					</div>
-					<div class="row2">
-						<span class="leftBox margin-0">지원자수</span>
-						<span class="rightBox margin-0">${output.applyCount}명</span>
-					</div>
-					<div class="row2">
-						<span class="leftBox margin-0">지원마감일</span>
-						<span class="rightBox margin-0">${output.projEndDate}</span>
-					</div>
-					<div class="row2">
-						<span class="leftBox margin-0">관심조회</span>
-						<span class="rightBox margin-0">${output.projHit}회</span>
-					</div>
-			      </div>
-			    </div>
-        	</c:forEach>
+		    </div>
 		</div>
-	  </div>	    
-      <!--post slider-->
-    </div>
-<div class="container2 content">
-	<span class="leftBox">전체 ${projCount}건</span>
-	<div class="rightBox">
-		<a href="javascript:void(0)" class="sort" id="defaultSort">기본정렬 /</a>
-		<a href="javascript:void(0)" class="sort" id="endSort">마감일순 /</a>
-		<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
-		<a href="javascript:void(0)" class="sort" id="applySort">참여자순 /</a>
-		<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
-	</div>
-</div>
-<c:forEach var="output" items="${output}" varStatus="status">
-	<div class="container1 content">
-		<div class="container2">
-			<input type="hidden" id="projId${status.index}" value="${output.projId}">
-			<div class="row1">
-				<div class="leftBox">
-					<span pattern="yyyy-MM-dd">• 등록일 : ${output.projRegDate}</span>
-				</div>	
-				<div class="rightBox">
-					<span>+ 관심프로젝트등록</span>
+		<div class="partner_bnr2">
+		    <div class="partner_wrap">
+		        <div class="partner_list">
+		            <div class="chk_list_container">
+		            	<div class="chk_listBox basic-scroll">
+		            		<span>지역구분</span>
+			            	<ul>
+			            		<li><input type="checkbox" class="checkAll" id="projNation">전체</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="02">서울</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="031">경기</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="032">인천</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="033">강원</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="041">충남</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="042">대전</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="043">충북</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="051">부산</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="052">울산</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="053">대구</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="054">경북</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="055">경남</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="061">전남</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="062">광주</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="063">전북</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="044">세종특별자치시</li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="064">세종특별자치도</li>
+			            	</ul>
+		            	</div>
+		            	<div class="chk_listBox"><span>상품분류</span>
+			            	<ul>
+			            		<li><input id="projIndus" class="checkAll" type="checkbox">전체</li>
+			            		<c:forEach var="indusList" items="${indusList}">
+			            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}">${indusList.indusName}</li>
+			            		</c:forEach>
+			            	</ul>
+		            	</div>
+		            	<div class="chk_listBox"><span>상품단가</span>
+			            	<ul>
+			            		<li><input type="checkbox" class="checkAll" id="projPrice">전체</li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="9999">1만원 미만</li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="19999">2만원 미만</li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="49999">5만원 미만</li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="99999">10만원 미만</li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="100000">10만원 이상</li>
+			            	</ul>
+		            	</div>
+		            	<div class="chk_listBox"><span>판매마진</span>
+			            	<ul>
+			            		<li><input type="checkbox" class="checkAll"  id="projMargin">전체</li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="10">10%이하</li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="20">11%~20%</li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="30">21%~30%</li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="31">30%초과</li>
+			            	</ul>
+		            	</div>
+		            	<div class="chk_listBox"><span>공급방법</span>
+			            	<ul>
+			            		<li><input type="checkbox" class="checkAll" id="projSupplyType">전체</li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="1">OEM</li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="2">위탁판매</li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="3">도매공급</li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="4">운영대행</li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="5">경매공급</li>
+			            	</ul>
+		            	</div>
+		            	<div class="chk_listBox"><span>공급자검증</span>
+			            	<ul>
+			            		<li><input type="checkbox" class="checkAll" id="ppmemRname">전체</li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1">신원인증</li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1">사업자인증</li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1">상품검증</li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProfit" value="1">수익성검증</li>
+			            	</ul>
+		            	</div>
+		            	<div class="chk_listBox"><span>판매자검증</span>
+			            	<ul>
+			            		<li><input type="checkbox" class="checkAll" id="sellermemRname">전체</li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1">신원인증</li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1">사업자인증</li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1">채널검증</li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1">매출검증</li>
+			            	</ul>
+		            	</div>
+		            	<div class="chk_listBox"><span>판매채널</span>
+			            	<ul>
+			            		<li><input type="checkbox" class="checkAll" id="projChannel">전체</li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="1">오픈마켓</li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="2">종합몰</li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="3">폐쇄몰</li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="4">커뮤니티</li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="5">SNS</li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="6">오프라인</li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="7">해외</li>
+			            	</ul>
+		            	</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		    <div class="page-wrapper" style="position:relative;" id="premium">
+		      <!--page slider -->
+		      <div class="post-slider">
+		        <i class="fas fa-chevron-left prev"></i>
+		        <i class="fas fa-chevron-right next"></i>
+		        <div class="post-wrapper">
+		        	<c:forEach var="output" items="${output}" varStatus="status">
+		        		<div class="post">
+					      <div class="post-info">
+					        <div class="row1">
+					        	<c:if test="${output.projSort == 1}">
+					        		<button class="p-findBtn">${output.projSortName} 찾기</button>
+					        	</c:if>
+					        	<c:if test="${output.projSort == 2}">
+					        		<button class="s-findBtn">${output.projSortName} 찾기</button>
+					        	</c:if>
+					        </div>
+					        <div class="row1">
+					        	${output.projNationName}지역
+					        </div>
+					        <div class="row1">
+					        	${output.projTitle}
+					        </div>
+					        <hr>
+							<div class="row2">
+								<span class="leftBox margin-0">모집자수</span>
+								<span class="rightBox margin-0">${output.projRecruitNum}명</span>
+							</div>
+							<div class="row2">
+								<span class="leftBox margin-0">지원자수</span>
+								<span class="rightBox margin-0">${output.applyCount}명</span>
+							</div>
+							<div class="row2">
+								<span class="leftBox margin-0">지원마감일</span>
+								<span class="rightBox margin-0">${output.projEndDate}</span>
+							</div>
+							<div class="row2">
+								<span class="leftBox margin-0">관심조회</span>
+								<span class="rightBox margin-0">${output.projHit}회</span>
+							</div>
+					      </div>
+					    </div>
+		        	</c:forEach>
 				</div>
-			</div>
-			<div class="row1 leftBox">
-				<c:if test="${output.profileBizCerti == 1}">
-					<div class="orangeBox">사업자인증</div>
-				</c:if>
-				<c:if test="${output.memRname == 1}">
-					<div class="orangeBox">신원인증</div>
-				</c:if>
-				<c:if test="${output.projProfit == 1}">
-					<div class="orangeBox">수익성검증</div>
-				</c:if>
-				<c:if test="${output.projProdCerti == 1}">
-					<div class="orangeBox">상품검증</div>
-				</c:if>
-				<c:if test="${output.profileChChk == 1}">
-					<div class="orangeBox">채널검증</div>
-				</c:if>
-				<c:if test="${output.profileSaleChk == 1}">
-					<div class="orangeBox">매출검증</div>
-				</c:if>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row1 leftBox projDetail"  data-index="${status.index}">
-				<c:if test="${output.projSort == 1}">
-					<div class="titleBox"><a><span class="pp">공급자</span> | ${output.projTitle}</a></div>
-				</c:if>
-				<c:if test="${output.projSort == 2}">
-					<div class="titleBox"><a><span class="sp">판매자</span> | ${output.projTitle}</a></div>
-				</c:if>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row1 leftBox">
-				<div class="contentsBox">
-					${output.projDetail}
-				</div>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row1 leftBox">
-				<div class="tagContainer">
-					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-	            		<div class="tagBox">#${projKeywordList}</div>
-	            	</c:forEach>
-				</div>
+			  </div>	    
+		      <!--post slider-->
+		    </div>
+		<div class="container2 content">
+			<span class="leftBox">전체 ${projCount}건</span>
+			<div class="rightBox">
+				<a href="javascript:void(0)" class="sort" id="defaultSort">기본정렬 /</a>
+				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 /</a>
+				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
+				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 /</a>
+				<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
 			</div>
 		</div>
-		<div class="container3">
-			<div class="row1 text-left">
-				<c:choose>
-					<c:when test="${output.projDday < 0}">
-						<div class="blueBox">마감</div>
-					</c:when>
-					<c:otherwise>
-						<div class="blueBox">마감 ${output.projDday}일전</div>
-					</c:otherwise>
-				</c:choose>
+		<c:forEach var="output" items="${output}" varStatus="status">
+			<div class="container1 content">
+				<div class="container2">
+					<input type="hidden" id="projId${status.index}" value="${output.projId}">
+					<div class="row1">
+						<div class="leftBox">
+							<span pattern="yyyy-MM-dd">• 등록일 : ${output.projRegDate}</span>
+						</div>	
+						<div class="rightBox">
+							<span>+ 관심프로젝트등록</span>
+						</div>
+					</div>
+					<div class="row1 leftBox">
+						<c:if test="${output.profileBizCerti == 1}">
+							<div class="orangeBox">사업자인증</div>
+						</c:if>
+						<c:if test="${output.memRname == 1}">
+							<div class="orangeBox">신원인증</div>
+						</c:if>
+						<c:if test="${output.projProfit == 1}">
+							<div class="orangeBox">수익성검증</div>
+						</c:if>
+						<c:if test="${output.projProdCerti == 1}">
+							<div class="orangeBox">상품검증</div>
+						</c:if>
+						<c:if test="${output.profileChChk == 1}">
+							<div class="orangeBox">채널검증</div>
+						</c:if>
+						<c:if test="${output.profileSaleChk == 1}">
+							<div class="orangeBox">매출검증</div>
+						</c:if>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row1 leftBox projDetail" data-index="${status.index}">
+						<c:if test="${output.projSort == 1}">
+							<div class="titleBox"><a><span class="pp">공급자</span> | ${output.projTitle}</a></div>
+						</c:if>
+						<c:if test="${output.projSort == 2}">
+							<div class="titleBox"><a><span class="sp">판매자</span> | ${output.projTitle}</a></div>
+						</c:if>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row1 leftBox projDetail" data-index="${status.index}">
+						<div class="contentsBox">
+							<a>${output.projDetail}</a>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row1 leftBox">
+						<div class="tagContainer">
+							<c:forEach var="projKeywordList" items="${output.projKeywordList}">
+			            		<div class="tagBox">#${projKeywordList}</div>
+			            	</c:forEach>
+						</div>
+					</div>
+				</div>
+				<div class="container3">
+					<div class="row1 text-left">
+						<c:choose>
+							<c:when test="${output.projDday < 0}">
+								<div class="blueBox">마감</div>
+							</c:when>
+							<c:otherwise>
+								<div class="blueBox">마감 ${output.projDday}일전</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="row2"></div>
+					<div class="row1">
+						<span class="leftBox">모집자수</span>
+						<span class="rightBox">${output.projRecruitNum}명</span>
+					</div>
+					<div class="row1">
+						<span class="leftBox">지원자수</span>
+						<span class="rightBox">${output.applyCount}명</span>
+					</div>
+					<div class="row1">
+						<span class="leftBox">지원마감일</span>
+						<span class="rightBox">${output.projEndDate}</span>
+					</div>
+					<div class="row1">
+						<span class="leftBox">관심조회</span>
+						<span class="rightBox">${output.projHit}회</span>
+					</div>
+				</div>
 			</div>
-			<div class="row2"></div>
+		</c:forEach>
+		<div class="partner_bnr2 pageBox">
 			<div class="row1">
-				<span class="leftBox">모집자수</span>
-				<span class="rightBox">${output.projRecruitNum}명</span>
+				<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
+					<ul class="pagination">
+					<!-- 페이지 번호 구현 -->
+				    <%-- 이전 그룹에 대한 링크 --%>
+				    <c:choose>
+				        <%-- 이전 그룹으로 이동 가능하다면? --%>
+				        <c:when test="${pageData.prevPage > 0}">
+				            <%-- 이동할 URL 생성 --%>
+				            <c:url value="/project/find" var="prevPageUrl">
+				                <c:param name="page" value="${pageData.prevPage}" />
+				                <c:param name="keyword" value="${keyword}" />
+				            </c:url>
+				            <li><a href="${prevPageUrl}">&laquo;</a></li>
+				        </c:when>
+				        <c:otherwise>
+				            <li><a>&laquo;</a></li>
+				        </c:otherwise>
+				    </c:choose>
+				    
+				    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+				    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
+				        <%-- 이동할 URL 생성 --%>
+				        <c:url value="/project/find" var="pageUrl">
+				            <c:param name="page" value="${i}"/>
+				            <c:param name="keyword" value="${keyword}"/>
+				        </c:url>
+				        
+				        <%-- 페이지 번호 출력 --%>
+				        <c:choose>
+				            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+				            <c:when test="${pageData.nowPage == i}">
+				                <li><a><strong>${i}</strong></a></li>
+				            </c:when>
+				            <%-- 나머지 페이지의 경우 링크 적용함 --%>
+				            <c:otherwise>
+				                <li><a href="${pageUrl}">${i}</a></li>
+				            </c:otherwise>
+				        </c:choose>
+				    </c:forEach>
+				    
+				    <%-- 다음 그룹에 대한 링크 --%>
+				    <c:choose>
+				        <%-- 다음 그룹으로 이동 가능하다면? --%>
+				        <c:when test="${pageData.nextPage > 0}">
+				            <%-- 이동할 URL 생성 --%>
+				            <c:url value="/project/find" var="nextPageUrl">
+				                <c:param name="page" value="${pageData.nextPage}" />
+				                <c:param name="keyword" value="${keyword}" />
+				            </c:url>
+				            <li><a href="${nextPageUrl}">&raquo;</a></li>
+				        </c:when>
+				        <c:otherwise>
+				            <li><a>&raquo;</a></li>
+				        </c:otherwise>
+				    </c:choose>
+					</ul>
+				</div>
 			</div>
-			<div class="row1">
-				<span class="leftBox">지원자수</span>
-				<span class="rightBox">${output.applyCount}명</span>
-			</div>
-			<div class="row1">
-				<span class="leftBox">지원마감일</span>
-				<span class="rightBox">${output.projEndDate}</span>
-			</div>
-			<div class="row1">
-				<span class="leftBox">관심조회</span>
-				<span class="rightBox">${output.projHit}회</span>
-			</div>
-		</div>
-	</div>
-</c:forEach>
-<div class="partner_bnr2 pageBox">
-	<div class="row1">
-		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
-			<ul class="pagination">
-			<!-- 페이지 번호 구현 -->
-		    <%-- 이전 그룹에 대한 링크 --%>
-		    <c:choose>
-		        <%-- 이전 그룹으로 이동 가능하다면? --%>
-		        <c:when test="${pageData.prevPage > 0}">
-		            <%-- 이동할 URL 생성 --%>
-		            <c:url value="/project/find" var="prevPageUrl">
-		                <c:param name="page" value="${pageData.prevPage}" />
-		                <c:param name="keyword" value="${keyword}" />
-		            </c:url>
-		            <li><a href="${prevPageUrl}">&laquo;</a></li>
-		        </c:when>
-		        <c:otherwise>
-		            <li><a>&laquo;</a></li>
-		        </c:otherwise>
-		    </c:choose>
-		    
-		    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-		    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
-		        <%-- 이동할 URL 생성 --%>
-		        <c:url value="/project/find" var="pageUrl">
-		            <c:param name="page" value="${i}"/>
-		            <c:param name="keyword" value="${keyword}"/>
-		        </c:url>
-		        
-		        <%-- 페이지 번호 출력 --%>
-		        <c:choose>
-		            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-		            <c:when test="${pageData.nowPage == i}">
-		                <li><a><strong>${i}</strong></a></li>
-		            </c:when>
-		            <%-- 나머지 페이지의 경우 링크 적용함 --%>
-		            <c:otherwise>
-		                <li><a href="${pageUrl}">${i}</a></li>
-		            </c:otherwise>
-		        </c:choose>
-		    </c:forEach>
-		    
-		    <%-- 다음 그룹에 대한 링크 --%>
-		    <c:choose>
-		        <%-- 다음 그룹으로 이동 가능하다면? --%>
-		        <c:when test="${pageData.nextPage > 0}">
-		            <%-- 이동할 URL 생성 --%>
-		            <c:url value="/project/find" var="nextPageUrl">
-		                <c:param name="page" value="${pageData.nextPage}" />
-		                <c:param name="keyword" value="${keyword}" />
-		            </c:url>
-		            <li><a href="${nextPageUrl}">&raquo;</a></li>
-		        </c:when>
-		        <c:otherwise>
-		            <li><a>&raquo;</a></li>
-		        </c:otherwise>
-		    </c:choose>
-			</ul>
 		</div>
 	</div>
 </div>
@@ -676,9 +681,9 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 			{{/ifCond}}
 		</div>
 		<div class="clearfix"></div>
-		<div class="row1 leftBox">
+		<div class="row1 leftBox projDetail" data-index="{{@key}}">
 			<div class="contentsBox">
-				{{projDetail}}
+				<a>{{projDetail}}</a>
 			</div>
 		</div>
 		<div class="clearfix"></div>

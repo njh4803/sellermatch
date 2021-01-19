@@ -252,6 +252,7 @@ $(document).ready(function() {
 	$(document).on("click", ".findCheck", function(){
 		$(".resultText").remove();
 		var memSort = $("#member").val();
+		console.log(memSort);
 		
 		var value = this.value;
 		if (value != memSort) {

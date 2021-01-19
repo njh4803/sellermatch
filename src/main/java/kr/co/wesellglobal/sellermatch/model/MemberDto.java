@@ -126,7 +126,7 @@ public class MemberDto {
 	}
 	
 	public String getMemSortName() {
-		if (this.memSort.equals("1")) {
+		if (this.memSort.equals("0")) {
 			return "일반";
 		}
 		if (this.memSort.equals("1")) {

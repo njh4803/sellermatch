@@ -19,7 +19,6 @@ public class ApplyServiceImpl implements ApplyService{
 	@Autowired
 	SqlSession sqlSession;
 
-
 	@Override
 	public List<ApplyDto> getApplyList(ApplyDto input) throws Exception {
 		List<ApplyDto> result = null;
@@ -42,7 +41,20 @@ public class ApplyServiceImpl implements ApplyService{
 
 	@Override
 	public void addApply(ApplyDto input) throws Exception {
-		// TODO Auto-generated method stub
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("ApplyMapper.insertItem", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
 		
 	}
 
@@ -67,8 +79,37 @@ public class ApplyServiceImpl implements ApplyService{
 
 	@Override
 	public void editApply(ApplyDto input) throws Exception {
-		// TODO Auto-generated method stub
+		int result = 0;
 		
+		try {
+			result = sqlSession.update("ApplyMapper.updateItem", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		
+	}
+
+	@Override
+	public int reduplicationCheck(ApplyDto input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("ApplyMapper.reduplicationCheck", input);
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("중복검사에 실패했습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("중복검사에 실패했습니다.");
+		}
+		return result;
 	}
 
 }

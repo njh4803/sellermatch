@@ -66,7 +66,6 @@
     border-left: 2px solid #e3e3e3;
     border-bottom: 2px solid #e3e3e3;
     border-right: 2px solid #e3e3e3;
-    height: 310px;
     width: 364px;
     margin-right: -2px;
     background-color: white;
@@ -390,7 +389,7 @@ a:focus, a:hover{
     <div class="partner_wrap" style="text-align: left;">
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">
-				<input type="hidden" id="projId${status.index}" value="${output.projId}">
+				<input type="hidden" id="projId" value="${output.projId}">
 				<div class="row1">
 				</div>
 				<div class="row1 leftBox">
@@ -610,6 +609,69 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("change", "#image" ,handleImgfileSelect);
+	
+	
+	$(document).on("click", ".applyBtn", function(){
+		var login_id = $('#projectInsert').data('member');
+		var mem_sort = $('#projectInsert').data('memsort');
+		console.log(mem_sort);
+		
+		if (login_id == '') {
+			swal({
+                title: '알림',
+                text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
+		
+		if (mem_sort != 1) {
+			swal({
+                title: '알림',
+                text: '판매자만 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
+		
+		$.ajax({
+			type: "GET",
+		    url: ROOT_URL+"/apply/project",
+		    data: {
+		    	applyProjId: $("#projId").val()
+		    },
+            success: function(json) {
+          		if (json.result == 1) {
+          			swal('알림', '이미 지원한 프로젝트입니다.', 'success');
+          			return;
+				}
+				swal({
+	  		          title: '확인',
+	  		          text: '지원 하시겠습니까?', 
+	  		          type: "question",
+	  		          showCancelButton: true
+	  		    }).then(function(result) {			
+	  		        if (result.value) {
+	  		        	var data = {
+	  		        		applyProjId: $("#projId").val(),
+	  		        		applyProjState:2,
+	  		        		applyType:1
+	  		        	};
+	  		        	  
+	  		        	$.ajax({
+	  			   			type: "POST",
+	  			   	        url: ROOT_URL+"/apply/project",
+	  			   	        data: data,
+	  		                success: function() {
+	  		                	swal('알림', '지원 완료.', 'success');
+	  		                	window.location.href = ROOT_URL+"/project/detail?projId="+$("#projId").val();
+	  		                }
+	  			      	});
+	  		      	}
+				});	
+			}
+		});
+	})
 	
 	$(document).on("click", ".findCheck", function(){
 		$(".joinForm").remove();

@@ -380,6 +380,10 @@ a:focus, a:hover{
     font-weight: bold;
     margin: 0 0 15px 15px;
 }
+.s-box{
+	width: 180px;
+    margin-top: 27px;
+}
 </style>
 <div class="partner_bnr clearfix">
     <div class="partner_wrap" style="text-align: left;">
@@ -572,7 +576,7 @@ a:focus, a:hover{
 				        		</div>
 		        			</div>
 		        		</div>
-		        		<div class="rightBox">
+		        		<div class="rightBox s-box">
 		        			<div class="clearfix">
 		        				<div class="leftBox margin-0">
 				        			<span class="projInfo">계약 프로젝트</span>
@@ -597,15 +601,6 @@ a:focus, a:hover{
 				        		</div>
 				        		<div class="rightBox margin-0">
 				        			<span>${output.recommendCount}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">판매채널</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>오픈마켓 외 2채널</span>
 				        		</div>
 		        			</div>
 		        			<hr>
@@ -862,7 +857,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 				        		</div>
 		        			</div>
 		        		</div>
-		        		<div class="rightBox">
+		        		<div class="rightBox s-box">
 		        			<div class="clearfix">
 		        				<div class="leftBox margin-0">
 				        			<span class="projInfo">계약 프로젝트</span>
@@ -887,15 +882,6 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 				        		</div>
 				        		<div class="rightBox margin-0">
 				        			<span>{{recommendCount}}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">판매채널</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>오픈마켓 외 2채널</span>
 				        		</div>
 		        			</div>
 		        			<hr>

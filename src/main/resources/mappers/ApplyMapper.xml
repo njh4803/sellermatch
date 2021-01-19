@@ -21,6 +21,19 @@
         <result property="profileHashtag" column="Profile_hashtag" />
     </resultMap>
     
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
+    	useGeneratedKeys="true"
+    	keyProperty="applyIdx">
+    	INSERT INTO ApplyList
+    		(`apply_id`, `apply_proj_id`, `apply_mem_id`, `apply_reg_date`, `apply_Profile`, `apply_type`, 
+    		`apply_proj_state`)
+    	 VALUES 
+    	 	(#{applyId}, #{applyProjId}, #{applyMemId}, now(), #{applyProfile}, 
+    	 	#{applyType}, #{applyProjState});
+
+    </insert>
+    
     <select id="selectList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
     	resultMap="applyMap">
@@ -44,6 +57,18 @@
     		apply_idx, apply_id, apply_proj_id, apply_mem_id, apply_reg_date, 
 	   		apply_Profile, apply_type, apply_proj_state, mem_nick, profile_photo, Profile_hashtag
     	FROM ApplyList
+    </select>
+    
+    <update id="updateItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto">
+    </update>
+    
+    <!-- 지원자 중복지원 확인 -->
+    <select id="reduplicationCheck"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
+    	resultType="int">
+    	SELECT COUNT(*) FROM ApplyList WHERE apply_mem_id = #{applyMemId}
+    	AND apply_proj_id = #{applyProjId}  
     </select>
 
 </mapper>
