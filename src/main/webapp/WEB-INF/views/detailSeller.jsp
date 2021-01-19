@@ -518,7 +518,7 @@ a:focus, a:hover{
 					</div>
 				</div>
 				<div class="text-left">
-					<button class="applyBtn" data-toggle="modal" data-target="#recommendModal">프로젝트 지원요청</button>
+					<button class="applyBtn">프로젝트 지원요청</button>
 					<button class="scrapBtn">스크랩</button>
 				</div>
 			</div>
@@ -585,7 +585,6 @@ $(document).ready(function() {
 	$(document).on("click", ".applyBtn", function(){
 		var login_id = $('#projectInsert').data('member');
 		var mem_sort = $('#projectInsert').data('memsort');
-		$("#recommendModal").hide();
 		
 		if (login_id == '') {
 			swal({
@@ -605,7 +604,7 @@ $(document).ready(function() {
 			return;
 		}
 		
-		$("#recommendModal").show();
+		$("#recommendModal").modal();
 	})
 });
 </script>
