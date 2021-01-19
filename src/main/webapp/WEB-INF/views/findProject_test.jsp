@@ -15,7 +15,7 @@
     padding-bottom: 100px;
 }
 .partner_bnr .partner_wrap {
-    width: 1903px;
+    width: 1280px;
     margin: 0 auto;
     text-align: left;
 }
@@ -36,7 +36,6 @@
 }
 .chk_list_container{
 	height: 150px;
-	margin: 0 260px;
 }
 .chk_listBox{
 	display: inline-block;
@@ -50,11 +49,9 @@
 }
 .container1{
 	border: 2px solid #e3e3e3;
-	margin: 0 240px;
 	height: 400px;
 }
 .container2{
-	margin: 0 240px;
 	height: 50px;
 }
 .container1 .container2{
@@ -201,7 +198,7 @@ a:focus, a:hover{
 }
 /*post slider*/
 .post-slider{
-  width:90%;
+  width:100%;
   margin:0px auto;
   position:relative;
 }
@@ -228,7 +225,6 @@ a:focus, a:hover{
 .post-slider .post-wrapper{
 
   width:84%;
-  height:350px;
   margin:0px auto;
   overflow: hidden;
   padding:10px 0px 10px 0px;
@@ -256,8 +252,7 @@ a:focus, a:hover{
 }
 </style>
 <div class="partner_bnr">
-	<div class="partner_wrap">
-		<div class="partner_bnr2">
+	<div class="partner_bnr2">
 			<div class="search_bnr">
 			    <div class="search_wrap">
 			        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
@@ -272,6 +267,7 @@ a:focus, a:hover{
 			    </div>    
 			</div>
 		</div>
+	<div class="partner_wrap">
 		<div class="partner_bnr2">
 		    <div class="partner_wrap" style="text-align: center;">
 		        <div class="partner_list vertical-middle">
