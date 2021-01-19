@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<%@ include file="modal/recommendModal.jsp"%>
 <style>
 .font-30{
 	font-size: 30px;
@@ -52,24 +53,12 @@
 	margin: 0;
     width: 844px;
     height: 396px;
-    float: left;
+    float: right;
 }
 .container3{
-	border-left: 2px solid #e3e3e3;
-	border-bottom: 2px solid #e3e3e3;
-    height: 278px;
+    height: 306px;
     width: 362px;
-    float: right;
-    padding: 20px;
-}
-.container4{
-    border-left: 2px solid #e3e3e3;
-    border-bottom: 2px solid #e3e3e3;
-    border-right: 2px solid #e3e3e3;
-    width: 364px;
-    margin-right: -2px;
-    background-color: white;
-    float: right;
+    float: left;
     padding: 20px;
 }
 .row1{
@@ -148,6 +137,7 @@
 }
 .titleBox{
 	font-size: 30px;
+	margin-left: 20px;
 }
 .titleBox .pp{
 	width: 100px;
@@ -384,6 +374,15 @@ a:focus, a:hover{
     text-align: left;
     color: #aaa;
 }
+.projInfo{
+    margin: 0;
+    width: 40%;
+    font-size: 13px;
+    color: #aaa;
+}
+.projInfo hr{
+	margin: 6px;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap" style="text-align: left;">
@@ -393,53 +392,21 @@ a:focus, a:hover{
 				<div class="row1">
 				</div>
 				<div class="row1 leftBox">
-					<c:choose>
-						<c:when test="${output.projDday < 0}">
-							<div class="blueBox">마감</div>
-						</c:when>
-						<c:otherwise>
-							<div class="blueBox">마감 ${output.projDday}일전</div>
-						</c:otherwise>
-					</c:choose>
-					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-		           		<div class="tagBox">#${projKeywordList}</div>
-		           	</c:forEach>
-				</div>
-				<div class="clearfix"></div>
-				<div class="row1 leftBox projDetail"  data-index="${status.index}">
-					<div class="titleBox">${output.projTitle}</div>
+					<div class="titleBox">오픈마켓 전문 판매대행회사입니다.</div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="row1 leftBox">
 					<div class="infoBox">
-						<div><span>상품분류</span></div>
+						<div><span>유형</span></div>
 						<div>${output.projIndusName}</div>
 					</div>
 					<div class="infoBox">
-						<div><span>상품단가</span></div>
+						<div><span>분류</span></div>
 						<div>${output.projPrice}</div>
 					</div>
 					<div class="infoBox">
-						<div><span>판매마진</span></div>
+						<div><span>지역</span></div>
 						<div>${output.projMarginName}</div>
-					</div>
-					<div class="infoBox">
-						<div><span>등록지역</span></div>
-						<div>${output.projNationName}</div>
-					</div>
-				</div>
-				<div class="row1 leftBox">
-					<div class="infoBox2">
-						<div><span>공급방법</span>${output.projSupplyTypeName}</div>
-					</div>
-					<div class="infoBox2">
-						<div><span>모집마감</span>${output.projEndDate}일</div>
-					</div>
-					<div class="infoBox2">
-						<div><span>모집인원</span>${output.projRecruitNum}명</div>
-					</div>
-					<div class="infoBox2">
-						<div><span>지원자수</span>${output.applyCount}명</div>
 					</div>
 				</div>
 				<div class="row1 leftBox">
@@ -482,6 +449,57 @@ a:focus, a:hover{
 						</div>
 					</div>
 				</div>
+				<div class="row1 leftBox" style="padding: 20px;">
+					<div class="rightBox projInfo">
+	        			<div class="clearfix">
+	        				<div class="leftBox margin-0">
+			        			<span>계약 프로젝트</span>
+			        		</div>
+			        		<div class="rightBox margin-0">
+			        			<span>${output.contractCount}건</span>
+			        		</div>
+	        			</div>
+	        			<hr>
+	        			<div class="clearfix">
+	        				<div class="leftBox margin-0">
+			        			<span>등록 프로젝트</span>
+			        		</div>
+			        		<div class="rightBox margin-0">
+			        			<span>${output.projAddCount}건</span>
+			        		</div>
+	        			</div>
+	        			<hr>
+	        		</div>
+	        		<div class="leftBox projInfo">
+	        			<div class="clearfix">
+	        				<div class="leftBox margin-0">
+			        			<span>요청 받은 수</span>
+			        		</div>
+			        		<div class="rightBox margin-0">
+			        			<span>${output.recommendCount}건</span>
+			        		</div>
+	        			</div>
+	        			<hr>
+	        			<div class="clearfix">
+	        				<div class="leftBox margin-0">
+			        			<span>매출규모</span>
+			        		</div>
+			        		<div class="rightBox margin-0">
+			        			<span>연 ${output.profileVolume} 원</span>
+			        		</div>
+	        			</div>
+	        			<hr>
+	        			<div class="clearfix">
+	        				<div class="leftBox margin-0">
+			        			<span>판매경력</span>
+			        		</div>
+			        		<div class="rightBox margin-0">
+			        			<span>${output.profileCareerName}</span>
+			        		</div>
+	        			</div>
+	        			<hr>
+	        		</div>
+        		</div>
 			</div>
 			<div class="container3">
 				<div class="row1 text-left">
@@ -499,45 +517,17 @@ a:focus, a:hover{
 						프로젝트 거래 ${output.contractCount}건
 					</div>
 				</div>
-			</div>
-			<div class="container4">
-				<div class="row1 text-left">
-					<button class="applyBtn">프로젝트 지원하기</button>
+				<div class="text-left">
+					<button class="applyBtn" data-toggle="modal" data-target="#recommendModal">프로젝트 지원요청</button>
 					<button class="scrapBtn">스크랩</button>
 				</div>
-				<div class="text-center">
-					<div class="applyNum">총 지원자 ${output.applyCount}명</div>
-				</div>
-				<c:choose>
-					<c:when test="${output.applyCount > 0}">
-						<div class="text-center">
-						<c:forEach var="applyDto" items="${applyDto}">
-							<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
-							<div class="applyNick">
-								<div>( ${applyDto.memNick} )</div>
-								<div class="applyTag">
-									<c:forEach var="hashtag" items="${applyDto.profileHashtagList}">
-		        						# ${hashtag}
-		        					</c:forEach>
-								</div>
-							</div>
-						</c:forEach>	
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="text-center">
-							<div>지원자 없음</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
 			</div>
 		</div>
 		<div style="margin-top: 50px;">
 			<div class="a">
 				<span class="c" id="bt01">상세정보</span>
-				<span class="c" id="bt02">필수요건</span>
-				<span class="c" id="bt03">문의하기</span>
-				<span class="c" id="bt04">후기</span>
+				<span class="c" id="bt02">프로젝트(2)</span>
+				<span class="c" id="bt03">공급자평가(2)</span>
 			</div>
 			<div class="b">
 				<div class="window" id="window1">
@@ -546,21 +536,15 @@ a:focus, a:hover{
 					</div>
 				</div>
 				<div class="window" id="window2">
-					<div class="tabName">필수요건</div>
+					<div class="tabName">프로젝트(2)</div>
 					<div class="tabContent">
 						${output.projRequire}
 					</div>
 				</div>
 				<div class="window" id="window3">
-					<div class="tabName">문의하기</div>
+					<div class="tabName">공급자평가(2)</div>
 					<div class="tabContent">
-						문의하기 부분
-					</div>
-				</div>
-				<div class="window" id="window4">
-					<div class="tabName">후기</div>
-					<div class="tabContent">
-						후기 부분
+						공급자평가 부분
 					</div>
 				</div>
 			</div>
@@ -596,20 +580,12 @@ $(document).ready(function() {
 		$(".c").css("border", "0");
 		$("#bt03").css("background-color", "#e3e3e3");
 		$("#bt03").css("border", "1px solid black");
-	});
-	$(document).on("click", "#bt04" ,function(){
-		var position = $("#window4").offset();
-		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
-		$(".c").css("background-color", "#fff");
-		$(".c").css("border", "0");
-		$("#bt04").css("background-color", "#e3e3e3");
-		$("#bt04").css("border", "1px solid black");
-	});
+	});	
 	
 	$(document).on("click", ".applyBtn", function(){
 		var login_id = $('#projectInsert').data('member');
 		var mem_sort = $('#projectInsert').data('memsort');
-		console.log(mem_sort);
+		$("#recommendModal").hide();
 		
 		if (login_id == '') {
 			swal({
@@ -620,52 +596,16 @@ $(document).ready(function() {
 			return;
 		}
 		
-		if (mem_sort != 1) {
+		if (mem_sort != 2) {
 			swal({
                 title: '알림',
-                text: '판매자만 이용가능합니다.',
+                text: '공급자만 이용가능합니다.',
                	type: 'warning',
             });
 			return;
 		}
 		
-		$.ajax({
-			type: "GET",
-		    url: ROOT_URL+"/apply/project",
-		    data: {
-		    	applyProjId: $("#projId").val()
-		    },
-            success: function(json) {
-          		if (json.result == 1) {
-          			swal('알림', '이미 지원한 프로젝트입니다.', 'success');
-          			return;
-				}
-				swal({
-	  		          title: '확인',
-	  		          text: '지원 하시겠습니까?', 
-	  		          type: "question",
-	  		          showCancelButton: true
-	  		    }).then(function(result) {			
-	  		        if (result.value) {
-	  		        	var data = {
-	  		        		applyProjId: $("#projId").val(),
-	  		        		applyProjState:2,
-	  		        		applyType:1
-	  		        	};
-	  		        	  
-	  		        	$.ajax({
-	  			   			type: "POST",
-	  			   	        url: ROOT_URL+"/apply/project",
-	  			   	        data: data,
-	  		                success: function() {
-	  		                	swal('알림', '지원 완료.', 'success');
-	  		                	window.location.href = ROOT_URL+"/project/detail?projId="+$("#projId").val();
-	  		                }
-	  			      	});
-	  		      	}
-				});	
-			}
-		});
+		$("#recommendModal").show();
 	})
 });
 </script>

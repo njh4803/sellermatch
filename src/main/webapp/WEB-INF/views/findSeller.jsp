@@ -272,6 +272,9 @@ a:focus, a:hover{
 	outline: none;
 	position: absolute;
 }
+.search:focus{
+	background-image: none;
+}
 .sellerInfoBox{
 	border: 1px solid #000;
 }
@@ -542,7 +545,9 @@ a:focus, a:hover{
 		        			</div>
 		        			<div class="clearfix">
 		        				<div class="leftBox">
-		        					<strong>${output.profileIntro}</strong>
+		        					<strong class="sellerDetail" id="profileId${status.index}" data-index="${status.index}" data-value="${output.profileId}">
+		        						${output.profileIntro}
+		        					</strong>
 		        				</div>
 		        			</div>
 		        			<div class="clearfix">
@@ -826,7 +831,9 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 		        			</div>
 		        			<div class="clearfix">
 		        				<div class="leftBox">
-		        					<strong>{{profileIntro}}</strong>
+		        					<strong class="sellerDetail" id="profileId{{@key}}" data-index="{{@key}}"  data-value="{{profileId}}">
+										{{profileIntro}}
+									</strong>
 		        				</div>
 		        			</div>
 		        			<div class="clearfix">
@@ -911,6 +918,12 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
+	
+	$(document).on("click", ".sellerDetail", function(){
+		var idx = $(this).data('index');
+		var profileId = $("#profileId"+idx).data('value');
+		window.location.href = ROOT_URL+"/seller/detail?profileId="+profileId;
+	});
 	// 정렬 선택시
 	$(document).on("click", ".sort", function(){
 		var value = this.id;

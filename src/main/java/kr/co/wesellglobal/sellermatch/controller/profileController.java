@@ -46,7 +46,7 @@ public class profileController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/seller/find", method = RequestMethod.GET)
-	public ModelAndView home(Model model, 
+	public ModelAndView findSeller(Model model, 
 			// 정렬 기준
 			@RequestParam(value = "sort", required = false) String sort,
 			// 검색어
@@ -99,5 +99,12 @@ public class profileController {
 		model.addAttribute("keyword", keyword);
 		
 		return new ModelAndView("findSeller");
+	}
+	
+	@RequestMapping(value = "/seller/detail", method = RequestMethod.GET)
+	public ModelAndView DetailSeller(Model model, 
+			@RequestParam(value = "profileId", required = false)String profileId) {
+		
+		return new ModelAndView("detailSeller");
 	}
 }
