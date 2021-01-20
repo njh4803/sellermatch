@@ -340,15 +340,6 @@ $(document).ready(function() {
 	    });
 	});
 	$(document).on("focus", "#join_form", function(e){
-		$.validator.addMethod("kor", function(value, element) {
-			return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
-		});
-
-		$.validator.addMethod("phone", function(value, element) {
-			return this.optional(element)
-					|| /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value)
-					|| /^\d{2, 3}\d{3, 4}\d{4}$/i.test(value);
-		});
 		
 	    /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
 	    $('#join_form').validate({
@@ -372,9 +363,9 @@ $(document).ready(function() {
 	                }
 	            },
 	            // [비밀번호] 필수 + 글자수 길이 제한
-	            memPw: { required: true, minlength: 4, maxlength: 30 },
+	            memPw2: { required: true, minlength: 6, maxlength: 30 },
 	            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
-	            memPw_confirm: { required: true, equalTo: '#memPw' },
+	            memPw_confirm: { required: true, equalTo: '#memPw2' },
 	            // [연락처] 필수
 	            memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
 	            // [우편번호] 필수 입력
@@ -387,11 +378,11 @@ $(document).ready(function() {
 	        	memberId: {
 	                required: '아이디를 입력하세요.',
 	                email: '아이디는 이메일만 입력 가능합니다.',
-	                minlength: '아이디는 최소 {4}글자 이상 입력하셔야 합니다.',
+	                minlength: '아이디는 최소 {6}글자 이상 입력하셔야 합니다.',
 	                maxlength: '아이디는 최대 {30}글자까지 가능합니다.',
 	                remote: '이미 사용중인 이메일 입니다.'
 	            },
-	            memPw: {
+	            memPw2: {
 	                required: '비밀번호를 입력하세요.',
 	                minlength: '비밀번호는 최소 {0}글자 이상 입력하셔야 합니다.',
 	                maxlength: '비밀번호는 최대 {0}글자까지 가능합니다.',
@@ -420,7 +411,7 @@ $(document).ready(function() {
     
     $(document).on("submit", "#join_form", function(e){
 		e.preventDefault();
-		console.log('123213123')
+		
 	    var form = $(this);
 		var url = form.attr('action');
        
@@ -501,7 +492,7 @@ $(document).ready(function() {
     		{{createTag tag}}
     	</div>
     	<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
-																<input type="hidden" id="memSort" value="{{memSort}}">
+																<input type="hidden" id="memSort" name="memSort" value="{{memSort}}">
                                                             <%-- <div class="form-group row">
                                                                 <label class="col-sm-2 colForm-label">프로필 사진</label>
                                                                 <div class="col-sm-10 file_input">
@@ -535,7 +526,7 @@ $(document).ready(function() {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="비밀번호를 입력해주세요. (6자 이상)">
+                                                                    <input type="password" id="memPw2" name="memPw2" class="form-control" placeholder="비밀번호를 입력해주세요. (6자 이상)">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

@@ -87,7 +87,7 @@
     <select id="selectList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
     	resultMap="ProjectMap">
-    	SELECT DISTINCT
+    	SELECT
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
     		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
@@ -124,7 +124,7 @@
         		OR proj_keyword LIKE concat('%', #{projKeyword}, '%')
         	</if>
         	<if test="projMemId != '' and projMemId != null">
-        		OR proj_mem_id LIKE concat('%', #{projMemId}, '%')
+        		OR proj_mem_id = #{projMemId}
         	</if>
         	<if test="projTitle != '' and projTitle != null">
         		OR proj_title LIKE concat('%', #{projTitle}, '%')
@@ -270,7 +270,7 @@
 	<select id="selectCountAll"
 		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
 		resultType="int">
-		SELECT COUNT(DISTINCT proj_idx)
+		SELECT COUNT(proj_idx)
 		FROM ProjectList p
 		INNER JOIN IndusList i
 		ON p.proj_indus = i.indus_id

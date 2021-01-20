@@ -388,40 +388,40 @@ a:focus, a:hover{
     <div class="partner_wrap" style="text-align: left;">
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">
-				<input type="hidden" id="projId" value="${output.projId}">
 				<div class="row1">
+					<input type="hidden" id="profileMemId" value="${output.profileMemId}">
 				</div>
 				<div class="row1 leftBox">
-					<div class="titleBox">오픈마켓 전문 판매대행회사입니다.</div>
+					<div class="titleBox">${output.profileIntro}</div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="row1 leftBox">
 					<div class="infoBox">
 						<div><span>유형</span></div>
-						<div>${output.projIndusName}</div>
+						<div>${output.profileBizSortName}</div>
 					</div>
 					<div class="infoBox">
 						<div><span>분류</span></div>
-						<div>${output.projPrice}</div>
+						<div>${output.profileIndusName}</div>
 					</div>
 					<div class="infoBox">
 						<div><span>지역</span></div>
-						<div>${output.projMarginName}</div>
+						<div>${output.profileNationName}</div>
 					</div>
 				</div>
 				<div class="row1 leftBox">
 					<div class="infoBox2" style="width: 100%;">
 						<div><span>판매채널</span>
-						<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
-		           			<c:choose>
-		           				<c:when test="${status.last}">
-		           					${projChannelList} 
-		           				</c:when>
-		           				<c:otherwise>
-		           					${projChannelList}, 
-		           				</c:otherwise>
-		           			</c:choose>
-		           		</c:forEach>
+						<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status">
+	        				<c:choose>
+	        					<c:when test="${!status.last}">
+	        						${profileChannel}, 
+	        					</c:when>
+	        					<c:otherwise>
+	        						${profileChannel}
+	        					</c:otherwise>
+	        				</c:choose>
+	        			</c:forEach>
 		           		</div>
 					</div>
 				</div>
@@ -433,12 +433,6 @@ a:focus, a:hover{
 						</c:if>
 						<c:if test="${output.memRname == 1}">
 							신원인증
-						</c:if>
-						<c:if test="${output.projProfit == 1}">
-							수익성검증
-						</c:if>
-						<c:if test="${output.projProdCerti == 1}"> 
-							상품검증
 						</c:if>
 						<c:if test="${output.profileChChk == 1}">
 							채널검증
@@ -532,13 +526,13 @@ a:focus, a:hover{
 			<div class="b">
 				<div class="window" id="window1">
 					<div class="tabContent">
-						${output.projDetail}
+						${output.profileIntro}
 					</div>
 				</div>
 				<div class="window" id="window2">
 					<div class="tabName">프로젝트(2)</div>
 					<div class="tabContent">
-						${output.projRequire}
+						
 					</div>
 				</div>
 				<div class="window" id="window3">
@@ -603,10 +597,30 @@ $(document).ready(function() {
             });
 			return;
 		}
+		$.ajax({
+			type: "GET",
+		    url: ROOT_URL+"/project",
+	        success: function(json) {
+	        	console.log(json.projectList)
+	        	var content = json
+           		var template = Handlebars.compile($("#recommend-tmpl").html());
+           		var html = template(content);
+           		$(".recommend").after(html);
+			}
+		});
 		
 		$("#recommendModal").modal();
 	})
 });
+</script>
+<script type="text/x-handlebars-template" id="recommend-tmpl">
+{{#projectList}}
+<div class="radioBox">
+	<input type="hidden" id="projId" value="{{projId}}">
+	<input type="radio">
+	<div class="projectTitle">{{projTitle}}</div>
+</div>
+{{/projectList}}
 </script>
     </body>
 </html>

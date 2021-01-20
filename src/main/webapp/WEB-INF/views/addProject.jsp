@@ -627,7 +627,7 @@ $(function() {
 			<form action="${pageContext.request.contextPath}/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="projSort" value="{{memSort}}">
 				<input type="hidden" name="projMemId" value="{{memId}}">
-				<input type="hidden" name="projState" value="2">
+				<input type="hidden" name="projState" value="1">
 	    		<table class="projTable">
 	    			<tbody>
 	    				<tr>

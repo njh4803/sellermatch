@@ -103,8 +103,20 @@ public class profileController {
 	
 	@RequestMapping(value = "/seller/detail", method = RequestMethod.GET)
 	public ModelAndView DetailSeller(Model model, 
-			@RequestParam(value = "profileId", required = false)String profileId) {
+			@RequestParam(value = "profileMemId", required = false)String profileMemId) {
 		
+		ProfileDto input = new ProfileDto();
+		input.setProfileMemId(profileMemId);
+		
+		ProfileDto output = null;
+		
+		try {
+			output = profileService.getProfile(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
 		return new ModelAndView("detailSeller");
 	}
 }

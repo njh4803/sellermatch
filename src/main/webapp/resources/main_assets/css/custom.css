@@ -157,7 +157,7 @@ header .header_wrap .gnb .gnb_project a i {}
 
 /*footer*/
 
-footer {width:100%; background-color:#333; height:260px; color:#b5b5b5;}
+footer {width:100%; background-color:#333; height:300px; color:#b5b5b5;}
 footer .footer_wrap {width:1280px; margin: 0 auto;}
 footer .footer_wrap .f_top {height:80px; border-bottom:1px solid #3d3d3d;}
 footer .footer_wrap .f_top ul {overflow: hidden; padding:22px; padding: 33px 0;}

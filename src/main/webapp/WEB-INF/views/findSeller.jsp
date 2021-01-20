@@ -545,7 +545,7 @@ a:focus, a:hover{
 		        			</div>
 		        			<div class="clearfix">
 		        				<div class="leftBox">
-		        					<strong class="sellerDetail" id="profileId${status.index}" data-index="${status.index}" data-value="${output.profileId}">
+		        					<strong class="sellerDetail" id="profileMemId${status.index}" data-index="${status.index}" data-value="${output.profileMemId}">
 		        						${output.profileIntro}
 		        					</strong>
 		        				</div>
@@ -831,7 +831,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 		        			</div>
 		        			<div class="clearfix">
 		        				<div class="leftBox">
-		        					<strong class="sellerDetail" id="profileId{{@key}}" data-index="{{@key}}"  data-value="{{profileId}}">
+		        					<strong class="sellerDetail" id="profileMemId{{@key}}" data-index="{{@key}}"  data-value="{{profileMemId}}">
 										{{profileIntro}}
 									</strong>
 		        				</div>
@@ -921,8 +921,8 @@ $(document).ready(function() {
 	
 	$(document).on("click", ".sellerDetail", function(){
 		var idx = $(this).data('index');
-		var profileId = $("#profileId"+idx).data('value');
-		window.location.href = ROOT_URL+"/seller/detail?profileId="+profileId;
+		var profileMemId = $("#profileMemId"+idx).data('value');
+		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
 	});
 	// 정렬 선택시
 	$(document).on("click", ".sort", function(){

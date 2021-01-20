@@ -65,7 +65,7 @@ public class ProjectRestController {
 			@RequestParam(value = "projTitle", required = false) String projTitle,
 			@RequestParam(value = "projSort", required = false) String projSort,
 			@RequestParam(value = "projIndus", required = false) String projIndus,
-			@RequestParam(value = "projPrice", required = false) int projPrice,
+			@RequestParam(value = "projPrice", required = false) Integer projPrice,
 			@RequestParam(value = "projMargin", required = false) int projMargin,
 			@RequestParam(value = "projNation", required = false) String projNation,
 			@RequestParam(value = "projSupplyType", required = false) String projSupplyType,
@@ -100,7 +100,11 @@ public class ProjectRestController {
 		input.setProjTitle(projTitle);
 		input.setProjSort(projSort);
 		input.setProjIndus(projIndus);
-		input.setProjPrice(projPrice);
+		if (projPrice == null) {
+			input.setProjPrice(0);
+		} else {
+			input.setProjPrice(projPrice);
+		}
 		input.setProjMargin(projMargin);
 		input.setProjNation(projNation);
 		input.setProjSupplyType(projSupplyType);
@@ -209,6 +213,25 @@ public class ProjectRestController {
 		}
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("indusList", indusList);
+		
+		return webHelper.getJsonData(data);
+	}
+	
+	@RequestMapping(value = "/project", method = RequestMethod.GET)
+	public Map<String, Object> getProjectList(
+			@SessionAttribute(value = "member", required = false) MemberDto member){
+		
+		ProjectDto input = new ProjectDto();
+		input.setProjMemId(member.getMemId());
+		List<ProjectDto> projectList = null;
+		
+		try {
+			projectList = projectService.getProjectList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("projectList", projectList);
 		
 		return webHelper.getJsonData(data);
 	}

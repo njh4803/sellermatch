@@ -48,11 +48,12 @@
     		(`profile_id`, `profile_mem_id`, `profile_grade`, `profile_intro`, `profile_ch_chk`, `profile_ch_chk_date`, 
     		`profile_career`, `profile_sale_chk`, `profile_nation`, `profile_biz_num`, `profile_biz_sort`, `profile_biz_certi`, 
     		`profile_ch`, `profile_indus`, `profile_photo`, `profile_state`, `profile_reg_date`, `profile_edit_date`, 
-    		`Profile_hashtag`, `profile_rname`, `profile_sort`, `profile_hit`) 
+    		`Profile_hashtag`, `profile_rname`, `profile_sort`, `profile_hit`, `profile_volume`) 
     	VALUES 
-    		(#{profileId}, #{profileMemId},, #{profileGrade}, #{profileIntro}, #{profileChChk}, #{profileChChkDate}, #{profileCareer}, 
+    		(#{profileId}, #{profileMemId}, #{profileGrade}, #{profileIntro}, #{profileChChk}, #{profileChChkDate}, #{profileCareer}, 
     		#{profileSaleChk}, #{profileNation}, #{profileBizNum}, #{profileBizSort}, #{profileBizCerti}, #{profileCh}, #{profileIndus}, 
-    		#{profilePhoto}, #{profileState}, now(), #{profileEditDate}, #{profileHashtag}, #{profileRname}, #{profileSort}, #{profileHit});
+    		#{profilePhoto}, #{profileState}, now(), #{profileEditDate}, #{profileHashtag}, #{profileRname}, #{profileSort}, 
+    		#{profileHit}, #{profileVolume});
     </insert>
     
     <update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto">
@@ -92,6 +93,7 @@
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
 		<where>
+			profile_sort = 2
 			<if test="memNick != '' and memNick != null">
         		OR mem_nick LIKE concat('%', #{memNick}, '%')
         	</if>
@@ -156,13 +158,19 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto"
     	resultMap="ProfileMap">
     	SELECT 
-    		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, date_format(profile_ch_chk_date, '%Y-%m-%d') as profile_ch_chk_date, 
+	   		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, profile_ch_chk_date, 
     		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
-    		profile_ch, profile_indus, profile_photo as profile_photo_list, profile_state, 
-    		profile_reg_date, date_format(profile_edit_date, '%Y-%m-%d') as profile_edit_date,
-    		Profile_hashtag, profile_rname, profile_sort, profile_hit
-    	FROM ProfileList
-    	WHERE profile_mem_id = #{profileMemId}
+    		profile_ch, i.indus_name as profile_indus_name, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
+    		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
+		FROM ProfileList s
+		INNER JOIN IndusList i
+		ON s.profile_indus = i.indus_id
+		INNER JOIN MemList m
+		ON s.profile_mem_id = m.mem_id
+    	WHERE profile_sort = 2 AND profile_mem_id = #{profileMemId}
     </select>
     
 	<!-- 데이터 수 조회 -->
@@ -177,6 +185,7 @@
 		ON s.profile_mem_id = m.mem_id
 		
 		<where>
+			profile_sort = 2
 			<if test="memNick != '' and memNick != null">
         		OR mem_nick LIKE concat('%', #{memNick}, '%')
         	</if>

@@ -91,4 +91,25 @@ public class ApplyRestController {
 		
 		return webHelper.getJsonData(data);
 	}
+	
+	@RequestMapping(value = "/recommend/project", method = RequestMethod.GET)
+	public Map<String, Object> getRecommend(
+			@RequestParam(value = "applyProjId", required = false)String applyProjId,
+			@SessionAttribute(value = "member", required = false) MemberDto member){
+		
+		ApplyDto input = new ApplyDto();
+		input.setApplyProjId(applyProjId);
+		input.setApplyMemId(member.getMemId());
+		int result;
+		try {
+			result = applyService.reduplicationCheck(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("result", result);
+		
+		return webHelper.getJsonData(data);
+	}
 }
