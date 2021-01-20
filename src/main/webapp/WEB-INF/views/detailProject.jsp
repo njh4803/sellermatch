@@ -390,6 +390,7 @@ a:focus, a:hover{
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">
 				<input type="hidden" id="projId" value="${output.projId}">
+				<input type="hidden" id="projSort" value="${output.projSort}">
 				<div class="row1">
 				</div>
 				<div class="row1 leftBox">
@@ -609,6 +610,7 @@ $(document).ready(function() {
 	$(document).on("click", ".applyBtn", function(){
 		var login_id = $('#projectInsert').data('member');
 		var mem_sort = $('#projectInsert').data('memsort');
+		var proj_sort = $('#projSort').val();
 		console.log(mem_sort);
 		
 		if (login_id == '') {
@@ -620,20 +622,31 @@ $(document).ready(function() {
 			return;
 		}
 		
-		if (mem_sort != 1) {
+		if (mem_sort == proj_sort) {
+			var text='';
+			if (proj_sort == 1) {
+				text = '판매자만 이용가능합니다.'
+			}
+			if (proj_sort == 2) {
+				text = '공급자만 이용가능합니다.'
+			}
 			swal({
                 title: '알림',
-                text: '판매자만 이용가능합니다.',
+                text: text,
                	type: 'warning',
             });
 			return;
 		}
 		
+		
+		
 		$.ajax({
 			type: "GET",
 		    url: ROOT_URL+"/apply/project",
 		    data: {
-		    	applyProjId: $("#projId").val()
+		    	applyProjId: $("#projId").val(),
+		    	applyMemId: login_id,
+		    	applyType:1
 		    },
             success: function(json) {
           		if (json.result == 1) {

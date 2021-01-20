@@ -93,7 +93,6 @@
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
 		<where>
-			profile_sort = 2
 			<if test="memNick != '' and memNick != null">
         		OR mem_nick LIKE concat('%', #{memNick}, '%')
         	</if>
@@ -102,6 +101,9 @@
         	</if>
         	<if test="profileIntro != '' and profileIntro != null">
         		OR profile_intro LIKE concat('%', #{profileIntro}, '%')
+        	</if>
+        	<if test="profileSort != '' and profileSort != null">
+        		AND profile_sort = #{profileSort}
         	</if>
         	
         	<if test="profileBizSortArr != '' and profileBizSortArr != null">
@@ -194,6 +196,10 @@
         	</if>
         	<if test="profileIntro != '' and profileIntro != null">
         		OR profile_intro LIKE concat('%', #{profileIntro}, '%')
+        	</if>
+        	
+        	<if test="profileSort != '' and profileSort != null">
+        		AND profile_sort = #{profileSort}
         	</if>
         	
         	<if test="profileBizSortArr != '' and profileBizSortArr != null">

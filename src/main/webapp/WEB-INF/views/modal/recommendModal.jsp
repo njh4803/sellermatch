@@ -55,17 +55,15 @@
 	<div class="modal-dialog modal-xl" style="width: 400px;">
 		<div class="modal-content">
 			<div class="modal-body">
-				<form class="md-float-material" method="POST" id="login-form" action="${pageContext.request.contextPath}/member/login">
-                	<div class="recommendBox clearfix">
-                		<div class="recommend">
-                			<p>프로젝트</p>
-                			<p>지원요청</p>
-                		</div>
-                		<div>
-                			<button class="recommend-btn">지원요청하기</button>
-                		</div>
-                	</div>          
-         		</form>											
+               	<div class="recommendBox clearfix">
+               		<div class="recommend">
+               			<p>프로젝트</p>
+               			<p>지원요청</p>
+               		</div>
+               		<div>
+               			<button class="recommend-btn">지원요청하기</button>
+               		</div>
+               	</div>          
 			</div>
 		</div>
 	</div>
@@ -75,11 +73,18 @@
 	
 $(document).ready(function() {
 	$(document).on("click", ".recommend-btn", function(){
+		var recommendProj = $("input[name=recommendProj]:checked").val();
+		if (recommendProj == undefined) {
+			swal('알림', '프로젝트를 선택해주세요.', 'warning');
+			return;
+		}
 		$.ajax({
 			type: "GET",
 		    url: ROOT_URL+"/apply/project",
 		    data: {
-		    	applyProjId: $("#projId").val()
+		    	applyProjId: recommendProj,
+		    	applyMemId: $("#profileMemId").val(),
+		    	applyType:2
 		    },
 	        success: function(json) {
 	      		if (json.result == 1) {
@@ -94,14 +99,15 @@ $(document).ready(function() {
 	  		    }).then(function(result) {			
 	  		        if (result.value) {
 	  		        	var data = {
-	  		        		applyProjId: $("#projId").val(),
+	  		        		applyProjId: recommendProj,
+	  		        		applyMemId: $("#profileMemId").val(),
 	  		        		applyProjState:3,
 	  		        		applyType:2
 	  		        	};
 	  		        	  
 	  		        	$.ajax({
 	  			   			type: "POST",
-	  			   	        url: ROOT_URL+"/apply/project",
+	  			   	        url: ROOT_URL+"/recommend/project",
 	  			   	        data: data,
 	  		                success: function() {
 	  		                	swal('알림', '지원요청 완료.', 'success');

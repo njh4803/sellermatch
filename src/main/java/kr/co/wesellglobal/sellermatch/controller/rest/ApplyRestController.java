@@ -71,35 +71,43 @@ public class ApplyRestController {
 		return webHelper.getJsonData();
 	}
 	
-	@RequestMapping(value = "/apply/project", method = RequestMethod.GET)
-	public Map<String, Object> getApply(
+	@RequestMapping(value = "/recommend/project", method = RequestMethod.POST)
+	public Map<String, Object> recommend(
 			@RequestParam(value = "applyProjId", required = false)String applyProjId,
+			@RequestParam(value = "applyMemId", required = false)String applyMemId,
+			@RequestParam(value = "applyType", required = false)String applyType,
+			@RequestParam(value = "applyProjState", required = false)String applyProjState,
 			@SessionAttribute(value = "member", required = false) MemberDto member){
 		
 		ApplyDto input = new ApplyDto();
+		input.setApplyId(webHelper.getUniqueId("A-", member.getMemIdx()));
 		input.setApplyProjId(applyProjId);
-		input.setApplyMemId(member.getMemId());
-		int result;
+		input.setApplyMemId(applyMemId);
+		input.setApplyProfile("2");
+		input.setApplyProjState(applyProjState);
+		input.setApplyType(applyType);
+		
+		
 		try {
-			result = applyService.reduplicationCheck(input);
+			applyService.addApply(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("result", result);
-		
-		return webHelper.getJsonData(data);
+		return webHelper.getJsonData();
 	}
 	
-	@RequestMapping(value = "/recommend/project", method = RequestMethod.GET)
-	public Map<String, Object> getRecommend(
+	@RequestMapping(value = "/apply/project", method = RequestMethod.GET)
+	public Map<String, Object> getApply(
 			@RequestParam(value = "applyProjId", required = false)String applyProjId,
+			@RequestParam(value = "applyMemId", required = false)String applyMemId,
+			@RequestParam(value = "applyType", required = false)String applyType,
 			@SessionAttribute(value = "member", required = false) MemberDto member){
 		
 		ApplyDto input = new ApplyDto();
 		input.setApplyProjId(applyProjId);
-		input.setApplyMemId(member.getMemId());
+		input.setApplyType(applyType);
+		input.setApplyMemId(applyMemId);
 		int result;
 		try {
 			result = applyService.reduplicationCheck(input);

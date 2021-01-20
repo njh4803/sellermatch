@@ -387,6 +387,9 @@ a:focus, a:hover{
 	width: 180px;
     margin-top: 27px;
 }
+.sellerDetail{
+	cursor: pointer;
+}
 </style>
 <div class="partner_bnr clearfix">
     <div class="partner_wrap" style="text-align: left;">

@@ -282,7 +282,7 @@ $(document).ready(function() {
 				$("#spBtn").attr('class','none-check text-center');
 				$("#ppBtn").attr('class','check text-center');
 				$(".spFind").attr('disabled', true);
-				$("#memSort").val("2");
+				$("#memSort").val("1");
 				tag = '<div class="resultText">공급자가입을 선택하셨습니다. <span>검증된 고매출 판매자를 찾아 매출을 올려보세요!</span></div>';
 			}
 			

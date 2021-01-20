@@ -71,6 +71,7 @@ public class ProfileRestController {
 		input.setProfileChannelArr(profileChannel);
 		input.setProfileIndusArr(profileIndus);
 		input.setProfileNationArr(profileNation);
+		input.setProfileSort("2");
 		input.setSort(sort);
 		
 		

@@ -43,7 +43,7 @@
 }
 .container1{
 	border: 2px solid #e3e3e3;
-	height: 400px;
+	height: 340px;
 }
 .container2{
 	margin: 0 240px;
@@ -52,7 +52,7 @@
 .container1 .container2{
 	margin: 0;
     width: 844px;
-    height: 396px;
+    height: 100%;
     float: right;
 }
 .container3{
@@ -392,10 +392,6 @@ a:focus, a:hover{
 					<input type="hidden" id="profileMemId" value="${output.profileMemId}">
 				</div>
 				<div class="row1 leftBox">
-					<div class="titleBox">${output.profileIntro}</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="row1 leftBox">
 					<div class="infoBox">
 						<div><span>유형</span></div>
 						<div>${output.profileBizSortName}</div>
@@ -577,6 +573,8 @@ $(document).ready(function() {
 	});	
 	
 	$(document).on("click", ".applyBtn", function(){
+		$(".radioBox").remove();
+		
 		var login_id = $('#projectInsert').data('member');
 		var mem_sort = $('#projectInsert').data('memsort');
 		
@@ -589,7 +587,7 @@ $(document).ready(function() {
 			return;
 		}
 		
-		if (mem_sort != 2) {
+		if (mem_sort != 1) {
 			swal({
                 title: '알림',
                 text: '공급자만 이용가능합니다.',
@@ -616,8 +614,7 @@ $(document).ready(function() {
 <script type="text/x-handlebars-template" id="recommend-tmpl">
 {{#projectList}}
 <div class="radioBox">
-	<input type="hidden" id="projId" value="{{projId}}">
-	<input type="radio">
+	<input type="radio" name="recommendProj" value="{{projId}}">
 	<div class="projectTitle">{{projTitle}}</div>
 </div>
 {{/projectList}}
