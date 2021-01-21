@@ -67,12 +67,27 @@
 		    	profile_ch_chk = #{profileChChk}, profile_career = #{profileCareer}, profile_sale_chk = #{profileSaleChk}, 
 		    </if>
 		    profile_nation = #{profileNation}, 
-		    profile_biz_num = #{profileBizNum}, profile_biz_sort = #{profileBizSort}, profile_biz_certi = #{profileBizCerti}, profile_ch = #{profileCh},
+		    <if test="profileBizNum !='' and profileBizNum != null">
+		    	profile_biz_num = #{profileBizNum}, 
+		    </if>
+		    <if test="profileBizSort !='' and profileBizSort != null">
+		    	profile_biz_sort = #{profileBizSort}, 
+		    </if>
+		    <if test="profileCh !='' and profileCh != null">
+		    	 profile_ch = #{profileCh}, 
+		    </if>
+		    profile_biz_certi = #{profileBizCerti}, 
 		    <if test="profilePhoto !='' and profilePhoto != null">
 		    	 profile_photo = #{profilePhoto},
-		    </if> 
+		    </if>
+		    <if test="profileHashtag !='' and profileHashtag != null">
+		    	 Profile_hashtag = #{profileHashtag}, 
+		    </if>
+		    <if test="profileHit !='' and profileHit != null">
+		    	 profile_hit = #{profileHit}, 
+		    </if>
 		    profile_indus = #{profileIndus}, profile_state = #{profileState}, profile_edit_date = now(),
-		    Profile_hashtag = #{profileHashtag}, profile_rname = #{profileRname}, profile_sort = #{profileSort}, profile_hit = #{profileHit}
+		    profile_rname = #{profileRname}, profile_sort = #{profileSort}
 		where profile_id = #{profileId}
 	</update>
     
@@ -82,14 +97,19 @@
     	SELECT 
 	   		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, profile_ch_chk_date, 
     		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
-    		profile_ch, i.indus_name as profile_indus_name, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		profile_ch, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		<if test="needIndus != '' and needIndus != null">
+    			i.indus_name as profile_indus_name, 
+    		</if>
     		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
 		FROM ProfileList s
-		INNER JOIN IndusList i
-		ON s.profile_indus = i.indus_id
+		<if test="needIndus != '' and needIndus != null">
+			INNER JOIN IndusList i
+			ON s.profile_indus = i.indus_id
+		</if>
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
 		<where>
@@ -162,17 +182,27 @@
     	SELECT 
 	   		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, profile_ch_chk_date, 
     		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
-    		profile_ch, i.indus_name as profile_indus_name, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		profile_ch, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		<if test="needIndus != '' and needIndus != null">
+    			i.indus_name as profile_indus_name, 
+    		</if>
     		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
 		FROM ProfileList s
-		INNER JOIN IndusList i
-		ON s.profile_indus = i.indus_id
+		<if test="needIndus != '' and needIndus != null">
+			INNER JOIN IndusList i
+			ON s.profile_indus = i.indus_id
+		</if>
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
-    	WHERE profile_sort = 2 AND profile_mem_id = #{profileMemId}
+		<where>
+			profile_mem_id = #{profileMemId}
+			<if test="profileSort != '' and profileSort != null">
+        		AND profile_sort = #{profileSort}
+        	</if>
+		</where>
     </select>
     
 	<!-- 데이터 수 조회 -->
@@ -181,8 +211,10 @@
 		resultType="int">
 		SELECT COUNT(*)
 		FROM ProfileList s
-		INNER JOIN IndusList i
-		ON s.profile_indus = i.indus_id
+		<if test="needIndus != '' and needIndus != null">
+			INNER JOIN IndusList i
+			ON s.profile_indus = i.indus_id
+		</if>
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
 		

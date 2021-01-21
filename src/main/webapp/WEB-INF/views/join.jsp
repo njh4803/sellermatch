@@ -499,8 +499,13 @@ $(document).ready(function() {
     $(document).on("submit", "#join_form", function(e){
 		e.preventDefault();
 		
+		var profileMemId = $('#memberId').val();
+		var profileSort = $('#memSort').val();
+		
 	    var form = $(this);
 		var url = form.attr('action');
+		
+		
        
         $.ajax({
 			   type: "POST",
@@ -510,8 +515,24 @@ $(document).ready(function() {
 	        	   return $('#join_form').valid();
                },
                success: function() {
-               	swal('알림', '회원가입이 완료되었습니다.', 'success').then(function(result) {
-                       window.location = ROOT_URL + '/temp';
+            	   swal('알림', '회원가입이 완료되었습니다.', 'success').then(function(result) {
+            		   swal({
+		    	            title: '<div>프로필 등록을 해야</div><div>프로젝트 등록을 할 수 있습니다.</div>',
+		    	            text: '프로필 등록을 지금하시겠습니까?',
+		    	            type: "question",
+		    	            icon: 'warning',
+		    	            showCancelButton: true,
+		    	            confirmButtonColor: '#3085d6',
+		    	            cancelButtonColor: '#d33',
+		    	            confirmButtonText: '지금 등록하기',
+		    	            cancelButtonText: '나중에 등록하기'
+		    	        }).then(function(result) {    					
+		    	            if (result.value) {
+		    	            	window.location = ROOT_URL+ "/profile?profileMemId="+profileMemId+"&profileSort="+profileSort;
+		    	            } else {
+		    	            	window.location = ROOT_URL + '/temp';
+		    	            }
+		    	        });
                    });
                }
         });

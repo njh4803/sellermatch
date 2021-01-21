@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,7 +48,7 @@ public class ProfileRestController {
 	MailHelper mailHelper;
 	
 	@RequestMapping(value = "/seller/find2", method = RequestMethod.GET)
-	public Map<String, Object> findSeller2(Model model,
+	public Map<String, Object> findSeller2(
 			@RequestParam(value = "profileBizSort[]", required = false) String[] profileBizSort,
 			@RequestParam(value = "profileNation[]", required = false) String[] profileNation,
 			@RequestParam(value = "profileIndus[]", required = false) String[] profileIndus,
@@ -72,6 +73,7 @@ public class ProfileRestController {
 		input.setProfileIndusArr(profileIndus);
 		input.setProfileNationArr(profileNation);
 		input.setProfileSort("2");
+		input.setNeedIndus("Y");
 		input.setSort(sort);
 		
 		
@@ -110,5 +112,40 @@ public class ProfileRestController {
 		data.put("keyword", keyword);
 
 		return webHelper.getJsonData(data);
-	}
+	};
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.POST)
+	public Map<String, Object> addProfile(
+			@ModelAttribute("profileDto") ProfileDto profileDto) {
+		
+		ProfileDto input = new ProfileDto();
+		input.setProfileId(profileDto.getProfileId());
+		input.setMemNick(profileDto.getMemNick());
+		input.setProfileMemId(profileDto.getProfileMemId());
+		input.setProfileSort(profileDto.getProfileSort());
+		input.setProfileGrade("1");
+		input.setProfileChChk("0");
+		input.setProfileSaleChk("0");
+		input.setProfileBizCerti("0");
+		input.setProfileState("1");
+		
+		input.setProfileIntro(profileDto.getProfileIntro());
+		input.setProfileVolume(profileDto.getProfileVolume());
+		input.setProfileCareer(profileDto.getProfileCareer());
+		input.setProfileCh(profileDto.getProfileCh());
+		input.setProfileNation(profileDto.getProfileNation());
+		input.setProfileIndus(profileDto.getProfileIndus());
+		input.setProfileBizNum(profileDto.getProfileBizNum());
+		input.setProfileBizSort(profileDto.getProfileBizSort());
+		input.setProfileHashtag(profileDto.getProfileHashtag());
+		input.setProfileHit(profileDto.getProfileHit());
+		
+		try {
+			profileService.editProfile(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return webHelper.getJsonData();
+	};
 }

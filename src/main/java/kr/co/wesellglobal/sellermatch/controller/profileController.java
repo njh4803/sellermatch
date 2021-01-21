@@ -67,6 +67,7 @@ public class profileController {
 		
 		ProfileDto input = new ProfileDto();
 		input.setProfileSort("2");
+		input.setNeedIndus("Y");
 		input.setSort(sort);
 		
 		
@@ -112,6 +113,7 @@ public class profileController {
 		ProfileDto input = new ProfileDto();
 		input.setProfileMemId(profileMemId);
 		input.setProfileSort("2");
+		input.setNeedIndus("Y");
 		
 		ProjectDto input2 = new ProjectDto();
 		input2.setProjMemId(profileMemId);
@@ -130,5 +132,29 @@ public class profileController {
 		model.addAttribute("output", output);
 		model.addAttribute("project", project);
 		return new ModelAndView("detailSeller");
+	}
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public ModelAndView addProfile(Model model, 
+			@RequestParam(value = "profileMemId", required = false)String profileMemId,
+			@RequestParam(value = "profileSort", required = false)String profileSort) {
+		ProfileDto input = new ProfileDto();
+		input.setProfileMemId(profileMemId);
+		input.setProfileSort(profileSort);
+		
+		IndusDto input2 = new IndusDto();
+		
+		ProfileDto output = null;
+		List<IndusDto> indusList = null;
+		
+		try {
+			output = profileService.getProfile(input);
+			indusList = indusService.getIndusList(input2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("output", output);
+		model.addAttribute("indusList", indusList);
+		return new ModelAndView("addProfile");
 	}
 }

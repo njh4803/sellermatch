@@ -38,7 +38,7 @@ public class ProfileDto {
     private String profileSaleChk;
 
     // 판매자 매출규모 매출규모 금액만
-    private int profileVolume;
+    private Integer profileVolume;
 
     // 등록지역 국번
     private String profileNation;
@@ -96,8 +96,8 @@ public class ProfileDto {
     // 프로젝트 계약된 수
     private int contractCount;
     
-    
-    
+    // IndusList가 필요한지 여부
+    private String needIndus;
     
     /**페이지 구현을 위한 static변수*/
 	private static int offset;
@@ -142,7 +142,10 @@ public class ProfileDto {
 	 }
 	 
 	 public String[] getProfileHashtagList() {
-		 this.profileHashtagList = profileHashtag.split(",");
+		 if (this.profileHashtag == null) {
+			return this.profileHashtagList;
+		}
+		 this.profileHashtagList = this.profileHashtag.split(",");
 		for (int i = 0; i < this.profileHashtagList.length; i++) {
 			if (this.profileHashtagList[i].equals("1")) {
 				this.profileHashtagList[i] = "채널검증셀러";
@@ -183,6 +186,9 @@ public class ProfileDto {
 	 }
 	 
 	 public String getProfileCareerName() {
+		 if (this.profileCareer == null) {
+			 return "";
+		 }
 		 if (this.profileCareer.equals("0")) {
 			 return this.profileCareerName = "경력없음";
 		 }
@@ -212,6 +218,9 @@ public class ProfileDto {
 	 }
 	 
 	 public String getProfileNationName() {
+		 if (this.profileNation == null) {
+			 return "";
+		}
 		 if (this.profileNation.equals("02")) {
 			 return this.profileNationName = "서울";
 		 }
@@ -267,6 +276,9 @@ public class ProfileDto {
 	 }
 	 
 	 public String getProfileBizSortName() {
+		 if (this.profileBizSort == null) {
+			 return "";
+		 }
 		 if (this.profileBizSort.equals("1")) {
 			 return this.profileBizSortName = "법인사업자";
 		 }
@@ -306,6 +318,9 @@ public class ProfileDto {
 	 }
 	 
 	public String[] getProfileChannelList() {
+		if (this.profileCh == null) {
+			 return this.profileChannelList;
+		 }
 		this.profileChannelList = this.profileCh.split(",");
 		for (int i = 0; i < this.profileChannelList.length; i++) {
 			if (this.profileChannelList[i].equals("1")) {
