@@ -86,7 +86,7 @@ label.error {
                                         </div>
                                     </div>
                                     <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                        <a href="auth-reset-password.html" class="text-right f-w-600 text-inverse font-10">아이디 · 비밀번호찾기</a>
+                                        <a href="#" class="text-right f-w-600 text-inverse font-10" id="idPwFind">아이디 · 비밀번호찾기</a>
                                     </div>
                                 </div>
                                 <hr/>
@@ -139,5 +139,76 @@ $(function() {
 			window.location = json.referer;
 		},
 	});
+	
+	$('#idPwFind').on('click', function(){
+		$('#login-form').remove();
+		
+		var content = {
+				
+    		}
+		
+		var template = Handlebars.compile($("#idPw-find-tmpl").html());
+  		var html = template(content);
+  		$(".modal-body").append(html);
+	});
 });
+</script>
+<script type="text/x-handlebars-template" id="idPw-find-tmpl">
+	<div class="">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<p class="lo-font">아이디 비밀번호 찾기</p>
+				<div class="page-header findf"></div>
+				<ul class="nav nav-tabs togtab">
+					<li class="active togli"><a href="#idf" data-toggle="tab">&nbsp;아이디
+							찾기</a></li>
+					<li class="togli"><a href="#pwdf" data-toggle="tab">비밀번호
+							찾기</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active fade in" id="idf">
+						<h3>아이디 찾기</h3>
+						<hr>
+						<br>
+						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/rest/idFind">
+						<div class="form-group">
+							<input type="text" class="form-control" id="userName"
+								name="userName" placeholder="이름을 입력하세요." />
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" id="email"
+								name="email" placeholder="이메일을 입력하세요." />
+						</div>
+						<div class="form-group">
+							<div class="col-md-4 col-md-offset-4 f_btn">
+								<button type="submit" class="btn btn-primary id_btn">아이디
+									찾기</button>
+							</div>
+						</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="pwdf">
+						<h3>비밀번호 찾기</h3>
+						<hr>
+						<br>
+						<form id="find-pw-form" method="post" action="${pageContext.request.contextPath}/rest/pwFind">
+						<div class="form-group">
+							<input type="text" class="form-control" id="userId"
+								name="userId" placeholder="아이디를 입력하세요." />
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" id="email"
+								name="email" placeholder="이메일을 입력하세요." />
+						</div>
+						<div class="form-group">
+							<div class="col-md-4 col-md-offset-4 f_btn">
+								<button type="submit" class="btn btn-primary">비밀번호 찾기</button>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </script>

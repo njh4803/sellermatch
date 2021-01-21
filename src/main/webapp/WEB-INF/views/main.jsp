@@ -121,18 +121,9 @@
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
+$(document).ready(function() {
     
-    $('.operation_guide_list').addClass('skip');
-    
-    var $operation_guide_list = $('.operation_guide_list')
-    
-    $('.operation').mouseenter(function(){
-        $('.operation_guide_list').stop().slideDown();
-    })
-    
-    $('.operation').mouseleave(function(){
-        $('.operation_guide_list').stop().slideUp();
-    })
+});
 </script>    
     </body>
 </html>
