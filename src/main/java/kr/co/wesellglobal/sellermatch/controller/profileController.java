@@ -24,6 +24,7 @@ import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
+import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -35,6 +36,8 @@ public class profileController {
 	
 	@Autowired
 	ProfileService profileService;
+	@Autowired
+	ProjectService projectService;
 	@Autowired
 	IndusService indusService;
 	@Autowired
@@ -63,6 +66,7 @@ public class profileController {
 		PageData pageData = null;
 		
 		ProfileDto input = new ProfileDto();
+		input.setProfileSort("2");
 		input.setSort(sort);
 		
 		
@@ -107,16 +111,24 @@ public class profileController {
 		
 		ProfileDto input = new ProfileDto();
 		input.setProfileMemId(profileMemId);
+		input.setProfileSort("2");
+		
+		ProjectDto input2 = new ProjectDto();
+		input2.setProjMemId(profileMemId);
 		
 		ProfileDto output = null;
+		List<ProjectDto> project = null;
+		
 		
 		try {
 			output = profileService.getProfile(input);
+			project = projectService.getProjectList(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
+		model.addAttribute("project", project);
 		return new ModelAndView("detailSeller");
 	}
 }

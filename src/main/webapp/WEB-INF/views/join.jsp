@@ -204,12 +204,17 @@ label.error {
 	width: 122px;
 	padding-right: 0;
 }
+.join-btn:disabled{
+	background-color: #D9D9D9;
+}
 .join-btn{
     display: inline-block;
     width: 300px;
     height: 40px;
     color: white;
+    background-color: #595959;
     margin-bottom: 0;
+    margin-top: 30px;
     font-weight: 400;
     text-align: center;
     white-space: nowrap;
@@ -227,6 +232,33 @@ label.error {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+.Agreement {
+	color: #A6A6A6;
+}
+.r-span{
+	color: red;
+}
+.s-span{
+	color: blue;
+}
+.Agreement-box{
+	border-top: 1px solid #aaa;
+	padding: 10px;
+	margin-top: 10px;
+}
+.Agreement-container{
+	margin-left: 125px;
+    margin-right: 38px;
+}
+.Agreement-box textarea{
+	width: 100%;
+    height: 100px;
+    padding: 15px;
+    font-size: 10px;
+    color: #aaa;
+    border: 1px solid #e3e3e3;
+    margin: 10px 0;
 }
 </style>
 <div class="partner_bnr">
@@ -262,6 +294,61 @@ label.error {
 $(document).ready(function() {
 	
 	$(document).on("change", "#image" ,handleImgfileSelect);
+	
+	$(document).on("click", ".agree-all", function(){
+		$(".agree-chk").prop("checked", this.checked);
+		$(".select-chk").prop("checked", this.checked);
+		
+		if (this.checked) {
+			$('.join-btn').css("background-color", "#595959");
+			$('.join-btn').attr('disabled', false);
+		} else {
+			$('.join-btn').css("background-color", "#D9D9D9");
+			$('.join-btn').attr('disabled', true);
+		}
+	});
+	
+	$(document).on("click", ".select-chk", function(){
+		
+		var total_len = $(".chk").length;
+		console.log(total_len)
+		//선택된 갯수
+		var len = $(".chk:checked").length;
+		console.log(len)
+		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+			$(".agree-all").prop('checked', true);
+		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+			$(".agree-all").prop('checked', false);	
+		}
+		
+		if (this.checked == false) {
+			$(".agree-all").prop("checked", false);
+		}
+	});
+	
+	$(document).on("click", ".agree-chk", function(){
+		
+		var total_len = $(".chk").length;
+		console.log(total_len)
+		//선택된 갯수
+		var len = $(".chk:checked").length;
+		console.log(len)
+		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+			$(".agree-all").prop('checked', true);
+		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+			$(".agree-all").prop('checked', false);	
+		}
+		
+		if (this.checked) {
+			$('.join-btn').css("background-color", "#595959");
+			$('.join-btn').attr('disabled', false);
+		} else {
+			$('.join-btn').css("background-color", "#D9D9D9");
+			$('.join-btn').attr('disabled', true);
+			$(".agree-all").prop("checked", false);
+		}
+		
+	});
 	
 	$(document).on("click", ".findCheck", function(){
 		$(".joinForm").remove();
@@ -641,9 +728,31 @@ $(document).ready(function() {
 																<input class="btn form-bg-submit" type="reset" value="취소">
 															</div>
 															<input type="hidden" name="memRname" id="memRname" readonly="readonly"> -->
-															<div style="text-align-last: center;">
-																<button class="join-btn" type="submit">가입하기</button>
-															</div>
+			<div class="Agreement-container">
+				<div class="Agreement">
+					<input type="checkbox" class="agree-all">전체약관동의
+				</div>
+				<div class="Agreement-box clearfix">
+					<div class="Agreement" style="float: left;">
+						<input type="checkbox" class="agree-chk chk"><span class="r-span">(필수)</span>이용약관동의
+					</div>
+					<div style="float: right;">
+						내용보기 V
+					</div>
+					<textarea style="width: 100%; height: 100px; padding: 15px;">제 1조 (목적)</textarea>
+					
+					<div class="Agreement" style="float: left;">
+						<input type="checkbox" class="select-chk chk"><span class="s-span">(선택)</span> 개인정보 수집 및 이용동의
+					</div>
+					<div style="float: right;">
+						내용보기 V
+					</div>
+				</div>
+				<div style="text-align-last: center;">
+					<button class="join-btn" type="submit" disabled="disabled">가입하기</button>
+				</div>
+			</div>
+															
                                                                 </form>
                                                                 <!-- 회원가입 form end -->
     	</div>

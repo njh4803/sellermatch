@@ -383,6 +383,14 @@ a:focus, a:hover{
 .projInfo hr{
 	margin: 6px;
 }
+.project {
+	margin: 10px 0;
+}
+.project span{
+	color: #595959;
+	margin: 10px;
+	font-size: 16px;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap" style="text-align: left;">
@@ -516,7 +524,7 @@ a:focus, a:hover{
 		<div style="margin-top: 50px;">
 			<div class="a">
 				<span class="c" id="bt01">상세정보</span>
-				<span class="c" id="bt02">프로젝트(2)</span>
+				<span class="c" id="bt02">프로젝트(${output.projAddCount})</span>
 				<span class="c" id="bt03">공급자평가(2)</span>
 			</div>
 			<div class="b">
@@ -526,9 +534,14 @@ a:focus, a:hover{
 					</div>
 				</div>
 				<div class="window" id="window2">
-					<div class="tabName">프로젝트(2)</div>
+					<div class="tabName">프로젝트(${output.projAddCount})</div>
 					<div class="tabContent">
-						
+						<c:forEach var="project" items="${project}">
+							<div class="project">
+								<span>${project.projRegDate}</span>
+								<span>${project.projTitle}</span>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="window" id="window3">
