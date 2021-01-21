@@ -35,4 +35,16 @@ public class TempController {
 		
 		return new ModelAndView("main");
 	}
+	
+	@RequestMapping(value = "/usageFee", method = RequestMethod.GET)
+	public ModelAndView usageFee(Model model) {
+		
+		return new ModelAndView("usageFee");
+	}
+	
+	@RequestMapping(value = "/howUse", method = RequestMethod.GET)
+	public ModelAndView howUse(Model model) {
+		
+		return new ModelAndView("howUse");
+	}
 }
