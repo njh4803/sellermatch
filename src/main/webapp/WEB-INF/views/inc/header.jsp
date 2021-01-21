@@ -75,6 +75,8 @@
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
+	            		<a href="#">${member.memNick}</a>
+	            		<a href="#">마이페이지</a>
             			<a id="logout" href="javascript:void(0);">로그아웃</a>
             		</c:otherwise>
             	</c:choose>
@@ -98,10 +100,16 @@ $(function(){
 			success: function(json){
 				swal({
                     title: '알림',
-                    text: '로그아웃 되었습니다.',
-                   	type: 'success',
+                    text: '정말 로그아웃 하시겠습니까?',
+                   	type: "question",
+    	            icon: 'success',
+    	            showCancelButton: true,
                 }).then(function(result) {
-                	window.location.href = json.referer;
+                	if (result.value) {
+                		window.location.href = json.referer;
+					} else {
+						return;
+					}
                 });
 			}
 

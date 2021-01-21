@@ -23,9 +23,8 @@ header .header_wrap nav ul > li > .operation_guide_list a:hover {background-colo
 header .header_wrap .gnb {float:right;}
 header .header_wrap .gnb div {float:left;}
 header .header_wrap .gnb .gnb_login {}
-header .header_wrap .gnb .gnb_login a {line-height:77px; display:inline-block; color:#000; text-decoration: none;}
+header .header_wrap .gnb .gnb_login a {line-height:77px; display:inline-block; color:#000; text-decoration: none; margin: 0 7px;}
 header .header_wrap .gnb .gnb_login a:hover {color:#999;}
-header .header_wrap .gnb .gnb_login a:last-child {margin-left: 15px;}
 header .header_wrap .gnb .gnb_login a:before {
     display: inline-block;
     content: '';

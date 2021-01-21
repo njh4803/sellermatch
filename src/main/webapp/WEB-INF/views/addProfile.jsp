@@ -422,11 +422,6 @@ $(document).ready(function() {
     $(document).on("submit", "#profile_form", function(e){
 		e.preventDefault();
 		
-		
-		/* ckEditor 적용 */
-		//var projDetail = CKEDITOR.instances.projDetail.getData();
-        //$("#projDetail").val(projDetail);
-		
 		var form = $(this);
 		var url = form.attr('action');
        
