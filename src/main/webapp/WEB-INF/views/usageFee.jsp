@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <div class="partner_bnr">
-    <div class="partner_wrap">
+    <div class="partner_wrap" style="height: 517px;">
         <h2>이용요금</h2>
     </div>
 </div>

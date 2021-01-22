@@ -136,8 +136,28 @@ $(function() {
 			return $(form).valid();
 		},
 		success : function(json) {
-			window.location = json.referer;
-		},
+			$("#loginModal").modal('hide');
+			
+			if (json.profile.profileIndus == undefined) {
+				swal({
+    	            title: '<div>프로필 등록을 해야</div><div>프로젝트 등록을 할 수 있습니다.</div>',
+    	            text: '프로필 등록을 지금하시겠습니까?',
+    	            type: "question",
+    	            icon: 'warning',
+    	            showCancelButton: true,
+    	            confirmButtonColor: '#3085d6',
+    	            cancelButtonColor: '#d33',
+    	            confirmButtonText: '지금 등록하기',
+    	            cancelButtonText: '나중에 등록하기'
+    	        }).then(function(result) {	        	
+    	        	if (result.value) {
+    	            	window.location = ROOT_URL+ "/profile?profileMemId="+json.profile.profileMemId+"&profileSort="+json.profile.profileSort;
+    	            } else {
+    	            	window.location = json.referer;
+    	            }
+    	        });
+			}
+		}
 	});
 	
 	$('#idPwFind').on('click', function(){

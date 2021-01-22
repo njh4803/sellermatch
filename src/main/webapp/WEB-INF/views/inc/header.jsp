@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
 		
         
         <link href="${pageContext.request.contextPath}/main_assets/css/reset.css" rel="stylesheet" type="text/css">
@@ -24,6 +24,8 @@
         <script src="https://kit.fontawesome.com/7ebcbe9e0a.js" crossorigin="anonymous"></script>
         
 		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
 		<!-- bootstrap css -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<!-- bootstrap js -->
@@ -71,12 +73,12 @@
             <div class="gnb_login">
             	<c:choose>
             		<c:when test="${member == null}">
-            			<a href="#" data-toggle="modal" data-target="#loginModal">로그인</a>
+            			<a href="javascript:void(0)" id="login">로그인</a>
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
 	            		<a href="#">${member.memNick}</a>
-	            		<a href="#">마이페이지</a>
+	            		<a href="${pageContext.request.contextPath}/member/myPage">마이페이지</a>
             			<a id="logout" href="javascript:void(0);">로그아웃</a>
             		</c:otherwise>
             	</c:choose>
@@ -92,6 +94,10 @@
 <body>
 <script type="text/javascript">
 $(function(){
+	$('#login').on('click', function(){
+		$("#loginModal").modal();
+	});
+	
 	$("#logout").on("click", function(){
 		$.ajax({
 			type: "GET",

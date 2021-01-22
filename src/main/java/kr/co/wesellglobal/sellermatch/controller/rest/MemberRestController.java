@@ -225,10 +225,18 @@ public class MemberRestController {
 		input.setMemId(memId);
 		input.setMemPw(memPw);
 
-		MemberDto output;
+		MemberDto output = null;
+		
+		ProfileDto input2 = new ProfileDto();
+		
+		ProfileDto profile = null;
 		
 		try {
 			output = memberService.login(input);
+			
+			input2.setProfileSort(input.getMemSort());
+			input2.setProfileMemId(memId);
+			profile = profileService.getProfile(input2);
 
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -237,6 +245,7 @@ public class MemberRestController {
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("referer", referer);
+		data.put("profile", profile);
 		// 세션 저장
 		webHelper.setSession("member", output);
 		return webHelper.getJsonData(data);

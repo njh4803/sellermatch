@@ -4,7 +4,7 @@
 <%@ include file="inc/header.jsp"%>
 <div class="partner_bnr">
     <div class="partner_wrap" style="height: 517px;">
-        <h2>자주하는질문</h2>
+        <h2>마이페이지</h2>
     </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
