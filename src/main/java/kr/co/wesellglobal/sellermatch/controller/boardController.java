@@ -38,7 +38,7 @@ public class boardController {
 		if (boardType.equals("2")) {
 			return new ModelAndView("boardFqa");		
 		}
-		if (boardType.equals("3")) {
+		if (boardType.equals("4")) {
 			return new ModelAndView("boardOneToOne");
 		}
 		return new ModelAndView("board");

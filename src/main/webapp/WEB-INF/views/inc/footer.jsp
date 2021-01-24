@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-
+<%@ include file="../modal/infoModal.jsp"%>
+<%@ include file="../modal/termsOfServiceModal.jsp"%>
 <footer>
     <div class="footer_wrap">
     	<div>
@@ -32,20 +33,20 @@
 	        </div>
 	        <div class="f_btm3">
 	        	<div class="f_btm2">
-		            <p>첫 화면</p>
-		            <p>프로젝트 찾기</p>
-		            <p>판매자 찾기</p>
-		            <p>이용방법</p>
-		            <p>이용요금</p>
-		            <p>공지사항</p>
-		            <p>자주하는 질문</p>
-		            <p>1:1문의하기</p>
+		            <p><a href="${pageContext.request.contextPath}/temp">첫 화면</a></p>
+		            <p><a href="${pageContext.request.contextPath}/project/find">프로젝트 찾기</a></p>
+               		<p><a href="${pageContext.request.contextPath}/seller/find">판매차 찾기</a></p>
+	             	<p><a href="${pageContext.request.contextPath}/howUse">이용방법</a></p>
+					<p><a href="${pageContext.request.contextPath}/usageFee">이용요금</a></p>
+                    <p><a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a></p>
+                    <p><a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a></p>
+                    <p><a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a></p>
 	            </div>
 	        </div>
 	        <div class="f_btm3">
 	        	<div class="f_btm2">
-		            <p>이용약관</p>
-		            <p>개인정보처리방침</p>
+		            <p id="termsOfService"><a href="javascipt:void(0);">이용약관</a></p>
+		            <p id="info"><a href="javascipt:void(0);">개인정보처리방침</a></p>
 	            </div>
 	        </div>
 	        <div class="f_btm3">
@@ -57,12 +58,20 @@
 	            </div>
 	        </div>
         </div>
-        
-    </div>
+    </div> 
 </footer>
 
 <script>
     const ROOT_URL = "${pageContext.request.contextPath}";
+$(document).ready(function() {
+	$('#info').on('click', function(){
+		$('#infoModal').modal();
+	});
+	
+	$('#termsOfService').on('click', function(){
+		$('#termsOfServiceModal').modal();
+	});
+});
 </script>
 
 <!-- AjaxHelper -->

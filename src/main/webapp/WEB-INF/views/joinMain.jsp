@@ -62,22 +62,24 @@ a:hover {
     <div class="partner_wrap">
         <h2>회원가입</h2>
         <h3>안녕하십니까? 셀러매치에 오신 것을 환영합니다</h3>
+	    <div class="partner_wrap2">
+	        <h2><span style="color: purple;">5초</span> 안에 SNS 간편가입</h2>
+	        <hr width="80%;">
+	        <div class="joinBox">
+	        	<button><h1>네이버 가입</h1></button>
+	        </div>
+	        <div class="joinBox">
+	        	<button><h1>카카오 가입</h1></button>
+	        </div>
+	        <div class="joinBox">
+	        	<button><h1>구글 가입</h1></button>
+	        </div>
+	        <div class="joinBox">
+	        	<h1><a href="${pageContext.request.contextPath}/member/join">이메일 가입</a></h1>
+	        </div>
+	    </div>
     </div>
-    <div class="partner_wrap2">
-        <h2>간편가입</h2>
-        <div class="joinBox">
-        	<button><h1>네이버 가입</h1></button>
-        </div>
-        <div class="joinBox">
-        	<button><h1>카카오 가입</h1></button>
-        </div>
-        <div class="joinBox">
-        	<button><h1>구글 가입</h1></button>
-        </div>
-        <div class="joinBox">
-        	<h1><a href="${pageContext.request.contextPath}/member/join">이메일 가입</a></h1>
-        </div>
-    </div>
+
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>

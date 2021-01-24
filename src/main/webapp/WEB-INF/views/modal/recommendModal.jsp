@@ -13,6 +13,7 @@
     padding: 20px;
 }
 .recommend {
+	display: inline-block;
 	width: 100px;
 	background-color: #00B0F0;
 	border-radius: 10px;
@@ -47,6 +48,12 @@
 .radioBox {
     margin-top: 20px;
     margin-left: 20px;
+}
+.recommendText{
+	display: inline-block;
+    font-size: 13px;
+    vertical-align: top;
+    padding-top: 15px;
 }
 </style>
 

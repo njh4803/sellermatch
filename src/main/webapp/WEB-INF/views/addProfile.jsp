@@ -212,7 +212,7 @@ label.error {
 <div class="partner_bnr">
     <div class="partner_wrap">
         <h2>프로필을 등록해보세요!</h2>
-        <h3>아래 간단한 내용만 입력하면, 전세계 파트너를 연결 시켜 드립니다</h3>
+        <h3>나를 찾는 공급자(판매자)와 쉽게 연결됩니다.</h3>
     </div>
     <div class="partner_wrap addbox2">
     	<div class="text-center profileBox">

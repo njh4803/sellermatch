@@ -625,6 +625,7 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/x-handlebars-template" id="recommend-tmpl">
+<div class="recommendText">판매자에게 지원요청할 프로젝트를 선택하세요.</div>
 {{#projectList}}
 <div class="radioBox">
 	<input type="radio" name="recommendProj" value="{{projId}}">

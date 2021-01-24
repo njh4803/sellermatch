@@ -95,6 +95,15 @@
 <script type="text/javascript">
 $(function(){
 	$('#login').on('click', function(){
+		$('#loginModal .modal-dialog').remove();
+		
+		var content = {
+				
+    		}
+		
+		var template = Handlebars.compile($("#login-tmpl").html());
+  		var html = template(content);
+  		$("#loginModal").append(html);
 		$("#loginModal").modal();
 	});
 	

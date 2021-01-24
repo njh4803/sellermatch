@@ -14,15 +14,17 @@
         <a href="${pageContext.request.contextPath}/project/find"><i class="fas fa-bolt"></i>판매자 & 공급자<br> 찾기 무료등록</a>
     </div>
     <div class="bnr_wrap2">
-    	<div class="box">
-    		<div>판매자이신가요</div>
-    		<span>고마진, 독점, 위탁배송, OEM, 도매 등 <br>필요한 상품을 빠르게 찾아보세요.</span>
-    		<button>GO!</button>
-    	</div>
-    	<div class="box">
-    		<div>공급자이신가요</div>
-    		<span>오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰 등 <br>검증된 판매자를 찾아보세요.</span>
-    		<button>GO!</button>
+    	<div class="bnr_wrap3">
+	    	<div class="box">
+	    		<div>판매자이신가요</div>
+	    		<span>고마진, 독점, 위탁배송, OEM, 도매 등 <br>필요한 상품을 빠르게 찾아보세요.</span>
+	    		<button>GO!</button>
+	    	</div>
+	    	<div class="box">
+	    		<div>공급자이신가요</div>
+	    		<span>오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰 등 <br>검증된 판매자를 찾아보세요.</span>
+	    		<button>GO!</button>
+	    	</div>
     	</div>
     </div>
 </div>
@@ -59,28 +61,37 @@
         <h2>5분 안에 거래를 시작할 수 있습니다.</h2>
         <div class="advantage_list">
             <div class="advantage advantage2">
-                <h2>프로젝트</h2><h2>무료등록</h2>
-                <p>판매 &amp; 공급 조건을 담은<br>
-			              판매 또는 공급상품에 관한<br>
-			              정보(프로젝트)를 등록합니다.<br>
-			       100% 무료입니다.
-                </p>
+            	<div class="circle">1</div>
+            	<div class="textBox">
+	            	<h2>프로젝트</h2><h2>무료등록</h2>
+	                <p>판매 &amp; 공급 조건을 담은<br>
+				              판매 또는 공급상품에 관한<br>
+				              정보(프로젝트)를 등록합니다.<br>
+				       100% 무료입니다.
+	                </p>
+            	</div>
             </div>
             <div class="advantage advantage2">
-            	<h2>거래내용</h2><h2>검토, 조율</h2>
-                <p>지원 판매자 &amp; 공급자와<br>
-			              거래를 조율하고 계약합니다.<br>
-			              적절한 거래가 될 수 있도록<br>
-				      계약, 디자인 등을 지원합니다.
-                </p>
+            	<div class="circle">2</div>
+            	<div class="textBox">
+	            	<h2>거래내용</h2><h2>검토, 조율</h2>
+	                <p>지원 판매자 &amp; 공급자와<br>
+				              거래를 조율하고 계약합니다.<br>
+				              적절한 거래가 될 수 있도록<br>
+					      계약, 디자인 등을 지원합니다.
+	                </p>
+	        	</div>
             </div>
             <div class="advantage advantage2">
-            	<h2>판매  &amp; 공급</h2><h2>시작</h2>
-                <p>계약한 내용에 따라<br>
-			              판매와 공급 활동을 시작합니다.<br>
-			              성공적인 판매가 될 수 있도록<br>
-			              교육, 마케팅 등을 지원합니다.
-                </p>
+            	<div class="circle">3</div>
+            	<div class="textBox">
+	            	<h2>판매  &amp; 공급</h2><h2>시작</h2>
+	                <p>계약한 내용에 따라<br>
+				              판매와 공급 활동을 시작합니다.<br>
+				              성공적인 판매가 될 수 있도록<br>
+				              교육, 마케팅 등을 지원합니다.
+	                </p>
+	        	</div>
             </div>
         </div>
     </div>

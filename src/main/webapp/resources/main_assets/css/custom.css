@@ -15,14 +15,11 @@ header .header_wrap nav ul {float:left;}
 header .header_wrap nav ul > li {float:left;}
 header .header_wrap nav ul > li > a {padding: 0 26px; line-height: 77px; display:inline-block; color:#000; text-decoration: none;}
 header .header_wrap nav ul > li > a:hover {color:#999;}
-header .header_wrap nav ul > li > .operation_guide {}
-header .header_wrap nav ul > li > .operation_guide i {}
 header .header_wrap nav ul > li > .operation_guide_list {position:fixed; width:192px; top:77px;background-color:#fff;}
 header .header_wrap nav ul > li > .operation_guide_list a {display:block; padding:15px 26px; text-decoration: none;}
 header .header_wrap nav ul > li > .operation_guide_list a:hover {background-color:#000; color:#fff;}
 header .header_wrap .gnb {float:right;}
 header .header_wrap .gnb div {float:left;}
-header .header_wrap .gnb .gnb_login {}
 header .header_wrap .gnb .gnb_login a {line-height:77px; display:inline-block; color:#000; text-decoration: none; margin: 0 7px;}
 header .header_wrap .gnb .gnb_login a:hover {color:#999;}
 header .header_wrap .gnb .gnb_login a:before {
@@ -41,7 +38,6 @@ header .header_wrap .gnb .gnb_project a {
     padding: 9px 0px 0px 20px; font-size:14px; margin-top:20px; text-decoration: none;
 }
 header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
-header .header_wrap .gnb .gnb_project a i {}
 
 
 
@@ -51,9 +47,10 @@ header .header_wrap .gnb .gnb_project a i {}
 .bnr {width:100%; height:100%;}
 .bnr .bnr_wrap {width:1280px; margin: 0 auto; padding-top:200px; height: 567px;}
 .bnr .bnr_wrap2 {background-color: #DBDBDB; height: 300px; margin: 70px auto; padding: 0 60px;}
+.bnr .bnr_wrap3 {width: 1280px; margin: 0 auto;}
 .bnr .bnr_wrap2 .box{
 	width: 400px;
-    margin: 50px 244.5px;
+    margin: 50px 119.2px;
     height: 115px;
     display: inline-block;
     text-align: center;
@@ -67,7 +64,7 @@ header .header_wrap .gnb .gnb_project a i {}
     font-size: 16px;
     margin: 20px 0;
     line-height: 1.3;
-} 
+}
 .bnr .bnr_wrap2 .box button{
     width: 260px;
     height: 50px;
@@ -196,7 +193,7 @@ header .header_wrap .gnb .gnb_project a i {}
 
 /*footer*/
 
-footer {width:100%; background-color:#333; height:320px; color:#b5b5b5;}
+footer {width:100%; background-color:#333; height:350px; color:#b5b5b5;}
 footer .footer_wrap {width:1280px; margin: 0 auto;}
 footer .footer_wrap .f_top {font-size: 20px; color: white; padding: 50px 0; display: inline-block;}
 footer .footer_wrap .f_top1{width:500px;}
@@ -230,6 +227,11 @@ footer .footer_wrap .f_btm .f_btm2 {
     border-right-color: white;
     border-right-style: solid;
 }
+footer .footer_wrap a{
+	cursor: pointer;
+	text-decoration: none;
+	color: #b5b5b5;
+}
 footer .footer_wrap .f_btm3 {
 	width: 200px;
     display: inline-block;
@@ -240,3 +242,19 @@ footer .footer_wrap .f_btm address em {color:#ddd; font-weight:700; font-size:14
 footer .footer_wrap .f_btm p {color:#999; font-size:14px; line-height:25px; margin: 0;}
 footer .footer_wrap .f_btm p em {color:#ddd; font-weight:700; font-size:14px; line-height:25px;}
 
+.circle {
+	border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin: auto;
+    padding: 30px;
+    top: -98px;
+    background-color: steelblue;
+    color: white;
+    font-size: 20px;
+}
+.textBox{
+	display: inline-block;
+	margin: -80px;
+}
