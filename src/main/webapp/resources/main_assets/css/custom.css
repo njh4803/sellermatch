@@ -258,3 +258,9 @@ footer .footer_wrap .f_btm p em {color:#ddd; font-weight:700; font-size:14px; li
 	display: inline-block;
 	margin: -80px;
 }
+.emptyResult{
+	text-align: center;
+    height: 300px;
+    padding: 150px;
+    font-size: 20px;
+}

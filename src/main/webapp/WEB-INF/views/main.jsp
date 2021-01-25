@@ -18,12 +18,12 @@
 	    	<div class="box">
 	    		<div>판매자이신가요</div>
 	    		<span>고마진, 독점, 위탁배송, OEM, 도매 등 <br>필요한 상품을 빠르게 찾아보세요.</span>
-	    		<button>GO!</button>
+	    		<button id="sellerGoBtn">GO!</button>
 	    	</div>
 	    	<div class="box">
 	    		<div>공급자이신가요</div>
 	    		<span>오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰 등 <br>검증된 판매자를 찾아보세요.</span>
-	    		<button>GO!</button>
+	    		<button id="PpGoBtn">GO!</button>
 	    	</div>
     	</div>
     </div>
@@ -99,6 +99,14 @@
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
+	
+	$('#sellerGoBtn').on('click', function(){
+		window.location = ROOT_URL + '/project/find'
+	});
+	
+	$('#PpGoBtn').on('click', function(){
+		window.location = ROOT_URL + '/seller/find'
+	});
 	
 	$('#slider-div').slick({
 		  slidesToShow: 1,

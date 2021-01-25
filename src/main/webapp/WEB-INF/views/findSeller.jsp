@@ -460,7 +460,7 @@ a:focus, a:hover{
         			<span>찾고 싶은 판매자 이름, 상품, 지역 등을 검색 하세요!</span>
         		</div>
         		<div>
-        			<form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
+        			<form id="seller_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
         				<button type="submit" class="searchBtn"></button>
         				<input class="search" type="search" name="keyword">
         				<input type="hidden" value="defaultSort" id="sort" name="sort">
@@ -634,6 +634,9 @@ a:focus, a:hover{
 		        	</div>
 	        	</div>
 	        </div>
+	        <c:if test="${output == ''}">
+	        	<div class="emptyResult">검색결과가 없습니다.</div>
+	        </c:if>
 	        </c:forEach>
 	        <!-- 페이징 -->
 	        <div class="rightBox pageBox" style="margin-right: -15px;">
@@ -918,9 +921,128 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 	        	</div>
 	        </div>
 			{{/output}}
+			{{#ifCond output '==' ''}}
+	        	<div class="emptyResult">검색결과가 없습니다.</div>
+	        {{/ifCond}}
 </script>
 <script>
 $(document).ready(function() {
+	
+	$(document).on("submit", "#seller_frm", function(e){
+		e.preventDefault();
+		
+		var keyword = $("input[name=keyword]").val();
+		var trim_keyword = $.trim(keyword);
+		if (trim_keyword == '') {
+			swal({
+                title: '알림',
+                text: '검색어를 입력해주세요.',
+               	type: 'warning',
+            }).then(function(result) {
+            	
+            });
+			return
+		}
+		
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		$(".emptyResult").remove();
+		
+		var formData = $("#search_frm");
+		var profileBizSort;
+		var profileNation;
+		var profileIndus;
+		var profileChannel;
+		
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
+			'profileChannel'];
+		
+		var param_list = {
+				profileBizSort, profileNation, profileIndus, profileChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			var data_name = $("input[name="+param_list_name[i] +"]").data('name');
+			
+			if (data_name == 'ppmemRname') {
+				var total_len = $("input[data-name=ppmemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=ppmemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#ppmemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#ppmemRname").prop('checked', false);	
+				}
+			}
+			if (data_name == 'sellermemRname') {
+				var total_len = $("input[data-name=sellermemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=sellermemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#sellermemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#sellermemRname").prop('checked', false);	
+				}
+			}
+			if (data_name != 'ppmemRname' && data_name != 'sellermemRname') {
+				//체크박스 총 개수
+				var total_len = $("input[name="+param_list_name[i] +"]").length;
+				//선택된 갯수
+				var len = $("input[name="+param_list_name[i] +"]:checked").length;
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#"+param_list_name[i]).prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#"+param_list_name[i]).prop('checked', false);	
+				}
+			}
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		param_list["sort"] = $("#sort").val();
+		param_list["keyword"] = trim_keyword;
+		var url = formData.attr('action');
+		
+		$.ajax({
+	       type: "GET",
+	       url: ROOT_URL+"/seller/find2",
+	       data: param_list,
+	       success: function(json) {
+	    	   console.log(json);
+	    	   	var content = json
+	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		var page_content = json.pageData
+	       		console.log(page_content)
+	       		var page_template = Handlebars.compile($("#page-tmpl").html());
+	       		var page_html = page_template(page_content);
+	       		
+	       		$(".search-box").after(page_html);
+	       		$(".search-box").after(html);
+	       		
+	       }
+		});
+	});
 	
 	$(document).on("click", ".sellerDetail", function(){
 		var idx = $(this).data('index');
@@ -935,6 +1057,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var profileBizSort;
@@ -1004,6 +1127,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var profileBizSort;
@@ -1090,6 +1214,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var profileBizSort;
@@ -1192,6 +1317,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var profileBizSort;

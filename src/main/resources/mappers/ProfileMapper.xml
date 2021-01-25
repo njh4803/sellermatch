@@ -217,9 +217,7 @@
 		</if>
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
-		
 		<where>
-			profile_sort = 2
 			<if test="memNick != '' and memNick != null">
         		OR mem_nick LIKE concat('%', #{memNick}, '%')
         	</if>
@@ -229,7 +227,6 @@
         	<if test="profileIntro != '' and profileIntro != null">
         		OR profile_intro LIKE concat('%', #{profileIntro}, '%')
         	</if>
-        	
         	<if test="profileSort != '' and profileSort != null">
         		AND profile_sort = #{profileSort}
         	</if>
@@ -256,12 +253,11 @@
         	</if>
         	
         	<if test="profileChannelArr != '' and profileChannelArr != null">
-        		AND profile_Ch IN
+        		AND profile_ch IN
 	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator=",">
 	            	#{item}
 	            </foreach>
         	</if>
 		</where>
-		
 	</select>
 </mapper>

@@ -519,6 +519,9 @@ a:focus, a:hover{
 				</div>
 			</div>
 		</c:forEach>
+		<c:if test="${output == ''}">
+			<div class="emptyResult">검색결과가 없습니다.</div>
+		</c:if>
 		<div class="partner_bnr2 pageBox">
 			<div class="row1">
 				<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
@@ -719,6 +722,9 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 	</div>
 </div>
 {{/output}}
+{{#ifCond output '==' ''}}
+	<div class="emptyResult">검색결과가 없습니다.</div>
+{{/ifCond}}
 </script>
 <script type="text/x-handlebars-template" id="page-tmpl">
 <div class="partner_bnr2 pageBox">
@@ -761,6 +767,137 @@ $(document).ready(function() {
 		window.location.href = ROOT_URL+"/project/detail?projId="+projId;
 	});
 	
+	// 검색
+	$(document).on("submit", "#search_frm", function(e){
+		e.preventDefault();
+		
+		var keyword = $("input[name=keyword]").val();
+		var trim_keyword = $.trim(keyword);
+		if (trim_keyword == '') {
+			swal({
+                title: '알림',
+                text: '검색어를 입력해주세요.',
+               	type: 'warning',
+            }).then(function(result) {
+            	
+            });
+			return
+		}
+		// 초기화
+		$(".content").remove();
+		$(".pageBox").remove();
+		$(".emptyResult").remove();
+		
+		var formData = $("#search_frm");
+		var projSort;
+		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname;
+		var ppBizCerti;
+		var projProdCerti;
+		var projProfit;
+		var sellermemRname;
+		var sellerBizCerti;
+		var sellerChChk;
+		var sellerSaleChk;
+		var projChannel;
+		
+		
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
+		
+		var param_list = {
+				projSort, projNation, projIndus, 
+				projPrice, projMargin, projSupplyType, ppmemRname, 
+				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
+				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			var data_name = $("input[name="+param_list_name[i] +"]").data('name');
+			
+			if (data_name == 'ppmemRname') {
+				var total_len = $("input[data-name=ppmemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=ppmemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#ppmemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#ppmemRname").prop('checked', false);	
+				}
+			}
+			if (data_name == 'sellermemRname') {
+				var total_len = $("input[data-name=sellermemRname]").length;
+				console.log(total_len)
+				//선택된 갯수
+				var len = $("input[data-name=sellermemRname]:checked").length;
+				console.log(len)
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#sellermemRname").prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#sellermemRname").prop('checked', false);	
+				}
+			}
+			if (data_name != 'ppmemRname' && data_name != 'sellermemRname') {
+				//체크박스 총 개수
+				var total_len = $("input[name="+param_list_name[i] +"]").length;
+				//선택된 갯수
+				var len = $("input[name="+param_list_name[i] +"]:checked").length;
+				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+					$("#"+param_list_name[i]).prop('checked', true);
+				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+					$("#"+param_list_name[i]).prop('checked', false);	
+				}
+			}
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+			console.log("----------------")
+			console.log(param_list)
+			console.log("----------------")
+		}
+		param_list["sort"] = $("#sort").val();
+		param_list["keyword"] = keyword;
+		var url = formData.attr('action');
+		
+		$.ajax({
+           type: "GET",
+           url: ROOT_URL+"/project/find2",
+           data: param_list,
+           success: function(json) {
+        	   	var content = json
+           		var template = Handlebars.compile($("#project-list-tmpl").html());
+           		var html = template(content);
+           		
+           		var page_content = json.pageData
+           		console.log(page_content)
+           		var page_template = Handlebars.compile($("#page-tmpl").html());
+           		var page_html = page_template(page_content);
+           		
+           		$("#premium").after(html);
+           		$("footer").before(page_html);
+           }
+    	});
+	});	
+	
 	// 정렬 선택시
 	$(document).on("click", ".sort", function(){
 		var value = this.id;
@@ -769,6 +906,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -869,6 +1007,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -969,6 +1108,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -1086,6 +1226,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".content").remove();
 		$(".pageBox").remove();
+		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
 		var projSort;
