@@ -428,6 +428,12 @@ $(document).ready(function() {
 	});
 	$(document).on("focus", "#join_form", function(e){
 		
+		$.validator.addMethod("passwordCk",  function( value, element ) {
+
+			return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
+
+		}); 
+		
 	    /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
 	    $('#join_form').validate({
 	    	/* 
@@ -450,7 +456,7 @@ $(document).ready(function() {
 	                }
 	            },
 	            // [비밀번호] 필수 + 글자수 길이 제한
-	            memPw2: { required: true, minlength: 6, maxlength: 30 },
+	            memPw2: { required: true, passwordCk:true, minlength: 6, maxlength: 30 },
 	            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
 	            memPw_confirm: { required: true, equalTo: '#memPw2' },
 	            // [연락처] 필수
@@ -471,6 +477,7 @@ $(document).ready(function() {
 	            },
 	            memPw2: {
 	                required: '비밀번호를 입력하세요.',
+	                passwordCk: '비밀번호는 문자 + 숫자 + 특수문자를 포함하셔야 합니다.',
 	                minlength: '비밀번호는 최소 {0}글자 이상 입력하셔야 합니다.',
 	                maxlength: '비밀번호는 최대 {0}글자까지 가능합니다.',
 	            },

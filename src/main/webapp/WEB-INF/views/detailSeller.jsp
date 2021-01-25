@@ -252,7 +252,7 @@ a:focus, a:hover{
   border: 1px solid #e3e3e3;
   background-color: #D9D9D9;
   height: 50px;
-  padding-top: 10px;
+  padding-top: 6px;
   margin-right: 20px;
 }
 .infoBox span{
@@ -401,15 +401,20 @@ a:focus, a:hover{
 				</div>
 				<div class="row1 leftBox">
 					<div class="infoBox">
-						<div><span>유형</span></div>
-						<div>${output.profileBizSortName}</div>
+						<div style="margin-bottom: 6px;"><span>유형</span></div>
+						<c:if test="${output.profileBizSortName != ''}">
+							<div>${output.profileBizSortName}</div>
+						</c:if>
+						<c:if test="${output.profileBizSortName == ''}">
+							<div>등록X</div>
+						</c:if>
 					</div>
 					<div class="infoBox">
-						<div><span>분류</span></div>
+						<div style="margin-bottom: 6px;"><span>분류</span></div>
 						<div>${output.profileIndusName}</div>
 					</div>
 					<div class="infoBox">
-						<div><span>지역</span></div>
+						<div style="margin-bottom: 6px;"><span>지역</span></div>
 						<div>${output.profileNationName}</div>
 					</div>
 				</div>
