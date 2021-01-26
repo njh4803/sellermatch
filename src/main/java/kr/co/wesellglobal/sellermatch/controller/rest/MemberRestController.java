@@ -69,7 +69,8 @@ public class MemberRestController {
 	}
 	
 	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
-	public Map<String, Object> adminJoin(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
+	public Map<String, Object> adminJoin(HttpServletRequest request, 
+			@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
 			@RequestParam(value = "memberId", required = false) String memId,
 			@RequestParam(value = "memPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName", required = false) String memName,
@@ -87,6 +88,8 @@ public class MemberRestController {
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		UploadItem item = null;
 		
+		String clientIp = webHelper.getClientIP(request);
+		
 		try {
 			//item = webHelper.saveMultipartFile(memPhoto);
 		} catch (NullPointerException e) {
@@ -96,6 +99,8 @@ public class MemberRestController {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		
+		
 		
 		MemberDto input = new MemberDto();
 		input.setMemId(memId);
@@ -112,7 +117,7 @@ public class MemberRestController {
 		input.setMemAddr2(memAddr2);
 		//input.setMemPhoto(item.getFilePath());
 		input.setMemState("0");
-		input.setMemIp("49.247.0.132");
+		input.setMemIp(clientIp);
 		if (memNick == "" | memNick == null) {
 			String nickName = memId.substring(memId.lastIndexOf("@")+1);
 			input.setMemNick(nickName);
@@ -198,7 +203,6 @@ public class MemberRestController {
 		input.setMemAddr(memAddr);
 		input.setMemAddr2(memAddr2);
 		input.setMemState("0");
-		input.setMemIp("49.247.0.132");
 		
 		try {
 			memberService.editMember(input);
