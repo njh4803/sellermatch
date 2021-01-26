@@ -95,8 +95,8 @@ public class ProfileRestController {
 			pageData = new PageData(nowPage, totalCount, listCount, groupCount);
 
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
-			ProjectDto.setOffset(pageData.getOffset());
-			ProjectDto.setListCount(pageData.getListCount());
+			ProfileDto.setOffset(pageData.getOffset());
+			ProfileDto.setListCount(pageData.getListCount());
 			output = profileService.getProfileList(input);
 			indusList = indusService.getIndusList(input2);
 		} catch (Exception e) {

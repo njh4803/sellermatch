@@ -1356,6 +1356,7 @@ $(document).ready(function() {
 		param_list["sort"] = $("#sort").val();
 		param_list["page"] = $(this)[0].firstChild.data
 		param_list["keyword"] = keyword;
+		console.log(param_list['page'])
 		$.ajax({
 	       type: "GET",
 	       url: ROOT_URL+"/seller/find2",
