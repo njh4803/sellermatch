@@ -123,7 +123,7 @@ public class MemberServiceImpl implements MemberService{
 				throw new NullPointerException("result=null");
 			}
 
-			// 조회에 성공하면 result에 저장되어 있는 PK를 활용하여 로그인 시간을 갱신한다.
+			// 로그인 시간을 갱신
 			sqlSession.update("MemberMapper.updateLoginDate", result);
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
@@ -148,6 +148,42 @@ public class MemberServiceImpl implements MemberService{
 			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 		return result;
+	}
+
+	@Override
+	public String idFindService(MemberDto input) throws Exception {
+		String result = null;
+		
+		try {
+			result = sqlSession.selectOne("MemberMapper.findId", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		}catch(Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
+	@Override
+	public void pwChangeService(MemberDto input) throws Exception {
+		int result = 0;
+		
+		try {
+			// 존재하는 아이디(이메일)인지 체크
+			result = sqlSession.selectOne("MemberMapper.idCheck", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+			sqlSession.update("MemberMapper.changePw", input);
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("등록된 이메일이 아닙니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
 	}
 
 }

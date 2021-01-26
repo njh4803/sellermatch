@@ -20,6 +20,7 @@ public class ProjectDto {
 	
 	// 프로젝트 분류 공급자(1), 셀러(2)
 	private String projSort;
+	private String projSortName;
 	
 	// 상품분류 
 	private String projIndus;
@@ -29,9 +30,11 @@ public class ProjectDto {
 	
 	// 판매마진 10% 이하(10), 11%~20%(20), 21%~30%(30), 30% 초과(31)
 	private int projMargin;
+	private String projMarginName;
 	
 	// 등록지역 지역국번
 	private String projNation;
+	private String projNationName;
 	
 	// 공급방법 OEM(1),위탁판매(2),도매공급(3), 운영대행(4),경매공급(5)
 	private String projSupplyType;
@@ -171,18 +174,18 @@ public class ProjectDto {
 	
 	public String getProjSortName() {
 		if (this.projSort.equals("0")) {
-			return "일반";
+			return this.projSortName = "일반";
 		}
 		if (this.projSort.equals("1")) {
-			return "공급자";
+			return this.projSortName = "공급자";
 		}
 		if (this.projSort.equals("2")) {
-			return "판매자";
+			return this.projSortName = "판매자";
 		}
 		if (this.projSort.equals("3")) {
-			return "관리자";
+			return this.projSortName = "관리자";
 		}
-		return "";
+		return this.projSortName = "";
 	}
 	
 	public String getProjSupplyTypeName() {
@@ -219,73 +222,73 @@ public class ProjectDto {
 	
 	public String getProjMarginName() {
 		if (this.projMargin == 10) {
-			return "10% 미만";
+			return this.projMarginName = "10% 미만";
 		}
 		if (this.projMargin == 20) {
-			return "11% ~ 20%";
+			return this.projMarginName = "11% ~ 20%";
 		}
 		if (this.projMargin == 30) {
-			return "21% ~ 30%";
+			return this.projMarginName = "21% ~ 30%";
 		}
 		if (this.projMargin == 31) {
-			return "30% 초과";
+			return this.projMarginName = "30% 초과";
 		}
-		return "";
+		return this.projMarginName = "";
 	}
 	
 	public String getProjNationName() {
 		if (this.projNation.equals("02")) {
-			return "서울";
+			return this.projNationName = "서울";
 		}
 		if (this.projNation.equals("031")) {
-			return "경기";
+			return this.projNationName = "경기";
 		}
 		if (this.projNation.equals("032")) {
-			return "인천";
+			return this.projNationName = "인천";
 		}
 		if (this.projNation.equals("033")) {
-			return "강원";
+			return this.projNationName = "강원";
 		}
 		if (this.projNation.equals("041")) {
-			return "충남";
+			return this.projNationName = "충남";
 		}
 		if (this.projNation.equals("042")) {
-			return "대전";
+			return this.projNationName = "대전";
 		}
 		if (this.projNation.equals("043")) {
-			return "충북";
+			return this.projNationName = "충북";
 		}
 		if (this.projNation.equals("051")) {
-			return "부산";
+			return this.projNationName = "부산";
 		}
 		if (this.projNation.equals("052")) {
-			return "울산";
+			return this.projNationName = "울산";
 		}
 		if (this.projNation.equals("053")) {
-			return "대구";
+			return this.projNationName = "대구";
 		}
 		if (this.projNation.equals("054")) {
-			return "경북";
+			return this.projNationName = "경북";
 		}
 		if (this.projNation.equals("055")) {
-			return "경남";
+			return this.projNationName = "경남";
 		}
 		if (this.projNation.equals("061")) {
-			return "전남";
+			return this.projNationName = "전남";
 		}
 		if (this.projNation.equals("062")) {
-			return "광주";
+			return this.projNationName = "광주";
 		}
 		if (this.projNation.equals("063")) {
-			return "전북";
+			return this.projNationName = "전북";
 		}
 		if (this.projNation.equals("044")) {
-			return "세종특별자치시";
+			return this.projNationName = "세종특별자치시";
 		}
 		if (this.projNation.equals("064")) {
-			return "세종특별자치도";
+			return this.projNationName = "세종특별자치도";
 		}
-		return "해외";
+		return this.projNationName = "해외";
 	}
 	
 	public String getProjProdCertiName() {

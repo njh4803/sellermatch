@@ -165,5 +165,14 @@
 			</if>
 		</where>
 	</select>
-
+	
+	<!-- 아이디 찾기 -->
+	<select id="findId" parameterType="String" resultType="String">
+		select mem_id from MemList where mem_id = #{memId}
+	</select>
+	<!-- 비밀번호 변경 -->
+	<update id="changePw" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
+		UPDATE MemList SET mem_pw = MD5(#{memPw}) where mem_id = #{memId}
+	</update>
+	
 </mapper>

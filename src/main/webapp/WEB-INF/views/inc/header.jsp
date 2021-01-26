@@ -84,7 +84,7 @@
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}">
+                <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}" data-rname="${member.memRname}">
                 	<i class="fas fa-bolt"></i> 프로젝트 등록
                 </a>
             </div>
@@ -132,7 +132,8 @@ $(function(){
 	});
 	$("#projectInsert").on("click", function(){
 		var login_id = $('#projectInsert').data('member');
-		console.log(login_id)
+		var rname = $('#projectInsert').data('rname');
+		
 		if (login_id == '') {
 			swal({
                 title: '알림',
@@ -140,8 +141,18 @@ $(function(){
                	type: 'warning',
             });
 		} else {
-			window.location.href = ROOT_URL+'/project/add';
+			if (rname == '0') {
+				swal({
+	                title: '알림',
+	                text: '실명인증 후 이용가능합니다.',
+	               	type: 'warning',
+	            });
+			} else {
+				window.location.href = ROOT_URL+'/project/add';
+			}
 		}
+		
+		
 	});
 	
 	$('.operation_guide_list').addClass('skip');

@@ -101,7 +101,6 @@ public class MemberRestController {
 		input.setMemId(memId);
 		input.setMemPw(memPw);
 		input.setMemName(memName);
-		input.setMemNick(memNick);
 		input.setMemTel(memTel);
 		input.setMemRname(memRname);
 		input.setMemClass("0");
@@ -114,6 +113,12 @@ public class MemberRestController {
 		//input.setMemPhoto(item.getFilePath());
 		input.setMemState("0");
 		input.setMemIp("49.247.0.132");
+		if (memNick == "" | memNick == null) {
+			String nickName = memId.substring(memId.lastIndexOf("@")+1);
+			input.setMemNick(nickName);
+		} else {
+			input.setMemNick(memNick);
+		}
 		
 		// 프로필
 		ProfileDto input2 = new ProfileDto();
@@ -260,5 +265,65 @@ public class MemberRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("referer", referer);
 		return webHelper.getJsonData(data);
+	}
+	
+	/** id 찾기 */
+	@RequestMapping(value = "/idFind", method = RequestMethod.GET)
+	public Map<String, Object> idFind(@RequestParam(value = "memId", required = false) String email) {
+		if (!regexHelper.isEmail(email)) {
+			return webHelper.getJsonWarning("이메일이 잘못되었습니다.");
+		}
+		MemberDto input = new MemberDto();
+		input.setMemId(email);
+		
+		String result = null;
+		
+		try {
+			result = memberService.idFindService(input);
+			String content = email + "님의 아이디는 " + result + "입니다.";
+			String subject = "SellerMatch 아이디 찾기 메일";
+			mailHelper.sendMail(email, subject, content);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		return webHelper.getJsonData();
+	}
+	
+	
+	/** 비밀번호 찾기*/
+	@RequestMapping(value = "/pwFind", method = RequestMethod.POST)
+	public Map<String, Object> pwFind(@RequestParam(value = "memId", required = false) String email) {
+		if (!regexHelper.isEmail(email)) {
+			return webHelper.getJsonWarning("이메일이 잘못되었습니다.");
+		}
+		MemberDto input = new MemberDto();
+		input.setMemId(email);
+		
+		// 임시 비밀번호를 위한 난수 생성
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+		String str = "";
+
+		int idx = 0;
+		for (int i = 0; i < 10; i++) {
+			idx = (int) (charSet.length * Math.random());
+			str += charSet[idx];
+		}
+		//
+		
+		input.setMemPw(str);
+		
+		try {
+			memberService.pwChangeService(input);
+			String content = email + "님의  초기화된 비밀번호는 " + str + "입니다. 로그인 하신 후 즉시 비밀번호 변경을 진행해주세요.";
+			String subject = "SellerMatch 비밀번호 찾기 메일";
+			mailHelper.sendMail(email, subject, content);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		return webHelper.getJsonData();
 	}
 }

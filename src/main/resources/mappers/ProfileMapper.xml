@@ -113,6 +113,9 @@
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
 		<where>
+			<if test="needIndus != '' and needIndus != null">
+				mem_rname = 1
+			</if>
 			<if test="memNick != '' and memNick != null">
         		OR mem_nick LIKE concat('%', #{memNick}, '%')
         	</if>
@@ -218,6 +221,9 @@
 		INNER JOIN MemList m
 		ON s.profile_mem_id = m.mem_id
 		<where>
+			<if test="needIndus != '' and needIndus != null">
+				mem_rname = 1
+			</if>
 			<if test="memNick != '' and memNick != null">
         		OR mem_nick LIKE concat('%', #{memNick}, '%')
         	</if>

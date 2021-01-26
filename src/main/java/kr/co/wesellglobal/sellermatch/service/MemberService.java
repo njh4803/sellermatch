@@ -20,4 +20,7 @@ public interface MemberService {
 	
 	public int getMemberCount(MemberDto input) throws Exception;
 	
+	public String idFindService(MemberDto input) throws Exception;
+	
+	public void pwChangeService(MemberDto input) throws Exception;
 }

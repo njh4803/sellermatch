@@ -428,6 +428,13 @@ $(document).ready(function() {
 			}
 	    });
 	});
+	
+	$(document).on("focus blur", "#memNick", function(){
+		var memNick = $('#memNick').val();
+		$('#memNick').val(memNick.trim());
+		console.log($('#memNick').val())
+	});
+	
 	$(document).on("focus", "#join_form", function(e){
 		
 		$.validator.addMethod("passwordCk",  function( value, element ) {
@@ -435,6 +442,12 @@ $(document).ready(function() {
 			return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
 
 		}); 
+		
+		$.validator.addMethod("phone", function(value, element) {
+			return this.optional(element)
+					|| /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value)
+					|| /^\d{2, 3}\d{3, 4}\d{4}$/i.test(value);
+		});
 		
 	    /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
 	    $('#join_form').validate({
@@ -462,7 +475,7 @@ $(document).ready(function() {
 	            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
 	            memPw_confirm: { required: true, equalTo: '#memPw2' },
 	            // [연락처] 필수
-	            memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
+	            memTel: { phone: true },
 	            // [우편번호] 필수 입력
 	            postcode: 'required',
 	            // [주소1] 우편번호가 입력된 경우만 필수
@@ -494,10 +507,7 @@ $(document).ready(function() {
 	                remote: '이미 사용중인 이메일 입니다.'
 	            },
 	            memTel: {
-	                required: '연락처를 입력하세요.',
 	                phone: '연락처 형식이 잘못되었습니다.',
-	                minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
-	                maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
 	            },
 	            postcode: '우편번호를 입력해 주세요.',
 	            memAddr: '기본주소를 입력해 주세요.',
@@ -525,16 +535,23 @@ $(document).ready(function() {
                },
                success: function() {
             	   swal('알림', '회원가입이 완료되었습니다.', 'success').then(function(result) {
-            		   swal({
-		    	            title: '<div>프로필 등록을 해야</div><div>프로젝트 등록을 할 수 있습니다.</div>',
-		    	            text: '프로필 등록을 지금하시겠습니까?',
-		    	            type: "question",
-		    	            icon: 'warning',
-		    	            showCancelButton: true,
-		    	            confirmButtonColor: '#3085d6',
-		    	            cancelButtonColor: '#d33',
-		    	            confirmButtonText: '지금 등록하기',
-		    	            cancelButtonText: '나중에 등록하기'
+            		    var text = '';
+	   					if (profileSort == 1) {
+	   						text = '프로필 등록 후 여러분이 원하는 공급자와 더 가까워집니다.'
+	   					}
+	   					if (profileSort == 2) {
+	   						text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
+	   					}
+	   					swal({
+	   	    	            title: '<div>프로필 등록을 해야</div><div>프로젝트 등록을 할 수 있습니다.</div>',
+	   	    	            text: text,
+	   	    	            type: "question",
+	   	    	            icon: 'warning',
+	   	    	            showCancelButton: true,
+	   	    	            confirmButtonColor: '#3085d6',
+	   	    	            cancelButtonColor: '#d33',
+	   	    	            confirmButtonText: '지금 등록하기',
+	   	    	            cancelButtonText: '나중에 등록하기'
 		    	        }).then(function(result) {    					
 		    	            if (result.value) {
 		    	            	window.location = ROOT_URL+ "/profile?profileMemId="+profileMemId+"&profileSort="+profileSort;
@@ -668,6 +685,14 @@ $(document).ready(function() {
                                                                     placeholder="별명을 입력하세요. 회사명 등 정보성 닉네임을 입력하시면 이용제한을 받을 수 있습니다.">
                                                                 </div>
                                                             </div>
+															<div class="form-group row">
+																<label for="memTel" class="col-sm-2 colForm-label">연락처
+																</label>
+																<div class="col-sm-9">
+																	<input type="text" name="memTel" class="form-control" id="memTel"
+																		placeholder="`-`  없이 숫자만 입력(연락처는 아이디를 찾을 때 이용됩니다.)" />
+																</div>
+															</div>
                                                             <!-- <div class="form-group row">
                                                                 <label class="col-sm-2 colForm-label">국가</label>
                                                                 <div class="col-sm-10">
@@ -710,15 +735,6 @@ $(document).ready(function() {
 																				class="btn form-bg-primary">인증 번호 확인</button>
 																		</span>
 																	</div>
-																</div>
-															</div>
-                                                            <div class="form-group row">
-																<label for="memTel" class="col-sm-2 colForm-label">연락처
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-10">
-																	<input type="text" name="memTel" class="form-control" id="memTel"
-																		placeholder="`-`없이 숫자만 입력" />
 																</div>
 															</div>
 															<div class="form-group row">

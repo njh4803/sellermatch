@@ -75,69 +75,38 @@ label.error {
 
   <!-- Modal -->
   <div class="modal fade" id="loginModal" role="dialog">
-    <div class="modal-dialog modal-xl" style="width: 450px;">
-      <div class="modal-content">
-        <div class="modal-body">
-			<form class="md-float-material" method="POST" id="login-form" action="${pageContext.request.contextPath}/member/login">
-                            <div class="auth-box">
-                                <div class="row m-b-20">
-                                    <div class="col-md-12">
-                                        <h3 class="text-left txt-primary">로그인하기</h3>
-                                        <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다.</h5>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="input-group col-sm-12">
-                                    <input type="email" id="memId" name="memId" class="form-control" placeholder="아이디를 입력해주세요">
-                                    <span class="md-line"></span>
-                                </div>
-                                <div class="row"></div>
-                                <div class="input-group col-sm-12">
-                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="비밀번호를 입력해주세요.">
-                                    <span class="md-line"></span>
-                                </div>
-                                <div class="row"></div>
-                                <div class="row m-t-30">
-                                    <div class="col-md-12">
-                                        <button type="submit" id="loginBtn" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">로그인</button>
-                                    </div>
-                                </div>
-                                <div class="row m-t-25 text-left">
-                                    <div class="col-sm-7 col-xs-12">
-                                        <div class="checkbox-fade fade-in-primary">
-                                            <label>
-                                                <input type="checkbox" value="">
-                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                <span class="text-inverse">로그인 유지하기</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                        <a href="#" class="text-right f-w-600 text-inverse font-10" id="idPwFind">아이디 · 비밀번호찾기</a>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-inverse text-center m-b-0">5초안에 셀러매치 간편하게 시작하기</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="bannerBox text-center"><br><br><br><br>배너</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                                                                <!-- 로그인 form end -->													
-        </div>
-      </div>
-    </div>
+
   </div>
 
 <script type="text/javascript">
 	
 $(document).ready(function() {
+	$(document).on("focus", "#find-pw-form", function(e){
+		$("#find-pw-form").validate({
+			rules : {
+				memId : { required: true, email: true, },
+			},
+			messages : {
+				memId : {
+	                required: '이메일을 입력하세요.',
+	                email: '이메일만 입력 가능합니다.'
+	            },
+			},
+		});
+	});
+	$(document).on("focus", "#find-id-form", function(e){
+		$("#find-id-form").validate({
+			rules : {
+				memId : { required: true, email: true, },
+			},
+			messages : {
+				memId : {
+	                required: '이메일을 입력하세요.',
+	                email: '이메일만 입력 가능합니다.'
+	            },
+			},
+		});
+	});
 	$(document).on("focus", "#login-form", function(e){
 		$("#login-form").validate({
 			rules : {
@@ -152,7 +121,56 @@ $(document).ready(function() {
 				memPw : '비밀번호를 입력하세요.',
 			},
 		});
+		
+		
+		
+		
 	});
+	
+	$(document).on("submit", "#find-id-form", function(e){
+		
+		e.preventDefault();
+		
+	    var form = $(this);
+		var url = form.attr('action');
+			
+			
+	       
+		$.ajax({
+			type: "POST",
+	        url: url,
+	        data: form.serialize(),
+	        beforeSend: function() {
+	        	return $('#find-id-form').valid();
+	        },
+			success : function(json) {
+				
+			}
+		});
+	});
+	
+	$(document).on("submit", "#find-pw-form", function(e){
+		
+		e.preventDefault();
+		
+	    var form = $(this);
+		var url = form.attr('action');
+			
+			
+	       
+		$.ajax({
+			type: "POST",
+	        url: url,
+	        data: form.serialize(),
+	        beforeSend: function() {
+	        	return $('#find-pw-form').valid();
+	        },
+			success : function(json) {
+				
+			}
+		});
+	});
+	
 	$(document).on("submit", "#login-form", function(e){
 		
 		e.preventDefault();
@@ -291,7 +309,7 @@ $(document).ready(function() {
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active fade in" id="idf">
-						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/rest/idFind">
+						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/idFind">
 						<div class="form-group">
 							<label for="memId" class="col-sm-2 col-form-label" style="padding: 8px 0;">이메일
 							</label>
@@ -336,7 +354,7 @@ $(document).ready(function() {
 						</form>
 					</div>
 					<div class="tab-pane fade" id="pwdf">
-						<form id="find-pw-form" method="post" action="${pageContext.request.contextPath}/rest/pwFind">
+						<form id="find-pw-form" method="post" action="${pageContext.request.contextPath}/pwFind">
 						<div class="form-group">
 							<label for="memId" class="col-sm-2 col-form-label" style="padding: 8px 0;"> 이메일
 							</label>

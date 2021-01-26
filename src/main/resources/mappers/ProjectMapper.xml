@@ -12,10 +12,13 @@
         <result property="projMemId"   column="proj_mem_id" />
         <result property="projTitle"   column="proj_title" />
         <result property="projSort"   column="proj_sort" />
+        <result property="projSortName"   column="proj_sort_name" />
         <result property="projIndus" column="proj_indus" />
         <result property="projPrice" column="proj_price" />
         <result property="projMargin" column="proj_margin" />
+        <result property="projMarginName" column="proj_margin_name" />
         <result property="projNation" column="proj_nation" />
+        <result property="projNationName" column="proj_nation_name" />
         <result property="projSupplyType" column="proj_supply_type" />
         <result property="projRecruitNum" column="proj_recruit_num" />
         <result property="projDetail" column="proj_detail" />
@@ -89,6 +92,7 @@
     	resultMap="ProjectMap">
     	SELECT
 	   		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
+	   		proj_sort as proj_sort_name, proj_margin as proj_margin_name, proj_nation as proj_nation_name, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
     		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 

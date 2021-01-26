@@ -56,9 +56,10 @@
 }
 .container1 .container2{
 	margin: 0;
-    width: 70%;
+    width: 100%;
     height: 100%;
     float: left;
+    padding: 10px 20px;
 }
 .container3{
 	border-left: 2px solid #e3e3e3;
@@ -84,11 +85,11 @@
 }
 .leftBox{
 	float: left;
-	margin: 15px 15px;
+	margin: 10px 15px;
 }
 .rightBox{
 	float: right;
-	margin: 15px 15px;
+	margin: 10px 0;
 }
 .rightBox a{
 	margin: 0 15px;
@@ -138,7 +139,32 @@
 	color: white;
 	display: inline-block;
 	border-radius: 1px;
-	padding: 15px 15px;
+	padding: 13px 13px;
+	margin-right: 10px;
+}
+.grayBox{
+	background-color: #e3e3e3;
+	color: black;
+	display: inline-block;
+	border-radius: 1px;
+	padding: 13px 13px;
+	margin-right: 10px;
+}
+.pFindBox{
+	background-color: #E62267;
+	color: white;
+	display: inline-block;
+	border-radius: 1px;
+	padding: 13px 13px;
+	margin-right: 10px;
+	
+}
+.sFindBox{
+	background-color: #57207C;
+	color: white;
+	display: inline-block;
+	border-radius: 1px;
+	padding: 13px 13px;
 	margin-right: 10px;
 }
 .titleBox{
@@ -167,10 +193,14 @@
 	color: #7F7F7F;
 	margin-right: 10px;
 }
-.tagContainer{
-	padding-top: 50px;
+.countBox {
+	border: 2px solid #e3e3e3;
+    display: inline-block;
+    color: #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
 }
-
 .projDetail a{
 	text-decoration: none;
 	color: black;
@@ -438,10 +468,24 @@ a:focus, a:hover{
 					<input type="hidden" id="projId${status.index}" value="${output.projId}">
 					<div class="row1">
 						<div class="leftBox">
-							<span pattern="yyyy-MM-dd">• 등록일 : ${output.projRegDate}</span>
+							<c:choose>
+								<c:when test="${output.projDday < 0}">
+									<div class="blueBox">마감</div>
+								</c:when>
+								<c:otherwise>
+									<div class="blueBox">마감 ${output.projDday}일전</div>
+								</c:otherwise>
+							</c:choose>
+							<c:if test="${output.projSort == 1}">
+				        		<button class="pFindBox">${output.projSortName} 찾기</button>
+				        	</c:if>
+				        	<c:if test="${output.projSort == 2}">
+				        		<button class="sFindBox">${output.projSortName} 찾기</button>
+				        	</c:if>
+				        	<button class="grayBox">${output.projNationName}지역</button>
 						</div>	
 						<div class="rightBox">
-							<span>+ 관심프로젝트등록</span>
+							<span>• 등록일 : ${output.projRegDate}</span>
 						</div>
 					</div>
 					<div class="row1 leftBox">
@@ -463,58 +507,47 @@ a:focus, a:hover{
 						<c:if test="${output.profileSaleChk == 1}">
 							<div class="orangeBox">매출검증</div>
 						</c:if>
+						<div class="countBox">
+							<c:if test="${output.projPrice != 0}">
+								단가/마진 : ${output.projPrice}원/${output.projMarginName}
+							</c:if>
+							<c:if test="${output.projPrice == 0}">
+								마진 : ${output.projMarginName}
+							</c:if>
+						</div>
 					</div>
-					<div class="clearfix"></div>
 					<div class="row1 leftBox projDetail" data-index="${status.index}">
 						<c:if test="${output.projSort == 1}">
-							<div class="titleBox"><a><span class="pp">공급자</span> | ${output.projTitle}</a></div>
+							<div class="titleBox">
+								<a><span class="pp">공급자</span> | ${output.projTitle}</a>
+							</div>
 						</c:if>
 						<c:if test="${output.projSort == 2}">
-							<div class="titleBox"><a><span class="sp">판매자</span> | ${output.projTitle}</a></div>
+							<div class="titleBox">
+								<a><span class="sp">판매자</span> | ${output.projTitle}</a>
+							</div>
 						</c:if>
 					</div>
-					<div class="clearfix"></div>
-					<div class="row1 leftBox projDetail" data-index="${status.index}">
+					<div class="leftBox projDetail" data-index="${status.index}" style="width: 97%;">
 						<div class="contentsBox">
 							<a>${output.projDetail}</a>
 						</div>
 					</div>
 					<div class="clearfix"></div>
 					<div class="row1 leftBox">
-						<div class="tagContainer">
+						<div class="leftBox">
 							<c:forEach var="projKeywordList" items="${output.projKeywordList}">
 			            		<div class="tagBox">#${projKeywordList}</div>
 			            	</c:forEach>
 						</div>
-					</div>
-				</div>
-				<div class="container3">
-					<div class="row1 text-left">
-						<c:choose>
-							<c:when test="${output.projDday < 0}">
-								<div class="blueBox">마감</div>
-							</c:when>
-							<c:otherwise>
-								<div class="blueBox">마감 ${output.projDday}일전</div>
-							</c:otherwise>
-						</c:choose>
-					</div>
-					<div class="row2"></div>
-					<div class="row1">
-						<span class="leftBox">모집자수</span>
-						<span class="rightBox">${output.projRecruitNum}명</span>
-					</div>
-					<div class="row1">
-						<span class="leftBox">지원자수</span>
-						<span class="rightBox">${output.applyCount}명</span>
-					</div>
-					<div class="row1">
-						<span class="leftBox">지원마감일</span>
-						<span class="rightBox">${output.projEndDate}</span>
-					</div>
-					<div class="row1">
-						<span class="leftBox">관심조회</span>
-						<span class="rightBox">${output.projHit}회</span>
+						<div class="rightBox margin-0">
+							<div class="countBox">
+								모집수 : ${output.projRecruitNum}명
+							</div>
+							<div class="countBox">
+								 지원수 : ${output.applyCount}명
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -644,10 +677,21 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 	<div class="container2">
 		<div class="row1">
 			<div class="leftBox">
-				<span>• 등록일 : {{projRegDate}}</span>
+				{{#ifCond projDday '<' 0}}
+		            <div class="blueBox">마감</div>
+		        {{else}}
+		            <div class="blueBox">마감 {{projDday}}일전</div>
+		        {{/ifCond}}
+				{{#ifCond projSort '==' 1}}
+					<button class="pFindBox">{{projSortName}} 찾기</button>
+				{{/ifCond}}
+				{{#ifCond projSort '==' 2}}
+					<button class="sFindBox">{{projSortName}} 찾기</button>
+				{{/ifCond}}
+				<button class="grayBox">{{projNationName}}지역</button>				
 			</div>	
 			<div class="rightBox">
-				<span>+ 관심프로젝트등록</span>
+				<span>• 등록일 : {{projRegDate}}</span>
 			</div>
 		</div>
 		<div class="row1 leftBox">
@@ -669,6 +713,14 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 			{{#ifCond sprofileSaleChk '==' 1}}
 				<div class="orangeBox">매출검증</div>
 			{{/ifCond}}
+			<div class="countBox">
+				{{#ifCond projPrice '!=' 0}}
+					단가/마진 : {{projPrice}}원/{{projMarginName}}
+				{{/ifCond}}
+				{{#ifCond projPrice '==' 0}}
+					마진 : {{projMarginName}}
+				{{/ifCond}}
+			</div>
 		</div>
 		<div class="clearfix"></div>
 		<div class="row1 leftBox projDetail" data-index="{{@key}}">
@@ -680,7 +732,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 			{{/ifCond}}
 		</div>
 		<div class="clearfix"></div>
-		<div class="row1 leftBox projDetail" data-index="{{@key}}">
+		<div class="leftBox projDetail" data-index="{{@key}}" style="width: 97%;">
 			<div class="contentsBox">
 				<a>{{projDetail}}</a>
 			</div>
@@ -692,32 +744,14 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 					<div class="tagBox">&num;{{value}}</div>
 				{{/each}}
 			</div>
-		</div>
-	</div>
-	<div class="container3">
-		<div class="row1 text-left">
-			{{#ifCond projDday '<' 0}}
-				<div class="blueBox">마감</div>
-			{{else}}
-				<div class="blueBox">마감 {{projDday}}일전</div>
-			{{/ifCond}}
-		</div>
-		<div class="row2"></div>
-		<div class="row1">
-			<span class="leftBox">모집자수</span>
-			<span class="rightBox">{{projRecruitNum}}명</span>
-		</div>
-		<div class="row1">
-			<span class="leftBox">지원자수</span>
-			<span class="rightBox">{{applyCount}}명</span>
-		</div>
-		<div class="row1">
-			<span class="leftBox">지원마감일</span>
-			<span class="rightBox">{{projEndDate}}</span>
-		</div>
-		<div class="row1">
-			<span class="leftBox">관심조회</span>
-			<span class="rightBox">{{projHit}}회</span>
+			<div class="rightBox margin-0">
+				<div class="countBox">
+					모집수 : {{projRecruitNum}}명
+				</div>
+				<div class="countBox">
+					 지원수 : {{applyCount}}명
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -1204,6 +1238,7 @@ $(document).ready(function() {
            url: ROOT_URL+"/project/find2",
            data: param_list,
            success: function(json) {
+        	   console.log(json);
         	   	var content = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
            		var html = template(content);
@@ -1291,7 +1326,6 @@ $(document).ready(function() {
            		var html = template(content);
            		
            		var page_content = json.pageData
-           		console.log(page_content)
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_content);
            		
