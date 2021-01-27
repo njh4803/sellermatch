@@ -273,25 +273,21 @@ public class MemberRestController {
 	
 	/** id 찾기 */
 	@RequestMapping(value = "/idFind", method = RequestMethod.GET)
-	public Map<String, Object> idFind(@RequestParam(value = "memId", required = false) String email) {
-		if (!regexHelper.isEmail(email)) {
-			return webHelper.getJsonWarning("이메일이 잘못되었습니다.");
-		}
+	public Map<String, Object> idFind(@RequestParam(value = "memTel", required = false) String memTel) {
 		MemberDto input = new MemberDto();
-		input.setMemId(email);
+		input.setMemTel(memTel);
 		
 		String result = null;
 		
 		try {
 			result = memberService.idFindService(input);
-			String content = email + "님의 아이디는 " + result + "입니다.";
-			String subject = "SellerMatch 아이디 찾기 메일";
-			mailHelper.sendMail(email, subject, content);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("result", result);
 
-		return webHelper.getJsonData();
+		return webHelper.getJsonData(data);
 	}
 	
 	

@@ -168,7 +168,7 @@
 	
 	<!-- 아이디 찾기 -->
 	<select id="findId" parameterType="String" resultType="String">
-		select mem_id from MemList where mem_id = #{memId}
+		select mem_id from MemList where mem_tel = #{memTel}
 	</select>
 	<!-- 비밀번호 변경 -->
 	<update id="changePw" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">

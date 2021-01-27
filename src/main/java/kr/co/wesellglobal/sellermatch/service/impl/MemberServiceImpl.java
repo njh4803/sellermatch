@@ -161,7 +161,7 @@ public class MemberServiceImpl implements MemberService{
 			}
 		}catch(Exception e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 조회에 실패했습니다.");
+			throw new Exception("입력하신 연락처로 등록된 아이디가 없습니다.");
 		}
 		return result;
 	}

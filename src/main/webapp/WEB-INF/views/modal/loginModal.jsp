@@ -81,7 +81,11 @@ label.error {
 <script type="text/javascript">
 	
 $(document).ready(function() {
+	
+
+	
 	$(document).on("focus", "#find-pw-form", function(e){
+		
 		$("#find-pw-form").validate({
 			rules : {
 				memId : { required: true, email: true, },
@@ -89,20 +93,27 @@ $(document).ready(function() {
 			messages : {
 				memId : {
 	                required: '이메일을 입력하세요.',
-	                email: '이메일만 입력 가능합니다.'
+	                email: '이메일만 입력 가능합니다.',
 	            },
 			},
 		});
 	});
 	$(document).on("focus", "#find-id-form", function(e){
+		
+		$.validator.addMethod("phone", function(value, element) {
+			return this.optional(element)
+					|| /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value)
+					|| /^\d{2, 3}\d{3, 4}\d{4}$/i.test(value);
+		});
+		
 		$("#find-id-form").validate({
 			rules : {
-				memId : { required: true, email: true, },
+				memTel : { required: true, phone: true, },
 			},
 			messages : {
-				memId : {
-	                required: '이메일을 입력하세요.',
-	                email: '이메일만 입력 가능합니다.'
+				memTel : { 
+	                required: '연락처를 입력하세요.',
+	                phone: '연락처 형식이 잘못되었습니다.',
 	            },
 			},
 		});
@@ -137,14 +148,18 @@ $(document).ready(function() {
 			
 	       
 		$.ajax({
-			type: "POST",
+			type: "GET",
 	        url: url,
 	        data: form.serialize(),
 	        beforeSend: function() {
 	        	return $('#find-id-form').valid();
 	        },
 			success : function(json) {
-				
+				swal({
+	                title: '알림',
+	                text: '아이디는'+ json.result + '입니다.',
+	               	type: 'success',
+	            });
 			}
 		});
 	});
@@ -311,11 +326,11 @@ $(document).ready(function() {
 					<div class="tab-pane active fade in" id="idf">
 						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/idFind">
 						<div class="form-group">
-							<label for="memId" class="col-sm-2 col-form-label" style="padding: 8px 0;">이메일
+							<label for="memTel" class="col-sm-2 col-form-label" style="padding: 8px 0;">연락처
 							</label>
                        	 	<div class="col-sm-10">
 								<div class="form-group">
-									<input id="memId" type="email" name="memId" class="form-control" placeholder="이메일">
+									<input id="memTel" type="text" name="memTel" class="form-control" placeholder="가입시 연락처">
 								</div>
                         	</div>
 						</div>
@@ -328,7 +343,7 @@ $(document).ready(function() {
 						</div>
 						<div class="row">
                         	<div class="col-md-12">
-                            	<img src="../local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
+                            	<img src="./local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
                             </div>
                         </div>
 						<div class="row">
@@ -337,14 +352,14 @@ $(document).ready(function() {
 									<div class="row">• 운영시간</div>
 									<div class="row">
 										<div>
-											<img src="../local_assets/img/tel.jpg">
+											<img src="./local_assets/img/tel.jpg">
 											<div class="text">
 												<div style="display: block;">평일 AM 9:00 ~ PM 6:00  (일요일 / 공휴일은 쉽니다)</div>
 												<div>TEL. 032-459-2236</div>
 											</div>
 										</div>
 										<div>
-											<img src="../local_assets/img/mail.jpg">
+											<img src="./local_assets/img/mail.jpg">
 											<div>help@sellermatch.co.kr</div>
 										</div>
 									</div>
@@ -373,7 +388,7 @@ $(document).ready(function() {
 						</div>
 						<div class="row">
                         	<div class="col-md-12">
-                            	<img src="../local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
+                            	<img src="./local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
                             </div>
                         </div>
 						<div class="row">
@@ -382,14 +397,14 @@ $(document).ready(function() {
 									<div class="row">• 운영시간</div>
 									<div class="row">
 										<div>
-											<img src="../local_assets/img/tel.jpg">
+											<img src="./local_assets/img/tel.jpg">
 											<div class="text">
 												<div style="display: block;">평일 AM 9:00 ~ PM 6:00  (일요일 / 공휴일은 쉽니다)</div>
 												<div>TEL. 032-459-2236</div>
 											</div>
 										</div>
 										<div>
-											<img src="../local_assets/img/mail.jpg">
+											<img src="./local_assets/img/mail.jpg">
 											<div>help@sellermatch.co.kr</div>
 										</div>
 									</div>
