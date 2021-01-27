@@ -1,23 +1,15 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
@@ -38,8 +30,8 @@ public class BoardRestController {
 	@Autowired
 	WebHelper webHelper;
 	
-	@RequestMapping(value = "/board", method = RequestMethod.GET)
-	public Map<String, Object> board(Model model, @RequestParam(value = "tabNum", required = false) String tabNum,
+	@RequestMapping(value = "/usageFee2", method = RequestMethod.GET)
+	public Map<String, Object> getBoard(Model model, @RequestParam(value = "tabNum", required = false) String tabNum,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -50,7 +42,7 @@ public class BoardRestController {
 		
 			// 페이지 구현에 필요한 변수값 생성 
 			int totalCount = 0;		// 전체 게시글 수
-			int listCount = 20;		// 한 페이지당 표시할 목록 수
+			int listCount = 2;		// 한 페이지당 표시할 목록 수
 			int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
 			
 			// 페이지 번호를 계산한 결과가 저장될 객체

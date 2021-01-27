@@ -41,9 +41,6 @@
 	   		b.board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
 	   		FROM BoardList b
     	<where>
-    		<if test="boardType != null and boardType != ''">
-    			board_type = #{boardType}
-    		</if>
 			<if test="boardTitle != null and boardTitle != ''">
 				OR board_title LIKE concat('%', #{boardTitle}, '%')
 			</if>
@@ -53,6 +50,10 @@
 			<if test="boardWriter != null and boardWriter != ''">
 				OR board_writer LIKE concat('%', #{boardWriter}, '%')
 			</if>
+			
+			<if test="boardType != null and boardType != ''">
+    			AND board_type = #{boardType}
+    		</if>
 		</where>
     	
     	<if test="listCount > 0">
@@ -67,6 +68,7 @@
     		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
 	   		board_reg_date, board_edit_date
     	FROM BoardList
+    	where board_id = #{boardId} AND board_type = #{boardType}
     </select>
 
 	<update id="updateItem"
@@ -91,9 +93,6 @@
 		SELECT COUNT(*)
 		FROM BoardList
 		<where>
-			<if test="boardType != null and boardType != ''">
-    			board_type = #{boardType}
-    		</if>
 			<if test="boardTitle != null and boardTitle != ''">
 				OR board_title LIKE concat('%', #{boardTitle}, '%')
 			</if>
@@ -103,6 +102,10 @@
 			<if test="boardWriter != null and boardWriter != ''">
 				OR board_writer LIKE concat('%', #{boardWriter}, '%')
 			</if>
+			
+			<if test="boardType != null and boardType != ''">
+    			AND board_type = #{boardType}
+    		</if>
 		</where>
 	</select>
 	

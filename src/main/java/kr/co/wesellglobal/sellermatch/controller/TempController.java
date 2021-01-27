@@ -44,7 +44,7 @@ public class TempController {
 	}
 	
 	@RequestMapping(value = "/usageFee", method = RequestMethod.GET)
-	public ModelAndView adminboardList(Model model) {
+	public ModelAndView usageFee(Model model) {
 		
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
@@ -86,5 +86,25 @@ public class TempController {
 		model.addAttribute("pageData", pageData);
 		
 		return new ModelAndView("/usageFee");
+	}
+	
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public ModelAndView notice(Model model,
+			@RequestParam(value = "boardId", required = false) String boardId) {
+		BoardDto input = new BoardDto();
+		input.setBoardId(boardId);
+		input.setBoardType("1");
+		
+		BoardDto output = null;
+		
+		try {
+			output = boardService.getBoard(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("/detailNotice");
 	}
 }
