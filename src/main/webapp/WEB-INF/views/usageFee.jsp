@@ -13,7 +13,6 @@
 		display: inline-block;
 		padding: 10px 15px;
 		cursor: pointer;
-		
 		width: 256px;
 		height: 40px;
 		border: solid 1px #707070;
@@ -37,7 +36,6 @@
 		font-weight: bold;
 		font-stretch: normal;
 		font-style: normal;
-		line-height: 1.35;
 		letter-spacing: normal;
 		text-align: center;
 		color: #000000;
@@ -47,7 +45,6 @@
 		font-weight: bold;
 		font-stretch: normal;
 		font-style: normal;
-		line-height: 1.35;
 		letter-spacing: normal;
 		text-align: center;
 		color: #ffffff;
@@ -67,9 +64,9 @@
 	.tabBox{
 		width: 1280px;
 		height: 270px;
-		padding: 62px 334px 100px 335px;
 		border-bottom: solid 3px #000000;
-		background-color: #ffffff;	
+		background-color: #ffffff;
+		padding-top: 60px;	
 	}
 	.tab-title{
 		margin: 0 206px 15px 205px;
@@ -79,7 +76,7 @@
 		font-style: normal;
 		line-height: 1.34;
 		letter-spacing: normal;
-		text-align: left;
+		text-align: center;
 		color: #000000;
 	}
 	.tab-text{
@@ -139,14 +136,6 @@
 		height: 60px;
 		background-color: #f8f2f9;
 	}
-	.noticeSearch{
-	  width: 600px;
-	  height: 50px;
-	  border: solid 1px #707070;
-	  background-color: #ffffff;
-	  margin-bottom: 66px;
-	  margin-top: 16px;
-	}
 	
 	input::placeholder {
 	  font-size: 15px;
@@ -158,17 +147,39 @@
 	  text-align: center;
 	}
 	/* 자주하는질문 */
-		ul.FAQ-tabs{
-		margin: 0px;
+	.FAQ-tabBox{
+		width: 1280px;
+		height: 500px;
+		border-bottom: solid 3px #000000;
+		background-color: #ffffff;
+		padding-top: 60px;	
+	}
+	ul.FAQ-tabs{
+		margin-top: 49px;
 		padding: 0px;
 		list-style: none;
 	}
 	ul.FAQ-tabs li{
-		background: none;
-		color: #222;
+		width: 256px;
+		height: 60px;
+		border: solid 1px #c9c9c9;
+		background-color: #ffffff;
 		display: inline-block;
-		padding: 10px 15px;
 		cursor: pointer;
+		margin-right: -4px;
+		padding: 19.5px;
+	}
+	ul.FAQ-tabs li .tabTitle{
+		font-size: 17px;
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+		letter-spacing: normal;
+		text-align: center;
+		color: #000000;
+	}
+	ul.FAQ-tabs li.current .tabTitle{
+		color: #3f0088;
 	}
 	.FAQ-tab-content{
 		display: none;
@@ -180,12 +191,51 @@
 	}
 	
 	ul.FAQ-tabs li.current{
-		background: #ededed;
-		color: #222;
+		width: 256px;
+		height: 60px;
+		border: solid 1px #c9c9c9;
+		background-color: #ffffff;
 	}
+	.FAQ-form{
+	  width: 1280px;
+	  height: 150px;
+	  background-color: #f8f2f9;
+	  margin-top: 38px;
+	  padding: 45px;
+	}
+.boardSearch{
+	width: 600px;
+	height: 50px;
+	border: solid 1px #707070;
+	background-color: #ffffff;
+	margin-bottom: 66px;
+	margin-top: 16px;
+}
+
+.FAQ-form .boardSearch{
+	width: 600px;
+	height: 50px;
+	border: solid 1px #707070;
+	background-color: #ffffff;
+	margin-bottom: 0;
+	margin-top: 0;
+}
 
 tfoot{
 	background-color: #fff;
+}
+.searchBtn{
+    background-image: url(./local_assets/img/검색아이콘.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    outline: none;
+    position: relative;
+    width: 33px;
+    height: 30px;
+    margin: 6px;
+    right: 51px;
+    top: 8px;
 }
 /* 페이징 CSS */
 ul.pagination>li>a {
@@ -309,7 +359,8 @@ ul.pagination>li>a {
 					<td colspan="4">
 						<div>
 							<form action="${pageContext.request.contextPath}/usageFee2" id="notice-form">
-								<input type="search" id="noticeSearch" class="noticeSearch" placeholder="제목 또는 내용으로 검색">
+								<input type="search" id="noticeSearch" class="boardSearch" placeholder="제목 또는 내용으로 검색">
+								<button type="submit" class="searchBtn"></button>
 							</form>
 						</div>
 					</td>
@@ -529,18 +580,13 @@ $(document).ready(function(){
 	
 	
 	$(document).on("click", "ul.FAQ-tabs li", function(e){
+
 		
 		var tab_id = $(this).attr('data-tab');
 		var keyword = $('#FAQSearch').val();
-		var boardQaType = $('#FAQSearch').data('type');
+		var boardQaType = $(this).data('type');
 		// 초기화
 		$('#FAQ').remove();
-		
-		$('ul.FAQ-tabs li').removeClass('current');
-		$('.FAQ-tab-content').removeClass('current');
-
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
 		
 		$.ajax({
 			type: "GET",
@@ -560,15 +606,23 @@ $(document).ready(function(){
 	       		var html = template(content);
 	       		
 	       		$("#tab-2").append(html);
+	       		
+	    		$('ul.FAQ-tabs li').removeClass('current');
+	    		$('.FAQ-tab-content').removeClass('current');
+	    		$('#select'+tab_id).addClass('current');
+	    		$("#"+tab_id).addClass('current');
 			}
 		});
+
+		
 	});
 	
 	$(document).on("submit", "#FAQ-form", function(e){
 		e.preventDefault();
 		
 		var keyword = $('#FAQSearch').val();
-		var boardQaType = $('#FAQSearch').data('type');
+		var boardQaType = $('.FAQ-tab-link.current').data('type');
+		var tab_id = $('.FAQ-tab-content.current').attr('id');
 		// 초기화
 		$('#FAQ').remove();
 		
@@ -590,10 +644,16 @@ $(document).ready(function(){
 	       		var template = Handlebars.compile($("#FAQ-tmpl").html());
 	       		var html = template(content);
 	       		
-	       		$("#tab-1").append(html);
+	       		$("#tab-2").append(html);
+	       		
+	    		$('ul.FAQ-tabs li').removeClass('current');
+	    		$('.FAQ-tab-content').removeClass('current');
+	    		$('#select'+tab_id).addClass('current');
+	    		$("#"+tab_id).addClass('current');
 			}
 		});
 	});
+	
 });
 </script>
 <script type="text/x-handlebars-template" id="page-tmpl">
@@ -602,15 +662,15 @@ $(document).ready(function(){
 		<div class="col-lg-12 col-md-12 col-sm12 text-center">
 			<ul class="pagination">
 		        {{#ifCond prevPage '>' 0}}
-		            <li><a href="javascript:void(0)" class="pageMove" value="{{prevPage}}">&laquo;</a></li>
+		            <li><a href="javascript:void(0)" class="pageMove" value="{{prevPage}}">&lt; 이전</a></li>
 		        {{else}}
-		            <li><a>&laquo;</a></li>
+		            <li><a>&lt; 이전</a></li>
 		        {{/ifCond}}
 		        {{creatPage startPage endPage nowPage}}
 			    {{#ifCond nextPage '>' 0}}
-		            <li><a href="javascript:void(0)" class="pageMove" value="{{nextPage}}">&raquo;</a></li>
+		            <li><a href="javascript:void(0)" class="pageMove" value="{{nextPage}}">다음 &gt;</a></li>
 		        {{else}}
-		            <li><a>&raquo;</a></li>
+		            <li><a>다음 &gt;</a></li>
 		        {{/ifCond}}
 			</ul>
 		</div>
@@ -619,20 +679,20 @@ $(document).ready(function(){
 </script>
 <script type="text/x-handlebars-template" id="notice-tmpl">
 <table id="noticeTable">
-	<thead style="border: 1px solid;">
+	<thead>
 		<tr>
 			<th colspan="2" class="notice-title"><div class="notice">제목</div></th>
-			<th><div>등록일</div></th>
-			<th><div>조회</div></th>
+			<th class="notice-regdate">등록일</th>
+			<th class="notice-hit">조회</th>
 		</tr>
 	</thead>
-	<tbody style="border: 1px solid;">
+	<tbody>
 		{{#output}}
 			<tr>
-				<td style="border: 1px solid;">{{createNum ../boardCount ../minusCount @key}}</td>
-				<td style="border: 1px solid;" class="noticeDetail" data-id="{{boardId}}">{{boardTitle}}</td>
-				<td style="border: 1px solid;">{{boardRegDate}}</td>
-				<td style="border: 1px solid;">{{boardHit}}</td>
+				<td>{{createNum ../boardCount ../minusCount @key}}</td>
+				<td class="noticeDetail" data-id="{{boardId}}">{{boardTitle}}</td>
+				<td>{{boardRegDate}}</td>
+				<td>{{boardHit}}</td>
 			</tr>
 		{{/output}}
 	</tbody>
@@ -641,7 +701,8 @@ $(document).ready(function(){
 			<td colspan="4">
 				<div>
 					<form action="${pageContext.request.contextPath}/usageFee2" id="notice-form">
-						<input type="search" id="noticeSearch" value="{{keyword}}">
+						<input type="search" id="noticeSearch" class="boardSearch" value="{{keyword}}" placeholder="제목 또는 내용으로 검색">
+						<button type="submit" class="searchBtn"></button>
 					</form>
 				</div>
 			</td>
@@ -651,20 +712,21 @@ $(document).ready(function(){
 </script>
 <script type="text/x-handlebars-template" id="FAQ-tmpl">
 			<div id="FAQ">
-				<div>FAQ</div>
-				<div>셀러매치 이용 중 자주묻는 질문과 답변을 확인해보세요</div>
-				<div>
-					<form action="${pageContext.request.contextPath}/usageFee2" id="FAQ-form" data-type="{{FAQType}}">
-						<input type="search" id="FAQSearch" placeholder="검색어를 입력해주세요">
+				<div class="FAQ-tabBox">
+		        	<div class="tab-title">FAQ</div>
+		        	<div class="tab-text">셀러매치 이용 중 자주묻는 질문과 답변을 확인해보세요</div>
+					<form action="${pageContext.request.contextPath}/usageFee2" id="FAQ-form" class="FAQ-form" data-type="{{FAQType}}">
+						<input type="search" id="FAQSearch" class="boardSearch" placeholder="검색어를 입력해주세요" value="{{keyword}}">
+						<button type="submit" class="searchBtn"></button>
 					</form>
-				</div>
-				<ul class="FAQ-tabs">
-					<li class="FAQ-tab-link current" data-tab="FAQ-1" data-type=""><div>전체</div></li>
-					<li class="FAQ-tab-link" data-tab="FAQ-2" data-type="회원">회원관련</li>
-					<li class="FAQ-tab-link" data-tab="FAQ-3" data-type="프로젝트">프로젝트관련</li>
-					<li class="FAQ-tab-link" data-tab="FAQ-4" data-type="시스템">시스템관련</li>
-					<li class="FAQ-tab-link" data-tab="FAQ-5" data-type="기타">기타</li>
-				</ul>
+					<ul class="FAQ-tabs">
+						<li class="FAQ-tab-link current" data-tab="FAQ-1" id="selectFAQ-1" data-type=""><div class="tabTitle">전체</div></li>
+						<li class="FAQ-tab-link" data-tab="FAQ-2" id="selectFAQ-2" data-type="회원"><div class="tabTitle">회원관련</div></li>
+						<li class="FAQ-tab-link" data-tab="FAQ-3" id="selectFAQ-3" data-type="프로젝트"><div class="tabTitle">프로젝트관련</div></li>
+						<li class="FAQ-tab-link" data-tab="FAQ-4" id="selectFAQ-4" data-type="시스템"><div class="tabTitle">시스템관련</div></li>
+						<li class="FAQ-tab-link" data-tab="FAQ-5" id="selectFAQ-5" data-type="기타"><div class="tabTitle">기타</div></li>
+					</ul>
+		        </div>
 				<div id="FAQ-1" class="FAQ-tab-content current">
 					<table>
 						<tbody>
@@ -681,16 +743,64 @@ $(document).ready(function(){
 					</table>
 				</div>
 				<div id="FAQ-2" class="FAQ-tab-content">
-					회원관련
+					<table>
+						<tbody>
+							{{#output}}
+							<tr>
+								<td rowspan="2" style="border: 1px solid;">이미지</td>
+								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid;">{{boardTitle}}</td>
+							</tr>
+							{{/output}}
+						</tbody>
+					</table>
 				</div>
 				<div id="FAQ-3" class="FAQ-tab-content">
-					프로젝트관련
+					<table>
+						<tbody>
+							{{#output}}
+							<tr>
+								<td rowspan="2" style="border: 1px solid;">이미지</td>
+								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid;">{{boardTitle}}</td>
+							</tr>
+							{{/output}}
+						</tbody>
+					</table>
 				</div>
 				<div id="FAQ-4" class="FAQ-tab-content">
-					시스템관련
+					<table>
+						<tbody>
+							{{#output}}
+							<tr>
+								<td rowspan="2" style="border: 1px solid;">이미지</td>
+								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid;">{{boardTitle}}</td>
+							</tr>
+							{{/output}}
+						</tbody>
+					</table>
 				</div>
 				<div id="FAQ-5" class="FAQ-tab-content">
-					기타
+					<table>
+						<tbody>
+							{{#output}}
+							<tr>
+								<td rowspan="2" style="border: 1px solid;">이미지</td>
+								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid;">{{boardTitle}}</td>
+							</tr>
+							{{/output}}
+						</tbody>
+					</table>
 				</div>
 			<div>
 </script>
