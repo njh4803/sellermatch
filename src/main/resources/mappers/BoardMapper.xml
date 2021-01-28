@@ -54,6 +54,9 @@
 			<if test="boardType != null and boardType != ''">
     			AND board_type = #{boardType}
     		</if>
+    		<if test="boardQaType != null and boardQaType != ''">
+    			AND board_qa_type = #{boardQaType}
+    		</if>
 		</where>
     	
     	<if test="listCount > 0">
@@ -105,6 +108,9 @@
 			
 			<if test="boardType != null and boardType != ''">
     			AND board_type = #{boardType}
+    		</if>
+    		<if test="boardQaType != null and boardQaType != ''">
+    			AND board_qa_type = #{boardQaType}
     		</if>
 		</where>
 	</select>

@@ -32,10 +32,12 @@ public class BoardRestController {
 	
 	@RequestMapping(value = "/usageFee2", method = RequestMethod.GET)
 	public Map<String, Object> getBoard(Model model, @RequestParam(value = "tabNum", required = false) String tabNum,
+			@RequestParam(value = "boardQaType", required = false) String boardQaType,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
 		String boardType;
 		if (tabNum.equals("1")) { 
 			boardType = "1";
@@ -91,11 +93,33 @@ public class BoardRestController {
 		}
 		if (tabNum.equals("2")) {
 			boardType = "2";
+			
+			BoardDto input = new BoardDto();
+			input.setBoardType(boardType);
+			input.setBoardQaType(boardQaType);
+			
+			if (keyword != null && keyword != "") {
+				input.setBoardTitle(keyword);
+				input.setBoardContents(keyword);
+				input.setBoardWriter(keyword);
+			}
+			
+			//목록조회
+			List<BoardDto> output = null;
+			
+			try {
+				output = boardService.getBoardList(input);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			Map<String, Object> data = new HashMap<String, Object>();
 			
 			
+			data.put("output", output);
 			data.put("keyword", keyword);
-			return webHelper.getJsonData(data);		
+			return webHelper.getJsonData(data);
 		}
 		if (tabNum.equals("4")) {
 			boardType = "4";
