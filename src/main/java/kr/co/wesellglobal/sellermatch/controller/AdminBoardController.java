@@ -54,6 +54,10 @@ public class AdminBoardController {
 			return new ModelAndView("admin/admin_login");
 		}
 		
+		if (!member.getMemSort().equals("3")) {
+			return webHelper.redirect("temp", "관리자만 접근 가능합니다.");
+		}
+		
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
 		int listCount = 20;		// 한 페이지당 표시할 목록 수

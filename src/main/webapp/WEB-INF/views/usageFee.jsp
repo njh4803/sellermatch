@@ -15,7 +15,7 @@
 		cursor: pointer;
 		width: 256px;
 		height: 40px;
-		border: solid 1px #707070;
+		border: solid 1px #e3e3e3;
 		border-bottom: solid 3px #000000;
 		background-color: #ffffff;
 		margin-right: -4px;
@@ -26,7 +26,7 @@
 		color: #222;
 		width: 256px;
 		height: 40px;
-		border: solid 1px #707070;
+		border: solid 1px #e3e3e3;
 		border-bottom: solid 3px #000000;
 		background-color: #8333ab;
 		margin-right: -4px;
@@ -107,7 +107,7 @@
 	}
 	#noticeTable tbody td {
 		  height: 60px;
-		  border-bottom: solid 1px #707070;
+		  border-bottom: solid 1px #e3e3e3;
 		  background-color: #ffffff;
 		  font-size: 15px;
 		  font-weight: normal;
@@ -206,7 +206,7 @@
 .boardSearch{
 	width: 600px;
 	height: 50px;
-	border: solid 1px #707070;
+	border: solid 1px #e3e3e3;
 	background-color: #ffffff;
 	margin-bottom: 66px;
 	margin-top: 16px;
@@ -215,7 +215,7 @@
 .FAQ-form .boardSearch{
 	width: 600px;
 	height: 50px;
-	border: solid 1px #707070;
+	border: solid 1px #e3e3e3;
 	background-color: #ffffff;
 	margin-bottom: 0;
 	margin-top: 0;
@@ -237,6 +237,56 @@ tfoot{
     right: 51px;
     top: 8px;
 }
+.FAQ-tab-content table{
+	margin-bottom: 205px;
+}
+
+.FAQ-tab-content table tbody tr td:nth-child(1){
+	width: 97px;
+}
+.FAQ-tab-content table tbody tr td:nth-child(1) span{
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #3f0088;
+  padding: 18px 35px 22px 35px;
+}
+.FAQ-tab-content table tbody tr td{
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  width: 1183px;
+}
+.FAQ-tab-content table tbody tr td:nth-child(2){
+  color: #7b7b7b;
+}
+.FAQ-tab-content table tbody tr {
+  width: 1280px;
+  height: 40px;
+  background-color: #ffffff;
+}
+.FAQ-tab-content table tbody tr:nth-child(4n){
+    height: 1px;
+    border-bottom: 1px solid #777777;	
+}
+.FAQ-tab-content table tbody tr.boardContents td{
+	padding: 0 97px;
+	background-color: #fdf8ff;
+}
+.boardContents{
+	display: none;
+}
+.boardTitle{
+	cursor: pointer;
+}
+
 /* 페이징 CSS */
 ul.pagination>li>a {
 	position: relative;
@@ -654,6 +704,12 @@ $(document).ready(function(){
 		});
 	});
 	
+	$(document).on("click", ".boardTitle", function(e){
+		console.log($(this));
+		var boardContents = $(this).next();
+		console.log(boardContents);
+		boardContents.toggle();
+	});
 });
 </script>
 <script type="text/x-handlebars-template" id="page-tmpl">
@@ -732,12 +788,18 @@ $(document).ready(function(){
 						<tbody>
 							{{#output}}
 							<tr>
-								<td rowspan="2" style="border: 1px solid;">이미지</td>
-								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+								<td rowspan="2"><span>Q</span></td>
+								<td>[ {{boardQaType}}관련 ]</td>
 							</tr>
-							<tr>
-								<td style="border: 1px solid;">{{boardTitle}}</td>
+							<tr class="boardTitle">
+								<td>{{boardTitle}}</td>
 							</tr>
+							<tr class="boardContents">
+								<td colspan="2">
+									{{boardContents}}
+								</td>
+							</tr>
+							<tr></tr>
 							{{/output}}
 						</tbody>
 					</table>
@@ -747,12 +809,18 @@ $(document).ready(function(){
 						<tbody>
 							{{#output}}
 							<tr>
-								<td rowspan="2" style="border: 1px solid;">이미지</td>
-								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+								<td rowspan="2"><span>Q</span></td>
+								<td>[ {{boardQaType}}관련 ]</td>
 							</tr>
-							<tr>
-								<td style="border: 1px solid;">{{boardTitle}}</td>
+							<tr class="boardTitle">
+								<td>{{boardTitle}}</td>
 							</tr>
+							<tr class="boardContents">
+								<td colspan="2">
+									{{boardContents}}
+								</td>
+							</tr>
+							<tr></tr>
 							{{/output}}
 						</tbody>
 					</table>
@@ -762,12 +830,18 @@ $(document).ready(function(){
 						<tbody>
 							{{#output}}
 							<tr>
-								<td rowspan="2" style="border: 1px solid;">이미지</td>
-								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+								<td rowspan="2"><span>Q</span></td>
+								<td>[ {{boardQaType}}관련 ]</td>
 							</tr>
-							<tr>
-								<td style="border: 1px solid;">{{boardTitle}}</td>
+							<tr class="boardTitle">
+								<td>{{boardTitle}}</td>
 							</tr>
+							<tr class="boardContents">
+								<td colspan="2">
+									{{boardContents}}
+								</td>
+							</tr>
+							<tr></tr>
 							{{/output}}
 						</tbody>
 					</table>
@@ -777,12 +851,18 @@ $(document).ready(function(){
 						<tbody>
 							{{#output}}
 							<tr>
-								<td rowspan="2" style="border: 1px solid;">이미지</td>
-								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+								<td rowspan="2"><span>Q</span></td>
+								<td>[ {{boardQaType}}관련 ]</td>
 							</tr>
-							<tr>
-								<td style="border: 1px solid;">{{boardTitle}}</td>
+							<tr class="boardTitle">
+								<td>{{boardTitle}}</td>
 							</tr>
+							<tr class="boardContents">
+								<td colspan="2">
+									{{boardContents}}
+								</td>
+							</tr>
+							<tr></tr>
 							{{/output}}
 						</tbody>
 					</table>
@@ -792,12 +872,18 @@ $(document).ready(function(){
 						<tbody>
 							{{#output}}
 							<tr>
-								<td rowspan="2" style="border: 1px solid;">이미지</td>
-								<td style="border: 1px solid;">[ {{boardQaType}}관련 ]</td>
+								<td rowspan="2"><span>Q</span></td>
+								<td>[ {{boardQaType}}관련 ]</td>
 							</tr>
-							<tr>
-								<td style="border: 1px solid;">{{boardTitle}}</td>
+							<tr class="boardTitle">
+								<td>{{boardTitle}}</td>
 							</tr>
+							<tr class="boardContents">
+								<td colspan="2">
+									{{boardContents}}
+								</td>
+							</tr>
+							<tr></tr>
 							{{/output}}
 						</tbody>
 					</table>

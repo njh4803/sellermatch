@@ -281,6 +281,10 @@ public class AdminMemberRestController {
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		
+		if (!output.getMemSort().equals("3")) {
+			return webHelper.getJsonError("관리자만 접근가능합니다.");
+		}
 
 		// 세션 저장
 		webHelper.setSession("member", output);

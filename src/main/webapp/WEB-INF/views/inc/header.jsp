@@ -108,27 +108,27 @@ $(function(){
 	});
 	
 	$("#logout").on("click", function(){
-		$.ajax({
-			type: "GET",
-			url: ROOT_URL+"/member/logout",
-			dataType: "json",
-			success: function(json){
-				swal({
-                    title: '알림',
-                    text: '정말 로그아웃 하시겠습니까?',
-                   	type: "question",
-    	            icon: 'success',
-    	            showCancelButton: true,
-                }).then(function(result) {
-                	if (result.value) {
-                		window.location.href = json.referer;
-					} else {
-						return;
-					}
-                });
+		swal({
+            title: '알림',
+            text: '정말 로그아웃 하시겠습니까?',
+           	type: "question",
+            icon: 'success',
+            showCancelButton: true,
+        }).then(function(result) {
+        	if (result.value) {
+        		$.ajax({
+        			type: "GET",
+        			url: ROOT_URL+"/member/logout",
+        			dataType: "json",
+        			success: function(json){
+        				window.location.href = ROOT_URL+"/temp";
+        			}
+        		});
+			} else {
+				return;
 			}
+        });
 
-		});
 	});
 	$("#projectInsert").on("click", function(){
 		var login_id = $('#projectInsert').data('member');

@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<style>
+.pcoded .pcoded-navbar[navbar-theme="theme4"] .main-menu .main-menu-header {
+    background-color: #ffffff;
+    width: 235px;
+    height: 80px;
+    text-align: center;
+}
+</style>
     <!-- Pre-loader start -->
     <div class="theme-loader">
         <div class="ball-scale">
@@ -528,7 +536,7 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="">
                                 <div class="main-menu-header">
-                                    <a href="${pageContext.request.contextPath}/admin"><img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo_2.png" alt="User-Profile-Image" style="width: 100%;"></a>
+                                    <a href="${pageContext.request.contextPath}/admin"><img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo_2.png" alt="User-Profile-Image" style="width: 80%;"></a>
                                 </div>
 
                                 <!-- <div class="main-menu-content">
@@ -541,6 +549,15 @@
                                     </ul>
                                 </div> -->
                             </div>
+                            <ul class="pcoded-item pcoded-left-item">
+                            	<li class="">
+		                            <a href="javascript:void(0);" id="logout">
+		                                <span class="pcoded-micon"></span>
+		                                <span class="pcoded-mtext" data-i18n="nav.page_layout.main">로그아웃</span>
+		                                <span class="pcoded-mcaret"></span>
+		                            </a>
+	                            </li>
+                            </ul>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation" menu-title-theme="theme5">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-trigger">
@@ -627,3 +644,36 @@
                             </ul>
                         </div>
                     </nav>
+<script type="text/javascript">
+$(function(){
+	$("#logout").on("click", function(){
+		swal({
+            title: '알림',
+            text: '정말 로그아웃 하시겠습니까?',
+           	type: "question",
+            icon: 'success',
+            showCancelButton: true,
+        }).then(function(result) {
+        	if (result.value) {
+        		$.ajax({
+        			type: "GET",
+        			url: ROOT_URL+"/admin/member/logout",
+        			dataType: "json",
+        			success: function(){
+        				swal({
+        	                title: '알림',
+        	                text: '로그아웃 되었습니다.',
+        	               	type: 'success',
+        	            }).then(function(result) {
+        	            	window.location = ROOT_URL+"/admin";
+        	            });
+        			}
+        		});
+			} else {
+				return;
+			}
+        });
+		
+	});	
+});
+</script>

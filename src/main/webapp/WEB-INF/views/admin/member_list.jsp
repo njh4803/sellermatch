@@ -81,9 +81,6 @@ label.error {
                                         	<div class="col-sm-10" style="display: inline-block;">
                                         		<h4>회원 관리</h4>
                                         	</div>
-                                            <div class="col-sm-2" style="display: inline-block; text-align: right;">
-                                            	<h6><a id="logout" href="#">로그아웃</a></h6>
-                                            </div>
                                         </div>
                                     </div>
                                     <!-- Page-header end -->
@@ -366,27 +363,6 @@ $(document).on("click",".profile-modal",function(event){
 			});
 	}
 
-});
-
-$(function(){
-	$("#logout").on("click", function(){
-		$.ajax({
-			type: "GET",
-			url: ROOT_URL+"/admin/member/logout",
-			dataType: "json",
-			success: function(){
-					//swal("알림", "로그아웃되었습니다.", "success");
-					swal({
-                        title: '알림',
-                        text: '로그아웃 되었습니다.',
-                       	type: 'success',
-                    }).then(function(result) {
-                    	window.location.href = ROOT_URL+"/admin/memberList";
-                    });
-			}
-
-		});
-	});	
 });
 </script>
 <!-- bootstrap js -->
