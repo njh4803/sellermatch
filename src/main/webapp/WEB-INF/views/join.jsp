@@ -459,7 +459,7 @@ $(document).ready(function() {
 	        rules: {
 	            // [아이디] 필수 + 알파벳,숫자 조합만 허용
 	            memberId: {
-	                required: true, email: true, minlength: 4, maxlength: 30, 
+	                required: true, email: true, 
 	                remote : {
 	                    url : ROOT_URL + '/member/idCheck',
 	                    type : 'post',
@@ -486,8 +486,6 @@ $(document).ready(function() {
 	        	memberId: {
 	                required: '아이디를 입력하세요.',
 	                email: '아이디는 이메일만 입력 가능합니다.',
-	                minlength: '아이디는 최소 {6}글자 이상 입력하셔야 합니다.',
-	                maxlength: '아이디는 최대 {30}글자까지 가능합니다.',
 	                remote: '이미 사용중인 이메일 입니다.'
 	            },
 	            memPw2: {

@@ -33,17 +33,22 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="memId" class="col-sm-2 col-form-label">아이디
+                                                                <label class="col-sm-2 col-form-label">가입 유형</label>
+                                                                <div class="col-sm-10">
+                                                                    <select id="memSort" name="memSort" class="form-control">
+                                                                    	<option value="0">일반</option>
+						                                                <option value="1">공급자</option>
+						                                                <option value="2">판매자</option>
+						                                            </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="memberId" class="col-sm-2 col-form-label">아이디
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
-	                                                                    <input id="memId" type="text" name="memId" class="form-control" placeholder="이메일 입력">
-	                                                                    <!-- <span
-																			id="guide" class="input-group-btn">
-																			<button type="button" id="idCheck"
-																				class="btn form-bg-primary">중복검사</button>
-																		</span> -->
+	                                                                    <input id="memberId" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
 																	</div>
                                                                 </div>
                                                             </div>
@@ -52,16 +57,16 @@
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
+                                                                    <input type="password" id="memberPw" name="memberPw" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-																<label for="memPw_confirm" class="col-sm-2 control-label">비밀번호 확인
+																<label for="memberPw_confirm" class="col-sm-2 control-label">비밀번호 확인
 																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
-																	<input type="password" name="memPw_confirm" class="form-control"
-																		id="memPw_confirm" placeholder="영문,숫자,특수문자 조합 최대 30글자" />
+																	<input type="password" name="memberPw_confirm" class="form-control"
+																		id="memberPw_confirm" placeholder="영문,숫자,특수문자 조합 최대 30글자" />
 																</div>
 															</div>
                                                             <div class="form-group row">
@@ -260,6 +265,12 @@ $(function(){
 				|| /^\d{2, 3}\d{3, 4}\d{4}$/i.test(value);
 	});
 	
+	$.validator.addMethod("passwordCk",  function( value, element ) {
+
+		return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
+
+	}); 
+	
     /** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
     $('#join_form').validate({
     	/* 
@@ -269,44 +280,37 @@ $(function(){
 		
         rules: {
             // [아이디] 필수 + 알파벳,숫자 조합만 허용
-            memId: {
-                required: true, email: true, minlength: 4, maxlength: 30, 
+            memberId: {
+                required: true, email: true, 
                 remote : {
                     url : ROOT_URL + '/admin/member/idCheck',
                     type : 'post',
                     data : {
-                    	memId : function() {
-                            return $("#memId").val();
+                    	memberId : function() {
+                            return $("#memberId").val();
                         }
                     }
                 }
             },
             // [비밀번호] 필수 + 글자수 길이 제한
-            memPw: { required: true, minlength: 4, maxlength: 30 },
+            memberPw: { required: true, passwordCk:true, minlength: 6, maxlength: 30 },
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
-            memPw_confirm: { required: true, equalTo: '#memPw' },
-            // [연락처] 필수
-            memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
-            // [우편번호] 필수 입력
-            postcode: 'required',
-            // [주소1] 우편번호가 입력된 경우만 필수
-            memAddr: 'required',
+            memberPw_confirm: { required: true, equalTo: '#memberPw' },
             
         },
         messages: {
-        	memId: {
+        	memberId: {
                 required: '아이디를 입력하세요.',
                 email: '아이디는 이메일만 입력 가능합니다.',
-                minlength: '아이디는 최소 {4}글자 이상 입력하셔야 합니다.',
-                maxlength: '아이디는 최대 {30}글자까지 가능합니다.',
                 remote: '이미 사용중인 이메일 입니다.'
             },
-            memPw: {
-                required: '비밀번호를 입력하세요.',
-                minlength: '비밀번호는 최소 {0}글자 이상 입력하셔야 합니다.',
-                maxlength: '비밀번호는 최대 {0}글자까지 가능합니다.',
+            memberPw: {
+            	required: '비밀번호를 입력하세요.',
+                passwordCk: '비밀번호는 문자 + 숫자 + 특수문자를 포함하셔야 합니다.',
+                minlength: '비밀번호는 최소 {6}글자 이상 입력하셔야 합니다.',
+                maxlength: '비밀번호는 최대 {30}글자까지 가능합니다.',
             },
-            memPw_confirm: {
+            memberPw_confirm: {
                 required: '비밀번호 확인값을 입력하세요.',
                 equalTo: '비밀번호 확인이 잘못되었습니다.',
             },
@@ -340,21 +344,6 @@ $(function(){
             });
         },
     });
-	//유효성 검사 아이디 중복 검사 알림창으로 확인하기
-/* 	$("#idCheck").click(function(e) {
-	    const memId = $("#memId").val();
-
-	    if (!memId) {
-	    	swal('알림', '아이디를 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/idCheck', {
-	    	memId: memId
-	    }, function(json) {
-	    	swal('확인', '사용가능한 아이디 입니다.', 'success');
-	    });
-	}); */
 	$("#sendAuthEmail").click(function(e) {
 	    const memEmail = $("#memEmail").val();
 	

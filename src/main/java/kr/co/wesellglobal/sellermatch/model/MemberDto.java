@@ -110,6 +110,9 @@ public class MemberDto {
 	}
 	
 	public String getMemClassName() {
+		if (this.memClass.equals("0")) {
+			return "기본";
+		}
 		if (this.memClass.equals("1m")) {
 			return "1개월";
 		}
@@ -122,7 +125,7 @@ public class MemberDto {
 		if (this.memClass.equals("1y")) {
 			return "1년";
 		}
-		return "기본";
+		return "";
 	}
 	
 	public String getMemSortName() {
@@ -142,6 +145,9 @@ public class MemberDto {
 	}
 	
 	public String getMemNationName() {
+		if (this.memNation == null) {
+			return "";
+		}
 		if (this.memNation.equals("02")) {
 			return "서울";
 		}
@@ -155,6 +161,9 @@ public class MemberDto {
 	}
 	
 	public String getMemCountryName() {
+		if (this.memCountry == null) {
+			return "";
+		}
 		if (this.memCountry.equals("01")) {
 			return "대한민국";
 		}
@@ -165,6 +174,9 @@ public class MemberDto {
 	}
 	
 	public String getMemRnameName() {
+		if (this.memRname == null) {
+			return "미인증";
+		}
 		if (this.memRname.equals("0")) {
 			return "미인증";
 		}

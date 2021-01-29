@@ -332,13 +332,15 @@ $(document).on("click",".profile-modal",function(event){
 				$("#profileModal .modal-body #profileBizCerti").val(json.output.profileBizCerti);
 				$("#profileModal .modal-body #profileBizNum").val(json.output.profileBizNum);
 				$("#profileModal .modal-body #profileBizSort").val(json.output.profileBizSort);
-				var profileCh = json.output.profileCh.split(',');
-				// 초기화
-				$("#profileModal .modal-body input[name=profileCh]").attr('checked', false);
-				for (var i = 0; i < profileCh.length; i++) {
-					$("#profileModal .modal-body input[name=profileCh]").eq(profileCh[i]-1).attr('checked', true);
-				}
 				
+				if (json.output.profileCh != null) {
+					var profileCh = json.output.profileCh.split(',');
+					// 초기화
+					$("#profileModal .modal-body input[name=profileCh]").attr('checked', false);
+					for (var i = 0; i < profileCh.length; i++) {
+						$("#profileModal .modal-body input[name=profileCh]").eq(profileCh[i]-1).attr('checked', true);
+					}
+				}
 				
 				$("#profileModal .modal-body #profileGrade").val(json.output.profileGrade);
 				$("#profileModal .modal-body #profileId").val(json.output.profileId);
@@ -352,11 +354,13 @@ $(document).on("click",".profile-modal",function(event){
 				$("#profileModal .modal-body #profileState").val(json.output.profileState);
 				$("#profileModal .modal-body #profileSort").val(json.output.profileSort);
 				$("#profileModal .modal-body input[name=profileSort]").val(json.output.profileSort);
-				var profileHashtag = json.output.profileHashtag.split(',');
-				// 초기화
-				$("#profileModal .modal-body input[name=profileHashtag]").attr('checked', false);
-				for (var i = 0; i < profileHashtag.length; i++) {
-					$("#profileModal .modal-body input[name=profileHashtag]").eq(profileHashtag[i]-1).attr('checked', true);
+				if (json.output.profileHashtag != null) {
+					var profileHashtag = json.output.profileHashtag.split(',');
+					// 초기화
+					$("#profileModal .modal-body input[name=profileHashtag]").attr('checked', false);
+					for (var i = 0; i < profileHashtag.length; i++) {
+						$("#profileModal .modal-body input[name=profileHashtag]").eq(profileHashtag[i]-1).attr('checked', true);
+					}
 				}
 				$("#profileModal .modal-body #profileRname").val(json.output.profileRname);
 				$("#profileModal .modal-body #profileHit").val(json.output.profileHit);

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +21,9 @@ import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.service.MemberService;
+import kr.co.wesellglobal.sellermatch.service.ProfileService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -29,6 +32,8 @@ public class AdminMemberRestController {
 	
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	ProfileService profileService;
 	@Autowired
 	RegexHelper regexHelper;
 	@Autowired
@@ -43,7 +48,7 @@ public class AdminMemberRestController {
 	@RequestMapping(value = "/admin/member/idCheck", method = RequestMethod.POST)
 	public void idUniqueCheckjQuery(HttpServletResponse response,
 			// 아이디
-			@RequestParam(value = "memId", required = false) String memId) {
+			@RequestParam(value = "memberId", required = false) String memId) {
 
 		MemberDto input = new MemberDto();
 		input.setMemId(memId);
@@ -135,15 +140,17 @@ public class AdminMemberRestController {
 	}
 	
 	@RequestMapping(value = "/admin/member/join", method = RequestMethod.POST)
-	public Map<String, Object> adminJoin(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
-			@RequestParam(value = "memId", required = false) String memId,
-			@RequestParam(value = "memPw_confirm", required = false) String memPw,
+	public Map<String, Object> adminJoin(HttpServletRequest request, 
+			@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
+			@RequestParam(value = "memberId", required = false) String memId,
+			@RequestParam(value = "memberPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName") String memName,
 			@RequestParam(value = "memNick", required = false) String memNick,
 			@RequestParam(value = "memTel", required = false) String memTel,
 			@RequestParam(value = "memRname") String memRname,
 			@RequestParam(value = "memCountry") String memCountry,
 			@RequestParam(value = "memNation") String memNation,
+			@RequestParam(value = "memSort", required = false) String memSort,
 			@RequestParam(value = "memPost", required = false) String memPost,
 			@RequestParam(value = "memAddr", required = false) String memAddr,
 			@RequestParam(value = "memAddr2") String memAddr2) {
@@ -152,8 +159,10 @@ public class AdminMemberRestController {
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		UploadItem item = null;
 		
+		String clientIp = webHelper.getClientIP(request);
+		
 		try {
-			item = webHelper.saveMultipartFile(memPhoto);
+			//item = webHelper.saveMultipartFile(memPhoto);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -162,26 +171,48 @@ public class AdminMemberRestController {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
+		
+		
 		MemberDto input = new MemberDto();
 		input.setMemId(memId);
 		input.setMemPw(memPw);
 		input.setMemName(memName);
-		input.setMemNick(memNick);
 		input.setMemTel(memTel);
 		input.setMemRname(memRname);
 		input.setMemClass("0");
-		input.setMemSort("1");
+		input.setMemSort(memSort);
 		input.setMemCountry(memCountry);
 		input.setMemNation(memNation);
 		input.setMemPost(memPost);
 		input.setMemAddr(memAddr);
 		input.setMemAddr2(memAddr2);
-		input.setMemPhoto(item.getFilePath());
+		//input.setMemPhoto(item.getFilePath());
 		input.setMemState("0");
-		input.setMemIp("49.247.0.132");
+		input.setMemIp(clientIp);
+		if (memNick == "" | memNick == null) {
+			String nickName = memId.substring(memId.lastIndexOf("@")+1);
+			input.setMemNick(nickName);
+		} else {
+			input.setMemNick(memNick);
+		}
+		
+		// 프로필
+		ProfileDto input2 = new ProfileDto();
+		input2.setProfileId(webHelper.getUniqueId("PF-", Integer.parseInt(memSort)));
+		input2.setMemNick(memNick);
+		input2.setProfileMemId(memId);
+		input2.setProfileGrade("1");
+		input2.setProfileChChk("0");
+		input2.setProfileCareer("0");
+		input2.setProfileSaleChk("0");
+		input2.setProfileBizCerti("0");
+		input2.setProfileState("1");
+		input2.setProfileSort(memSort);
+		
 		
 		try {
 			memberService.addMember(input);
+			profileService.addProfile(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
