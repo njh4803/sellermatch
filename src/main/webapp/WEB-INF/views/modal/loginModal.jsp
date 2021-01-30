@@ -343,7 +343,7 @@ $(document).ready(function() {
 						</div>
 						<div class="row">
                         	<div class="col-md-12">
-                            	<img src="./local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
+                            	<img src="${pageContext.request.contextPath}/local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
                             </div>
                         </div>
 						<div class="row">
@@ -352,14 +352,14 @@ $(document).ready(function() {
 									<div class="row">• 운영시간</div>
 									<div class="row">
 										<div>
-											<img src="./local_assets/img/tel.jpg">
+											<img src="${pageContext.request.contextPath}/local_assets/img/tel.jpg">
 											<div class="text">
 												<div style="display: block;">평일 AM 9:00 ~ PM 6:00  (일요일 / 공휴일은 쉽니다)</div>
 												<div>TEL. 032-459-2236</div>
 											</div>
 										</div>
 										<div>
-											<img src="./local_assets/img/mail.jpg">
+											<img src="${pageContext.request.contextPath}/local_assets/img/mail.jpg">
 											<div>help@sellermatch.co.kr</div>
 										</div>
 									</div>
@@ -388,7 +388,7 @@ $(document).ready(function() {
 						</div>
 						<div class="row">
                         	<div class="col-md-12">
-                            	<img src="./local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
+                            	<img src="${pageContext.request.contextPath}/local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
                             </div>
                         </div>
 						<div class="row">
@@ -397,14 +397,14 @@ $(document).ready(function() {
 									<div class="row">• 운영시간</div>
 									<div class="row">
 										<div>
-											<img src="./local_assets/img/tel.jpg">
+											<img src="${pageContext.request.contextPath}/local_assets/img/tel.jpg">
 											<div class="text">
 												<div style="display: block;">평일 AM 9:00 ~ PM 6:00  (일요일 / 공휴일은 쉽니다)</div>
 												<div>TEL. 032-459-2236</div>
 											</div>
 										</div>
 										<div>
-											<img src="./local_assets/img/mail.jpg">
+											<img src="${pageContext.request.contextPath}/local_assets/img/mail.jpg">
 											<div>help@sellermatch.co.kr</div>
 										</div>
 									</div>

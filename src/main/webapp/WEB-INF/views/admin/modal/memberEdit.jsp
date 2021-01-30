@@ -39,6 +39,7 @@
                                                                     	<option value="0">일반</option>
 						                                                <option value="1">공급자</option>
 						                                                <option value="2">판매자</option>
+						                                                <option value="3">관리자</option>
 						                                            </select>
                                                                 </div>
                                                             </div>

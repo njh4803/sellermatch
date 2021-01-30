@@ -49,12 +49,12 @@
 		text-align: center;
 		color: #ffffff;
 	}
-	.tab-content{
+	.tab-content2{
 		display: none;
 		background: #ededed;
 	}
 	
-	.tab-content.current{
+	.tab-content2.current{
 		display: inherit;
 	}
 	/* 공지사항 */
@@ -320,7 +320,7 @@ ul.pagination>li>a {
 				<li class="tab-link" data-tab="tab-5" data-num="5"><div class="tabTitle">이용요금</div></li>
 			</ul>
 		
-			<div id="tab-1" class="tab-content current">
+			<div id="tab-1" class="tab-content2 current">
 				<div class="tabBox">
 		        	<div class="tab-title">공지사항</div>
 		        	<div class="tab-text">셀러매치 서비스의 새소식, 오류, 장애, 기타 공지사항을 안내드립니다</div>
@@ -418,15 +418,15 @@ ul.pagination>li>a {
 			</tfoot>
 			</table>
 		</div>
-			<div id="tab-2" class="tab-content">
+			<div id="tab-2" class="tab-content2">
 			</div>
-			<div id="tab-3" class="tab-content">
+			<div id="tab-3" class="tab-content2">
 		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
 			</div>
-			<div id="tab-4" class="tab-content">
+			<div id="tab-4" class="tab-content2">
 		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
 			</div>
-			<div id="tab-5" class="tab-content">
+			<div id="tab-5" class="tab-content2">
 		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
 			</div>
     </div>
@@ -494,7 +494,7 @@ $(document).ready(function(){
 		var tabNum = $(this).data('num');
 
 		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
+		$('.tab-content2').removeClass('current');
 
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
