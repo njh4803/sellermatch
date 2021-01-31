@@ -165,7 +165,9 @@ public class AdminMemberRestController {
 		String clientIp = webHelper.getClientIP(request);
 		
 		try {
-			//item = webHelper.saveMultipartFile(memPhoto);
+			if (memPhoto != null) {
+				item = webHelper.saveMultipartFile(memPhoto);
+			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -189,13 +191,13 @@ public class AdminMemberRestController {
 		input.setMemPost(memPost);
 		input.setMemAddr(memAddr);
 		input.setMemAddr2(memAddr2);
-		//input.setMemPhoto(item.getFilePath());
+		if (memPhoto != null) {
+			input.setMemPhoto(item.getFilePath());
+		}
 		input.setMemState("0");
 		input.setMemIp(clientIp);
-		log.debug("memNick ==============================================================================================================================" + memNick);
 		if (memNick.equals("")) {
 			String nickName = memId.substring(memId.lastIndexOf("@")+1);
-			log.debug("nickName ==============================================================================================================================" + nickName);
 			input.setMemNick(nickName);
 		} else {
 			input.setMemNick(memNick);

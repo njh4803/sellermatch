@@ -300,7 +300,7 @@ $(document).on("click",".m-modal",function(event){
 	$("#memberModal .modal-body #memName").val(memName);
 	$("#memberModal .modal-body #memRname").val(memRname);
 	$("#memberModal .modal-body #memNick").val(memNick);
-	$("#memberModal .modal-body #img").attr("src", "../../../upload/"+memPhoto);
+	$("#memberModal .modal-body #img").attr("src", "/upload/"+memPhoto);
 	$("#memberModal .modal-body #memLoginDate").val(memLoginDate);
 	$("#memberModal .modal-body #memOutDate").val(memOutDate);
 	$("#memberModal .modal-body #memEditDate").val(memEditDate);

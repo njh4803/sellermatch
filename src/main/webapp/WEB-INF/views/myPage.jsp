@@ -205,6 +205,24 @@ label.error {
 					<form action="${pageContext.request.contextPath}/member/editOk" id="memEdit_form" name="memEdit_form" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="memRname" id="memRname">
 						<input type="hidden" name="memSort" id="memSort">
+						<div>
+							<div class="form-group row">
+								<label class="col-sm-2 colForm-label">프로필 사진</label>
+								<div class="col-sm-10 file_input">
+									<div class="input-group profile">
+										<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
+											<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+										</div>
+										<div style="display: flow-root;">
+											<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
+												<label class="fileLable">파일 선택
+													<input id="image" name="memPhoto" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+												</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						<table class="profileTable">
 			    			<tbody>
 			    				<tr>
@@ -531,6 +549,26 @@ label.error {
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
+	function handleImgfileSelect(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				return;
+			}
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	};
+	
+	$(document).on("change", "#image" ,handleImgfileSelect);
 	
 	$(document).on("click", "ul.tabs li", function(e){
 		
@@ -561,6 +599,8 @@ $(document).ready(function(){
 					$('#memAddr2').val(json.output.memAddr2);
 					$('#memEmail').val(json.output.memId);
 					$('#memDate').val(json.output.memDate);
+					var src = "/upload/"+json.output.memPhoto
+					$('#img').attr("src", src);
 				}
 			});
 		}

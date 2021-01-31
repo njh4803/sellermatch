@@ -19,14 +19,14 @@
                                                                 <div class="col-sm-10 file_input">
                                                                 	<div class="input-group profile">
                                                                 		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
+									                                    	<img id="img1" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
 									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 									                                    </div>
 									                                    <div style="display: flow-root;">
 									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
 										                                	<label>
 										                                		파일 선택
-										                                		<input id = "image" name="memPhoto" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+										                                		<input id="image1" name="memPhoto" class="jFiler-input-button" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
 										                                	</label>
 									                                    </div>
 																	</div>
@@ -177,60 +177,11 @@
 <script type="text/javascript">
 	
 $(document).ready(function() {
-	$("#image").on("change", handleImgfileSelect);
-	
-}); // end ready...
-
-function handleImgfileSelect(e) {
-	var files = e.target.files;
-	var filesArr = Array.prototype.slice.call(files);
-	
-	
-	filesArr.forEach(function(f) {
-		if(!f.type.match("image.*")) {
-			return;
-		}
-		sel_file = f;
+	function handleImgfileSelect(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
 		
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			$("#img").attr("src", e.target.result);
-		}
-		reader.readAsDataURL(f);
-	});
-};
-
-$(function(){
-	
-	$('.profile')
-	  .on("dragover", dragOver)
-	  .on("dragleave", dragOver)
-	  .on("drop", uploadFiles);
-
-	function dragOver(e){
-	  e.stopPropagation();
-	  e.preventDefault();
-	  if (e.type == "dragover") {
-	    $(e.target).css({
-	      //"background-color": "black",
-	      "outline-offset": "-20px"
-	    });
-	  } else {
-	      $(e.target).css({
-	      //"background-color": "gray",
-	      "outline-offset": "-10px"
-	    });
-	  }
-	}
-
-	function uploadFiles(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-	    dragOver(e);
-	  
-	    e.dataTransfer = e.originalEvent.dataTransfer;
-	    var files = e.target.files || e.dataTransfer.files;
-	    var filesArr = Array.prototype.slice.call(files);
+		
 		filesArr.forEach(function(f) {
 			if(!f.type.match("image.*")) {
 				return;
@@ -239,17 +190,17 @@ $(function(){
 			
 			var reader = new FileReader();
 			reader.onload = function(e) {
-				$("#img").attr("src", e.target.result);
+				$("#img1").attr("src", e.target.result);
 			}
-			javascript:document.getElementById('file_route').value= f.name;
-			console.log(this.name);
-			console.log(e.name);
-			console.log(this.name);
-			console.log(e.name);
 			reader.readAsDataURL(f);
 		});
-		
-	}
+	};
+	
+	$("#image1").on("change", handleImgfileSelect);
+	
+}); // end ready...
+
+$(function(){
 
 	$.validator.addMethod("kor", function(value, element) {
 		return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
