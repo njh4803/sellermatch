@@ -126,7 +126,6 @@
 															</div>
                                                             <div class="form-group row">
 																<label for="memTel" class="col-sm-2 col-form-label">연락처
-																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
 																	<input type="text" name="memTel" class="form-control" id="memTel"
@@ -135,7 +134,6 @@
 															</div>
 															<div class="form-group row">
 																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호
-																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-4">
 																	<div class="input-group">
@@ -151,7 +149,6 @@
 															</div>
 															<div class="form-group row">
 																<label for="address" class="col-sm-2 control-label">주소
-																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10 col-sm-offset-2">
 																	<input type="text" name="memAddr" class="form-control" id="memAddr"

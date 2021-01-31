@@ -36,16 +36,13 @@
                                                                 <label class="col-sm-2 col-form-label">가입 유형</label>
                                                                 <div class="col-sm-10">
                                                                     <select id="memSort" name="memSort" class="form-control" disabled="disabled">
-                                                                    	<option value="0">일반</option>
 						                                                <option value="1">공급자</option>
 						                                                <option value="2">판매자</option>
-						                                                <option value="3">관리자</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="memId" class="col-sm-2 col-form-label">아이디
-                                                                	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="form-group">
@@ -55,7 +52,6 @@
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">비밀번호 변경
-                                                                	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                     <input type="password" id="memPw" name="memPw" class="form-control" placeholder="영문,숫자,특수문자 조합 최대 30글자">
@@ -63,7 +59,6 @@
                                                             </div>
                                                             <div class="form-group row">
 																<label for="memPw_confirm" class="col-sm-2 control-label">비밀번호 확인
-																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
 																	<input type="password" name="memPw_confirm" class="form-control"
@@ -77,14 +72,15 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">닉네임</label>
+                                                                <label class="col-sm-2 col-form-label">닉네임
+                                                           			<span class="identify">*</span>
+                                                                </label>
                                                                 <div class="col-sm-10">
                                                                     <input type="text" class="form-control" name="memNick" id="memNick">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">국가
-                                                                	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                     <select id="memCountry" name="memCountry" class="form-control">
@@ -96,7 +92,6 @@
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">지역
-                                                                	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-10">
                                                                     <select id="memNation" name="memNation" class="form-control">
@@ -132,7 +127,6 @@
 															</div>
                                                             <div class="form-group row">
 																<label for="memTel" class="col-sm-2 col-form-label">연락처
-																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
 																	<input type="text" name="memTel" class="form-control" id="memTel"
@@ -141,7 +135,6 @@
 															</div>
 															<div class="form-group row">
 																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호
-																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-4">
 																	<div class="input-group">
@@ -157,7 +150,6 @@
 															</div>
 															<div class="form-group row">
 																<label for="address" class="col-sm-2 control-label">주소
-																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-10">
 																	<input type="text" name="memAddr" class="form-control" id="memAddr"
@@ -231,47 +223,27 @@ $(function(){
 		
         rules: {
             // [비밀번호] 필수 + 글자수 길이 제한
-            memPw: { minlength: 4, maxlength: 30 },
+            memPw: { minlength: 6, maxlength: 30 },
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
             memPw_confirm: { equalTo: '#memPw' },
-         	// [국가] 필수
-            memCountry: 'required',
-         	// [지역] 필수
-            memNation: 'required',
             // [연락처] 필수
-            memTel: { required: true, phone: true, minlength: 9, maxlength: 11 },
-            // [우편번호] 필수 입력
-            postcode: 'required',
-            // [주소1] 우편번호가 입력된 경우만 필수
-            memAddr: 'required',
+            memTel: { phone: true, minlength: 9, maxlength: 11 },
          	// [닉네임] 필수
             memNick: 'required',
-            
         },
         messages: {
             memPw: {
-                minlength: '비밀번호는 최소 {0}글자 이상 입력하셔야 합니다.',
-                maxlength: '비밀번호는 최대 {0}글자까지 가능합니다.',
+                minlength: '비밀번호는 최소 {6}글자 이상 입력하셔야 합니다.',
+                maxlength: '비밀번호는 최대 {30}글자까지 가능합니다.',
             },
             memPw_confirm: {
                 equalTo: '비밀번호 확인이 잘못되었습니다.',
             },
-            email: {
-                required: '이메일을 입력하세요.',
-                email: '이메일 형식이 잘못되었습니다.',
-                maxlength: '이메일은 최대 {0}글자까지 가능합니다.',
-                remote: '이미 사용중인 이메일 입니다.'
-            },
             memTel: {
-                required: '연락처를 입력하세요.',
                 phone: '연락처 형식이 잘못되었습니다.',
                 minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
                 maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
             },
-            postcode: '우편번호를 입력해 주세요.',
-            memAddr: '기본주소를 입력해 주세요.',
-            memCountry: '국가를 선택해주세요.',
-            memNation: '지역을 선택해주세요.',
             memNick: '닉네임을 입력해주세요.',
         }
     });
@@ -288,7 +260,8 @@ $(function(){
                 window.location = ROOT_URL + '/admin/memberList';
             });
         },
-    });
+    });  
+    
 	$("#sendAuthEmail").click(function(e) {
 	    const memEmail = $("#memEmail").val();
 	

@@ -98,6 +98,9 @@ public class MemberDto {
     
     // 사업자인증 미인증(0), 인증완료(1)
     private String profileBizCerti;
+    
+    // 프로필 등록 여부
+    private String existProfile;
 	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;

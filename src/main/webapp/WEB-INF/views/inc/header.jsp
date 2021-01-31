@@ -84,7 +84,7 @@
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}" data-rname="${member.memRname}">
+                <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
                 	<i class="fas fa-bolt"></i> 프로젝트 등록
                 </a>
             </div>
@@ -132,7 +132,7 @@ $(function(){
 	});
 	$("#projectInsert").on("click", function(){
 		var login_id = $('#projectInsert').data('member');
-		var rname = $('#projectInsert').data('rname');
+		var profile = $('#projectInsert').data('profile');
 		
 		if (login_id == '') {
 			swal({
@@ -141,10 +141,10 @@ $(function(){
                	type: 'warning',
             });
 		} else {
-			if (rname == '0') {
+			if (profile == '') {
 				swal({
 	                title: '알림',
-	                text: '실명인증 후 이용가능합니다.',
+	                text: '프로필 등록 후 이용가능합니다.',
 	               	type: 'warning',
 	            });
 			} else {
