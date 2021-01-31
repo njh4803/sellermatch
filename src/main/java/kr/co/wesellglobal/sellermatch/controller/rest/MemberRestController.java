@@ -138,7 +138,7 @@ public class MemberRestController {
 		// 프로필
 		ProfileDto input2 = new ProfileDto();
 		input2.setProfileId(webHelper.getUniqueId("PF-", Integer.parseInt(memSort)));
-		input2.setMemNick(memNick);
+		input2.setMemNick(input.getMemNick());
 		input2.setProfileMemId(memId);
 		input2.setProfileGrade("1");
 		input2.setProfileChChk("0");

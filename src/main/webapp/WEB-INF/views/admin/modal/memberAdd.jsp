@@ -376,5 +376,10 @@ $(function(){
 			}
 	    });
 	});
+	
+	$(document).on("focus blur", "#memNick", function(){
+		var memNick = $('#memNick').val();
+		$('#memNick').val(memNick.trim());
+	});
 });
 </script>

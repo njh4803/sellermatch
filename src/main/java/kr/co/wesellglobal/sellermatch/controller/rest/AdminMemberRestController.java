@@ -148,7 +148,7 @@ public class AdminMemberRestController {
 			@RequestParam(value = "memberId", required = false) String memId,
 			@RequestParam(value = "memberPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName") String memName,
-			@RequestParam(value = "memNick", required = false) String memNick,
+			@RequestParam(value = "memNick", defaultValue = "") String memNick,
 			@RequestParam(value = "memTel", required = false) String memTel,
 			@RequestParam(value = "memRname") String memRname,
 			@RequestParam(value = "memCountry") String memCountry,
@@ -192,8 +192,10 @@ public class AdminMemberRestController {
 		//input.setMemPhoto(item.getFilePath());
 		input.setMemState("0");
 		input.setMemIp(clientIp);
-		if (memNick == "" | memNick == null) {
+		log.debug("memNick ==============================================================================================================================" + memNick);
+		if (memNick.equals("")) {
 			String nickName = memId.substring(memId.lastIndexOf("@")+1);
+			log.debug("nickName ==============================================================================================================================" + nickName);
 			input.setMemNick(nickName);
 		} else {
 			input.setMemNick(memNick);
@@ -202,7 +204,7 @@ public class AdminMemberRestController {
 		// 프로필
 		ProfileDto input2 = new ProfileDto();
 		input2.setProfileId(webHelper.getUniqueId("PF-", Integer.parseInt(memSort)));
-		input2.setMemNick(memNick);
+		input2.setMemNick(input.getMemNick());
 		input2.setProfileMemId(memId);
 		input2.setProfileGrade("1");
 		input2.setProfileChChk("0");
