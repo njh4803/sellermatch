@@ -29,6 +29,7 @@
         <result property="profileHashtag" column="Profile_hashtag" />
         <result property="profileRname" column="profile_rname" />
         <result property="profileSort" column="profile_sort" />
+        <result property="profileSortName" column="profile_sort_name" />
         <result property="profileHit" column="profile_hit" />
         <result property="profileVolume" column="profile_volume" />
         <result property="profileIndusName" column="profile_indus_name" />

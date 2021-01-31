@@ -97,7 +97,8 @@ public class ProjectDto {
     private int contractCount;
     // 프로젝트 등록 수
 	private int projAddCount;
-	
+	// 프로젝트 제안 수 (제안받거나 제안한 수)
+	private int recommendCount;
 	
 	// 지원자 수
 	private int applyCount;

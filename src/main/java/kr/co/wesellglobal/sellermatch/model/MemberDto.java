@@ -78,6 +78,27 @@ public class MemberDto {
 	// 예비컬럼 
 	private String memXxx;
 	
+    // 프로젝트 등록 수
+    private int projAddCount;
+    
+    // 프로젝트 요청(제안)받은 수
+    private int recommendCount;
+    
+    // 프로젝트 계약된 수
+    private int contractCount;
+    
+    // 회원 등급 
+    private String profileGrade;
+    
+    // 채널 검증 미검증(0),검증(1)
+    private String profileChChk;
+
+    // 판매자 매출 검증 미검증(0),검증(1)
+    private String profileSaleChk;
+    
+    // 사업자인증 미인증(0), 인증완료(1)
+    private String profileBizCerti;
+	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;
 	private static int listCount;

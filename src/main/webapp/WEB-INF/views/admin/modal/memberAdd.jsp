@@ -36,7 +36,6 @@
                                                                 <label class="col-sm-2 col-form-label">가입 유형</label>
                                                                 <div class="col-sm-10">
                                                                     <select id="memSort" name="memSort" class="form-control">
-                                                                    	<option value="0">일반</option>
 						                                                <option value="1">공급자</option>
 						                                                <option value="2">판매자</option>
 						                                            </select>

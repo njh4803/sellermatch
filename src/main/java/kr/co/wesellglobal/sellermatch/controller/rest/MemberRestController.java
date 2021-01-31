@@ -2,6 +2,7 @@ package kr.co.wesellglobal.sellermatch.controller.rest;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,22 +10,27 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
+import kr.co.wesellglobal.sellermatch.model.ApplyDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
+import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.service.ApplyService;
 import kr.co.wesellglobal.sellermatch.service.MemberService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
+import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -35,6 +41,10 @@ public class MemberRestController {
 	MemberService memberService;
 	@Autowired
 	ProfileService profileService;
+	@Autowired
+	ProjectService projectService;
+	@Autowired
+	ApplyService applyService;
 	@Autowired
 	RegexHelper regexHelper;
 	@Autowired
@@ -162,9 +172,10 @@ public class MemberRestController {
 			@RequestParam(value = "memRname", required = false) String memRname,
 			@RequestParam(value = "memCountry", required = false) String memCountry,
 			@RequestParam(value = "memNation", required = false) String memNation,
+			@RequestParam(value = "memSort", required = false) String memSort,
 			@RequestParam(value = "memPost", required = false) String memPost,
 			@RequestParam(value = "memAddr", required = false) String memAddr,
-			@RequestParam(value = "memAddr2", required = false) String memAddr2) {
+			@RequestParam(value = "memAddr2") String memAddr2) {
 		
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
@@ -195,14 +206,12 @@ public class MemberRestController {
 		input.setMemNick(memNick);
 		input.setMemTel(memTel);
 		input.setMemRname(memRname);
-		input.setMemClass("0");
-		input.setMemSort("1");
+		input.setMemSort(memSort);
 		input.setMemCountry(memCountry);
 		input.setMemNation(memNation);
 		input.setMemPost(memPost);
 		input.setMemAddr(memAddr);
 		input.setMemAddr2(memAddr2);
-		input.setMemState("0");
 		
 		try {
 			memberService.editMember(input);
@@ -325,5 +334,92 @@ public class MemberRestController {
 		}
 
 		return webHelper.getJsonData();
+	}
+	
+	
+	@RequestMapping(value = "/member/mypage/profile", method = RequestMethod.GET)
+	public Map<String, Object> myProfile(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		ProfileDto input = new ProfileDto();
+		input.setProfileMemId(member.getMemId());
+		
+		ProfileDto output = null;
+		Map<String, Object> data = new HashMap<String, Object>();
+		
+		if (member.getMemSort() == "1" | member.getMemSort() == "2") {
+			input.setProfileSort(member.getMemSort());
+		}
+		
+		try {
+			output = profileService.getProfile(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		data.put("output", output);
+		
+		return webHelper.getJsonData(data);
+	}
+	
+	@RequestMapping(value = "/member/mypage/joinInfo", method = RequestMethod.GET)
+	public Map<String, Object> myJoinInfo(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		MemberDto input = new MemberDto();
+		input.setMemId(member.getMemId());
+		
+		MemberDto output = null;
+		Map<String, Object> data = new HashMap<String, Object>();
+		
+		try {
+			output = memberService.getMember(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		data.put("output", output);
+		
+		return webHelper.getJsonData(data);
+	}
+	
+	@RequestMapping(value = "/member/mypage/project", method = RequestMethod.GET)
+	public Map<String, Object> myProject(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		ProjectDto input = new ProjectDto();
+		input.setProjMemId(member.getMemId());
+		
+		List<ProjectDto> output = null;
+		Map<String, Object> data = new HashMap<String, Object>();
+		
+		try {
+			output = projectService.getProjectList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		data.put("output", output);
+		data.put("memSort", member.getMemSort());
+		
+		return webHelper.getJsonData(data);
+	}
+	
+	@RequestMapping(value = "/member/mypage/project2", method = RequestMethod.GET)
+	public Map<String, Object> myProject2(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "applyType", required = false)String applyType,
+			@RequestParam(value = "applyProjState", required = false)String applyProjState) {
+		ApplyDto input = new ApplyDto();
+		input.setApplyMemId(member.getMemId());
+		input.setApplyType(applyType);
+		input.setApplyProjState(applyProjState);
+		
+		List<ApplyDto> output = null;
+		Map<String, Object> data = new HashMap<String, Object>();
+		
+		try {
+			output = applyService.getApplyList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		data.put("output", output);
+		data.put("memSort", member.getMemSort());
+		
+		return webHelper.getJsonData(data);
 	}
 }

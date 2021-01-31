@@ -147,7 +147,7 @@
 	  text-align: center;
 	}
 	/* 자주하는질문 */
-	.FAQ-tabBox{
+	.board-tabBox{
 		width: 1280px;
 		height: 500px;
 		border-bottom: solid 3px #000000;
@@ -309,6 +309,67 @@ ul.pagination>li>a {
 .pagination>li:first-child>a, .pagination>li:first-child>span{
 	margin-left: 13.5px;
 }
+.qa-container{
+  width: 1280px;
+  height: 1200px;
+  background-color: #ffffff;
+  padding: 50px;
+}
+.qa-row{
+  width: 1180px;
+  height: 90px;
+  border: solid 1px #707070;
+  background-color: #ffffff;
+}
+.qa-row2{
+  width: 1180px;
+  height: 390px;
+  border: solid 1px #707070;
+  background-color: #ffffff;
+}
+.qa-text{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  display: inline-block;
+}
+.qa-rowBox{
+    display: inline-block;
+	width: 255.7px;
+	margin: 35px 0;
+}
+.qa-rowBox2{
+    display: inline-block;
+	width: 255.7px;
+	margin-top: 60px;
+	margin-bottom: 310px;
+	float: left;
+}
+.qa-contents{
+	display: inline-block;
+    width: 800px;
+    margin: 25px 118.3px 25px 0;
+}
+.qa-contents span{
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    margin: 0px 5px;
+}
+.qa-contents textarea{
+  width: 800px;
+  height: 332px;
+  border: solid 1px #707070;
+  background-color: #ffffff;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
@@ -421,7 +482,6 @@ ul.pagination>li>a {
 			<div id="tab-2" class="tab-content2">
 			</div>
 			<div id="tab-3" class="tab-content2">
-		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
 			</div>
 			<div id="tab-4" class="tab-content2">
 		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
@@ -489,6 +549,8 @@ $(document).ready(function(){
 		$('#noticeTable').remove();
 		// 초기화
 		$('#FAQ').remove();
+		// 초기화
+		$('#OneToOne').remove();
 		
 		var tab_id = $(this).attr('data-tab');
 		var tabNum = $(this).data('num');
@@ -545,6 +607,27 @@ $(document).ready(function(){
 		       		var html = template(content);
 		       		
 		       		$("#tab-2").append(html);
+				}
+			});
+		}
+		
+		if (tab_id == 'tab-3') {
+			$.ajax({
+				type: "GET",
+		        url: ROOT_URL + '/usageFee2',
+		        data: {
+		        	'tabNum' : 3,
+		        	'boardQaType': '',
+		        },
+				success : function(json) {
+					console.log(json.output)
+					var content = {
+						output : json.output
+					} 
+		       		var template = Handlebars.compile($("#OneToOne-tmpl").html());
+		       		var html = template(content);
+		       		
+		       		$("#tab-3").append(html);
 				}
 			});
 		}
@@ -768,7 +851,7 @@ $(document).ready(function(){
 </script>
 <script type="text/x-handlebars-template" id="FAQ-tmpl">
 			<div id="FAQ">
-				<div class="FAQ-tabBox">
+				<div class="board-tabBox">
 		        	<div class="tab-title">FAQ</div>
 		        	<div class="tab-text">셀러매치 이용 중 자주묻는 질문과 답변을 확인해보세요</div>
 					<form action="${pageContext.request.contextPath}/usageFee2" id="FAQ-form" class="FAQ-form" data-type="{{FAQType}}">
@@ -889,4 +972,60 @@ $(document).ready(function(){
 					</table>
 				</div>
 			<div>
+</script>
+<script type="text/x-handlebars-template" id="OneToOne-tmpl">
+			<div id="OneToOne">
+				<div class="board-tabBox" style="height:250px;">
+		        	<div class="tab-title">1:1 문의하기</div>
+		        	<div class="tab-text">궁금한 내용에 대한 답변을 메일로 받아보세요</div>
+		        </div>
+			<div>
+			<div class="qa-container">
+				<div class="qa-row">
+					<div class="qa-rowBox">
+						<div class="qa-text">문의제목</div>
+					</div>
+					<div class="qa-contents">
+						<input type="text" name="" class="form-control" id=""/>
+					</div>
+				</div>
+				<div class="qa-row">
+					<div class="qa-rowBox">
+						<div class="qa-text">문의종류</div>
+					</div>
+					<div class="qa-contents">
+						<input type="text" name="" class="form-control" id=""/>
+					</div>
+				</div>
+				<div class="qa-row">
+					<div class="qa-rowBox">
+						<div class="qa-text">문의 수령 이메일 주소</div>
+					</div>
+					<div class="qa-contents">
+						<input type="text" name="" class="form-control" id="" style="width:300px; display:inline-block;"/>
+						<span>@</span>
+						<input type="text" name="" class="form-control" id="" style="width:300px; display:inline-block;"/>
+						<select id="" name="" class="form-control"  style="width:150px; display:inline-block; margin-left:15px;">
+							<option value="">직접입력</option>
+							<option value="naver.com">naver.com</option>
+						</select>
+					</div>
+				</div>
+				<div class="qa-row2">
+					<div class="qa-rowBox2">
+						<div class="qa-text">문의 내용</div>
+					</div>
+					<div class="qa-contents">
+						<textarea name="" class="form-control"></textarea>
+					</div>
+				</div>
+				<div class="qa-row">
+					<div class="qa-rowBox">
+						<div class="qa-text">첨부파일</div> 
+					</div>
+					<div class="qa-contents">
+						<input type="text" name="" class="form-control" id=""/>
+					</div>
+				</div>
+			</div>
 </script>

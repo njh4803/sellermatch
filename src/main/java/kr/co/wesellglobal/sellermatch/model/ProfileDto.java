@@ -77,6 +77,7 @@ public class ProfileDto {
 
     // 프로필분류 공급자 (1), 판매자(2)
     private String profileSort;
+    private String profileSortName;
 
     // 조회수 프로필 조회수
     private int profileHit;
@@ -313,6 +314,19 @@ public class ProfileDto {
 		 }
 		 if (this.profileState.equals("1")) {
 			 return "정상";
+		 }
+		 return "";
+	 }
+	 
+	 public String getProfileSortName() {
+		 if (this.profileSort == null) {
+			 return this.profileSortName = "일반";
+		 }
+		 if (this.profileSort.equals("1")) {
+			 return this.profileSortName = "공급자";
+		 }
+		 if (this.profileSort.equals("2")) {
+			 return this.profileSortName = "판매자";
 		 }
 		 return "";
 	 }

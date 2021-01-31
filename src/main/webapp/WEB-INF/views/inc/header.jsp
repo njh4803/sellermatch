@@ -77,7 +77,7 @@
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
-	            		<a href="#">${member.memNick}</a>
+	            		<a href="#">${member.memNick}님</a>
 	            		<a href="${pageContext.request.contextPath}/member/myPage">마이페이지</a>
             			<a id="logout" href="javascript:void(0);">로그아웃</a>
             		</c:otherwise>

@@ -17,8 +17,19 @@
         <result property="applyProjState" column="apply_proj_state" />
         <result property="memNick" column="mem_nick" />
         <result property="profilePhoto" column="profile_photo" />
-        <result property="profilePhoto" column="profile_photo" />
         <result property="profileHashtag" column="Profile_hashtag" />
+        <!--  -->
+        <result property="projId"   column="proj_id" />
+        <result property="projTitle"   column="proj_title" />
+        <result property="projState" column="proj_state" />
+        <result property="projRegDate" column="proj_reg_date" />
+        <result property="projEndDate" column="proj_end_date" />
+        <result property="projDday" column="proj_Day" />
+        <result property="projHit" column="proj_hit" />
+        <result property="applyCount" column="apply_count" />
+		<result property="projAddCount" column="proj_add_count" />
+        <result property="contractCount" column="contract_count" />
+        <result property="recommendCount" column="recommend_count" />
     </resultMap>
     
     <insert id="insertItem"
@@ -39,7 +50,14 @@
     	resultMap="applyMap">
     	SELECT 
 	   		apply_idx, apply_id, apply_proj_id, apply_mem_id, apply_reg_date, 
-	   		apply_Profile, apply_type, apply_proj_state, mem_nick, profile_photo, Profile_hashtag
+	   		apply_Profile, apply_type, apply_proj_state, profile_photo, Profile_hashtag, 
+	   		(SELECT mem_nick FROM MemList where mem_id = (SELECT proj_mem_id FROM ProjectList where proj_id = apply_proj_id)) as mem_nick,  
+	   		proj_id, proj_title, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit, 
+	   		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
+	   		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 
+	   		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
     	FROM ApplyList a
 		INNER JOIN ProjectList p
 		ON p.proj_id = a.Apply_proj_id
@@ -47,7 +65,20 @@
 		ON a.apply_mem_id = m.mem_id
         INNER JOIN ProfileList pf
 		ON a.apply_mem_id = pf.profile_mem_id
-		where apply_proj_id = #{applyProjId}
+		<where>
+			<if test="applyMemId != '' and applyMemId != null">
+		    	AND apply_mem_id = #{applyMemId}
+		    </if>
+			<if test="applyProjId != '' and applyProjId != null">
+		    	AND apply_proj_id = #{applyProjId}
+		    </if>
+			<if test="applyType != '' and applyType != null">
+		    	AND apply_type = #{applyType}
+		    </if>
+		    <if test="applyProjState != '' and applyProjState != null">
+		    	AND apply_proj_state = #{applyProjState}
+		    </if>
+		</where>
     </select>
     
     <select id="selectItem"

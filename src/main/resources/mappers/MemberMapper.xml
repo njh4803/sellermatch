@@ -30,6 +30,13 @@
         <result property="memOutDate" column="mem_out_date" />
         <result property="memDate" column="mem_date" />
         <result property="memEditDate" column="mem_edit_date" />
+        <result property="projAddCount" column="proj_add_count" />
+        <result property="recommendCount" column="recommend_count" />
+        <result property="contractCount" column="contract_count" />
+		<result property="profileGrade"   column="profile_grade" />
+        <result property="profileChChk" column="profile_ch_chk" />
+        <result property="profileSaleChk" column="profile_sale_chk" />
+        <result property="profileBizCerti" column="profile_biz_certi" />
     </resultMap>
     
     <insert id="insertItem"
@@ -91,8 +98,13 @@
     		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
     		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
     		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
-    		mem_date, mem_edit_date
-    	FROM MemList
+    		mem_date, mem_edit_date, profile_grade, profile_ch_chk, profile_sale_chk, profile_biz_certi, 
+    		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
+    	FROM MemList m
+    	INNER JOIN ProfileList s
+		ON s.profile_mem_id = m.mem_id
     	WHERE mem_id = #{memId}
     </select>
     
@@ -109,13 +121,19 @@
 			<if test="memPw != ' ' and memPw != null">
 				mem_pw = md5(#{memPw}), 
 			</if>
-		    mem_state = #{memState}, mem_class = #{memClass}, mem_sort = #{memSort},  
+		    mem_sort = #{memSort},  
 		    mem_country = #{memCountry}, mem_nation = #{memNation}, mem_addr = #{memAddr}, mem_addr2 = #{memAddr2}, mem_post =  #{memPost}, 
     	 	mem_tel = #{memTel}, mem_name = #{memName}, mem_rname = #{memRname}, mem_nick = #{memNick}, 
+    	 	<if test="memClass != '' and memClass != null">
+    	 		mem_class = #{memClass}, 
+    	 	</if>
+    	 	<if test="memState != '' and memState != null">
+    	 		mem_state = #{memState}, 
+    	 	</if>
     	 	<if test="memPhoto != '' and memPhoto != null">
     	 		mem_photo = #{memPhoto}, 
     	 	</if>
-    	 	mem_ip = #{memIp}, mem_edit_date = now()
+    	 	mem_edit_date = now()
 		where mem_id = #{memId}
 	</update>
 	

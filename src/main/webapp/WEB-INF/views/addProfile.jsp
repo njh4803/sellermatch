@@ -442,10 +442,6 @@ $(document).ready(function() {
     });
 });
 </script>
-<script type="text/x-handlebars-template" id="profile-add-tmpl">
-
-
-</script>
 <!-- jquery file upload js -->
 <script src="${pageContext.request.contextPath}/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/assets/pages/filer/custom-filer.js" type="text/javascript"></script>

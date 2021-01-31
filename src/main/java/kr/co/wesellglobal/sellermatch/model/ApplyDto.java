@@ -42,6 +42,29 @@ public class ApplyDto {
     // 해시태그 리스트
  	private String[] profileHashtagList;
  	
+	// 프로젝트 계약된 수
+    private int contractCount;
+    // 프로젝트 등록 수
+	private int projAddCount;
+	// 프로젝트 제안 수 (제안받거나 제안한 수)
+	private int recommendCount;
+	// 지원자 수
+	private int applyCount;
+	// 프로젝트 ID
+	private String projId;
+	// 프로젝트 조회수
+	private int projHit;
+	// 프로젝트 상태 정상(1), 중지(0)
+	private String projState;
+	// 프로젝트 등록일 
+	private String projRegDate;
+	// 프로젝트 마감일 
+	private String projEndDate;
+	// 프로젝트 제목 
+	private String projTitle;
+	// 모집마감일을 D-Day로 변환
+	private String projDday;
+ 	
  	public String[] getProfileHashtagList() {
 		 this.profileHashtagList = profileHashtag.split(",");
 		for (int i = 0; i < this.profileHashtagList.length; i++) {
