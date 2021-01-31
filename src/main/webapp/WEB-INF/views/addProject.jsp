@@ -377,7 +377,7 @@ $(document).ready(function() {
 		for (var i = 0; i < files.length; i++) 
 		{
 			var fd = new FormData();
-		    var src_tag = new createimgBox(imgBox,files[i]); //Using this we can set progress.
+		    var src_tag = new createimgBox(imgBox,files[i]);
 		    fd.append('detailImg', files[i]);
 		    sendFileToServer(fd,src_tag);
 		}
@@ -393,8 +393,8 @@ $(document).ready(function() {
     	var tag5 = $('<div class="jFiler-item-thumb"></div>').appendTo(tag4);
     	var tag6 = $('<div class="jFiler-item-assets jFiler-row"></div>').appendTo(tag4);
     	var tag7 = $('<div class="jFiler-item-status"></div>').appendTo(tag5);
-    	var tag8 = $('<div class="jFiler-item-info" style="display: none;"></div>').appendTo(tag5);
-    	var tag9 = $('<div class="jFiler-item-thumb-image" style="height: 100%;"></div>').appendTo(tag5);
+    	var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5);
+    	var tag9 = $('<div class="jFiler-item-thumb-image"></div>').appendTo(tag5);
     	var tag10 = $('<img style="max-width: 100%" draggable="false">').appendTo(tag9);
     	var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8);
     	var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8);
@@ -411,8 +411,7 @@ $(document).ready(function() {
     	reader.readAsDataURL(img)
     	return tag10;
     }
-    function sendFileToServer(formData,src_tag)
-    {
+    function sendFileToServer(formData,src_tag) {
         var uploadURL = ROOT_URL + "/admin/project/fileUpload"; //Upload URL
         var detailImgStr = $('#detailImgList').val();
         $.ajax({

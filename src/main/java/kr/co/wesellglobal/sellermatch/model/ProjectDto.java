@@ -293,6 +293,9 @@ public class ProjectDto {
 	}
 	
 	public String getProjProdCertiName() {
+		if (this.projProdCerti == null) {
+			 return "미검증";
+		 }
 		 if (this.projProdCerti.equals("0")) {
 			 return "미검증";
 		 }
