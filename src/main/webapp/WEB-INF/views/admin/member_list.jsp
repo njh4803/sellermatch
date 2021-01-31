@@ -354,12 +354,17 @@ $(document).on("click",".profile-modal",function(event){
 				$("#profileModal .modal-body #profileState").val(json.output.profileState);
 				$("#profileModal .modal-body #profileSort").val(json.output.profileSort);
 				$("#profileModal .modal-body input[name=profileSort]").val(json.output.profileSort);
+				
 				if (json.output.profileHashtag != null) {
 					var profileHashtag = json.output.profileHashtag.split(',');
 					// 초기화
 					$("#profileModal .modal-body input[name=profileHashtag]").attr('checked', false);
 					for (var i = 0; i < profileHashtag.length; i++) {
-						$("#profileModal .modal-body input[name=profileHashtag]").eq(profileHashtag[i]-1).attr('checked', true);
+						for (var j = 0; j < $("#profileModal .modal-body input[name=profileHashtag]").length; j++) {
+							if ($("#profileModal .modal-body input[name=profileHashtag]").eq(j).val() == profileHashtag[i]) {
+								$("#profileModal .modal-body input[name=profileHashtag]").eq(j).attr('checked', true);
+							}
+						}
 					}
 				}
 				$("#profileModal .modal-body #profileRname").val(json.output.profileRname);

@@ -143,27 +143,10 @@ public class ProfileDto {
 	 }
 	 
 	 public String[] getProfileHashtagList() {
-		 if (this.profileHashtag == null) {
-			return this.profileHashtagList;
-		}
-		 this.profileHashtagList = this.profileHashtag.split(",");
-		for (int i = 0; i < this.profileHashtagList.length; i++) {
-			if (this.profileHashtagList[i].equals("1")) {
-				this.profileHashtagList[i] = "채널검증셀러";
-			}
-			if (this.profileHashtagList[i].equals("2")) {
-				this.profileHashtagList[i] = "매출검증셀러";
-			}
-			if (this.profileHashtagList[i].equals("3")) {
-				this.profileHashtagList[i] = "경력 1년미만 검출셀러";
-			}
-			if (this.profileHashtagList[i].equals("4")) {
-				this.profileHashtagList[i] = "사업자인증셀러";
-			}
-			if (this.profileHashtagList[i].equals("5")) {
-				this.profileHashtagList[i] = "신원인증셀러";
-			}
-		}
+		//if (this.profileHashtag == null) {
+		//	return this.profileHashtagList;
+		//}
+		this.profileHashtagList = this.profileHashtag.split(",");
 		
 		return this.profileHashtagList;
 	}

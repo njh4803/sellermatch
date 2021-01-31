@@ -196,51 +196,51 @@
                                                          		</div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">채널</label>
+                                                                <label class="col-sm-2 col-form-label">해시태그</label>
                                                                 <div class="col-sm-10">
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="1">
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="다양한 채널운영">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
-	                                                                    	<span>해시태그1</span>
+	                                                                    	<span>다양한 채널운영</span>
 	                                                                    </label>
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="2">
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="높은 매출 셀러">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
-	                                                                    	<span>해시태그2</span>
+	                                                                    	<span>높은 매출 셀러</span>
 	                                                                    </label>
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="3">
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="장기판매경력">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
-	                                                                    	<span>해시태그3</span>
+	                                                                    	<span>장기판매경력</span>
 	                                                                    </label>
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="4">
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="탁월한 판매능력">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
-	                                                                    	<span>해시태그4</span>
+	                                                                    	<span>탁월한 판매능력</span>
 	                                                                    </label>
                                                                 	</div>
                                                                 	<div class="checkbox-fade fade-in-primary">
 	                                                                    <label>
-	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="5">
+	                                                                    	<input id="profileHashtag" type="checkbox" name="profileHashtag" value="다양한 판매분야">
 	                                                                    	<span class="cr">
 	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
 	                                                                    	</span>
-	                                                                    	<span>해시태그5</span>
+	                                                                    	<span>다양한 판매분야</span>
 	                                                                    </label>
                                                                 	</div>
                                                          		</div>

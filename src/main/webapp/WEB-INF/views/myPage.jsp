@@ -462,24 +462,24 @@ label.error {
 			    					<td>
 				    					<div class="inputForm width-100" style="border: none;">
 				    						<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="1">
-			                                	<span>해시태그1</span>
+			                                	<input type="checkbox" name="profileHashtag" value="다양한 채널운영">
+			                                	<span>다양한 채널운영</span>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="2">
-			                                	<span>해시태그2</span>
+			                                	<input type="checkbox" name="profileHashtag" value="높은 매출 셀러">
+			                                	<span>높은 매출 셀러</span>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="3">
-			                                	<span>해시태그3</span>
+			                                	<input type="checkbox" name="profileHashtag" value="장기판매경력">
+			                                	<span>장기판매경력</span>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="4">
-			                                	<span>해시태그4</span>
+			                                	<input type="checkbox" name="profileHashtag" value="탁월한 판매능력">
+			                                	<span>탁월한 판매능력</span>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="5">
-			                                	<span>해시태그5</span>
+			                                	<input type="checkbox" name="profileHashtag" value="다양한 판매분야">
+			                                	<span>다양한 판매분야</span>
 				                           	</div>
 				                        </div>
 			    					</td>
@@ -626,7 +626,11 @@ $(document).ready(function(){
 						// 초기화
 						$("input[name=profileHashtag]").attr('checked', false);
 						for (var i = 0; i < profileHashtag.length; i++) {
-							$("input[name=profileHashtag]").eq(profileHashtag[i]-1).attr('checked', true);
+							for (var j = 0; j < $("input[name=profileHashtag]").length; j++) {
+								if ($("input[name=profileHashtag]").eq(j).val() == profileHashtag[i]) {
+									$("input[name=profileHashtag]").eq(j).attr('checked', true);
+								}
+							}
 						}
 					}
 				}
@@ -732,7 +736,7 @@ $(document).ready(function(){
 	        	   return $('#profile_form').valid();
                },
                success: function() {
-               	swal('알림', '프로필이 등록되었습니다.', 'success').then(function(result) {
+               	swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
                        window.location = ROOT_URL + '/temp';
                    });
                }
