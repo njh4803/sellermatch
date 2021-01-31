@@ -58,14 +58,14 @@
                <li><a href="${pageContext.request.contextPath}/project/find">프로젝트 찾기</a></li>
                <li><a href="${pageContext.request.contextPath}/seller/find">판매차 찾기</a></li>
                <li class="operation">
-                   <a href="#" class="operation_guide">셀러매치 이용안내 <i class="fas fa-chevron-down"></i></a>
-                   <div class="operation_guide_list" style="display: none;">
+                   <a href="${pageContext.request.contextPath}/usageFee" class="operation_guide">셀러매치 이용안내 <!-- <i class="fas fa-chevron-down"></i> --></a>
+<%--                    <div class="operation_guide_list" style="display: none;">
                         <a href="${pageContext.request.contextPath}/howUse">이용방법</a>
                         <a href="${pageContext.request.contextPath}/usageFee">이용요금</a>
                         <a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a>
                         <a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a>
                         <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a>
-                   </div>
+                   </div> --%>
                </li>
            </ul>
        </nav>
