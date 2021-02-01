@@ -1,5 +1,7 @@
 package kr.co.wesellglobal.sellermatch.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 //게시판리스트
@@ -32,6 +34,9 @@ public class BoardDto {
 	
 	// 조회수 
 	private int boardHit;
+	
+	// 첨부파일 
+	private String boardFile;
 	
 	// 등록일시 
 	private String boardRegDate;

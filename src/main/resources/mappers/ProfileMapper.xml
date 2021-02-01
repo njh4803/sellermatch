@@ -98,7 +98,7 @@
     	SELECT 
 	   		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, profile_ch_chk_date, 
     		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
-    		profile_ch, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		profile_ch, profile_indus, profile_photo, profile_state, profile_reg_date, profile_edit_date,
     		<if test="needIndus != '' and needIndus != null">
     			i.indus_name as profile_indus_name, 
     		</if>
@@ -186,7 +186,7 @@
     	SELECT 
 	   		profile_idx, profile_id, profile_mem_id, profile_grade, profile_intro, profile_ch_chk, profile_ch_chk_date, 
     		profile_career, profile_sale_chk, profile_nation, profile_biz_num, profile_biz_sort, profile_biz_certi, 
-    		profile_ch, profile_indus, profile_photo as profile_photo_list, profile_state, profile_reg_date, profile_edit_date,
+    		profile_ch, profile_indus, profile_photo, profile_state, profile_reg_date, profile_edit_date,
     		<if test="needIndus != '' and needIndus != null">
     			i.indus_name as profile_indus_name, 
     		</if>

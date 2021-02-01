@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sun.mail.handlers.multipart_mixed;
+
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
@@ -182,7 +184,7 @@ public class MemberRestController {
 		UploadItem item = null;
 			
 		try {
-			if (memPhoto != null) {
+			if (memPhoto != null && memPhoto.getSize() != 0) {
 				item = webHelper.saveMultipartFile(memPhoto);
 			}
 		} catch (NullPointerException e) {
@@ -194,7 +196,7 @@ public class MemberRestController {
 		}
 		
 		MemberDto input = new MemberDto();
-		if (memPhoto != null) {
+		if (memPhoto != null && memPhoto.getSize() != 0) {
 			input.setMemPhoto(item.getFilePath());
 		}
 		input.setMemId(memId);

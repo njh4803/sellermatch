@@ -3,6 +3,15 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <style>
+/* 에러메시지가 표시중인 <label> 태그 */
+	label.error {
+		font-size: 10px;
+		color: red;
+		display: inline-block;
+		padding: 5px 10px;
+		margin: 0;
+		float: left;
+	}
 	ul.tabs{
 		list-style: none;
 		text-align: left;
@@ -51,7 +60,6 @@
 	}
 	.tab-content2{
 		display: none;
-		background: #ededed;
 	}
 	
 	.tab-content2.current{
@@ -370,6 +378,87 @@ ul.pagination>li>a {
   border: solid 1px #707070;
   background-color: #ffffff;
 }
+.fileLable{
+	position: relative;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100px;
+    height: 30px;
+    background: #1abc9c;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 2px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.qabtn{
+  width: 100px;
+  height: 40px;
+  border: solid 1px #707070;
+  background-color: #000000;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+  float: right;
+}
+.howUse-box1{
+	display:inline-block;
+	width: 242px;
+	height: 74px;
+	margin-top: 80px;
+	margin: 80px 519px 32px 519px;
+}
+.howUse-box2{
+	display:inline-block;
+	width: 300px;
+	height: 300px;
+	border: solid 1px #e3e3e3;
+	background-color: #ffffff;
+	margin-bottom: 80px;
+}
+.howUse-box2 img{
+	margin: 37.7px 63px 39px 63px;
+}
+.howUse-box3{
+  display: inline-block;
+  width: 0;
+  height: 300px;
+  border: solid 1px #e3e3e3;
+  margin: -39px 95.5px;
+}
+.howUse-box1 div{
+  object-fit: contain;
+  font-size: 29px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.howUse-box2 span{
+  display: inline-block;
+  height: 22px;
+  object-fit: contain;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 39px;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
@@ -484,7 +573,19 @@ ul.pagination>li>a {
 			<div id="tab-3" class="tab-content2">
 			</div>
 			<div id="tab-4" class="tab-content2">
-		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
+				<div class="howUse-box1">
+					<div>당신은 누구인가요? 선택해주세요!</div>
+				</div>
+				<div class="howUse-box2">
+					<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller01.png">
+					<span>판매자 회원</span>
+				</div>
+				<div class="howUse-box3">
+				</div>
+				<div class="howUse-box2">
+					<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller02.png">
+					<span>공급자 회원</span>
+				</div>
 			</div>
 			<div id="tab-5" class="tab-content2">
 		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
@@ -620,9 +721,8 @@ $(document).ready(function(){
 		        	'boardQaType': '',
 		        },
 				success : function(json) {
-					console.log(json.output)
 					var content = {
-						output : json.output
+							
 					} 
 		       		var template = Handlebars.compile($("#OneToOne-tmpl").html());
 		       		var html = template(content);
@@ -792,6 +892,44 @@ $(document).ready(function(){
 		var boardContents = $(this).next();
 		console.log(boardContents);
 		boardContents.toggle();
+	});
+	
+	$(document).on("click", "#boardEmail3", function(e){
+		var boardEmail3 = $('#boardEmail3').val();
+		$('#boardEmail2').val(boardEmail3);
+	});
+	
+	// 유효성 검사
+	$(document).on("focus", "#OneToOne-form", function(e){
+	    $('#OneToOne-form').validate({
+			
+	        rules: {
+	            boardTitle: 'required',
+	            boardContents: 'required',
+	            
+	        },
+	        messages: {
+	            boardTitle: '문의제목을 입력해 주세요.',
+	            boardContents: '문의내용을 입력해주세요',
+	        }
+	    });
+	});
+	$(document).on("submit", "#OneToOne-form", function(e){
+		e.preventDefault();
+		
+	    $('#OneToOne-form').ajaxForm({
+	        // submit 전에 호출된다.
+	        beforeSubmit: function(arr, form, options) {
+	            return $(form).valid();
+	        },
+	        success: function(json) {
+				swal('알림', '문의가 접수되었습니다.', 'success').then(function(result) {    					
+		            if (result.value) {
+		            	window.location = ROOT_URL+ "/usageFee"
+		            }
+		        });
+	        },
+	    });
 	});
 });
 </script>
@@ -974,6 +1112,7 @@ $(document).ready(function(){
 			<div>
 </script>
 <script type="text/x-handlebars-template" id="OneToOne-tmpl">
+		<form action="${pageContext.request.contextPath}/OneToOne" id="OneToOne-form" name="OneToOne-form" method="post" enctype="multipart/form-data">
 			<div id="OneToOne">
 				<div class="board-tabBox" style="height:250px;">
 		        	<div class="tab-title">1:1 문의하기</div>
@@ -986,7 +1125,7 @@ $(document).ready(function(){
 						<div class="qa-text">문의제목</div>
 					</div>
 					<div class="qa-contents">
-						<input type="text" name="" class="form-control" id=""/>
+						<input type="text" name="boardTitle" class="form-control" id="boardTitle"/>
 					</div>
 				</div>
 				<div class="qa-row">
@@ -994,7 +1133,13 @@ $(document).ready(function(){
 						<div class="qa-text">문의종류</div>
 					</div>
 					<div class="qa-contents">
-						<input type="text" name="" class="form-control" id=""/>
+						<select id="boardQaType" name="boardQaType" class="form-control">
+							<option value="일반문의">일반문의</option>
+							<option value="주문결제문의">주문결제문의</option>
+							<option value="환불문의">환불문의</option>
+							<option value="반품문의">반품문의</option>
+							<option value="기타문의">기타문의</option>
+						</select>
 					</div>
 				</div>
 				<div class="qa-row">
@@ -1002,10 +1147,10 @@ $(document).ready(function(){
 						<div class="qa-text">문의 수령 이메일 주소</div>
 					</div>
 					<div class="qa-contents">
-						<input type="text" name="" class="form-control" id="" style="width:300px; display:inline-block;"/>
+						<input type="text" name="boardEmail1" class="form-control" id="boardEmail1" style="width:300px; display:inline-block;"/>
 						<span>@</span>
-						<input type="text" name="" class="form-control" id="" style="width:300px; display:inline-block;"/>
-						<select id="" name="" class="form-control"  style="width:150px; display:inline-block; margin-left:15px;">
+						<input type="text" name="boardEmail2" class="form-control" id="boardEmail2" style="width:300px; display:inline-block;"/>
+						<select id="boardEmail3" name="boardEmail3" class="form-control"  style="width:150px; display:inline-block; margin-left:15px;">
 							<option value="">직접입력</option>
 							<option value="naver.com">naver.com</option>
 						</select>
@@ -1016,7 +1161,7 @@ $(document).ready(function(){
 						<div class="qa-text">문의 내용</div>
 					</div>
 					<div class="qa-contents">
-						<textarea name="" class="form-control"></textarea>
+						<textarea name="boardContents" id="boardContents" class="form-control"></textarea>
 					</div>
 				</div>
 				<div class="qa-row">
@@ -1024,8 +1169,18 @@ $(document).ready(function(){
 						<div class="qa-text">첨부파일</div> 
 					</div>
 					<div class="qa-contents">
-						<input type="text" name="" class="form-control" id=""/>
+    					<div style="display: flex;">
+                        	<input id = "file_route" type="text" class="form-control" readonly="readonly"/>
+                        	<label class="fileLable">
+                             	파일 선택
+                            	<input id="image" name="boardFile" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+                            </label>
+                        </div>
 					</div>
 				</div>
+				<div>
+					<input class="qabtn" type="submit" value="문의하기">
+				</div>
 			</div>
+		</form>
 </script>

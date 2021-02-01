@@ -117,6 +117,21 @@ public class ProfileRestController {
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public Map<String, Object> addProfile(
 			@ModelAttribute("profileDto") ProfileDto profileDto) {
+		/** 1) 업로드 처리 */
+		// 업로드 결과가 저장된 Beans를 리턴받는다.
+		UploadItem item = null;
+		
+		try {
+			if (profileDto.getProfilePhotoFile() != null && profileDto.getProfilePhotoFile().getSize() != 0) {
+				item = webHelper.saveMultipartFile(profileDto.getProfilePhotoFile());
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
 		
 		ProfileDto input = new ProfileDto();
 		input.setProfileId(profileDto.getProfileId());
@@ -128,7 +143,9 @@ public class ProfileRestController {
 		input.setProfileSaleChk("0");
 		input.setProfileBizCerti("0");
 		input.setProfileState("1");
-		
+		if (profileDto.getProfilePhotoFile() != null && profileDto.getProfilePhotoFile().getSize() != 0) {
+			input.setProfilePhoto(item.getFilePath());
+		}
 		input.setProfileIntro(profileDto.getProfileIntro());
 		input.setProfileVolume(profileDto.getProfileVolume());
 		input.setProfileCareer(profileDto.getProfileCareer());

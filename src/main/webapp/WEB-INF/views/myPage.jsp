@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<!-- jquery file upload Frame work -->
+<%-- <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css"> --%>
 <style>
 	ul.tabs{
 		list-style: none;
@@ -351,6 +355,24 @@ label.error {
 						<input type="hidden" name="profileId" id="profileId">
 						<input type="hidden" name="profileSort" id="profileSort">
 						<input type="hidden" name="profileMemId" id="profileMemId">
+						<div>
+							<div class="form-group row">
+								<label class="col-sm-2 colForm-label">프로필 사진</label>
+								<div class="col-sm-10 file_input">
+									<div class="input-group profile">
+										<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
+											<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+										</div>
+										<div style="display: flow-root;">
+											<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
+												<label class="fileLable">파일 선택
+													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+												</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						<table class="profileTable">
 			    			<tbody>
 			    				<tr>
@@ -568,6 +590,25 @@ $(document).ready(function(){
 		});
 	};
 	
+	function handleImgfileSelect(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				return;
+			}
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#profile-img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	};
+	$(document).on("change", "#profile-image" ,handleImgfileSelect);
 	$(document).on("change", "#image" ,handleImgfileSelect);
 	
 	$(document).on("click", "ul.tabs li", function(e){
@@ -647,6 +688,8 @@ $(document).ready(function(){
 					$('#profileIntro').val(json.output.profileIntro);
 					$('#profileIndus').val(json.output.profileIndus);
 					$('#profileSortName').val(json.output.profileSortName);
+					var src = "/upload/"+json.output.profilePhoto;
+					$('#profile-img').attr("src", src);
 					
 					if (json.output.profileSort != '1' && json.output.profileSort != '2') {
 						$('#profileSort').attr('disabled', false);
@@ -762,7 +805,7 @@ $(document).ready(function(){
 		});
 	});
 
-    $(document).on("submit", "#profile_form", function(e){
+/*     $(document).on("submit", "#profile_form", function(e){
 		e.preventDefault();
 		
 		var form = $(this);
@@ -782,6 +825,20 @@ $(document).ready(function(){
                }
         });
         
+    }); */
+    
+    $('#profile_form').ajaxForm({
+        // submit 전에 호출된다.
+        beforeSubmit: function(arr, form, options) {
+            // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
+            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
+            return $(form).valid();
+        },
+        success: function(json) {
+            swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
+                window.location = ROOT_URL + '/member/myPage';
+            });
+        },
     });
     
     $(document).on("click", "#sendAuthEmail", function(e){
@@ -1000,6 +1057,155 @@ $(document).ready(function(){
     	var projId = $(this).attr('data-projId');
     	window.location = ROOT_URL + "/project/detail?projId="+projId;
     });
+    
+    	
+	//파일 업로드
+    var objDragAndDrop = $(".dragAndDropDiv");
+	var imgBox = $("#imgBox");
+    
+    $(document).on("dragenter",".dragAndDropDiv",function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        $(this).css('border', '2px solid #0B85A1');
+    });
+    $(document).on("dragover",".dragAndDropDiv",function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    });
+    $(document).on("drop",".dragAndDropDiv",function(e){
+        
+        $(this).css('border', '2px dotted #0B85A1');
+        e.preventDefault();
+        var files = e.originalEvent.dataTransfer.files;
+        var imgListStr = $("#detailImgList").val();
+        //$('#imgBox ul').remove();
+        handleFileUpload(files,imgBox,imgListStr);
+    });
+    
+    $(document).on('dragenter', function (e){
+        e.stopPropagation();
+        e.preventDefault();
+    });
+    $(document).on('dragover', function (e){
+      e.stopPropagation();
+      e.preventDefault();
+      objDragAndDrop.css('border', '2px dotted #0B85A1');
+    });
+    $(document).on('drop', function (e){
+        e.stopPropagation();
+        e.preventDefault();
+    });
+    //drag 영역 클릭시 파일 선택창
+    objDragAndDrop.on('click',function (e){
+        $('input[name=projDetailImg]').trigger('click');
+    });
+
+    $('input[name=projDetailImg]').on('change', function(e) {
+        var files = e.originalEvent.target.files;
+        var imgListStr = $("#detailImgList").val();
+        //$('#imgBox ul').remove();
+        handleFileUpload(files,imgBox,imgListStr);
+    });
+    
+    function handleFileUpload(files,imgBox,imgListStr) {
+    	
+    	var imgList = [];
+    	imgList = imgListStr.split("|");
+    	
+    	if (files.length > 5 || imgList.length > 5) {
+			alert('사진은 최대 5개까지 첨부가능합니다.');
+			return;
+		}
+    	
+		for (var i = 0; i < files.length; i++) 
+		{
+			var fd = new FormData();
+		    var src_tag = new createimgBox(imgBox,files[i]); //Using this we can set progress.
+		    fd.append('detailImg', files[i]);
+		    sendFileToServer(fd,src_tag);
+		}
+		
+    }  
+
+    function createimgBox(obj, img){
+
+    	var tag1 = $('<ul class="jFiler-items-list jFiler-items-grid"></ul>').appendTo(obj);
+    	var tag2 = $('<li class="jFiler-item"></li>').appendTo(tag1);
+    	var tag3 = $('<div class="jFiler-item-container"></div>').appendTo(tag2);
+    	var tag4 = $('<div class="jFiler-item-inner"></div>').appendTo(tag3);
+    	var tag5 = $('<div class="jFiler-item-thumb"></div>').appendTo(tag4);
+    	var tag6 = $('<div class="jFiler-item-assets jFiler-row"></div>').appendTo(tag4);
+    	var tag7 = $('<div class="jFiler-item-status"></div>').appendTo(tag5);
+    	/* var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5); */
+    	var tag9 = $('<div class="jFiler-item-thumb-image"></div>').appendTo(tag5);
+    	var tag10 = $('<img style="max-width: 100%" draggable="false">').appendTo(tag9);
+    	/* var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8); */
+    	/* var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8); */
+    	var tag13 = $('<ul class="list-inline pull-left"></ul>').appendTo(tag6);
+    	var tag14 = $('<ul class="list-inline pull-right"></ul>').appendTo(tag6);
+    	var tag15 = $('<input class="btn removeImg" type="button" value="x">').appendTo(tag14);
+    	
+    	obj.append(obj.tag1);
+    	
+    	const reader = new FileReader()
+    	reader.onload = function(img) {
+    	  tag10.attr('src', img.target.result);
+    	}
+    	reader.readAsDataURL(img)
+    	return tag10;
+    }
+    function sendFileToServer(formData,src_tag)
+    {
+        var uploadURL = ROOT_URL + "/admin/project/fileUpload"; //Upload URL
+        var detailImgStr = $('#detailImgList').val();
+        $.ajax({
+            url: uploadURL,
+            type: "POST",
+            contentType:false,
+            processData: false,
+            cache: false,
+            data: formData,
+            success: function(json){
+            	console.log(json.fName);
+            	var result = '';
+            	if ($('#detailImgList').val() == undefined) {
+            		$('#detailImgList').val(json.fName + '|');
+            		result = $('#detailImgList').val();
+				} else {
+					result = $('#detailImgList').val() + json.fName + '|';
+				}
+            	console.log(result);
+            	$('#detailImgList').val(result);
+            	src_tag.attr('data-src', json.fName + '|');
+            }
+        });
+    }
+    
+    $(document).on("click",".removeImg",function(event){
+    	var parent = event.target.parentNode;
+    	console.log(parent)
+    	var imgItem = parent.parentNode.parentNode.parentNode.parentNode.parentNode;
+    	var img_src = parent.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].getAttribute('data-src');
+    	console.log(img_src);
+    	imgItem.remove();
+    	var imgListStr = $("#detailImgList").val();
+    	var imgList = [];
+    	var result = '';
+    	imgList = imgListStr.split("|");
+    	img_src = img_src.replace("|","");
+    	for (var i = 0; i < imgList.length-1; i++) {
+    		console.log(imgList[i]);
+    		console.log(img_src);
+    		console.log('------------------------------------------------------------------------------------------');
+			if (imgList[i] == img_src) {
+				console.log('건너뜀');
+				continue;
+			}
+			result += imgList[i]+"|";
+		}
+    	console.log(result);
+    	$('#detailImgList').val(result);
+    });
 });
 </script>
 <script type="text/javascript">
@@ -1079,3 +1285,7 @@ $(document).ready(function() {
 				</table>
 			</div>
 </script>
+<!-- jquery file upload js -->
+<%-- <script src="${pageContext.request.contextPath}/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/pages/filer/custom-filer.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/pages/filer/jquery.fileuploads.init.js" type="text/javascript"></script> --%>

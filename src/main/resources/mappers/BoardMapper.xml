@@ -16,6 +16,7 @@
         <result property="boardQaType" column="board_qa_type" />
          <result property="boardEmail" column="board_email" />
          <result property="boardHit" column="board_hit" />
+         <result property="boardFile" column="board_file" />
          <result property="boardRegDate" column="board_reg_date" />
          <result property="boardEditDate" column="board_edit_date" />
          <result property="replyCount" column="reply_count" />
@@ -27,10 +28,10 @@
     	keyProperty="boardIdx">
     	INSERT INTO BoardList
     		(`board_id`, `board_title`, `board_contents`, `board_writer`, `board_type`, `board_qa_type`, 
-    		`board_email`, `board_hit`, `board_reg_date`)
+    		`board_email`, `board_file`, `board_hit`, `board_reg_date`)
     	 VALUES 
     	 	(#{boardId}, #{boardTitle}, #{boardContents}, #{boardWriter}, #{boardType}, 
-    	 	#{boardQaType}, #{boardEmail}, 0, now());
+    	 	#{boardQaType}, #{boardEmail}, #{boardFile}, 0, now());
     </insert>
     
     <select id="selectList"
@@ -38,7 +39,7 @@
     	resultMap="boardMap">
     	SELECT 
 	   		b.board_idx, b.board_id, b.board_title, b.board_contents, b.board_writer, b.board_type, b.board_qa_type, b.board_email, b.board_hit, 
-	   		b.board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		b.board_file, b.board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
 	   		FROM BoardList b
     	<where>
 				<if test="boardTitle != null and boardTitle != ''">
@@ -84,7 +85,7 @@
     	resultMap="boardMap">
     	SELECT 
     		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
-	   		board_reg_date, board_edit_date
+	   		board_file, board_reg_date, board_edit_date
     	FROM BoardList
     	where board_id = #{boardId} AND board_type = #{boardType}
     </select>

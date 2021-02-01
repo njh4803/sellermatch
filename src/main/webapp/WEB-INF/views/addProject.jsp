@@ -6,7 +6,6 @@
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  <!-- ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
 <style>
@@ -354,10 +353,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
     //drag 영역 클릭시 파일 선택창
-    $(document).on('click','.dragAndDropDiv' ,function (e){
+    objDragAndDrop.on('click',function (e){
         $('input[name=projDetailImg]').trigger('click');
     });
-    $(document).on('change','input[name=projDetailImg]' ,function (e){
+
+    $('input[name=projDetailImg]').on('change', function(e) {
         var files = e.originalEvent.target.files;
         var imgListStr = $("#detailImgList").val();
         //$('#imgBox ul').remove();
@@ -377,7 +377,7 @@ $(document).ready(function() {
 		for (var i = 0; i < files.length; i++) 
 		{
 			var fd = new FormData();
-		    var src_tag = new createimgBox(imgBox,files[i]);
+		    var src_tag = new createimgBox(imgBox,files[i]); //Using this we can set progress.
 		    fd.append('detailImg', files[i]);
 		    sendFileToServer(fd,src_tag);
 		}
@@ -393,11 +393,11 @@ $(document).ready(function() {
     	var tag5 = $('<div class="jFiler-item-thumb"></div>').appendTo(tag4);
     	var tag6 = $('<div class="jFiler-item-assets jFiler-row"></div>').appendTo(tag4);
     	var tag7 = $('<div class="jFiler-item-status"></div>').appendTo(tag5);
-    	var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5);
+    	/* var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5); */
     	var tag9 = $('<div class="jFiler-item-thumb-image"></div>').appendTo(tag5);
     	var tag10 = $('<img style="max-width: 100%" draggable="false">').appendTo(tag9);
-    	var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8);
-    	var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8);
+    	/* var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8); */
+    	/* var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8); */
     	var tag13 = $('<ul class="list-inline pull-left"></ul>').appendTo(tag6);
     	var tag14 = $('<ul class="list-inline pull-right"></ul>').appendTo(tag6);
     	var tag15 = $('<input class="btn removeImg" type="button" value="x">').appendTo(tag14);
@@ -411,7 +411,8 @@ $(document).ready(function() {
     	reader.readAsDataURL(img)
     	return tag10;
     }
-    function sendFileToServer(formData,src_tag) {
+    function sendFileToServer(formData,src_tag)
+    {
         var uploadURL = ROOT_URL + "/admin/project/fileUpload"; //Upload URL
         var detailImgStr = $('#detailImgList').val();
         $.ajax({
@@ -441,7 +442,7 @@ $(document).ready(function() {
     	var parent = event.target.parentNode;
     	console.log(parent)
     	var imgItem = parent.parentNode.parentNode.parentNode.parentNode.parentNode;
-    	var img_src = parent.parentNode.parentNode.childNodes[0].childNodes[2].childNodes[0].getAttribute('data-src') ;
+    	var img_src = parent.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].getAttribute('data-src');
     	console.log(img_src);
     	imgItem.remove();
     	var imgListStr = $("#detailImgList").val();
@@ -462,7 +463,6 @@ $(document).ready(function() {
     	console.log(result);
     	$('#detailImgList').val(result);
     });
-    // 파일 업로드 끝
     
     $(document).on("change", "#projTitleSelect", function(){
 		$("#projTitle").val(this.value);

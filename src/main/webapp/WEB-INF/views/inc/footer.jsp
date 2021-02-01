@@ -74,6 +74,7 @@ $(document).ready(function() {
 });
 </script>
 
+
 <!-- AjaxHelper -->
 <script src="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.js"></script>
 
