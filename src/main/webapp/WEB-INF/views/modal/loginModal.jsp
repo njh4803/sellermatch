@@ -295,7 +295,7 @@ $(document).ready(function() {
                                 <div class="row m-b-20">
                                     <div class="login_logo">
                                         <img src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
-                                        <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다.</h5>
+                                        <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
                                     </div>
                                 </div>
                                 <div class="input-group col-sm-12">
@@ -304,7 +304,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="row"></div>
                                 <div class="input-group col-sm-12">
-                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="비밀번호를 입력해주세요.">
+                                    <input type="password" id="memPw" name="memPw" class="form-control" placeholder="비밀번호를 입력해주세요">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="row"></div>

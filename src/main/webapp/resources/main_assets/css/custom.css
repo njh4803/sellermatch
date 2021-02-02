@@ -55,7 +55,6 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 }
 .bnr .bnr_wrap3 {}
 .bnr .bnr_wrap4 {margin: 0 auto; height: 727px;
-	background-image: url(/wesellglobal/local_assets/img/main000.png);
 }
 .bnr .bnr_wrap5 {margin: 0 auto; height: 1080px; background-color: #f7f7f7;}
 .bnr .bnr_wrap6 {height: 283px; background-color: #f0f0f0; margin-bottom: 113.3px;} 
@@ -136,7 +135,20 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 .search_bnr .search_wrap form .input_group {overflow:hidden;}
 .search_bnr .search_wrap form .input_group input {width:1050px; height:73px; border-radius:50px; padding-left: 35px; font-size:26px; outline:0; border:0;}
 .search_bnr .search_wrap form .input_group input::placeholder {color:#999; font-size:26px;}
-.search_bnr .search_wrap form .input_group button {width:216px; height:73px; border-radius:50px; cursor: pointer; float:right; background-color: rgba(255,255,255,0.5); color:#fff;}
+.search_bnr .search_wrap form .input_group button {
+	width:216px; 
+	height:73px; 
+	border-radius:50px; 
+	cursor: pointer; 
+	float:right; 
+	background-color: rgba(255,255,255,0.5);
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+	}
 .search_bnr .search_wrap form .input_group button:hover {background-color: rgba(255,255,255,0.8);}
 .search_bnr .search_wrap form .input_group button i {font-size:26px;}
 

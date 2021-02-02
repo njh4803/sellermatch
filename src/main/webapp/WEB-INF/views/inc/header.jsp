@@ -56,7 +56,7 @@
        <nav>
            <ul>
                <li><a href="${pageContext.request.contextPath}/project/find">프로젝트 찾기</a></li>
-               <li><a href="${pageContext.request.contextPath}/seller/find">판매차 찾기</a></li>
+               <li><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></li>
                <li class="operation">
                    <a href="${pageContext.request.contextPath}/usageFee" class="operation_guide">셀러매치 이용안내 <!-- <i class="fas fa-chevron-down"></i> --></a>
 <%--                    <div class="operation_guide_list" style="display: none;">

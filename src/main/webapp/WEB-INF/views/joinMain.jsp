@@ -33,7 +33,7 @@ a:hover {
 }
 .partner_bnr .partner_wrap2 {
     width: 640px;
-    margin: 40px auto;
+    margin: 80px auto;
     text-align: center;
 }
 .width-70{
@@ -57,14 +57,27 @@ a:hover {
 	background-color: #ffffff;
 	padding: 20px;
 }
+.joinBox img{
+	position: relative;
+    float: left;
+    top: -10px;
+    right: 5px;
+}
+
+.joinBox img.mail{
+    top: -4px;
+    right: -2px;
+}
 .joinBox.naver{
 	background-color: #00d15a;
+	border: none;
 }
 .joinBox.naver a{
 	color: #ffffff;
 }
 .joinBox.kakao{
 	background-color: #fae100;
+	border: none;
 }
 .joinBox.kakao a{
 	color: #381e1f;
@@ -94,17 +107,17 @@ color: #0054db;
   background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
 }
 .textbox1{
-  height: 36px;
-  margin: 0 6px 10px;
-  font-family: NotoSansKR;
-  font-size: 25px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.44;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000000;
+	height: 36px;
+    margin: 10px 0;
+    font-family: NotoSansKR;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
 }
 .textbox2{
   margin-top: 10px;
@@ -129,6 +142,18 @@ color: #0054db;
   text-align: center;
   color: #000000;
 }
+.csCenter{
+  margin-top: 20px;
+  font-family: NotoSansKRRegular;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #8b8b8b;
+}
+
 </style>
 <div class="partner_bnr">
 	<div class="bar"></div>
@@ -140,21 +165,26 @@ color: #0054db;
         	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
         </div>
         <div class="textbox1">셀러매치는 로그인이 필요한 서비스입니다</div>
-        <div class="textbox2">안녕하십니까? 셀러매치에 오신 것을 환영합니다</div>
+        <div class="textbox2">회원이 아니시라면, 5초! 회원가입 후 셀러매치의 서비스를 이용해주세요</div>
 	    <div class="partner_wrap2">
 	        <h2>셀러매치 5초 SNS 간편가입</h2>
 	        <div class="joinBox naver">
-	        	<a class="" href="#">네이버 가입</a>
+	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/naver.png">
+	        		<a class="" href="#">네이버 가입</a>
 	        </div>
 	        <div class="joinBox kakao">
+	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/kakao.png">
 	        	<a class="" href="#">카카오 가입</a>
 	        </div>
 	        <div class="joinBox google">
+	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/google.png">
 	        	<a class="" href="#">구글 가입</a>
 	        </div>
 	        <div class="joinBox">
+	        	<img class="mail" alt="" src="${pageContext.request.contextPath}/local_assets/img/mail.png">
 	        	<a href="${pageContext.request.contextPath}/member/join">이메일 가입</a>
 	        </div>
+	        <div class="csCenter">고객센터 : help@sellermatch.co.kr</div>
 	    </div>
     </div>
 

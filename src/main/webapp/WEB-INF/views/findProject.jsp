@@ -253,20 +253,20 @@ a:focus, a:hover{
 </style>
 <div class="partner_bnr">
 	<div class="partner_bnr2">
-			<div class="search_bnr">
-			    <div class="search_wrap">
-			        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
-				        <div class="input_group">
-				            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요.">
-				            <button type="submit" class="btn_search">
-				                <i class="fas fa-bolt"> 검색</i>   
-				            </button>    
-				        </div>
-				        <input type="hidden" value="defaultSort" id="sort" name="sort">
-				    </form>
-			    </div>    
-			</div>
+		<div class="search_bnr">
+		    <div class="search_wrap">
+		        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
+			        <div class="input_group">
+			            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요.">
+			            <button type="submit" class="btn_search">
+			                <i class="fas fa-bolt"> 검색</i>   
+			            </button>    
+			        </div>
+			        <input type="hidden" value="defaultSort" id="sort" name="sort">
+			    </form>
+		    </div>    
 		</div>
+	</div>
 	<div class="partner_wrap">
 		<div class="partner_bnr2">
 		    <div class="partner_wrap" style="text-align: center;">

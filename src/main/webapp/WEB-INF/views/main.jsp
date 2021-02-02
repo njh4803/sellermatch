@@ -157,7 +157,7 @@
 }
 </style>
 <div class="bnr">
-    <div class="bnr_wrap4">
+    <div class="bnr_wrap4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main000.png');">
     	<div class="main-000">
     	        검증된 고매출 판매자,<br>
 			        다양한 고마진 공급자를<br>
@@ -174,9 +174,9 @@
 			    <div class="search_wrap">
 			        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
 				        <div class="input_group">
-				            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요">
+				            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요.">
 				            <button type="submit" class="btn_search">
-				                <i class="fas fa-bolt"> 검색</i>   
+				               <img class="searchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png"> 검색   
 				            </button>    
 				        </div>
 				        <input type="hidden" value="defaultSort" id="sort" name="sort">
@@ -187,7 +187,7 @@
 	</div>
 	<div class="bnr_wrap5 text-center">
 		<div class="pass">
-			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/pass30.png">
+			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/pass_black.png">
 		</div>
 		<div class="textbox1">
 			왜 셀러매치일까요?

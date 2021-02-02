@@ -35,17 +35,32 @@
     margin: 0 40px;
 }
 .chk_list_container{
-	height: 150px;
+	height: 250px;
+}
+.chk_list_container span{
+  display: inline-block;
+  margin-bottom : 13.3px;
+  object-fit: contain;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
 }
 .chk_listBox{
 	display: inline-block;
 	overflow-x:hidden;
 	overflow-y:auto;
 	width:12.66%;
-	height:200px;
-	border: 1px solid #e3e3e3;
+	height:250px;
 	text-align: left;
 	margin-right: -5px;
+	padding: 15px;
+	border: solid 1px #d8d8d8;
+	background-color: #ffffff;
 }
 .container1{
 	border: 2px solid #e3e3e3;
@@ -280,8 +295,56 @@ a:focus, a:hover{
   border-top-right-radius:5px;
   display: none;
 }
+.findPass{
+  width: 32.3px;
+  height: 45px;
+  margin-bottom: 45px;
+  object-fit: contain;
+}
+.searchPass{
+  width: 26.5px;
+  height: 37px;
+  margin-right: 16.5px;
+  object-fit: contain;
+}
+.textBox1{
+  height: 58px;
+  margin-bottom: 10px;
+  object-fit: contain;
+  font-family: NotoSansKRBold;
+  font-size: 40px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1f1f1f;
+}
+.textBox2{
+  height: 29px;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  object-fit: contain;
+  font-family: NotoSansKRRegular;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1f1f1f;
+}
 </style>
 <div class="partner_bnr">
+	<div class="partner_wrap">
+		<div class="partner_bnr2">
+			<div>
+				<img class="findPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass_black.png">
+			</div>
+			<div class="textBox1">프로젝트 찾기</div>
+			<div class="textBox2">찾으시는 키워드를 입력 후 세부 내용을 선택하세요</div>
+		</div>
+	</div>
 	<div class="partner_bnr2">
 		<div class="search_bnr">
 		    <div class="search_wrap">
@@ -289,7 +352,7 @@ a:focus, a:hover{
 			        <div class="input_group">
 			            <input type="text" name="keyword" placeholder="매치 할 프로젝트를 입력하세요.">
 			            <button type="submit" class="btn_search">
-			                <i class="fas fa-bolt"> 검색</i>   
+			               <img class="searchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png"> 검색   
 			            </button>    
 			        </div>
 			        <input type="hidden" value="defaultSort" id="sort" name="sort">
