@@ -573,19 +573,7 @@ ul.pagination>li>a {
 			<div id="tab-3" class="tab-content2">
 			</div>
 			<div id="tab-4" class="tab-content2">
-				<div class="howUse-box1">
-					<div>당신은 누구인가요? 선택해주세요!</div>
-				</div>
-				<div class="howUse-box2">
-					<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller01.png">
-					<span>판매자 회원</span>
-				</div>
-				<div class="howUse-box3">
-				</div>
-				<div class="howUse-box2">
-					<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller02.png">
-					<span>공급자 회원</span>
-				</div>
+
 			</div>
 			<div id="tab-5" class="tab-content2">
 		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
@@ -652,6 +640,9 @@ $(document).ready(function(){
 		$('#FAQ').remove();
 		// 초기화
 		$('#OneToOne').remove();
+		// 초기화
+		$('#show1').remove();
+		$('#show1').remove();
 		
 		var tab_id = $(this).attr('data-tab');
 		var tabNum = $(this).data('num');
@@ -730,6 +721,13 @@ $(document).ready(function(){
 		       		$("#tab-3").append(html);
 				}
 			});
+		}
+		
+		if (tab_id == 'tab-4') {
+			var template = Handlebars.compile($("#howUse-tmpl").html());
+       		var html = template();
+       		
+       		$("#tab-4").append(html);
 		}
 	});
 	
@@ -930,6 +928,18 @@ $(document).ready(function(){
 		        });
 	        },
 	    });
+	});
+	
+	$(document).on("click", "#spMember", function(e){
+		$("#show1").remove();
+		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법02.png">';
+		$("#tab-4").append(html);
+	});
+	
+	$(document).on("click", "#ppMember", function(e){
+		$("#show1").remove();
+		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법03.png">';
+		$("#tab-4").append(html);
 	});
 });
 </script>
@@ -1183,4 +1193,21 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</form>
+</script>
+<script type="text/x-handlebars-template" id="howUse-tmpl">
+				<div id="show1">
+					<div class="howUse-box1">
+						<div>당신은 누구인가요? 선택해주세요!</div>
+					</div>
+					<div class="howUse-box2" id="spMember">
+						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller01.png">
+						<span>판매자 회원</span>
+					</div>
+					<div class="howUse-box3">
+					</div>
+					<div class="howUse-box2" id="ppMember">
+						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller02.png">
+						<span>공급자 회원</span>
+					</div>
+				</div>
 </script>

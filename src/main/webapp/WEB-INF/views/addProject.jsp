@@ -236,7 +236,7 @@ label.error {
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
-
+	/* $(document).on("ready", function(){ */
 	
 	$("#projAdd").on("click", function(){
 		$(".addbox1").remove();

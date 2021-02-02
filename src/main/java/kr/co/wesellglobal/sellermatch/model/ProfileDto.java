@@ -146,9 +146,9 @@ public class ProfileDto {
 	 }
 	 
 	 public String[] getProfileHashtagList() {
-		//if (this.profileHashtag == null) {
-		//	return this.profileHashtagList;
-		//}
+		if (this.profileHashtag == null) {
+			return this.profileHashtagList = null;
+		}
 		this.profileHashtagList = this.profileHashtag.split(",");
 		
 		return this.profileHashtagList;
