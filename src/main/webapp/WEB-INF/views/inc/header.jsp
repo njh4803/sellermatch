@@ -96,7 +96,7 @@
 $(function(){
 	$('#login').on('click', function(){
 		$('#loginModal .modal-dialog').remove();
-		
+		$(".modal-open").attr('style','');
 		var content = {
 				
     		}

@@ -1,9 +1,20 @@
+body.modal-open {
+
+    overflow: auto;
+
+}
+
+body.modal-open[style] {
+
+    padding-right: 0px !important;
+
+}
 /*header*/
 
 header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10;}
 header .header_wrap {width:1280px; height:100%; margin: 0 auto;}
 header .header_wrap h1 {
-	float:left; 
+	float:left;
 	padding:23px 0; 
     margin: 0 54px 0 0;
     font-size: 0;
@@ -290,13 +301,15 @@ margin-bottom: 100px;
 footer .footer_wrap .f_btm .f_btm2 p:nth-child(1){
 	font-size: 18px;
 }
-footer .footer_wrap a{
+footer .footer_wrap #info a, a:hover, a:focus{
 	text-decoration: none;
 	color: #b5b5b5;
+	line-height: normal;
 }
-footer .footer_wrap a:hover{
+footer .footer_wrap #termsOfService a, a:hover, a:focus{
 	text-decoration: none;
 	color: #b5b5b5;
+	line-height: normal;
 }
 footer .footer_wrap div hr {
 	border: solid 1px #7c7c7c;

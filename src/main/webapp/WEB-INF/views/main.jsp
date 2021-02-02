@@ -8,9 +8,6 @@
 }
 .main-000{
 	display: inline-block;
-    margin: 147px 916px 393px 320px;
-    width: 541px;
-    height: 264px;
     font-family: NotoSansKRBold;
     font-size: 55px;
     font-stretch: normal;
@@ -20,6 +17,7 @@
     letter-spacing: -4px;
     text-align: left;
     color: #1f1f1f;
+    padding: 180px 200px;
 }
 .main-001{
   font-family: NotoSansKRMedium;
