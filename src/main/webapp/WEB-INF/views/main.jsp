@@ -132,7 +132,7 @@
 }
 .mainBox4 {
     width: 1280px;
-    margin: 0 220px;
+    margin: 0 auto;
     padding-top: 30px;
     padding-bottom: 115.7px;
     margin-bottom: 113.3px;
@@ -168,7 +168,7 @@
 
         <%-- <a href="${pageContext.request.contextPath}/project/find"><i class="fas fa-bolt"></i>판매자 & 공급자<br> 찾기 무료등록</a> --%>
     </div>
-    <div class="partner_bnr">
+    <div class="partner_bnr" style="padding: 0;">
     	<div class="partner_bnr2">
 			<div class="search_bnr">
 			    <div class="search_wrap">

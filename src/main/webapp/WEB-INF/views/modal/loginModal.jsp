@@ -11,13 +11,17 @@
 .modal-header {
 	display: block;
 }
-.modal-content .modal-body {
+.modal-dialog .modal-content .modal-body {
     position: relative;
-    padding: 40px;
+    padding: 45px;
 }
 .bannerBox{
-	height: 100px;
-	border: 1px solid #000;
+  width: 100%;
+  height: 120px;
+  margin: 10px 2.5px 0 0;
+  border-radius: 12px;
+  border: solid 1px #d6d6d6;
+  background-color: #e2e2e2;
 }
 .communicateBox {
 	height: 100px;
@@ -70,6 +74,39 @@ label.error {
 	display: inline-block;
     vertical-align: middle;
     margin: 0;
+}
+.login_logo{
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 40px;
+}
+#login-form div .input-group input{
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    border: solid 1px #d6d6d6;
+    background-color: #ffffff;
+}
+
+#login-form .btn-primary {
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(to left, #3b1374, #d10c56);
+    font-family: NotoSansKRBold;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+#login-form a, a:focus, a:hover{
+	text-decoration: none;
+	color: #000000;
+	line-height: initial;
+	
 }
 </style>
 
@@ -250,18 +287,17 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/x-handlebars-template" id="login-tmpl">
-    <div class="modal-dialog modal-xl" style="width: 450px;">
+    <div class="modal-dialog modal-xl" style="width: 560px;">
       <div class="modal-content">
         <div class="modal-body">
 			<form class="md-float-material" method="POST" id="login-form" action="${pageContext.request.contextPath}/member/login">
                             <div class="auth-box">
                                 <div class="row m-b-20">
-                                    <div class="col-md-12">
-                                        <h3 class="text-left txt-primary">로그인하기</h3>
+                                    <div class="login_logo">
+                                        <img src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
                                         <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다.</h5>
                                     </div>
                                 </div>
-                                <hr/>
                                 <div class="input-group col-sm-12">
                                     <input type="email" id="memId" name="memId" class="form-control" placeholder="아이디를 입력해주세요">
                                     <span class="md-line"></span>
@@ -288,7 +324,7 @@ $(document).ready(function() {
                                         </div>
                                     </div>
                                     <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                        <a href="#" class="text-right f-w-600 text-inverse font-10" id="idPwFind">아이디 · 비밀번호찾기</a>
+                                        <a href="#" class="text-right f-w-600 text-inverse font-10" id="idPwFind">ID PW 찾기</a>
                                     </div>
                                 </div>
                                 <hr/>

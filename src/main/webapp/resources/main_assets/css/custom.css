@@ -58,7 +58,7 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 	background-image: url(/wesellglobal/local_assets/img/main000.png);
 }
 .bnr .bnr_wrap5 {margin: 0 auto; height: 1080px; background-color: #f7f7f7;}
-.bnr .bnr_wrap6 {width:1920px; height: 283px; background-color: #f0f0f0; margin-bottom: 113.3px;}
+.bnr .bnr_wrap6 {height: 283px; background-color: #f0f0f0; margin-bottom: 113.3px;} 
 .bnr .bnr_wrap2 .box{
 	display: inline-block;
 	width: 310px;
@@ -222,7 +222,7 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 /*partner_bnr*/
 
-.partner_bnr {width:100%;}
+.partner_bnr {width:100%;padding-top: 77px;}
 .partner_bnr .partner_wrap {width:1280px; margin:0 auto; text-align:center;}
 .partner_bnr .partner_wrap h2 {font-size:50px; line-height:60px; font-weight:700; margin-bottom:90px;}
 .partner_bnr .partner_wrap .partner_list {}
@@ -233,9 +233,9 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 /*footer*/
 
-footer {width:100%; background-color:#333; height:350px; color:#b5b5b5;}
+footer {width:100%; background-color:#4f495c;}
 footer .footer_wrap {width:1280px; margin: 0 auto;}
-footer .footer_wrap .f_top {font-size: 20px; color: white; padding: 50px 0; display: inline-block;}
+footer .footer_wrap .f_top {font-size: 20px; color: #b5b5b5; padding: 33px 0 28.5px 0; display: inline-block; margin-right: 10px;}
 footer .footer_wrap .f_top1{width:500px;}
 footer .footer_wrap .f_top2{width:200px; margin: 0 28px;}
 footer .footer_wrap .f_top ul {overflow: hidden; padding:22px; padding: 33px 0;}
@@ -261,26 +261,42 @@ footer .footer_wrap .f_top ul li p:before {
     background: #b5b5b5;
     margin: -2px 30px 0 30px;
 }
-footer .footer_wrap .f_btm {width: 500px; display: inline-block;}
-footer .footer_wrap .f_btm .f_btm2 {
-	border-right-width: 0.2em;
-    border-right-color: white;
-    border-right-style: solid;
+footer .footer_wrap .f_btm {
+width: 500px;
+display: inline-block;
+font-family: NotoSansKRMedium;
+font-size: 14px;
+font-weight: normal;
+font-stretch: normal;
+font-style: normal;
+line-height: 1.78;
+letter-spacing: normal;
+text-align: left;
+color: #9892a5;
+margin-bottom: 100px;
+}
+footer .footer_wrap .f_btm .f_btm2 p:nth-child(1){
+	font-size: 18px;
 }
 footer .footer_wrap a{
-	cursor: pointer;
 	text-decoration: none;
 	color: #b5b5b5;
 }
-footer .footer_wrap .f_btm3 {
-	width: 200px;
-    display: inline-block;
-    margin: 0 30px;
+footer .footer_wrap a:hover{
+	text-decoration: none;
+	color: #b5b5b5;
 }
-footer .footer_wrap .f_btm address {color:#999; font-size:14px; line-height:25px;}
-footer .footer_wrap .f_btm address em {color:#ddd; font-weight:700; font-size:14px; line-height:25px;}
-footer .footer_wrap .f_btm p {color:#999; font-size:14px; line-height:25px; margin: 0;}
-footer .footer_wrap .f_btm p em {color:#ddd; font-weight:700; font-size:14px; line-height:25px;}
+footer .footer_wrap div hr {
+	border: solid 1px #7c7c7c;
+	margin: 0;
+}
+
+.footer_logo img{ 
+	margin: 66.5px 0 30.8px 0;
+	width: 226px;
+    height: 83px;
+    object-fit: contain;
+}
 
 .circle {
 	border-radius: 50%;

@@ -37,7 +37,7 @@
 		height: 40px;
 		border: solid 1px #e3e3e3;
 		border-bottom: solid 3px #000000;
-		background-color: #8333ab;
+		background: linear-gradient(to right, #D72B62, #51207D);
 		margin-right: -4px;
 	}
 	ul.tabs li .tabTitle{

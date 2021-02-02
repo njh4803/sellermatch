@@ -6,55 +6,38 @@
 <footer>
     <div class="footer_wrap">
     	<div>
-        	<div class="f_top f_top1">
-        		(주)위셀글로벌 사업자정보
+        	<div class="f_top f_top">
+        		<p id="termsOfService"><a href="javascipt:void(0);">이용약관</a></p>
         	</div>
-        	<div class="f_top f_top2">
-        		샐러매치
+        	<div class="f_top f_top">
+        		ㅣ
         	</div>
-        	<div class="f_top f_top2">
-        		관련규정
+        	<div class="f_top f_top">
+        		<p id="info"><a href="javascipt:void(0);">개인정보처리방침</a></p>
         	</div>
-        	<div class="f_top f_top2">
-        		관련사이트
+        	<div class="f_top f_top">
+        		ㅣ
         	</div>
+        	<div class="f_top f_top">
+        		문의메일 : help@sellermatch.co.kr
+        	</div>
+        </div>
+        <div>
+        	<hr>
+        </div>
+        <div class="footer_logo">
+        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/wesell-logo.png">
         </div>
         <div style="display: flex;">
 	        <div class="f_btm">
 	        	<div class="f_btm2">
-		            <address style="margin: 0;"><em>소재지 : </em> 인천광역시 연수구 컨벤시아대로 204, 인천스타트업파크 인스타1 521호 </address>
+	        		<p>(주)위셀글로벌</p>
+		            <p><em>소재지 : </em> 인천광역시 연수구 컨벤시아대로 204, 인천스타트업파크 인스타1 521호 </p>
 		            <p><em>대표이사 : </em>송진일 <em> 개인정보책임관리자 : </em> 안준수</p>
 		            <p><em>사업자등록번호 : </em> 181-87-01992</p>
 		            <p><em>통신판매업신고 : </em> 2020-인천연수구-1558</p>
 		            <p><em>연락처 : </em> 032-459-2236</p>
-		            <p><em>이메일 : </em> help@sellermatch.co.kr</p>
 		            <p><em>호스팅 서비스 제공 : </em>스마일서브 호스팅 주소</p>
-	            </div>
-	        </div>
-	        <div class="f_btm3">
-	        	<div class="f_btm2">
-		            <p><a href="${pageContext.request.contextPath}/temp">첫 화면</a></p>
-		            <p><a href="${pageContext.request.contextPath}/project/find">프로젝트 찾기</a></p>
-               		<p><a href="${pageContext.request.contextPath}/seller/find">판매차 찾기</a></p>
-	             	<p><a href="${pageContext.request.contextPath}/howUse">이용방법</a></p>
-					<p><a href="${pageContext.request.contextPath}/usageFee">이용요금</a></p>
-                    <p><a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a></p>
-                    <p><a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a></p>
-                    <p><a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a></p>
-	            </div>
-	        </div>
-	        <div class="f_btm3">
-	        	<div class="f_btm2">
-		            <p id="termsOfService"><a href="javascipt:void(0);">이용약관</a></p>
-		            <p id="info"><a href="javascipt:void(0);">개인정보처리방침</a></p>
-	            </div>
-	        </div>
-	        <div class="f_btm3">
-	        	<div class="f_btm2">
-		            <p>페이스북</p>
-		            <p>유튜브</p>
-		            <p>블로그</p>
-		            <p>쇼핑몰</p>
 	            </div>
 	        </div>
         </div>
