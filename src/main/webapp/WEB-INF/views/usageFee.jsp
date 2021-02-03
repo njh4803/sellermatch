@@ -411,11 +411,11 @@ ul.pagination>li>a {
   float: right;
 }
 .howUse-box1{
-	display:inline-block;
-	width: 242px;
-	height: 74px;
-	margin-top: 80px;
-	margin: 80px 519px 32px 519px;
+	display: inline-block;
+    width: 242px;
+    height: 74px;
+    margin-top: 80px;
+    margin: 60px 519px 60px 519px;
 }
 .howUse-box2{
 	display:inline-block;
@@ -438,7 +438,8 @@ ul.pagination>li>a {
 .howUse-box1 div{
   object-fit: contain;
   font-size: 29px;
-  font-weight: normal;
+  line-height: 40px;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -932,13 +933,13 @@ $(document).ready(function(){
 	
 	$(document).on("click", "#spMember", function(e){
 		$("#show1").remove();
-		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법02.png">';
+		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법02.PNG">';
 		$("#tab-4").append(html);
 	});
 	
 	$(document).on("click", "#ppMember", function(e){
 		$("#show1").remove();
-		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법03.png">';
+		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법03.PNG">';
 		$("#tab-4").append(html);
 	});
 });
@@ -1195,6 +1196,12 @@ $(document).ready(function(){
 		</form>
 </script>
 <script type="text/x-handlebars-template" id="howUse-tmpl">
+			<div id="OneToOne">
+				<div class="board-tabBox" style="height:250px;">
+		        	<div class="tab-title">간편한 이용방법</div>
+		        	<div class="tab-text">아주 쉽게, 효율적으로 이용해보세요! 판매자/공급자 찾기가 쉬워집니다</div>
+		        </div>
+			<div>
 				<div id="show1">
 					<div class="howUse-box1">
 						<div>당신은 누구인가요? 선택해주세요!</div>

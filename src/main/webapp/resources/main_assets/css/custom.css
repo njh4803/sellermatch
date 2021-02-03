@@ -9,6 +9,29 @@ body.modal-open[style] {
     padding-right: 0px !important;
 
 }
+/* checkbox */
+input[type="checkbox"] {
+	display:none;
+}
+input[type="checkbox"] + label span {
+    display: inline-block;
+    object-fit: contain;
+    font-family: NotoSansKR;
+    font-size: 12px;
+    font-stretch: normal;
+    height: 16px;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: left;
+    padding-left: 20px;
+    color: #000000;
+    margin: 0;
+    line-height: normal;
+    background:url(../../../wesellglobal/local_assets/img/checkActiveNone.png) no-repeat;
+}
+input[type="checkbox"]:checked + label span {
+    background:url(../../../wesellglobal/local_assets/img/checkActive.png) no-repeat;
+}
 /*header*/
 
 header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10;}
@@ -117,7 +140,7 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
   margin: 0 198.5px 23px 77px;
   font-family: NotoSansKRBold;
   font-size: 50px;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.68;

@@ -317,9 +317,8 @@ $(document).ready(function() {
                                     <div class="col-sm-7 col-xs-12">
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
-                                                <input type="checkbox" value="">
-                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                <span class="text-inverse">로그인 유지하기</span>
+                                                <input type="checkbox" value="" id="loginRemember">
+                                                <label for="loginRemember" class="text-inverse"><span>로그인 유지하기</span></label>
                                             </label>
                                         </div>
                                     </div>

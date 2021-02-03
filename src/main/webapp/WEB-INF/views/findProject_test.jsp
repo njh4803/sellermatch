@@ -24,15 +24,25 @@
     padding-bottom: 100px;
     text-align: center;
 }
-.search_chk{
-	width: 400px;
-    height: 100px;
-    background-color: #d6d6d6;
-    display: inline-block;
-    border-radius: 20px;
-    text-align: center;
-	padding: 40px 0;
-    margin: 0 40px;
+.search_chk {
+  width: 98px;
+  height: 33px;
+  border: solid 1px #d6d6d6;
+  background-color: #ffffff;
+  object-fit: contain;
+  font-family: NotoSansKRRegular;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1f1f1f;
+  float: left;
+}
+.search_chk.search_check{
+  background-image: linear-gradient(to left, #3b1374 , #c80c58 );
+  color: #ffffff;
 }
 .chk_list_container{
 	height: 250px;
@@ -63,8 +73,11 @@
 	background-color: #ffffff;
 }
 .container1{
-	border: 2px solid #e3e3e3;
-	height: 400px;
+  height: 240px;
+  margin: 15px 0;
+  padding: 30px 50px;
+  object-fit: contain;
+  border: solid 1px #d8d8d8;
 }
 .container2{
 	height: 50px;
@@ -74,7 +87,6 @@
     width: 100%;
     height: 100%;
     float: left;
-    padding: 10px 20px;
 }
 .container3{
 	border-left: 2px solid #e3e3e3;
@@ -89,10 +101,23 @@
 	margin-left: 0;
 	margin-right: 0;
 }
-.row2{
-	height: 25px;
+.row3{
+	width: 100%;
 	margin-left: 0;
 	margin-right: 0;
+}
+.row2{
+	height: 17px;
+	margin: 10px 20px 0 20px;
+	font-family: NotoSansKRRegular;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 2.17;
+	letter-spacing: normal;
+	text-align: left;
+	color: #4b4b4b;
 }
 .height-500{
 	height: 500px;
@@ -102,9 +127,19 @@
 	float: left;
 	margin: 10px 15px;
 }
+.row1.leftBox{
+    float: left;
+    margin: 0;
+    height: auto;
+    width: 900px;
+}
+.row1 .leftBox{
+	float: left;
+	margin: 0;
+}
 .rightBox{
 	float: right;
-	margin: 10px 0;
+	margin: 17px 0;
 }
 .rightBox a{
 	margin: 0 15px;
@@ -112,7 +147,20 @@
 	text-decoration: none;
 	color: #000;
 }
-
+a.sort{
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000000;
+}
+a.sort.select{
+	font-weight: bold;
+}
 .row2 .leftBox{
 	float: left;
 	padding: 0 5px;
@@ -130,24 +178,59 @@
 	margin: 0 10px;
 }
 .p-findBtn{
-	background-color: #E62267;
+	background-color: #e52367;;
 	color: white;
-	width: 100px;
-	height: 40px;
+	width: 100%;
+	height: 70px;
+	object-fit: contain;
+	font-family: NotoSansKR;
+	font-size: 15px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	margin-top: -2px;
+	border-top-right-radius:10px;
+    border-top-left-radius:10px;
 }
 .s-findBtn{
 	background-color: #57207C;
 	color: white;
-	width: 100px;
-	height: 40px;
+	width: 100%;
+	height: 70px;
+	object-fit: contain;
+	font-family: NotoSansKR;
+	font-size: 15px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	margin-top: -2px;
+	border-top-right-radius:10px;
+    border-top-left-radius:10px;
 }
-.orangeBox{
-	background-color: #ED7D31;
-	color: white;
-	display: inline-block;
-	border-radius: 5px;
-	padding: 15px 15px;
-	margin-right: 10px;
+.purpleBox{
+  height: 19px;
+  padding: 3px 24px 2px 23px;
+  object-fit: contain;
+  border-radius: 11px;
+  border: solid 0.5px #5400d9;
+  background-color: #ffffff;
+  display: inline-block;
+  object-fit: contain;
+  font-family: NotoSansKRMedium;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #5400d9;
+  margin-top: 11px;
 }
 .blueBox{
 	background-color: #71A6DB;
@@ -158,42 +241,80 @@
 	margin-right: 10px;
 }
 .grayBox{
-	background-color: #e3e3e3;
-	color: black;
-	display: inline-block;
-	border-radius: 1px;
-	padding: 13px 13px;
-	margin-right: 10px;
+  height: 21px;
+  margin: 0 20px 0 0;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+  background-color: #ffffff;
+}
+.redBox{
+  height: 21px;
+  margin: 0 20px 0 0;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ff0000;
+  background-color: #ffffff;
 }
 .pFindBox{
-	background-color: #E62267;
-	color: white;
-	display: inline-block;
-	border-radius: 1px;
-	padding: 13px 13px;
-	margin-right: 10px;
-	
+  height: 26px;
+  margin: 0 10px 20px 0;
+  padding: 2px 17px 3px;
+  object-fit: contain;
+  border-radius: 13px;
+  background-color: #d80b54;
+  object-fit: contain;
+  font-family: NotoSansKRMedium;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
 }
 .sFindBox{
-	background-color: #57207C;
-	color: white;
-	display: inline-block;
-	border-radius: 1px;
-	padding: 13px 13px;
-	margin-right: 10px;
+  height: 26px;
+  margin: 0 10px 20px 0;
+  padding: 2px 17px 3px;
+  object-fit: contain; 
+  border-radius: 13px;
+  background-color: #57207c;
+  object-fit: contain;
+  font-family: NotoSansKRMedium;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
 }
 .titleBox{
-	font-size: 30px;
-}
-.titleBox .pp{
-	width: 100px;
-	height: 40px;
-	color: #E62267;
-}
-.titleBox .sp{
-	width: 100px;
-	height: 40px;
-	color: #57207C;
+  width: 800px;
+  height: 64px;
+  object-fit: contain;
+  font-family: NotoSansKRMedium;
+  font-size: 22px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
 }
 .contentsBox{
 	text-align: left;
@@ -209,12 +330,21 @@
 	margin-right: 10px;
 }
 .countBox {
-	border: 2px solid #e3e3e3;
-    display: inline-block;
-    color: #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 15px;
+  display: inline-block;
+  height: 21px;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000000;
+  margin-top: 48px;
+}
+.countBox span{
+  font-weight: normal;
 }
 .projDetail a{
 	text-decoration: none;
@@ -254,7 +384,7 @@ a:focus, a:hover{
 .post-slider .next{
   position:absolute;
   top:50%;
-  right:30px;
+  right: -80px;
   font-size:2em;
   color:gray;
   cursor: pointer;
@@ -262,21 +392,19 @@ a:focus, a:hover{
 .post-slider .prev{
   position:absolute;
   top:50%;
-  left:30px;
+  left: -80px;
   font-size:2em;
   color:gray;
     cursor: pointer;
 }
 .post-slider .post-wrapper{
-
-  width:84%;
+  width:100%;
   margin:0px auto;
   overflow: hidden;
   padding:10px 0px 10px 0px;
 }
 .post-slider .post-wrapper .post{
   width:300px;
-  height:300px;
   margin:0px 10px;
   display:inline-block;
   background:white;
@@ -285,8 +413,9 @@ a:focus, a:hover{
 .post-slider .post-wrapper .post .post-info{
   font-size:15px;
   height:100%;
-  padding-left:10px;
   border: 2px solid #e3e3e3;
+  border-top-right-radius:10px;
+  border-top-left-radius:10px;
 }
 .post-slider .post-wrapper .post .slider-image{
   width:100%;
@@ -300,6 +429,20 @@ a:focus, a:hover{
   height: 45px;
   margin-bottom: 45px;
   object-fit: contain;
+}
+.hotPass{
+  width: 20px;
+  height: 27.9px;
+  object-fit: contain;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+.hotPass2{
+  width: 11px;
+  height: 15.3px;
+  object-fit: contain;
+  margin: 0 auto;
+  margin-bottom: 5px;
 }
 .searchPass{
   width: 26.5px;
@@ -334,6 +477,165 @@ a:focus, a:hover{
   text-align: center;
   color: #1f1f1f;
 }
+.container2.hot-contents span{
+  font-family: NotoSansKR;
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.container2.hot-contents{
+  margin-bottom: 30px;
+  height: 36px;
+}
+.hotNation{
+  height: 19px;
+  margin: 15px 0 12px 20px;
+  padding: 2px 9px;
+  object-fit: contain;
+  border-radius: 11px;
+  border: solid 0.5px #5400d9;
+  background-color: #ffffff;
+  font-family: NotoSansKRMedium;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #5400d9;
+  width: fit-content;
+  line-height: 1.5;
+}
+.hotTitle{
+  margin-left: 20px;
+  margin-bottom: 10.5px; 
+  object-fit: contain;
+  font-family: NotoSansKRRegular;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  line-height: 1.5;
+  color: #000000;
+  height: 72px;
+}
+.hot-hr{
+	margin-bottom: 16.5px;
+	border: solid 1px #cbcbcb;
+	width: 80%;
+	margin-top: 0;
+}
+.applyBtn{
+  height: 40px;
+  margin: 17px 0 0;
+  padding: 10px 0;
+  object-fit: contain;
+  background-color: #f0f0f0;
+  object-fit: contain;
+  font-family: NotoSansKRBold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: #505050;
+  width: 100%;
+}
+.countAll{
+  font-family: NotoSansKRMedium;
+  font-size: 25px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.countAll span{
+  color: #e52367;
+}
+.countAllbox{
+	margin-top: 60px;
+}
+.count-hr{
+  height: 0;
+  margin: 20px 0;
+  border: solid 2px #000000;
+}
+.scrap{
+  width: 160px;
+  height: 40px;
+  border-radius: 4px;
+  border: solid 1px #c6c6c6;
+  background-color: #ffffff;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-family: NotoSansKRMedium;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  color: #000000;
+}
+.match{
+  width: 160px;
+  height: 40px;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);
+  font-family: NotoSansKRMedium;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.matchPass{
+  width: 10px;
+  height: 16.6px;
+  object-fit: contain;
+  margin-top: -3px;
+}
+.star{
+  width: 11.6px;
+  height: 11.1px;
+  object-fit: contain;
+  margin-top: -3px;
+}
+.reg{
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.regDate{
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
 </style>
 <div class="partner_bnr">
 	<div class="partner_wrap">
@@ -365,8 +667,9 @@ a:focus, a:hover{
 		    <div class="partner_wrap" style="text-align: center;">
 		        <div class="partner_list vertical-middle">
 		            <!-- <div class="search_chk"><input type="checkbox" class="checkAll" id="projSort">전체검색</div> -->
-		            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="2" >판매자검색</div>
-		            <div class="search_chk"><input type="checkbox" class="check" name="projSort" value="1" >공급자검색</div>
+		            <input type="checkbox" class="check" name="projSort" value="" id="projSort">
+		            <button class="search_chk" data-value="2" id="search_seller">판매자검색</button>
+		            <button class="search_chk" data-value="1" id="search_pp">공급자검색</button>
 		        </div>
 		    </div>
 		</div>
@@ -375,98 +678,102 @@ a:focus, a:hover{
 		        <div class="partner_list">
 		            <div class="chk_list_container">
 		            	<div class="chk_listBox basic-scroll">
-		            		<span>지역구분</span>
+		            		<span>지역</span>
 			            	<ul>
-			            		<li><input type="checkbox" class="checkAll" id="projNation">전체</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="02">서울</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="031">경기</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="032">인천</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="033">강원</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="041">충남</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="042">대전</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="043">충북</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="051">부산</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="052">울산</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="053">대구</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="054">경북</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="055">경남</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="061">전남</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="062">광주</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="063">전북</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="044">세종특별자치시</li>
-			            		<li><input type="checkbox" class="check" name="projNation" value="064">세종특별자치도</li>
+			            		<li><input type="checkbox" class="checkAll" id="projNation"><label for="projNation"><span>전체</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="031" id="n2"><label for="n2"><span>경기</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="032" id="n3"><label for="n3"><span>인천</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="033" id="n4"><label for="n4"><span>강원</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="041" id="n5"><label for="n5"><span>충남</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="042" id="n6"><label for="n6"><span>대전</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="043" id="n7"><label for="n7"><span>충북</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="051" id="n8"><label for="n8"><span>부산</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="052" id="n9"><label for="n9"><span>울산</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="053" id="n10"><label for="n10"><span>대구</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="054" id="n11"><label for="n11"><span>경북</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="055" id="n12"><label for="n12"><span>경남</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="061" id="n13"><label for="n13"><span>전남</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="062" id="n14"><label for="n14"><span>광주</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="063" id="n15"><label for="n15"><span>전북</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="044" id="n16"><label for="n16"><span>세종특별자치시</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
 			            	</ul>
 		            	</div>
 		            	<div class="chk_listBox"><span>상품분류</span>
 			            	<ul>
-			            		<li><input id="projIndus" class="checkAll" type="checkbox">전체</li>
-			            		<c:forEach var="indusList" items="${indusList}">
-			            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}">${indusList.indusName}</li>
+			            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
+			            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
+			            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
 			            		</c:forEach>
 			            	</ul>
 		            	</div>
 		            	<div class="chk_listBox"><span>상품단가</span>
 			            	<ul>
-			            		<li><input type="checkbox" class="checkAll" id="projPrice">전체</li>
-			            		<li><input type="checkbox" class="check" name="projPrice" value="9999">1만원 미만</li>
-			            		<li><input type="checkbox" class="check" name="projPrice" value="19999">2만원 미만</li>
-			            		<li><input type="checkbox" class="check" name="projPrice" value="49999">5만원 미만</li>
-			            		<li><input type="checkbox" class="check" name="projPrice" value="99999">10만원 미만</li>
-			            		<li><input type="checkbox" class="check" name="projPrice" value="100000">10만원 이상</li>
+			            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="p2"><label for="p2"><span>2만원 미만</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="p3"><label for="p3"><span>5만원 미만</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p4"><label for="p4"><span>10만원 미만</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="p5"><label for="p5"><span>10만원 이상</span></label></li>
 			            	</ul>
 		            	</div>
 		            	<div class="chk_listBox"><span>판매마진</span>
 			            	<ul>
-			            		<li><input type="checkbox" class="checkAll"  id="projMargin">전체</li>
-			            		<li><input type="checkbox" class="check"  name="projMargin" value="10">10%이하</li>
-			            		<li><input type="checkbox" class="check"  name="projMargin" value="20">11%~20%</li>
-			            		<li><input type="checkbox" class="check"  name="projMargin" value="30">21%~30%</li>
-			            		<li><input type="checkbox" class="check"  name="projMargin" value="31">30%초과</li>
+			            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
+			            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
 			            	</ul>
 		            	</div>
 		            	<div class="chk_listBox"><span>공급방법</span>
 			            	<ul>
-			            		<li><input type="checkbox" class="checkAll" id="projSupplyType">전체</li>
-			            		<li><input type="checkbox" class="check" name="projSupplyType" value="1">OEM</li>
-			            		<li><input type="checkbox" class="check" name="projSupplyType" value="2">위탁판매</li>
-			            		<li><input type="checkbox" class="check" name="projSupplyType" value="3">도매공급</li>
-			            		<li><input type="checkbox" class="check" name="projSupplyType" value="4">운영대행</li>
-			            		<li><input type="checkbox" class="check" name="projSupplyType" value="5">경매공급</li>
+			            		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="s1"><label for="s1"><span>OEM</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="2" id="s2"><label for="s2"><span>위탁판매</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="3" id="s3"><label for="s3"><span>도매공급</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="4" id="s4"><label for="s4"><span>운영대행</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
 			            	</ul>
 		            	</div>
 		            	<div class="chk_listBox"><span>공급자검증</span>
 			            	<ul>
-			            		<li><input type="checkbox" class="checkAll" id="ppmemRname">전체</li>
-			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1">신원인증</li>
-			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1">사업자인증</li>
-			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1">상품검증</li>
-			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProfit" value="1">수익성검증</li>
+			            		<li><input type="checkbox" class="checkAll" id="ppmemRname"><label for="ppmemRname"><span>전체</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1" id="pp1"><label for="pp1"><span>신원인증</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1" id="pp2"><label for="pp2"><span>사업자인증</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1" id="pp3"><label for="pp3"><span>상품검증</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProfit" value="1" id="pp4"><label for="pp4"><span>수익성검증</span></label></li>
 			            	</ul>
 		            	</div>
 		            	<div class="chk_listBox"><span>판매자검증</span>
 			            	<ul>
-			            		<li><input type="checkbox" class="checkAll" id="sellermemRname">전체</li>
-			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1">신원인증</li>
-			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1">사업자인증</li>
-			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1">채널검증</li>
-			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1">매출검증</li>
+			            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="sp1"><label for="sp1"><span>신원인증</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
+			            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
 			            	</ul>
 		            	</div>
 		            	<div class="chk_listBox"><span>판매채널</span>
 			            	<ul>
-			            		<li><input type="checkbox" class="checkAll" id="projChannel">전체</li>
-			            		<li><input type="checkbox" class="check" name="projChannel" value="1">오픈마켓</li>
-			            		<li><input type="checkbox" class="check" name="projChannel" value="2">종합몰</li>
-			            		<li><input type="checkbox" class="check" name="projChannel" value="3">폐쇄몰</li>
-			            		<li><input type="checkbox" class="check" name="projChannel" value="4">커뮤니티</li>
-			            		<li><input type="checkbox" class="check" name="projChannel" value="5">SNS</li>
-			            		<li><input type="checkbox" class="check" name="projChannel" value="6">오프라인</li>
-			            		<li><input type="checkbox" class="check" name="projChannel" value="7">해외</li>
+			            		<li><input type="checkbox" class="checkAll" id="projChannel"><label for="projChannel"><span>전체</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
+			            		<li><input type="checkbox" class="check" name="projChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
 			            	</ul>
 		            	</div>
 		            </div>
 		        </div>
 		    </div>
+		</div>
+		<div class="container2 hot-contents">
+			<img class="hotPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass_black.png">
+			<span>진행중인 핫매치</span>
 		</div>
 		    <div class="page-wrapper" style="position:relative;" id="premium">
 		      <!--page slider -->
@@ -477,21 +784,27 @@ a:focus, a:hover{
 		        	<c:forEach var="output" items="${output}" varStatus="status">
 		        		<div class="post">
 					      <div class="post-info">
-					        <div class="row1">
+					        <div class="row3">
 					        	<c:if test="${output.projSort == 1}">
-					        		<button class="p-findBtn">${output.projSortName} 찾기</button>
+					        		<button class="p-findBtn">
+						        		<img class="hotPass2" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+						        		${output.projSortName}를 찾습니다
+					        		</button>
 					        	</c:if>
 					        	<c:if test="${output.projSort == 2}">
-					        		<button class="s-findBtn">${output.projSortName} 찾기</button>
+					     			<button class="s-findBtn">
+						        		<img class="hotPass2" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+						        		${output.projSortName}를 찾습니다
+					        		</button>
 					        	</c:if>
 					        </div>
-					        <div class="row1">
+					        <div class="hotNation">
 					        	${output.projNationName}지역
 					        </div>
-					        <div class="row1">
+					        <div class="hotTitle">
 					        	${output.projTitle}
 					        </div>
-					        <hr>
+					        <hr class="hot-hr">
 							<div class="row2">
 								<span class="leftBox margin-0">모집자수</span>
 								<span class="rightBox margin-0">${output.projRecruitNum}명</span>
@@ -508,6 +821,9 @@ a:focus, a:hover{
 								<span class="leftBox margin-0">관심조회</span>
 								<span class="rightBox margin-0">${output.projHit}회</span>
 							</div>
+							<div class="text-center">
+								<button class="applyBtn">바로매치 지원하기</button>
+							</div>
 					      </div>
 					    </div>
 		        	</c:forEach>
@@ -515,68 +831,30 @@ a:focus, a:hover{
 			  </div>	    
 		      <!--post slider-->
 		    </div>
-		<div class="container2 content">
-			<span class="leftBox">전체 ${projCount}건</span>
+		<div class="container2 countAllbox">
+			<div class="leftBox countAll">전체 <span>${projCount}</span><span>건</span>이 검색되었습니다</div>
 			<div class="rightBox">
-				<a href="javascript:void(0)" class="sort" id="defaultSort">기본정렬 /</a>
-				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 /</a>
-				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
-				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 /</a>
+				<a href="javascript:void(0)" class="sort select" id="defaultSort">기본정렬 </a>
+				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 </a>
+				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 </a>
+				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 </a>
 				<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
 			</div>
 		</div>
+		<hr class="count-hr">
 		<c:forEach var="output" items="${output}" varStatus="status">
 			<div class="container1 content">
 				<div class="container2">
 					<input type="hidden" id="projId${status.index}" value="${output.projId}">
-					<div class="row1">
+					<div class="row1 leftBox">
 						<div class="leftBox">
-							<c:choose>
-								<c:when test="${output.projDday < 0}">
-									<div class="blueBox">마감</div>
-								</c:when>
-								<c:otherwise>
-									<div class="blueBox">마감 ${output.projDday}일전</div>
-								</c:otherwise>
-							</c:choose>
 							<c:if test="${output.projSort == 1}">
-				        		<button class="pFindBox">${output.projSortName} 찾기</button>
+				        		<button class="pFindBox">${output.projSortName}</button>
 				        	</c:if>
 				        	<c:if test="${output.projSort == 2}">
-				        		<button class="sFindBox">${output.projSortName} 찾기</button>
+				        		<button class="sFindBox">${output.projSortName}</button>
 				        	</c:if>
-				        	<button class="grayBox">${output.projNationName}지역</button>
-						</div>	
-						<div class="rightBox">
-							<span>• 등록일 : ${output.projRegDate}</span>
-						</div>
-					</div>
-					<div class="row1 leftBox">
-						<c:if test="${output.profileBizCerti == 1}">
-							<div class="orangeBox">사업자인증</div>
-						</c:if>
-						<c:if test="${output.memRname == 1}">
-							<div class="orangeBox">신원인증</div>
-						</c:if>
-						<c:if test="${output.projProfit == 1}">
-							<div class="orangeBox">수익성검증</div>
-						</c:if>
-						<c:if test="${output.projProdCerti == 1}">
-							<div class="orangeBox">상품검증</div>
-						</c:if>
-						<c:if test="${output.profileChChk == 1}">
-							<div class="orangeBox">채널검증</div>
-						</c:if>
-						<c:if test="${output.profileSaleChk == 1}">
-							<div class="orangeBox">매출검증</div>
-						</c:if>
-						<div class="countBox">
-							<c:if test="${output.projPrice != 0}">
-								단가/마진 : ${output.projPrice}원/${output.projMarginName}
-							</c:if>
-							<c:if test="${output.projPrice == 0}">
-								마진 : ${output.projMarginName}
-							</c:if>
+				        	<span class="reg"> 등록일 </span><span class="regDate">${output.projRegDate}</span>
 						</div>
 					</div>
 					<div class="row1 leftBox projDetail" data-index="${status.index}">
@@ -591,26 +869,66 @@ a:focus, a:hover{
 							</div>
 						</c:if>
 					</div>
-					<div class="leftBox projDetail" data-index="${status.index}" style="width: 97%;">
-						<div class="contentsBox">
-							<a>${output.projDetail}</a>
-						</div>
-					</div>
-					<div class="clearfix"></div>
+					<div class="row1 leftBox" style="margin-top: 13px;">
+						<button class="grayBox">${output.projNationName}지역</button>
+						<button class="grayBox">
+							<c:if test="${output.projSort == 1}">
+								판매자 찾음
+							</c:if>
+							<c:if test="${output.projSort == 2}">
+								공급자 찾음
+							</c:if>
+						</button>
+						<c:choose>
+							<c:when test="${output.projDday < 0}">
+								<button class="redBox">마감완료</button>
+							</c:when>
+							<c:otherwise>
+								<button class="grayBox">진행중</button>
+							</c:otherwise>
+						</c:choose>						
+					</div>		
 					<div class="row1 leftBox">
-						<div class="leftBox">
-							<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-			            		<div class="tagBox">#${projKeywordList}</div>
-			            	</c:forEach>
+						<c:if test="${output.profileBizCerti == 1}">
+							<div class="purpleBox">사업자인증</div>
+						</c:if>
+						<c:if test="${output.memRname == 1}">
+							<div class="purpleBox">신원인증</div>
+						</c:if>
+						<c:if test="${output.projProfit == 1}">
+							<div class="purpleBox">수익성검증</div>
+						</c:if>
+						<c:if test="${output.projProdCerti == 1}">
+							<div class="purpleBox">상품검증</div>
+						</c:if>
+						<c:if test="${output.profileChChk == 1}">
+							<div class="purpleBox">채널검증</div>
+						</c:if>
+						<c:if test="${output.profileSaleChk == 1}">
+							<div class="purpleBox">매출검증</div>
+						</c:if>
+						<c:if test="${output.projPrice != 0}">
+							<div class="purpleBox">단가/마진 : ${output.projPrice}원/${output.projMarginName}</div>
+						</c:if>
+						<c:if test="${output.projPrice == 0}">
+							<div class="purpleBox">마진 : ${output.projMarginName}</div>
+						</c:if>						
+					</div>
+					<div class="text-right">
+						<div class="countBox" style="margin-right: 7px;">
+							모집수 <span>${output.projRecruitNum}명 </span>
 						</div>
-						<div class="rightBox margin-0">
-							<div class="countBox">
-								모집수 : ${output.projRecruitNum}명
-							</div>
-							<div class="countBox">
-								 지원수 : ${output.applyCount}명
-							</div>
+						<div class="countBox">
+							 지원수 <span>${output.applyCount}명 </span>
 						</div>
+						<button class="scrap">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+							관심등록
+						</button>
+						<button class="match">
+						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+							매치하기
+						</button>
 					</div>
 				</div>
 			</div>
@@ -759,22 +1077,22 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 		</div>
 		<div class="row1 leftBox">
 			{{#ifCond profileBizCerti '==' 1}}
-				<div class="orangeBox">사업자인증</div>
+				<div class="purpleBox">사업자인증</div>
 			{{/ifCond}}
 			{{#ifCond memRname '==' 1}}
-				<div class="orangeBox">신원인증</div>
+				<div class="purpleBox">신원인증</div>
 			{{/ifCond}}
 			{{#ifCond projProfit '==' 1}}
-				<div class="orangeBox">수익성검증</div>
+				<div class="purpleBox">수익성검증</div>
 			{{/ifCond}}
 			{{#ifCond projProdCerti '==' 1}}
-				<div class="orangeBox">상품검증</div>
+				<div class="purpleBox">상품검증</div>
 			{{/ifCond}}
 			{{#ifCond sprofileChChk '==' 1}}
-				<div class="orangeBox">채널검증</div>
+				<div class="purpleBox">채널검증</div>
 			{{/ifCond}}
 			{{#ifCond sprofileSaleChk '==' 1}}
-				<div class="orangeBox">매출검증</div>
+				<div class="purpleBox">매출검증</div>
 			{{/ifCond}}
 			<div class="countBox">
 				{{#ifCond projPrice '!=' 0}}
@@ -853,6 +1171,19 @@ $(document).ready(function() {
 		  autoplaySpeed: 2000,
 		  nextArrow:$('.next'),
 		  prevArrow:$('.prev'),
+	});
+	
+	
+	$(document).on("click", ".search_chk", function(){
+		$('.search_chk').removeClass('search_check');
+		var id = $(this).id;
+		var value = $(this).attr('data-value');
+		$(this).addClass('search_check');
+		
+		$('#projSort').val(value);
+		
+		$("#projSort").trigger("click");
+		
 	});
 	
 	$(document).on("click", ".projDetail", function(){
