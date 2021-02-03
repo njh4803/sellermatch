@@ -7,55 +7,40 @@
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css"> --%>
 <style>
-	ul.tabs{
+	ul.my-tabs{
 		list-style: none;
 		text-align: left;
 	}
-	ul.tabs li{
-		background: none;
+	ul.my-tabs li{
+		background-color: #ffffff;
 		color: #222;
 		display: inline-block;
-		padding: 10px 15px;
+		padding: 16px 0 15px;
+		margin: 12px 0 0;
 		cursor: pointer;
-		width: 256px;
-		height: 40px;
-		border: solid 1px #e3e3e3;
-		border-bottom: solid 3px #000000;
+		width: 320px;
+		height: 60px;
 		background-color: #ffffff;
-		margin-right: -4px;
-	}
-	
-	ul.tabs li.current{
-		background: #ededed;
-		color: #222;
-		width: 256px;
-		height: 40px;
-		border: solid 1px #e3e3e3;
-		border-bottom: solid 3px #000000;
-		background-color: #8333ab;
-		margin-right: -4px;
-	}
-	ul.tabs li {
-		font-size: 15px;
+		font-family: NotoSansKR;
+		font-size: 20px;
 		font-weight: bold;
 		font-stretch: normal;
 		font-style: normal;
+		line-height: 1.45;
 		letter-spacing: normal;
 		text-align: center;
 		color: #000000;
+		margin-right: -4px;
+		border: solid 1px #cccccc;
 	}
-	ul.tabs li.current {
-		font-size: 15px;
-		font-weight: bold;
-		font-stretch: normal;
-		font-style: normal;
-		letter-spacing: normal;
-		text-align: center;
+	
+	ul.my-tabs li.current{
+		background-image: linear-gradient(to right, #d90b54, #8c0f64, #3b1374);
 		color: #ffffff;
 	}
 	.tab-content2{
 		display: none;
-		background: #ededed;
+		text-align: center;
 	}
 	
 	.tab-content2.current{
@@ -152,58 +137,192 @@ label.error {
     font-size: 20px;
     margin: 30px 0;
 }
+.my_home{
+	margin: 15px 20px;
+}
+.myBox{
+	display: inline-block;
+	float: left;
+	width: 450px;
+	height: 260px;
+	background-color: #f8f2f9;	
+}
+.myBox .textBox1{
+  margin: 70px 0 40px 0;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.myBox .textBox2{
+  margin-bottom: 77px;
+  font-family: NotoSansKR;
+  font-size: 30px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.myBox2{
+  display: inline-block;
+  float: right;
+  width: 770px;
+  height: 260px;
+  background-color: #f8f2f9;
+  text-align: center;
+  padding: 70px 0 40px 0;
+}
+.authBox{
+  height: 50px;
+  margin-bottom:20px;
+  padding: 10px 23px 9px;
+  border: solid 1px #707070;
+  background-color: #ffffff;
+  font-family: SegoeUI;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #707070;
+  line-height: 1.25;
+}
+.myBox2 .textBox1{
+  display: inline-block;
+  height: 29px;
+  margin: 0 58.5px;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.75;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.myBox2 .textBox2{
+  display: inline-block;
+  width: 30%;
+  margin-top: 40px;
+  margin-bottom: 77px;
+  font-family: NotoSansKR;
+  font-size: 30px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.myBox3{
+	width: 100%;
+	height: auto;
+	text-align: center;
+	margin-bottom: 214px;
+}
+.myBox3 .textBox1{
+  display: inline-block;
+  width: 390px;
+  height: 183px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+}
+.myBox-row{
+  margin: 77px 0;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.myBox3 .textBox1 button{
+    height: 21px;
+    float: right;
+    margin-top: -41px;
+    margin-right: 42px;
+    font-family: NotoSansKR;
+    font-size: 15px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
-       	<ul class="tabs">
-			<li class="tab-link current" data-tab="tab-1" id="select-tab1">MY홈</li>
-			<li class="tab-link" data-tab="tab-2" id="select-tab2">가입정보관리</li>
-			<li class="tab-link" data-tab="tab-3" id="select-tab3">프로필관리</li>
-			<li class="tab-link" data-tab="tab-4" id="select-tab4">프로젝트관리</li>
+       	<ul class="my-tabs">
+			<li class="tab-link current" data-tab="my-tab-1" id="select-my-tab1">MY홈</li>
+			<li class="tab-link" data-tab="my-tab-2" id="select-my-tab2">가입정보관리</li>
+			<li class="tab-link" data-tab="my-tab-3" id="select-my-tab3">프로필관리</li>
+			<li class="tab-link" data-tab="my-tab-4" id="select-my-tab4">프로젝트관리</li>
 		</ul>
-		<div id="tab-1" class="tab-content2 current">
-			<div>
-				<div style="text-align: left; margin: 50px;">
-					<div style="display: inline-block;">
-						<div>${output.profileGrade}</div>
-						<div>${output.memNick}님</div>
+		<div id="my-tab-1" class="tab-content2 current">
+			<div class="my_home clearfix">
+				<div class="myBox">
+					<div style="float: left;">
+						<c:if test="${output.memRname == '1'}">
+							<div class="authBox">신원<br>인증</div>
+						</c:if>
+						<c:if test="${output.profileBizCerti == '1'}">
+							<div class="authBox">사업자<br>인증</div>
+						</c:if>
+						<c:if test="${output.profileSaleChk == '1'}">
+							<div class="authBox">매출<br>검증</div>
+						</c:if>
+						<c:if test="${output.profileChChk == '1'}">
+							<div class="authBox">채널<br>검증</div>
+						</c:if>
 					</div>
-					<c:if test="${output.memRname == '1'}">
-						<div style="display: inline-block;">신원인증</div>
-					</c:if>
-					<c:if test="${output.profileBizCerti == '1'}">
-						<div style="display: inline-block;">사업자인증</div>
-					</c:if>
-					<c:if test="${output.profileSaleChk == '1'}">
-						<div style="display: inline-block;">매출검증</div>
-					</c:if>
-					<c:if test="${output.profileChChk == '1'}">
-						<div style="display: inline-block;">채널검증</div>
-					</c:if>
+					<div class="textBox1">${output.profileGrade}</div>
+					<div class="textBox2">${output.memNick}님</div>
 				</div>
-				<div style="text-align: left; margin: 50px;">
-					<div style="display: inline-block;">
-						<button>바로인증하기</button>
+				<div class="myBox2">
+					<div>
+						<div class="textBox1">프로젝트 등록</div>
+						<div class="textBox1">평가건수</div>
+						<div class="textBox1">공급자 평가점수</div>
 					</div>
-					<div style="display: inline-block; text-align: center;">
-						<div>프로젝트관리<button id="myProject-go">바로가기</button></div>
-						<div>
-							<span>등록</span>
-							<span>제안</span>
-						</div>
-						<div>
-							<button id="projAddCount" value="${output.projAddCount}">${output.projAddCount}건</button>
-							<button id="recommendCount" value="${output.recommendCount}">${output.recommendCount}건</button>
-						</div>
+					<div>
+						<div class="textBox2" id="projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
+						<div class="textBox2">0건</div>
+						<div class="textBox2">0점</div>
 					</div>
-					<div style="display: inline-block;">
-						<div>관심등록리스트(26)</div>
+				</div>
+			</div>
+			<div>
+				<div class="myBox3">
+					<div class="textBox1">
+						<div class="myBox-row">관심등록리스트(26)</div>
+						<button>바로가기</button>
+					</div>
+					<div class="textBox1" style="margin: 0 31px;">
+						<div class="myBox-row">관심등록리스트(26)</div>
+						<button>바로가기</button>
+					</div>
+					<div class="textBox1">
+						<div class="myBox-row">관심등록리스트(26)</div>
 						<button>바로가기</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="tab-2" class="tab-content2">
+		<div id="my-tab-2" class="tab-content2">
 		    <div class="partner_wrap addbox2">
 		    	<div class="text-center profileBox">
 					<form action="${pageContext.request.contextPath}/member/editOk" id="memEdit_form" name="memEdit_form" method="post" enctype="multipart/form-data">
@@ -348,7 +467,7 @@ label.error {
 				</div>
 			</div>
 		</div>
-		<div id="tab-3" class="tab-content2">
+		<div id="my-tab-3" class="tab-content2">
 		    <div class="partner_wrap addbox2">
 		    	<div class="text-center profileBox">
 					<form action="${pageContext.request.contextPath}/profile" id="profile_form" name="profile_form" method="post" enctype="multipart/form-data">
@@ -531,7 +650,7 @@ label.error {
 				</div>
 			</div>
 		</div>
-		<div id="tab-4" class="tab-content2">
+		<div id="my-tab-4" class="tab-content2">
 			<div id="myProject">
 				<div style="display: inline-block;">프로젝트관리</div>
 				<div style="display: inline-block;">
@@ -611,18 +730,18 @@ $(document).ready(function(){
 	$(document).on("change", "#profile-image" ,handleImgfileSelect);
 	$(document).on("change", "#image" ,handleImgfileSelect);
 	
-	$(document).on("click", "ul.tabs li", function(e){
+	$(document).on("click", "ul.my-tabs li", function(e){
 		
 		var tab_id = $(this).attr('data-tab');
 		var tabNum = $(this).data('num');
 
-		$('ul.tabs li').removeClass('current');
+		$('ul.my-tabs li').removeClass('current');
 		$('.tab-content2').removeClass('current');
 
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 		
-		if (tab_id == 'tab-2') {
+		if (tab_id == 'my-tab-2') {
 			$.ajax({
 				type: "GET",
 		        url: ROOT_URL + '/member/mypage/joinInfo',
@@ -645,7 +764,7 @@ $(document).ready(function(){
 				}
 			});
 		}
-		if (tab_id == 'tab-3') {
+		if (tab_id == 'my-tab-3') {
 			$.ajax({
 				type: "GET",
 		        url: ROOT_URL + '/member/mypage/profile',
@@ -720,7 +839,7 @@ $(document).ready(function(){
 			});
 		}
 		
-		if (tab_id == 'tab-4') {
+		if (tab_id == 'my-tab-4') {
 			$("#myProject").remove();
 			$.ajax({
 				type: "GET",
@@ -738,7 +857,7 @@ $(document).ready(function(){
 		       		var template = Handlebars.compile($("#myProject-tmpl").html());
 		       		var html = template(content);
 		       		
-		       		$("#tab-4").append(html);
+		       		$("#my-tab-4").append(html);
 				}
 			});
 		}
@@ -771,7 +890,7 @@ $(document).ready(function(){
 	       		var template = Handlebars.compile($("#myProject-tmpl").html());
 	       		var html = template(content);
 	       		
-	       		$("#tab-4").append(html);
+	       		$("#my-tab-4").append(html);
 			}
 		});
 	});
@@ -977,17 +1096,17 @@ $(document).ready(function(){
 		}
     })
     $(document).on("click", "#projAddCount", function(e){
-    	var projAddCount = $('#projAddCount').val();
+    	var projAddCount = $('#projAddCount').attr('data-value');
 		if (projAddCount == 0) {
 			swal('알림', '등록된 프로젝트가 없습니다.', 'warning')
 		} else {
 			$("#myProject").remove();
 			
-			$('ul.tabs li').removeClass('current');
+			$('ul.my-tabs li').removeClass('current');
 			$('.tab-content2').removeClass('current');
 
-			$('#select-tab4').addClass('current');
-			$("#tab-4").addClass('current');
+			$('#select-my-tab4').addClass('current');
+			$("#my-tab-4").addClass('current');
 			
 			$.ajax({
 				type: "GET",
@@ -1005,13 +1124,13 @@ $(document).ready(function(){
 		       		var template = Handlebars.compile($("#myProject-tmpl").html());
 		       		var html = template(content);
 		       		
-		       		$("#tab-4").append(html);
+		       		$("#my-tab-4").append(html);
 				}
 			});
 		}
     })
     $(document).on("click", "#recommendCount", function(e){
-    	var recommendCount = $('#recommendCount').val();
+    	var recommendCount = $('#recommendCount').attr('data-value');
     	var mem_sort = $('#myMemSort').val();
 		if (recommendCount == 0) {
 			var text = '';
@@ -1025,11 +1144,11 @@ $(document).ready(function(){
 		} else {
 			$("#myProject").remove();
 			
-			$('ul.tabs li').removeClass('current');
+			$('ul.my-tabs li').removeClass('current');
 			$('.tab-content2').removeClass('current');
 
-			$('#select-tab4').addClass('current');
-			$("#tab-4").addClass('current');
+			$('#select-my-tab4').addClass('current');
+			$("#my-tab-4").addClass('current');
 			
 			$.ajax({
 				type: "GET",
@@ -1048,7 +1167,7 @@ $(document).ready(function(){
 		       		var template = Handlebars.compile($("#myProject-tmpl").html());
 		       		var html = template(content);
 		       		
-		       		$("#tab-4").append(html);
+		       		$("#my-tab-4").append(html);
 				}
 			});
 		}
