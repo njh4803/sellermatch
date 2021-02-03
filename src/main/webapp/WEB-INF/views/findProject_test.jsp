@@ -1042,104 +1042,108 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 });
 </script>
 <script type="text/x-handlebars-template" id="project-list-tmpl">
-<div class="container2 content">
-	<span class="leftBox">전체 {{projCount}}건</span>
-	<div class="rightBox">
-		<a href="javascript:void(0)" class="sort" id="defaultSort">기본정렬 /</a>
-		<a href="javascript:void(0)" class="sort" id="endSort">마감일순 /</a>
-		<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
-		<a href="javascript:void(0)" class="sort" id="applySort">참여자순 /</a>
-		<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
-	</div>
-</div>
-{{#output}}
-<div class="container1 content">
-	<input type="hidden" id="projId{{@key}}" value="{{projId}}">
-	<div class="container2">
-		<div class="row1">
-			<div class="leftBox">
-				{{#ifCond projDday '<' 0}}
-		            <div class="blueBox">마감</div>
-		        {{else}}
-		            <div class="blueBox">마감 {{projDday}}일전</div>
-		        {{/ifCond}}
-				{{#ifCond projSort '==' 1}}
-					<button class="pFindBox">{{projSortName}} 찾기</button>
-				{{/ifCond}}
-				{{#ifCond projSort '==' 2}}
-					<button class="sFindBox">{{projSortName}} 찾기</button>
-				{{/ifCond}}
-				<button class="grayBox">{{projNationName}}지역</button>				
-			</div>	
+		<div class="container2 countAllbox">
+			<div class="leftBox countAll">총 <span>{{projCount}}</span><span>건</span>이 검색되었습니다</div>
 			<div class="rightBox">
-				<span>• 등록일 : {{projRegDate}}</span>
+				<a href="javascript:void(0)" class="sort select" id="defaultSort">기본정렬 </a>
+				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 </a>
+				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 </a>
+				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 </a>
+				<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
 			</div>
 		</div>
-		<div class="row1 leftBox">
-			{{#ifCond profileBizCerti '==' 1}}
-				<div class="purpleBox">사업자인증</div>
-			{{/ifCond}}
-			{{#ifCond memRname '==' 1}}
-				<div class="purpleBox">신원인증</div>
-			{{/ifCond}}
-			{{#ifCond projProfit '==' 1}}
-				<div class="purpleBox">수익성검증</div>
-			{{/ifCond}}
-			{{#ifCond projProdCerti '==' 1}}
-				<div class="purpleBox">상품검증</div>
-			{{/ifCond}}
-			{{#ifCond sprofileChChk '==' 1}}
-				<div class="purpleBox">채널검증</div>
-			{{/ifCond}}
-			{{#ifCond sprofileSaleChk '==' 1}}
-				<div class="purpleBox">매출검증</div>
-			{{/ifCond}}
-			<div class="countBox">
-				{{#ifCond projPrice '!=' 0}}
-					단가/마진 : {{projPrice}}원/{{projMarginName}}
-				{{/ifCond}}
-				{{#ifCond projPrice '==' 0}}
-					마진 : {{projMarginName}}
-				{{/ifCond}}
-			</div>
-		</div>
-		<div class="clearfix"></div>
-		<div class="row1 leftBox projDetail" data-index="{{@key}}">
-			{{#ifCond projSort '==' 1}}
-				<div class="titleBox"><a<span class="pp">공급자</span> | {{projTitle}}</a></div>
-			{{/ifCond}}
-			{{#ifCond projSort '==' 2}}
-				<div class="titleBox"><a><span class="sp">판매자</span> | {{projTitle}}</a></div>
-			{{/ifCond}}
-		</div>
-		<div class="clearfix"></div>
-		<div class="leftBox projDetail" data-index="{{@key}}" style="width: 97%;">
-			<div class="contentsBox">
-				<a>{{projDetail}}</a>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-		<div class="row1 leftBox">
-			<div class="tagContainer">
-				{{#each projKeywordList as |value key|}}
-					<div class="tagBox">&num;{{value}}</div>
-				{{/each}}
-			</div>
-			<div class="rightBox margin-0">
-				<div class="countBox">
-					모집수 : {{projRecruitNum}}명
+		<hr class="count-hr">
+		{{#output}}
+			<div class="container1 content">
+				<div class="container2">
+					<input type="hidden" id="projId{{@key}}" value="{{projId}}">
+					<div class="row1 leftBox">
+						<div class="leftBox">
+							{{#ifCond projSort '==' 1}}
+				        		<button class="pFindBox">{{projSortName}}</button>
+				        	{{/ifCond}}
+				        	{{#ifCond projSort '==' 2}}
+				        		<button class="sFindBox">{{projSortName}}</button>
+				        	{{/ifCond}}
+				        	<span class="reg"> 등록일 </span><span class="regDate">{{projRegDate}}</span>
+						</div>
+					</div>
+					<div class="row1 leftBox projDetail" data-index="{{@key}}">
+						{{#ifCond projSort '==' 1}}
+							<div class="titleBox">
+								<a><span class="pp">{{projTitle}}</a>
+							</div>
+						{{/ifCond}}
+						{{#ifCond projSort '==' 2}}
+							<div class="titleBox">
+								<a><span class="sp">{{projTitle}}</a>
+							</div>
+						{{/ifCond}}
+					</div>
+					<div class="row1 leftBox" style="margin-top: 13px;">
+						<button class="grayBox">{{projNationName}}지역</button>
+						<button class="grayBox">
+							{{#ifCond projSort '==' 1}}
+								판매자 찾음
+							{{/ifCond}}
+							{{#ifCond projSort '==' 2}}
+								공급자 찾음
+							{{/ifCond}}
+						</button>
+						{{#ifCond projDday '<' 0}}
+							<button class="redBox">마감완료</button>
+						{{else}}
+							<button class="grayBox">진행중</button>
+						{{/ifCond}}			
+					</div>		
+					<div class="row1 leftBox">
+						{{#ifCond profileBizCerti '==' 1}}
+							<div class="purpleBox">사업자인증</div>
+						{{/ifCond}}
+						{{#ifCond memRname '==' 1}}
+							<div class="purpleBox">신원인증</div>
+						{{/ifCond}}
+						{{#ifCond projProfit '==' 1}}
+							<div class="purpleBox">수익성검증</div>
+						{{/ifCond}}
+						{{#ifCond projProdCerti '==' 1}}
+							<div class="purpleBox">상품검증</div>
+						{{/ifCond}}
+						{{#ifCond sprofileChChk '==' 1}}
+							<div class="purpleBox">채널검증</div>
+						{{/ifCond}}
+						{{#ifCond sprofileSaleChk '==' 1}}
+							<div class="purpleBox">매출검증</div>
+						{{/ifCond}}
+						{{#ifCond projPrice '!=' 0}}
+							<div class="purpleBox">단가/마진 : {{projPrice}}원/{{projMarginName}}</div>
+						{{/ifCond}}
+						{{#ifCond projPrice '==' 0}}
+							<div class="purpleBox">마진 : {{projMarginName}}</div>
+						{{/ifCond}}
+					</div>
+					<div class="text-right">
+						<div class="countBox" style="margin-right: 7px;">
+							모집수 <span>{{projRecruitNum}}명 </span>
+						</div>
+						<div class="countBox">
+							 지원수 <span>{{applyCount}}명 </span>
+						</div>
+						<button class="scrap">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+							관심등록
+						</button>
+						<button class="match">
+						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+							매치하기
+						</button>
+					</div>
 				</div>
-				<div class="countBox">
-					 지원수 : {{applyCount}}명
-				</div>
 			</div>
-		</div>
-	</div>
-</div>
-{{/output}}
-{{#ifCond output '==' ''}}
-	<div class="emptyResult">검색결과가 없습니다.</div>
-{{/ifCond}}
+		{{/output}}
+		{{#ifCond output '==' ''}}
+			<div class="emptyResult">검색결과가 없습니다.</div>
+		{{/ifCond}}
 </script>
 <script type="text/x-handlebars-template" id="page-tmpl">
 <div class="partner_bnr2 pageBox">
@@ -1212,7 +1216,9 @@ $(document).ready(function() {
 			return
 		}
 		// 초기화
+		$(".countAllbox").remove();
 		$(".content").remove();
+		$(".count-hr").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1332,7 +1338,9 @@ $(document).ready(function() {
 		$("#sort").val(value);
 		
 		// 초기화
+		$(".countAllbox").remove();
 		$(".content").remove();
+		$(".count-hr").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1433,7 +1441,9 @@ $(document).ready(function() {
 	$(".checkAll").click(function(){
 		$("#sort").val();
 		// 초기화
+		$(".countAllbox").remove();
 		$(".content").remove();
+		$(".count-hr").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1534,7 +1544,9 @@ $(document).ready(function() {
 	// 체크박스 선택 검색
 	$(".check").click(function(){
 		// 초기화
+		$(".countAllbox").remove();
 		$(".content").remove();
+		$(".count-hr").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1653,7 +1665,9 @@ $(document).ready(function() {
 		var keyword = $("input[name=keyword]").val();
 		 
 		// 초기화
+		$(".countAllbox").remove();
 		$(".content").remove();
+		$(".count-hr").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
