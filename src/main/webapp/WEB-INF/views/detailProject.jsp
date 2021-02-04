@@ -8,7 +8,6 @@
 }
 .partner_bnr {
     width: 100%;
-    padding-top: 180px;
     padding-bottom: 100px;
 }
 .partner_bnr2 {
@@ -50,10 +49,19 @@
 }
 .container1 .container2{
 	margin: 0;
-    width: 844px;
+    width: 900px;
     height: 396px;
     float: left;
+    padding: 0 60px;
 }
+/* .container3{
+	border-left: 2px solid #e3e3e3;
+	border-bottom: 2px solid #e3e3e3;
+    height: 278px;
+    width: 362px;
+    float: right;
+    padding: 20px;
+} */
 .container3{
 	border-left: 2px solid #e3e3e3;
 	border-bottom: 2px solid #e3e3e3;
@@ -79,7 +87,6 @@
 	margin-right: 0;
 }
 .row2{
-	height: 25px;
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -89,7 +96,6 @@
 }
 .leftBox{
 	float: left;
-	margin: 3px 15px;
 }
 .rightBox{
 	float: right;
@@ -138,16 +144,25 @@
 	padding: 15px 15px;
 	margin-right: 10px;
 }
-.blueBox{
-	background-color: #71A6DB;
-	color: white;
-	display: inline-block;
-	border-radius: 1px;
-	padding: 15px 15px;
-	margin-right: 10px;
+.endBox{
+  border-radius: 4px;
+  width: fit-content;
+  height: 20px;
+  padding: 2px 7px;
+  background-color: #b20d5b;
+  font-size: 10px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  display: inline-block;
 }
 .titleBox{
-	font-size: 30px;
+	font-size: 22px;
+	font-weight: 500;
 }
 .titleBox .pp{
 	width: 100px;
@@ -168,14 +183,25 @@
 	max-height: 100px;
 }
 .tagBox{
-	display: inline-block;
-	color: #7F7F7F;
-	margin-right: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4b4b4b;
+  margin-left: 15px;
+  display: inline-block;
 }
 .tagContainer{
 	padding-top: 50px;
 }
-
+.projDetail{
+	width: 550px;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
 .projDetail a{
 	text-decoration: none;
 	color: black;
@@ -256,14 +282,10 @@ a:focus, a:hover{
   display: none;
 }
 .infoBox{
-  display: inline-block;
-  width: 150px;
   text-align: center;
-  border: 1px solid #e3e3e3;
-  background-color: #D9D9D9;
-  height: 50px;
-  padding-top: 10px;
-  margin-right: 20px;
+  width: 192px;
+  height: 100px;
+  display: inline-block;
 }
 .infoBox span{
 	color: #aaa;
@@ -384,8 +406,77 @@ a:focus, a:hover{
     text-align: left;
     color: #aaa;
 }
+.bar{
+  width: 1920px;
+  height: 60px;
+  margin-bottom: 40px;
+  background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
+  padding: 12px;
+}
+.bar span{
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff; 
+  margin-left: 213px;
+}
+.favoriteBtn{
+  width: 160px;
+  height: 40px;
+  padding: 10.3px 48.6px 10.7px 47.9px;
+  border-radius: 4px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.matchBtn{
+  width: 160px;
+  height: 40px;
+  padding: 10.3px 23.5px 10.5px 18px;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+.star{
+  width: 11.6px;
+  height: 11.1px;
+  object-fit: contain;
+  margin-top: -4px;
+}
+.matchPass{
+  width: 12px;
+  height: 16.6px;
+  object-fit: contain;
+  margin-top: -4px;
+}
+.detailBox1{
+  width: 780px;
+  border-top: solid 1px #cccccc;
+  border-bottom: solid 1px #cccccc;
+  margin-top: 30px;
+}
 </style>
 <div class="partner_bnr">
+	<div class="bar"><span>프로젝트 상세정보</span></div>
     <div class="partner_wrap" style="text-align: left;">
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">
@@ -393,31 +484,42 @@ a:focus, a:hover{
 				<input type="hidden" id="projSort" value="${output.projSort}">
 				<div class="row1">
 				</div>
-				<div class="row1 leftBox">
+				<div class="row2 leftBox">
 					<c:choose>
 						<c:when test="${output.projDday < 0}">
-							<div class="blueBox">마감</div>
+							<div class="endBox">마감</div>
 						</c:when>
 						<c:otherwise>
-							<div class="blueBox">마감 ${output.projDday}일전</div>
+							<div class="endBox">마감 ${output.projDday}일전</div>
 						</c:otherwise>
 					</c:choose>
 					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
 		           		<div class="tagBox">#${projKeywordList}</div>
 		           	</c:forEach>
+		           	<div class="row1 projDetail"  data-index="${status.index}">
+						<div class="titleBox">${output.projTitle}</div>
+					</div>
+		           	<div class="rightBox">
+		           		<div>
+		           			<button class="favoriteBtn">
+		           				<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">관심등록
+		           			</button>
+		           		</div>
+		           		<div>
+		           			<button class="matchBtn">
+		           				<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 매치하기
+		           			</button>
+		           		</div>
+		           	</div>
 				</div>
 				<div class="clearfix"></div>
-				<div class="row1 leftBox projDetail"  data-index="${status.index}">
-					<div class="titleBox">${output.projTitle}</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="row1 leftBox">
+				<div class="detailBox1">
 					<div class="infoBox">
 						<div><span>상품분류</span></div>
 						<div>${output.projIndusName}</div>
 					</div>
 					<div class="infoBox">
-						<div><span>상품단가</span></div>
+						<div class=""><span>상품단가</span></div>
 						<div>${output.projPrice}</div>
 					</div>
 					<div class="infoBox">
@@ -427,7 +529,12 @@ a:focus, a:hover{
 					<div class="infoBox">
 						<div><span>등록지역</span></div>
 						<div>${output.projNationName}</div>
-					</div>
+					</div>				
+				</div>
+				
+				<div class="clearfix"></div>
+				<div class="row1 leftBox">
+
 				</div>
 				<div class="row1 leftBox">
 					<div class="infoBox2">
@@ -486,7 +593,7 @@ a:focus, a:hover{
 			</div>
 			<div class="container3">
 				<div class="row1 text-left">
-					<div class="blueBox">등록자</div> ${output.memNick}
+					<div class="endBox">등록자</div> ${output.memNick}
 				</div>
 				<div class="text-left">
 					<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
@@ -501,7 +608,7 @@ a:focus, a:hover{
 					</div>
 				</div>
 			</div>
-			<div class="container4">
+			<%-- <div class="container4">
 				<div class="row1 text-left">
 					<button class="applyBtn">프로젝트 지원하기</button>
 					<button class="scrapBtn">스크랩</button>
@@ -531,7 +638,7 @@ a:focus, a:hover{
 						</div>
 					</c:otherwise>
 				</c:choose>
-			</div>
+			</div> --%>
 		</div>
 		<div style="margin-top: 50px;">
 			<div class="a">

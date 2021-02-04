@@ -339,6 +339,93 @@ label.error {
 	letter-spacing: normal;
 	color: #000000;
 }
+.myProjBox{
+	margin: 25px 0;
+}
+.proj-type{
+	display: inline-block;
+	width: 256px;
+	height: 100px;
+	padding: 20px 0;
+	background-color: #f8f2f9;	
+	margin-right: -4px;
+}
+.proj-type .textBox1{
+  height: 29px;
+  margin: 10px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.p-type{
+  height: 21px;
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.myProject-table{
+	margin-bottom: 337px;
+}
+.myProject-table th {
+  padding: 10px 0 9px;
+  background-color: #f8f2f9;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 3.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  margin-top: 25px;
+}
+.myProject-table td {
+  padding: 10px 0 9px;
+  background-color: #ffffff;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  height: 40px;
+}
+.myProject-table th:nth-child(1){
+  width: 180px;
+}
+.myProject-table th:nth-child(2){
+  width: 100px;
+}
+.myProject-table th:nth-child(3){
+  width: 500px;
+}
+.myProject-table th:nth-child(4){
+  width: 180px;
+}
+.myProject-table th:nth-child(5){
+  width: 180px;
+}
+.myProject-table th:nth-child(6){
+  width: 140px;
+}
+.myProject-table .project-title{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
@@ -408,7 +495,7 @@ label.error {
 						<div class="infoContainer">
 							<div>
 								<div>
-									<div class="">
+									<div style="margin-top: 20px;">
 										<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
 											<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 										</div>
@@ -527,7 +614,7 @@ label.error {
 						<div class="infoContainer">
 							<div>
 								<div>
-									<div class="">
+									<div style="margin-top: 20px;">
 										<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
 											<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 										</div>
@@ -659,15 +746,14 @@ label.error {
 		</div>
 		<div id="my-tab-4" class="tab-content2">
 			<div id="myProject">
-				<div style="display: inline-block;">프로젝트관리</div>
 				<div style="display: inline-block;">
 					<div>
-						<div style="display: inline-block;">등록한 것</div>
-						<div style="display: inline-block;">제안 받은 것</div>
+						<div>등록한 것</div>
+						<div>2건</div>
 					</div>
 					<div>
-						<div style="display: inline-block;">2건</div>
-						<div style="display: inline-block;">2건</div>
+						<div>제안 받은 것</div>
+						<div>2건</div>
 					</div>
 				</div>
 				<table id="myProject-table">
@@ -1369,29 +1455,40 @@ $(document).ready(function() {
 </script>
 <script type="text/x-handlebars-template" id="myProject-tmpl">
 			<div id="myProject">
-				<div style="display: inline-block;">프로젝트관리</div>
-				<div style="display: inline-block;">
-					<div>
-						<div style="display: inline-block;">계약한 것</div>
-						<div style="display: inline-block;">등록한 것</div>
+				<div class="myProjBox">
+					<div class="proj-type">
+						<div class="p-type">등록한 프로젝트</div>
+						<div class="textBox1"><button id="projAddCount" value="{{projAddCount}}">{{projAddCount}}건</button></div>
+					</div>
+					<div class="proj-type">
+						<div class="p-type">계약한 프로젝트</div>
+						<div class="textBox1"><button id="contractCount" value="{{contractCount}}">{{contractCount}}건</button></div>
+					</div>
+					<div class="proj-type">
+						<div class="p-type">찜한 프로젝트</div>
+						<div class="textBox1">0건</div>
+					</div>
+					<div class="proj-type">
 						{{#ifCond memSort '==' 1}}
-							<div style="display: inline-block;">제안 한 것</div>
+							<div class="p-type">제안한 프로젝트</div>
+						    <div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
 						{{/ifCond}}
 						{{#ifCond memSort '==' 2}}
-							<div style="display: inline-block;">제안 받은 것</div>
+							<div class="p-type">제안받은 프로젝트</div>
+							<div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
 						{{/ifCond}}
 					</div>
-					<div>
-						<div style="display: inline-block;"><button id="contractCount" value="{{contractCount}}">{{contractCount}}건</button></div>
-						<div style="display: inline-block;"><button id="projAddCount" value="{{projAddCount}}">{{projAddCount}}건</button></div>
-						<div style="display: inline-block;"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
+					<div class="proj-type">
+						<div class="p-type">마감한 프로젝트</div>
+						<div class="textBox1">0건</div>
 					</div>
 				</div>
 				<input type="hidden" id="myMemSort" value="{{memSort}}">
-				<table id="myProject-table">
+				<table id="myProject-table" class="myProject-table">
 					<thead>
 						<tr>
 							<th>등록일</th>
+							<th></th>						
 							<th>프로젝트명</th>
 							<th>등록자 닉네임</th>
 							<th>마감일</th>
@@ -1402,6 +1499,7 @@ $(document).ready(function() {
 					{{#output}}
 						<tr>
 							<td>{{projRegDate}}</td>
+							<td></td>
 							<td class="project-title" data-projId="{{projId}}">{{projTitle}}</td>
 							<td>{{memNick}}</td>
 							<td>{{projEndDate}}</td>
