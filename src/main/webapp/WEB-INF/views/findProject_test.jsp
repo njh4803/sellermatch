@@ -11,8 +11,6 @@
 }
 .partner_bnr {
     width: 100%;
-    padding-top: 180px;
-    padding-bottom: 100px;
 }
 .partner_bnr .partner_wrap {
     width: 1280px;
@@ -22,6 +20,10 @@
 .partner_bnr2 {
     width: 100%;
     padding-bottom: 100px;
+    text-align: center;
+}
+.partner_bnr3 {
+    width: 100%;
     text-align: center;
 }
 .search_chk {
@@ -139,7 +141,7 @@
 }
 .rightBox{
 	float: right;
-	margin: 17px 0;
+    margin-top: 23px;
 }
 .rightBox a{
 	margin: 0 15px;
@@ -428,6 +430,7 @@ a:focus, a:hover{
   width: 32.3px;
   height: 45px;
   margin-bottom: 45px;
+  margin-top: 60px;
   object-fit: contain;
 }
 .hotPass{
@@ -567,8 +570,10 @@ a:focus, a:hover{
 }
 .count-hr{
   height: 0;
-  margin: 20px 0;
   border: solid 2px #000000;
+  margin-bottom: 20px;
+  margin-top: 0;
+  width: 1280px;
 }
 .scrap{
   width: 160px;
@@ -639,7 +644,7 @@ a:focus, a:hover{
 </style>
 <div class="partner_bnr">
 	<div class="partner_wrap">
-		<div class="partner_bnr2">
+		<div class="partner_bnr3">
 			<div>
 				<img class="findPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass_black.png">
 			</div>

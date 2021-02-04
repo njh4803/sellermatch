@@ -180,16 +180,19 @@ public class ProfileDto {
 			 return this.profileCareerName = "경력없음";
 		 }
 		 if (this.profileCareer.equals("1")) {
-			 return this.profileCareerName = "1개월 이상";
+			 return this.profileCareerName = "1개월 이상 ~ 3개월 미만";
 		 }
 		 if (this.profileCareer.equals("3")) {
-			 return this.profileCareerName = "3개월 이상";
+			 return this.profileCareerName = "3개월 이상 ~ 6개월 미만";
 		 }
 		 if (this.profileCareer.equals("6")) {
-			 return this.profileCareerName = "6개월 이상";
+			 return this.profileCareerName = "6개월 이상 ~ 1년 미만";
 		 }
 		 if (this.profileCareer.equals("9")) {
-			 return this.profileCareerName = "1년 이상";
+			 return this.profileCareerName = "1년 이상 ~ 3년 미만";
+		 }
+		 if (this.profileCareer.equals("8")) {
+			 return this.profileCareerName = "1년 이상 ~ 3년 미만";
 		 }
 		 return "";
 	 }

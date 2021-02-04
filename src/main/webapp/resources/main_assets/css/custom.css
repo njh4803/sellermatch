@@ -27,6 +27,7 @@ input[type="checkbox"] + label span {
     color: #000000;
     margin: 0;
     line-height: normal;
+    font-weight: normal;
     background:url(../../../wesellglobal/local_assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
@@ -34,7 +35,7 @@ input[type="checkbox"]:checked + label span {
 }
 /*header*/
 
-header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10;}
+header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee;}
 header .header_wrap {width:1280px; height:100%; margin: 0 auto;}
 header .header_wrap h1 {
 	float:left;

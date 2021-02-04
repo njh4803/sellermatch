@@ -15,6 +15,9 @@
     position: relative;
     padding: 45px;
 }
+#loginModal .modal-dialog .modal-content{
+	border-radius: 20px;
+}
 .bannerBox{
   width: 100%;
   height: 120px;

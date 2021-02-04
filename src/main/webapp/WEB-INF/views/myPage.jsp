@@ -31,7 +31,8 @@
 		text-align: center;
 		color: #000000;
 		margin-right: -4px;
-		border: solid 1px #cccccc;
+		border-top: solid 1px #cccccc;
+    	border-bottom: solid 1px #cccccc;
 	}
 	
 	ul.my-tabs li.current{
@@ -57,30 +58,6 @@
 a {
 	text-decoration: none;
 	color: black;
-}
-.projectBox{
-	display: inline-block;
-}
-.projTable{
-	border: 2px solid #ccc;
-	width: 700px;
-    height: 700px;
-}
-.projTable td{
-	border: 2px solid #ccc;
-    text-align: left;
-}
-.inputForm{
-	width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 }
 .row1{
 	display: inline-block;
@@ -113,20 +90,21 @@ label.error {
     background-color: #fafafa;
 }
 .fileLable{
-	position: relative;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    overflow: hidden;
-    width: 100px;
-    height: 30px;
-    background: #1abc9c;
-    color: #fff;
-    text-align: center;
-    line-height: 30px;
-    margin-top: 2px;
-    border-radius: 5px;
-    margin-left: 5px;
+  width: 80px;
+  height: 30px;
+  padding: 6.5px 0;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: solid 1px #cccccc;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: #707070;
 }
 .addBtn {
 	background-color: #E52867;
@@ -263,9 +241,108 @@ label.error {
     color: #000000;
     background-color: #ffffff;
 }
+.infoContainer{
+	display: inline-block;
+	text-align: center;
+	width: 900px;
+}
+.infoBox{
+	display: inline-block;
+	text-align: center;
+	width: 900px;
+	border-top: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+}
+.inputGroup{
+    text-align: left;
+}
+.inputGroup label{
+  width: 300px;
+  height: 50px;
+  padding: 15px 0 14px;
+  background-color: #f8f2f9;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+.inputGroup2 label{
+	display: inline-block;
+	width: auto;
+    height: auto;
+    background-color: #ffffff;
+    padding: 0;
+}
+.inputForm{
+  width: 350px;
+  height: 30px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+  margin: 6px 0 4px 15px;
+  display: inline-block;
+}
+.inputGroup button{
+  width: 100px;
+  height: 30px;
+  margin: 0 0 0 15px;
+  padding: 6.5px 0;
+  border-radius: 4px;
+  border: solid 1px #cccccc;
+  font-family: NotoSansKRMedium;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: #707070;
+  background-color: #ffffff;
+}
+.editBtn{
+  width: 160px;
+  height: 40px;
+  margin: 19px 0 74px 0;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);	
+  font-family: NotoSansKRMedium;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+.editPass{
+  width: 10px;
+  height: 16.6px;
+  object-fit: contain;
+  margin-top: -3px;
+}
+.mypage-title{
+	text-align: left;
+	margin-top: 80.5px;
+	height: 44px;
+	font-size: 30px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.47;
+	letter-spacing: normal;
+	color: #000000;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
+    	<div class="mypage-title">회원정보 / 프로필관리</div>
        	<ul class="my-tabs">
 			<li class="tab-link current" data-tab="my-tab-1" id="select-my-tab1">MY홈</li>
 			<li class="tab-link" data-tab="my-tab-2" id="select-my-tab2">가입정보관리</li>
@@ -299,7 +376,7 @@ label.error {
 						<div class="textBox1">공급자 평가점수</div>
 					</div>
 					<div>
-						<div class="textBox2" id="projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
+						<div class="textBox2 projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
 						<div class="textBox2">0건</div>
 						<div class="textBox2">0점</div>
 					</div>
@@ -308,12 +385,12 @@ label.error {
 			<div>
 				<div class="myBox3">
 					<div class="textBox1">
-						<div class="myBox-row">관심등록리스트(26)</div>
-						<button>바로가기</button>
+						<div class="myBox-row">인증</div>
+						<button>인증 바로가기</button>
 					</div>
 					<div class="textBox1" style="margin: 0 31px;">
-						<div class="myBox-row">관심등록리스트(26)</div>
-						<button>바로가기</button>
+						<div class="myBox-row">프로젝트 관리</div>
+						<button class="projAddCount">바로가기</button>
 					</div>
 					<div class="textBox1">
 						<div class="myBox-row">관심등록리스트(26)</div>
@@ -328,141 +405,114 @@ label.error {
 					<form action="${pageContext.request.contextPath}/member/editOk" id="memEdit_form" name="memEdit_form" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="memRname" id="memRname">
 						<input type="hidden" name="memSort" id="memSort">
-						<div>
-							<div class="form-group row">
-								<label class="col-sm-2 colForm-label">프로필 사진</label>
-								<div class="col-sm-10 file_input">
-									<div class="input-group profile">
-										<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
+						<div class="infoContainer">
+							<div>
+								<div>
+									<div class="">
+										<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
 											<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 										</div>
-										<div style="display: flow-root;">
-											<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-												<label class="fileLable">파일 선택
-													<input id="image" name="memPhoto" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-												</label>
-										</div>
+									</div>
+									<div style="">
+										<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
+											<label class="fileLable">사진 선택
+												<input id="image" name="memPhoto" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+											</label>
 									</div>
 								</div>
 							</div>
-						</div>
-						<table class="profileTable">
-			    			<tbody>
-			    				<tr>
-			    					<td>아이디</td>
-			    					<td>
-			    						<input id="memId" type="text" name="memId" class="inputForm" placeholder="이메일 입력" readonly="readonly">
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>비밀번호</td>
-			    					<td>
-			    						<input type="password" id="memPw" name="memPw" class="inputForm" placeholder="영문,숫자,특수문자 조합 최소 6글자">
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>비밀번호 확인</td>
-			    					<td>
-			    						<input type="password" name="memPw_confirm" class="inputForm" id="memPw_confirm"/>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>이름</td>
-			    					<td>
-			    						<input type="text" class="inputForm" name="memName" id="memName">
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>닉네임</td>
-			    					<td>
-			    						<input type="text" class="inputForm" name="memNick" id="memNick">
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>국가</td>
-			    					<td>
-				    					<select id="memCountry" name="memCountry" class="inputForm">
-                                            <option value="">선택하세요.</option>
-                                            <option value="01">대한민국</option>
-                                            <option value="02">베트남</option>
-                                        </select>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>지역</td>
-			    					<td>
-			    						<select id="memNation" name="memNation" class="inputForm">
-			    							<option value="">선택하세요.</option>
-		                                    <option value="02">서울</option>
-		                                    <option value="031">경기</option>
-		                                    <option value="032">인천</option>
-		                                    <option value="033">강원</option>
-		                                    <option value="041">충남</option>
-		                                    <option value="042">대전</option>
-		                                    <option value="043">충북</option>
-		                                    <option value="051">부산</option>
-		                                    <option value="052">울산</option>
-		                                    <option value="053">대구</option>
-		                                    <option value="054">경북</option>
-		                                    <option value="055">경남</option>
-		                                    <option value="061">전남</option>
-		                                    <option value="062">광주</option>
-		                                    <option value="063">전북</option>
-		                                    <option value="044">세종특별자치시</option>
-		                                    <option value="064">세종특별자치도</option>
-		                             	</select>       
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>연락처</td>
-			    					<td>
-				    					<input type="text" name="memTel" class="inputForm" id="memTel" placeholder="`-`없이 숫자만 입력" />
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>우편번호</td>
-			    					<td>
-			    						<input type="text" name="memPost" class="inputForm" id="postcode" maxlength="5" readonly>
-										<button type="button" class="btn form-bg-primary postcode-finder"
-											data-postcode="postcode" data-addr1="addr1"
-											data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>주소</td>
-			    					<td>
-			    						<input type="text" name="memAddr" class="inputForm" id="memAddr" readonly />
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>상세주소</td>
-			    					<td>
-			    						<input type="text" name="memAddr2" class="inputForm" id="memAddr2"/>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>이메일 인증</td>
-			    					<td>
-			    						<input type="text" name="memEmail" class="inputForm" id="memEmail" />
-										<button type="button" id="sendAuthEmail" class="btn form-bg-primary">인증 번호 발송</button>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>인증 번호 확인</td>
-			    					<td>
-			    						<input type="text" name="auth_confirm" class="inputForm" id="auth_confirm" />
-										<button type="button" id="authConfirm" class="btn form-bg-primary">인증 번호 확인</button>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>회원가입일</td>
-			    					<td>
-			    						<input type="text" name="memDate" class="inputForm" id="memDate" readonly />
-			    					</td>
-			    				</tr>
-				   			</tbody>
-				   		</table>
-				   		<input class="btn form-bg-primary" type="submit" value="수정">
+							<div class="infoBox">
+								<div class="inputGroup">
+			    					<label>아이디</label>
+			    					<input id="memId" type="text" name="memId" class="inputForm" placeholder="이메일 입력" readonly="readonly">
+								</div>
+								<div class="inputGroup">
+									<label>비밀번호</label>
+									<input type="password" id="memPw" name="memPw" class="inputForm" placeholder="영문,숫자,특수문자 조합 최소 6글자">
+								</div>
+								<div class="inputGroup">
+									<label>비밀번호 확인</label>
+			    					<input type="password" name="memPw_confirm" class="inputForm" id="memPw_confirm"/>
+								</div>
+								<div class="inputGroup">
+									<label>이름</label>
+			    					<input type="text" class="inputForm" name="memName" id="memName">
+								</div>
+								<div class="inputGroup">
+									<label>닉네임</label>
+			    					<input type="text" class="inputForm" name="memNick" id="memNick">
+								</div>
+								<div class="inputGroup">
+									<label>국가</label>
+			    					<select id="memCountry" name="memCountry" class="inputForm">
+                                           <option value="">선택하세요.</option>
+                                           <option value="01">대한민국</option>
+                                           <option value="02">베트남</option>
+                                    </select>
+								</div>
+								<div class="inputGroup">
+									<label>지역</label>
+		    						<select id="memNation" name="memNation" class="inputForm">
+		    							<option value="">선택하세요.</option>
+	                                    <option value="02">서울</option>
+	                                    <option value="031">경기</option>
+	                                    <option value="032">인천</option>
+	                                    <option value="033">강원</option>
+	                                    <option value="041">충남</option>
+	                                    <option value="042">대전</option>
+	                                    <option value="043">충북</option>
+	                                    <option value="051">부산</option>
+	                                    <option value="052">울산</option>
+	                                    <option value="053">대구</option>
+	                                    <option value="054">경북</option>
+	                                    <option value="055">경남</option>
+	                                    <option value="061">전남</option>
+	                                    <option value="062">광주</option>
+	                                    <option value="063">전북</option>
+	                                    <option value="044">세종특별자치시</option>
+	                                    <option value="064">세종특별자치도</option>
+	                             	</select>
+								</div>
+								<div class="inputGroup">
+									<label>연락처</label>
+				    				<input type="text" name="memTel" class="inputForm" id="memTel" placeholder="`-`없이 숫자만 입력" />
+								</div>
+								<div class="inputGroup">
+									<label>우편번호</label>
+		    						<input type="text" name="memPost" class="inputForm" id="postcode" maxlength="5" readonly>
+									<button type="button" class="btn form-bg-primary postcode-finder"
+										data-postcode="postcode" data-addr1="addr1"
+										data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
+								</div>
+								<div class="inputGroup">
+									<label>주소</label>
+			    					<input type="text" name="memAddr" class="inputForm" id="memAddr" readonly />
+								</div>
+								<div class="inputGroup">
+									<label>상세주소</label>
+									<input type="text" name="memAddr2" class="inputForm" id="memAddr2"/>
+								</div>
+								<div class="inputGroup">
+									<label>이메일 인증</label>
+		    						<input type="text" name="memEmail" class="inputForm" id="memEmail" />
+									<button type="button" id="sendAuthEmail" class="btn form-bg-primary">인증번호 발송</button>
+								</div>
+			    				<div class="inputGroup">
+			    					<label>이메일 인증번호</label>
+		    						<input type="text" name="auth_confirm" class="inputForm" id="auth_confirm" />
+									<button type="button" id="authConfirm" class="btn form-bg-primary">인증번호 확인</button>			    				
+			    				</div>
+			    				<div class="inputGroup">
+			    					<label>회원가입일</label>
+			    					<input type="text" name="memDate" class="inputForm" id="memDate" readonly />
+			    				</div>
+			    			</div>
+		    				<div>
+		    					<button type="submit" class="editBtn">
+		    						<img class="editPass" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">수정완료
+		    					</button>
+		    				</div>	
+				   		</div>
 				   	</form>
 				</div>
 			</div>
@@ -474,178 +524,135 @@ label.error {
 						<input type="hidden" name="profileId" id="profileId">
 						<input type="hidden" name="profileSort" id="profileSort">
 						<input type="hidden" name="profileMemId" id="profileMemId">
-						<div>
-							<div class="form-group row">
-								<label class="col-sm-2 colForm-label">프로필 사진</label>
-								<div class="col-sm-10 file_input">
-									<div class="input-group profile">
-										<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-											<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+						<div class="infoContainer">
+							<div>
+								<div>
+									<div class="">
+										<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
+											<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 										</div>
-										<div style="display: flow-root;">
-											<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-												<label class="fileLable">파일 선택
-													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-												</label>
-										</div>
+									</div>
+									<div style="">
+										<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
+											<label class="fileLable">사진 선택
+												<input id="image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+											</label>
 									</div>
 								</div>
 							</div>
+							<div class="infoBox">
+								<div class="inputGroup">
+								<c:if test="${output.memSort == '1'}">
+									<label>공급자 소개</label>
+								</c:if>
+			    				<c:if test="${output.memSort == '2'}">
+									<label>판매자 소개</label>
+								</c:if>	
+			    					<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
+								</div>
+								<div class="inputGroup">
+			    					<label>매출 규모</label>
+			    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
+								</div>
+								<div class="inputGroup">
+			    					<label>판매경력</label>
+			    					<select id="profileCareer" name="profileCareer" class="inputForm">
+	                                    <option value="0">경력없음</option>
+	                                    <option value="1">1개월 이상 ~ 3개월 미만</option>
+	                                    <option value="3">3개월 이상 ~ 6개월 미만</option>
+	                                    <option value="6">6개월 이상 ~ 1년 미만</option>
+	                                    <option value="9">1년 이상 ~ 3년 미만</option>
+	                                    <option value="8">3년 이상</option>
+	                                </select>
+								</div>
+								<div class="inputGroup">
+			    					<label>채널</label>
+			    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
+			    						<input id="ch1" type="checkbox" name="profileCh" value="1">
+	                                	<label for="ch1"><span>오픈마켓</span></label>
+	                                	<input id="ch2" type="checkbox" name="profileCh" value="2">
+	                                	<label for="ch2"><span>종합몰</span></label>
+	                                	<input id="ch3" type="checkbox" name="profileCh" value="3">
+	                                	<label for="ch3"><span>폐쇄몰</span></label>
+	                                	<input id="ch4" type="checkbox" name="profileCh" value="4">
+	                                	<label for="ch4"><span>커뮤니티</span></label>
+	                                	<input id="ch5" type="checkbox" name="profileCh" value="5">
+	                                	<label for="ch5"><span>SNS</span></label>
+	                                	<input id="ch6" type="checkbox" name="profileCh" value="6">
+	                                	<label for="ch6"><span>오프라인</span></label>
+	                                	<input id="ch7" type="checkbox" name="profileCh" value="7">
+	                                	<label for="ch7"><span>해외</span></label>
+	                                </div>
+								</div>
+								<div class="inputGroup">
+			    					<label>등록자 지역</label>
+		    						<select id="profileNation" name="profileNation" class="inputForm">
+	                                    <option value="">선택하세요.</option>
+	                                    <option value="02">서울</option>
+	                                    <option value="031">경기</option>
+	                                    <option value="032">인천</option>
+	                                    <option value="033">강원</option>
+	                                    <option value="041">충남</option>
+	                                    <option value="042">대전</option>
+	                                    <option value="043">충북</option>
+	                                    <option value="051">부산</option>
+	                                    <option value="052">울산</option>
+	                                    <option value="053">대구</option>
+	                                    <option value="054">경북</option>
+	                                    <option value="055">경남</option>
+	                                    <option value="061">전남</option>
+	                                    <option value="062">광주</option>
+	                                    <option value="063">전북</option>
+	                                    <option value="044">세종특별자치시</option>
+	                                    <option value="064">세종특별자치도</option>
+	                                </select>
+								</div>
+								<div class="inputGroup">
+			    					<label>상품분야</label>
+		    						<select id="profileIndus" name="profileIndus" class="inputForm">
+	                                    <option value="">선택하세요.</option>
+	                                    <c:forEach var="indusList" items="${indusList}">
+	                                    	<option value="${indusList.indusId}">${indusList.indusName}</option>
+	                                    </c:forEach>
+	                                </select>
+								</div>
+								<div class="inputGroup">
+			    					<label>사업자 번호</label>
+		    						<input type="text" name="profileBizNum" id="profileBizNum" class="inputForm"/>
+								</div>
+								<div class="inputGroup">
+			    					<label>사업자 유형</label>
+	   								<select id="profileBizSort" name="profileBizSort" class="inputForm">
+	                                       <option value="">선택하세요.</option>
+	                                       <option value="1">법인사업자</option>
+	                                       <option value="2">개인사업자</option>
+	                                       <option value="3">간이과세자</option>
+	                                       <option value="4">개인</option>
+	                                       <option value="5">기타</option>
+	                                </select>
+								</div>
+								<div class="inputGroup">
+			    					<label>해시태그</label>
+			    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
+	                                	<input id="ht1" type="checkbox" name="profileHashtag" value="다양한 채널운영">
+	                                	<label for="ht1"><span>다양한 채널운영</span></label>
+	                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은 매출 셀러">
+	                                	<label for="ht2"><span>높은 매출 셀러</span></label>
+	                                	<input id="ht3" type="checkbox" name="profileHashtag" value="장기판매경력">
+	                                	<label for="ht3"><span>장기판매경력</span></label>
+	                                	<input id="ht4" type="checkbox" name="profileHashtag" value="탁월한 판매능력">
+	                                	<label for="ht4"><span>탁월한 판매능력</span></label>
+	                                	<input id="ht5" type="checkbox" name="profileHashtag" value="다양한 판매분야">
+	                                	<label for="ht5"><span>다양한 판매분야</span></label>
+			                        </div>
+								</div>
+							</div>							
 						</div>
-						<table class="profileTable">
-			    			<tbody>
-			    				<tr>
-			    					<td>판매자 소개</td>
-			    					<td>
-			    						<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>판매자 유형</td>
-			    					<td>
-			    						<input type="text" class="inputForm" id="profileSortName" name="profileSortName" readonly="readonly">
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>매출 규모</td>
-			    					<td>
-			    						<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>판매경력</td>
-			    					<td>
-			    						<select id="profileCareer" name="profileCareer" class="form-control">
-		                                    <option value="0">경력없음</option>
-		                                    <option value="1">1개월 이상</option>
-		                                    <option value="3">3개월 이상</option>
-		                                    <option value="6">6개월 이상</option>
-		                                    <option value="9">1년 이상</option>
-		                                </select>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>채널</td>
-			    					<td>
-				    					<div class="inputForm width-100" style="border: none;">
-				    						<div class="row1">
-			                                	<input type="checkbox" name="profileCh" value="1">
-			                                	<span>오픈마켓</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileCh" value="2">
-			                                	<span>종합몰</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileCh" value="3">
-			                                	<span>폐쇄몰</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileCh" value="4">
-			                                	<span>커뮤니티</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileCh" value="5">
-			                                	<span>SNS</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileCh" value="6">
-			                                	<span>오프라인</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileCh" value="7">
-			                                	<span>해외</span>
-				                           	</div>
-				                        </div>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>등록자 지역</td>
-			    					<td>
-			    						<select id="profileNation" name="profileNation" class="inputForm width-100">
-		                                    <option value="">선택하세요.</option>
-		                                    <option value="02">서울</option>
-		                                    <option value="031">경기</option>
-		                                    <option value="032">인천</option>
-		                                    <option value="033">강원</option>
-		                                    <option value="041">충남</option>
-		                                    <option value="042">대전</option>
-		                                    <option value="043">충북</option>
-		                                    <option value="051">부산</option>
-		                                    <option value="052">울산</option>
-		                                    <option value="053">대구</option>
-		                                    <option value="054">경북</option>
-		                                    <option value="055">경남</option>
-		                                    <option value="061">전남</option>
-		                                    <option value="062">광주</option>
-		                                    <option value="063">전북</option>
-		                                    <option value="044">세종특별자치시</option>
-		                                    <option value="064">세종특별자치도</option>
-		                                </select>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>상품분야</td>
-			    					<td>
-			    						<select id="profileIndus" name="profileIndus" class="inputForm width-100">
-		                                    <option value="">선택하세요.</option>
-		                                    <c:forEach var="indusList" items="${indusList}">
-		                                    	<option value="${indusList.indusId}">${indusList.indusName}</option>
-		                                    </c:forEach>
-		                                </select>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>사업자 번호</td>
-			    					<td>
-			    						<input type="text" name="profileBizNum" id="profileBizNum" class="inputForm width-100"/>
-			    					</td>
-			    				</tr>
-			    				<tr>
-			    					<td>사업자 유형</td>
-			    					<td>
-			    						<div>
-											<select id="profileBizSort" name="profileBizSort" class="form-control">
-		                                        <option value="">선택하세요.</option>
-		                                        <option value="1">법인사업자</option>
-		                                        <option value="2">개인사업자</option>
-		                                        <option value="3">간이과세자</option>
-		                                        <option value="4">개인</option>
-		                                        <option value="5">기타</option>
-		                                    </select>
-				                        </div>
-				   					</td>
-				   				</tr>
-				   				<tr>
-			    					<td>해시태그</td>
-			    					<td>
-				    					<div class="inputForm width-100" style="border: none;">
-				    						<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="다양한 채널운영">
-			                                	<span>다양한 채널운영</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="높은 매출 셀러">
-			                                	<span>높은 매출 셀러</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="장기판매경력">
-			                                	<span>장기판매경력</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="탁월한 판매능력">
-			                                	<span>탁월한 판매능력</span>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input type="checkbox" name="profileHashtag" value="다양한 판매분야">
-			                                	<span>다양한 판매분야</span>
-				                           	</div>
-				                        </div>
-			    					</td>
-			    				</tr>
-				   			</tbody>
-				   		</table>
-				   		<input class="addBtn" type="submit" value="프로필 등록">
+				   		<div>
+	    					<button type="submit" class="editBtn">
+	    						<img class="editPass" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">수정완료
+	    					</button>
+	    				</div>	
 				   	</form>
 				</div>
 			</div>
@@ -667,6 +674,7 @@ label.error {
 					<thead>
 						<tr>
 							<th>등록일</th>
+							<th>종류</th>
 							<th>프로젝트명</th>
 							<th>등록자 닉네임</th>
 							<th>마감일</th>
@@ -676,6 +684,7 @@ label.error {
 					<tbody>
 						<tr>
 							<td>2020-12-25</td>
+							<td>종류</td>
 							<td>다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집</td>
 							<td>위셀글로벌</td>
 							<td>2021-03-01</td>
@@ -806,7 +815,6 @@ $(document).ready(function(){
 					$('#profileBizSort').val(json.output.profileBizSort);
 					$('#profileIntro').val(json.output.profileIntro);
 					$('#profileIndus').val(json.output.profileIndus);
-					$('#profileSortName').val(json.output.profileSortName);
 					var src = "/upload/"+json.output.profilePhoto;
 					$('#profile-img').attr("src", src);
 					
@@ -1095,7 +1103,7 @@ $(document).ready(function(){
 			});
 		}
     })
-    $(document).on("click", "#projAddCount", function(e){
+    $(document).on("click", ".projAddCount", function(e){
     	var projAddCount = $('#projAddCount').attr('data-value');
 		if (projAddCount == 0) {
 			swal('알림', '등록된 프로젝트가 없습니다.', 'warning')

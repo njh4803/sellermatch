@@ -218,7 +218,7 @@ label.error {
     	<button id="projAdd" class="projAdd text-center" disabled="disabled">프로젝트 등록</button>
     </div>
     <div class="partner_wrap addbox1">
-    	<input id="addCheck" type="checkbox"><a href="javascript:void(0)">개인정보공개 및 등록 약관을 확인 하였음. (등록약관보기)</a>
+    	<input id="addCheck" type="checkbox"><label for="addCheck"><span><a href="javascript:void(0)">개인정보공개 및 등록 약관을 확인 하였음. (등록약관보기)</a></span></label>
     </div>
     <div id="findCheckBox">
     	
@@ -613,10 +613,12 @@ $(function() {
 <div class="partner_wrap addbox2 selectFind">
 	<input type="hidden" id="member" name="member" value="${member.memSortName}">
 	<div style="display: inline-block;">
-		<button id="spBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck spFind" value="공급자">판매자 찾기</button>
+		<button id="spBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck spFind" id="spFind" value="공급자">
+			<label for="spFind"><span>판매자 찾기</label></span></button>
 	</div>
 	<div style="display: inline-block;">
-	    <button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" value="판매자">공급자 찾기</button>
+	    <button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" id="ppFind" value="판매자">
+			<label for="ppFind"><span>공급자 찾기</label></span></button>
 	</div>
 </div>
 </script>
@@ -791,49 +793,24 @@ $(function() {
    					<td>
     					<div class="inputForm width-100">
     						<div class="row1">
-                                   <label>
-                                   	<input type="checkbox" name="projKeyword" value="고경력선호">
-                                   	<span class="cr">
-                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                   	</span>
-                                   	<span>고경력선호</span>
-                                   </label>
+                                   	<input type="checkbox" name="projKeyword" id="hash1" value="고경력선호">
+                                   	<label for="hash1"><span>고경력선호</span></label>
                               	</div>
                               	<div class="row1">
-                                   <label>
-                                   	<input type="checkbox" name="projKeyword" value="고마진상품">
-                                   	<span class="cr">
-                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                   	</span>
-                                   	<span>고마진상품</span>
-                                   </label>
+                                   	<input type="checkbox" name="projKeyword" id="hash2" value="고마진상품">
+                                   	<label for="hash2"><span>고마진상품</span></label>
                               	</div>
                               	<div class="row1">
-                                   <label>
-                                   	<input type="checkbox" name="projKeyword" value="매출보장판매자">
-                                   	<span class="cr">
-                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                   	</span>
-                                   	<span>매출보장 판매자</span>
-                                   </label>
+                                   	<input type="checkbox" name="projKeyword" id="hash3" value="매출보장판매자">
+                                   	<label for="hash3"><span>매출보장 판매자</span></label></span>
                               	</div>
                               	<div class="row1">
-                                   <label>
-                                   	<input type="checkbox" name="projKeyword" value="수출가능상품">
-                                   	<span class="cr">
-                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                   	</span>
-                                   	<span>수출가능상품</span>
-                                   </label>
+                                   	<input type="checkbox" name="projKeyword" id="hash4" value="수출가능상품">
+                                   	<label for="hash4"><span>수출가능상품</span></label>
                               	</div>
                               	<div class="row1">
-                                   <label>
-                                   	<input type="checkbox" name="projKeyword" value="요즘뜨는제품">
-                                   	<span class="cr">
-                                   		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-                                   	</span>
-                                   	<span>요즘 뜨는 제품</span>
-                                   </label>
+                                   	<input type="checkbox" name="projKeyword" id="hash5" value="요즘뜨는제품">
+                                   	<label for="hash5"><span>요즘 뜨는 제품</span></label>
                               	</div>
                            </div>
    					</td>
