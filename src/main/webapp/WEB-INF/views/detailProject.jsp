@@ -41,7 +41,8 @@
 }
 .container1{
 	border: 2px solid #e3e3e3;
-	height: 400px;
+	width: 900px;
+	display: inline-block;
 }
 .container2{
 	margin: 0 240px;
@@ -50,7 +51,7 @@
 .container1 .container2{
 	margin: 0;
     width: 900px;
-    height: 396px;
+	height: fit-content;
     float: left;
     padding: 0 60px;
 }
@@ -63,12 +64,12 @@
     padding: 20px;
 } */
 .container3{
-	border-left: 2px solid #e3e3e3;
-	border-bottom: 2px solid #e3e3e3;
-    height: 278px;
-    width: 362px;
+  	width: 360px;
+  	padding: 60px 40px 145.4px;
+  	border: solid 1px #cccccc;
+  	background-color: #ffffff;
     float: right;
-    padding: 20px;
+    padding: 60px 40px;
 }
 .container4{
     border-left: 2px solid #e3e3e3;
@@ -163,6 +164,10 @@
 .titleBox{
 	font-size: 22px;
 	font-weight: 500;
+	overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
 }
 .titleBox .pp{
 	width: 100px;
@@ -201,6 +206,7 @@
 	display: inline-block;
 	margin-top: 10px;
 	margin-bottom: 30px;
+	margin-right: 70px;
 }
 .projDetail a{
 	text-decoration: none;
@@ -288,37 +294,77 @@ a:focus, a:hover{
   display: inline-block;
 }
 .infoBox span{
-	color: #aaa;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #838383;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.infoBox span.textRow{
+  display: inline-block;
+  font-size: 20px;
+  margin: 0;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
 }
 .infoBox2{
-  display: inline-block;
-  text-align: left;
-  border: 1px solid #e3e3e3;
-  height: 50px;
-  padding-top: 15px;
-  padding-right: 10px;
-  margin-right: 20px;
+    display: inline-block;
+    text-align: left;
+    width: 388px;
+}
+.infoBox3{
+  height: fit-content;
+  padding: 7px 0;
 }
 .infoBox2 span{
-	margin: 20px;
+  width: 110px;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  display: inline-block;
+}
+.infoBox2 span.textRow2{
+  width: 278px;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+  display: inline-block;
 }
 .profileImgBox{
-    width: 100px;
-    height: 100px;
     display: inline-block;
     border-radius: 70%;
     overflow: hidden;
-    border: 1px solid #e3e3e3;
     margin: 15px;
+    width: 131px;
+	height: 131px;
 }
 .miniImgBox{
-  	width: 60px;
-    height: 60px;
     display: inline-block;
     border-radius: 70%;
     overflow: hidden;
     border: 1px solid #e3e3e3;
-    margin: 15px;
+	width: 52px;
+	height: 52px;
+	margin: 10px;
 }
 .intro{
 	display: inline-block;
@@ -367,44 +413,40 @@ a:focus, a:hover{
     min-height: 150px;
     margin: 16px 0;
 }
-.applyBtn{
-	color: white;
-    width: 180px;
-    height: 50px;
-    font-size: 18px;
-    display: inline-block;
-    background-color: #00B0F0;
-    float: left;
-    margin-left: 20px;
-}
-.scrapBtn{
-	width: 100px;
-	height: 50px;
-	font-size: 18px;
-    display: inline-block;
-    background-color: white;
-    float: left;
-    border: 1px solid #e3e3e3;
-}
-.applyNum{
-	margin: 30px;
-	font-size: 18px;
+.applyStatus{
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.88;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
 }
 .applyNick{
 	display: inline-block;
-    vertical-align: top;
-    width: 150px;
-    font-size: 10px;
-    text-align: left;
-    color: #00B0F0;
-    margin: 20px 0;
+    vertical-align: middle;
+	height: 21px;
+	font-size: 15px;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
+	margin-top: -20px;
 }
 .applyTag{
 	display: inline-block;
-	margin: 15px 0;
-    font-size: 10px;
-    text-align: left;
-    color: #aaa;
+	font-family: NotoSansKR;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.4;
+	letter-spacing: normal;
+	text-align: left;
+	color: #4b4b4b;
 }
 .bar{
   width: 1920px;
@@ -474,6 +516,67 @@ a:focus, a:hover{
   border-bottom: solid 1px #cccccc;
   margin-top: 30px;
 }
+.detailBox2{
+  width: 780px;
+  border-bottom: solid 1px #cccccc;
+  padding: 22px 0;
+  margin-bottom: 22px;
+}
+.detailBox3{
+  height: 29px;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 15px;
+  display: inline;
+  width: 100%;
+}
+.detailBox3 .textBox1{
+  font-size: 15px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 50px;
+}
+.applyNumBox{
+  margin: 10px 0 0;
+  border-top: solid 1px #dddddd;
+  border-bottom: solid 1px #dddddd;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.applyNumBox span{
+	display: inline-block;
+	margin-bottom: 12.5px;
+	margin-top: 10px;
+}
+.applyNumBox span:nth-child(2){
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000000;
+}
+.profileNick{
+  margin: 5px 0 20px;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #57207c;
+}
 </style>
 <div class="partner_bnr">
 	<div class="bar"><span>프로젝트 상세정보</span></div>
@@ -485,6 +588,7 @@ a:focus, a:hover{
 				<div class="row1">
 				</div>
 				<div class="row2 leftBox">
+					<div>
 					<c:choose>
 						<c:when test="${output.projDday < 0}">
 							<div class="endBox">마감</div>
@@ -495,19 +599,20 @@ a:focus, a:hover{
 					</c:choose>
 					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
 		           		<div class="tagBox">#${projKeywordList}</div>
-		           	</c:forEach>
+		           	</c:forEach>					
+					</div>
 		           	<div class="row1 projDetail"  data-index="${status.index}">
 						<div class="titleBox">${output.projTitle}</div>
 					</div>
-		           	<div class="rightBox">
+		           	<div class="rightBox" style="padding: 0;">
 		           		<div>
 		           			<button class="favoriteBtn">
-		           				<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">관심등록
+		           				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">관심등록
 		           			</button>
 		           		</div>
 		           		<div>
 		           			<button class="matchBtn">
-		           				<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 매치하기
+		           				<img class="matchPass applyBtn" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 매치하기
 		           			</button>
 		           		</div>
 		           	</div>
@@ -516,162 +621,113 @@ a:focus, a:hover{
 				<div class="detailBox1">
 					<div class="infoBox">
 						<div><span>상품분류</span></div>
-						<div>${output.projIndusName}</div>
+						<div><span class="textRow">${output.projIndusName}</span></div>
 					</div>
 					<div class="infoBox">
-						<div class=""><span>상품단가</span></div>
-						<div>${output.projPrice}</div>
+						<div><span>상품단가</span></div>
+						<div><span class="textRow">${output.projPrice}</span></div>
 					</div>
 					<div class="infoBox">
 						<div><span>판매마진</span></div>
-						<div>${output.projMarginName}</div>
+						<div><span class="textRow">${output.projMarginName}</span></div>
 					</div>
 					<div class="infoBox">
 						<div><span>등록지역</span></div>
-						<div>${output.projNationName}</div>
+						<div><span class="textRow">${output.projNationName}</span></div>
 					</div>				
 				</div>
-				
 				<div class="clearfix"></div>
-				<div class="row1 leftBox">
-
-				</div>
-				<div class="row1 leftBox">
+				<div class="detailBox2">
 					<div class="infoBox2">
-						<div><span>공급방법</span>${output.projSupplyTypeName}</div>
+						<div class="infoBox3"><span>공급방법</span><span class="textRow2">${output.projSupplyTypeName}</span></div>
+						<div class="infoBox3"><span>모집마감</span><span class="textRow2">${output.projEndDate}일</span></div>
+						<div class="infoBox3"><span>모집인원</span><span class="textRow2">${output.projRecruitNum}명</span></div>
 					</div>
 					<div class="infoBox2">
-						<div><span>모집마감</span>${output.projEndDate}일</div>
-					</div>
-					<div class="infoBox2">
-						<div><span>모집인원</span>${output.projRecruitNum}명</div>
-					</div>
-					<div class="infoBox2">
-						<div><span>지원자수</span>${output.applyCount}명</div>
-					</div>
-				</div>
-				<div class="row1 leftBox">
-					<div class="infoBox2" style="width: 100%;">
-						<div><span>판매채널</span>
-						<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
-		           			<c:choose>
-		           				<c:when test="${status.last}">
-		           					${projChannelList} 
-		           				</c:when>
-		           				<c:otherwise>
-		           					${projChannelList}, 
-		           				</c:otherwise>
-		           			</c:choose>
-		           		</c:forEach>
+						<div class="infoBox3"><span>지원자수</span><span class="textRow2">${output.applyCount}명</span></div>  
+						<div class="infoBox3"><span>판매채널</span><span class="textRow2">
+							<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
+								${projChannelList}
+			           		</c:forEach>
+			           		</span>
 		           		</div>
-					</div>
+						<div class="infoBox3"><span>검증내용</span><span class="textRow2">
+							<c:if test="${output.profileBizCerti == 1}"> 
+								사업자인증
+							</c:if>
+							<c:if test="${output.memRname == 1}">
+								신원인증
+							</c:if>
+							<c:if test="${output.projProfit == 1}">
+								수익성검증
+							</c:if>
+							<c:if test="${output.projProdCerti == 1}"> 
+								상품검증
+							</c:if>
+							<c:if test="${output.profileChChk == 1}">
+								채널검증
+							</c:if>
+							<c:if test="${output.profileSaleChk == 1}">
+								매출검증
+							</c:if>
+							</span>
+						</div>			           		
+					</div>				
 				</div>
-				<div class="row1 leftBox">
-					<div class="infoBox2" style="width: 100%;">
-						<div><span>검증내용</span>
-						<c:if test="${output.profileBizCerti == 1}"> 
-							사업자인증
-						</c:if>
-						<c:if test="${output.memRname == 1}">
-							신원인증
-						</c:if>
-						<c:if test="${output.projProfit == 1}">
-							수익성검증
-						</c:if>
-						<c:if test="${output.projProdCerti == 1}"> 
-							상품검증
-						</c:if>
-						<c:if test="${output.profileChChk == 1}">
-							채널검증
-						</c:if>
-						<c:if test="${output.profileSaleChk == 1}">
-							매출검증
-						</c:if>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="container3">
-				<div class="row1 text-left">
-					<div class="endBox">등록자</div> ${output.memNick}
-				</div>
-				<div class="text-left">
-					<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
-					<div class="intro">${output.profileIntro}</div>
-				</div>
-				<div class="row1 text-left leftBox">
-					<div>
-						프로젝트 등록 ${output.projAddCount}건
-					</div>
-					<div>
-						프로젝트 거래 ${output.contractCount}건
-					</div>
-				</div>
-			</div>
-			<%-- <div class="container4">
-				<div class="row1 text-left">
-					<button class="applyBtn">프로젝트 지원하기</button>
-					<button class="scrapBtn">스크랩</button>
-				</div>
-				<div class="text-center">
-					<div class="applyNum">총 지원자 ${output.applyCount}명</div>
-				</div>
-				<c:choose>
-					<c:when test="${output.applyCount > 0}">
-						<div class="text-center">
-						<c:forEach var="applyDto" items="${applyDto}">
-							<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
-							<div class="applyNick">
-								<div>( ${applyDto.memNick} )</div>
-								<div class="applyTag">
-									<c:forEach var="hashtag" items="${applyDto.profileHashtagList}">
-		        						# ${hashtag}
-		        					</c:forEach>
-								</div>
-							</div>
-						</c:forEach>	
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="text-center">
-							<div>지원자 없음</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-			</div> --%>
-		</div>
-		<div style="margin-top: 50px;">
-			<div class="a">
-				<span class="c" id="bt01">상세정보</span>
-				<span class="c" id="bt02">필수요건</span>
-				<span class="c" id="bt03">문의하기</span>
-				<span class="c" id="bt04">후기</span>
-			</div>
-			<div class="b">
-				<div class="window" id="window1">
-					<div class="tabContent">
+				<div class="detailBox3">상세정보
+					<div class="textBox1">
 						${output.projDetail}
 					</div>
 				</div>
-				<div class="window" id="window2">
-					<div class="tabName">필수요건</div>
-					<div class="tabContent">
+				<div class="detailBox3">필수요건
+					<div class="textBox1">
 						${output.projRequire}
 					</div>
 				</div>
-				<div class="window" id="window3">
-					<div class="tabName">문의하기</div>
-					<div class="tabContent">
-						문의하기 부분
-					</div>
+<!-- 				<div class="detailBox3">문의하기</div>
+				<div class="detailBox3">후기</div>  -->
+			</div>
+		</div>
+		<div class="container3">
+			<div class="text-center">
+				<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+				<div class="profileNick">${output.memNick}</div>
+			</div>
+			<div class="applyNumBox">
+				<div>
+					<span>프로젝트 등록</span>
+					<span>${output.projAddCount}건</span>
 				</div>
-				<div class="window" id="window4">
-					<div class="tabName">후기</div>
-					<div class="tabContent">
-						후기 부분
-					</div>
+				<div>
+					<span>프로젝트 거래</span>
+					<span>${output.contractCount}건</span>
 				</div>
 			</div>
+			<div class="text-center">
+				<div class="applyStatus">프로젝트 지원현황</div>
+			</div>
+			<c:choose>
+				<c:when test="${output.applyCount > 0}">
+					<c:forEach var="applyDto" items="${applyDto}">
+					<div class="text-letf" style="margin-top: 10px;">
+						<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+						<div class="applyNick">
+							<div>${applyDto.memNick}</div>
+							<div class="applyTag">
+								<c:forEach var="hashtag" items="${applyDto.profileHashtagList}">
+	        						# ${hashtag}
+	        					</c:forEach>
+							</div>
+						</div>
+					</div>
+					</c:forEach>	
+				</c:when>
+				<c:otherwise>
+					<div class="text-center">
+						<div>지원자 없음</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 </div>

@@ -527,6 +527,10 @@ a:focus, a:hover{
   line-height: 1.5;
   color: #000000;
   height: 72px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
 }
 .hot-hr{
 	margin-bottom: 16.5px;

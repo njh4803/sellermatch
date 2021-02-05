@@ -595,8 +595,7 @@ label.error {
 			    				</div>
 			    			</div>
 		    				<div>
-		    					<button type="submit" class="editBtn">
-		    						<img class="editPass" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">수정완료
+		    					<button type="submit" class="editBtn">수정완료
 		    					</button>
 		    				</div>	
 				   		</div>
@@ -736,8 +735,7 @@ label.error {
 							</div>							
 						</div>
 				   		<div>
-	    					<button type="submit" class="editBtn">
-	    						<img class="editPass" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">수정완료
+	    					<button type="submit" class="editBtn">수정완료
 	    					</button>
 	    				</div>	
 				   	</form>
