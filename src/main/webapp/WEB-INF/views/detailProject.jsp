@@ -8,7 +8,7 @@
 }
 .partner_bnr {
     width: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 108px;
 }
 .partner_bnr2 {
     width: 100%;
@@ -54,6 +54,7 @@
 	height: fit-content;
     float: left;
     padding: 0 60px;
+    padding-bottom: 68px;
 }
 /* .container3{
 	border-left: 2px solid #e3e3e3;
@@ -293,27 +294,24 @@ a:focus, a:hover{
   height: 100px;
   display: inline-block;
 }
-.infoBox span{
+.textBox2{
   display: inline-block;
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 2;
   letter-spacing: normal;
   text-align: center;
   color: #838383;
   margin-top: 20px;
   margin-bottom: 10px;
 }
-.infoBox span.textRow{
-  display: inline-block;
+.infoBox .textRow{
   font-size: 20px;
-  margin: 0;
-  font-weight: normal;
+  margin-bottom: 20px;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.5;
   letter-spacing: normal;
   text-align: center;
   color: #000000;
@@ -415,7 +413,7 @@ a:focus, a:hover{
 }
 .applyStatus{
 	font-size: 16px;
-	font-weight: normal;
+	font-weight: 500;
 	font-stretch: normal;
 	font-style: normal;
 	line-height: 1.88;
@@ -469,7 +467,6 @@ a:focus, a:hover{
 .favoriteBtn{
   width: 160px;
   height: 40px;
-  padding: 10.3px 48.6px 10.7px 47.9px;
   border-radius: 4px;
   border: solid 1px #cccccc;
   background-color: #ffffff;
@@ -479,14 +476,13 @@ a:focus, a:hover{
   font-style: normal;
   line-height: 1.46;
   letter-spacing: normal;
-  text-align: left;
+  text-align: center;
   color: #000000;
   margin-bottom: 10px;
 }
 .matchBtn{
   width: 160px;
   height: 40px;
-  padding: 10.3px 23.5px 10.5px 18px;
   border-radius: 4px;
   background-image: linear-gradient(to right, #d90b54, #3b1374);
   font-size: 13px;
@@ -495,7 +491,7 @@ a:focus, a:hover{
   font-style: normal;
   line-height: 1.46;
   letter-spacing: normal;
-  text-align: left;
+  text-align: center;
   color: #ffffff;
 }
 .star{
@@ -546,6 +542,35 @@ a:focus, a:hover{
   color: #000000;
   margin-bottom: 50px;
 }
+.detailBox3 .textBox2{
+  width: 780px;
+  height: 60px;
+  margin: 15px 29px 10px 0;
+  padding: 6px 0 7px 20px;
+  border: solid 1px #cccccc;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+  overflow: hidden;
+}
+.detailBox4{
+  display: contents;
+  height: 32px;
+  margin-bottom: 22px;
+  font-size: 22px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
 .applyNumBox{
   margin: 10px 0 0;
   border-top: solid 1px #dddddd;
@@ -559,12 +584,12 @@ a:focus, a:hover{
 	margin-top: 10px;
 }
 .applyNumBox span:nth-child(2){
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
-  text-align: right;
+  float: right;
   color: #000000;
 }
 .profileNick{
@@ -576,6 +601,53 @@ a:focus, a:hover{
   letter-spacing: normal;
   text-align: center;
   color: #57207c;
+}
+.question-btn{
+  width: 100px;
+  height: 30px;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+#question-form{
+	margin-bottom: 106px;
+}
+.reviewBox{
+	padding: 19px 0 20px 12px;
+	width: 808px;
+	height:fit-content;
+	border-top: solid 1px #ebebeb;
+	border-bottom: solid 1px #ebebeb;
+}
+.reviewNick{
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 12px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
+}
+.reviewDate{
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #a3a3a3;
+}
+.reviewContents{
+	padding: 11px 0 0 12px;
 }
 </style>
 <div class="partner_bnr">
@@ -620,20 +692,20 @@ a:focus, a:hover{
 				<div class="clearfix"></div>
 				<div class="detailBox1">
 					<div class="infoBox">
-						<div><span>상품분류</span></div>
-						<div><span class="textRow">${output.projIndusName}</span></div>
+						<div class="textBox2"><span>상품분류</span></div>
+						<div class="textRow"><span>${output.projIndusName}</span></div>
 					</div>
 					<div class="infoBox">
-						<div><span>상품단가</span></div>
-						<div><span class="textRow">${output.projPrice}</span></div>
+						<div class="textBox2"><span>상품단가</span></div>
+						<div class="textRow"><span>${output.projPrice}</span></div>
 					</div>
 					<div class="infoBox">
-						<div><span>판매마진</span></div>
-						<div><span class="textRow">${output.projMarginName}</span></div>
+						<div class="textBox2"><span>판매마진</span></div>
+						<div class="textRow"><span>${output.projMarginName}</span></div>
 					</div>
 					<div class="infoBox">
-						<div><span>등록지역</span></div>
-						<div><span class="textRow">${output.projNationName}</span></div>
+						<div class="textBox2"><span>등록지역</span></div>
+						<div class="textRow"><span>${output.projNationName}</span></div>
 					</div>				
 				</div>
 				<div class="clearfix"></div>
@@ -647,7 +719,7 @@ a:focus, a:hover{
 						<div class="infoBox3"><span>지원자수</span><span class="textRow2">${output.applyCount}명</span></div>  
 						<div class="infoBox3"><span>판매채널</span><span class="textRow2">
 							<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
-								${projChannelList}
+								${projChannelList}&nbsp;
 			           		</c:forEach>
 			           		</span>
 		           		</div>
@@ -674,8 +746,11 @@ a:focus, a:hover{
 						</div>			           		
 					</div>				
 				</div>
-				<div class="detailBox3">상세정보
+				<div class="detailBox3">상세내용
 					<div class="textBox1">
+						<c:forEach var="projDetailImg" items="${output.projDetailImg}">
+							${projDetailImg}
+						</c:forEach>
 						${output.projDetail}
 					</div>
 				</div>
@@ -684,9 +759,21 @@ a:focus, a:hover{
 						${output.projRequire}
 					</div>
 				</div>
-<!-- 				<div class="detailBox3">문의하기</div>
-				<div class="detailBox3">후기</div>  -->
-			</div>
+				<div class="detailBox3">문의하기
+					<form action="javascript:void(0);" method="post" id="question-form" class="text-right">
+					    <textarea name="question" class="textBox2 question" placeholder="-작성한 내용은 수정 및 삭제가 불가합니다&#13;&#10;-이메일. 전화번호 등을 게시하여 직거래를 유도할 경우 서비스 이용에 제재를 받을 수 있습니다"></textarea>
+					    <input type="submit" class="question-btn" value="문의하기">
+					</form>
+				</div>
+				<div class="detailBox4">후기
+					<div class="reviewBox">
+						<div class="reviewNick">최고최고</div>
+						<div class="reviewDate">2021.02.01</div>
+						<div class="reviewContents">매치를 위한 필수요건 내용이 들어가면 됩니다. 매치를 위한 필수요건 내용이 들어가면 됩니다</div>
+					</div>
+					
+				</div>
+			</div> 
 		</div>
 		<div class="container3">
 			<div class="text-center">
@@ -723,15 +810,13 @@ a:focus, a:hover{
 					</c:forEach>	
 				</c:when>
 				<c:otherwise>
-					<div class="text-center">
+					<div class="text-left">
 						<div>지원자 없음</div>
 					</div>
 				</c:otherwise>
 			</c:choose>
 		</div>
 	</div>
-</div>
-<div class="partner_bnr">
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>

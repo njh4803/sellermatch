@@ -515,12 +515,12 @@ a:focus, a:hover{
   line-height: 1.5;
 }
 .hotTitle{
-  margin-left: 20px;
+  margin: 0 22px;
   margin-bottom: 10.5px; 
   object-fit: contain;
   font-family: NotoSansKRRegular;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -867,17 +867,10 @@ a:focus, a:hover{
 				        	<span class="reg"> 등록일 </span><span class="regDate">${output.projRegDate}</span>
 						</div>
 					</div>
-					<div class="row1 leftBox projDetail" data-index="${status.index}">
-						<c:if test="${output.projSort == 1}">
-							<div class="titleBox">
-								<a><span class="pp">공급자</span> | ${output.projTitle}</a>
-							</div>
-						</c:if>
-						<c:if test="${output.projSort == 2}">
-							<div class="titleBox">
-								<a><span class="sp">판매자</span> | ${output.projTitle}</a>
-							</div>
-						</c:if>
+					<div class="row1 leftBox projDetail">
+						<div class="titleBox">
+							${output.projTitle}
+						</div>
 					</div>
 					<div class="row1 leftBox" style="margin-top: 13px;">
 						<button class="grayBox">${output.projNationName}지역</button>
@@ -935,7 +928,7 @@ a:focus, a:hover{
 						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
 							관심등록
 						</button>
-						<button class="match">
+						<button class="match" data-index="${status.index}">
 						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 							매치하기
 						</button>
@@ -1078,17 +1071,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 				        	<span class="reg"> 등록일 </span><span class="regDate">{{projRegDate}}</span>
 						</div>
 					</div>
-					<div class="row1 leftBox projDetail" data-index="{{@key}}">
-						{{#ifCond projSort '==' 1}}
-							<div class="titleBox">
-								<a><span class="pp">{{projTitle}}</a>
-							</div>
-						{{/ifCond}}
-						{{#ifCond projSort '==' 2}}
-							<div class="titleBox">
-								<a><span class="sp">{{projTitle}}</a>
-							</div>
-						{{/ifCond}}
+					<div class="row1 leftBox projDetail">
+						<div class="titleBox">
+							{{projTitle}}
+						</div>
 					</div>
 					<div class="row1 leftBox" style="margin-top: 13px;">
 						<button class="grayBox">{{projNationName}}지역</button>
@@ -1143,7 +1129,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
 							관심등록
 						</button>
-						<button class="match">
+						<button class="match" data-index="{{@key}}">
 						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 							매치하기
 						</button>
@@ -1200,7 +1186,7 @@ $(document).ready(function() {
 		
 	});
 	
-	$(document).on("click", ".projDetail", function(){
+	$(document).on("click", ".match", function(){
 		
 		var idx = $(this).data('index');
 		var projId = $("#projId"+idx).val();
