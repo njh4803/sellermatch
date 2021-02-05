@@ -68,10 +68,18 @@ label.error {
 	padding: 5px 10px;
 	margin: 0;
 }
-.form-group .col-sm-10 .id_btn{
-	width: 100%;
-	background-color: #595959;
-	border-color: #595959;
+.form-group .id_btn{
+  width: 400px;
+  height: 50px;
+  border-radius: 12px;
+  background-image: linear-gradient(to left, #3b1374, #d10c56);
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal; 
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
 }
 .communicate{
 	display: inline-block;
@@ -110,6 +118,12 @@ label.error {
 	color: #000000;
 	line-height: initial;
 	
+}
+.loginPass{
+  width: 15.3px;
+  height: 21.4px;
+  object-fit: contain;
+  margin-top: -4px;
 }
 </style>
 
@@ -313,7 +327,9 @@ $(document).ready(function() {
                                 <div class="row"></div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="submit" id="loginBtn" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">로그인</button>
+                                        <button type="submit" id="loginBtn" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">
+										<img class="loginPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+										로그인</button>
                                     </div>
                                 </div>
                                 <div class="row m-t-25 text-left">
@@ -352,6 +368,10 @@ $(document).ready(function() {
 <div class="modal-content">
 <div class="modal-body">
 	<div class="">
+		<div class="login_logo" style="margin-top:0;">
+        	<img src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+        	<h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
+		</div>
 		<div class="row">
 			<div class="col-sm-12">
 				<ul class="nav nav-tabs togtab">
@@ -364,9 +384,9 @@ $(document).ready(function() {
 					<div class="tab-pane active fade in" id="idf">
 						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/idFind">
 						<div class="form-group">
-							<label for="memTel" class="col-sm-2 col-form-label" style="padding: 8px 0;">연락처
+							<label for="memTel" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 39px;">연락처
 							</label>
-                       	 	<div class="col-sm-10">
+                       	 	<div class="col-sm-9">
 								<div class="form-group">
 									<input id="memTel" type="text" name="memTel" class="form-control" placeholder="가입시 연락처">
 								</div>
@@ -374,44 +394,22 @@ $(document).ready(function() {
 						</div>
 						<div class="form-group">
 							<div class="col-sm-2"></div>
-							<div class="col-sm-10">
-								<button type="submit" class="btn btn-primary id_btn" style="margin-bottom: 40px;">아이디
+							<div>
+								<button type="submit" class="btn btn-primary id_btn">아이디
 									찾기</button>
 							</div>
 						</div>
-						<div class="row">
-                        	<div class="col-md-12">
-                            	<img src="${pageContext.request.contextPath}/local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
-                            </div>
-                        </div>
-						<div class="row">
-                        	<div class="col-md-12">
-                            	<div class="communicateBox text-center">
-									<div class="row">• 운영시간</div>
-									<div class="row">
-										<div>
-											<img src="${pageContext.request.contextPath}/local_assets/img/tel.jpg">
-											<div class="text">
-												<div style="display: block;">평일 AM 9:00 ~ PM 6:00  (일요일 / 공휴일은 쉽니다)</div>
-												<div>TEL. 032-459-2236</div>
-											</div>
-										</div>
-										<div>
-											<img src="${pageContext.request.contextPath}/local_assets/img/mail.jpg">
-											<div>help@sellermatch.co.kr</div>
-										</div>
-									</div>
-								</div>
-                            </div>
+						<div class="row" style="margin: 0 auto;">
+							<img src="${pageContext.request.contextPath}/local_assets/img/find.png" style="width:400px;">
                         </div>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="pwdf">
 						<form id="find-pw-form" method="post" action="${pageContext.request.contextPath}/pwFind">
 						<div class="form-group">
-							<label for="memId" class="col-sm-2 col-form-label" style="padding: 8px 0;"> 이메일
+							<label for="memId" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 39px;"> 이메일
 							</label>
-                       	 	<div class="col-sm-10">
+                       	 	<div class="col-sm-9">
 								<div class="form-group">
 									<input id="memId" type="email" name="memId" class="form-control" placeholder="이메일">
 								</div>
@@ -419,35 +417,13 @@ $(document).ready(function() {
 						</div>
 						<div class="form-group">
 							<div class="col-sm-2"></div>
-							<div class="col-sm-10">
-								<button type="submit" class="btn btn-primary id_btn" style="margin-bottom: 40px;">비밀번호
+							<div>
+								<button type="submit" class="btn btn-primary id_btn">비밀번호
 									찾기</button>
 							</div>
 						</div>
-						<div class="row">
-                        	<div class="col-md-12">
-                            	<img src="${pageContext.request.contextPath}/local_assets/img/x.jpg"><p class="text-inverse text-left communicate">확인이 어려운경우 아래 연락처로 문의 주세요.</p>
-                            </div>
-                        </div>
-						<div class="row">
-                        	<div class="col-md-12">
-                            	<div class="communicateBox text-center">
-									<div class="row">• 운영시간</div>
-									<div class="row">
-										<div>
-											<img src="${pageContext.request.contextPath}/local_assets/img/tel.jpg">
-											<div class="text">
-												<div style="display: block;">평일 AM 9:00 ~ PM 6:00  (일요일 / 공휴일은 쉽니다)</div>
-												<div>TEL. 032-459-2236</div>
-											</div>
-										</div>
-										<div>
-											<img src="${pageContext.request.contextPath}/local_assets/img/mail.jpg">
-											<div>help@sellermatch.co.kr</div>
-										</div>
-									</div>
-								</div>
-                            </div>
+						<div class="row" style="margin: 0 auto;">
+							<img src="${pageContext.request.contextPath}/local_assets/img/find.png" style="width:400px;"> 
                         </div>
 						</form>
 					</div>

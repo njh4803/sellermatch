@@ -8,7 +8,6 @@
 }
 .partner_bnr {
     width: 100%;
-    padding-top: 180px;
     padding-bottom: 100px;
 }
 .partner_bnr2 {

@@ -61,7 +61,7 @@ $(function () {
             console.log('>> Ajax 통신 종료!!!!');
 			setTimeout(function(){
 				loader.hide();
-			}, 3000);
+			}, 1000);
         },
     });
 });

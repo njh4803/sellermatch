@@ -33,7 +33,9 @@ a:hover {
 }
 .partner_bnr .partner_wrap2 {
     width: 640px;
-    margin: 80px auto;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
     text-align: center;
 }
 .width-70{
@@ -52,16 +54,15 @@ a:hover {
 	height: 60px;
     display: inline-block;
     margin: 10px;
-	border-radius: 5px;
-	border: solid 1px #b1b1b1;
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
 	background-color: #ffffff;
 	padding: 20px;
+	
 }
 .joinBox img{
-	position: relative;
-    float: left;
-    top: -10px;
-    right: 5px;
+	margin-right: 5px;
+    margin-top: -5px;
 }
 
 .joinBox img.mail{
@@ -69,36 +70,38 @@ a:hover {
     right: -2px;
 }
 .joinBox.naver{
-	background-color: #00d15a;
-	border: none;
+	background-color: #ffffff;
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
 }
 .joinBox.naver a{
-	color: #ffffff;
+	color: #000000;
 }
 .joinBox.kakao{
-	background-color: #fae100;
-	border: none;
+	background-color: #ffffff;
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
 }
 .joinBox.kakao a{
-	color: #381e1f;
+	color: #000000;
 }
 .joinBox.google{
-	border: solid 1px #e3e3e3;
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
 	background-color: #ffffff;
 }
 .joinBox.google a{
-color: #0054db;
+color: #000000;
 }
 .joinBox a{
-  font-family: NotoSansKR;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.4;
   letter-spacing: normal;
   text-align: center;
-  color: #381e1f;
+  color: #000000;
 }
 .bar{
   width: 1920px;
@@ -108,10 +111,10 @@ color: #0054db;
 }
 .textbox1{
 	height: 36px;
-    margin: 10px 0;
+    margin: 4.5px 0 8px 0;
     font-family: NotoSansKR;
     font-size: 25px;
-    font-weight: bold;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.44;
@@ -153,7 +156,14 @@ color: #0054db;
   text-align: center;
   color: #8b8b8b;
 }
-
+.hr001{
+    display: inline-block;
+    width: 500px !important;
+    height: 0 !important;
+    margin: 20px 0 0 0.5px !important;
+    border: solid 0.5px #eeeeee !important;
+    text-align: center;
+}
 </style>
 <div class="partner_bnr">
 	<div class="bar"></div>
@@ -166,23 +176,24 @@ color: #0054db;
         </div>
         <div class="textbox1">셀러매치는 로그인이 필요한 서비스입니다</div>
         <div class="textbox2">회원이 아니시라면, 5초! 회원가입 후 셀러매치의 서비스를 이용해주세요</div>
+        <hr class="hr001">
 	    <div class="partner_wrap2">
 	        <h2>셀러매치 5초 SNS 간편가입</h2>
 	        <div class="joinBox naver">
 	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/naver.png">
-	        		<a class="" href="#">네이버 가입</a>
+	        		<a class="" href="#">네이버 아이디로 회원가입</a>
 	        </div>
 	        <div class="joinBox kakao">
 	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/kakao.png">
-	        	<a class="" href="#">카카오 가입</a>
+	        	<a class="" href="#">카카오톡으로 회원가입</a>
 	        </div>
 	        <div class="joinBox google">
 	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/google.png">
-	        	<a class="" href="#">구글 가입</a>
+	        	<a class="" href="#">구글 계정으로 회원가입</a>
 	        </div>
 	        <div class="joinBox">
 	        	<img class="mail" alt="" src="${pageContext.request.contextPath}/local_assets/img/mail.png">
-	        	<a href="${pageContext.request.contextPath}/member/join">이메일 가입</a>
+	        	<a href="${pageContext.request.contextPath}/member/join">이메일로 회원가입</a>
 	        </div>
 	        <div class="csCenter">고객센터 : help@sellermatch.co.kr</div>
 	    </div>

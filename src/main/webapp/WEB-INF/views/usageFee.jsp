@@ -577,7 +577,11 @@ ul.pagination>li>a {
 
 			</div>
 			<div id="tab-5" class="tab-content2">
-		---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
+				<div style="width:1115px;height: 579px;margin:20px 82px 201px 83px; padding: 258px 0 257px;border: solid 1px #cccccc;background-color: #ffffff;text-align: center;">
+					<div style="display: inline-block;font-size: 20px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: normal;color: #000000;">
+						BATA 서비스 중으로 <br> 무료 이용기간입니다
+					</div>
+				</div>
 			</div>
     </div>
 </div>

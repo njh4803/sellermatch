@@ -272,10 +272,16 @@ label.error {
 		</div>
 		<div class="partner_wrap addbox2 selectProfile">
 			<div style="display: inline-block;">
-				<button id="spBtn" class="default-check text-center" value="판매자"><input type="checkbox" class="findCheck spFind" value="판매자">판매자 가입</button>
+				<button id="spBtn" class="default-check text-center" value="판매자">
+					<input type="checkbox" class="findCheck spFind" id="spFind" value="판매자">
+					<label for="spFind"><span>판매자 가입</span></label>
+				</button>
 			</div>
 			<div style="display: inline-block;">
-			    <button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" value="공급자">공급자 가입</button>
+			    <button id="ppBtn" class="default-check text-center" value="공급자">
+			    	<input type="checkbox" class="findCheck ppFind" id="ppFind" value="공급자">
+			    	<label for="ppFind"><span>공급자 가입</span></label>
+			    </button>
 			</div>
 		</div>
     </div>
@@ -774,11 +780,12 @@ $(document).ready(function() {
 															<input type="hidden" name="memRname" id="memRname" readonly="readonly"> -->
 			<div class="Agreement-container">
 				<div class="Agreement">
-					<input type="checkbox" class="agree-all">전체약관동의
+					<input type="checkbox" class="agree-all" id="checkAll"><label for="checkAll"><span>전체약관동의</span></label>
 				</div>
 				<div class="Agreement-box clearfix">
 					<div class="Agreement" style="float: left;">
-						<input type="checkbox" class="agree-chk chk"><span class="r-span">(필수)</span>이용약관동의
+						<input type="checkbox" id="chk1" class="agree-chk chk">
+						<label for="chk1"><span class="r-span">(필수)</span>이용약관동의</label>
 					</div>
 					<div style="float: right;">
 						내용보기 V
@@ -786,7 +793,8 @@ $(document).ready(function() {
 					<textarea style="width: 100%; height: 100px; padding: 15px;">제 1조 (목적)</textarea>
 					
 					<div class="Agreement" style="float: left;">
-						<input type="checkbox" class="select-chk chk"><span class="s-span">(선택)</span> 개인정보 수집 및 이용동의
+						<input type="checkbox" id="chk2" class="select-chk chk">
+						<label for="chk2"><span class="s-span">(선택)</span>개인정보 수집 및 이용동의</label>
 					</div>
 					<div style="float: right;">
 						내용보기 V

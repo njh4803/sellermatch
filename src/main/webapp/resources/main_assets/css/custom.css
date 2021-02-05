@@ -28,14 +28,14 @@ input[type="checkbox"] + label span {
     margin: 0;
     line-height: normal;
     font-weight: normal;
-    background:url(../../../wesellglobal/local_assets/img/checkActiveNone.png) no-repeat;
+    background:url(/local_assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
-    background:url(../../../wesellglobal/local_assets/img/checkActive.png) no-repeat;
+    background:url(/local_assets/img/checkActive.png) no-repeat;
 }
 /*header*/
 
-header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee;}
+header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee; margin-top: -77px;}
 header .header_wrap {width:1280px; height:100%; margin: 0 auto;}
 header .header_wrap h1 {
 	float:left;
@@ -82,63 +82,79 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 .bnr {width:100%; height:100%; background-color: #f7f7f7;}
 .bnr .bnr_wrap {width:1280px; margin: 0 auto; padding-top:200px; height: 567px;}
 .bnr .bnr_wrap2 {
-	background-color: #DBDBDB;
-    height: 450px;
-    margin: 0 0 146.3px;
+	height: 370px;
+    margin: 0 0 80px;
     text-align: center;
     background-color: #3b1374;
 }
 .bnr .bnr_wrap3 {}
-.bnr .bnr_wrap4 {margin: 0 auto; height: 727px;
+.bnr .bnr_wrap4 {
+    position: absolute;
+    font-family: NotoSansKRBold;
+    font-size: 55px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.27;
+    font-weight: bolder;
+    letter-spacing: -4px;
+    text-align: left;
+    color: #000000;
+    width: 1920px;
+    height: 727px;
+    margin: 77px 0 0;
+    object-fit: contain;
 }
-.bnr .bnr_wrap5 {margin: 0 auto; height: 1080px; background-color: #f7f7f7;}
-.bnr .bnr_wrap6 {height: 283px; background-color: #f0f0f0; margin-bottom: 113.3px;} 
+.bnr .bnr_wrap5 {
+	margin-bottom: 80px;
+    background-color: #f7f7f7;
+}
+.bnr .bnr_wrap6 {
+    background-color: #f0f0f0;
+} 
 .bnr .bnr_wrap2 .box{
 	display: inline-block;
-	width: 310px;
+	width: fit-content;
 }
 .bnr .bnr_wrap2 .box .textBox7{
-    width: 310px;
+	width: fit-content;
     height: 69px;
-    margin: 23px 0 53px;
-    font-family: NotoSansKRMedium;
-    font-size: 15px;
-    font-weight: normal;
+    font-size: 20px;
+    font-weight: 400;
     font-stretch: normal;
     font-style: normal;
     line-height: 2;
-    letter-spacing: normal;
-    text-align: center;
+    letter-spacing: -1px;
     text-align: center;
     color: #ffffff;
-    margin: 0;
+    margin-top: 30px;
 }
 .bnr .bnr_wrap2 .box button{
-  width: 150px;
-  height: 60px;
-  border-radius: 37px;
-  background-color: rgba(255, 255, 255, 0.56);
-  font-family: NotoSansKRMedium;
-  font-size: 29px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.45;
-  letter-spacing: normal;
-  color: #ffffff;
-  margin-top: 46px;
+    width: 180px;
+    height: 60px;
+    border-radius: 37px;
+    background-color: rgba(255, 255, 255, 0.56);
+    font-family: NotoSansKRMedium;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    color: #ffffff;
+    margin-top: 45px;
 }
 .bnr .bnr_wrap2 .box button img{
-  width: 26.5px;
-  height: 37px;
-  margin-right: 14.5px;
-  object-fit: contain;
+	width: 17.9px;
+    height: 25px;
+    margin-right: 8.1px;
+    object-fit: contain;
+    margin-top: -5px;
 }
 
 .bnr .bnr_wrap2 .box div{
-  width: 156px;
   height: 72px;
-  margin: 0 198.5px 23px 77px;
+  margin: 0 auto;
+  margin-top: 45.2px;
   font-family: NotoSansKRBold;
   font-size: 50px;
   font-weight: bold;
@@ -269,7 +285,7 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 /*partner_bnr*/
 
-.partner_bnr {width:100%;padding-top: 77px;}
+.partner_bnr {width:100%;padding-top: 77px; margin-top: 77px;}
 .partner_bnr .partner_wrap {width:1280px; margin:0 auto; text-align:center;}
 .partner_bnr .partner_wrap h2 {font-size:50px; line-height:60px; font-weight:700; margin-bottom:90px;}
 .partner_bnr .partner_wrap .partner_list {}

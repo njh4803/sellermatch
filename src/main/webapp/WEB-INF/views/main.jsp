@@ -3,11 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <style>
-.affiliate.margin-0{
-	margin: 0;
-}
 .main-000{
-    position: absolute;
     font-family: NotoSansKRBold;
     font-size: 55px;
     font-stretch: normal;
@@ -16,25 +12,27 @@
     font-weight: bolder;
     letter-spacing: -4px;
     text-align: left;
-    color: #1f1f1f;
-    top: 100px;
-    left: 304px;
+    color: #000000;
+    width: 1920px;
+    height: 727px;
+    margin: 77px 0 0;
+    object-fit: contain;
 }
 .main-001{
-  font-family: NotoSansKRMedium;
-  font-size: 26px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.54;
-  letter-spacing: normal;
-  text-align: left;
-  color: #1f1f1f;
-  margin-top: 15px;
+    display: inline-block;
+    margin: 100px 311px;
+    font-size: 60px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.27;
+    letter-spacing: -4px;
+    text-align: left;
+    color: #000000;
 }
 .pass{
-	margin-top: 178px;
-	margin-bottom: 25.8px;
+	margin-top: 60px;
+	margin-bottom: 19.1px;
 }
 .textbox1{
   font-family: NotoSansKRBold;
@@ -47,74 +45,67 @@
   color: #1f1f1f;
 }
 .textbox2{
-    font-family: NotoSansKRMedium;
     font-size: 25px;
-    font-weight: 530;
+    font-weight: 500;
     font-stretch: normal;
     font-style: normal;
-    letter-spacing: normal;
+    letter-spacing: -1px;
     text-align: center;
-    color: #1f1f1f;
-    margin: 40px 30px 70px 14px;
+    color: #707070;
+    margin: 10px 0 80px 0;
     line-height: 1.6;
 }
 .textbox3{
-  display:inline-block;
-  width: 400px;
-  height: 600px;
-  padding: 60px 47px 62px 48px;
-  border-radius: 30px;
-  background-color: #ffffff;
+    display: inline-block;
+    width: 400px;
+    height: fit-content;
+    padding: 50px 0;
+    border-radius: 30px;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
 }
 .textbox3 img{
-  margin: 0 88px 50px 87px;
+  margin: 0 0 30px 0;
   object-fit: contain;
-  border-radius: 100px;
 }
 .textbox3 img.main004{
-  margin: 7px 3px 0 2px;
-  object-fit: contain;
-  width: 300px;
-  height: 300px;
+	object-fit: contain;
+    width: 226px;
+    height: 195px;
+    margin-top: 35px;
 }
 .textbox4{
 	margin: 0 40px;
 }
 .textbox5{
-  font-family: NotoSansKR;
-  font-size: 34px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.38;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000000;
+    font-size: 40px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #000000;
 }
 .textbox6{
-  margin: 30px 0 0;
-  font-family: NotoSansKRMedium;
-  font-size: 17px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.55;
-  letter-spacing: normal;
-  text-align: center;
-  color: #535353;
+    margin: 25px 0 0;
+    font-size: 22px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #707070;
 }
 .textbox8{
-  height: 58px;
-  margin: 30px 0;
-  font-family: NotoSansKRBold;
-  font-size: 30px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2.1;
-  letter-spacing: normal;
-  text-align: left;
-  color: #1f1f1f;
+    font-family: NotoSansKRBold;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 3.36;
+    letter-spacing: -0.5px;
+    text-align: left;
+    color: #000000;
 }
 .mainBox{
 }
@@ -125,25 +116,19 @@
 .mainBox3 {
     width: 1280px;
     margin: 0 auto;
-    padding-top: 87.7px;
-    padding-bottom: 85.3px;
     height: 450px;
 }
 .mainBox4 {
-    width: 1280px;
+	width: 1280px;
     margin: 0 auto;
-    padding-top: 30px;
-    padding-bottom: 115.7px;
-    margin-bottom: 113.3px;
     background-color: #f0f0f0;
-    height: 283px;
+    height: 200px;
 }
 .hrBox{
   display: inline-block;
   width: 179px;
   height: 178px;
-  margin:  0 70.5px 0 76.5px;
-  vertical-align: top;
+  margin:  0 70.5px 0 76.5px; 
 }
 .hrBox hr{
   width: 1px;
@@ -154,20 +139,45 @@
 .affiliate{
 	margin-right: 70px;
 }
+.gm{
+  width: 68.4px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 70px;
+}
+.11st{
+  width: 90.4px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 70px;
+}
+.cou{
+  width: 127.9px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 70px;
+}
+.gs{
+  width: 158.1px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 70px;
+}
+.cj{
+  width: 137.1px;
+  height: 30px;
+  object-fit: contain;
+}
 </style>
 <div class="bnr">
-    <div class="bnr_wrap4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main000.png');">
-    	<div class="main-000">
+    	<div class="main-000" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main000.png');">
+			<div class="main-001">
     	        검증된 고매출 판매자,<br>
 			        다양한 고마진 공급자를<br>
-			        찾고 거래하세요
-			<div class="main-001">
+			        찾고 거래하세요			
 	    	</div>
-    	</div>
-
-        <%-- <a href="${pageContext.request.contextPath}/project/find"><i class="fas fa-bolt"></i>판매자 & 공급자<br> 찾기 무료등록</a> --%>
     </div>
-    <div class="partner_bnr" style="padding: 0;">
+    <div class="partner_bnr" style="padding: 0; margin-top: 0;">
     	<div class="partner_bnr2">
 			<div class="search_bnr">
 			    <div class="search_wrap">
@@ -239,7 +249,7 @@
     <div class="bnr_wrap2">
     	<div class="mainBox3">
     	    <div class="box">
-	    		<div>판매자</div>
+	    		<div>판매자!</div>
 	    		<div class="textBox7">고마진, 독점, 위탁배송, OEM, 도매 등 <br>필요한 상품을 빠르게 찾아보세요</div>
 	    		<button id="sellerGoBtn"><img src="${pageContext.request.contextPath}/local_assets/img/pass13.png">GO!</button>
 	    	</div>
@@ -247,8 +257,8 @@
 	    		<hr>
 	    	</div>
 	    	<div class="box">
-	    		<div>공급자</div>
-	    		<div class="textBox7">오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰 등 <br>검증된 판매자를 찾아보세요</div>
+	    		<div>공급자!</div>
+	    		<div class="textBox7">오픈마켓, 종합몰, SNS, 공동구매,<br> 폐쇄몰 등 검증된 판매자를 찾아보세요</div>
 	    		<button id="PpGoBtn"><img src="${pageContext.request.contextPath}/local_assets/img/pass13.png">GO!</button>
 	    	</div>	
     	</div>
@@ -305,11 +315,11 @@
 		<div class="mainBox4">
 			<div class="textbox8">셀러매치와 함께합니다</div>
 			<div>
-				<img alt="" class="affiliate" src="${pageContext.request.contextPath}/local_assets/img/gm.png">
-				<img alt="" class="affiliate" src="${pageContext.request.contextPath}/local_assets/img/11st.png">
-				<img alt="" class="affiliate" src="${pageContext.request.contextPath}/local_assets/img/cou.png">
-				<img alt="" class="affiliate" src="${pageContext.request.contextPath}/local_assets/img/gs.png">
-				<img alt="" class="affiliate margin-0" src="${pageContext.request.contextPath}/local_assets/img/cj.png">
+				<img alt="" class="gm" src="${pageContext.request.contextPath}/local_assets/img/gm.png">
+				<img alt="" class="11st" src="${pageContext.request.contextPath}/local_assets/img/11st.png">
+				<img alt="" class="cou" src="${pageContext.request.contextPath}/local_assets/img/cou.png">
+				<img alt="" class="gs" src="${pageContext.request.contextPath}/local_assets/img/gs.png">
+				<img alt="" class="cj" src="${pageContext.request.contextPath}/local_assets/img/cj.png">
 			</div>
 		</div>
 	</div>

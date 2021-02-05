@@ -11,6 +11,7 @@
 }
 .partner_bnr {
     width: 100%;
+    padding: 0;
 }
 .partner_bnr .partner_wrap {
     width: 1280px;
