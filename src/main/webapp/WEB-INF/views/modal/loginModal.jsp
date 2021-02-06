@@ -116,8 +116,7 @@ label.error {
 #login-form a, a:focus, a:hover{
 	text-decoration: none;
 	color: #000000;
-	line-height: initial;
-	
+	line-height: revert;
 }
 .loginPass{
   width: 15.3px;

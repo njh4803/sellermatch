@@ -11,7 +11,7 @@
 <style>
 .partner_bnr {
     width: 100%;
-    padding-top: 180px;
+    padding-top: 0 !important;
     padding-bottom: 100px;
 }
 .partner_bnr2 {
@@ -20,30 +20,39 @@
     text-align: center;
 }
 .check{
-	background-color: #E52867;
-    color: white;
-    border-radius: 10px;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+  width: 300px;
+  height: 80px;
+  margin: 30px 20px 150px 20px;
+  padding: 25.5px 0;
+  border-radius: 10px;
+  line-height: 20px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);
 }
 .default-check{
-	background-color: white;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #e3e3e3;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;    
+  width: 300px;
+  height: 80px;
+  margin: 30px 20px 150px 20px;
+  padding: 25.5px 0;
+  border-radius: 10px;
+  border: solid 0.5px #cccccc;
+  background-color: #ffffff;
+  line-height: 20px;
 }
 .none-check{
 	background-color: #e3e3e3;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #e3e3e3;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+	width: 300px;
+	height: 80px;
+	margin: 30px 20px 150px 20px;
+	padding: 25.5px 0;
+	line-height: 20px;
+	border-radius: 10px;
 }
 .addBtn {
 	background-color: #E52867;
@@ -59,10 +68,27 @@ a {
 	color: black;
 }
 .partner_bnr .partner_wrap h2 {
-    font-size: 30px;
-    line-height: 60px;
-    font-weight: 700;
-    margin-bottom: 10px;
+  margin: 10px 0 30px 0;
+  font-size: 25px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.partner_bnr .partner_wrap h3 {
+  margin-bottom: 39px;
+  margin-top: 80px;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
 }
 .partner_bnr .partner_wrap {
     width: 1280px;
@@ -189,57 +215,241 @@ label.error {
 	border:1px solid #777;
 	padding-left: 10px;
 }
+.projAdd span{
+	font-size: 30px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.47;
+	letter-spacing: normal;
+	color: #ffffff;
+	vertical-align: middle;
+}
 .projAdd{
-	background-color: #E52867;
-	color: white;
-    border-radius: 10px;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+	background: linear-gradient(to right, #d90b54, #3b1374);
+	width: 500px;
+	height: 80px;
+	margin-top: 100px;
+	margin-bottom: 20px;
+	padding: 18px 0;
+	text-align: center;
+	border-radius: 10px
 }
 .projAdd:disabled{
-	background-color: #e3e3e3;
-	color: black;
+	background: #dddddd;
+	color: #ffffff;
 }
 .projAdd button:enabled{
-	background-color: #E52867;
-	color: white;
+	background: linear-gradient(to right, #d90b54, #3b1374);
+}
+.logoBox{
+  display:inline-block;
+  width: 492.5px;
+  height: 100px;
+  object-fit: contain;
+}
+.bar{
+  width: 1920px;
+  height: 40px;
+  margin-bottom: 140px;
+  background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
+}
+.imgContainer{
+	width: 1280px;
+	margin: 0 auto;
+}
+.imgBox1{
+  display: inline-block;
+  width: 280px;
+  height: 420px;
+  padding-bottom: 25px;
+  border-radius: 10px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+  text-align: center;
+}
+.imgBox1 .textBox1{
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.imgBox1 .textBox2{
+
+  margin: 20px 0 27px;
+  font-size: 20px;
+  height: 54px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.addPass{
+  width: 21.7px;
+  height: 33.1px;
+  object-fit: contain;
+  margin-right: 10.7px;
+}
+.addBox{
+	width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+.addBox2{
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 393px;
+}
+/* checkbox */
+input[type="checkbox"].findCheck + label span {
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  padding-left: 20px;
+  margin: 0;
+  height: auto;
+  line-height: 20px;
+  font-weight: normal;
+  background:url(../local_assets/img/checkActiveNone20.png) no-repeat;
+  background-position-y: center;
+}
+input[type="checkbox"].findCheck:checked + label span {
+    background:url(../local_assets/img/checkActive20.png) no-repeat;
+}
+.addBox2 input[type="checkbox"] + label span {
+    display: inline-block;
+    object-fit: contain;
+	font-size: 15px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	color: #707070;
+    padding-left: 20px;
+    margin: 0;
+    height: auto;
+    line-height: normal;
+    font-weight: normal;
+    background:url(../local_assets/img/checkActiveNone20.png) no-repeat;
+    background-position-y: center;
+}
+.addBox2 input[type="checkbox"]:checked + label span {
+    background:url(../local_assets/img/checkActive20.png) no-repeat;
+}
+.addBox2 a{
+  font-size: 15px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #707070;	
+}
+.addHr{
+  width: 1280px;
+  height: 0;
+  margin: 30px auto;
+  border: solid 1px #dddddd;
 }
 </style>
 <div class="partner_bnr">
+	<div class="bar"></div>
     <div class="partner_wrap">
+    	<img class="logoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/addProjLogo.png">
         <h2>최고의 공급자와 셀러가 되어 보세요!</h2>
         <h3>아래 간단한 내용만 입력하면, 전세계 파트너를 연결 시켜 드립니다</h3>
     </div>
-    <div class="partner_wrap addbox1">
-    	<img src="${pageContext.request.contextPath}/main_assets/image/프로젝트등록임시이미지.PNG">
+    <div class="showAddBox">
+	    <div class="imgContainer">
+	    	<div class="imgBox1" style="margin-right: 50px;">
+	    		<div class="textBox1">
+	    			공급자나<br>
+	    			판매자 찾기<br>
+	    			등록!
+	    		</div>
+	    		<div class="textBox2">
+	    			찾는 정보가 정확할수록<br>
+					매칭 확률이 올라갑니다
+	    		</div>
+	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add01.png">
+	    	</div>
+	    	<div class="imgBox1" style="margin-right: 50px;">
+	    		<div class="textBox1">
+	    			신속하게<br>
+	    			등록사항<br>
+	    			검증
+	    		</div>
+	    		<div class="textBox2">
+	    			24시간 이내 검토완료<br>
+	    		</div>
+	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add02.png">
+	    	</div>
+	    	<div class="imgBox1" style="margin-right: 50px;">
+	    		<div class="textBox1">
+	    			보유한<br>
+	    			사이트<br>
+	    			등록 허가
+	    		</div>
+	    		<div class="textBox2">
+	    			24시간 이내 등록 허가<br>
+	    		</div>
+	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add03.png">
+	    	</div>
+	    	<div class="imgBox1">
+	    		<div class="textBox1">
+	    			공급자 및<br>
+	    			셀러<br>
+	    			계약관리
+	    		</div>
+	    		<div class="textBox2">
+	    			공급자 및 셀러<br>
+					지원사업 진행사항
+	    		</div>
+	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add04.png">
+	    	</div>
+	    </div>
+	    <div class="addBox">
+	    	<button id="projAdd" class="projAdd text-center" disabled="disabled">
+	    		<img class="addPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png"><span>프로젝트 등록</span>
+	    	</button>
+	    </div>
+	    <div class="addBox2">
+	    	<input id="addCheck" type="checkbox"><label for="addCheck"><span>&nbsp;&nbsp;등록을 위해 개인정보공개 및 등록 약관에 동의합니다</span></label>
+	    	<a href="javascript:void(0)" id="termsOfService2" style="float: right;">약관보기 ></a>
+	    </div>  
     </div>
-    <div class="partner_wrap addbox1">
-    	<button id="projAdd" class="projAdd text-center" disabled="disabled">프로젝트 등록</button>
-    </div>
-    <div class="partner_wrap addbox1">
-    	<input id="addCheck" type="checkbox"><label for="addCheck"><span><a href="javascript:void(0)">개인정보공개 및 등록 약관을 확인 하였음. (등록약관보기)</a></span></label>
-    </div>
-    <div id="findCheckBox">
+   	<div id="findCheckBox">
     	
     </div>
-    
-    <div id="hiddenBox" style="display: none;">
+  	<div id="hiddenBox" style="display: none;">
     	<input type="hidden" id="memSort" value="${member.memSort}">
     	<input type="hidden" id="memId" value="${member.memId}">
     	<input type="hidden" id="indusDto" value="${indusDto}">
-    </div>
-    <div class="partner_wrap">
-    	
     </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
-	/* $(document).on("ready", function(){ */
+	//약관보기
+	$('#termsOfService2').on('click', function(){
+		$('#termsOfServiceModal').modal();
+	});
 	
 	$("#projAdd").on("click", function(){
-		$(".addbox1").remove();
+		$(".showAddBox").remove();
 		var content = {
 				memSort: $("#memSort").val()
 		}
@@ -608,7 +818,7 @@ $(function() {
 </script>
 <script type="text/x-handlebars-template" id="project-find-tmpl">
 <div class="partner_wrap addbox2">
-    <hr>
+    <hr class="addHr">
 </div>
 <div class="partner_wrap addbox2 selectFind">
 	<input type="hidden" id="member" name="member" value="${member.memSortName}">

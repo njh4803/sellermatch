@@ -3,6 +3,9 @@ body.modal-open {
     overflow: auto;
 
 }
+body  a a:focus a:hover{
+ line-height: normal !important;
+}
 
 body.modal-open[style] {
 
@@ -28,10 +31,10 @@ input[type="checkbox"] + label span {
     margin: 0;
     line-height: normal;
     font-weight: normal;
-    background:url(/local_assets/img/checkActiveNone.png) no-repeat;
+    background:url(../../local_assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
-    background:url(/local_assets/img/checkActive.png) no-repeat;
+    background:url(../../local_assets/img/checkActive.png) no-repeat;
 }
 /*header*/
 
