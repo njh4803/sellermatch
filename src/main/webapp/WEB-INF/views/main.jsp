@@ -156,6 +156,7 @@
   height: 30px;
   object-fit: contain;
   margin-right: 70px;
+  margin-left: 70px;
 }
 .gs{
   width: 158.1px;
