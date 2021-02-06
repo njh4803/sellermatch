@@ -8,9 +8,45 @@
 .modal-header {
 	display: block;
 }   
-.modal-content .modal-body {
+#infoModal .modal-dialog .modal-content .modal-body {
     position: relative;
-    padding: 20px;
+    padding: 40px 50px 61.5px 50px;
+    text-align: center;
+}
+#infoModal .modal-dialog .modal-content .modal-body .logoImg{
+  display: inline-block;
+  width: 197px;
+  height: 40px;
+  margin: 0 10px 0 0;
+  object-fit: contain;
+}
+#infoModal .modal-dialog .modal-content .modal-body .title{
+  display: inline-block;
+  margin: 6.5px 0 6.5px 10px;
+  font-family: SegoeUI;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  vertical-align: middle;
+}
+#infoModal .modal-dialog .modal-content .modal-body .topBox{
+	margin-bottom: 22.5px;
+}
+#infoModal .modal-dialog .modal-content .modal-body .contents{
+  font-family: SegoeUI;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
 }
 </style>
 
@@ -19,8 +55,11 @@
 	<div class="modal-dialog modal-xl" style="width: 1200px;">
 		<div class="modal-content">
 			<div class="modal-body">
-			셀러매치 개인정보처리방침
-				<div>
+			<div class="topBox">
+				<img class="logoImg" src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+				<div class="title">셀러매치 개인정보처리방침</div>
+			</div>
+				<div class="contents">
 					위셀글로벌 주식회사('www.sellermatch.co.kr'이하 '셀러매치')는 개인정보보호법에 따라 이용자의 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을 원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다. 셀러매치는 개인정보처리방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다. 본 방침은 2020년 9월 1일부터 시행됩니다.<br>
 					
 					1.개인정보의 처리 목적<br>

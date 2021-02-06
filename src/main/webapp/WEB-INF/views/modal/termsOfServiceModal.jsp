@@ -8,9 +8,45 @@
 .modal-header {
 	display: block;
 }   
-.modal-content .modal-body {
+#termsOfServiceModal .modal-dialog .modal-content .modal-body {
     position: relative;
-    padding: 20px;
+    padding: 40px 50px 61.5px 50px;
+    text-align: center;
+}
+#termsOfServiceModal .modal-dialog .modal-content .modal-body .logoImg{
+  display: inline-block;
+  width: 197px;
+  height: 40px;
+  margin: 0 10px 0 0;
+  object-fit: contain;
+}
+#termsOfServiceModal .modal-dialog .modal-content .modal-body .title{
+  display: inline-block;
+  margin: 6.5px 0 6.5px 10px;
+  font-family: SegoeUI;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  vertical-align: middle;
+}
+#termsOfServiceModal .modal-dialog .modal-content .modal-body .topBox{
+	margin-bottom: 22.5px;
+}
+#termsOfServiceModal .modal-dialog .modal-content .modal-body .contents{
+  font-family: SegoeUI;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
 }
 </style>
 
@@ -19,10 +55,11 @@
 	<div class="modal-dialog modal-xl" style="width: 1200px;">
 		<div class="modal-content">
 			<div class="modal-body">
-				 셀러매치 서비스 이용약관 
-				<div>
-				<br><br>
-				
+			<div class="topBox">
+				<img class="logoImg" src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+				<div class="title">셀러매치 서비스 이용약관 </div>
+			</div>
+				<div class="contents">
 				제1조 (목적) 본 약관은 위셀글로벌 주식회사(이하 "회사"라 합니다)가 이용자에게 제공하는 ‘셀러매치’ 서비스의 이용과 관련하여 회사와 이용자 간의 권리, 의무, 책임사항 및 기타 필요한 사항을 규정함을 목적으로 합니다. 제2조 (정의) 본 약관에서 사용하는 용어의 정의는 다음과 같습니다.<br> 
 				1.<br>
 				“셀러매치 서비스” 또는 "서비스"는 함은 회사가 셀러매치 웹사이트(sellermatch.co.kr) 기타 플랫폼(이하 “플랫폼”이라 합니다)을 통하여 회원에게 제공하는 일체의 서비스를 의미합니다.<br>

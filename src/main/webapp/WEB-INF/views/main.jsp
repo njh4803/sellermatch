@@ -168,6 +168,20 @@
   height: 30px;
   object-fit: contain;
 }
+.imgBox1{
+    position: absolute;
+    right: 1099px;
+    top: 2910px;
+}
+.imgBox2{
+    position: absolute;
+    right: 654px;
+    top: 2910px;
+}
+.rightArrow{
+    position: relative;
+    left: -60px;
+}
 </style>
 <div class="bnr">
     	<div class="main-000" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main000.png');">
@@ -285,6 +299,10 @@
 				</div>
 				<img alt="" class="main004" src="${pageContext.request.contextPath}/local_assets/img/main004.png">
 			</div>
+			<div class="imgBox1">
+				<img alt="circle" src="${pageContext.request.contextPath}/local_assets/img/circle.png">
+				<img class="rightArrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/rightArrow.png">
+			</div>
 			<div class="textbox3 textbox4">
 				<div class="textbox5">
 					검토
@@ -295,8 +313,12 @@
 				              적절한 거래가 될 수 있도록<br>
 					      계약, 디자인 등을 지원합니다
 				</div>
-				<img alt="" class="main004" src="${pageContext.request.contextPath}/local_assets/img/main005.png">
+				<img alt="" class="main004" src="${pageContext.request.contextPath}/local_assets/img/main005.png">		
 			</div>
+			<div class="imgBox2">
+				<img alt="circle" src="${pageContext.request.contextPath}/local_assets/img/circle.png">
+				<img class="rightArrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/rightArrow.png">
+			</div>	
 			<div class="textbox3">
 				<div class="textbox5">
 					판매/공급 시작
