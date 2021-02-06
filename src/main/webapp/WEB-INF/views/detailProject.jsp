@@ -453,7 +453,8 @@ a:focus, a:hover{
   background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
   padding: 12px;
 }
-.bar span{
+.bar div{
+  width: 1280px;
   font-size: 25px;
   font-weight: bold;
   font-stretch: normal;
@@ -462,7 +463,7 @@ a:focus, a:hover{
   letter-spacing: normal;
   text-align: left;
   color: #ffffff; 
-  margin-left: 213px;
+  margin: 0 auto;
 }
 .favoriteBtn{
   width: 160px;
@@ -651,7 +652,7 @@ a:focus, a:hover{
 }
 </style>
 <div class="partner_bnr">
-	<div class="bar"><span>프로젝트 상세정보</span></div>
+	<div class="bar"><div>프로젝트 상세정보</div></div>
     <div class="partner_wrap" style="text-align: left;">
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">

@@ -4,62 +4,56 @@
 <%@ include file="inc/header.jsp"%>
 <%@ include file="modal/recommendModal.jsp"%>
 <style>
-.font-30{
-	font-size: 30px;
-}
 .partner_bnr {
     width: 100%;
-    padding-top: 180px;
-    padding-bottom: 100px;
+    padding-bottom: 110px;
 }
 .partner_bnr2 {
     width: 100%;
     padding-bottom: 100px;
     text-align: center;
 }
-.search_chk{
-	width: 400px;
-    height: 100px;
-    background-color: #d6d6d6;
-    display: inline-block;
-    border-radius: 20px;
-    text-align: center;
-	padding: 40px 0;
-    margin: 0 40px;
-}
-.chk_list_container{
-	height: 150px;
-	margin: 0 260px;
-}
-.chk_listBox{
-	display: inline-block;
-	overflow-x:hidden;
-	overflow-y:auto;
-	width:12.27%;
-	height:200px;
-	border: 1px solid #e3e3e3;
-	text-align: left;
-	margin-right: -5px;
-}
 .container1{
-	border: 2px solid #e3e3e3;
-	height: 340px;
+	width: 1280px;
+	margin: 0 auto;
+	border: solid 1px #cccccc;
+	display: inline-block;
+	padding: 60px 60px;
 }
 .container2{
-	margin: 0 240px;
-	height: 50px;
+	margin-bottom: 58px;
 }
 .container1 .container2{
 	margin: 0;
-    width: 844px;
-    height: 100%;
-    float: right;
-}
-.container3{
-    height: 306px;
-    width: 362px;
+	height: fit-content;
     float: left;
-    padding: 20px;
+    margin-bottom: 58px;
+}
+.bar{
+  width: 1920px;
+  height: 60px;
+  margin-bottom: 40px;
+  background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
+  padding: 12px;
+}
+.bar div{
+  width: 1280px;
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff; 
+  margin: 0 auto;
+}
+.leftBox{
+	float: left;
+}
+.rightBox{
+	float: right;
+	margin: 15px 15px;
 }
 .row1{
 	height: 50px;
@@ -68,499 +62,382 @@
 	margin-right: 0;
 }
 .row2{
-	height: 25px;
 	margin-left: 0;
 	margin-right: 0;
 }
-.height-500{
-	height: 500px;
-	margin: 0;
-}
-.leftBox{
+.profileImgBox{
+	display: inline-block;
 	float: left;
-	margin: 3px 15px;
 }
-.rightBox{
-	float: right;
-	margin: 15px 15px;
+.profileImg{
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 70%;
+  margin-right: 30px;
 }
-.rightBox a{
-	margin: 0 15px;
-	font-weight: 0;
-	text-decoration: none;
-	color: #000;
-}
-
-.row2 .leftBox{
-	float: left;
-	padding: 0 5px;
-	margin:0;
-}
-.row2 .rightBox{
-	float: right;
-	padding: 0 5px;
-	margin:0;
-}
-.margin-0{
-	margin:0;
-}
-.sortBox span{
-	margin: 0 10px;
-}
-.p-findBtn{
-	background-color: #E62267;
-	color: white;
-	width: 100px;
-	height: 40px;
-}
-.s-findBtn{
-	background-color: #57207C;
-	color: white;
-	width: 100px;
-	height: 40px;
-}
-.orangeBox{
-	background-color: #ED7D31;
-	color: white;
+.infoBox1{
+	width: 718px;
+	margin-bottom: 20px;
 	display: inline-block;
-	border-radius: 5px;
-	padding: 15px 15px;
-	margin-right: 10px;
-}
-.blueBox{
-	background-color: #71A6DB;
-	color: white;
-	display: inline-block;
-	border-radius: 1px;
-	padding: 15px 15px;
-	margin-right: 10px;
-}
-.titleBox{
-	font-size: 30px;
-	margin-left: 20px;
-}
-.titleBox .pp{
-	width: 100px;
-	height: 40px;
-	color: #E62267;
-}
-.titleBox .sp{
-	width: 100px;
-	height: 40px;
-	color: #57207C;
-}
-.contentsBox{
-	text-align: left;
-	background-color: #F2F2F2;
-	padding: 15px;
-	border-radius: 10px;
-	min-height: 100px;
-	max-height: 100px;
-}
-.tagBox{
-	display: inline-block;
-	color: #7F7F7F;
-	margin-right: 10px;
-}
-.tagContainer{
-	padding-top: 50px;
-}
-
-.projDetail a{
-	text-decoration: none;
-	color: black;
-}
-a:focus, a:hover{
-	text-decoration: none;
-}
-/* 스크롤바 디자인 */
-.chk_listBox::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
-}
-.chk_listBox::-webkit-scrollbar-thumb {
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
-
-  .chk_listBox:hover {
-    background-color: #adb5bd;
-  }
-}
-.chk_listBox::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-/*post slider*/
-.post-slider{
-  width:90%;
-  margin:0px auto;
-  position:relative;
-}
-.post-slider .silder-title{
-  text-align:center;
-  margin:30px auto;
-}
-.post-slider .next{
-  position:absolute;
-  top:50%;
-  right:30px;
-  font-size:2em;
-  color:gray;
-  cursor: pointer;
-}
-.post-slider .prev{
-  position:absolute;
-  top:50%;
-  left:30px;
-  font-size:2em;
-  color:gray;
-    cursor: pointer;
-}
-.post-slider .post-wrapper{
-
-  width:84%;
-  height:350px;
-  margin:0px auto;
-  overflow: hidden;
-  padding:10px 0px 10px 0px;
-}
-.post-slider .post-wrapper .post{
-  width:300px;
-  height:300px;
-  margin:0px 10px;
-  display:inline-block;
-  background:white;
-  border-radius: 5px;
-}
-.post-slider .post-wrapper .post .post-info{
-  font-size:15px;
-  height:100%;
-  padding-left:10px;
-  border: 2px solid #e3e3e3;
-}
-.post-slider .post-wrapper .post .slider-image{
-  width:100%;
-  height:300px;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  display: none;
-}
-.infoBox{
-  display: inline-block;
-  width: 150px;
-  text-align: center;
-  border: 1px solid #e3e3e3;
-  background-color: #D9D9D9;
-  height: 50px;
-  padding-top: 6px;
-  margin-right: 20px;
-}
-.infoBox span{
-	color: #aaa;
 }
 .infoBox2{
+	width: 718px;
+	display: inline-block;
+}
+.infoBox1 .textBox1{
   display: inline-block;
+  width: 50px;
+  height: 20px;
+  margin-right: 15px;
+  background-color: #25398b;
+  font-size: 10px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  vertical-align: top;
+}
+.infoBox2 .textBox2{
+	display: block;
+	width: 718px;
+    height: 29px;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    margin: 0;
+    color: #000000;
+}
+.infoBox2 .textBox2 span:nth-child(1){
+	margin-left: 20px;
+}
+.infoBox2 .textBox2 span{
+	display: inline-block;
+	font-size: 20px;
+	margin-right: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	letter-spacing: normal;
+	text-align: left;
+	color: #707070;
+}
+.hashtag{
+  height: 21px;
+  margin-right: 15px;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
   text-align: left;
-  border: 1px solid #e3e3e3;
-  height: 50px;
-  padding-top: 15px;
-  padding-right: 10px;
-  margin-right: 20px;
-}
-.infoBox2 span{
-	margin: 20px;
-}
-.profileImgBox{
-    width: 100px;
-    height: 100px;
-    display: inline-block;
-    border-radius: 70%;
-    overflow: hidden;
-    border: 1px solid #e3e3e3;
-    margin: 15px;
-}
-.miniImgBox{
-  	width: 60px;
-    height: 60px;
-    display: inline-block;
-    border-radius: 70%;
-    overflow: hidden;
-    border: 1px solid #e3e3e3;
-    margin: 15px;
+  color: #4b4b4b;
+  display: inline-block;
 }
 .intro{
-	display: inline-block;
-    vertical-align: middle;
-    width: 126px;
-    margin-left: 10px;
-    font-size: 10px;
-    color: #aaa;
+  height: 60px;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
 }
-</style>
-<style media="screen">
-.a {
-	width: 100%;
-	border-bottom: 3px solid black;
+.match{
+  width: 250px;
+  height: 50px;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
 }
-.c {
-	display: inline-block;
-    text-align: center;
-    padding-top: 7px;
-    cursor: pointer;
-    width: 100px;
-    height: 30px;
-    margin-bottom: -2px;
+.matchPass{
+  width: 16.5px;
+  height: 23px;
+  object-fit: contain;
+  margin-top: -3px;
 }
-.c:active {
-	background-color: #e3e3e3;
-	border: 1px solid black;
+.star{
+  width: 11.6px;
+  height: 11.1px;
+  object-fit: contain;
+  margin-top: -3px;
 }
-.c:hover {
-	background-color: #e3e3e3;
-	border: 1px solid black;
+.scrap{
+  width: 250px;
+  height: 50px;
+  border-radius: 4px;
+  border: solid 1px #c6c6c6;
+  background-color: #ffffff;
+  margin-bottom: 18px;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
 }
-#bt01 {
-	background-color: #e3e3e3;
-	border: 1px solid black;
+.btnBox{
+	float: right;
+	width: 250px;
+	margin-top: -110px;
 }
-.window {
-	width: 100%;
+.detailBox1{
+  display: inline-block;
+  width: 1160px;
+  border-top: solid 1px #cccccc;
+  border-bottom: solid 1px #cccccc;
+  margin-bottom: 15px;
+  background-color: #fff8fa;
 }
-.tabName{
-	font-size: 25px;
+.detailBox2{
+  display: inline-block;
+  width: 1160px;
+  border-top: solid 1px #cccccc;
+  border-bottom: solid 1px #cccccc;
+  background-color: #faf6ff;
+  margin-bottom: 60px;
 }
-.tabContent {
-    padding: 20px;
-    border: 1px solid black;
-    min-height: 150px;
-    margin: 16px 0;
+.infoBox{
+  text-align: center;
+  width: 287px;
+  height: 100px;
+  display: inline-block;
 }
-.applyBtn{
-	color: white;
-    width: 180px;
-    height: 50px;
-    font-size: 18px;
+.textBox2{
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #707070;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.infoBox .textRow{
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.infoBox2{
     display: inline-block;
-    background-color: #00B0F0;
-    float: left;
-    margin-left: 20px;
-}
-.scrapBtn{
-	width: 100px;
-	height: 50px;
-	font-size: 18px;
-    display: inline-block;
-    background-color: white;
-    float: left;
-    border: 1px solid #e3e3e3;
-}
-.applyNum{
-	margin: 30px;
-	font-size: 18px;
-}
-.applyNick{
-	display: inline-block;
-    vertical-align: top;
-    width: 150px;
-    font-size: 10px;
     text-align: left;
-    color: #00B0F0;
-    margin: 20px 0;
+    width: 388px;
 }
-.applyTag{
+.detailBox3{
+  font-size: 24px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.profile-hr{
+  width: 1160px;
+  height: 0;
+  margin: 10px 0;
+  border: solid 1px #cccccc;
+}
+.ContentsBox1{
+  width: 1160px;
+  margin-bottom: 76px;
+  font-size: 15px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.73;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.ContentsBox2{
+  width: 1160px;
+  margin-bottom: 50px;
+  font-size: 15px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.73;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.ContentsBox2 .projectDate{
 	display: inline-block;
-	margin: 15px 0;
-    font-size: 10px;
+    width: 94px;
+    height: fit-content;
+    padding: 0 15px 5px 0;
+    font-size: 15px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.73;
+    letter-spacing: normal;
     text-align: left;
-    color: #aaa;
+    color: #000000;
+    border-right: solid 0.5px #cccccc;
 }
-.projInfo{
-    margin: 0;
-    width: 40%;
-    font-size: 13px;
-    color: #aaa;
+.ContentsBox2 .project{
+  width: 1047px;
+  display: inline-block;
+  margin: 0 0 5px 15px;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.73;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
 }
-.projInfo hr{
-	margin: 6px;
-}
-.project {
-	margin: 10px 0;
-}
-.project span{
-	color: #595959;
-	margin: 10px;
-	font-size: 16px;
-}
+
 </style>
 <div class="partner_bnr">
+	<div class="bar"><div>판매자 상세정보</div></div>
     <div class="partner_wrap" style="text-align: left;">
-		<div class="container1 content clearfix">
-			<div class="container2 clearfix">
-				<div class="row1">
-					<input type="hidden" id="profileMemId" value="${output.profileMemId}">
+		<div class="container1 content">
+			<input type="hidden" id="profileMemId" value="${output.profileMemId}">
+			<div class="container2">
+				<div class="profileImgBox">
+					<img class="profileImg"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
 				</div>
-				<div class="row1 leftBox">
-					<div class="infoBox">
-						<div style="margin-bottom: 6px;"><span>유형</span></div>
-						<c:if test="${output.profileBizSortName != ''}">
-							<div>${output.profileBizSortName}</div>
-						</c:if>
-						<c:if test="${output.profileBizSortName == ''}">
-							<div>등록X</div>
-						</c:if>
-					</div>
-					<div class="infoBox">
-						<div style="margin-bottom: 6px;"><span>분류</span></div>
-						<div>${output.profileIndusName}</div>
-					</div>
-					<div class="infoBox">
-						<div style="margin-bottom: 6px;"><span>지역</span></div>
-						<div>${output.profileNationName}</div>
-					</div>
+				<div class="infoBox1 leftBox">
+					<div class="textBox1">추천셀러</div>
+					<c:forEach var="profileHashtag" items="${output.profileHashtag}" varStatus="status">
+        				<div class="hashtag"># ${profileHashtag}</div>
+        			</c:forEach>
 				</div>
-				<div class="row1 leftBox">
-					<div class="infoBox2" style="width: 100%;">
-						<div><span>판매채널</span>
-						<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status">
-	        				<c:choose>
-	        					<c:when test="${!status.last}">
-	        						${profileChannel}, 
-	        					</c:when>
-	        					<c:otherwise>
-	        						${profileChannel}
-	        					</c:otherwise>
-	        				</c:choose>
-	        			</c:forEach>
-		           		</div>
-					</div>
-				</div>
-				<div class="row1 leftBox">
-					<div class="infoBox2" style="width: 100%;">
-						<div><span>검증내용</span>
-						<c:if test="${output.profileBizCerti == 1}"> 
-							사업자인증
-						</c:if>
-						<c:if test="${output.memRname == 1}">
-							신원인증
-						</c:if>
-						<c:if test="${output.profileChChk == 1}">
-							채널검증
-						</c:if>
-						<c:if test="${output.profileSaleChk == 1}">
-							매출검증
-						</c:if>
-						</div>
-					</div>
-				</div>
-				<div class="row1 leftBox" style="padding: 20px;">
-					<div class="rightBox projInfo">
-	        			<div class="clearfix">
-	        				<div class="leftBox margin-0">
-			        			<span>계약 프로젝트</span>
-			        		</div>
-			        		<div class="rightBox margin-0">
-			        			<span>${output.contractCount}건</span>
-			        		</div>
-	        			</div>
-	        			<hr>
-	        			<div class="clearfix">
-	        				<div class="leftBox margin-0">
-			        			<span>등록 프로젝트</span>
-			        		</div>
-			        		<div class="rightBox margin-0">
-			        			<span>${output.projAddCount}건</span>
-			        		</div>
-	        			</div>
-	        			<hr>
-	        		</div>
-	        		<div class="leftBox projInfo">
-	        			<div class="clearfix">
-	        				<div class="leftBox margin-0">
-			        			<span>요청 받은 수</span>
-			        		</div>
-			        		<div class="rightBox margin-0">
-			        			<span>${output.recommendCount}건</span>
-			        		</div>
-	        			</div>
-	        			<hr>
-	        			<div class="clearfix">
-	        				<div class="leftBox margin-0">
-			        			<span>매출규모</span>
-			        		</div>
-			        		<div class="rightBox margin-0">
-			        			<span>연 ${output.profileVolume} 원</span>
-			        		</div>
-	        			</div>
-	        			<hr>
-	        			<div class="clearfix">
-	        				<div class="leftBox margin-0">
-			        			<span>판매경력</span>
-			        		</div>
-			        		<div class="rightBox margin-0">
-			        			<span>${output.profileCareerName}</span>
-			        		</div>
-	        			</div>
-	        			<hr>
-	        		</div>
-        		</div>
-			</div>
-			<div class="container3">
-				<div class="row1 text-left">
-					<div class="blueBox">등록자</div> ${output.memNick}
-				</div>
-				<div class="text-left">
-					<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
-					<div class="intro">${output.profileIntro}</div>
-				</div>
-				<div class="row1 text-left leftBox">
-					<div>
-						프로젝트 등록 ${output.projAddCount}건
-					</div>
-					<div>
-						프로젝트 거래 ${output.contractCount}건
-					</div>
-				</div>
-				<div class="text-left">
-					<button class="applyBtn">프로젝트 지원요청</button>
-					<button class="scrapBtn">스크랩</button>
-				</div>
-			</div>
-		</div>
-		<div style="margin-top: 50px;">
-			<div class="a">
-				<span class="c" id="bt01">상세정보</span>
-				<span class="c" id="bt02">프로젝트(${output.projAddCount})</span>
-				<span class="c" id="bt03">공급자평가(2)</span>
-			</div>
-			<div class="b">
-				<div class="window" id="window1">
-					<div class="tabContent">
+				<div class="infoBox1 leftBox">
+					<div class="intro">
 						${output.profileIntro}
 					</div>
 				</div>
-				<div class="window" id="window2">
-					<div class="tabName">프로젝트(${output.projAddCount})</div>
-					<div class="tabContent">
-						<c:forEach var="project" items="${project}">
-							<div class="project">
-								<span>${project.projRegDate}</span>
-								<span>${project.projTitle}</span>
-							</div>
-						</c:forEach>
-					</div>
+				<div class="infoBox2 leftBox">
+					<div class="textBox2">판매채널
+						<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status">
+	        				<span>${profileChannel}</span>
+	        			</c:forEach>
+	           		</div>
+	           		<div class="textBox2">검증내용
+						<c:if test="${output.profileBizCerti == 1}"> 
+							<span>사업자인증</span>
+						</c:if>
+						<c:if test="${output.memRname == 1}">
+							<span>신원인증</span>
+						</c:if>
+						<c:if test="${output.profileChChk == 1}">
+							<span>채널검증</span>
+						</c:if>
+						<c:if test="${output.profileSaleChk == 1}">
+							<span>매출검증</span>
+						</c:if>
+	           		</div>
 				</div>
-				<div class="window" id="window3">
-					<div class="tabName">공급자평가(2)</div>
-					<div class="tabContent">
-						공급자평가 부분
-					</div>
+				<div class="btnBox">
+					<button class="scrap">
+					<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+						관심등록
+					</button>
+					<button class="match" id="profileMemId${status.index}" data-value="${output.profileMemId}" data-index="${status.index}">
+					<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+						매치하기
+					</button>
 				</div>
+			</div>
+			<div class="detailBox1">
+				<div class="infoBox">
+					<div class="textBox2"><span>유형</span></div>
+					<c:if test="${output.profileBizSortName != ''}">
+						<div class="textRow"><span>${output.profileBizSortName}</span></div>
+					</c:if>
+					<c:if test="${output.profileBizSortName == ''}">
+						<div class="textRow"><span>등록X</span></div>
+					</c:if>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>분류</span></div>
+					<div class="textRow"><span>${output.profileIndusName}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>지역</span></div>
+					<div class="textRow"><span>${output.profileNationName}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>요청받은수</span></div>
+					<div class="textRow"><span>${output.recommendCount}명</span></div>
+				</div>				
+			</div>
+			<div class="detailBox2">
+				<div class="infoBox">
+					<div class="textBox2"><span>매출규모</span></div>
+					<div class="textRow"><span>${output.profileVolume}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>판매경력</span></div>
+					<div class="textRow"><span>${output.profileCareerName}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>계약 프로젝트</span></div>
+					<div class="textRow"><span>${output.contractCount}개</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>등록 프로젝트</span></div>
+					<div class="textRow"><span>${output.projAddCount}개</span></div>
+				</div>				
+			</div>
+			<div class="detailBox3">상세정보</div>
+			<hr class="profile-hr">
+			<div class="ContentsBox1">
+				${output.profileIntro}
+			</div>			
+			<div class="detailBox3">프로젝트</div>
+			<hr class="profile-hr">
+			<div class="ContentsBox2">
+				<c:forEach var="project" items="${project}">
+						<div class="projectDate">${project.projRegDate}</div>
+						<div class="project">${project.projTitle}</div>
+				</c:forEach>
+			</div>
+			<div class="detailBox3">공급자평가</div>
+			<hr class="profile-hr">
+			<div class="ContentsBox3">
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 			</div>
 		</div>
 	</div>
-</div>
-<div class="partner_bnr">
-</div>
+</div>			
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {

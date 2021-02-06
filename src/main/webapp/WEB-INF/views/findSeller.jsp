@@ -8,51 +8,83 @@
 }
 .partner_bnr {
     width: 100%;
-    padding-bottom: 100px;
+    padding: 0;
+}
+.partner_bnr .partner_wrap {
+    width: 1280px;
+    margin: 0 auto;
+    text-align: left;
 }
 .partner_bnr2 {
     width: 100%;
     padding-bottom: 100px;
     text-align: center;
 }
-.search_chk{
-	width: 400px;
-    height: 100px;
-    background-color: #d6d6d6;
-    display: inline-block;
-    border-radius: 20px;
+.partner_bnr3 {
+    width: 100%;
     text-align: center;
-	padding: 40px 0;
-    margin: 0 40px;
+}
+.search_chk {
+  width: 98px;
+  height: 33px;
+  border: solid 1px #d6d6d6;
+  background-color: #ffffff;
+  object-fit: contain;
+  font-family: NotoSansKRRegular;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1f1f1f;
+  float: left;
+}
+.search_chk.search_check{
+  background-image: linear-gradient(to left, #3b1374 , #c80c58 );
+  color: #ffffff;
+}
+.chk_list_container{
+	height: 250px;
+}
+.chk_list_container span{
+  display: inline-block;
+  margin-bottom : 13.3px;
+  object-fit: contain;
+  font-family: NotoSansKR;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
 }
 .chk_listBox{
+	display: inline-block;
 	overflow-x:hidden;
 	overflow-y:auto;
-	width:250px;
+	width:12.66%;
+	height:250px;
 	text-align: left;
 	margin-right: -5px;
 	padding: 15px;
-}
-.chk_list_container{
-	border: 1px solid #e3e3e3;
-}
-.chk_list_container > hr {
-	border-top: 1px dashed #bbb;
-	border-bottom: 1px dashed #fff;
-	width: 220px;
-	margin: 0;
+	border: solid 1px #d8d8d8;
+	background-color: #ffffff;
 }
 .container1{
-	border: 2px solid #e3e3e3;
-	height: 400px;
+  height: 278px;
+  margin: 15px 0;
+  padding: 30px 50px;
+  object-fit: contain;
+  border: solid 1px #d8d8d8;
 }
 .container2{
-	margin: 0 240px;
 	height: 50px;
 }
 .container1 .container2{
 	margin: 0;
-    width: 70%;
+    width: 100%;
     height: 100%;
     float: left;
 }
@@ -69,10 +101,14 @@
 	margin-left: 0;
 	margin-right: 0;
 }
-.row2{
-	height: 25px;
+.row3{
+	width: 100%;
 	margin-left: 0;
 	margin-right: 0;
+}
+.row2{
+	margin-bottom: 15px !important;
+	width: 700px;
 }
 .height-500{
 	height: 500px;
@@ -80,27 +116,45 @@
 }
 .leftBox{
 	float: left;
-	margin: 15px 15px;
+	margin: 10px 15px;
+}
+.leftBox2{
+	float: left;
+	height: 100%;
+}
+.row1.leftBox{
+    float: left;
+    margin: 0;
+    height: auto;
+    width: 700px;
+}
+.row1 .leftBox{
+	float: left;
+	margin: 0;
 }
 .rightBox{
 	float: right;
-	margin: 15px 15px;
+    margin-top: 23px;
 }
 .rightBox a{
+	margin: 0 15px;
 	font-weight: 0;
 	text-decoration: none;
 	color: #000;
 }
-
-.row2 .leftBox{
-	float: left;
-	padding: 0 5px;
-	margin:0;
+a.sort{
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000000;
 }
-.row2 .rightBox{
-	float: right;
-	padding: 0 5px;
-	margin:0;
+a.sort.select{
+	font-weight: bold;
 }
 .margin-0{
 	margin:0;
@@ -109,17 +163,567 @@
 	margin: 0 10px;
 }
 .p-findBtn{
-	background-color: #E62267;
+	background-color: #e52367;;
 	color: white;
-	width: 100px;
-	height: 40px;
+	width: 100%;
+	height: 70px;
+	object-fit: contain;
+	font-family: NotoSansKR;
+	font-size: 15px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	margin-top: -2px;
+	border-top-right-radius:10px;
+    border-top-left-radius:10px;
 }
 .s-findBtn{
 	background-color: #57207C;
 	color: white;
-	width: 100px;
-	height: 40px;
+	width: 100%;
+	height: 70px;
+	object-fit: contain;
+	font-family: NotoSansKR;
+	font-size: 15px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	margin-top: -2px;
+	border-top-right-radius:10px;
+    border-top-left-radius:10px;
 }
+.purpleBox{
+  display: inline-block;
+  width: fit-content;
+  height: 20px;
+  margin-left: 5px;
+  padding: 2px 8px;
+  border-radius: 11px;
+  border: solid 0.5px #5400d9;
+  background-color: #ffffff;
+  font-size: 10px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #5400d9;
+  vertical-align: bottom;
+}
+.blueBox{
+	background-color: #71A6DB;
+	color: white;
+	display: inline-block;
+	border-radius: 1px;
+	padding: 13px 13px;
+	margin-right: 10px;
+}
+.grayBox{
+  height: 21px;
+  margin: 0 20px 0 0;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+  background-color: #ffffff;
+}
+.redBox{
+  height: 21px;
+  margin: 0 20px 0 0;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ff0000;
+  background-color: #ffffff;
+}
+.pFindBox{
+  height: 26px;
+  margin: 0 10px 20px 0;
+  padding: 2px 17px 3px;
+  object-fit: contain;
+  border-radius: 13px;
+  background-color: #d80b54;
+  object-fit: contain;
+  font-family: NotoSansKRMedium;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+.sFindBox{
+  height: 26px;
+  margin: 0 10px 20px 0;
+  padding: 2px 17px 3px;
+  object-fit: contain; 
+  border-radius: 13px;
+  background-color: #57207c;
+  object-fit: contain;
+  font-family: NotoSansKRMedium;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+.titleBox{
+  object-fit: contain;
+  width: 700px;
+  height: 78px;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.contentsBox{
+	text-align: left;
+	background-color: #F2F2F2;
+	padding: 15px;
+	border-radius: 10px;
+	min-height: 100px;
+	max-height: 100px;
+}
+.tagBox{
+	display: inline-block;
+	color: #7F7F7F;
+	margin-right: 10px;
+}
+.countBox {
+  display: inline-block;
+  height: 21px;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000000;
+  margin-top: 48px;
+}
+.countBox span{
+  font-weight: normal;
+}
+.projDetail a{
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}
+a:focus, a:hover{
+	text-decoration: none;
+}
+/* 스크롤바 디자인 */
+.chk_listBox::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+  background: #ffffff;
+}
+.chk_listBox::-webkit-scrollbar-thumb {
+  border-radius: 3.5px;
+  background-color: #D9D9D9;
+
+  .chk_listBox:hover {
+    background-color: #adb5bd;
+  }
+}
+.chk_listBox::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+/*post slider*/
+.post-slider{
+  width:100%;
+  margin:0px auto;
+  position:relative;
+}
+.post-slider .silder-title{
+  text-align:center;
+  margin:30px auto;
+}
+.post-slider .next{
+  position:absolute;
+  top:50%;
+  right: -80px;
+  font-size:2em;
+  color:gray;
+  cursor: pointer;
+}
+.post-slider .prev{
+  position:absolute;
+  top:50%;
+  left: -80px;
+  font-size:2em;
+  color:gray;
+    cursor: pointer;
+}
+.post-slider .post-wrapper{
+  width:100%;
+  margin:0px auto;
+  overflow: hidden;
+  padding:10px 0px 10px 0px;
+}
+.post-slider .post-wrapper .post{
+  width:300px;
+  margin:0px 10px;
+  display:inline-block;
+  background:white;
+  border-radius: 5px;
+}
+.post-slider .post-wrapper .post .post-info{
+  font-size:15px;
+  height:100%;
+  border: 2px solid #e3e3e3;
+  border-top-right-radius:10px;
+  border-top-left-radius:10px;
+}
+.post-slider .post-wrapper .post .slider-image{
+  width:100%;
+  height:300px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  display: none;
+}
+.findPass{
+  width: 32.3px;
+  height: 45px;
+  margin-bottom: 45px;
+  margin-top: 60px;
+  object-fit: contain;
+}
+.hotPass{
+  width: 20px;
+  height: 27.9px;
+  object-fit: contain;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+.hotPass2{
+  width: 11px;
+  height: 15.3px;
+  object-fit: contain;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+.searchPass{
+  width: 26.5px;
+  height: 37px;
+  margin-right: 16.5px;
+  object-fit: contain;
+}
+.textBox1{
+  height: 58px;
+  margin-bottom: 10px;
+  object-fit: contain;
+  font-family: NotoSansKRBold;
+  font-size: 40px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1f1f1f;
+}
+.textBox2{
+  height: 29px;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  object-fit: contain;
+  font-family: NotoSansKRRegular;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1f1f1f;
+}
+.container2.hot-contents span{
+  font-family: NotoSansKR;
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.container2.hot-contents{
+  margin-bottom: 30px;
+  height: 36px;
+}
+.hotNation{
+  height: 19px;
+  margin: 15px 0 12px 20px;
+  padding: 2px 9px;
+  object-fit: contain;
+  border-radius: 11px;
+  border: solid 0.5px #5400d9;
+  background-color: #ffffff;
+  font-family: NotoSansKRMedium;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #5400d9;
+  width: fit-content;
+  line-height: 1.5;
+}
+.hotTitle{
+  margin: 0 22px;
+  margin-bottom: 10.5px; 
+  object-fit: contain;
+  font-family: NotoSansKRRegular;
+  font-size: 16px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  line-height: 1.5;
+  color: #000000;
+  height: 72px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+}
+.hot-hr{
+	margin-bottom: 16.5px;
+	border: solid 1px #cbcbcb;
+	width: 80%;
+	margin-top: 0;
+}
+.applyBtn{
+  height: 40px;
+  margin: 17px 0 0;
+  padding: 10px 0;
+  object-fit: contain;
+  background-color: #f0f0f0;
+  object-fit: contain;
+  font-family: NotoSansKRBold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: #505050;
+  width: 100%;
+}
+.countAll{
+  font-family: NotoSansKRMedium;
+  font-size: 25px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.countAll span{
+  color: #e52367;
+}
+.countAllbox{
+	margin-top: 60px;
+}
+.count-hr{
+  height: 0;
+  border: solid 2px #000000;
+  margin-bottom: 20px;
+  margin-top: 0;
+  width: 1280px;
+}
+.scrap{
+  width: 160px;
+  height: 40px;
+  border-radius: 4px;
+  border: solid 1px #c6c6c6;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  font-family: NotoSansKRMedium;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  color: #000000;
+}
+.match{
+  width: 160px;
+  height: 40px;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);
+  font-family: NotoSansKRMedium;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.46;
+  letter-spacing: normal;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.matchPass{
+  width: 10px;
+  height: 16.6px;
+  object-fit: contain;
+  margin-top: -3px;
+}
+.star{
+  width: 11.6px;
+  height: 11.1px;
+  object-fit: contain;
+  margin-top: -3px;
+}
+.textBox3{
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.selectBox{
+	display: inline-block;
+	width: 320px;
+	height: 60px;
+	margin: 20px 0;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	margin-right: -3px;
+	padding-left: 50px;
+    padding-top: 15px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+}
+.textBox4{
+	font-size: 20px;
+	height: 29px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #4b4b4b;
+}
+.textBox5{
+  display: inline-block;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+  margin-right: 20px;
+}
+.selectResult{
+  height: 70px;
+  margin: 20px 0 60px;
+  padding: 25px 50px 24px 48px;
+  border-radius: 37px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+}
+.resultText{
+  display:inline-block;
+  height: 21px;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #989898;
+  float: left;
+}
+.resultReset{
+  display:inline-block;
+  height: 21px;
+  margin: 0 0 0 9.3px;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #989898;
+  float: right;
+}
+.photoBox{
+  width: 140px;
+  height: 140px;
+  border-radius: 70%;
+  overflow: hidden;
+  margin: 38px 50px 38px 0;
+}
+.nick{
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #57207c;
+  margin-right: 10px;
+}
+.btnBox{
+	float: right;
+	width: 160px;
+	margin-top: -135px;
+}
+.sellerInfo{
+  height: 50px;
+  padding: 15px 15px 14px;
+  border: solid 1px #d8d8d8;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.sellerInfo span{
+  display: inline-block;
+  font-weight: normal;
+  color: #343434;
+  margin-left: 5px;
+  margin-right: 20px;
+}
+/*----------------------------*/
+
 .orangeBox{
 	background-color: #ED7D31;
 	color: white;
@@ -274,20 +878,6 @@ a:focus, a:hover{
 .search:focus{
 	background-image: none;
 }
-.sellerInfoBox{
-	border: 1px solid #000;
-}
-.searchBtn{
-	/* background-image: url("../local_assets/img/검색아이콘.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
-	box-sizing: border-box;
-	outline: none;
-	position: absolute;
-    width: 33px;
-    height: 30px;
-    margin: 7px; */
-}
 .scrapBtn{
 	background-image: url("../local_assets/img/star.jpg");
 	background-position: center;
@@ -313,39 +903,9 @@ a:focus, a:hover{
 	height: 100%;
 	object-fit: cover;
 }
-.sellerInfo{
-	float: right;
-    width: 768px;
-}
-.sellerInfo span{
-	font-size: 10px;
-	color: #aaa;
-	margin: 20px;
-}
-.sellerInfo .leftBox span{
-    font-size: 10px;
-    color: black;
-    margin: 10px 0;
-}
-.sellerInfo .leftBox .projInfo{
-    color: #aaa;
-}
-.sellerInfo hr{
-	margin: 6px;
-}
 .leftBox strong{
 	font-size: 17px;
     font-weight: bolder;
-}
-.sellerInfo .leftBox .nick{
-	font-size: 12px;
-	color: black;
-	margin: 20px;
-}
-.sellerInfo .leftBox .auth{
-	font-size: 12px;
-    color: #7fd7a7;
-    margin: 5px;
 }
 .partner_bnr .partner_list .chk_listBox  ul  li{
     width: 90px;
@@ -390,255 +950,133 @@ a:focus, a:hover{
 	cursor: pointer;
 }
 </style>
-<div class="partner_bnr clearfix">
-    <div class="partner_wrap" style="text-align: left;">
-        <div class="partner_list" style="display: inline-block;">
-            <div class="chk_list_container">
-            	<div class="chk_listBox">
-            		<span>사업자구분</span>
-	            	<ul class="biz-chk">
-	            		<li><input type="checkbox" class="checkAll" id="profileBizSort">전체</li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="1">법인사업자</li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="2">개인사업자</li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="3">간이과세자</li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="4">개인(사업자없음)</li>
-	            	</ul>
-            	</div>
-            	<hr>
-            	<div class="chk_listBox basic-scroll">
-            		<span>지역구분</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="profileNation">전체</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="02">서울</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="031">경기</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="032">인천</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="033">강원</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="041">충남</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="042">대전</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="043">충북</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="051">부산</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="052">울산</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="053">대구</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="054">경북</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="055">경남</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="061">전남</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="062">광주</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="063">전북</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="044">세종특별자치시</li>
-	            		<li><input type="checkbox" class="check" name="profileNation" value="064">세종특별자치도</li>
-	            	</ul>
-            	</div>
-            	<hr>
-            	<div class="chk_listBox"><span>상품분류</span>
-	            	<ul>
-	            		<li><input id="profileIndus" class="checkAll" type="checkbox">전체</li>
-	            		<c:forEach var="indusList" items="${indusList}">
-	            			<li><input type="checkbox" class="check" name="profileIndus" value="${indusList.indusId}">${indusList.indusName}</li>
-	            		</c:forEach>
-	            	</ul>
-            	</div>
-            	<hr>
-            	<div class="chk_listBox"><span>판매채널</span>
-	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="profileChannel">전체</li>
-	            		<li><input type="checkbox" class="check" name="profileChannel" value="1">오픈마켓</li>
-	            		<li><input type="checkbox" class="check" name="profileChannel" value="2">종합몰</li>
-	            		<li><input type="checkbox" class="check" name="profileChannel" value="3">폐쇄몰</li>
-	            		<li><input type="checkbox" class="check" name="profileChannel" value="4">커뮤니티</li>
-	            		<li><input type="checkbox" class="check" name="profileChannel" value="5">SNS</li>
-	            		<li><input type="checkbox" class="check" name="profileChannel" value="6">오프라인</li>
-	            		<li><input type="checkbox" class="check" name="profileChannel" value="7">해외</li>
-	            	</ul>
-            	</div>
-            </div>
-        </div>
-        <!-- 오른쪽 영역 -->
-        <div class="right-box">
-        	<div class="search-box">
-        		<div>
-        			<span>찾고 싶은 판매자 이름, 상품, 지역 등을 검색 하세요!</span>
-        		</div>
-        		<div>
-        			<form id="seller_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
-        				<button type="submit" class="searchBtn"></button>
-        				<input class="search" type="search" name="keyword">
-        				<input type="hidden" value="defaultSort" id="sort" name="sort">
-        			</form>
-        		</div>
-        	</div>
-        	<div class="right-box content">
-	        	<div class="sortBox">
-	        		<div class="leftBox">
-	        			총 판매자 수 : ${totalCount}명
-	        		</div>
-	        		<div class="rightBox">
-	        			<a href="javascript:void(0)" class="sort" id="defaultSort">기본순 /</a>
-						<a href="javascript:void(0)" class="sort" id="volumeSort">매출순 /</a>
-						<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
-						<a href="javascript:void(0)" class="sort" id="recommendSort">요청 받은 순 /</a>
-						<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
-	        		</div>
-	        	</div>
-	        </div>
-	        <!-- <div class="right-box content">
-	        	<div class="leftBox">
-					<span>총 : 0건</span>
-				</div>	
-	        </div> -->
-	        <c:forEach var="output" items="${output}" varStatus="status">
-	        <div class="right-box content clearfix">
-	        	<div class="sellerInfoBox">
-	        		<button class="scrapBtn"></button>
-	        		<div class="imgBox">
-	        			<img class="profile" src="${pageContext.request.contextPath}/local_assets/img/profile.png">
-	        		</div>
-	        		<div class="sellerInfo">
-		        		<div class="leftBox">
-		        			<!-- <div style="display: inline-block;">닉(주)위셀글로벌</div>
-		        			<div style="display: inline-block;">신원(x), 사업자(o), 채널(x), 매출(o)</div> -->
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="nick">${output.memNick}</span>
-				        		</div>
-				        		<div class="leftBox margin-0">
-				        			<span class="auth">
-				        				신원(
-				        				<c:if test="${output.memRname == 1}">
-				        					o
-				        				</c:if>
-				        				<c:if test="${output.memRname == 0}">
-				        					x
-				        				</c:if>
-				        				), 
-				        			</span>
-				        			
-				        			<span class="auth">
-				        				사업자(
-				        				<c:if test="${output.profileBizCerti == 1}">
-				        					o
-				        				</c:if>
-				        				<c:if test="${output.profileBizCerti == 0}">
-				        					x
-				        				</c:if>
-				        				), 
-				        			</span>
-				        			
-				        			<span class="auth">
-					        			채널(
-					        			<c:if test="${output.profileChChk == 1}">
-				        					o
-				        				</c:if>
-				        				<c:if test="${output.profileChChk == 0}">
-				        					x
-				        				</c:if>
-					        			), 
-				        			</span>
-				        			<span class="auth">
-					        			매출(
-					        			<c:if test="${output.profileSaleChk == 1}">
-				        					o
-				        				</c:if>
-				        				<c:if test="${output.profileSaleChk == 0}">
-				        					x
-				        				</c:if>
-					        			)
-				        			</span>
-				        		</div>
-		        			</div>
-		        			<div class="clearfix">
-		        				<div class="leftBox">
-		        					<strong class="sellerDetail" id="profileMemId${status.index}" data-index="${status.index}" data-value="${output.profileMemId}">
-		        						${output.profileIntro}
-		        					</strong>
-		        				</div>
-		        			</div>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<div class="indus">${output.profileIndusName} 분야</div>
-				        		</div>
-				        		<div class="leftBox margin-0">
-				        			<div class="span-box">
-					        			<span>${output.profileNationName} /</span>
-					        			<span>${output.profileBizSortName} /</span>
-					        			<span>
-						        			<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status">
-						        				<c:choose>
-						        					<c:when test="${!status.last}">
-						        						${profileChannel}, 
-						        					</c:when>
-						        					<c:otherwise>
-						        						${profileChannel}
-						        					</c:otherwise>
-						        				</c:choose>
-						        			</c:forEach>
-					        			</span>
-				        			</div>
-				        		</div>
-		        			</div>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-		        					<c:forEach var="hashtag" items="${output.profileHashtagList}">
-		        						<div class="seller-tag"># ${hashtag}</div>
-		        					</c:forEach>
-				        		</div>
-		        			</div>
-		        		</div>
-		        		<div class="rightBox s-box">
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">계약 프로젝트</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>${output.contractCount}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">등록 프로젝트</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>${output.projAddCount}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">요청 받은 수</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>${output.recommendCount}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">매출규모</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>연 ${output.profileVolume} 원</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">판매경력</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>${output.profileCareerName}</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        		</div>
-		        	</div>
-	        	</div>
-	        </div>
-	        <c:if test="${output == ''}">
-	        	<div class="emptyResult">검색결과가 없습니다.</div>
-	        </c:if>
-	        </c:forEach>
-	        <!-- 페이징 -->
-	        <div class="rightBox pageBox" style="margin-right: -15px;">
+<div class="partner_bnr">
+	<div class="partner_wrap">
+		<div class="partner_bnr3">
+			<div>
+				<img class="findPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass_black.png">
+			</div>
+			<div class="textBox1">판매자 찾기</div>
+			<div class="textBox2">조건에 맞는 판매자를 한 눈에 찾아보세요</div>
+		</div>
+	</div>
+	<div class="partner_bnr2">
+		<div class="search_bnr">
+		    <div class="search_wrap">
+		        <form id="seller_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
+			        <div class="input_group">
+			            <input type="text" name="keyword" placeholder="찾고 싶은 판매자 이름, 상품, 지역 등을 검색 하세요!">
+			            <button type="submit" class="btn_search">
+			               <img class="searchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png"> 검색   
+			            </button>    
+			        </div>
+			        <input type="hidden" value="defaultSort" id="sort" name="sort">
+			    </form>
+		    </div>    
+		</div>
+	</div>
+	<div class="partner_wrap">
+		<div class="textBox3">조건검색</div>
+		<div>
+			<div class="selectBox"><div class="textBox4">사업자 구분</div></div>
+			<div class="selectBox"><div class="textBox4">지역 구분</div></div>
+			<div class="selectBox"><div class="textBox4">상품 분류</div></div>
+			<div class="selectBox"><div class="textBox4">판매 채널</div></div>			
+		</div>
+		<div class="selectResult">
+			<div class="resultText">
+				선택이 없을시에는 전체를 기준으로 리스트가 보여집니다
+			</div>
+			<div class="resultReset">
+				조건 검색 리셋하기
+			</div>
+		</div>
+	</div>
+	<div class="partner_wrap">
+		<div class="container2 countAllbox">
+			<div class="leftBox countAll">전체 <span>${totalCount}</span><span>건</span>이 검색되었습니다</div>
+			<div class="rightBox">
+				<a href="javascript:void(0)" class="sort select" id="defaultSort">기본정렬 </a>
+				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 </a>
+				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 </a>
+				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 </a>
+				<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
+			</div>
+		</div>
+		<hr class="count-hr">
+		<c:forEach var="output" items="${output}" varStatus="status">
+			<div class="container1 content">
+				<div class="container2">
+					<div class="leftBox2">
+						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+					</div>
+					<div class="row1 leftBox">
+						<div class="row2 leftBox">
+							<div class="nick">${output.memNick}</div>
+							<c:forEach var="hashtag" items="${output.profileHashtagList}">
+        						<div class="purpleBox"># ${hashtag}</div>
+        					</c:forEach>
+						</div>
+					</div>
+					<div class="row1 leftBox">
+						<div class="row2 leftBox">
+							<div class="titleBox">
+								${output.profileIntro}
+							</div>
+						</div>
+					</div>
+					<div class="row1 leftBox">
+						<div class="row2 leftBox">
+							<span class="textBox5">${output.profileIndusName}</span>
+							<span class="textBox5">${output.profileNationName}지역</span>
+							<span class="textBox5">${output.profileBizSortName}</span>
+							<span class="textBox5">
+							<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status2">
+		        				<c:choose>
+		        					<c:when test="${!status2.last}">
+		        						${profileChannel},  
+		        					</c:when>
+		        					<c:otherwise>
+		        						${profileChannel}
+		        					</c:otherwise>
+		        				</c:choose>
+		        			</c:forEach>
+		        			</span>
+						</div>
+					</div>
+					<div class="row1 leftBox">
+						<div class="leftBox">
+							<div class="sellerInfo">
+								계약<span>${output.contractCount}건</span>
+								등록프로젝트<span>${output.projAddCount}건</span>
+								요청수<span>${output.recommendCount}건</span>
+								매출<span>${output.profileVolume}원</span>
+								경력<span style="margin-right: 0;">${output.profileCareerName}</span>
+							</div>
+						</div>
+					</div>
+					<div class="btnBox">
+						<button class="scrap">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+							판매자 상세정보
+						</button>
+						<button class="scrap">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+							관심등록
+						</button>
+						<button class="match" id="profileMemId${status.index}" data-value="${output.profileMemId}" data-index="${status.index}">
+						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+							매치하기
+						</button>
+					</div>
+				</div>
+			</div>
+		<c:if test="${output == ''}">
+			<div class="emptyResult">검색결과가 없습니다.</div>
+		</c:if>
+	    </c:forEach>
+        <div class="partner_bnr2 pageBox" style="margin-right: -15px;">
+        	<div class="row1">
 				<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 					<ul class="pagination">
 					<!-- 페이지 번호 구현 -->
@@ -697,8 +1135,8 @@ a:focus, a:hover{
 					</ul>
 				</div>
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
@@ -743,21 +1181,23 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 });
 </script>
 <script type="text/x-handlebars-template" id="page-tmpl">
-	<div class="rightBox pageBox" style="margin-right: -15px;">
-		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
-			<ul class="pagination">
-		        {{#ifCond prevPage '>' 0}}
-		            <li><a href="javascript:void(0)" class="pageMove" value="{{prevPage}}">&laquo;</a></li>
-		        {{else}}
-		            <li><a>&laquo;</a></li>
-		        {{/ifCond}}
-		        {{creatPage startPage endPage nowPage}}
-			    {{#ifCond nextPage '>' 0}}
-		            <li><a href="javascript:void(0)" class="pageMove" value="{{nextPage}}">&raquo;</a></li>
-		        {{else}}
-		            <li><a>&raquo;</a></li>
-		        {{/ifCond}}
-			</ul>
+	<div class="partner_bnr2 pageBox" style="margin-right: -15px;">
+        <div class="row1">
+			<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
+				<ul class="pagination">
+		     	   {{#ifCond prevPage '>' 0}}
+		      	      <li><a href="javascript:void(0);" class="pageMove" value="{{prevPage}}">&laquo;</a></li>
+		    	    {{else}}
+		     	       <li><a>&laquo;</a></li>
+		     	   {{/ifCond}}
+		    	    {{creatPage startPage endPage nowPage}}
+				    {{#ifCond nextPage '>' 0}}
+		     	       <li><a href="javascript:void(0);" class="pageMove" value="{{nextPage}}">&raquo;</a></li>
+		    	    {{else}}
+		    	        <li><a>&raquo;</a></li>
+		    	    {{/ifCond}}
+				</ul>
+			</div>
 		</div>
 	</div>
 </script>
@@ -926,6 +1366,13 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
+	
+	$(document).on("click", ".match", function(){
+		
+		var idx = $(this).data('index');
+		var profileMemId = $("#profileMemId"+idx).attr('data-value');
+		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
+	});
 	
 	$(document).on("submit", "#seller_frm", function(e){
 		e.preventDefault();
