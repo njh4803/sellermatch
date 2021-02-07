@@ -116,28 +116,29 @@ label.error {
     margin: 30px 0;
 }
 .my_home{
-	margin: 15px 20px;
+	margin: 15px 0;
 }
 .myBox{
 	display: inline-block;
 	float: left;
-	width: 450px;
-	height: 260px;
-	background-color: #f8f2f9;	
+	width: 470px;
+ 	height: 200px;
+ 	border: 1px solid #cccccc;
 }
 .myBox .textBox1{
-  margin: 70px 0 40px 0;
+  margin: 50px 0 35px 0;
   font-family: NotoSansKR;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
   color: #000000;
+  padding-right: 50px;
 }
 .myBox .textBox2{
-  margin-bottom: 77px;
+  margin-bottom: 50px;
   font-family: NotoSansKR;
   font-size: 30px;
   font-weight: 500;
@@ -146,21 +147,23 @@ label.error {
   letter-spacing: normal;
   text-align: center;
   color: #000000;
+  padding-right: 50px;
 }
 .myBox2{
   display: inline-block;
   float: right;
-  width: 770px;
-  height: 260px;
-  background-color: #f8f2f9;
+  height: 200px;
+  background-color: #ffffff;
   text-align: center;
-  padding: 70px 0 40px 0;
+  border: solid 1px #cccccc;
 }
 .authBox{
-  height: 50px;
-  margin-bottom:20px;
-  padding: 10px 23px 9px;
-  border: solid 1px #707070;
+  width: 40px;
+  height: 40px;
+  margin-bottom:13px;
+  margin-left: 10px;
+  padding: 5px 0 4px;
+  border: dotted 1px #707070;
   background-color: #ffffff;
   font-family: SegoeUI;
   font-size: 12px;
@@ -172,31 +175,60 @@ label.error {
   color: #707070;
   line-height: 1.25;
 }
-.myBox2 .textBox1{
+.not-authBox{
+  width: 40px;
+  height: 40px;
+  margin-bottom:13px;
+  margin-left: 10px;
+  padding: 5px 0 4px;
+  border: dotted 1px #ff0000;
+  background-color: #ffffff;
+  font-family: SegoeUI;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  line-height: 1.25;
+  color: #ff0000;
+}
+.myBox2 .myBox2-1{
   display: inline-block;
-  height: 29px;
-  margin: 0 58.5px;
-  font-family: NotoSansKR;
-  font-size: 20px;
+  width: 260px;
+  height: 200px;
+  padding: 50px 0;
+}
+.myBox2 .myBox2-2{
+  display: inline-block;
+  width: 260px;
+  height: 200px;
+  padding: 50px 0;
+}
+.myBox2 .myBox2-3{
+  display: inline-block;
+  width: 270px;
+  height: 200px;
+  padding: 50px 0;
+
+}
+.myBox2 .textBox1{
+  height: 21px;
+  font-size: 15px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 0.75;
   letter-spacing: normal;
   text-align: center;
   color: #000000;
 }
 .myBox2 .textBox2{
-  display: inline-block;
-  width: 30%;
-  margin-top: 40px;
-  margin-bottom: 77px;
-  font-family: NotoSansKR;
+  height: 44px;
+  margin: 35px 0 0;
   font-size: 30px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 0.5;
   letter-spacing: normal;
   text-align: center;
   color: #000000;
@@ -209,14 +241,22 @@ label.error {
 }
 .myBox3 .textBox1{
   display: inline-block;
-  width: 390px;
-  height: 183px;
+  width: 414.9px;
+  height: 140px;
+  padding: 30px 0 15px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+}
+.myBox3 .textBox2{
+  display: inline-block;
+  width: 414.9px;
+  height: 140px;
+  padding: 50px 0 15px;
   border: solid 1px #cccccc;
   background-color: #ffffff;
 }
 .myBox-row{
-  margin: 77px 0;
-  font-family: NotoSansKR;
+  margin: 0 0 24px;
   font-size: 20px;
   font-weight: 500;
   font-stretch: normal;
@@ -225,21 +265,32 @@ label.error {
   text-align: center;
   color: #000000;
 }
-.myBox3 .textBox1 button{
-    height: 21px;
-    float: right;
-    margin-top: -41px;
-    margin-right: 42px;
-    font-family: NotoSansKR;
-    font-size: 15px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: normal;
-    text-align: center;
-    color: #000000;
-    background-color: #ffffff;
+.myBox-row2{
+  margin: 0 0 29px;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.myBox-row3{
+	display: inline-block;
+	text-align: right;
+	width: 100%;
+}
+.myBox3 button{
+	 height: 17px;
+	 margin-right: 15px; 
+	 font-size: 12px;
+	 font-weight: 500;
+	 font-stretch: normal;
+	 font-style: normal;
+	 letter-spacing: normal;
+	 text-align: right;
+	 color: #000000;
+     background-color: #ffffff;
 }
 .infoContainer{
 	display: inline-block;
@@ -426,6 +477,11 @@ label.error {
     text-overflow: ellipsis;
     max-width: 500px;
 }
+.authImg{
+	position: absolute;
+    left: 324px;
+    top: 620px;
+}
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
@@ -443,28 +499,42 @@ label.error {
 						<c:if test="${output.memRname == '1'}">
 							<div class="authBox">신원<br>인증</div>
 						</c:if>
+						<c:if test="${output.memRname == '0'}">
+							<div class="not-authBox">신원<br>미인증</div>
+						</c:if>
 						<c:if test="${output.profileBizCerti == '1'}">
 							<div class="authBox">사업자<br>인증</div>
+						</c:if>
+						<c:if test="${output.profileBizCerti == '0'}">
+							<div class="not-authBox">사업자<br>미인증</div>
 						</c:if>
 						<c:if test="${output.profileSaleChk == '1'}">
 							<div class="authBox">매출<br>검증</div>
 						</c:if>
+						<c:if test="${output.profileSaleChk == '0'}">
+							<div class="not-authBox">매출<br>미검증</div>
+						</c:if>
 						<c:if test="${output.profileChChk == '1'}">
 							<div class="authBox">채널<br>검증</div>
+						</c:if>
+						<c:if test="${output.profileChChk == '0'}">
+							<div class="not-authBox">채널<br>미검증</div>
 						</c:if>
 					</div>
 					<div class="textBox1">${output.profileGrade}</div>
 					<div class="textBox2">${output.memNick}님</div>
 				</div>
 				<div class="myBox2">
-					<div>
+					<div class="myBox2-1">
 						<div class="textBox1">프로젝트 등록</div>
-						<div class="textBox1">평가건수</div>
-						<div class="textBox1">공급자 평가점수</div>
-					</div>
-					<div>
 						<div class="textBox2 projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
+					</div>
+					<div class="myBox2-2">
+						<div class="textBox1">평가건수</div>
 						<div class="textBox2">0건</div>
+					</div>
+					<div class="myBox2-3">
+						<div class="textBox1">공급자 평가점수</div>	
 						<div class="textBox2">0점</div>
 					</div>
 				</div>
@@ -472,16 +542,26 @@ label.error {
 			<div>
 				<div class="myBox3">
 					<div class="textBox1">
-						<div class="myBox-row">인증</div>
-						<button>인증 바로가기</button>
+						<div class="myBox-row">
+							<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/auth01.png">
+							간단한 인증 한번으로<br>
+							경쟁력을 높여보세요!
+						</div>
+						<div class="myBox-row3">
+							<button>바로 인증하기</button>
+						</div>
 					</div>
-					<div class="textBox1" style="margin: 0 31px;">
-						<div class="myBox-row">프로젝트 관리</div>
-						<button class="projAddCount">바로가기</button>
+					<div class="textBox2" style="margin: 0 14.5px;">
+						<div class="myBox-row2">프로젝트 관리</div>
+						<div class="myBox-row3">
+							<button class="projAddCount">바로가기</button>
+						</div>
 					</div>
-					<div class="textBox1">
-						<div class="myBox-row">관심등록리스트(26)</div>
-						<button>바로가기</button>
+					<div class="textBox2">
+						<div class="myBox-row2">관심등록리스트(26)</div>
+						<div class="myBox-row3">
+							<button>바로가기</button>
+						</div>
 					</div>
 				</div>
 			</div>
