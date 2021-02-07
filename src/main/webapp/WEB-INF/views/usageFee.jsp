@@ -641,7 +641,7 @@ $(document).ready(function(){
 	
 	$(document).on("click", "ul.tabs li", function(e){
 		
-		var keyword = $('#noticeSearch').val();
+		var keyword = $('#noticeSearch').val().trim();
 		
 		// 초기화
 		$('#noticeTable').remove();

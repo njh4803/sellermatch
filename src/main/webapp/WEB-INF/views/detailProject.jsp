@@ -684,8 +684,8 @@ a:focus, a:hover{
 		           			</button>
 		           		</div>
 		           		<div>
-		           			<button class="matchBtn">
-		           				<img class="matchPass applyBtn" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 매치하기
+		           			<button class="matchBtn" id="applyBtn">
+		           				<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 매치하기
 		           			</button>
 		           		</div>
 		           	</div>
@@ -856,7 +856,7 @@ $(document).ready(function() {
 		$("#bt04").css("border", "1px solid black");
 	});
 	
-	$(document).on("click", ".applyBtn", function(){
+	$(document).on("click", "#applyBtn", function(){
 		var login_id = $('#projectInsert').data('member');
 		var mem_sort = $('#projectInsert').data('memsort');
 		var proj_sort = $('#projSort').val();
