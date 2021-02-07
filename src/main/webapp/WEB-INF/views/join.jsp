@@ -14,30 +14,39 @@
     text-align: center;
 }
 .check{
-	background-color: #E52867;
-    color: white;
-    border-radius: 10px;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+  width: 300px;
+  height: 80px;
+  margin: 30px 20px 150px 20px;
+  padding: 25.5px 0;
+  border-radius: 10px;
+  line-height: 20px;
+  background-image: linear-gradient(to right, #d90b54, #3b1374);
 }
 .default-check{
-	background-color: white;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #e3e3e3;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;    
+  width: 300px;
+  height: 80px;
+  margin: 30px 20px 150px 20px;
+  padding: 25.5px 0;
+  border-radius: 10px;
+  border: solid 0.5px #cccccc;
+  background-color: #ffffff;
+  line-height: 20px;
 }
 .none-check{
 	background-color: #e3e3e3;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #e3e3e3;
-    width: 300px;
-    height: 100px;
-    font-size: 20px;
+	width: 300px;
+	height: 80px;
+	margin: 30px 20px 150px 20px;
+	padding: 25.5px 0;
+	line-height: 20px;
+	border-radius: 10px;
 }
 .addBtn {
 	background-color: #E52867;
@@ -259,6 +268,26 @@ label.error {
     color: #aaa;
     border: 1px solid #e3e3e3;
     margin: 10px 0;
+}
+/* checkbox */
+input[type="checkbox"].findCheck + label span {
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+  padding-left: 20px;
+  margin: 0;
+  height: auto;
+  line-height: 20px;
+  font-weight: normal;
+  background:url(../local_assets/img/checkActiveNone20.png) no-repeat;
+  background-position-y: center;
+}
+input[type="checkbox"].findCheck:checked + label span {
+    background:url(../local_assets/img/checkActive20.png) no-repeat;
 }
 </style>
 <div class="partner_bnr">

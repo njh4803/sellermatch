@@ -364,6 +364,31 @@ input[type="checkbox"].findCheck:checked + label span {
   margin: 30px auto;
   border: solid 1px #dddddd;
 }
+.circleArrow1{
+	position: absolute;
+    right: 1238px;
+    top: 725px;
+}
+.circleArrow2{
+    position: absolute;
+    right: 905px;
+    top: 725px;
+}
+.circleArrow3{
+    position: absolute;
+    right: 573px; 
+    top: 725px;
+}
+.circle{
+  width: 60px;
+  height: 60px;
+}
+.rightArrow{
+    position: relative;
+    left: -40px;
+    width: 12.6px;
+    height: 22.6px;
+}
 </style>
 <div class="partner_bnr">
 	<div class="bar"></div>
@@ -386,6 +411,10 @@ input[type="checkbox"].findCheck:checked + label span {
 	    		</div>
 	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add01.png">
 	    	</div>
+			<div class="circleArrow1">
+				<img class="circle" alt="" src="${pageContext.request.contextPath}/local_assets/img/circle.png">
+				<img class="rightArrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/rightArrow.png">
+			</div>
 	    	<div class="imgBox1" style="margin-right: 50px;">
 	    		<div class="textBox1">
 	    			신속하게<br>
@@ -397,6 +426,10 @@ input[type="checkbox"].findCheck:checked + label span {
 	    		</div>
 	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add02.png">
 	    	</div>
+			<div class="circleArrow2">
+				<img class="circle" alt="" src="${pageContext.request.contextPath}/local_assets/img/circle.png">
+				<img class="rightArrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/rightArrow.png">
+			</div>	    	
 	    	<div class="imgBox1" style="margin-right: 50px;">
 	    		<div class="textBox1">
 	    			보유한<br>
@@ -404,10 +437,14 @@ input[type="checkbox"].findCheck:checked + label span {
 	    			등록 허가
 	    		</div>
 	    		<div class="textBox2">
-	    			24시간 이내 등록 허가<br>
+	    			24시간 이내 등록 허가<br> 
 	    		</div>
 	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add03.png">
 	    	</div>
+			<div class="circleArrow3">
+				<img class="circle" alt="" src="${pageContext.request.contextPath}/local_assets/img/circle.png">
+				<img class="rightArrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/rightArrow.png">
+			</div>	    	
 	    	<div class="imgBox1">
 	    		<div class="textBox1">
 	    			공급자 및<br>
