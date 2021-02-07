@@ -365,7 +365,7 @@
 					<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
 						관심등록
 					</button>
-					<button class="match" id="profileMemId${status.index}" data-value="${output.profileMemId}" data-index="${status.index}">
+					<button class="match" id="applyBtn">
 					<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 						매치하기
 					</button>
@@ -467,7 +467,7 @@ $(document).ready(function() {
 		$("#bt03").css("border", "1px solid black");
 	});	
 	
-	$(document).on("click", ".applyBtn", function(){
+	$(document).on("click", "#applyBtn", function(){
 		$(".radioBox").remove();
 		
 		var login_id = $('#projectInsert').data('member');
