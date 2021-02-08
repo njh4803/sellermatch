@@ -616,19 +616,19 @@ a:focus, a:hover{
 .selectBox{
 	display: inline-block;
 	width: 320px;
-	height: 60px;
+	height: 50px;
 	margin: 20px 0;
 	border: solid 1px #cccccc;
 	background-color: #ffffff;
 	margin-right: -3px;
 	padding-left: 50px;
     padding-top: 15px;
-    padding-right: 24px;
-    padding-bottom: 16px;
+    padding-right: 25px;
+    padding-bottom: 14px;
 }
 .textBox4{
-	font-size: 20px;
-	height: 29px;
+	font-size: 15px;
+	height: 21px;
 	font-weight: 500;
 	font-stretch: normal;
 	font-style: normal;
@@ -654,6 +654,9 @@ a:focus, a:hover{
   border-radius: 37px;
   border: solid 1px #cccccc;
   background-color: #ffffff;
+}
+.selectResult2{
+ margin-top: 200px !important;
 }
 .resultText{
   display:inline-block;
@@ -951,14 +954,65 @@ a:focus, a:hover{
 }
 .arrow{
     position: relative;
-    right: -230px;
-    top: -25px;
+    right: -226px;
+    top: -22px;
 }
 .rotation{
     margin-right: 9.3px;
     width: 15.7px;
     height: 15.8px;
     margin-top: -3.8px;
+}
+.chkBox1{
+	display:none;
+    position: absolute;
+    top: -21px;
+    left: 3px;
+    width: 320px;
+    border: 1px solid;
+    height: 180px;
+    padding: 20px 0 20px 0;
+    background-color: #ffffff;
+    margin-left: -3px;
+}
+.chkBox2{
+    display:none;
+    position: absolute;
+    top: -21px;
+    left: 323px;
+    width: 320px;
+    border: 1px solid;
+    height: 180px;
+    padding: 20px 0 20px 0;
+    background-color: #ffffff;
+    margin-left: -3px;
+}
+.chkBox3{
+    display:none;
+    position: absolute;
+    top: -21px;
+    left: 643px;
+    width: 320px;
+    border: 1px solid;
+    height: 180px;
+    padding: 20px 0 20px 0;
+    background-color: #ffffff;
+    margin-left: -3px;
+}
+.chkBox4{
+    display:none;
+    position: absolute;
+    top: -21px;
+    left: 963px;
+    width: 320px;
+    border: 1px solid;
+    height: 180px;
+    padding: 20px 0 20px 0;
+    background-color: #ffffff;
+    margin-left: -3px;
+}
+.chkContainer{
+	position: relative;
 }
 </style>
 <div class="partner_bnr">
@@ -989,22 +1043,37 @@ a:focus, a:hover{
 	<div class="partner_wrap">
 		<div class="textBox3">조건검색</div>
 		<div>
-			<div class="selectBox">
+			<div class="selectBox" id="selectBox1">
 				<div class="textBox4">사업자 구분</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
 			</div>
-			<div class="selectBox">
+			<div class="selectBox" id="selectBox2">
 				<div class="textBox4">지역 구분</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
 			</div>
-			<div class="selectBox">
+			<div class="selectBox" id="selectBox3">
 				<div class="textBox4">상품 분류</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
 			</div>
-			<div class="selectBox">
+			<div class="selectBox" id="selectBox4">
 				<div class="textBox4">판매 채널</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
 			</div>			
+		</div>
+		<div class="clearfix"></div>
+		<div class="chkContainer">
+			<div class="chkBox1 selectBox1">
+				zzz
+			</div>
+			<div class="chkBox2 selectBox2">
+				zzz
+			</div>
+			<div class="chkBox3 selectBox3">
+				zzz
+			</div>
+			<div class="chkBox4 selectBox4">
+				zzz 
+			</div>
 		</div>
 		<div class="selectResult">
 			<div class="resultText">
@@ -1390,6 +1459,18 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
+	
+	$(document).on("click", ".selectBox", function(){
+		var id = $(this).attr('id');
+		var target = $('.'+id).toggle();
+		$(this).toggleClass('select-active');
+		
+		if ($('.selectBox').hasClass('select-active')) {
+			$('.selectResult').addClass('selectResult2');
+		} else{
+			$('.selectResult').removeClass('selectResult2');
+		}
+	});
 	
 	$(document).on("click", ".match", function(){
 		

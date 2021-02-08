@@ -657,6 +657,7 @@ $(document).ready(function() {
     	</div>
     	<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
 																<input type="hidden" id="memSort" name="memSort" value="{{memSort}}">
+																<input type="hidden" name="memRname" id="memRname" value="0" readonly="readonly">
                                                             <%-- <div class="form-group row">
                                                                 <label class="col-sm-2 colForm-label">프로필 사진</label>
                                                                 <div class="col-sm-10 file_input">
@@ -802,8 +803,7 @@ $(document).ready(function() {
 															<div style="text-align-last: center;">
 																<input class="btn form-bg-primary" type="submit" value="등록">
 																<input class="btn form-bg-submit" type="reset" value="취소">
-															</div>
-															<input type="hidden" name="memRname" id="memRname" readonly="readonly"> -->
+															</div> -->
 			<div class="Agreement-container">
 				<div class="Agreement">
 					<input type="checkbox" class="agree-all" id="checkAll"><label for="checkAll"><span>전체약관동의</span></label>
