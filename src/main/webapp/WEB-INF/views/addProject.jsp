@@ -25,7 +25,6 @@
   margin: 30px 20px 150px 20px;
   padding: 25.5px 0;
   border-radius: 10px;
-  line-height: 20px;
   background-image: linear-gradient(to right, #d90b54, #3b1374);
 }
 .default-check{
@@ -43,7 +42,6 @@
   border-radius: 10px;
   border: solid 0.5px #cccccc;
   background-color: #ffffff;
-  line-height: 20px;
 }
 .none-check{
 	background-color: #e3e3e3;
@@ -51,16 +49,21 @@
 	height: 80px;
 	margin: 30px 20px 150px 20px;
 	padding: 25.5px 0;
-	line-height: 20px;
 	border-radius: 10px;
 }
 .addBtn {
-	background-color: #E52867;
-    color: white;
-    border-radius: 10px;
-    width: 150px;
-    height: 50px;
-    font-size: 20px;
+	width: 160px;
+	height: 40px;
+	border-radius: 4px;
+	background-image: linear-gradient(to right, #d90b54, #3b1374);
+	font-size: 13px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	padding: 10.5px 0;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
     margin: 30px 0;
 }
 a {
@@ -298,6 +301,10 @@ label.error {
   object-fit: contain;
   margin-right: 10.7px;
 }
+.addPass2{
+  width: 10px;
+  height: 16.6px;
+}
 .addBox{
 	width: 1280px;
     margin: 0 auto;
@@ -314,20 +321,20 @@ input[type="checkbox"].findCheck + label span {
   font-size: 20px;
   font-weight: bold;
   font-stretch: normal;
-  font-style: normal;
   letter-spacing: normal;
   text-align: center;
   color: #000000;
   padding-left: 20px;
   margin: 0;
   height: auto;
-  line-height: 20px;
   font-weight: normal;
   background:url(../local_assets/img/checkActiveNone20.png) no-repeat;
   background-position-y: center;
 }
 input[type="checkbox"].findCheck:checked + label span {
     background:url(../local_assets/img/checkActive20.png) no-repeat;
+    color: #ffffff;
+    background-position-y: center;
 }
 .addBox2 input[type="checkbox"] + label span {
     display: inline-block;
@@ -335,7 +342,6 @@ input[type="checkbox"].findCheck:checked + label span {
 	font-size: 15px;
 	font-weight: 500;
 	font-stretch: normal;
-	font-style: normal;
 	letter-spacing: normal;
 	color: #707070;
     padding-left: 20px;
@@ -348,6 +354,7 @@ input[type="checkbox"].findCheck:checked + label span {
 }
 .addBox2 input[type="checkbox"]:checked + label span {
     background:url(../local_assets/img/checkActive20.png) no-repeat;
+    background-position-y: center;
 }
 .addBox2 a{
   font-size: 15px;
@@ -861,11 +868,11 @@ $(function() {
 	<input type="hidden" id="member" name="member" value="${member.memSortName}">
 	<div style="display: inline-block;">
 		<button id="spBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck spFind" id="spFind" value="공급자">
-			<label for="spFind"><span>판매자 찾기</label></span></button>
+			<label for="spFind"><span>&nbsp;&nbsp;판매자 찾기</label></span></button>
 	</div>
 	<div style="display: inline-block;">
 	    <button id="ppBtn" class="default-check text-center" value="공급자"><input type="checkbox" class="findCheck ppFind" id="ppFind" value="판매자">
-			<label for="ppFind"><span>공급자 찾기</label></span></button>
+			<label for="ppFind"><span>&nbsp;&nbsp;공급자 찾기</label></span></button>
 	</div>
 </div>
 </script>
@@ -880,6 +887,7 @@ $(function() {
 	    			<tbody>
 	    				<tr>
 	    					<td>프로젝트 제목</td>
+							{{#ifCond memSort '==' 1}}
 	    					<td>
 	    						<div class="width-70">
 	    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="[다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집]">
@@ -887,12 +895,27 @@ $(function() {
 	    						<div class="width-30">
 		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
 		    							<option value="" selected="selected">[기본문구선택]</option>
-	                               		<option value="판매자를 찾습니다.">판매자를 찾습니다.</option>
-	                                	<option value="판매위임합니다.">판매위임합니다.</option>
-	                                	<option value="배송대행지를 찾습니다.">배송대행지를 찾습니다.</option>
+	                               		<option value="판매자를 찾습니다.">고매출 판매자를 찾습니다</option>
+	                                	<option value="판매위임합니다.">위탁전문 공급업체입니다</option>
+	                                	<option value="배송대행지를 찾습니다.">위탁판매자 찾습니다</option>
 	                              	</select>
 	    						</div>
 	    					</td>
+							{{else}}
+	    					<td>
+	    						<div class="width-70">
+	    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="다앙한 건강식품 위탁판매 합니다">
+	    						</div>
+	    						<div class="width-30">
+		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
+		    							<option value="" selected="selected">[기본문구선택]</option>
+	                               		<option value="판매자를 찾습니다.">고마진 공급자를 찾습니다</option>
+	                                	<option value="판매위임합니다.">위탁판매 전문셀러입니다</option>
+	                                	<option value="배송대행지를 찾습니다.">위탁업체 찾습니다 </option>
+	                              	</select>
+	    						</div>
+	    					</td>
+							{{/ifCond}}
 	    				</tr>
 	    				<tr>
 	    					<td>상품분류</td>
@@ -964,36 +987,40 @@ $(function() {
 	    					</td>
 	    				</tr>
 	    				<tr>
-	    					<td>판매채널</td>
+							{{#ifCond memSort '==' 1}}
+	    						<td>채널</td>
+							{{else}}
+								<td>판매 채널</td>
+							{{/ifCond}}
 	    					<td>
 		    					<div class="inputForm width-100">
 		    						<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="1">
-	                                	<span>오픈마켓</span>
+	                                	<input id="chk1" type="checkbox" name="projChannel" value="1">
+	                                	<label for="chk1"><span>오픈마켓</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="2">
-	                                	<span>종합몰</span>
+	                                	<input id="chk2" type="checkbox" name="projChannel" value="2">
+	                                	<label for="chk2"><span>종합몰</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="3">
-	                                	<span>폐쇄몰</span>
+	                                	<input id="chk3" type="checkbox" name="projChannel" value="3">
+	                                	<label for="chk3"><span>폐쇄몰</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="4">
-	                                	<span>커뮤니티</span>
+	                                	<input id="chk4" type="checkbox" name="projChannel" value="4">
+	                                	<label for="chk4"><span>커뮤니티</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="5">
-	                                	<span>SNS</span>
+	                                	<input id="chk5" type="checkbox" name="projChannel" value="5">
+	                                	<label for="chk5"><span>SNS</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="6">
-	                                	<span>오프라인</span>
+	                                	<input id="chk6" type="checkbox" name="projChannel" value="6">
+	                                	<label for="chk6"><span>오프라인</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="projChannel" value="7">
-	                                	<span>해외</span>
+	                                	<input id="chk7" type="checkbox" name="projChannel" value="7">
+	                                	<label for="chk7"><span>해외</span></label>
 		                           	</div>
 		                        </div>
 	    					</td>
@@ -1025,16 +1052,28 @@ $(function() {
    						<div class="width-70">
    							<input type="text" class="inputForm" id="projRequire" name="projRequire">
    						</div>
+						{{#ifCond memSort '==' 1}}
    						<div class="width-30">
     						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
     							<option value="" selected="selected">[기본문구선택]</option>
-                              		<option value="저녁에만 거래가능합니다.">저녁에만 거래가능합니다.</option>
-                               	<option value="필수요건입니다.">필수요건입니다.</option>
-                               	<option value="기본문구입니다.">기본문구입니다.</option>
-                             	</select>
+                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
+                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
+                               	<option value="마진협상가능">마진협상가능</option>
+                            </select>
    						</div>
+						{{else}}
+   						<div class="width-30">
+    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
+    							<option value="" selected="selected">[기본문구선택]</option>
+                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
+                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
+                               	<option value="마진협상가능">마진협상가능</option>
+                            </select>
+   						</div>
+						{{/ifCond}}
    					</td>
    				</tr>
+				{{#ifCond memSort '==' 2}}
    				<tr>
    					<td>해시태그</td>
    					<td>
@@ -1048,8 +1087,8 @@ $(function() {
                                    	<label for="hash2"><span>고마진상품</span></label>
                               	</div>
                               	<div class="row1">
-                                   	<input type="checkbox" name="projKeyword" id="hash3" value="매출보장판매자">
-                                   	<label for="hash3"><span>매출보장 판매자</span></label></span>
+                                   	<input type="checkbox" name="projKeyword" id="hash3" value="수익보장_공급자_교체">
+                                   	<label for="hash3"><span>수익보장_공급자_교체</span></label></span>
                               	</div>
                               	<div class="row1">
                                    	<input type="checkbox" name="projKeyword" id="hash4" value="수출가능상품">
@@ -1057,11 +1096,12 @@ $(function() {
                               	</div>
                               	<div class="row1">
                                    	<input type="checkbox" name="projKeyword" id="hash5" value="요즘뜨는제품">
-                                   	<label for="hash5"><span>요즘 뜨는 제품</span></label>
+                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
                               	</div>
                            </div>
    					</td>
    				</tr>
+				{{/ifCond}}
    				<tr>
    					<td>상세사진</td>
    					<td>
@@ -1096,7 +1136,10 @@ $(function() {
    			</tbody>
    		</table>
    		<div>
-	    	<input class="addBtn" type="submit" value="프로젝트 등록">
+	    	<button class="addBtn" type="submit">
+				<img class="addPass2" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+				프로젝트 등록
+			</button>
 	    </div>
    	</form>    	
   	</div>

@@ -648,9 +648,9 @@ a:focus, a:hover{
   margin-right: 20px;
 }
 .selectResult{
-  height: 70px;
+  height: 50px;
   margin: 20px 0 60px;
-  padding: 25px 50px 24px 48px;
+  padding: 15px 50px 14px 48px;
   border-radius: 37px;
   border: solid 1px #cccccc;
   background-color: #ffffff;
@@ -949,6 +949,17 @@ a:focus, a:hover{
 .sellerDetail{
 	cursor: pointer;
 }
+.arrow{
+    position: relative;
+    right: -230px;
+    top: -25px;
+}
+.rotation{
+    margin-right: 9.3px;
+    width: 15.7px;
+    height: 15.8px;
+    margin-top: -3.8px;
+}
 </style>
 <div class="partner_bnr">
 	<div class="partner_wrap">
@@ -978,16 +989,29 @@ a:focus, a:hover{
 	<div class="partner_wrap">
 		<div class="textBox3">조건검색</div>
 		<div>
-			<div class="selectBox"><div class="textBox4">사업자 구분</div></div>
-			<div class="selectBox"><div class="textBox4">지역 구분</div></div>
-			<div class="selectBox"><div class="textBox4">상품 분류</div></div>
-			<div class="selectBox"><div class="textBox4">판매 채널</div></div>			
+			<div class="selectBox">
+				<div class="textBox4">사업자 구분</div>
+				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
+			</div>
+			<div class="selectBox">
+				<div class="textBox4">지역 구분</div>
+				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
+			</div>
+			<div class="selectBox">
+				<div class="textBox4">상품 분류</div>
+				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
+			</div>
+			<div class="selectBox">
+				<div class="textBox4">판매 채널</div>
+				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
+			</div>			
 		</div>
 		<div class="selectResult">
 			<div class="resultText">
 				선택이 없을시에는 전체를 기준으로 리스트가 보여집니다
 			</div>
 			<div class="resultReset">
+				<img class="rotation" alt="" src="${pageContext.request.contextPath}/local_assets/img/rotation.png">
 				조건 검색 리셋하기
 			</div>
 		</div>
@@ -1057,7 +1081,7 @@ a:focus, a:hover{
 					</div>
 					<div class="btnBox">
 						<button class="scrap">
-						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/person.png">
 							판매자 상세정보
 						</button>
 						<button class="scrap">
@@ -1066,7 +1090,7 @@ a:focus, a:hover{
 						</button>
 						<button class="match" id="profileMemId${status.index}" data-value="${output.profileMemId}" data-index="${status.index}">
 						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-							매치하기
+							지원요청
 						</button>
 					</div>
 				</div>

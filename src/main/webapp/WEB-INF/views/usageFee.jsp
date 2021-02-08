@@ -71,7 +71,7 @@
 	}
 	.tabBox{
 		width: 1280px;
-		height: 270px;
+		height: 250px;
 		border-bottom: solid 3px #000000;
 		background-color: #ffffff;
 		padding-top: 60px;	
@@ -641,7 +641,7 @@ $(document).ready(function(){
 	
 	$(document).on("click", "ul.tabs li", function(e){
 		
-		var keyword = $('#noticeSearch').val().trim();
+		var keyword = $('#noticeSearch').val();
 		
 		// 초기화
 		$('#noticeTable').remove();

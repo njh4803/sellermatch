@@ -19,7 +19,6 @@
   margin: 30px 20px 150px 20px;
   padding: 25.5px 0;
   border-radius: 10px;
-  line-height: 20px;
   background-image: linear-gradient(to right, #d90b54, #3b1374);
 }
 .default-check{
@@ -37,7 +36,6 @@
   border-radius: 10px;
   border: solid 0.5px #cccccc;
   background-color: #ffffff;
-  line-height: 20px;
 }
 .none-check{
 	background-color: #e3e3e3;
@@ -45,7 +43,6 @@
 	height: 80px;
 	margin: 30px 20px 150px 20px;
 	padding: 25.5px 0;
-	line-height: 20px;
 	border-radius: 10px;
 }
 .addBtn {
@@ -281,13 +278,13 @@ input[type="checkbox"].findCheck + label span {
   padding-left: 20px;
   margin: 0;
   height: auto;
-  line-height: 20px;
-  font-weight: normal;
   background:url(../local_assets/img/checkActiveNone20.png) no-repeat;
   background-position-y: center;
 }
 input[type="checkbox"].findCheck:checked + label span {
     background:url(../local_assets/img/checkActive20.png) no-repeat;
+    color: #ffffff;
+    background-position-y: center;
 }
 </style>
 <div class="partner_bnr">
@@ -303,13 +300,13 @@ input[type="checkbox"].findCheck:checked + label span {
 			<div style="display: inline-block;">
 				<button id="spBtn" class="default-check text-center" value="판매자">
 					<input type="checkbox" class="findCheck spFind" id="spFind" value="판매자">
-					<label for="spFind"><span>판매자 가입</span></label>
+					<label for="spFind"><span>&nbsp;&nbsp;판매자 가입</span></label>
 				</button>
 			</div>
 			<div style="display: inline-block;">
 			    <button id="ppBtn" class="default-check text-center" value="공급자">
 			    	<input type="checkbox" class="findCheck ppFind" id="ppFind" value="공급자">
-			    	<label for="ppFind"><span>공급자 가입</span></label>
+			    	<label for="ppFind"><span>&nbsp;&nbsp;공급자 가입</span></label>
 			    </button>
 			</div>
 		</div>

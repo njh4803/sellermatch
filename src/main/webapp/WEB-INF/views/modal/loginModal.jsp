@@ -258,13 +258,13 @@ $(document).ready(function() {
 			success : function(json) {
 				$("#loginModal").modal('hide');
 				
-				if (json.profile.profileIndus == undefined) {
+				if (json.profile.profileIndus == undefined || json.profile.profileIndus == '') {
 					var text = '';
 					if (json.profile.profileSort == 1) {
-						text = '프로필 등록 후 여러분이 원하는 공급자와 더 가까워집니다.'
+						text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
 					}
 					if (json.profile.profileSort == 2) {
-						text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
+						text = '프로필 등록 후 여러분이 원하는 공급자와 더 가까워집니다.'
 					}
 					swal({
 	    	            title: '<div>프로필 등록을 해야</div><div>프로젝트 등록을 할 수 있습니다.</div>',
@@ -276,7 +276,7 @@ $(document).ready(function() {
 	    	            cancelButtonColor: '#d33',
 	    	            confirmButtonText: '지금 등록하기',
 	    	            cancelButtonText: '나중에 등록하기'
-	    	        }).then(function(result) {	        	
+	    	        }).then(function(result) {	
 	    	        	if (result.value) {
 	    	            	window.location = ROOT_URL+ "/profile?profileMemId="+json.profile.profileMemId+"&profileSort="+json.profile.profileSort;
 	    	            } else {

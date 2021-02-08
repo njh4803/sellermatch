@@ -650,6 +650,9 @@ a:focus, a:hover{
 .reviewContents{
 	padding: 11px 0 0 12px;
 }
+.red{
+	color: #ff0000 !important;
+}
 </style>
 <div class="partner_bnr">
 	<div class="bar"><div>프로젝트 상세정보</div></div>
@@ -685,7 +688,7 @@ a:focus, a:hover{
 		           		</div>
 		           		<div>
 		           			<button class="matchBtn" id="applyBtn">
-		           				<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 매치하기
+		           				<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 지원하기 
 		           			</button>
 		           		</div>
 		           	</div>
@@ -713,7 +716,7 @@ a:focus, a:hover{
 				<div class="detailBox2">
 					<div class="infoBox2">
 						<div class="infoBox3"><span>공급방법</span><span class="textRow2">${output.projSupplyTypeName}</span></div>
-						<div class="infoBox3"><span>모집마감</span><span class="textRow2">${output.projEndDate}일</span></div>
+						<div class="infoBox3"><span>모집마감</span><span class="textRow2 red">${output.projEndDate}</span></div>
 						<div class="infoBox3"><span>모집인원</span><span class="textRow2">${output.projRecruitNum}명</span></div>
 					</div>
 					<div class="infoBox2">
@@ -750,7 +753,7 @@ a:focus, a:hover{
 				<div class="detailBox3">상세내용
 					<div class="textBox1">
 						<c:forEach var="projDetailImg" items="${output.projDetailImg}">
-							${projDetailImg}
+							<img alt="" src="${pageContext.request.contextPath}/upload${projDetailImg.replace('|','')}">
 						</c:forEach>
 						${output.projDetail}
 					</div>

@@ -393,13 +393,20 @@ label.error {
 .myProjBox{
 	margin: 25px 0;
 }
+.myProjBox2{
+	display: inline-block;
+	height: 60px;
+	width: 100%;
+	border-right: 1px solid #cccccc;
+}
 .proj-type{
 	display: inline-block;
 	width: 256px;
 	height: 100px;
 	padding: 20px 0;
-	background-color: #f8f2f9;	
-	margin-right: -4px;
+    margin-right: -4px;
+    border-top: solid 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
 }
 .proj-type .textBox1{
   height: 29px;
@@ -412,6 +419,9 @@ label.error {
   letter-spacing: normal;
   text-align: center;
   color: #000000;
+}
+.proj-type .textBox1 button{
+	background-color: #ffffff;
 }
 .p-type{
   height: 21px;
@@ -435,7 +445,6 @@ label.error {
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 3.67;
   letter-spacing: normal;
   text-align: center;
   color: #000000;
@@ -675,7 +684,9 @@ label.error {
 			    				</div>
 			    			</div>
 		    				<div>
-		    					<button type="submit" class="editBtn">수정완료
+		    					<button type="submit" class="editBtn">
+			    					<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+			    					수정완료
 		    					</button>
 		    				</div>	
 				   		</div>
@@ -710,12 +721,15 @@ label.error {
 								<div class="inputGroup">
 								<c:if test="${output.memSort == '1'}">
 									<label>공급자 소개</label>
+									<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다">
 								</c:if>
 			    				<c:if test="${output.memSort == '2'}">
 									<label>판매자 소개</label>
+									<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
 								</c:if>	
-			    					<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
+			    					
 								</div>
+								<c:if test="${output.memSort == '2'}">
 								<div class="inputGroup">
 			    					<label>매출 규모</label>
 			    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
@@ -750,6 +764,7 @@ label.error {
 	                                	<label for="ch7"><span>해외</span></label>
 	                                </div>
 								</div>
+								</c:if>
 								<div class="inputGroup">
 			    					<label>등록자 지역</label>
 		    						<select id="profileNation" name="profileNation" class="inputForm">
@@ -797,6 +812,7 @@ label.error {
 	                                       <option value="5">기타</option>
 	                                </select>
 								</div>
+								<c:if test="${output.memSort == '2'}">
 								<div class="inputGroup">
 			    					<label>해시태그</label>
 			    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
@@ -812,10 +828,13 @@ label.error {
 	                                	<label for="ht5"><span>다양한 판매분야</span></label>
 			                        </div>
 								</div>
+								</c:if>
 							</div>							
 						</div>
 				   		<div>
-	    					<button type="submit" class="editBtn">수정완료
+	    					<button type="submit" class="editBtn">
+	    						<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+	    						수정완료
 	    					</button>
 	    				</div>	
 				   	</form>
@@ -1535,18 +1554,25 @@ $(document).ready(function() {
 			<div id="myProject">
 				<div class="myProjBox">
 					<div class="proj-type">
-						<div class="p-type">등록한 프로젝트</div>
-						<div class="textBox1"><button id="projAddCount" value="{{projAddCount}}">{{projAddCount}}건</button></div>
+						<div class="myProjBox2">
+							<div class="p-type">등록한 프로젝트</div>
+							<div class="textBox1"><button id="projAddCount" value="{{projAddCount}}">{{projAddCount}}건</button></div>
+						</div>
 					</div>
 					<div class="proj-type">
-						<div class="p-type">계약한 프로젝트</div>
-						<div class="textBox1"><button id="contractCount" value="{{contractCount}}">{{contractCount}}건</button></div>
+						<div class="myProjBox2">
+							<div class="p-type">계약한 프로젝트</div>
+							<div class="textBox1"><button id="contractCount" value="{{contractCount}}">{{contractCount}}건</button></div>
+						</div>
 					</div>
 					<div class="proj-type">
-						<div class="p-type">찜한 프로젝트</div>
-						<div class="textBox1">0건</div>
+						<div class="myProjBox2">
+							<div class="p-type">찜한 프로젝트</div>
+							<div class="textBox1">0건</div>
+						</div>
 					</div>
 					<div class="proj-type">
+						<div class="myProjBox2">						
 						{{#ifCond memSort '==' 1}}
 							<div class="p-type">제안한 프로젝트</div>
 						    <div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
@@ -1555,10 +1581,13 @@ $(document).ready(function() {
 							<div class="p-type">제안받은 프로젝트</div>
 							<div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
 						{{/ifCond}}
+						</div>
 					</div>
 					<div class="proj-type">
-						<div class="p-type">마감한 프로젝트</div>
-						<div class="textBox1">0건</div>
+						<div class="myProjBox2" style="border-right:0;">
+							<div class="p-type">마감한 프로젝트</div>
+							<div class="textBox1">0건</div>
+						</div>
 					</div>
 				</div>
 				<input type="hidden" id="myMemSort" value="{{memSort}}">

@@ -832,7 +832,7 @@ a:focus, a:hover{
 								<span class="rightBox margin-0">${output.projHit}회</span>
 							</div>
 							<div class="text-center">
-								<button class="applyBtn">바로매치 지원하기</button>
+								<button class="applyBtn">즉시 지원하기</button>
 							</div>
 					      </div>
 					    </div>
@@ -930,7 +930,7 @@ a:focus, a:hover{
 						</button>
 						<button class="match" data-index="${status.index}">
 						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-							매치하기
+							지원하기
 						</button>
 					</div>
 				</div>

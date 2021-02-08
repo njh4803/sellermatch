@@ -266,6 +266,7 @@ public class MemberRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("referer", referer);
 		data.put("profile", profile);
+		data.put("output", output);
 		// 세션 저장
 		webHelper.setSession("member", output);
 		return webHelper.getJsonData(data);

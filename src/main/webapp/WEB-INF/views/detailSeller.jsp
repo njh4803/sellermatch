@@ -168,8 +168,8 @@
   color: #ffffff;
 }
 .matchPass{
-  width: 16.5px;
-  height: 23px;
+  width: 11px;
+  height: 15.3px;
   object-fit: contain;
   margin-top: -3px;
 }
@@ -336,7 +336,7 @@
 				</div>
 				<div class="infoBox1 leftBox">
 					<div class="intro">
-						${output.profileIntro}
+						${output.memNick}
 					</div>
 				</div>
 				<div class="infoBox2 leftBox">
@@ -367,7 +367,7 @@
 					</button>
 					<button class="match" id="applyBtn">
 					<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-						매치하기
+						지원요청
 					</button>
 				</div>
 			</div>

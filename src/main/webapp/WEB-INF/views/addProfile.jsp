@@ -211,8 +211,14 @@ label.error {
 </style>
 <div class="partner_bnr">
     <div class="partner_wrap">
-        <h2>프로필을 등록해보세요!</h2>
-        <h3>나를 찾는 공급자(판매자)와 쉽게 연결됩니다.</h3>
+    	<c:if test="${output.profileSort == 1}">
+	        <h2>프로필을 등록해보세요!</h2>
+	        <h3>나를 찾는 판매자와 쉽게 연결됩니다.</h3>
+        </c:if>
+        <c:if test="${output.profileSort == 2}">
+	        <h2>프로필을 등록해보세요!</h2>
+	        <h3>나를 찾는 공급자와 쉽게 연결됩니다.</h3>
+        </c:if>
     </div>
     <div class="partner_wrap addbox2">
     	<div class="text-center profileBox">
@@ -223,13 +229,21 @@ label.error {
 				<input type="hidden" name="memNick" value="${output.memNick}">
 	    		<table class="profileTable">
 	    			<tbody>
+	    				<c:if test="${output.profileSort == 1}">
+	    				<tr>
+	    					<td>공급자 소개</td>
+	    					<td>
+	    						<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다">
+	    					</td>
+	    				</tr>
+	    				</c:if>
+	    				<c:if test="${output.profileSort == 2}">
 	    				<tr>
 	    					<td>판매자 소개</td>
 	    					<td>
 	    						<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
 	    					</td>
 	    				</tr>
-	    				<c:if test="${output.profileSort == 2}">
 	    				<tr>
 	    					<td>매출 규모</td>
 	    					<td>
@@ -248,42 +262,42 @@ label.error {
                                 </select>
 	    					</td>
 	    				</tr>
-	    				</c:if>
 	    				<tr>
 	    					<td>채널</td>
 	    					<td>
 		    					<div class="inputForm width-100" style="border: none;">
 		    						<div class="row1">
-	                                	<input type="checkbox" name="profileCh" value="1">
-	                                	<span>오픈마켓</span>
+	                                	<input id="chk1" type="checkbox" name="profileCh" value="1">
+	                                	<label for="chk1"><span>오픈마켓</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileCh" value="2">
-	                                	<span>종합몰</span>
+	                                	<input id="chk2" type="checkbox" name="profileCh" value="2">
+	                                	<label for="chk2"><span>종합몰</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileCh" value="3">
-	                                	<span>폐쇄몰</span>
+	                                	<input id="chk3" type="checkbox" name="profileCh" value="3">
+	                                	<label for="chk3"><span>폐쇄몰</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileCh" value="4">
-	                                	<span>커뮤니티</span>
+	                                	<input id="chk4" type="checkbox" name="profileCh" value="4">
+	                                	<label for="chk4"><span>커뮤니티</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileCh" value="5">
-	                                	<span>SNS</span>
+	                                	<input id="chk5" type="checkbox" name="profileCh" value="5">
+	                                	<label for="chk5"><span>SNS</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileCh" value="6">
-	                                	<span>오프라인</span>
+	                                	<input id="chk6" type="checkbox" name="profileCh" value="6">
+	                                	<label for="chk6"><span>오프라인</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileCh" value="7">
-	                                	<span>해외</span>
+	                                	<input id="chk7" type="checkbox" name="profileCh" value="7">
+	                                	<label for="chk7"><span>해외</span></label>
 		                           	</div>
 		                        </div>
 	    					</td>
 	    				</tr>
+	    				</c:if>
 	    				<tr>
 	    					<td>등록자 지역</td>
 	    					<td>

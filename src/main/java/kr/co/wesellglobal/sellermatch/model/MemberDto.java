@@ -98,7 +98,7 @@ public class MemberDto {
     
     // 사업자인증 미인증(0), 인증완료(1)
     private String profileBizCerti;
-    
+	
     // 프로필 등록 여부
     private String existProfile;
 	

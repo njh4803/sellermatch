@@ -50,6 +50,10 @@
     color: #4a6076;
     font-size: 14px;
 }
+.headerPass{
+  width: 10.2px;
+  height: 14.3px;
+}
 .clearfix:after { content: '';display: block; float: none; clear: both; }
 </style>
 </head>
@@ -89,7 +93,8 @@
             </div>
             <div class="gnb_project">
                 <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
-                	<i class="fas fa-bolt"></i> 프로젝트 등록
+                	<img class="headerPass" src="${pageContext.request.contextPath}/local_assets/img/pass13.png" alt="sellermatch">
+                	프로젝트 등록
                 </a>
             </div>
        </div>
