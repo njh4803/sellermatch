@@ -701,7 +701,7 @@ a:focus, a:hover{
 					</div>
 					<div class="infoBox">
 						<div class="textBox2"><span>상품단가</span></div>
-						<div class="textRow"><span>${output.projPrice}</span></div>
+						<div class="textRow"><span>${output.projPrice}원</span></div>
 					</div>
 					<div class="infoBox">
 						<div class="textBox2"><span>판매마진</span></div>

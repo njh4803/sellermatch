@@ -424,12 +424,13 @@ input[type="checkbox"].findCheck:checked + label span {
 			</div>
 	    	<div class="imgBox1" style="margin-right: 50px;">
 	    		<div class="textBox1">
-	    			신속하게<br>
-	    			등록사항<br>
-	    			검증
+	    			편하고 쉬운<br>
+	    			파트너 찾기<br>
+	    			<br>
 	    		</div>
 	    		<div class="textBox2">
-	    			24시간 이내 검토완료<br>
+	    			프로젝트 지원&제안<br>
+	    			효과적으로 찾으세요
 	    		</div>
 	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add02.png">
 	    	</div>
@@ -439,12 +440,13 @@ input[type="checkbox"].findCheck:checked + label span {
 			</div>	    	
 	    	<div class="imgBox1" style="margin-right: 50px;">
 	    		<div class="textBox1">
-	    			보유한<br>
-	    			사이트<br>
-	    			등록 허가
+	    			판매자&공급자<br>
+	    			인증제도<br>
+	    			<br>
 	    		</div>
 	    		<div class="textBox2">
-	    			24시간 이내 등록 허가<br> 
+	    			인증을 통해 여러분을<br>
+	    			돋보이게 합니다 
 	    		</div>
 	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add03.png">
 	    	</div>
@@ -454,13 +456,13 @@ input[type="checkbox"].findCheck:checked + label span {
 			</div>	    	
 	    	<div class="imgBox1">
 	    		<div class="textBox1">
-	    			공급자 및<br>
-	    			셀러<br>
-	    			계약관리
+	    			편한<br>
+	    			거래환경 제공<br>
+	    			<br>
 	    		</div>
 	    		<div class="textBox2">
-	    			공급자 및 셀러<br>
-					지원사업 진행사항
+	    			나에게 맞는 파트너와<br>
+					쉽게 협상하세요
 	    		</div>
 	    		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/add04.png">
 	    	</div>
@@ -895,9 +897,9 @@ $(function() {
 	    						<div class="width-30">
 		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
 		    							<option value="" selected="selected">[기본문구선택]</option>
-	                               		<option value="판매자를 찾습니다.">고매출 판매자를 찾습니다</option>
-	                                	<option value="판매위임합니다.">위탁전문 공급업체입니다</option>
-	                                	<option value="배송대행지를 찾습니다.">위탁판매자 찾습니다</option>
+	                               		<option value="고매출 판매자를 찾습니다">고매출 판매자를 찾습니다</option>
+	                                	<option value="위탁전문 공급업체입니다">위탁전문 공급업체입니다</option>
+	                                	<option value="위탁판매자 찾습니다">위탁판매자 찾습니다</option>
 	                              	</select>
 	    						</div>
 	    					</td>
@@ -909,9 +911,9 @@ $(function() {
 	    						<div class="width-30">
 		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
 		    							<option value="" selected="selected">[기본문구선택]</option>
-	                               		<option value="판매자를 찾습니다.">고마진 공급자를 찾습니다</option>
-	                                	<option value="판매위임합니다.">위탁판매 전문셀러입니다</option>
-	                                	<option value="배송대행지를 찾습니다.">위탁업체 찾습니다 </option>
+	                               		<option value="고마진 공급자를 찾습니다">고마진 공급자를 찾습니다</option>
+	                                	<option value="위탁판매 전문셀러입니다">위탁판매 전문셀러입니다</option>
+	                                	<option value="위탁업체 찾습니다">위탁업체 찾습니다 </option>
 	                              	</select>
 	    						</div>
 	    					</td>
@@ -932,7 +934,7 @@ $(function() {
 	    				<tr>
 	    					<td>상품가격</td>
 	    					<td>
-	    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="1000000" value="0">
+	    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="100000000" value="0">
 	    					</td>
 	    				</tr>
 						{{/ifCond}}
@@ -1073,7 +1075,6 @@ $(function() {
 						{{/ifCond}}
    					</td>
    				</tr>
-				{{#ifCond memSort '==' 2}}
    				<tr>
    					<td>해시태그</td>
    					<td>
@@ -1087,8 +1088,8 @@ $(function() {
                                    	<label for="hash2"><span>고마진상품</span></label>
                               	</div>
                               	<div class="row1">
-                                   	<input type="checkbox" name="projKeyword" id="hash3" value="수익보장_공급자_교체">
-                                   	<label for="hash3"><span>수익보장_공급자_교체</span></label></span>
+                                   	<input type="checkbox" name="projKeyword" id="hash3" value="수익보장공급자">
+                                   	<label for="hash3"><span>수익보장공급자</span></label></span>
                               	</div>
                               	<div class="row1">
                                    	<input type="checkbox" name="projKeyword" id="hash4" value="수출가능상품">
@@ -1101,7 +1102,6 @@ $(function() {
                            </div>
    					</td>
    				</tr>
-				{{/ifCond}}
    				<tr>
    					<td>상세사진</td>
    					<td>

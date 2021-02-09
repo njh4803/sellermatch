@@ -128,7 +128,7 @@
 }
 .leftBox{
 	float: left;
-	margin: 10px 15px;
+	margin: 10px 0;
 }
 .row1.leftBox{
     float: left;
@@ -363,7 +363,7 @@ a:focus, a:hover{
   height: 10px;
   background: #ffffff;
 }
-.chk_listBox::-webkit-scrollbar-thumb {
+.chk_listBox::-webkit-scrollbar-thumb { 
   border-radius: 3.5px;
   background-color: #D9D9D9;
 

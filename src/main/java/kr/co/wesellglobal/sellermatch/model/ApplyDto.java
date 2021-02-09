@@ -66,7 +66,10 @@ public class ApplyDto {
 	private String projDday;
  	
  	public String[] getProfileHashtagList() {
-		 this.profileHashtagList = profileHashtag.split(",");
+ 		if (this.profileHashtag == null) {
+			return this.profileHashtagList;
+		}
+		 this.profileHashtagList = this.profileHashtag.split(",");
 		for (int i = 0; i < this.profileHashtagList.length; i++) {
 			if (this.profileHashtagList[i].equals("1")) {
 				this.profileHashtagList[i] = "채널검증셀러";
@@ -79,7 +82,7 @@ public class ApplyDto {
 			}
 			if (this.profileHashtagList[i].equals("4")) {
 				this.profileHashtagList[i] = "사업자인증셀러";
-			}
+			} 
 			if (this.profileHashtagList[i].equals("5")) {
 				this.profileHashtagList[i] = "신원인증셀러";
 			}

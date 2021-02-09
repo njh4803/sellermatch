@@ -8,67 +8,85 @@
 .modal-header {
 	display: block;
 }   
-.modal-content .modal-body {
+#recommendModal .modal-content .modal-body {
     position: relative;
-    padding: 20px;
+    padding: 50px 40px 40px 40px;
 }
 .recommend {
 	display: inline-block;
-	width: 100px;
-	background-color: #00B0F0;
+	width: 126px;
+    height: 30px;
+	padding: 4px 0 5px;
 	border-radius: 10px;
-	color: white;
-	padding: 10px;
+	background-image: linear-gradient(to left, #3b1374 , #d10c56 );
 	text-align: center;
+	margin-bottom: 15px;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
 }
 .recommend-btn {
 	width: 100px;
-	background-color: #7F7F7F;
-	border-radius: 5px;
-	color: white;
-	padding: 5px;
+	height: 30px;
+	margin: 15px 0 0 239px;
+	padding: 4.1px 21.8px 4.9px 22.2px;
+	border-radius: 4px;
+	background-image: linear-gradient(to left, #3b1374, #d10c56);
 	float: right;
-	margin-top: 20px;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;	
 }
 .recommendBox .recommend p{
 	margin: 0;
 }
 .projectTitle {
-	background-color: white;
-    border: 1px solid #aaa;
     display: inline-block;
-    width: 90%;
-    height: 40px;
-    padding: 6px;
-    margin-left: 14px;
-    font-size: 22px;
+    font-size: 15px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+    width: 446px;
+    margin: 15px 0 0 15px;
+    padding: 12px 0 13px 15px;
+    border: solid 1px #cccccc;
 }
 .radioBox {
-    margin-top: 20px;
-    margin-left: 20px;
+ 
 }
 .recommendText{
 	display: inline-block;
-    font-size: 13px;
-    vertical-align: top;
-    padding-top: 15px;
+    width: 323px;
+	height: 24px;
+	font-size: 16px;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
+	margin-left: 11px;
 }
 </style>
 
   <!-- Modal -->
 <div class="modal fade" id="recommendModal" role="dialog">
-	<div class="modal-dialog modal-xl" style="width: 400px;">
+	<div class="modal-dialog modal-xl" style="width: 560px;">
 		<div class="modal-content">
 			<div class="modal-body">
                	<div class="recommendBox clearfix">
                		<div class="recommend">
-               			<p>프로젝트</p>
-               			<p>지원요청</p>
+               			프로젝트 지원요청
                		</div>
                		<div>
-               			<button class="recommend-btn">지원요청하기</button>
+               			<button class="recommend-btn">지원하기</button>
                		</div>
                	</div>          
 			</div>

@@ -536,7 +536,7 @@ label.error {
 				<div class="myBox2">
 					<div class="myBox2-1">
 						<div class="textBox1">프로젝트 등록</div>
-						<div class="textBox2 projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
+						<div class="textBox2 projAddCount" id="projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
 					</div>
 					<div class="myBox2-2">
 						<div class="textBox1">평가건수</div>
@@ -706,13 +706,13 @@ label.error {
 								<div>
 									<div style="margin-top: 20px;">
 										<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
-											<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+											<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 										</div>
 									</div>
 									<div style="">
 										<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
 											<label class="fileLable">사진 선택
-												<input id="image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+												<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
 											</label>
 									</div>
 								</div>
@@ -882,7 +882,7 @@ label.error {
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
-	function handleImgfileSelect(e) {
+	function handleImgfileSelect1(e) {
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
 		
@@ -901,7 +901,7 @@ $(document).ready(function(){
 		});
 	};
 	
-	function handleImgfileSelect(e) {
+	function handleImgfileSelect2(e) {
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
 		
@@ -919,8 +919,8 @@ $(document).ready(function(){
 			reader.readAsDataURL(f);
 		});
 	};
-	$(document).on("change", "#profile-image" ,handleImgfileSelect);
-	$(document).on("change", "#image" ,handleImgfileSelect);
+	$(document).on("change", "#profile-image" ,handleImgfileSelect2);
+	$(document).on("change", "#image" ,handleImgfileSelect1);
 	
 	$(document).on("click", "ul.my-tabs li", function(e){
 		
@@ -1556,7 +1556,7 @@ $(document).ready(function() {
 					<div class="proj-type">
 						<div class="myProjBox2">
 							<div class="p-type">등록한 프로젝트</div>
-							<div class="textBox1"><button id="projAddCount" value="{{projAddCount}}">{{projAddCount}}건</button></div>
+							<div class="textBox1"><button class="projAddCount" data-value="{{projAddCount}}">{{projAddCount}}건</button></div>
 						</div>
 					</div>
 					<div class="proj-type">

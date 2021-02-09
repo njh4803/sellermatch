@@ -74,7 +74,7 @@
     			AND board_qa_type = #{boardQaType}
     		</if>
 		</where>
-    	
+    	ORDER BY board_reg_date DESC
     	<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>

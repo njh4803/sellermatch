@@ -306,6 +306,9 @@ public class ProjectDto {
 	 }
 	
 	public String[] getProjKeywordList() {
+		if (this.projKeyword == null) {
+			return this.projKeywordList;
+		}
 		this.projKeywordList = this.projKeyword.split(",");
 		return this.projKeywordList;
 	}

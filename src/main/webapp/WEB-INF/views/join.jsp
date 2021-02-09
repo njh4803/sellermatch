@@ -567,10 +567,10 @@ $(document).ready(function() {
             	   swal('알림', '회원가입이 완료되었습니다.', 'success').then(function(result) {
             		    var text = '';
 	   					if (profileSort == 1) {
-	   						text = '프로필 등록 후 여러분이 원하는 공급자와 더 가까워집니다.'
+	   						text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
 	   					}
 	   					if (profileSort == 2) {
-	   						text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
+	   						text = '프로필 등록 후 여러분이 원하는 공급자와 더 가까워집니다.'
 	   					}
 	   					swal({
 	   	    	            title: '<div>프로필 등록을 해야</div><div>프로젝트 등록을 할 수 있습니다.</div>',

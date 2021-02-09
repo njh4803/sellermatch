@@ -60,18 +60,6 @@
   text-align: left;
   color: #000000;
 }
-.chk_listBox{
-	display: inline-block;
-	overflow-x:hidden;
-	overflow-y:auto;
-	width:12.66%;
-	height:250px;
-	text-align: left;
-	margin-right: -5px;
-	padding: 15px;
-	border: solid 1px #d8d8d8;
-	background-color: #ffffff;
-}
 .container1{
   height: 278px;
   margin: 15px 0;
@@ -116,7 +104,7 @@
 }
 .leftBox{
 	float: left;
-	margin: 10px 15px;
+	margin: 10px 0;
 }
 .leftBox2{
 	float: left;
@@ -338,20 +326,20 @@ a:focus, a:hover{
 	text-decoration: none;
 }
 /* 스크롤바 디자인 */
-.chk_listBox::-webkit-scrollbar {
+.chkBox::-webkit-scrollbar {
   width: 4px;
   height: 10px;
   background: #ffffff;
 }
-.chk_listBox::-webkit-scrollbar-thumb {
+.chkBox::-webkit-scrollbar-thumb {
   border-radius: 3.5px;
   background-color: #D9D9D9;
 
-  .chk_listBox:hover {
+  .chkBox:hover {
     background-color: #adb5bd;
   }
 }
-.chk_listBox::-webkit-scrollbar-track {
+.chkBox::-webkit-scrollbar-track {
   background: #ffffff;
 }
 /*post slider*/
@@ -551,7 +539,7 @@ a:focus, a:hover{
   color: #e52367;
 }
 .countAllbox{
-	margin-top: 60px;
+	margin-top: 40px;
 }
 .count-hr{
   height: 0;
@@ -649,10 +637,10 @@ a:focus, a:hover{
 }
 .selectResult{
   height: 50px;
-  margin: 20px 0 60px;
+  margin: 20px 0 0;
   padding: 15px 50px 14px 48px;
   border-radius: 37px;
-  border: solid 1px #cccccc;
+  border: solid 1px #cccccc;.selectResult
   background-color: #ffffff;
 }
 .selectResult2{
@@ -682,6 +670,7 @@ a:focus, a:hover{
   text-align: left;
   color: #989898;
   float: right;
+  cursor: pointer;
 }
 .photoBox{
   width: 140px;
@@ -910,16 +899,15 @@ a:focus, a:hover{
 	font-size: 17px;
     font-weight: bolder;
 }
-.partner_bnr .partner_list .chk_listBox  ul  li{
-    width: 90px;
+.chkBox  ul  li{
+	margin-left: 50px;
+}
+/* 체크박스 2줄로  */
+/* .chkBox  ul  li{
+    width: 106px;
     display: inline-block;
     font-size: 12px;
-}
-.partner_bnr .partner_list .chk_listBox .biz-chk li{
-    width: 100%;
-    display: block;
-	font-size: 12px;
-}
+} */
 .indus{
     background-color: #D72B62;
     height: 30px;
@@ -963,56 +951,41 @@ a:focus, a:hover{
     height: 15.8px;
     margin-top: -3.8px;
 }
-.chkBox1{
+.chkBox{
 	display:none;
-    position: absolute;
-    top: -21px;
-    left: 3px;
+    position: relative;
+	top: -8px;
+    left: -48px;
     width: 320px;
     border: 1px solid;
     height: 180px;
     padding: 20px 0 20px 0;
     background-color: #ffffff;
     margin-left: -3px;
-}
-.chkBox2{
-    display:none;
-    position: absolute;
-    top: -21px;
-    left: 323px;
-    width: 320px;
-    border: 1px solid;
-    height: 180px;
-    padding: 20px 0 20px 0;
-    background-color: #ffffff;
-    margin-left: -3px;
-}
-.chkBox3{
-    display:none;
-    position: absolute;
-    top: -21px;
-    left: 643px;
-    width: 320px;
-    border: 1px solid;
-    height: 180px;
-    padding: 20px 0 20px 0;
-    background-color: #ffffff;
-    margin-left: -3px;
-}
-.chkBox4{
-    display:none;
-    position: absolute;
-    top: -21px;
-    left: 963px;
-    width: 320px;
-    border: 1px solid;
-    height: 180px;
-    padding: 20px 0 20px 0;
-    background-color: #ffffff;
-    margin-left: -3px;
+    overflow-x:hidden;
+	overflow-y:auto;
+	border: solid 1px #cccccc;
+	border-top: none;
 }
 .chkContainer{
 	position: relative;
+}
+/* 스크롤바 디자인 */
+.chk_listBox::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+  background: #ffffff;
+}
+.chk_listBox::-webkit-scrollbar-thumb {
+  border-radius: 3.5px;
+  background-color: #D9D9D9;
+
+  .chk_listBox:hover {
+    background-color: #adb5bd;
+  }
+}
+.chk_listBox::-webkit-scrollbar-track {
+  background: #ffffff;
 }
 </style>
 <div class="partner_bnr">
@@ -1042,37 +1015,73 @@ a:focus, a:hover{
 	</div>
 	<div class="partner_wrap">
 		<div class="textBox3">조건검색</div>
-		<div>
-			<div class="selectBox" id="selectBox1">
+		<div style="display: flex;">
+			<div class="selectBox" id="selectBox0" data-value="chkBox0" data-state="off">
 				<div class="textBox4">사업자 구분</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
+				<div class="chkBox basic-scroll" id="chkBox0" style="width: 318px;">
+	            	<ul>
+						<li><input type="checkbox" class="checkAll" id="profileBizSort"><label for="profileBizSort"><span>전체</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="1" id="b1"><label for="b1"><span>법인사업자</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="2" id="b2"><label for="b2"><span>개인사업자</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="3" id="b3"><label for="b3"><span>간이과세자</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="4" id="b4"><label for="b4"><span>개인(사업자없음)</span></label></li>
+	            	</ul>
+				</div>
 			</div>
-			<div class="selectBox" id="selectBox2">
+			<div class="selectBox" id="selectBox1" data-value="chkBox1" data-state="off">
 				<div class="textBox4">지역 구분</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
+				<div class="chkBox basic-scroll" id="chkBox1" style="width: 318px;">
+		           	<ul>
+		           		<li><input type="checkbox" class="checkAll" id="profileNation"><label for="profileNation"><span>전체</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="031" id="n2"><label for="n2"><span>경기</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="032" id="n3"><label for="n3"><span>인천</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="033" id="n4"><label for="n4"><span>강원</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="041" id="n5"><label for="n5"><span>충남</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="042" id="n6"><label for="n6"><span>대전</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="043" id="n7"><label for="n7"><span>충북</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="051" id="n8"><label for="n8"><span>부산</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="052" id="n9"><label for="n9"><span>울산</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="053" id="n10"><label for="n10"><span>대구</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="054" id="n11"><label for="n11"><span>경북</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="055" id="n12"><label for="n12"><span>경남</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="061" id="n13"><label for="n13"><span>전남</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="062" id="n14"><label for="n14"><span>광주</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="063" id="n15"><label for="n15"><span>전북</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="044" id="n16"><label for="n16"><span>세종특별자치시</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
+		           	</ul>
+				</div>				
 			</div>
-			<div class="selectBox" id="selectBox3">
+			<div class="selectBox" id="selectBox2" data-value="chkBox2" data-state="off">
 				<div class="textBox4">상품 분류</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
+				<div class="chkBox basic-scroll" id="chkBox2" style="width: 318px;">
+	            	<ul>
+	            		<li><input id="profileIndus" class="checkAll" type="checkbox"><label for="profileIndus"><span>전체</span></label></li>
+	            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
+	            			<li><input type="checkbox" class="check" name="profileIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
+	            		</c:forEach>
+	            	</ul>
+				</div>
 			</div>
-			<div class="selectBox" id="selectBox4">
+			<div class="selectBox" id="selectBox3" data-value="chkBox3" data-state="off">
 				<div class="textBox4">판매 채널</div>
 				<img class="arrow" alt="" src="${pageContext.request.contextPath}/local_assets/img/bottomArrow.png">
-			</div>			
-		</div>
-		<div class="clearfix"></div>
-		<div class="chkContainer">
-			<div class="chkBox1 selectBox1">
-				zzz
-			</div>
-			<div class="chkBox2 selectBox2">
-				zzz
-			</div>
-			<div class="chkBox3 selectBox3">
-				zzz
-			</div>
-			<div class="chkBox4 selectBox4">
-				zzz 
+				<div class="chkBox basic-scroll" id="chkBox3" style="width: 320px;">
+	            	<ul>
+	            		<li><input type="checkbox" class="checkAll" id="profileChannel"><label for="profileChannel"><span>전체</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+	            	</ul>
+				</div>
 			</div>
 		</div>
 		<div class="selectResult">
@@ -1085,8 +1094,8 @@ a:focus, a:hover{
 			</div>
 		</div>
 	</div>
-	<div class="partner_wrap">
-		<div class="container2 countAllbox">
+	<div class="partner_wrap profile-box">
+		<div class="container2 countAllbox content">
 			<div class="leftBox countAll">전체 <span>${totalCount}</span><span>건</span>이 검색되었습니다</div>
 			<div class="rightBox">
 				<a href="javascript:void(0)" class="sort select" id="defaultSort">기본정렬 </a>
@@ -1295,181 +1304,179 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 	</div>
 </script>
 <script type="text/x-handlebars-template" id="seller-list-tmpl">
-        	<div class="right-box content">
-	        	<div class="sortBox">
-	        		<div class="leftBox">
-	        			총 판매자 수 : {{totalCount}}명
-	        		</div>
-	        		<div class="rightBox">
-	        			<a href="javascript:void(0)" class="sort" id="defaultSort">기본순 /</a>
-						<a href="javascript:void(0)" class="sort" id="volumeSort">매출순 /</a>
-						<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 /</a>
-						<a href="javascript:void(0)" class="sort" id="recommendSort">요청 받은 순 /</a>
-						<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
-	        		</div>
-	        	</div>
-	        </div>
-	        {{#output}}
-	        <div class="right-box content clearfix">
-	        	<div class="sellerInfoBox">
-	        		<button class="scrapBtn"></button>
-	        		<div class="imgBox">
-	        			<img class="profile" src="/local_assets/img/profile.png">
-	        		</div>
-	        		<div class="sellerInfo">
-		        		<div class="leftBox">
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="nick">{{memNick}}</span>
-				        		</div>
-				        		<div class="leftBox margin-0">
-				        			<span class="auth">
-				        				신원(
-										{{#ifCond memRname '==' 1}}
-				        					o
-				        				{{/ifCond}}
-				        				{{#ifCond memRname '==' 0}}
-				        					x
-				        				{{/ifCond}}
-				        				), 
-				        			</span>
-				        			
-				        			<span class="auth">
-				        				사업자(
-				        				{{#ifCond profileBizCerti '==' 1}}
-				        					o
-				        				{{/ifCond}}
-				        				{{#ifCond profileBizCerti '==' 0}}
-				        					x
-				        				{{/ifCond}}
-				        				), 
-				        			</span>
-				        			
-				        			<span class="auth">
-					        			채널(
-										{{#ifCond profileChChk '==' 1}}
-				        					o
-				        				{{/ifCond}}
-				        				{{#ifCond profileChChk '==' 0}}
-				        					x
-				        				{{/ifCond}}
-					        			), 
-				        			</span>
-				        			<span class="auth">
-					        			매출(
-										{{#ifCond profileSaleChk '==' 1}}
-				        					o
-				        				{{/ifCond}}
-				        				{{#ifCond profileSaleChk '==' 0}}
-				        					x
-				        				{{/ifCond}}
-					        			)
-				        			</span>
-				        		</div>
-		        			</div>
-		        			<div class="clearfix">
-		        				<div class="leftBox">
-		        					<strong class="sellerDetail" id="profileMemId{{@key}}" data-index="{{@key}}"  data-value="{{profileMemId}}">
-										{{profileIntro}}
-									</strong>
-		        				</div>
-		        			</div>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<div class="indus">{{profileIndusName}} 분야</div>
-				        		</div>
-				        		<div class="leftBox margin-0">
-				        			<div class="span-box">
-					        			<span>{{profileNationName}} /</span>
-					        			<span>{{profileBizSortName}} /</span>
-					        			<span>
-											{{#each profileChannelList as |value key|}}
-						        				{{#if @last}}
-						        					{{value}}
-						        				{{else}}
-						        					{{value}}, 
-						        				{{/if}}
-											{{/each}}
-					        			</span>
-				        			</div>
-				        		</div>
-		        			</div>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-									{{#each profileHashtagList as |value key|}}
-		        						<div class="seller-tag"># {{value}}</div>
-		        					{{/each}}
-				        		</div>
-		        			</div>
-		        		</div>
-		        		<div class="rightBox s-box">
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">계약 프로젝트</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>{{contractCount}}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">등록 프로젝트</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>{{projAddCount}}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">요청 받은 수</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>{{recommendCount}}건</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">매출규모</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>연 {{profileVolume}} 원</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        			<div class="clearfix">
-		        				<div class="leftBox margin-0">
-				        			<span class="projInfo">판매경력</span>
-				        		</div>
-				        		<div class="rightBox margin-0">
-				        			<span>{{profileCareerName}}</span>
-				        		</div>
-		        			</div>
-		        			<hr>
-		        		</div>
-		        	</div>
-	        	</div>
-	        </div>
-			{{/output}}
-			{{#ifCond output '==' ''}}
-	        	<div class="emptyResult">검색결과가 없습니다.</div>
-	        {{/ifCond}}
+		<div class="container2 countAllbox content">
+			<div class="leftBox countAll">전체 <span>{{totalCount}}</span><span>건</span>이 검색되었습니다</div>
+			<div class="rightBox">
+				<a href="javascript:void(0)" class="sort select" id="defaultSort">기본정렬 </a>
+				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 </a>
+				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 </a>
+				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 </a>
+				<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
+			</div>
+		</div>
+		<hr class="count-hr">
+		{{#output}}
+			<div class="container1 content">
+				<div class="container2">
+					<div class="leftBox2">
+						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+					</div>
+					<div class="row1 leftBox">
+						<div class="row2 leftBox">
+							<div class="nick">{{memNick}}</div>
+							{{#each profileHashtagList as |value key|}}
+		        				<div class="purpleBox"># {{value}}</div>
+		        			{{/each}}
+						</div>
+					</div>
+					<div class="row1 leftBox">
+						<div class="row2 leftBox">
+							<div class="titleBox">
+								{{profileIntro}}
+							</div>
+						</div>
+					</div>
+					<div class="row1 leftBox">
+						<div class="row2 leftBox">
+							<span class="textBox5">{{profileIndusName}}</span>
+							<span class="textBox5">{{profileNationName}}지역</span>
+							<span class="textBox5">{{profileBizSortName}}</span>
+							<span class="textBox5">
+								{{#each profileChannelList as |value key|}}
+						        	{{#if @last}}
+						        		{{value}}
+						        	{{else}}
+						        		{{value}}, 
+						        	{{/if}}
+								{{/each}}
+		        			</span>
+						</div>
+					</div>
+					<div class="row1 leftBox">
+						<div class="leftBox">
+							<div class="sellerInfo">
+								계약<span>{{contractCount}}건</span>
+								등록프로젝트<span>{{projAddCount}}건</span>
+								요청수<span>{{recommendCount}}건</span>
+								매출<span>{{profileVolume}}원</span>
+								경력<span style="margin-right: 0;">{{profileCareerName}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="btnBox">
+						<button class="scrap">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/person.png">
+							판매자 상세정보
+						</button>
+						<button class="scrap">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+							관심등록
+						</button>
+						<button class="match" id="profileMemId{{@key}}" data-value="{{profileMemId}}" data-index="{{@key}}">
+						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+							지원요청
+						</button>
+					</div>
+				</div>
+			</div>
+	    {{/output}}
+		{{#ifCond output '==' ''}}
+	        <div class="emptyResult">검색결과가 없습니다.</div>
+	    {{/ifCond}}
 </script>
 <script>
 $(document).ready(function() {
 	
-	$(document).on("click", ".selectBox", function(){
-		var id = $(this).attr('id');
-		var target = $('.'+id).toggle();
-		$(this).toggleClass('select-active');
+	$(document).on("click", ".resultReset", function(){
 		
-		if ($('.selectBox').hasClass('select-active')) {
+		// 초기화
+		$('.resultText').text('선택이 없을시에는 전체를 기준으로 리스트가 보여집니다')
+		$(".count-hr").remove();
+		$(".content").remove();
+		$(".pageBox").remove();
+		$(".emptyResult").remove();
+		
+		var formData = $("#search_frm");
+		var profileBizSort;
+		var profileNation;
+		var profileIndus;
+		var profileChannel;
+		
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
+			'profileChannel'];
+		
+		var param_list = {
+				profileBizSort, profileNation, profileIndus, profileChannel
+				};
+		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];
+			
+			$("input[name="+param_list_name[i] +"]").each(function(i,e){
+				this.checked = false;
+			});
+			
+			$("input[id="+param_list_name[i] +"]").each(function(){
+				this.checked = false;
+			});
+		}
+
+		
+		param_list["sort"] = $("#sort").val();
+		var url = formData.attr('action');
+		
+		$.ajax({
+	       type: "GET",
+	       url: ROOT_URL+"/seller/find2",
+	       data: param_list,
+	       success: function(json) {
+	    	   console.log(json);
+	    	   	var content = json
+	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		var page_content = json.pageData
+	       		console.log(page_content)
+	       		var page_template = Handlebars.compile($("#page-tmpl").html());
+	       		var page_html = page_template(page_content);
+	       		
+	       		$(".profile-box").append(html);
+	       		$(".profile-box").append(page_html);
+	       		
+	       }
+		});
+	});
+	
+	$(document).on("click", ".selectBox", function(){
+		var id = $(this).data('value');
+		var state = $(this).data('state');
+		
+		if (state == 'on') {
+			$(this).data('state', 'off');
+			$(this).css('border-bottom', '1px solid #cccccc');
+		} else {
+			$(this).data('state', 'on');
+			$(this).css('border-bottom', 'none');
+		}
+		
+		var count = 0;		
+		
+		$('#'+id).toggle();
+		
+		$('.selectBox').each(function (i, e) { 
+			if ($('#selectBox'+i).data('state') == 'on') {
+				++count;
+			} 
+		});
+		
+		if (count > 0) {
 			$('.selectResult').addClass('selectResult2');
-		} else{
+		} else {
 			$('.selectResult').removeClass('selectResult2');
 		}
+
+		
 	});
 	
 	$(document).on("click", ".match", function(){
@@ -1496,6 +1503,7 @@ $(document).ready(function() {
 		}
 		
 		// 초기화
+		$(".count-hr").remove();
 		$(".content").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
@@ -1516,43 +1524,7 @@ $(document).ready(function() {
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
 			param_list[param_list_name[i]]= [];
-			var data_name = $("input[name="+param_list_name[i] +"]").data('name');
 			
-			if (data_name == 'ppmemRname') {
-				var total_len = $("input[data-name=ppmemRname]").length;
-				console.log(total_len)
-				//선택된 갯수
-				var len = $("input[data-name=ppmemRname]:checked").length;
-				console.log(len)
-				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
-					$("#ppmemRname").prop('checked', true);
-				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
-					$("#ppmemRname").prop('checked', false);	
-				}
-			}
-			if (data_name == 'sellermemRname') {
-				var total_len = $("input[data-name=sellermemRname]").length;
-				console.log(total_len)
-				//선택된 갯수
-				var len = $("input[data-name=sellermemRname]:checked").length;
-				console.log(len)
-				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
-					$("#sellermemRname").prop('checked', true);
-				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
-					$("#sellermemRname").prop('checked', false);	
-				}
-			}
-			if (data_name != 'ppmemRname' && data_name != 'sellermemRname') {
-				//체크박스 총 개수
-				var total_len = $("input[name="+param_list_name[i] +"]").length;
-				//선택된 갯수
-				var len = $("input[name="+param_list_name[i] +"]:checked").length;
-				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
-					$("#"+param_list_name[i]).prop('checked', true);
-				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
-					$("#"+param_list_name[i]).prop('checked', false);	
-				}
-			}
 			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 				var name = this.name
 				var value = this.value
@@ -1588,8 +1560,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".search-box").after(page_html);
-	       		$(".search-box").after(html);
+	       		$(".profile-box").append(html);
+	       		$(".profile-box").append(page_html);
 	       		
 	       }
 		});
@@ -1606,6 +1578,7 @@ $(document).ready(function() {
 		$("#sort").val(value);
 		
 		// 초기화
+		$(".count-hr").remove();
 		$(".content").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
@@ -1665,8 +1638,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".search-box").after(page_html);
-	       		$(".search-box").after(html);
+	       		$(".profile-box").append(html);
+	       		$(".profile-box").append(page_html);
 	       		
 	       }
 		});
@@ -1676,6 +1649,8 @@ $(document).ready(function() {
 	$(".checkAll").click(function(){
 		$("#sort").val();
 		// 초기화
+		var str = ''
+		$(".count-hr").remove();
 		$(".content").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
@@ -1699,6 +1674,7 @@ $(document).ready(function() {
 			
 			$("input[id="+param_list_name[i] +"]").each(function(){
 				var checked = this.checked;
+				
 				
 				if (this.id == 'ppmemRname') {
 					$("input[name=ppmemRname]").prop('checked', checked);
@@ -1719,22 +1695,33 @@ $(document).ready(function() {
 				}
 			});
 			
+			
 			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 				var name = this.name
 				var value = this.value
+				
+				var textVal = $(this).next().children().text();
 				
 				for (var i = 0; i < param_list_name.length; i++){
 					if (String(param_list_name[i]) == name) {
 						param_list[name].push(value)
 					}
-					
 				}
+				str = str + textVal + ', ';
 				
 			});
+
 			console.log("----------------")
 			console.log(param_list)
 			console.log("----------------")
 		}
+		
+		str = str.substring(0, str.length-2);
+		$('.resultText').text(str)
+		if (str == '') {
+			$('.resultText').text('선택이 없을시에는 전체를 기준으로 리스트가 보여집니다')
+		}
+		
 		var url = formData.attr('action');
 		param_list["sort"] = $("#sort").val();
 		$.ajax({
@@ -1752,8 +1739,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".search-box").after(page_html);
-	       		$(".search-box").after(html);
+	       		$(".profile-box").append(html);
+	       		$(".profile-box").append(page_html);
 	       		
 	       }
 		});
@@ -1763,6 +1750,8 @@ $(document).ready(function() {
 	// 체크박스 선택 검색
 	$(".check").click(function(){
 		// 초기화
+		var str = ''
+		$(".count-hr").remove();
 		$(".content").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
@@ -1824,18 +1813,27 @@ $(document).ready(function() {
 				var name = this.name
 				var value = this.value
 				
+				var textVal = $(this).next().children().text();
+				
 				for (var i = 0; i < param_list_name.length; i++){
 					if (String(param_list_name[i]) == name) {
 						param_list[name].push(value)
 					}
 					
 				}
-				
+				str = str + textVal + ', ';
 			});
 			console.log("----------------")
 			console.log(param_list)
 			console.log("----------------")
 		}
+		str = str.substring(0, str.length-2);
+		$('.resultText').text(str)
+		if (str == '') {
+			$('.resultText').text('선택이 없을시에는 전체를 기준으로 리스트가 보여집니다')
+		}
+		
+		
 		param_list["sort"] = $("#sort").val();
 		var url = formData.attr('action');
 		
@@ -1854,8 +1852,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".search-box").after(page_html);
-	       		$(".search-box").after(html);
+	       		$(".profile-box").append(html);
+	       		$(".profile-box").append(page_html);
 	       		
 	       }
 		});
@@ -1866,6 +1864,7 @@ $(document).ready(function() {
 		var keyword = $("input[name=keyword]").val();
 		 
 		// 초기화
+		$(".count-hr").remove();
 		$(".content").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
@@ -1923,9 +1922,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".search-box").after(page_html);
-	       		$(".search-box").after(html);
-	       		
+	       		$(".profile-box").append(html);
+	       		$(".profile-box").append(page_html);
 	       }
 		});
 	});

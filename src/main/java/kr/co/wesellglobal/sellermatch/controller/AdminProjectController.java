@@ -64,6 +64,7 @@ public class AdminProjectController {
 			input.setProjMemId(keyword);
 			input.setProjTitle(keyword);
 		}
+		input.setSort("regSort");
 		
 		//목록조회
 		List<ProjectDto> output = null;

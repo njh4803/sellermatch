@@ -53,6 +53,7 @@
 .headerPass{
   width: 10.2px;
   height: 14.3px;
+  margin-top: -3px;
 }
 .clearfix:after { content: '';display: block; float: none; clear: both; }
 </style>

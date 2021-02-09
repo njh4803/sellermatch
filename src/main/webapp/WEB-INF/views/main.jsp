@@ -3,6 +3,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <style>
+.main-0000{
+	background-color: #fff;
+}
 .main-000{
     font-family: NotoSansKRBold;
     font-size: 55px;
@@ -13,22 +16,24 @@
     letter-spacing: -4px;
     text-align: left;
     color: #000000;
-    width: 1920px;
-    height: 727px;
-    margin: 77px 0 0;
+    height: 450px;
+    margin-top: 77px;
     object-fit: contain;
+    background-position-x:right;
+    background-repeat: no-repeat;
+    background-color: #fff;
 }
 .main-001{
     display: inline-block;
-    margin: 100px 311px;
-    font-size: 60px;
+    margin: 125px 70px 0 320px;
+    font-size: 45px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.27;
-    letter-spacing: -4px;
+    letter-spacing: -2px;
     text-align: left;
-    color: #000000;
+    color: #000000; 
 }
 .pass{
 	margin-top: 60px;
@@ -36,7 +41,7 @@
 }
 .textbox1{
   font-family: NotoSansKRBold;
-  font-size: 60px;
+  font-size: 45px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -45,7 +50,7 @@
   color: #1f1f1f;
 }
 .textbox2{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
@@ -122,7 +127,7 @@
 	width: 1280px;
     margin: 0 auto;
     background-color: #f0f0f0;
-    height: 200px;
+    height: 150px;
 }
 .hrBox{
   display: inline-block;
@@ -143,20 +148,19 @@
   width: 68.4px;
   height: 30px;
   object-fit: contain;
-  margin-right: 70px;
+  margin-right: 41.6px;
 }
-.11st{
+.st11{
   width: 90.4px;
   height: 30px;
   object-fit: contain;
-  margin-right: 70px;
+  margin-right: 41.6px;
 }
 .cou{
   width: 127.9px;
   height: 30px;
   object-fit: contain;
-  margin-right: 70px;
-  margin-left: 70px;
+  margin-right: 41.6px;
 }
 .gs{
   width: 158.1px;
@@ -168,16 +172,28 @@
   width: 137.1px;
   height: 30px;
   object-fit: contain;
+  margin-right: 41.6px;
+}
+.timon{
+  width: 107px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 41.6px;
+}
+.lotte{
+  width: 293.7px;
+  height: 30px;
+  object-fit: contain;
 }
 .imgBox1{
     position: absolute;
     right: 1099px;
-    top: 2910px;
+    top: 2570px;
 }
 .imgBox2{
     position: absolute;
     right: 654px;
-    top: 2910px;
+    top: 2570px;
 }
 .rightArrow{
     position: relative;
@@ -185,12 +201,14 @@
 }
 </style>
 <div class="bnr">
-    	<div class="main-000" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main000.png');">
-			<div class="main-001">
-    	        검증된 고매출 판매자,<br>
-			        다양한 고마진 공급자를<br>
-			        찾고 거래하세요			
-	    	</div>
+	<div class="main-0000">
+	 	<div class="main-000" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main0000.png');">
+		<div class="main-001">
+   	        검증된 고매출 판매자,<br>
+		        다양한 고마진 공급자를<br>
+		        찾고 거래하세요			
+    	</div>
+	</div>
     </div>
     <div class="partner_bnr" style="padding: 0; margin-top: 0;">
     	<div class="partner_bnr2">
@@ -339,10 +357,12 @@
 			<div class="textbox8">셀러매치와 함께합니다</div>
 			<div>
 				<img alt="" class="gm" src="${pageContext.request.contextPath}/local_assets/img/gm.png">
-				<img alt="" class="11st" src="${pageContext.request.contextPath}/local_assets/img/11st.png">
+				<img alt="" class="st11" src="${pageContext.request.contextPath}/local_assets/img/11st.png">
 				<img alt="" class="cou" src="${pageContext.request.contextPath}/local_assets/img/cou.png">
 				<img alt="" class="gs" src="${pageContext.request.contextPath}/local_assets/img/gs.png">
 				<img alt="" class="cj" src="${pageContext.request.contextPath}/local_assets/img/cj.png">
+				<img alt="" class="timon" src="${pageContext.request.contextPath}/local_assets/img/timon.png">
+				<img alt="" class="lotte" src="${pageContext.request.contextPath}/local_assets/img/lotte.png">
 			</div>
 		</div>
 	</div>

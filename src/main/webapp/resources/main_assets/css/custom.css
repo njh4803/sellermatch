@@ -7,6 +7,11 @@ body  a a:focus a:hover{
  line-height: normal !important;
 }
 
+/* button:focus{ 	
+    border: none !important;
+    outline:none !important;
+} */
+
 body.modal-open[style] {
 
     padding-right: 0px !important;
@@ -31,10 +36,10 @@ input[type="checkbox"] + label span {
     margin: 0;
     line-height: normal;
     font-weight: normal;
-    background:url(../../local_assets/img/checkActiveNone.png) no-repeat;
+    background:url(/local_assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
-    background:url(../../local_assets/img/checkActive.png) no-repeat;
+    background:url(/local_assets/img/checkActive.png) no-repeat;
 }
 /*header*/
 
@@ -73,7 +78,7 @@ header .header_wrap .gnb .gnb_project {margin-left:32px;}
 header .header_wrap .gnb .gnb_project a {
     background: linear-gradient(to right, #D72B62, #51207D); display:inline-block; width:135px; height:35px;
     color:#fff; border-radius:5px;
-    padding: 9px 0px 0px 20px; font-size:14px; margin-top:20px; text-decoration: none;
+    padding: 7px 0px 0px 20px; font-size:14px; margin-top:20px; text-decoration: none;
 }
 header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
@@ -301,8 +306,8 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 footer {width:100%; background-color:#4f495c;}
 footer .footer_wrap {width:1280px; margin: 0 auto;}
-footer .footer_wrap .f_top {font-size: 20px; color: #b5b5b5; padding: 33px 0 28.5px 0; display: inline-block; margin-right: 10px;}
-footer .footer_wrap .f_top1{width:500px;}
+footer .footer_wrap .f_top {font-size: 15px; color: #b5b5b5; padding: 23px 0 15px 0; display: inline-block; margin-right: 10px;}
+footer .footer_wrap .f_top1{width:500px;} 
 footer .footer_wrap .f_top2{width:200px; margin: 0 28px;}
 footer .footer_wrap .f_top ul {overflow: hidden; padding:22px; padding: 33px 0;}
 footer .footer_wrap .f_top ul li {float:left;}

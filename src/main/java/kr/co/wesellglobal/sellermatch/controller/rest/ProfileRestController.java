@@ -162,7 +162,15 @@ public class ProfileRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		Map<String, Object> data = new HashMap<String, Object>();
+
+		data.put("profileIndus", input.getProfileIndus());
 		
-		return webHelper.getJsonData();
+		// 프로필 등록 후 세션 재설정
+		MemberDto member = (MemberDto)webHelper.getSession("member");
+		member.setExistProfile(input.getProfileIndus());
+		webHelper.setSession("member", member);
+		
+		return webHelper.getJsonData(data);
 	};
 }

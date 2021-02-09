@@ -79,6 +79,7 @@
 		    	AND apply_proj_state = #{applyProjState}
 		    </if>
 		</where>
+		ORDER BY proj_reg_date DESC
     </select>
     
     <select id="selectItem"
