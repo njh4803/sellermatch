@@ -1131,7 +1131,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						</button>
 						<button class="match" data-index="{{@key}}">
 						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-							매치하기
+							지원하기
 						</button>
 					</div>
 				</div>
