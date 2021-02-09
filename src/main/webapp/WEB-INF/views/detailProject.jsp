@@ -752,10 +752,10 @@ a:focus, a:hover{
 				</div>
 				<div class="detailBox3">상세내용
 					<div class="textBox1">
-						<c:forEach var="projDetailImg" items="${output.projDetailImg}">
-							<img alt="" src="${pageContext.request.contextPath}/upload${projDetailImg.replace('|','')}">
-						</c:forEach>
 						${output.projDetail}
+						<c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
+							 <img alt="" src="${pageContext.request.contextPath}/upload${projDetailImgList}">
+						</c:forEach>
 					</div>
 				</div>
 				<div class="detailBox3">필수요건

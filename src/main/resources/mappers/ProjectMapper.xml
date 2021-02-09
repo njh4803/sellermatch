@@ -33,7 +33,6 @@
         <result property="projDday" column="proj_Day" />
         <result property="projEditDate" column="proj_edit_date" />
         <result property="projIndusName" column="proj_indus_name" />
-        <result property="projDetailImgList" column="proj_detail_img_list" />
         <result property="projHit" column="proj_hit" />
         <result property="projChannel" column="proj_channel" />
         <result property="applyCount" column="apply_count" />

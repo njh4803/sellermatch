@@ -160,12 +160,12 @@ public class ProjectDto {
 	public static void setListCount(int listCount) {
 		ProjectDto.listCount = listCount;
 	}
-	
-	public void setProjDetailImgList(String projDetailImg) {
-		this.projDetailImgList = projDetailImg.split(",");
-	}
-			
+		 
 	public String[] getProjDetailImgList() {
+		if (this.projDetailImg == null) {
+			return this.projDetailImgList;
+		}
+		this.projDetailImgList = this.projDetailImg.split("\\|");
 		return this.projDetailImgList;
 	}
 	
