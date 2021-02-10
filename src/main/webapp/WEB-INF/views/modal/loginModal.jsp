@@ -112,6 +112,7 @@ label.error {
     letter-spacing: normal;
     text-align: center;
     color: #ffffff;
+    border: none !important;
 }
 #login-form a, a:focus, a:hover{
 	text-decoration: none;

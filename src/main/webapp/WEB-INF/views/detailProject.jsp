@@ -754,7 +754,7 @@ a:focus, a:hover{
 					<div class="textBox1">
 						${output.projDetail}
 						<c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
-							 <img alt="" src="${pageContext.request.contextPath}/upload${projDetailImgList}">
+							 <img alt="" src="${pageContext.request.contextPath}/upload?name=${projDetailImgList}">
 						</c:forEach>
 					</div>
 				</div>

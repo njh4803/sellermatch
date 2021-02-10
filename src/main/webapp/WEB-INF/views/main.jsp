@@ -302,7 +302,7 @@
 				거래까지 단 5분!
 			</div>
 			<div class="textbox2" style="text-align: left;">
-				상품을 선택하셨다면 거래까지 이제 5분안에뚝딱!!
+				<!-- 상품을 선택하셨다면 거래까지 이제 5분안에뚝딱!! -->
 			</div>
 		</div>
 		<div class="mainBox">

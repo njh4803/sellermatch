@@ -167,9 +167,12 @@ public class ProfileRestController {
 		data.put("profileIndus", input.getProfileIndus());
 		
 		// 프로필 등록 후 세션 재설정
-		MemberDto member = (MemberDto)webHelper.getSession("member");
-		member.setExistProfile(input.getProfileIndus());
-		webHelper.setSession("member", member);
+		/*
+		 * if (condition) { MemberDto member =
+		 * (MemberDto)webHelper.getSession("member");
+		 * member.setExistProfile(input.getProfileIndus());
+		 * webHelper.setSession("member", member); }
+		 */
 		
 		return webHelper.getJsonData(data);
 	};

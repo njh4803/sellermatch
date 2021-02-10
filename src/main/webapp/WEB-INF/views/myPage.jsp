@@ -951,7 +951,7 @@ $(document).ready(function(){
 					$('#memAddr2').val(json.output.memAddr2);
 					$('#memEmail').val(json.output.memId);
 					$('#memDate').val(json.output.memDate);
-					var src = "/upload/"+json.output.memPhoto
+					var src = ROOT_URL+"/upload/"+json.output.memPhoto
 					$('#img').attr("src", src);
 				}
 			});
@@ -998,7 +998,7 @@ $(document).ready(function(){
 					$('#profileBizSort').val(json.output.profileBizSort);
 					$('#profileIntro').val(json.output.profileIntro);
 					$('#profileIndus').val(json.output.profileIndus);
-					var src = "/upload/"+json.output.profilePhoto;
+					var src = ROOT_URL+"/upload/"+json.output.profilePhoto;
 					$('#profile-img').attr("src", src);
 					
 					if (json.output.profileSort != '1' && json.output.profileSort != '2') {
