@@ -653,6 +653,10 @@ a:focus, a:hover{
 .red{
 	color: #ff0000 !important;
 }
+.detailImgBox{
+	width: 100%;
+	height: 100%;
+}
 </style>
 <div class="partner_bnr">
 	<div class="bar"><div>프로젝트 상세정보</div></div>
@@ -754,7 +758,9 @@ a:focus, a:hover{
 					<div class="textBox1">
 						${output.projDetail}
 						<c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
-							 <img alt="" src="${pageContext.request.contextPath}/upload?name=${projDetailImgList}">
+							<div class="detailImgBox">
+								<img alt="" src="${pageContext.request.contextPath}/upload?name=${projDetailImgList}">
+							</div>
 						</c:forEach>
 					</div>
 				</div>
