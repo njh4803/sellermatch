@@ -1011,7 +1011,7 @@ $(document).ready(function(){
 						$("input[name=profileCh]").attr('checked', false);
 						for (var i = 0; i < profileCh.length; i++) {
 							$("input[name=profileCh]").eq(profileCh[i]-1).attr('checked', true);
-						}
+						}ㅑ
 					}
 					
 					if (json.output.profileHashtag != null) {

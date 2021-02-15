@@ -609,11 +609,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
     //drag 영역 클릭시 파일 선택창
-    objDragAndDrop.on('click',function (e){
+    $(document).on('click', '.dragAndDropDiv',function (e){
         $('input[name=projDetailImg]').trigger('click');
     });
 
-    $('input[name=projDetailImg]').on('change', function(e) {
+    $(document).on('change', 'input[name=projDetailImg]',function(e) {
         var files = e.originalEvent.target.files;
         var imgListStr = $("#detailImgList").val();
         //$('#imgBox ul').remove();
@@ -642,7 +642,7 @@ $(document).ready(function() {
 
     function createimgBox(obj, img){
 
-    	var tag1 = $('<ul class="jFiler-items-list jFiler-items-grid"></ul>').appendTo(obj);
+    	var tag1 = $('<ul class="jFiler-items-list jFiler-items-grid"></ul>').appendTo($("#imgBox"));
     	var tag2 = $('<li class="jFiler-item"></li>').appendTo(tag1);
     	var tag3 = $('<div class="jFiler-item-container"></div>').appendTo(tag2);
     	var tag4 = $('<div class="jFiler-item-inner"></div>').appendTo(tag3);
@@ -658,7 +658,7 @@ $(document).ready(function() {
     	var tag14 = $('<ul class="list-inline pull-right"></ul>').appendTo(tag6);
     	var tag15 = $('<input class="btn removeImg" type="button" value="x">').appendTo(tag14);
     	
-    	obj.append(obj.tag1);
+    	$("#imgBox").append($("#imgBox").tag1);
     	
     	const reader = new FileReader()
     	reader.onload = function(img) {
