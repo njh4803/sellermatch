@@ -41,8 +41,8 @@ input[type="checkbox"] + label span {
 input[type="checkbox"]:checked + label span {
     background:url(/local_assets/img/checkActive.png) no-repeat;
 }
-/*header*/
 
+/*header*/
 header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee; margin-top: -77px;}
 header .header_wrap {width:1280px; height:100%; margin: 0 auto;}
 header .header_wrap h1 {
@@ -81,7 +81,6 @@ header .header_wrap .gnb .gnb_project a {
     padding: 7px 0px 0px 20px; font-size:14px; margin-top:20px; text-decoration: none;
 }
 header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
-
 
 
 
@@ -379,4 +378,58 @@ footer .footer_wrap div hr {
     height: 300px;
     padding: 150px;
     font-size: 20px;
+}
+.menuIcon{
+	display: none;
+}
+/* 모바일 */
+@media screen and (max-width: 767px){
+	header .header_wrap {width:100%; height:100%; margin: 0 auto;}
+    header .header_wrap nav {display:none; overflow: hidden;}
+    header .header_wrap .gnb .gnb_login {
+	    display: none;
+	}
+    header .header_wrap .gnb .gnb_project {
+	    position: fixed;
+	    bottom: 4rem;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    z-index: 3;
+	}	
+	.menuIcon{
+		display: inline-block;
+	}
+	.menuIcon img{
+	    width: 35px;
+   	 	height: auto;
+    	margin: 22px;
+    	cursor: pointer;
+	}
+}
+/* 테블릿 세로 */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    header .header_wrap {width:100%; height:100%; margin: 0 auto;}
+    header .header_wrap nav ul > li > a {
+	    padding: 0 10px;
+	    line-height: 77px;
+	    display: inline-block;
+	    color: #000;
+	    text-decoration: none;
+	}
+	header .header_wrap h1 {
+	    float: left;
+	    padding: 23px 0;
+	    margin: 0 0px 0 0;
+	    font-size: 0;
+	}
+	header .header_wrap .gnb .gnb_project {
+	    margin-left: 0;
+	}
+}
+/* 테블릿 가로 */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    header .header_wrap {width:100%; height:100%; margin: 0 auto;}
+}
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+	header .header_wrap {width:100%; height:100%; margin: 0 auto;}
 }

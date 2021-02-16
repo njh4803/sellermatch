@@ -60,25 +60,21 @@
 </head>
 <%@ include file="../modal/loginModal.jsp"%>
 <header>
-   <div class="header_wrap">
+	<div class="header_wrap">
        <h1><a href="${pageContext.request.contextPath}/temp"><img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo_2.png" alt="sellermatch"></a></h1>
        <nav>
            <ul>
                <li><a href="${pageContext.request.contextPath}/project/find">프로젝트 찾기</a></li>
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></li>
                <li class="operation">
-                   <a href="${pageContext.request.contextPath}/usageFee" class="operation_guide">셀러매치 이용안내 <!-- <i class="fas fa-chevron-down"></i> --></a>
-<%--                    <div class="operation_guide_list" style="display: none;">
-                        <a href="${pageContext.request.contextPath}/howUse">이용방법</a>
-                        <a href="${pageContext.request.contextPath}/usageFee">이용요금</a>
-                        <a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a>
-                        <a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a>
-                        <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a>
-                   </div> --%>
+                   <a href="${pageContext.request.contextPath}/usageFee" class="operation_guide">셀러매치 이용안내 </a>
                </li>
            </ul>
        </nav>
        <div class="gnb">
+       		<div class="menuIcon">
+       			<img id="menuIcon" src="${pageContext.request.contextPath}/local_assets/img/menu_icon.png" alt="menu">
+       		</div>
             <div class="gnb_login">
             	<c:choose>
             		<c:when test="${member == null}">
@@ -104,6 +100,11 @@
 <body>
 <script type="text/javascript">
 $(function(){
+	
+	$('#menuIcon').on('click', function(){
+		
+	});
+	
 	$('#login').on('click', function(){
 		$('#loginModal .modal-dialog').remove();
 		$(".modal-open").attr('style','');
