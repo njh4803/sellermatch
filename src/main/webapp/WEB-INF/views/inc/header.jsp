@@ -14,6 +14,7 @@
     
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
+        <link href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" rel="stylesheet" type="text/css">
         <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"> -->
         
         
@@ -64,17 +65,60 @@
        <h1><a href="${pageContext.request.contextPath}/temp"><img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo_2.png" alt="sellermatch"></a></h1>
        <nav>
            <ul>
-               <li><a href="${pageContext.request.contextPath}/project/find">프로젝트 찾기</a></li>
+               <li><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></li>
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></li>
+               <li><a href="#">커뮤니티</a></li>
                <li class="operation">
-                   <a href="${pageContext.request.contextPath}/usageFee" class="operation_guide">셀러매치 이용안내 </a>
+                   <a href="${pageContext.request.contextPath}/usageFee" class="operation_guide">이용안내 </a>
                </li>
            </ul>
        </nav>
        <div class="gnb">
-       		<div class="menuIcon">
-       			<img id="menuIcon" src="${pageContext.request.contextPath}/local_assets/img/menu_icon.png" alt="menu">
-       		</div>
+       		<div id="menu-container">
+	            <div id="menu-wrapper">
+	                <div id="hamburger-menu"><span></span><span></span><span></span></div>
+	                <!-- hamburger-menu -->
+	            </div>
+	            <!-- menu-wrapper -->
+	            <ul class="menu-list accordion">
+	                <li id="nav1" class="toggle accordion-toggle"> 
+	                    <span class="icon-plus"></span>
+	                    <a class="menu-link" href="${pageContext.request.contextPath}/project/find">거래처 찾기</a>
+	                </li>
+		                <ul class="menu-submenu accordion-content">
+		                    <!-- <li><a class="head" href="#">Submenu1</a></li>
+		                    <li><a class="head" href="#">Submenu2</a></li>
+		                    <li><a class="head" href="#">Submenu3</a></li> -->
+		                </ul>
+	                <li id="nav2" class="toggle accordion-toggle"> 
+	                    <span class="icon-plus"></span>
+	                    <a class="menu-link" href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a>
+	                </li>
+	                    <ul class="menu-submenu accordion-content">
+	                        <!-- <li><a class="head" href="#">Submenu1</a></li>
+	                        <li><a class="head" href="#">Submenu2</a></li> -->
+	                    </ul>
+	                <li id="nav3" class="toggle accordion-toggle"> 
+	                    <span class="icon-plus"></span>
+	                    <a class="menu-link" href="#">커뮤니티</a>
+	                </li>
+	                    <ul class="menu-submenu accordion-content">
+	                        <!-- <li><a class="head" href="#">Submenu1</a></li>
+	                        <li><a class="head" href="#">Submenu2</a></li> -->
+	                    </ul>
+	                <li id="nav4" class="toggle accordion-toggle"> 
+	                    <span class="icon-plus"></span>
+	                    <a class="menu-link" href="${pageContext.request.contextPath}/usageFee">이용안내</a>
+	                </li>
+	                    <ul class="menu-submenu accordion-content">
+	                        <!-- <li><a class="head" href="#">Submenu1</a></li>
+	                        <li><a class="head" href="#">Submenu2</a></li>
+	                        <li><a class="head" href="#">Submenu3</a></li>
+	                        <li><a class="head" href="#">Submenu4</a></li> -->
+	                    </ul>
+	            </ul>
+	            <!-- menu-list accordion-->
+	        </div>
             <div class="gnb_login">
             	<c:choose>
             		<c:when test="${member == null}">
@@ -90,8 +134,7 @@
             </div>
             <div class="gnb_project">
                 <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
-                	<img class="headerPass" src="${pageContext.request.contextPath}/local_assets/img/pass13.png" alt="sellermatch">
-                	프로젝트 등록
+                	거래처 찾기 무료등록
                 </a>
             </div>
        </div>
@@ -177,5 +220,26 @@ $(function(){
     $('.operation').mouseleave(function(){
         $('.operation_guide_list').stop().slideUp();
     })
+    
+    function slideMenu() {
+        var activeState = $("#menu-container .menu-list").hasClass("active");
+        $("#menu-container .menu-list").animate({left: activeState ? "50%" : "-100%"}, 400);
+    }
+    $("#menu-wrapper").click(function(event) {
+        event.stopPropagation();
+        $("#hamburger-menu").toggleClass("open");
+        $("#menu-container .menu-list").toggleClass("active");
+        slideMenu();
+
+        $("body").toggleClass("overflow-hidden");
+    });
+
+    $(".menu-list").find(".accordion-toggle").click(function() {
+        $(this).next().toggleClass("open").slideToggle("fast");
+        $(this).toggleClass("active-tab").find(".menu-link").toggleClass("active");
+
+        $(".menu-list .accordion-content").not($(this).next()).slideUp("fast").removeClass("open");
+        $(".menu-list .accordion-toggle").not(jQuery(this)).removeClass("active-tab").find(".menu-link").removeClass("active");
+    });
 });
 </script>

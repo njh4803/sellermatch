@@ -134,7 +134,7 @@
     float: left;
     margin: 0;
     height: auto;
-    width: 900px;
+    width: 100%;
 }
 .row1 .leftBox{
 	float: left;
@@ -306,7 +306,7 @@ a.sort.select{
   color: #ffffff;
 }
 .titleBox{
-  width: 800px;
+  width: 100%;
   height: 64px;
   object-fit: contain;
   font-family: NotoSansKRMedium;
@@ -657,7 +657,7 @@ a:focus, a:hover{
 			<div class="textBox2">찾으시는 키워드를 입력 후 세부 내용을 선택하세요</div>
 		</div>
 	</div>
-	<div class="partner_bnr2">
+<%-- 	<div class="partner_bnr2">
 		<div class="search_bnr">
 		    <div class="search_wrap">
 		        <form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
@@ -671,7 +671,7 @@ a:focus, a:hover{
 			    </form>
 		    </div>    
 		</div>
-	</div>
+	</div> --%>
 	<div class="partner_wrap">
 		<div class="partner_bnr2">
 		    <div class="partner_wrap" style="text-align: center;">
@@ -781,66 +781,6 @@ a:focus, a:hover{
 		        </div>
 		    </div>
 		</div>
-		<div class="container2 hot-contents">
-			<img class="hotPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass_black.png">
-			<span>진행중인 핫매치</span>
-		</div>
-		    <div class="page-wrapper" style="position:relative;" id="premium">
-		      <!--page slider -->
-		      <div class="post-slider">
-		        <i class="fas fa-chevron-left prev"></i>
-		        <i class="fas fa-chevron-right next"></i>
-		        <div class="post-wrapper">
-		        	<c:forEach var="output" items="${output}" varStatus="status">
-		        		<div class="post">
-					      <div class="post-info">
-					        <div class="row3">
-					        	<c:if test="${output.projSort == 1}">
-					        		<button class="p-findBtn">
-						        		<img class="hotPass2" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-						        		${output.projSortName}를 찾습니다
-					        		</button>
-					        	</c:if>
-					        	<c:if test="${output.projSort == 2}">
-					     			<button class="s-findBtn">
-						        		<img class="hotPass2" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-						        		${output.projSortName}를 찾습니다
-					        		</button>
-					        	</c:if>
-					        </div>
-					        <div class="hotNation">
-					        	${output.projNationName}지역
-					        </div>
-					        <div class="hotTitle">
-					        	${output.projTitle}
-					        </div>
-					        <hr class="hot-hr">
-							<div class="row2">
-								<span class="leftBox margin-0">모집자수</span>
-								<span class="rightBox margin-0">${output.projRecruitNum}명</span>
-							</div>
-							<div class="row2">
-								<span class="leftBox margin-0">지원자수</span>
-								<span class="rightBox margin-0">${output.applyCount}명</span>
-							</div>
-							<div class="row2">
-								<span class="leftBox margin-0">지원마감일</span>
-								<span class="rightBox margin-0">${output.projEndDate}</span>
-							</div>
-							<div class="row2">
-								<span class="leftBox margin-0">관심조회</span>
-								<span class="rightBox margin-0">${output.projHit}회</span>
-							</div>
-							<div class="text-center">
-								<button class="applyBtn">즉시 지원하기</button>
-							</div>
-					      </div>
-					    </div>
-		        	</c:forEach>
-				</div>
-			  </div>	    
-		      <!--post slider-->
-		    </div>
 		<div class="container2 countAllbox">
 			<div class="leftBox countAll">전체 <span>${projCount}</span><span>건</span>이 검색되었습니다</div>
 			<div class="rightBox">
@@ -1164,14 +1104,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
-	$('.post-wrapper').slick({
-		  slidesToShow: 5,
-		  slidesToScroll: 1,
-		  autoplay: true,
-		  autoplaySpeed: 2000,
-		  nextArrow:$('.next'),
-		  prevArrow:$('.prev'),
-	});
+
 	
 	
 	$(document).on("click", ".search_chk", function(){
