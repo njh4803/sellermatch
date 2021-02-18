@@ -67,7 +67,7 @@
            <ul>
                <li><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></li>
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></li>
-               <li><a href="#">커뮤니티</a></li>
+               <li><a href="javascipt:void(0);">커뮤니티</a></li>
                <li class="operation">
                    <a href="${pageContext.request.contextPath}/usageFee" class="operation_guide">이용안내 </a>
                </li>

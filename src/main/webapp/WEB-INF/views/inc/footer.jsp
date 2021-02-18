@@ -5,41 +5,53 @@
 <%@ include file="../modal/termsOfServiceModal.jsp"%>
 <footer>
     <div class="footer_wrap">
-    	<div>
-        	<div class="f_top f_top">
-        		<p id="termsOfService"><a href="javascipt:void(0);">이용약관</a></p>
-        	</div>
-        	<div class="f_top f_top">
-        		ㅣ
-        	</div>
-        	<div class="f_top f_top">
-        		<p id="info"><a href="javascipt:void(0);">개인정보처리방침</a></p>
-        	</div>
-        	<div class="f_top f_top">
-        		ㅣ
-        	</div>
-        	<div class="f_top f_top">
-        		문의메일 : help@sellermatch.co.kr
-        	</div>
-        </div>
-        <div>
-        	<hr>
-        </div>
-        <div class="footer_logo">
-        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/wesell-logo.png">
-        </div>
-        <div style="display: flex;">
-	        <div class="f_btm">
-	        	<div class="f_btm2">
-	        		<p>(주)위셀글로벌</p>
-		            <p><em>소재지 : </em> 인천광역시 연수구 컨벤시아대로 204, 인천스타트업파크 인스타1 521호 </p>
-		            <p><em>대표이사 : </em>송진일 <em> 개인정보책임관리자 : </em> 안준수</p>
-		            <p><em>사업자등록번호 : </em> 181-87-01992</p>
-		            <p><em>통신판매업신고 : </em> 2020-인천연수구-1558</p>
-		            <p><em>연락처 : </em> 032-459-2236</p>
-		            <p><em>호스팅 서비스 제공 : </em>스마일서브 호스팅 주소</p>
+    	<div class="footer-box">
+        	<div class="f_top">
+        		<div class="f_top0 f_top1">
+        			셀러매치 사업자정보
+        		</div>
+        		<div class="f_btm">
+	        		회사명 : 위셀글로벌 주식회사<br>
+					소재지 : 인천광역시 연수구 컨벤시아대로 204, 인천 스타트업파크 인스타1 512호<br>
+					대표이사 : 송진일   개인정보책임관리자 : 안준수<br>
+					사업자등록번호 : 181-87-01992<br>
+					통신판매업신고 : 2020-인천연수구-1558<br>
+					연락처 : 032-459-2236<br>
+					호스팅 서비스 제공 : 스마일서브 호스팅 주소
 	            </div>
-	        </div>
+        	</div>
+        	<div class="f_top f_top">
+        		<div class="f_top0 f_top2">
+        			셀러매치
+        		</div>
+        		<div class="f_btm">
+	        		<div><a href="${pageContext.request.contextPath}/temp">메인</a></div>
+	        		<div><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></div>
+	        		<div><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></div>
+	        		<div><a href="javascipt:void(0);">커뮤니티</a></div>
+	        		<div><a href="${pageContext.request.contextPath}/usageFee">이용안내</a></div>
+	            </div>
+        	</div>
+        	<div class="f_top f_top">
+        		<div class="f_top0 f_top3">
+        			관련 규정
+        		</div>
+        		<div class="f_btm">
+	        		<div><a id="termsOfService" href="javascipt:void(0);">이용약관</a></div>
+	        		<div><a id="info" href="javascipt:void(0);">개인정보처리방침</a></div>
+	            </div>
+        	</div>
+        	<div class="f_top f_top">
+        		<div class="f_top0 f_top4">
+        			관련 사이트
+        		</div>
+        		<div class="f_btm">
+	        		<div><a href="javascipt:void(0);">페이스북</a></div>
+	        		<div><a href="javascipt:void(0);">유튜브</a></div>
+	        		<div><a href="javascipt:void(0);">블로그</a></div>
+	        		<div><a href="javascipt:void(0);">쇼핑몰</a></div>
+	            </div>
+        	</div>
         </div>
     </div> 
 </footer>

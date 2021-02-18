@@ -17,6 +17,39 @@ body.modal-open[style] {
     padding-right: 0px !important;
 
 }
+/* 스크롤바 디자인 */
+.chk_listBox::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+  background: #ffffff;
+}
+.chk_listBox::-webkit-scrollbar-thumb { 
+  border-radius: 3.5px;
+  background-color: #D9D9D9;
+
+  .chk_listBox:hover {
+    background-color: #adb5bd;
+  }
+}
+.chk_listBox::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+.tableBox::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+  background: #ffffff;
+}
+.tableBox::-webkit-scrollbar-thumb { 
+  border-radius: 3.5px;
+  background-color: #D9D9D9;
+
+  .chk_listBox:hover {
+    background-color: #adb5bd;
+  }
+}
+.tableBox::-webkit-scrollbar-track {
+  background: #ffffff;
+}
 /* checkbox */
 input[type="checkbox"] {
 	display:none;
@@ -64,7 +97,7 @@ header .header_wrap nav ul > li > a {
     margin: 0px 25px;
     font-family: NotoSansKRMedium;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 500;.main-0005
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
@@ -128,7 +161,7 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 /*bnr*/
 
-.bnr {width:100%; height:100%; background-color: #f7f7f7;}
+.bnr {width:100%; height:100%; background-color: #ffffff;}
 .bnr .bnr_wrap {width:1280px; margin: 0 auto; padding-top:200px; height: 567px;}
 .bnr .bnr_wrap2 {
 	height: 370px;
@@ -345,11 +378,48 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 /*footer*/
 
-footer {width:100%; background-color:#4f495c;}
-footer .footer_wrap {width:1280px; margin: 0 auto;}
-footer .footer_wrap .f_top {font-size: 15px; color: #b5b5b5; padding: 23px 0 15px 0; display: inline-block; margin-right: 10px;}
-footer .footer_wrap .f_top1{width:500px;} 
-footer .footer_wrap .f_top2{width:200px; margin: 0 28px;}
+footer {
+  width: 100%;
+  height: 350px;
+  background-color: #d9d9d9;
+}
+.footer-box{
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+footer .footer_wrap {width:1280px; margin: 0 auto;padding-top: 1px;}
+footer .footer_wrap .f_top {
+  vertical-align: top;
+  width: fit-content;
+  display: inline-block;
+}
+footer .footer_wrap .f_top0 {
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: -0.1px;
+  text-align: left;
+  color: #484848;
+  margin-bottom: 30px;
+}
+footer .footer_wrap .f_top1{
+  width: 472px;
+  margin-right: 213px;
+} 
+footer .footer_wrap .f_top2{
+  width: 101px;
+  margin-right: 126px;
+} 
+footer .footer_wrap .f_top3{
+  width: 110px;
+  margin-right: 109px;	
+} 
+footer .footer_wrap .f_top4{
+  width: 134px;
+} 
 footer .footer_wrap .f_top ul {overflow: hidden; padding:22px; padding: 33px 0;}
 footer .footer_wrap .f_top ul li {float:left;}
 footer .footer_wrap .f_top ul li a {color:#999; font-size:15px;}
@@ -374,55 +444,26 @@ footer .footer_wrap .f_top ul li p:before {
     margin: -2px 30px 0 30px;
 }
 footer .footer_wrap .f_btm {
-width: 500px;
-display: inline-block;
-font-family: NotoSansKRMedium;
-font-size: 14px;
-font-weight: normal;
-font-stretch: normal;
-font-style: normal;
-line-height: 1.78;
-letter-spacing: normal;
-text-align: left;
-color: #9892a5;
-margin-bottom: 100px;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.06px;
+  text-align: left;
+  color: #484848;
+  line-height: 1.67;
 }
-footer .footer_wrap .f_btm .f_btm2 p:nth-child(1){
-	font-size: 18px;
-}
-footer .footer_wrap #info a, a:hover, a:focus{
-	text-decoration: none;
-	color: #b5b5b5;
-	line-height: normal;
-}
-footer .footer_wrap #termsOfService a, a:hover, a:focus{
-	text-decoration: none;
-	color: #b5b5b5;
-	line-height: normal;
-}
-footer .footer_wrap div hr {
-	border: solid 1px #7c7c7c;
-	margin: 0;
-}
-
-.footer_logo img{ 
-	margin: 66.5px 0 30.8px 0;
-	width: 226px;
-    height: 83px;
-    object-fit: contain;
-}
-.textBox{
-	display: inline-block;
-	margin: -80px;
-}
-.emptyResult{
-	text-align: center;
-    height: 300px;
-    padding: 150px;
-    font-size: 20px;
-}
-.menuIcon{
-	display: none;
+footer  div.f_btm div a, a:hover, a:focus{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.06px;
+  text-align: left;
+  color: #484848;
+  line-height: normal;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #menu-container{
