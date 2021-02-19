@@ -223,8 +223,8 @@
   transition-property: box-shadow, transform;
 }
 .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 .boxText{
   display: inline-block;
@@ -278,136 +278,94 @@
   text-align: center;
 }
 .tableBox{
-    width: 100%;
-    height: 545px;
-    margin: 0 0 200px 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 10px 10px 30px 0 rgb(0 0 0 / 16%);
+	width: fit-content;
+    border-radius: 20px;
     border: solid 1px #cccccc;
     background-color: #ffffff;
-    overflow-x:hidden;
-	overflow-y:auto;
+    margin: 0 130px;
+    margin-bottom: 200px;
 }
-.tableBox-title{
-    width: 100%;
-    height: 100px;
-    margin: 37px 0 0 0;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-shadow: 10px 10px 30px 0 rgb(0 0 0 / 16%);
-    border: solid 1px #cccccc;
-    background-color: #ffffff;
-    border-bottom: none;
-}
-.table-row{
+.table-row:nth-child(odd){
   width: 100%;
-  border-bottom: solid 1px #cccccc;
-  height: 100px;
+  background-color: #fff4ef;
 }
 .table-title-row{
   width: 100%;
   padding: 32px 0 35px;
-}
-.sellermatch{
-  color: #ff540f;
-  font-weight: 800;
+  background-color: #ff540f;
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: -0.1px;
+  text-align: center;
+  color: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 .table-col1{
   display:inline-block;
-  width: 38%;
-  padding: 19px 0 18px;
-  font-size: 20px;
-  font-weight: 800;
+  width: 320px;
+  font-size: 15px;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: -0.08px;
+  letter-spacing: normal;
   text-align: center;
-  color: #000000;
-}
-.table-col1 span{
-  font-size: 25px;
-  letter-spacing: -0.1px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
+  color: #343434;
+  padding: 20px 0 19px 0;
+  margin-left: -2px;
 }
 .table-col2{
   display:inline-block;
-  width: 23%;
-  padding: 33px 0 32px;
-  vertical-align: top;
-  font-size: 25px;
-  font-weight: bold;
+  width: 350px;
+  font-size: 15px;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: -0.1px;
+  letter-spacing: normal;
   text-align: center;
-  color: #000000;
+  color: #343434;
+  padding: 20px 0 19px 0;
+  margin-left: -7px;
+  border-left: 2px solid #ff540f;
+  border-right: 2px solid #ff540f;
+}
+.table-row:last-child .table-col2{
+  border-bottom: 2px solid #ff540f !important;
+}
+.table-row:last-child .table-col1{
+  border-bottom-left-radius: 20px;
+}
+.table-row:last-child .table-col3{
+  border-bottom-right-radius: 20px;
 }
 .table-col3{
   display:inline-block;
-  width: 38%;
-  padding: 19px 0 18px;
-  font-size: 20px;
+  width: 350px;
+  font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: -0.08px;
+  letter-spacing: normal;
   text-align: center;
-  color: #000000;
-}
-.table-col3 span{
-  font-size: 25px;
-  letter-spacing: -0.1px;
-}
-.table-col4{
-  display:inline-block;
-  width: 38%;
-  padding: 36px 0 35px;
-  vertical-align: top;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: -0.08px;
-  text-align: center;
-  color: #000000;
+  color: #343434;
+  padding: 20px 0 19px 0;
+  margin-left: -7px;
 }
 .title-col1{
   display:inline-block;
-  width: 38%;
-  height: 29px;
-  font-size: 25px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: -0.1px;
-  text-align: center;
+  width: 320px;
 }
 .title-col2{
   display:inline-block;
-  width: 23%;
-  height: 29px;
-  font-size: 25px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: -0.1px;
-  text-align: center;
-  color: #000000;
+  width: 350px;
+  margin-left: -10px;
 }
 .title-col3{
   display:inline-block;
-  width: 38%;
-  height: 29px;
-  font-size: 25px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: -0.1px;
-  text-align: center;
-  color: #000000;
+  width: 350px;
+  margin-left: -10px;
 }
 .X{
   font-size: 25px;
@@ -438,7 +396,7 @@
   font-stretch: normal;
   font-style: normal;
   letter-spacing: -0.5px;
-  text-align: left;
+  text-align: center;
   color: #343434;
   line-height: 1.2;
   margin-bottom: 110px;
@@ -466,6 +424,9 @@
 .memBox:hover .main_img4{
 	background-image: url(/wesellglobal/local_assets/img/도형1.png) !important;
 }
+.memBox:hover .main-img3{
+	background-image: url(/wesellglobal/local_assets/img/down.png) !important;
+}
 .memBox:hover .textBox4 span{
   font-size: 25px !important;
   font-weight: 800 !important;
@@ -474,25 +435,29 @@
 
 .textBox4{
   height: 508px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
+  line-height: 1.67;
   letter-spacing: normal;
   text-align: center;
-  color: #1f1f1f;
-  line-height: 1.8;
-  
+  color: #343434;
+  margin-top: -30px;
 }
 .memBox .textBox4 span{
   font-size: 25px;
   font-weight: 800;
   color: #707070;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 .spBox .textBox4 span{
   font-size: 25px;
   font-weight: 800;
   color: #ff540f;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 .main-006{
     display: inline-flex;
@@ -534,7 +499,8 @@
 }
 .main-0005{
   width: 100%;
-  height: 1080px;
+  /* height: 1080px; */
+  height:100%;
   text-align: center;
   background-color: #fff6f2;
 }
@@ -574,6 +540,117 @@
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+  margin-bottom: 326px;
+}
+.main-img3{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: inline-block;
+}
+.textBox6{
+	width: 317px;
+    margin: 0 auto;
+    font-size: 15px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #343434;
+}
+.space{
+	margin-left: 19.9px;
+}
+.img4{
+  width: 437px;
+  height: 136px;
+  margin: 200px 0 30px 0;
+  object-fit: contain;
+}
+.textBox7{
+	width: 100%;
+    font-size: 50px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: #343434;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+.FAQ{
+  display: block;
+  width: 760px;
+  margin: 0 auto;
+  margin-bottom: 200px;
+  border-radius: 20px;
+  border: solid 1px #cccccc;
+  text-align: left;
+}
+.img5{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 30px;
+  object-fit: contain;
+  display: inline-block;
+}
+.FAQBox{
+	width: 100%;
+    padding: 25px 0;
+    background-color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.18px;
+    text-align: left;
+    color: #343434;
+    border-bottom: solid 1px #cccccc;
+}
+.FAQBox span{
+    font-size: 18px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.18px;
+    text-align: left;
+    color: #343434;
+    vertical-align: text-bottom;
+}
+.FAQBox:first-child{
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+.FAQBox:last-child{
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom: none;
+} 
+.answerBox{
+  width: 700px;
+  margin: 25px 30px;
+  padding: 25px 25px 25px 25px;
+  background-color: #fff6f2;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+  display: none;
+}
+.FAQBox:hover .answerBox, .FAQBox:focus .answerBox{
+	display: block;
+}
+.FAQBox:hover .img5, .FAQBox:focus .img5{
+	background-image: url("/wesellglobal/local_assets/img/bottomArrow2.png") !important;
 }
 </style>
 <div class="bnr">
@@ -603,7 +680,7 @@
     	<div class="main-0002 clearfix">
     		<div class="main-003">
     			거래처 찾기를 1회만 등록하세요.<br>
-				쉽게 빠르게 편리하게 직거래하세요.<br>
+				쉽게 빠르게 효율적인 직거래하세요.<br>
     		</div>
     	</div>
     	<div class="main-0003 clearfix">
@@ -664,130 +741,129 @@
 					더 많은 이익을 남길 수 있어요.
    				</div>
    			</div>
-   			<div class="tableBox-title">
-   			   	<div class="table-title-row">
-   					<div class="title-col1"><span class="sellermatch">셀러매치</span></div>
-   					<div class="title-col2">서비스 특징</div>
+   			<div class="tableBox">
+   				<div class="table-title-row">
+   					<div class="title-col1">특징</div>
+   					<div class="title-col2">셀러매치</div>
    					<div class="title-col3">도매사이트</div>
    				</div>
-   			  	<img class="upImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/up.png">
-   				<img class="downImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/down.png">
-   			</div>
-   			<div class="tableBox">
    				<div class="table-row">
    					<div class="table-col1">
-   							<span>약 5분</span><br>
-   							약 5분가입 → 등록 → 거래
-   						</div>
-   					<div class="table-col2">첫 이용까지 소요시간</div>
+   						첫 이용까지 소요시간
+  					</div>
+   					<div class="table-col2">약 5분</div>
    					<div class="table-col3">
-   						<span>약 1일 내외</span><br>
-   						 가입 → 승인 → 충전(등록) → 거래
+   						약 1일 내외
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="X">X</span><br>
-							승인없이 바로 이용 (개인 이용가능)
-   						</div>
-   					<div class="table-col2">가입 승인 유무</div>
+  						사업자 없이 이용 가능한가요?		
+  					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
    					<div class="table-col3">
-   						<span class="O">O</span><br>
-   						 사업자 승인 후 이용가능
+   						대다수 사업자만 이용가능
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="X">X</span><br>
-							있어도 되고, 없어도 이용가능
-   						</div>
-   					<div class="table-col2">상세페이지</div>
+   						상세페이지 없어도 이용 가능한가요?		
+  					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
    					<div class="table-col3">
-   						<span class="O">O</span><br>
-   						 상세페이지 있어야 등록가능
+   						X
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="X">X</span><br>
-							직거래로 비용 충전 없음
-   						</div>
-   					<div class="table-col2">구매비용 충전</div>
+   						구매비용 충전 없이 이용 가능한가요?		
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
    					<div class="table-col3">
-   						<span class="O">O</span><br>
-   						 도매상품 구매비용 사전 충전 필요
+   						대다수 구매할 금액 충전 필요
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="X">X</span><br>
-							직거래로 수수료 없음
-   						</div>
-   					<div class="table-col2">중개 수수료</div>
+   						중개 수수료 없나요?
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
    					<div class="table-col3">
-   						<span class="O">O</span><br>
-   						 공급가의 3~10%, 도매 상품가격에 포함
+   						공급가격에 3~10% 수수료 포함
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="O">O</span><br>
-							공급자 - 판매자 (직거래)
-   						</div>
-   					<div class="table-col2">직거래 여부</div>
+   						직거래 가능한가요?
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
    					<div class="table-col3">
-   						<span class="O">O</span><br>
-   						공급자 - 도매사이트 - 판매자 (3자거래)
+   						X
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="O">O</span><br>
-							독점/비독점, 온/오프라인 등 조건별 거래처 찾기
-   						</div>
-   					<div class="table-col2">조건별 거래처 찾기</div>
-   					<div class="table-col4">
-   						<span class="X">X</span><br>
+   						조건별 거래처 찾기	
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
+   					<div class="table-col3">
+   						일부 조건 찾기 기능
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="O">O</span><br>
-							고매출/고마진, 개인/법인, 판매자 채널 등 검증
-   						</div>
-   					<div class="table-col2">검증된 거래처 찾기</div>
-   					<div class="table-col4">
-   						<span class="X">X</span><br>
+   						검증된 거래처 찾기	
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">	
+   					</div>
+   					<div class="table-col3">
+   						X
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="O">O</span><br>
-							조건에 맞는 맞춤식 거래처 알림, 메일링 서비스
-   						</div>
-   					<div class="table-col2">거래처 추천 기능</div>
-   					<div class="table-col4">
-   						<span class="X">X</span><br>
+   						거래처 추천 기능
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
+   					<div class="table-col3">
+   						X
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="O">O</span><br>
-							판매채널, 매출, 상품, 지역, 거래처 평가내용 등 열람
-   						</div>
-   					<div class="table-col2">판매자 정보 열람</div>
-   					<div class="table-col4">
-   						<span class="X">X</span><br>
+   						판매자 검색 / 열람	
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
+   					<div class="table-col3">
+   						X
    					</div>
    				</div>
    				<div class="table-row">
    					<div class="table-col1">
-   							<span class="O">O</span><br>
-							해외 공급상품, 해외 바이어 등 정보 제공
-   						</div>
-   					<div class="table-col2">해외 거래처 찾기</div>
-   					<div class="table-col4">
-   						<span class="X">X</span><br>
+   						해외 거래처 찾기
+   					</div>
+   					<div class="table-col2">
+   						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png">
+   					</div>
+   					<div class="table-col3">
+   						X
    					</div>
    				</div>
    			</div>
@@ -804,38 +880,127 @@
 	   					<div class="textBox4">
 		   					<span>회원가입</span><br>
 							판매자 선택 후, 회원가입<br>
-							<br>
-							<br>
+							<br><br>
+							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<br><br>
 							<span>거래처 찾기 등록</span><br>
-							공급 상품 정보를 담은 거래처 찾기 등록하기<br>
-							<br>
-							<br>
+							판매 상품 정보를 담은 거래처 찾기 등록하기<br>
+							<br><br>
+							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<br><br>
 							<span>거래하기</span><br>
-							① 등록한 거래처 찾기에서 지원 판매자 확인<br>
-							② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
-							거래처 찾기에 공급자로 지원하고 거래<br>
-							③ 판매자 찾기에서 판매자 지원요청<br>
-		   					</div>
+							<div class="textBox6">
+								① 등록한 거래처 찾기에서 지원 공급자 확인<br>
+								② 거래처 찾기에서 공급자가 등록한 판매자<br>
+								<span class="space"></span>거래처 찾기에 판매자로 지원하고 거래<br>
+								③ 판매자 프로필 등록하고, 나에게 지원요청한<br>
+								<span class="space"></span>공급자 상품정보를 본 후, 거래<br>
+							</div>
+		   				</div>
 	   				</div>
 	   				<div class="memBox" style="margin-left: 60px;">
 	   					<div class="main_img4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/도형2.png');">공급자 회원</div>
 	   					<div class="textBox4">
 		   					<span>회원가입</span><br>
-							판매자 선택 후, 회원가입<br>
-							<br>
-							<br>
+							공급자 선택 후, 회원가입<br>
+							<br><br>
+							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<br><br>
 							<span>거래처 찾기 등록</span><br>
 							공급 상품 정보를 담은 거래처 찾기 등록하기<br>
-							<br>
-							<br>
+							<br><br>
+							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<br><br>
 							<span>거래하기</span><br>
-							① 등록한 거래처 찾기에서 지원 판매자 확인<br>
-							② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
-							거래처 찾기에 공급자로 지원하고 거래<br>
-							③ 판매자 찾기에서 판매자 지원요청<br>
-		   				</div>   					
+							<div class="textBox6">
+								① 등록한 거래처 찾기에서 지원 판매자 확인<br>
+								② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
+								<span class="space"></span>거래처 찾기에 공급자로 지원하고 거래<br>
+								③ 판매자 찾기에서 판매자 지원요청 후, 거래<br>
+							</div>
+		   				</div>  					
 	   				</div>
 	   			</div>   			
+   			</div>
+   		</div>
+   		<div class="main-0004">
+   			<img class="img4" alt="" src="${pageContext.request.contextPath}/local_assets/img/main_img4.png">
+   			<div class="textBox7">
+	   			셀러매치를 이용하며<br>
+				자주 묻는 질문
+   			</div>
+   			<div class="FAQ">
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>셀러매치 이용료는 어떻게 되나요?</span>
+   					<div class="answerBox">
+	   					셀러매치 서비스는 현재 무료 베타 서비스 기간입니다. 곧, 유료 서비스로 전환이 될 예정이며,<br>
+						유료화 전에 미리 공지를 통해 내용을 전달드릴 예정입니다.
+	   				</div>
+   				</div>
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>유료화가 되고나서 결제를 하지 안흥면 이용할 수 없나요?</span>
+   					<div class="answerBox">
+	   					유료화가 되면 일부 서비스는 결제를 해야 이용할 수 있게 될 예정입니다.<br>
+      					그러나, '거래처 찾기 등록' 등의 일부 서비스는 계속 무료로 이용이 가능하며,<br>
+      					유료화가 되어도 무료 서비스 기간동안 등록한 내용은 그대로 유지가 됩니다.
+	   				</div>
+   				</div>
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>하나의 계정으로 판매자와 공급자 2가지 기능을 모두 사용할 수 있나요?</span>
+   					<div class="answerBox">
+	   					현재는 가능하지 않습니다. 판매자와 공급자 중 하나를 꼭 선택해서 가입하셔야 합니다.<br>
+        				다만, 판매자로 가입하신 후, 공급자로 다시 가입하여 2개의 계정을 사용하는 것은 가능합니다.
+	   				</div>
+   				</div>
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>상대방의 연락처 등을 알 수 있나요?</span>
+   					<div class="answerBox">
+						네, 그렇습니다. 셀러매치는 직거래 서비스로써, '지원하기'를 통해 서로 연결(매칭)이 되면<br>
+					        상대방이 등록한 모든 정보를 열람할 수 있습니다. 직접 메일이나 전화로 연락하셔서 직거래를<br>
+					        할 수 있습니다.
+	   				</div>
+   				</div>
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>아무 상품이나 거래처 찾기에 등록해도 되나요?</span>
+   					<div class="answerBox">
+	   					일반적으로 판매 또는 공급이 이뤄지는 상품의 카테고리를 선택할 수 있게 되어 있습니다.<br>
+					        선택할 수 없는 상품의 경우 '기타' 항목을 선택하신 후, 등록하실 수 있습니다.<br>
+					        다만, 상식적으로 거래가 이뤄지기 힘들거나 불가한 서비스, 관리자가 판단하기에 서비스에<br>
+					        방해가 되는 내용 등은 관리자의 권한으로 사전 권고없이 수정 또는 삭제될 수 있습니다.
+	   				</div>
+   				</div>
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>거래처 찾기 등록은 몇 번까지 등록 할 수 있나요?</span>
+   					<div class="answerBox">
+	   					현재는 무료 베타 서비스 기간으로, 베타서비스 기간 중에는 제한없이 등록할 수 있습니다.
+	   				</div>
+   				</div>
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>해외 판매자 또는 공급자도 찾을 수 있나요?</span>
+   					<div class="answerBox">
+	   					네, 가능합니다. 아직 서비스를 시작한지 얼마 되지 않아 충분한 판매자 및 공급자 수가 부족할 수 있습니다.<br>
+        				조속한 시일내에 양질의 판매자와 공급자가 활동하는 서비스로 거듭나겠습니다.
+	   				</div>
+   				</div>
+   				<div class="FAQBox">
+   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<span>공급 상품 단가, 이익율, 판매자 매출 등의 검증 내용은 신뢰할만 한가요?</span>
+   					<div class="answerBox">
+						검증을 거친 공급상품의 정보와 판매자의 정보는 관리자가 관련 내용을 면밀히 검토한 후,<br>
+					        검증 표시를 하게 됩니다. 그래서 신뢰하셔도 좋다고 말씀드릴 수 있습니다.<br>
+					        다만, 검증을 요청한 이용자가 의도적으로 거짓 정보를 전달하거나, 검증 후 정보가 변경이 되어<br>
+					        검증된 내용과 실제 내용이 다를 수 있습니다.<br>
+					        검증된 내용과 다른 사실을 발견하였을 경우, 셀러매치 고객센터(help@sellermatch.co.kr 또는 032-435-2236)으로<br>
+					        연락주시면 적절한 조치를 취하도록 하겠습니다.
+	   				</div>
+   				</div>
    			</div>
    		</div>
    		<div class="main-0005">

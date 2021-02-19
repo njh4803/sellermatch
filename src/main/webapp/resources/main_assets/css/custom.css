@@ -34,22 +34,6 @@ body.modal-open[style] {
 .chk_listBox::-webkit-scrollbar-track {
   background: #ffffff;
 }
-.tableBox::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
-}
-.tableBox::-webkit-scrollbar-thumb { 
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
-
-  .chk_listBox:hover {
-    background-color: #adb5bd;
-  }
-}
-.tableBox::-webkit-scrollbar-track {
-  background: #ffffff;
-}
 /* checkbox */
 input[type="checkbox"] {
 	display:none;
@@ -702,6 +686,7 @@ footer  div.f_btm div a, a:hover, a:focus{
     .mainBox3 {width: 100% !important;}
 	.mainBox4 {width: 100% !important;}
 	.main-000 {width: 100% !important;}
+	.main-0001 {width: 100% !important;}
 	
 	
 	.partner_bnr .partner_wrap {width: 100% !important;}
