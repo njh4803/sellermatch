@@ -75,9 +75,6 @@
     top: 12px;
     left: 122px;
 }
-.main-0001{
-	background-color: #ffffff;
-}
 .findBtn{
   display: inline-block;
   width: 240px;
@@ -125,11 +122,12 @@
     color: #343434;
     float: left;
     margin-top: 120px;
-    margin-bottom: 60px;
+    margin-bottom: 122px;
 }
 .main-004{
-	display: inline-block;
-    margin-left: 1026px;
+	display: block;
+    margin-bottom: 102px;
+    margin-top: 174px;
 }
 .main-005{
   margin-top: 10px;
@@ -144,8 +142,11 @@
   font-weight: 800;
 }
 .main-0003{
-    margin: 0 424px 200px 424px;
     display: block;
+    width: 100%;
+    height: 1280px;
+    margin-bottom: 200px;
+    background-color: #fff6f2;
 }
 .main-0004{
     display: block;
@@ -157,6 +158,11 @@
 	width: 450px;
 	height: 211px;
 	object-fit: contain;
+	margin: auto;
+}
+.main-0001{
+  width: 1280px;
+  margin: 0 auto;
 }
 .main-003 .orange-text{
   color: #ff540f;
@@ -176,19 +182,20 @@
 	display: inline-block;
     margin-bottom: 140px;
     float: left;
+    margin-left: 104px;
 }
 .mainBox2{
 	display: inline-block;
-	margin: 79px 0 140px 0;
-	float: right;
+	margin: 79px 0 61px 78px;
 }
 .mainBox3{
 	display: inline-block;
     float: left;
+    margin-left: 104px;
 }
 .mainBox4{
 	display: inline-block;
-    float: right;
+	margin: 79px 0 140px 78px;
 }
 .mainBox:hover .boxSpan{
 	  font-size: 40px;
@@ -228,45 +235,47 @@
   box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.16);
   border: solid 1px #cccccc;
   background-color: #ffffff;
-  font-size: 20px;
+  text-align: center;
+}
+.boxText2 {
+	display: inline-block;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: -0.15px;
+    color: #707070;
+    text-align: left;
+    width: fit-content;
+}
+
+.boxText2 span{
+  margin-bottom: 15px;
+  font-family: NanumGothic;
+  font-size: 24px;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: -0.2px;
-  text-align: center;
+  letter-spacing: -0.24px;
+  text-align: left;
   color: #343434;
-}
-.boxText span{
- font-weight: 800;
 }
 .textBox0{
 	width: 100%;
+    margin-bottom: 100px;
 }
 .textBox1{
-  height: 46px;
-  font-size: 40px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #1f1f1f;
-}
-.textBox1 span{
-  font-weight: bold;
-}
-.textBox2{
-  height: 58px;
-  margin-top: 5px;
+  width: 1280px;
+  height: 118px;
   font-size: 50px;
-  font-weight: normal;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
+  line-height: 1.2;
   letter-spacing: -0.5px;
-  text-align: left;
+  text-align: center;
   color: #343434;
-}
-.textBox2 span{
-  font-weight: 800;
+  text-align: center;
 }
 .tableBox{
     width: 100%;
@@ -425,16 +434,15 @@
 .textBox3{
   width: 100%;
   font-size: 50px;
-  font-weight: normal;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: -0.5px;
-  text-align: center;
+  text-align: left;
   color: #343434;
-  margin-bottom: 78px;
-}
-.textBox3 span{
-  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 110px;
+  margin-top: 156px;
 }
 .spBox{
   display: inline-block;
@@ -528,6 +536,7 @@
   width: 100%;
   height: 1080px;
   text-align: center;
+  background-color: #fff6f2;
 }
 .img3{
 	margin-top: 326px;
@@ -591,60 +600,69 @@
 	    </div>
 	</div>
     <div class="bnr">
-    	<div class="main-0001">
-
-    	</div>
     	<div class="main-0002 clearfix">
     		<div class="main-003">
     			거래처 찾기를 1회만 등록하세요.<br>
-				쉽고 빠르며 편리하게 직거래하세요.<br>
-    		</div>
-    		<div class="main-004">
-    			<div class="main-img2" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main_img2.png');"></div>
+				쉽게 빠르게 편리하게 직거래하세요.<br>
     		</div>
     	</div>
-    	<div class="main-0003 clearfix"> 
-   			<div class="mainBox mainBox1 hvr-grow-shadow">
-   				<span class="boxSpan">01</span>
-   				<div class="boxText">
-    				<span>돈 되는, 팔만한 물건</span> 찾기 힘드시죠?<br>
-					<br>
-					찾고있는 상품을 거래처 찾기에 올려주세요<br>
-					저희가 찾아서 직거래하게 해 드릴게요<br>
-   				</div>
-   			</div>
-   			<div class="mainBox mainBox2 hvr-grow-shadow">
-   				<span class="boxSpan">02</span>
-   				<div class="boxText">
-    				<span>조건에 맞는 공급제안</span>이 계속 오면 좋겠죠?<br>
-					<br>
-					약 5분, 판매자 프로필 1회만 등록하세요!<br>
-					매력적인 공급 제안서가 계속 올거에요<br>
-   				</div>
-   			</div>
-   			<div class="mainBox mainBox3 hvr-grow-shadow">
-   				<span class="boxSpan">03</span>
-   				<div class="boxText">
-    				<span>잘 파는, 검증된 판매자 찾기</span> 어려우시죠?<br>
-					<br>
-					전국의 잘 파는, 분야별 판매자를 모아놨어요<br>
-					판매자를 검색하고 직거래 할 수 있어요<br>
-   				</div>
-   			</div>
-   			<div class="mainBox mainBox4 hvr-grow-shadow">
-   				<span class="boxSpan">04</span>
-   				<div class="boxText">
-    				<span>여러곳에 공급제안서</span> 보내기 귀찮으시죠?<br>
-					<br>
-					공급상품 정보를 1회만 등록하세요<br>
-					매번 반복해서 제안서를 보내지 않아도 됩니다<br>
-   				</div>
-   			</div>
+    	<div class="main-0003 clearfix">
+    	    <div class="main-0001 clearfix">
+	   			<div class="main-004">
+	    			<div class="main-img2" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main_img2.png');"></div>
+	    		</div>
+	   			<div class="mainBox mainBox1 hvr-grow-shadow">
+	   				<span class="boxSpan">01</span>
+	   				<div class="boxText">
+	   					<div class="boxText2">
+		    				<span>팔기 괜찮은 물건 찾기 힘드시죠?</span><br>
+							<br>
+							찾고있는 상품을 거래처 찾기에 올려주세요.<br>
+							저희가 찾아서 직거래하게 해 드릴게요.<br>	   					
+	   					</div>
+	   				</div>
+	   			</div>
+	   			<div class="mainBox mainBox2 hvr-grow-shadow">
+	   				<span class="boxSpan">02</span>
+	   				<div class="boxText">
+	   					<div class="boxText2">
+		    				<span>공급 제안이 꾸준히 오면 좋겠죠?</span><br>
+							<br>
+							약 5분, 판매자 프로필 1회만 등록하세요!<br>
+							매력적인 공급 제안서가 계속 올거에요.<br>
+						</div>
+	   				</div>
+	   			</div>
+	   			<div class="mainBox mainBox3 hvr-grow-shadow">
+	   				<span class="boxSpan">03</span>
+	   				<div class="boxText">
+	   					<div class="boxText2">
+		    				<span>검증된 판매자 찾기 어려우시죠?</span><br>
+							<br>
+							전국의 잘 파는, 분야별 판매자를 모아놨어요.<br>
+							판매자를 검색하고 직거래 할 수 있어요.<br>
+						</div>
+	   				</div>
+	   			</div>
+	   			<div class="mainBox mainBox4 hvr-grow-shadow">
+	   				<span class="boxSpan">04</span>
+	   				<div class="boxText">
+	   					<div class="boxText2">
+	    					<span>공급제안서 보내기 귀찮으시죠?</span><br>
+							<br>	
+							공급상품 정보를 1회만 등록하세요.<br>
+							매번 반복해서 제안서를 보내지 않아도 됩니다.<br>
+						</div>
+	   				</div>
+	   			</div>    	
+    		</div>
    		</div>
    		<div class="main-0004">
    			<div class="textBox0">
-   				<div class="textBox1">도매사이트와 <span>무엇이 다른지</span> 자세히 살펴봐주세요</div>
-   				<div class="textBox2"><span>쉽고, 빠르며, 편리하고, 성공적인 거래</span>를 지원합니다</div>
+   				<div class="textBox1">
+   					3~10% 더 저렴하게 공급받아<br>
+					더 많은 이익을 남길 수 있어요.
+   				</div>
    			</div>
    			<div class="tableBox-title">
    			   	<div class="table-title-row">
@@ -773,46 +791,51 @@
    					</div>
    				</div>
    			</div>
-   			 <div class="textBox3">
-  				<span>약 5분</span> 정도면 가입하고 첫 이용이 가능해요
-  			</div>
-   			<div class="main-006">
-   				<div class="memBox" style="margin-right: 60px;">
-   					<div class="main_img4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/도형2.png');">판매자 회원</div>
-   					<div class="textBox4">
-	   					<span>회원가입</span><br>
-						판매자 선택 후, 회원가입<br>
-						<br>
-						<br>
-						<span>거래처 찾기 등록</span><br>
-						공급 상품 정보를 담은 거래처 찾기 등록하기<br>
-						<br>
-						<br>
-						<span>거래하기</span><br>
-						① 등록한 거래처 찾기에서 지원 판매자 확인<br>
-						② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
-						거래처 찾기에 공급자로 지원하고 거래<br>
-						③ 판매자 찾기에서 판매자 지원요청<br>
-	   					</div>
-   				</div>
-   				<div class="memBox" style="margin-left: 60px;">
-   					<div class="main_img4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/도형2.png');">공급자 회원</div>
-   					<div class="textBox4">
-	   					<span>회원가입</span><br>
-						판매자 선택 후, 회원가입<br>
-						<br>
-						<br>
-						<span>거래처 찾기 등록</span><br>
-						공급 상품 정보를 담은 거래처 찾기 등록하기<br>
-						<br>
-						<br>
-						<span>거래하기</span><br>
-						① 등록한 거래처 찾기에서 지원 판매자 확인<br>
-						② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
-						거래처 찾기에 공급자로 지원하고 거래<br>
-						③ 판매자 찾기에서 판매자 지원요청<br>
-	   				</div>   					
-   				</div>
+   		</div>
+   		<div class="main-0005 clearfix">
+   			<div class="main-0004">
+	   			<div class="textBox3">
+	  				약 5분 정도면<br>
+	  				가입하고 첫 이용이 가능해요.
+	  			</div>
+	   			<div class="main-006">
+	   				<div class="memBox" style="margin-right: 60px;">
+	   					<div class="main_img4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/도형2.png');">판매자 회원</div>
+	   					<div class="textBox4">
+		   					<span>회원가입</span><br>
+							판매자 선택 후, 회원가입<br>
+							<br>
+							<br>
+							<span>거래처 찾기 등록</span><br>
+							공급 상품 정보를 담은 거래처 찾기 등록하기<br>
+							<br>
+							<br>
+							<span>거래하기</span><br>
+							① 등록한 거래처 찾기에서 지원 판매자 확인<br>
+							② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
+							거래처 찾기에 공급자로 지원하고 거래<br>
+							③ 판매자 찾기에서 판매자 지원요청<br>
+		   					</div>
+	   				</div>
+	   				<div class="memBox" style="margin-left: 60px;">
+	   					<div class="main_img4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/도형2.png');">공급자 회원</div>
+	   					<div class="textBox4">
+		   					<span>회원가입</span><br>
+							판매자 선택 후, 회원가입<br>
+							<br>
+							<br>
+							<span>거래처 찾기 등록</span><br>
+							공급 상품 정보를 담은 거래처 찾기 등록하기<br>
+							<br>
+							<br>
+							<span>거래하기</span><br>
+							① 등록한 거래처 찾기에서 지원 판매자 확인<br>
+							② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
+							거래처 찾기에 공급자로 지원하고 거래<br>
+							③ 판매자 찾기에서 판매자 지원요청<br>
+		   				</div>   					
+	   				</div>
+	   			</div>   			
    			</div>
    		</div>
    		<div class="main-0005">
