@@ -67,10 +67,8 @@ header .header_wrap nav ul > li > a {
     text-align: left;
     color: #1f1f1f;	
 }
-header .header_wrap nav ul > li > a:hover {color:#ff540f;}
 header .header_wrap nav ul > li > .operation_guide_list {position:fixed; width:192px; top:77px;background-color:#fff;}
 header .header_wrap nav ul > li > .operation_guide_list a {display:block; padding:15px 26px; text-decoration: none;}
-header .header_wrap nav ul > li > .operation_guide_list a:hover {background-color:#000; color:#fff;}
 header .header_wrap .gnb {float:right;}
 header .header_wrap .gnb div {float:left;}
 header .header_wrap .gnb .gnb_login a {
@@ -87,7 +85,6 @@ header .header_wrap .gnb .gnb_login a {
     text-align: left;
     color: #1f1f1f;		
 }
-header .header_wrap .gnb .gnb_login a:hover {color:#ff540f;}
 header .header_wrap .gnb .gnb_login a:before {
     display: inline-block;
     content: '';
@@ -118,7 +115,6 @@ header .header_wrap .gnb .gnb_project a {
 	color: #ffffff;
 	text-decoration: none;
 }
-header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 
 
@@ -222,7 +218,6 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
     color:#fff; border-radius:5px;
     padding: 8px; font-size:20px; text-decoration: none; text-align: center;
 }
-.bnr .bnr_wrap a:hover {color:#b5b5b5;}
 
 
 
@@ -248,8 +243,6 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
     letter-spacing: normal;
     color: #ffffff;
 	}
-.search_bnr .search_wrap form .input_group button:hover {background-color: rgba(255,255,255,0.8);}
-.search_bnr .search_wrap form .input_group button i {font-size:26px;}
 
 
 
@@ -289,12 +282,10 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 .bnr3 .bnr3_wrap .supplier h3 {font-size:50px; line-height:60px; font-weight:700; margin-top:-15px; margin-bottom:15px;}
 .bnr3 .bnr3_wrap .supplier p {font-size:18px; line-height:25px; margin-bottom:44px;}
 .bnr3 .bnr3_wrap .supplier a {width:216px; height:73px; border-radius:50px; background-color: rgba(255,255,255,0.5); display:inline-block; font-size:18px; padding:27px 0 0 2px; color:#fff;}
-.bnr3 .bnr3_wrap .supplier a:hover {background-color:rgba(255,255,255,0.7);}
 .bnr3 .bnr3_wrap .seller {width:50%; float:left;}
 .bnr3 .bnr3_wrap .seller h3 {font-size:50px; line-height:60px; font-weight:700; margin-top:-15px; margin-bottom:15px;}
 .bnr3 .bnr3_wrap .seller p {font-size:18px; line-height:25px; margin-bottom:44px;}
 .bnr3 .bnr3_wrap .seller a {width:216px; height:73px; border-radius:50px; background-color: rgba(255,255,255,0.5); display:inline-block; font-size:18px; padding:27px 0 0 2px; color:#fff;}
-.bnr3 .bnr3_wrap .seller a:hover {background-color:rgba(255,255,255,0.7);}
 
 
 
@@ -419,18 +410,6 @@ footer .footer_wrap .f_btm {
   text-align: left;
   color: #484848;
   line-height: 1.67;
-}
-footer  div.f_btm div a, a:hover, a:focus{
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: -0.06px;
-  text-align: left;
-  color: #484848;
-  line-height: normal;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 #menu-container{

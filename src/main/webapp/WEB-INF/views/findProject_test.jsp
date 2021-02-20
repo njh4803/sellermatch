@@ -173,16 +173,157 @@ a.sort.select{
     text-align: right;
 }
 .project-titleBox{
+  height: 53px;
   object-fit: contain;
   font-family: NanumGothic;
   font-size: 20px;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.5;
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+  margin-bottom: 15px;
+  /* 말줄임 표시 */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
+}
+.project-detailBox{
+  height: 37px;
+  object-fit: contain;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 26px;
+  /* 말줄임 표시 */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
+}
+.regDate{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #707070;
+  margin-bottom: 35px;
+}
+.regDate span{
+  font-size: 15px;
+  font-weight: bold;
+  color: #000000;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  margin-right: 10px;
+}
+.infoBox {
+  display: inline-block;
+  width: 125px;
+  padding: 9px 0 9px 0;
+  border-radius: 5px;
+  border: solid 1px #cccccc;
+  text-align: center;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
+}
+.infoBox:first-child{
+    margin-right: 5px;
+}
+.infoBox span{
+  margin-right: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
+}
+.infoBox2{
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px 10px 9px 10px;
+  border-radius: 5px;
+  border: solid 1px #cccccc;
+  text-align: center;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;  
+}
+.infoBox2 span{
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+  margin-left: 10px;
+}
+.infoBox3{
+  width: 260px;
+  height: 70px;
+  border-radius: 5px;
+  border: solid 1px #cccccc;
+}
+.sFindBox{
+  display: inline-block;
+  width: 90px;
+  padding: 4px 0 5px;
+  border-radius: 5px;
+  background-color: #8000c9;
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;  
+}
+.pFindBox{
+  display: inline-block;
+  padding: 4px 0 5px;
+  width: 90px;
+  border-radius: 5px;
+  background-color: #eb00bc;
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;  
+}
+.left-infoBox{
+	margin-bottom: 30px;
+}
+.areaBox{
+  display: inline-block;
+  width: 90px;
+  height: 26px;
+  padding: 4px 0 5px;
+  border-radius: 5px;
+  border: solid 0.5px #ff0000;
+  background-color: #ffffff;
 }
 /*--------------------------------------*/
 .search_chk {
@@ -394,67 +535,13 @@ a.sort.select{
   color: #ff0000;
   background-color: #ffffff;
 }
-.pFindBox{
-  height: 26px;
-  margin: 0 10px 20px 0;
-  padding: 2px 17px 3px;
-  object-fit: contain;
-  border-radius: 13px;
-  background-color: #d80b54;
-  object-fit: contain;
-  font-family: NotoSansKRMedium;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-}
-.sFindBox{
-  height: 26px;
-  margin: 0 10px 20px 0;
-  padding: 2px 17px 3px;
-  object-fit: contain; 
-  border-radius: 13px;
-  background-color: #57207c;
-  object-fit: contain;
-  font-family: NotoSansKRMedium;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-}
+
 .tagBox{
 	display: inline-block;
 	color: #7F7F7F;
 	margin-right: 10px;
 }
-.countBox {
-  display: inline-block;
-  height: 21px;
-  font-family: NotoSansKR;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: right;
-  color: #000000;
-  margin-top: 48px;
-}
-.countBox span{
-  font-weight: normal;
-}
-.projDetail a{
-	text-decoration: none;
-	color: black;
-	cursor: pointer;
-}
+
 a:focus, a:hover{
 	text-decoration: none;
 }
@@ -664,28 +751,6 @@ a:focus, a:hover{
   object-fit: contain;
   margin-top: -3px;
 }
-.reg{
-  font-family: NotoSansKR;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000000;
-}
-.regDate{
-  font-family: NotoSansKR;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: left;
-  color: #707070;
-}
 </style>
 <div class="partner_bnr">
 	<div class="partner_wrap">
@@ -767,36 +832,28 @@ a:focus, a:hover{
 					<div class="clearfix">
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
-							<div class="leftBox">
+							<div class="left-infoBox">
 								<c:if test="${output.projSort == 1}">
-					        		<button class="pFindBox">${output.projSortName}</button>
+					        		<div class="sFindBox">판매자 찾음</div>
 					        	</c:if>
 					        	<c:if test="${output.projSort == 2}">
-					        		<button class="sFindBox">${output.projSortName}</button>
+					        		<div class="pFindBox">공급자 찾음</div>
 					        	</c:if>
-					        	<span class="reg"> 등록일 </span><span class="regDate">${output.projRegDate}</span>
+					        	<div class="areaBox">${output.projNationName}지역</div>
 							</div>
-							<div class="leftBox projDetail">
-								<div class="project-titleBox">
-									${output.projTitle}
-								</div>
+							<div class="project-titleBox">
+								<a class="proj-link" href="javascript:void(0);">${output.projTitle}</a>
+							</div>
+							<div class="project-detailBox">
+								<a class="proj-link" href="javascript:void(0);">${output.projDetail}</a>
 							</div>
 							<div class="leftBox" style="margin-top: 13px;">
-								<button class="grayBox">${output.projNationName}지역</button>
-								<button class="grayBox">
-									<c:if test="${output.projSort == 1}">
-										판매자 찾음
-									</c:if>
-									<c:if test="${output.projSort == 2}">
-										공급자 찾음
-									</c:if>
-								</button>
 								<c:choose>
 									<c:when test="${output.projDday < 0}">
 										<button class="redBox">마감완료</button>
 									</c:when>
 									<c:otherwise>
-										<button class="grayBox">진행중</button>
+										<button class="grayBox">마감${output.projDday}일전</button>
 									</c:otherwise>
 								</c:choose>						
 							</div>		
@@ -819,29 +876,29 @@ a:focus, a:hover{
 								<c:if test="${output.profileSaleChk == 1}">
 									<div class="purpleBox">매출검증</div>
 								</c:if>
-								<c:if test="${output.projPrice != 0}">
-									<div class="purpleBox">단가/마진 : ${output.projPrice}원/${output.projMarginName}</div>
-								</c:if>
-								<c:if test="${output.projPrice == 0}">
-									<div class="purpleBox">마진 : ${output.projMarginName}</div>
-								</c:if>						
 							</div>
 						</div>								
 						<div class="rightBox">
-							<div class="countBox" style="margin-right: 7px;">
-								모집수 <span>${output.projRecruitNum}명 </span>
+							<div class="regDate">
+								<span>등록일</span>${output.projRegDate}
 							</div>
-							<div class="countBox">
-								 지원수 <span>${output.applyCount}명 </span>
+							<div>
+								<div class="infoBox">
+									<span>모집수</span> ${output.projRecruitNum}명
+								</div>
+								<div class="infoBox">
+									<span>지원수</span> ${output.applyCount}명
+								</div>						
 							</div>
-							<button class="scrap">
-							<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
-								관심등록
-							</button>
-							<button class="match" data-index="${status.index}">
-							<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-								지원하기
-							</button>
+							<c:if test="${output.projPrice != 0}">
+								<div class="infoBox2"><span>단가 / 마진</span> ${output.projPrice}원 / ${output.projMarginName}</div>
+							</c:if>
+							<c:if test="${output.projPrice == 0}">
+								<div class="infoBox2"><span>마진</span> ${output.projMarginName}</div>
+							</c:if>
+							<div class="infoBox3">
+							
+							</div>
 						</div>
 					</div>
         		</div>
@@ -983,7 +1040,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 				        	<span class="reg"> 등록일 </span><span class="regDate">{{projRegDate}}</span>
 						</div>
 					</div>
-					<div class="row1 leftBox projDetail">
+					<div class="row1 leftBox proj-link">
 						<div class="titleBox">
 							{{projTitle}}
 						</div>
@@ -1031,10 +1088,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						{{/ifCond}}
 					</div>
 					<div class="text-right">
-						<div class="countBox" style="margin-right: 7px;">
+						<div class="infoBox" style="margin-right: 7px;">
 							모집수 <span>{{projRecruitNum}}명 </span>
 						</div>
-						<div class="countBox">
+						<div class="infoBox">
 							 지원수 <span>{{applyCount}}명 </span>
 						</div>
 						<button class="scrap">
