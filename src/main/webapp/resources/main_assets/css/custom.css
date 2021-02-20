@@ -17,27 +17,6 @@ body.modal-open[style] {
     padding-right: 0px !important;
 
 }
-/* 스크롤바 디자인 */
-.chk_listBox::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
-}
-.chk_listBox::-webkit-scrollbar-thumb { 
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
-
-  .chk_listBox:hover {
-    background-color: #adb5bd;
-  }
-}
-.chk_listBox::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-/* checkbox */
-input[type="checkbox"] {
-	display:none;
-}
 input[type="checkbox"] + label span {
     display: inline-block;
     object-fit: contain;
@@ -81,7 +60,7 @@ header .header_wrap nav ul > li > a {
     margin: 0px 25px;
     font-family: NotoSansKRMedium;
     font-size: 15px;
-    font-weight: 500;.main-0005
+    font-weight: 500;
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
@@ -153,7 +132,12 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
     text-align: center;
     background-color: #3b1374;
 }
-.bnr .bnr_wrap3 {}
+.partner_bnr3 {
+	width: 100%;
+    text-align: center;
+    margin-top: 77px;
+    padding-top: 80px;
+}
 .bnr .bnr_wrap4 {
     position: absolute;
     font-family: NotoSansKRBold;
@@ -239,7 +223,6 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
     padding: 8px; font-size:20px; text-decoration: none; text-align: center;
 }
 .bnr .bnr_wrap a:hover {color:#b5b5b5;}
-.bnr .bnr_wrap a i {}
 
 
 
@@ -248,7 +231,6 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 .search_bnr {width:100%; background: linear-gradient(to right, #D90B54, #153F92, #3B1374); height:143px;}
 .search_bnr .search_wrap {width:1280px; margin: 0 auto; padding-top:35px;}
-.search_bnr .search_wrap form {}
 .search_bnr .search_wrap form .input_group {overflow:hidden;}
 .search_bnr .search_wrap form .input_group input {width:1050px; height:73px; border-radius:50px; padding-left: 35px; font-size:26px; outline:0; border:0;}
 .search_bnr .search_wrap form .input_group input::placeholder {color:#999; font-size:26px;}
@@ -308,13 +290,11 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 .bnr3 .bnr3_wrap .supplier p {font-size:18px; line-height:25px; margin-bottom:44px;}
 .bnr3 .bnr3_wrap .supplier a {width:216px; height:73px; border-radius:50px; background-color: rgba(255,255,255,0.5); display:inline-block; font-size:18px; padding:27px 0 0 2px; color:#fff;}
 .bnr3 .bnr3_wrap .supplier a:hover {background-color:rgba(255,255,255,0.7);}
-.bnr3 .bnr3_wrap .supplier a i {}
 .bnr3 .bnr3_wrap .seller {width:50%; float:left;}
 .bnr3 .bnr3_wrap .seller h3 {font-size:50px; line-height:60px; font-weight:700; margin-top:-15px; margin-bottom:15px;}
 .bnr3 .bnr3_wrap .seller p {font-size:18px; line-height:25px; margin-bottom:44px;}
 .bnr3 .bnr3_wrap .seller a {width:216px; height:73px; border-radius:50px; background-color: rgba(255,255,255,0.5); display:inline-block; font-size:18px; padding:27px 0 0 2px; color:#fff;}
 .bnr3 .bnr3_wrap .seller a:hover {background-color:rgba(255,255,255,0.7);}
-.bnr3 .bnr3_wrap .seller a i {}
 
 
 
@@ -328,10 +308,7 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 .bnr4 .bnr4_wrap p {font-size:18px; line-height:25px;}
 .bnr4 .bnr4_wrap .step_list {margin-top:65px; position:relative; margin-bottom:82px; overflow:hidden;}
 .bnr4 .bnr4_wrap .step_list .step {width:388px; height:588px; background-color:#dbdbdb; margin-right:58px; float:left;}
-.bnr4 .bnr4_wrap .step_list .step1 {}
-.bnr4 .bnr4_wrap .step_list .step2 {}
 .bnr4 .bnr4_wrap .step_list .step3 {margin-right:0;}
-.bnr4 .bnr4_wrap .step_list .next {}
 .bnr4 .bnr4_wrap .step_list .next .next_1 {position:absolute; width:145px; height:145px; background-color:#fff; border-radius:50%; top:215px; left:344px;}
 .bnr4 .bnr4_wrap .step_list .next .next_2 {position:absolute; width:145px; height:145px; background-color:#fff; border-radius:50%; top:215px; right:344px;}
 
@@ -351,10 +328,16 @@ header .header_wrap .gnb .gnb_project a:hover {color:#b5b5b5;}
 
 /*partner_bnr*/
 
-.partner_bnr {width:100%;padding-top: 77px; margin-top: 77px;}
-.partner_bnr .partner_wrap {width:1280px; margin:0 auto; text-align:center;}
+.partner_bnr {
+    width: 100%;
+    padding: 0;
+}
+.partner_bnr .partner_wrap {
+    width: 1280px;
+    margin: 0 auto;
+    text-align: left;
+}
 .partner_bnr .partner_wrap h2 {font-size:50px; line-height:60px; font-weight:700; margin-bottom:90px;}
-.partner_bnr .partner_wrap .partner_list {}
 .partner_bnr .partner_wrap .partner_list a {width:250px; height:100px; background-color:#dedede; display: inline-block; border-radius:40px;}
 
 
