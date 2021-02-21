@@ -218,7 +218,7 @@
 }
 .infoBox{
   text-align: center;
-  width: 287px;
+  width: 286px;
   height: 100px;
   display: inline-block;
 }
@@ -291,7 +291,7 @@
 }
 .ContentsBox2 .projectDate{
 	display: inline-block;
-    width: 94px;
+    width: 95px;
     height: fit-content;
     padding: 0 15px 5px 0;
     font-size: 15px;
@@ -305,7 +305,7 @@
     border-right: solid 0.5px #cccccc;
 }
 .ContentsBox2 .project{
-  width: 1047px;
+  width: 90%;
   display: inline-block;
   margin: 0 0 5px 15px;
   font-size: 15px;

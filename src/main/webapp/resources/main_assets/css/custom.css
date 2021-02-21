@@ -5,6 +5,7 @@ body.modal-open {
 }
 body  a a:focus a:hover{
  line-height: normal !important;
+ color: #484848 !important;
 }
 
 /* button:focus{ 	
@@ -411,7 +412,9 @@ footer .footer_wrap .f_btm {
   color: #484848;
   line-height: 1.67;
 }
-
+footer .footer_wrap .f_btm a{
+  color: #484848;
+}
 #menu-container{
 	display: none;
 	margin: 13px 0;

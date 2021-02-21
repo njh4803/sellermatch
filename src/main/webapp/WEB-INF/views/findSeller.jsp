@@ -706,6 +706,7 @@ a:focus, a:hover{
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+  width: 101%;
 }
 .sellerInfo span{
   display: inline-block;

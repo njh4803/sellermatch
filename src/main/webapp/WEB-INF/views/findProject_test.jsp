@@ -92,7 +92,7 @@
 .left-container{
     position: fixed;
     width: 260px;
-    height: 676px;
+    height: 600px;
     margin-right: 20px;
     padding: 20px 0;
     border-radius: 10px;
@@ -288,7 +288,7 @@ a.sort.select{
 .sFindBox{
   display: inline-block;
   width: 90px;
-  padding: 4px 0 5px;
+  padding: 3px 0 4px;
   border-radius: 5px;
   background-color: #8000c9;
   font-size: 15px;
@@ -297,11 +297,13 @@ a.sort.select{
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #ffffff;  
+  color: #ffffff;
+  vertical-align: top;
+  line-height: normal !important;  
 }
 .pFindBox{
   display: inline-block;
-  padding: 4px 0 5px;
+  padding: 3px 0 4px;
   width: 90px;
   border-radius: 5px;
   background-color: #eb00bc;
@@ -311,7 +313,9 @@ a.sort.select{
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #ffffff;  
+  color: #ffffff;
+  vertical-align: top;
+  line-height: normal !important;
 }
 .left-infoBox{
 	margin-bottom: 30px;
@@ -324,6 +328,66 @@ a.sort.select{
   border-radius: 5px;
   border: solid 0.5px #ff0000;
   background-color: #ffffff;
+}
+a.proj-link{
+	color: #000 !important;
+}
+.D-day{
+	display: inline-block;
+	width: 90px;
+	margin-right: 10px;
+	padding: 2px 0 1px;
+	border-radius: 5px;
+	border: solid 0.5px #ff0000;
+	background-color: #ffffff;
+	font-size: 15px;
+	font-weight: 800;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ff0000;
+	vertical-align: top;
+}
+.left-infoBox2{
+}
+.tagBox{
+  display: inline-block;
+  width: 90px;
+  height: 30px;
+  margin-right: 10px;
+  padding: 6px 0 7px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
+}
+.partner_list{
+	display: inline-block;
+    width: 100%;
+    padding: 0 25px;
+}
+.partner_list span{
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+}
+.partner_list ul{
+	display: none;
+	margin-bottom: 30px;
+}
+.partner_list ul li{
+	height: 10px;
+	margin-top: 10px;
 }
 /*--------------------------------------*/
 .search_chk {
@@ -534,12 +598,6 @@ a.sort.select{
   text-align: left;
   color: #ff0000;
   background-color: #ffffff;
-}
-
-.tagBox{
-	display: inline-block;
-	color: #7F7F7F;
-	margin-right: 10px;
 }
 
 a:focus, a:hover{
@@ -777,10 +835,10 @@ a:focus, a:hover{
 				<div class="textBox1">
 					거래처 찾기 설정
 				</div>
-				<div class="partner_list" style="display: inline-block;">
-		            <div class="chk_list_container">
-	            		<span>등록지역</span>
-		            	<ul>
+				<div class="partner_list">
+					<div>
+						<span class="check_list">등록지역</span>
+						<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projNation"><label for="projNation"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projNation" value="031" id="n2"><label for="n2"><span>경기</span></label></li>
@@ -800,7 +858,9 @@ a:focus, a:hover{
 		            		<li><input type="checkbox" class="check" name="projNation" value="044" id="n16"><label for="n16"><span>세종특별자치시</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
 		            	</ul>
-		            	<span>상품분류</span>
+					</div>
+		            <div>
+		            	<span class="check_list">상품분류</span>
 		            	<ul>
 		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
 		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
@@ -833,6 +893,14 @@ a:focus, a:hover{
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
 							<div class="left-infoBox">
+								<c:choose>
+									<c:when test="${output.projDday < 0}">
+										<div class="D-day">마감완료</div>
+									</c:when>
+									<c:otherwise>
+										<div class="D-day">마감 ${output.projDday}일전</div>
+									</c:otherwise>
+								</c:choose>
 								<c:if test="${output.projSort == 1}">
 					        		<div class="sFindBox">판매자 찾음</div>
 					        	</c:if>
@@ -846,35 +914,25 @@ a:focus, a:hover{
 							</div>
 							<div class="project-detailBox">
 								<a class="proj-link" href="javascript:void(0);">${output.projDetail}</a>
-							</div>
-							<div class="leftBox" style="margin-top: 13px;">
-								<c:choose>
-									<c:when test="${output.projDday < 0}">
-										<button class="redBox">마감완료</button>
-									</c:when>
-									<c:otherwise>
-										<button class="grayBox">마감${output.projDday}일전</button>
-									</c:otherwise>
-								</c:choose>						
-							</div>		
-							<div class="leftBox">
+							</div>	
+							<div class="left-infoBox2">
 								<c:if test="${output.profileBizCerti == 1}">
-									<div class="purpleBox">사업자인증</div>
+									<div class="tagBox">사업자인증</div>
 								</c:if>
 								<c:if test="${output.memRname == 1}">
-									<div class="purpleBox">신원인증</div>
+									<div class="tagBox">신원인증</div>
 								</c:if>
 								<c:if test="${output.projProfit == 1}">
-									<div class="purpleBox">수익성검증</div>
+									<div class="tagBox">수익성검증</div>
 								</c:if>
 								<c:if test="${output.projProdCerti == 1}">
-									<div class="purpleBox">상품검증</div>
+									<div class="tagBox">상품검증</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 1}">
-									<div class="purpleBox">채널검증</div>
+									<div class="tagBox">채널검증</div>
 								</c:if>
 								<c:if test="${output.profileSaleChk == 1}">
-									<div class="purpleBox">매출검증</div>
+									<div class="tagBox">매출검증</div>
 								</c:if>
 							</div>
 						</div>								
@@ -1134,7 +1192,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 <script>
 $(document).ready(function() {
 
-	
+	$(document).on("click", ".check_list", function(){
+		var checkList = $(this).closest("div").children('ul');
+		checkList.toggle();
+	});
 	
 	$(document).on("click", ".search_chk", function(){
 		$('.search_chk').removeClass('search_check');
