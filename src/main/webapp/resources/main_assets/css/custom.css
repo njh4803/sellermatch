@@ -637,6 +637,12 @@ footer .footer_wrap .f_btm a{
 	.f_top_4{width: 40% !important; float: right; margin-top: 30px;}
 	.footer-box{text-align: center;}
 	footer{height: auto;}
+	footer .footer_wrap .f_btm{font-size: 0.9em !important;}
+	footer .footer_wrap .f_top0{font-size: 1.2em !important;}
+	footer .footer_wrap .f_top1{width: 100% !important;}
+	footer .footer_wrap .f_top2{width: 100% !important;}
+	footer .footer_wrap .f_top3{width: 100% !important;}
+	footer .footer_wrap .f_top4{width: 100% !important;}
 	
 	.partner_bnr .partner_wrap {width: 100% !important;}
 	.row1 .leftBox{float: none; display: block;}
