@@ -646,6 +646,34 @@ footer .footer_wrap .f_btm a{
 	
 	.partner_bnr .partner_wrap {width: 100% !important;}
 	.row1 .leftBox{float: none; display: block;}
+	
+	.main-img2 {
+	    width: 100% !important;
+	    background-size: 90%;
+	    object-fit: contain;
+	    margin: auto;
+	    background-repeat: no-repeat;
+	}
+	.main-img1 {
+	    width: 100% !important;
+	    height: 352px;
+	    background-repeat: no-repeat;
+	    display: inline-block;
+	    background-size: 90%;
+	    background-position-x: center;
+	}
+	.main_img4 {
+		left: 40px !important;
+	}
+	.img4 {
+	    width: 100% !important;
+	    background-size: 90%;
+	    background-repeat: no-repeat;
+	    background-position-x: center;
+	}
+	.img3 {
+	    width: 100% !important;
+	}
 }
 /* 테블릿 세로 */
 @media screen and (min-width: 768px) and (max-width: 991px) {
