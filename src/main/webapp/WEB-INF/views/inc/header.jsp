@@ -122,7 +122,7 @@
             <div class="gnb_login">
             	<c:choose>
             		<c:when test="${member == null}">
-            			<a href="javascript:void(0)" id="login">로그인</a>
+            			<a href="javascript:void(0);" id="login">로그인</a>
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
@@ -133,7 +133,7 @@
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a id="projectInsert" href="#" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
+                <a id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
                 	거래처 찾기 무료등록
                 </a>
             </div>

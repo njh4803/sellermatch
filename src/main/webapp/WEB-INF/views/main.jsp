@@ -22,7 +22,7 @@
 }
 .main-000{
     font-family: NotoSansKRBold;
-    font-size: 55px;
+    font-size: 1em;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.27;
@@ -34,13 +34,14 @@
     margin: 0 auto;
     margin-top: 77px !important;
     width: 1280px;
+    position: relative;
 }
 .main-001{
     display: inline-block;
     margin-top: 110px;
 	width: 625px;
     height: 194px;
-    font-size: 55px;
+    font-size: 3.93em;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.18;
@@ -51,10 +52,10 @@
 .main-002{
     display: block;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 44px;
 	width: 520px;
 	height: 83px;
-	font-size: 20px;
+	font-size: 1.429em;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
@@ -71,9 +72,9 @@
     height: 352px;
     background-repeat: no-repeat;
     display: inline-block;
-    position: relative;
-    top: 12px;
-    left: 122px;
+    position: absolute;
+	top: 155px;
+    left: 59.5%;
 }
 .findBtn{
   display: inline-block;
@@ -83,13 +84,14 @@
   border-radius: 4px;
   box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
   background-image: linear-gradient(104deg, #ff8000, #ff540f);
-  font-size: 20px;
+  font-size: 1.429em;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+  margin-right: 15px;
 }
 .shareBtn{
   display: inline-block;
@@ -100,7 +102,7 @@
   box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
   border: solid 0.5px #fe5413;
   background-color: #ffffff;
-  font-size: 20px;
+  font-size: 1.429em;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
@@ -239,7 +241,7 @@
 }
 .boxText2 {
 	display: inline-block;
-    font-size: 15px;
+    font-size: 1em;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -252,7 +254,7 @@
 .boxText2 span{
   margin-bottom: 15px;
   font-family: NanumGothic;
-  font-size: 24px;
+  font-size: 1.8em;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
@@ -265,9 +267,9 @@
     margin-bottom: 100px;
 }
 .textBox1{
-  width: 1280px;
+  width: 100%;
   height: 118px;
-  font-size: 50px;
+  font-size: 3.571em;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
@@ -422,10 +424,10 @@
   background-color: #ffffff;
 }
 .memBox:hover .main_img4{
-	background-image: url(/wesellglobal/local_assets/img/도형1.png) !important;
+	background-image: url(/local_assets/img/도형1.png) !important;
 }
 .memBox:hover .main-img3{
-	background-image: url(/wesellglobal/local_assets/img/down.png) !important;
+	background-image: url(/local_assets/img/down.png) !important;
 }
 .memBox:hover .textBox4 span{
   font-size: 25px !important;
@@ -650,7 +652,11 @@
 	display: block;
 }
 .FAQBox:hover .img5, .FAQBox:focus .img5{
-	background-image: url("/wesellglobal/local_assets/img/bottomArrow2.png") !important;
+	background-image: url("/local_assets/img/bottomArrow2.png") !important;
+}
+.Qa{
+	display: inline-block;
+	width: 80%;
 }
 </style>
 <div class="bnr">
@@ -663,14 +669,14 @@
 		        <span>직거래 사이트</span>입니다.
 		    	</div>
 		    	<div class="main-002">
-			   	        고마진, 독점, 위탁배송, OEM, 도매, 수입상품 등 공급자 &
+			   	        고마진, 독점, 위탁배송, OEM, 도매, 수입상품 등 공급자와<br>
 				        오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰, 수출 등<br>
 				        판매자를 찾고 직거래하세요.<br>
 	    		</div>
 	    		<button class="findBtn">거래처 찾기 무료등록</button>
     			<button class="shareBtn">친구들과 공유하기</button>
 	 		</div>
-	 		<div style="display: inline-block;">
+	 		<div class="main-imgBox">
 	 			<div class="main-img1" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main_img1.png');">
 	 			</div>
 			</div>
@@ -688,50 +694,52 @@
 	   			<div class="main-004">
 	    			<div class="main-img2" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/main_img2.png');"></div>
 	    		</div>
-	   			<div class="mainBox mainBox1 hvr-grow-shadow">
-	   				<span class="boxSpan">01</span>
-	   				<div class="boxText">
-	   					<div class="boxText2">
-		    				<span>팔기 괜찮은 물건 찾기 힘드시죠?</span><br>
-							<br>
-							찾고있는 상품을 거래처 찾기에 올려주세요.<br>
-							저희가 찾아서 직거래하게 해 드릴게요.<br>	   					
-	   					</div>
-	   				</div>
-	   			</div>
-	   			<div class="mainBox mainBox2 hvr-grow-shadow">
-	   				<span class="boxSpan">02</span>
-	   				<div class="boxText">
-	   					<div class="boxText2">
-		    				<span>공급 제안이 꾸준히 오면 좋겠죠?</span><br>
-							<br>
-							약 5분, 판매자 프로필 1회만 등록하세요!<br>
-							매력적인 공급 제안서가 계속 올거에요.<br>
-						</div>
-	   				</div>
-	   			</div>
-	   			<div class="mainBox mainBox3 hvr-grow-shadow">
-	   				<span class="boxSpan">03</span>
-	   				<div class="boxText">
-	   					<div class="boxText2">
-		    				<span>검증된 판매자 찾기 어려우시죠?</span><br>
-							<br>
-							전국의 잘 파는, 분야별 판매자를 모아놨어요.<br>
-							판매자를 검색하고 직거래 할 수 있어요.<br>
-						</div>
-	   				</div>
-	   			</div>
-	   			<div class="mainBox mainBox4 hvr-grow-shadow">
-	   				<span class="boxSpan">04</span>
-	   				<div class="boxText">
-	   					<div class="boxText2">
-	    					<span>공급제안서 보내기 귀찮으시죠?</span><br>
-							<br>	
-							공급상품 정보를 1회만 등록하세요.<br>
-							매번 반복해서 제안서를 보내지 않아도 됩니다.<br>
-						</div>
-	   				</div>
-	   			</div>    	
+	    		<div class="main-007">
+			   		<div class="mainBox mainBox1 hvr-grow-shadow">
+		   				<span class="boxSpan">01</span>
+		   				<div class="boxText">
+		   					<div class="boxText2">
+			    				<span>팔기 괜찮은 물건 찾기 힘드시죠?</span><br>
+								<br>
+								찾고있는 상품을 거래처 찾기에 올려주세요.<br>
+								저희가 찾아서 직거래하게 해 드릴게요.<br>	   					
+		   					</div>
+		   				</div>
+		   			</div>
+		   			<div class="mainBox mainBox2 hvr-grow-shadow">
+		   				<span class="boxSpan">02</span>
+		   				<div class="boxText">
+		   					<div class="boxText2">
+			    				<span>공급 제안이 꾸준히 오면 좋겠죠?</span><br>
+								<br>
+								약 5분, 판매자 프로필 1회만 등록하세요!<br>
+								매력적인 공급 제안서가 계속 올거에요.<br>
+							</div>
+		   				</div>
+		   			</div>
+		   			<div class="mainBox mainBox3 hvr-grow-shadow">
+		   				<span class="boxSpan">03</span>
+		   				<div class="boxText">
+		   					<div class="boxText2">
+			    				<span>검증된 판매자 찾기 어려우시죠?</span><br>
+								<br>
+								전국의 잘 파는, 분야별 판매자를 모아놨어요.<br>
+								판매자를 검색하고 직거래 할 수 있어요.<br>
+							</div>
+		   				</div>
+		   			</div>
+		   			<div class="mainBox mainBox4 hvr-grow-shadow">
+		   				<span class="boxSpan">04</span>
+		   				<div class="boxText">
+		   					<div class="boxText2">
+		    					<span>공급제안서 보내기 귀찮으시죠?</span><br>
+								<br>	
+								공급상품 정보를 1회만 등록하세요.<br>
+								매번 반복해서 제안서를 보내지 않아도 됩니다.<br>
+							</div>
+		   				</div>
+		   			</div>  
+	    		</div>  	
     		</div>
    		</div>
    		<div class="main-0004">
@@ -932,7 +940,9 @@
    			<div class="FAQ">
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>셀러매치 이용료는 어떻게 되나요?</span>
+   					<div class="Qa">
+   						<span>셀러매치 이용료는 어떻게 되나요?</span>
+   					</div>
    					<div class="answerBox">
 	   					셀러매치 서비스는 현재 무료 베타 서비스 기간입니다. 곧, 유료 서비스로 전환이 될 예정이며,<br>
 						유료화 전에 미리 공지를 통해 내용을 전달드릴 예정입니다.
@@ -940,7 +950,9 @@
    				</div>
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>유료화가 되고나서 결제를 하지 안흥면 이용할 수 없나요?</span>
+   					<div class="Qa">
+   						<span>유료화가 되고나서 결제를 하지 안흥면 이용할 수 없나요?</span>
+   					</div>
    					<div class="answerBox">
 	   					유료화가 되면 일부 서비스는 결제를 해야 이용할 수 있게 될 예정입니다.<br>
       					그러나, '거래처 찾기 등록' 등의 일부 서비스는 계속 무료로 이용이 가능하며,<br>
@@ -949,7 +961,9 @@
    				</div>
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>하나의 계정으로 판매자와 공급자 2가지 기능을 모두 사용할 수 있나요?</span>
+   					<div class="Qa">
+   						<span>하나의 계정으로 판매자와 공급자 2가지 기능을 모두 사용할 수 있나요?</span>
+   					</div>
    					<div class="answerBox">
 	   					현재는 가능하지 않습니다. 판매자와 공급자 중 하나를 꼭 선택해서 가입하셔야 합니다.<br>
         				다만, 판매자로 가입하신 후, 공급자로 다시 가입하여 2개의 계정을 사용하는 것은 가능합니다.
@@ -957,7 +971,9 @@
    				</div>
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>상대방의 연락처 등을 알 수 있나요?</span>
+   					<div class="Qa">
+   						<span>상대방의 연락처 등을 알 수 있나요?</span>
+   					</div>
    					<div class="answerBox">
 						네, 그렇습니다. 셀러매치는 직거래 서비스로써, '지원하기'를 통해 서로 연결(매칭)이 되면<br>
 					        상대방이 등록한 모든 정보를 열람할 수 있습니다. 직접 메일이나 전화로 연락하셔서 직거래를<br>
@@ -966,7 +982,9 @@
    				</div>
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>아무 상품이나 거래처 찾기에 등록해도 되나요?</span>
+   					<div class="Qa">
+   						<span>아무 상품이나 거래처 찾기에 등록해도 되나요?</span>
+   					</div>
    					<div class="answerBox">
 	   					일반적으로 판매 또는 공급이 이뤄지는 상품의 카테고리를 선택할 수 있게 되어 있습니다.<br>
 					        선택할 수 없는 상품의 경우 '기타' 항목을 선택하신 후, 등록하실 수 있습니다.<br>
@@ -976,14 +994,18 @@
    				</div>
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>거래처 찾기 등록은 몇 번까지 등록 할 수 있나요?</span>
+   					<div class="Qa">
+   						<span>거래처 찾기 등록은 몇 번까지 등록 할 수 있나요?</span>
+   					</div>
    					<div class="answerBox">
 	   					현재는 무료 베타 서비스 기간으로, 베타서비스 기간 중에는 제한없이 등록할 수 있습니다.
 	   				</div>
    				</div>
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>해외 판매자 또는 공급자도 찾을 수 있나요?</span>
+   					<div class="Qa">
+   						<span>해외 판매자 또는 공급자도 찾을 수 있나요?</span>
+   					</div>
    					<div class="answerBox">
 	   					네, 가능합니다. 아직 서비스를 시작한지 얼마 되지 않아 충분한 판매자 및 공급자 수가 부족할 수 있습니다.<br>
         				조속한 시일내에 양질의 판매자와 공급자가 활동하는 서비스로 거듭나겠습니다.
@@ -991,7 +1013,9 @@
    				</div>
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
-   					<span>공급 상품 단가, 이익율, 판매자 매출 등의 검증 내용은 신뢰할만 한가요?</span>
+   					<div class="Qa">
+   						<span>공급 상품 단가, 이익율, 판매자 매출 등의 검증 내용은 신뢰할만 한가요?</span>
+   					</div>
    					<div class="answerBox">
 						검증을 거친 공급상품의 정보와 판매자의 정보는 관리자가 관련 내용을 면밀히 검토한 후,<br>
 					        검증 표시를 하게 됩니다. 그래서 신뢰하셔도 좋다고 말씀드릴 수 있습니다.<br>

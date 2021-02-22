@@ -92,7 +92,7 @@
 .left-container{
     position: fixed;
     width: 260px;
-    height: 600px;
+    height: 746px;
     margin-right: 20px;
     padding: 20px 0;
     border-radius: 10px;

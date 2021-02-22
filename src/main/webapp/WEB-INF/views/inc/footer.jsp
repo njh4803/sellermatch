@@ -4,9 +4,9 @@
 <%@ include file="../modal/infoModal.jsp"%>
 <%@ include file="../modal/termsOfServiceModal.jsp"%>
 <footer>
-    <div class="footer_wrap">
-    	<div class="footer-box">
-        	<div class="f_top">
+    <div class="footer_wrap clearfix">
+    	<div class="footer-box clearfix">
+        	<div class="f_top f_top_1">
         		<div class="f_top0 f_top1">
         			셀러매치 사업자정보
         		</div>
@@ -20,7 +20,7 @@
 					호스팅 서비스 제공 : 스마일서브 호스팅 주소
 	            </div>
         	</div>
-        	<div class="f_top f_top">
+        	<div class="f_top f_top_2">
         		<div class="f_top0 f_top2">
         			셀러매치
         		</div>
@@ -32,7 +32,7 @@
 	        		<div><a href="${pageContext.request.contextPath}/usageFee">이용안내</a></div>
 	            </div>
         	</div>
-        	<div class="f_top f_top">
+        	<div class="f_top f_top_3">
         		<div class="f_top0 f_top3">
         			관련 규정
         		</div>
@@ -41,7 +41,7 @@
 	        		<div><a id="info" href="javascipt:void(0);">개인정보처리방침</a></div>
 	            </div>
         	</div>
-        	<div class="f_top f_top">
+        	<div class="f_top f_top_4">
         		<div class="f_top0 f_top4">
         			관련 사이트
         		</div>
