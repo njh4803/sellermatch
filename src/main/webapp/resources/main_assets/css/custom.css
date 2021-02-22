@@ -565,8 +565,9 @@ footer .footer_wrap .f_btm a{
 	.main-0000{height: auto !important;}
 	.main-001{
 		margin-top: 50px !important;
-		font-size: 2.5em !important;
+		font-size: 7vw !important;
 		width: 100% !important;
+		height: auto !important;
 		text-align: center !important;
 	}
 	.main-000 {width: 100% !important; text-align: center !important; height: auto !important;}
@@ -595,15 +596,33 @@ footer .footer_wrap .f_btm a{
 	.main-0003{
 		height: auto !important;
 	}
-	.shareBtn{width: 45% !important; font-size: 1.2em !important;}
-	.findBtn{width: 45% !important; font-size: 1.2em !important;}
-	.boxText{width: 80% !important;}
+	.shareBtn{width: 45% !important; font-size: 3.5vw !important; height: auto !important; padding: 13px 0 13px !important;}
+	.findBtn{width: 45% !important; font-size: 3.5vw !important; height: auto !important; padding: 13px 0 13px !important;}
+	.boxText{width: 80% !important; height: auto !important;}
+	.boxText2{
+		font-size: 3.3vw !important;
+	}
+	.boxText2 span{
+		font-size: 5vw !important;
+	}
+	.mainBox:hover .boxSpan{
+		font-size: 8vw !important;
+	}
+	.mainBox .boxSpan{
+		font-size: 7vw !important;
+	}
 	.main-002{
 		width: 100% !important;
-		font-size: 1.2em !important;
+		font-size: 3.5vw !important;
+		text-align: center !important;
+		height: auto !important;
 	}
-	.textBox1{font-size: 2em !important;}
-	.main-003{font-size: 2em !important;}
+	.textBox1{font-size: 6vw !important;}
+	.main-003{
+		font-size: 6vw !important;
+		margin-top: 60px !important;
+    	margin-bottom: 120px !important;
+	}
 	.FAQ{
 		width: 80% !important;
 	}
@@ -611,25 +630,50 @@ footer .footer_wrap .f_btm a{
 	    vertical-align: top;
 	}
 	.answerBox {
-    	width: 90% !important;
+	    width: 66vw !important;
+	    font-size: 1vw !important;
 	}
 	.textBox5{
-		font-size: 1.5em !important;
+		font-size: 5vw !important;
 	}
 	.textBox3{
-		font-size: 2em !important;
+		font-size: 6vw !important;
 	}
 	.memBox{width: 100% !important; margin: 0 !important; margin-bottom: 100px !important;}
 	.main-006{display: inline-block !important;}
-	.table-title-row{ font-size: 1.35em !important;}
-	.table-row{font-size: 0.8em !important;}
+	.table-title-row{ font-size: 2.8vw !important; padding: 4vw 0 4vw 0 !important;}
+	.table-row{font-size: 1vw !important;}
 	.tableBox{width: 100% !important; margin: 0 !important; display: inline-block;}
-	.title-col1{width: 45% !important;}
-	.title-col2{width: 20% !important;}
-	.title-col3{width: 35% !important;}
-	.table-col1{width: 45% !important; font-size: 0.9em !important;}
-	.table-col2{width: 20% !important; font-size: 1em !important;}
-	.table-col3{width: 35% !important; font-size: 0.9em !important;}
+	.title-col1{width: 50% !important;}
+	.title-col2{width: 13% !important;}
+	.title-col3{width: 39% !important;}
+	.table-col1{
+		width: 50% !important;
+		font-size: 1vw !important;
+		padding: 3vw 0 !important;
+		border-right: 2px solid #ff540f;
+		display: inline-table !important;
+	}
+	.table-col2{
+		width: 13% !important; 
+		font-size: 1vw !important; 
+		padding: 2vw 0 !important;
+		border-left: none !important;
+		border-right: none !important;
+		display: inline-table !important;
+	} 
+	.table-col3{
+		width: 39% !important; 
+		font-size: 1vw !important; 
+		padding: 3vw 0 !important;
+		border-left: 2px solid #ff540f;
+		display: inline-table !important;
+	}
+	.table-col2 img{
+		width: 20%;
+	    height: auto;
+	    vertical-align: -webkit-baseline-middle !important;
+	}
 	
 	.f_top_1{width: 40% !important;}
 	.f_top_2{width: 40% !important; float: right;}
@@ -637,8 +681,8 @@ footer .footer_wrap .f_btm a{
 	.f_top_4{width: 40% !important; float: right; margin-top: 30px;}
 	.footer-box{text-align: center;}
 	footer{height: auto;}
-	footer .footer_wrap .f_btm{font-size: 0.9em !important;}
-	footer .footer_wrap .f_top0{font-size: 1.2em !important;}
+	footer .footer_wrap .f_btm{font-size: 3vw !important;}
+	footer .footer_wrap .f_top0{font-size: 4.3vw !important;}
 	footer .footer_wrap .f_top1{width: 100% !important;}
 	footer .footer_wrap .f_top2{width: 100% !important;}
 	footer .footer_wrap .f_top3{width: 100% !important;}
@@ -663,7 +707,14 @@ footer .footer_wrap .f_btm a{
 	    background-position-x: center;
 	}
 	.main_img4 {
-		left: 40px !important;
+		margin: 0 auto !important;
+	    background-size: 100% !important;
+	    width: 80% !important;
+	    font-size: 5vw !important;
+	    padding: 13vw 14vw 13vw 19vw !important;
+	    height: auto !important;
+	    left: 0 !important;
+	    top: -15vw !important;
 	}
 	.img4 {
 	    width: 100% !important;
@@ -673,6 +724,23 @@ footer .footer_wrap .f_btm a{
 	}
 	.img3 {
 	    width: 100% !important;
+	}
+	.textBox7{
+		font-size: 10vw !important;
+	}
+	.Qa{
+		width: 70% !important;
+	}
+	.FAQBox span{
+		font-size: 3.5vw !important;
+	}
+	.img5{
+	    margin-right: 0 !important;
+	    background-repeat: no-repeat;
+	    background-size: 3vw !important;
+	    background-position: bottom;
+	    object-fit: contain;
+	    display: inline-block;
 	}
 }
 /* 테블릿 세로 */
