@@ -95,7 +95,7 @@
 .left-container{
     position: fixed;
     width: 260px;
-    height: 584px;
+    height: 500px;
     margin-right: 20px;
     padding: 20px 0;
     border-radius: 10px;
@@ -356,10 +356,9 @@ a.proj-link{
 }
 .tagBox{
   display: inline-block;
-  width: 90px;
   height: 30px;
   margin-right: 10px;
-  padding: 6px 0 7px;
+  padding: 6px 6px 7px 6px;
   border-radius: 5px;
   background-color: #eeeeee;
   font-size: 15px;
@@ -390,6 +389,9 @@ a.proj-link{
 }
 .partner_list ul li{
 	margin-top: 3px;
+}
+.b-172{
+	bottom: 172;
 }
 /*--------------------------------------*/
 .search_chk {
@@ -918,24 +920,9 @@ a:focus, a:hover{
 								<a class="proj-link" href="javascript:void(0);">${output.projDetail}</a>
 							</div>	
 							<div class="left-infoBox2">
-								<c:if test="${output.profileBizCerti == 1}">
-									<div class="tagBox">사업자인증</div>
-								</c:if>
-								<c:if test="${output.memRname == 1}">
-									<div class="tagBox">신원인증</div>
-								</c:if>
-								<c:if test="${output.projProfit == 1}">
-									<div class="tagBox">수익성검증</div>
-								</c:if>
-								<c:if test="${output.projProdCerti == 1}">
-									<div class="tagBox">상품검증</div>
-								</c:if>
-								<c:if test="${output.profileChChk == 1}">
-									<div class="tagBox">채널검증</div>
-								</c:if>
-								<c:if test="${output.profileSaleChk == 1}">
-									<div class="tagBox">매출검증</div>
-								</c:if>
+								<c:forEach var="projKeywordList" items="${output.projKeywordList}">
+					           		<div class="tagBox">#${projKeywordList}</div>
+					           	</c:forEach>
 							</div>
 						</div>								
 						<div class="rightBox">
@@ -957,7 +944,24 @@ a:focus, a:hover{
 								<div class="infoBox2"><span>마진</span> ${output.projMarginName}</div>
 							</c:if>
 							<div class="infoBox3">
-							
+								<c:if test="${output.profileBizCerti == 1}">
+									<div class="tagBox">사업자인증</div>
+								</c:if>
+								<c:if test="${output.memRname == 1}">
+									<div class="tagBox">신원인증</div>
+								</c:if>
+								<c:if test="${output.projProfit == 1}">
+									<div class="tagBox">수익성검증</div>
+								</c:if>
+								<c:if test="${output.projProdCerti == 1}">
+									<div class="tagBox">상품검증</div>
+								</c:if>
+								<c:if test="${output.profileChChk == 1}">
+									<div class="tagBox">채널검증</div>
+								</c:if>
+								<c:if test="${output.profileSaleChk == 1}">
+									<div class="tagBox">매출검증</div>
+								</c:if>							
 							</div>
 						</div>
 					</div>
@@ -1211,9 +1215,16 @@ $(document).ready(function() {
 
 		    if (sT >= val){
 		    	$('.left-container').addClass('fix');
-		    	$('.fix').css("bottom", -1*parseInt(sT- footerHei));
-		    } else{
+		    	$('.b-172').css({"bottom": -1*parseInt(sT- footerHei)});
+		    } else if(window.pageYOffset >= $('.partner_bnr3 > hr').offset().top){
+		    	$('.left-container').addClass('b-172');
 		    	$('.left-container').removeClass('fix');
+		    	$('.left-container').removeAttr('style');
+		    }
+		    else{
+		    	$('.left-container').removeClass('fix');
+		    	$('.left-container').addClass('b-172');
+		    	$('.left-container').removeAttr('style');
 	    	}
 	  	});
 	});
