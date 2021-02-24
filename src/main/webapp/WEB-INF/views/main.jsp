@@ -53,7 +53,7 @@
     display: block;
     margin-top: 25px;
     margin-bottom: 44px;
-	width: 520px;
+	width: 100%;
 	height: 83px;
 	font-size: 1.429em;
 	font-weight: normal;
@@ -278,6 +278,7 @@
   text-align: center;
   color: #343434;
   text-align: center;
+  margin-bottom: 100px;
 }
 .tableBox{
 	width: fit-content;
@@ -358,16 +359,19 @@
 .title-col1{
   display:inline-block;
   width: 320px;
+  text-align: center;
 }
 .title-col2{
   display:inline-block;
   width: 350px;
   margin-left: -10px;
+  text-align: center;
 }
 .title-col3{
   display:inline-block;
   width: 350px;
   margin-left: -10px;
+  text-align: center;
 }
 .X{
   font-size: 25px;
@@ -425,6 +429,9 @@
 }
 .memBox:hover .main_img4{
 	background-image: url(/local_assets/img/도형1.png) !important;
+}
+.main-img3{
+	background-image: url(/local_assets/img/down-gray.png);
 }
 .memBox:hover .main-img3{
 	background-image: url(/local_assets/img/down.png) !important;
@@ -498,6 +505,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+    background-image: url(/local_assets/img/도형2.png);
 }
 .main-0005{
   width: 100%;
@@ -648,15 +656,23 @@
   color: #343434;
   display: none;
 }
-.FAQBox:hover .answerBox, .FAQBox:focus .answerBox{
+.answerBox-show{
 	display: block;
 }
-.FAQBox:hover .img5, .FAQBox:focus .img5{
+.img5-show{
 	background-image: url("/local_assets/img/bottomArrow2.png") !important;
 }
 .Qa{
 	display: inline-block;
 	width: 80%;
+}
+.border{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #000;
+}
+.table-img{
+	display: none;
 }
 </style>
 <div class="bnr">
@@ -670,8 +686,8 @@
 		    	</div>
 		    	<div class="main-002">
 			   	        고마진, 독점, 위탁배송, OEM, 도매, 수입상품 등 공급자와<br>
-				        오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰, 수출 등<br>
-				        판매자를 찾고 직거래하세요.<br>
+				        오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰, 수출 등 판매자를 <br>
+				        찾고 직거래하세요.<br>
 	    		</div>
 	    		<button class="findBtn">거래처 찾기 무료등록</button>
     			<button class="shareBtn">친구들과 공유하기</button>
@@ -743,12 +759,77 @@
     		</div>
    		</div>
    		<div class="main-0004">
-   			<div class="textBox0">
-   				<div class="textBox1">
-   					3~10% 더 저렴하게 공급받아<br>
-					더 많은 이익을 남길 수 있어요.
-   				</div>
-   			</div>
+ 			<div class="textBox1">
+ 				3~10% 더 저렴하게 공급받아<br>
+				더 많은 이익을 남길 수 있어요.
+			</div>
+			<img class="table-img" src="${pageContext.request.contextPath}/local_assets/img/table.png">
+			<%-- <table class="tableBox">
+				<thead class="table-title-row">
+					<tr>
+						<th class="title-col1">특징</th>
+						<th class="title-col2">셀러매치</th>
+						<th class="title-col3">도매사이트</th>
+					</tr>
+				</thead>
+				<tbody class="table-row">
+					<tr>
+						<td class="table-col1">첫 이용까지 소요시간</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">약 1일 내외</td>
+					</tr>
+					<tr>
+						<td class="table-col1">사업자 없이 이용 가능한가요?</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">대다수 필요</td>
+					</tr>
+					<tr>
+						<td class="table-col1">상세페이지없어도 이용 가능한가요?</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">X</td>
+					</tr>
+					<tr>
+						<td class="table-col1">구매비용 충전 없이 이용 가능한가요?</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">대다수 필요</td>
+					</tr>
+					<tr>
+						<td class="table-col1">중개 수수료 없나요?</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">공급가 3~10%</td>
+					</tr>
+					<tr>
+						<td class="table-col1">직거래 가능한가요?</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">X</td>
+					</tr>
+					<tr>
+						<td class="table-col1">조건별 거래처 찾기</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">일부 가능</td>
+					</tr>
+					<tr>
+						<td class="table-col1">검증된 거래처 찾기</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">X</td>
+					</tr>
+					<tr>
+						<td class="table-col1">거래처 추천 기능</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">X</td>
+					</tr>
+					<tr>
+						<td class="table-col1">판매자 검색 / 열람</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">X</td>
+					</tr>
+					<tr>
+						<td class="table-col1">해외 거래처 찾기</td>
+						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/local_assets/img/check.png"></td>
+						<td class="table-col3">X</td>
+					</tr>
+				</tbody>
+			</table> --%>
    			<div class="tableBox">
    				<div class="table-title-row">
    					<div class="title-col1">특징</div>
@@ -884,17 +965,17 @@
 	  			</div>
 	   			<div class="main-006">
 	   				<div class="memBox" style="margin-right: 60px;">
-	   					<div class="main_img4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/도형2.png');">판매자 회원</div>
+	   					<div class="main_img4">판매자 회원</div>
 	   					<div class="textBox4">
 		   					<span>회원가입</span><br>
 							판매자 선택 후, 회원가입<br>
 							<br><br>
-							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<div class="main-img3"></div>
 							<br><br>
 							<span>거래처 찾기 등록</span><br>
 							판매 상품 정보를 담은 거래처 찾기 등록하기<br>
 							<br><br>
-							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<div class="main-img3"></div>
 							<br><br>
 							<span>거래하기</span><br>
 							<div class="textBox6">
@@ -907,17 +988,17 @@
 		   				</div>
 	   				</div>
 	   				<div class="memBox" style="margin-left: 60px;">
-	   					<div class="main_img4" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/도형2.png');">공급자 회원</div>
+	   					<div class="main_img4">공급자 회원</div>
 	   					<div class="textBox4">
 		   					<span>회원가입</span><br>
 							공급자 선택 후, 회원가입<br>
 							<br><br>
-							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<div class="main-img3"></div>
 							<br><br>
 							<span>거래처 찾기 등록</span><br>
 							공급 상품 정보를 담은 거래처 찾기 등록하기<br>
 							<br><br>
-							<div class="main-img3" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/down-gray.png');"></div>
+							<div class="main-img3"></div>
 							<br><br>
 							<span>거래하기</span><br>
 							<div class="textBox6">
@@ -939,11 +1020,11 @@
    			</div>
    			<div class="FAQ">
    				<div class="FAQBox">
-   					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
+   					<div class="img5 img5-show" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
    					<div class="Qa">
    						<span>셀러매치 이용료는 어떻게 되나요?</span>
    					</div>
-   					<div class="answerBox">
+   					<div class="answerBox answerBox-show">
 	   					셀러매치 서비스는 현재 무료 베타 서비스 기간입니다. 곧, 유료 서비스로 전환이 될 예정이며,<br>
 						유료화 전에 미리 공지를 통해 내용을 전달드릴 예정입니다.
 	   				</div>
@@ -951,7 +1032,7 @@
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
    					<div class="Qa">
-   						<span>유료화가 되고나서 결제를 하지 안흥면 이용할 수 없나요?</span>
+   						<span>유료화가 되고나서 결제를 하지 않으면 이용할 수 없나요?</span>
    					</div>
    					<div class="answerBox">
 	   					유료화가 되면 일부 서비스는 결제를 해야 이용할 수 있게 될 예정입니다.<br>
@@ -992,7 +1073,7 @@
 					        방해가 되는 내용 등은 관리자의 권한으로 사전 권고없이 수정 또는 삭제될 수 있습니다.
 	   				</div>
    				</div>
-   				<div class="FAQBox">
+   				<div class="FAQBox nowBtnShow">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/rightArrow.png');"></div>
    					<div class="Qa">
    						<span>거래처 찾기 등록은 몇 번까지 등록 할 수 있나요?</span>
@@ -1040,6 +1121,50 @@
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
+ 	
+	$('.FAQBox').hover(function() {
+
+	     //이부분은 마우스가 올라 요소 위에 올라왔을때 이벤트입니다.
+		$(this).children('.answerBox').addClass('answerBox-show');
+		$(this).children('.img5').addClass('img5-show');
+	}, function(){
+
+	    //이부분은 마우스가 요소에서 나갈떄 실행할 수 있는 이벤트 입니다.
+		$(this).children('.answerBox').removeClass('answerBox-show');
+		$(this).children('.img5').removeClass('img5-show');
+	});
+	
+	$(window).scroll(function(){
+    	//스크롤 하단 위치 값구하기
+    	/* var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop(); */
+    	
+    	
+    	//스크롤의 위치가 상단에서 450보다 크면 
+        /* if($(window).scrollTop() > 450){  */ 
+        if(window.pageYOffset >= $('.findBtn').offset().top){ 
+            $('.gnb_project').addClass("fix");  
+            //위의 if문에 대한 조건 만족시 fix라는 class를 부여함  
+        }else {
+            $('.gnb_project').removeClass("fix");
+            //위의 if문에 대한 조건 아닌경우 fix라는 class를 삭제함  
+        }
+        
+        if(window.pageYOffset < $('.nowBtnShow').offset().top){
+        }else {
+            $('.gnb_project').removeClass("fix");
+            //위의 if문에 대한 조건 아닌경우 fix라는 class를 삭제함  
+        }
+    }); 
+	
+/* 	$(window).scroll(function(){
+   	 
+        if(window.pageYOffset >= $('.main-0005').offset().top){  
+            $('.gnb_project').removeClass("fix"); 
+        }else {
+            $('.gnb_project').addClass("fix");
+        }
+    });  */
+
 	
 	$('#sellerGoBtn').on('click', function(){
 		window.location = ROOT_URL + '/project/find'

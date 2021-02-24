@@ -89,10 +89,13 @@
   margin: 15px 0;
   border: solid 2px #343434;
 }
+.left-container.fix{
+	position: absolute;
+}
 .left-container{
     position: fixed;
     width: 260px;
-    height: 746px;
+    height: 584px;
     margin-right: 20px;
     padding: 20px 0;
     border-radius: 10px;
@@ -386,8 +389,7 @@ a.proj-link{
 	margin-bottom: 30px;
 }
 .partner_list ul li{
-	height: 10px;
-	margin-top: 10px;
+	margin-top: 3px;
 }
 /*--------------------------------------*/
 .search_chk {
@@ -873,7 +875,7 @@ a:focus, a:hover{
         	<div class="contents-container">
         		<div class="contentsBox">
       					<div class="countAllbox clearfix">
-						<div class="leftBox countAll">전체 <span>${projCount}</span><span>건</span>이 검색되었습니다</div>
+						<div class="leftBox countAll">총 <span>${projCount}</span><span>건</span>이 검색되었습니다</div>
 						<div class="rightBox">
 							<a href="javascript:void(0)" class="sort select" id="regSort">등록순
 								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
@@ -1196,6 +1198,26 @@ $(document).ready(function() {
 		var checkList = $(this).closest("div").children('ul');
 		checkList.toggle();
 	});
+
+	$(function() {
+  		var footerHei = $('footer').outerHeight()
+
+	  	$(window).on('scroll', function() {
+ 		    var sT = $(window).scrollTop();
+		    var val = $(document).height() - $(window).height() - footerHei;
+		    
+		    console.log(sT+'st');
+		    console.log(val+'val');
+
+		    if (sT >= val){
+		    	$('.left-container').addClass('fix');
+		    	$('.fix').css("bottom", -1*parseInt(sT- footerHei));
+		    } else{
+		    	$('.left-container').removeClass('fix');
+	    	}
+	  	});
+	});
+	
 	
 	$(document).on("click", ".search_chk", function(){
 		$('.search_chk').removeClass('search_check');

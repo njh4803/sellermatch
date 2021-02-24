@@ -76,59 +76,56 @@
        <div class="gnb">
        		<div id="menu-container">
 	            <div id="menu-wrapper">
-	                <div id="hamburger-menu"><span></span><span></span><span></span></div>
+	                <div id="hamburger-menu"><span class="cancle"></span><span></span><span class="cancle"></span></div>
 	                <!-- hamburger-menu -->
 	            </div>
-	            <!-- menu-wrapper -->
-	            <ul class="menu-list accordion">
-	                <li id="nav1" class="toggle accordion-toggle"> 
-	                    <span class="icon-plus"></span>
-	                    <a class="menu-link" href="${pageContext.request.contextPath}/project/find">거래처 찾기</a>
-	                </li>
-		                <ul class="menu-submenu accordion-content">
-		                    <!-- <li><a class="head" href="#">Submenu1</a></li>
-		                    <li><a class="head" href="#">Submenu2</a></li>
-		                    <li><a class="head" href="#">Submenu3</a></li> -->
-		                </ul>
-	                <li id="nav2" class="toggle accordion-toggle"> 
-	                    <span class="icon-plus"></span>
-	                    <a class="menu-link" href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a>
-	                </li>
-	                    <ul class="menu-submenu accordion-content">
-	                        <!-- <li><a class="head" href="#">Submenu1</a></li>
-	                        <li><a class="head" href="#">Submenu2</a></li> -->
-	                    </ul>
-	                <li id="nav3" class="toggle accordion-toggle"> 
-	                    <span class="icon-plus"></span>
-	                    <a class="menu-link" href="#">커뮤니티</a>
-	                </li>
-	                    <ul class="menu-submenu accordion-content">
-	                        <!-- <li><a class="head" href="#">Submenu1</a></li>
-	                        <li><a class="head" href="#">Submenu2</a></li> -->
-	                    </ul>
-	                <li id="nav4" class="toggle accordion-toggle"> 
-	                    <span class="icon-plus"></span>
-	                    <a class="menu-link" href="${pageContext.request.contextPath}/usageFee">이용안내</a>
-	                </li>
-	                    <ul class="menu-submenu accordion-content">
-	                        <!-- <li><a class="head" href="#">Submenu1</a></li>
-	                        <li><a class="head" href="#">Submenu2</a></li>
-	                        <li><a class="head" href="#">Submenu3</a></li>
-	                        <li><a class="head" href="#">Submenu4</a></li> -->
-	                    </ul>
-	            </ul>
-	            <!-- menu-list accordion-->
+	            <div class="menu-background"></div>
+            	<div class="menu-list accordion">
+	            	<div class="gnb_login show">
+		            	<c:choose>
+		            		<c:when test="${member == null}">
+		            			<a href="javascript:void(0);" id="login">로그인</a>
+			                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
+		            		</c:when>
+		            		<c:otherwise>
+			            		<a href="#">${member.memNick}님</a>
+			            		<a href="${pageContext.request.contextPath}/member/myPage">마이페이지</a>
+		            			<a id="logout" href="javascript:void(0);">로그아웃</a>
+		            		</c:otherwise>
+		            	</c:choose>
+		            </div>
+         	        <!-- menu-wrapper -->
+		            <ul>
+		                <li id="nav1" class="toggle accordion-toggle"> 
+		                    <span class="icon-plus"></span>
+		                    <a class="menu-link" href="${pageContext.request.contextPath}/project/find">거래처 찾기</a>
+		                </li>
+		                <li id="nav2" class="toggle accordion-toggle"> 
+		                    <span class="icon-plus"></span>
+		                    <a class="menu-link" href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a>
+		                </li>
+		                <li id="nav3" class="toggle accordion-toggle"> 
+		                    <span class="icon-plus"></span>
+		                    <a class="menu-link" href="#">커뮤니티</a>
+		                </li>
+		                <li id="nav4" class="toggle accordion-toggle"> 
+		                    <span class="icon-plus"></span>
+		                    <a class="menu-link" href="${pageContext.request.contextPath}/usageFee">이용안내</a>
+		                </li>
+		            </ul>
+		            <!-- menu-list accordion-->
+	            </div>
 	        </div>
             <div class="gnb_login">
             	<c:choose>
             		<c:when test="${member == null}">
-            			<a href="javascript:void(0);" id="login">로그인</a>
+            			<a href="javascript:void(0);" id="login2">로그인</a>
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
 	            		<a href="#">${member.memNick}님</a>
 	            		<a href="${pageContext.request.contextPath}/member/myPage">마이페이지</a>
-            			<a id="logout" href="javascript:void(0);">로그아웃</a>
+            			<a id="logout2" href="javascript:void(0);">로그아웃</a>
             		</c:otherwise>
             	</c:choose>
             </div>
@@ -148,7 +145,7 @@ $(function(){
 		
 	});
 	
-	$('#login').on('click', function(){
+	$('#login, #login2').on('click', function(){
 		$('#loginModal .modal-dialog').remove();
 		$(".modal-open").attr('style','');
 		var content = {
@@ -161,7 +158,7 @@ $(function(){
 		$("#loginModal").modal();
 	});
 	
-	$("#logout").on("click", function(){
+	$("#logout, #logout2").on("click", function(){
 		swal({
             title: '알림',
             text: '정말 로그아웃 하시겠습니까?',
@@ -223,11 +220,12 @@ $(function(){
     
     function slideMenu() {
         var activeState = $("#menu-container .menu-list").hasClass("active");
-        $("#menu-container .menu-list").animate({left: activeState ? "50%" : "-100%"}, 400);
+        $("#menu-container .menu-list").animate({left: activeState ? "40%" : "-100%"}, 400);
     }
     $("#menu-wrapper").click(function(event) {
         event.stopPropagation();
         $("#hamburger-menu").toggleClass("open");
+        $(".menu-background").toggleClass("show");
         $("#menu-container .menu-list").toggleClass("active");
         slideMenu();
 
@@ -240,6 +238,14 @@ $(function(){
 
         $(".menu-list .accordion-content").not($(this).next()).slideUp("fast").removeClass("open");
         $(".menu-list .accordion-toggle").not(jQuery(this)).removeClass("active-tab").find(".menu-link").removeClass("active");
+    });
+    
+    $(".menu-background").click(function(event) {
+    	$("#hamburger-menu").toggleClass("open");
+    	$(".menu-background").toggleClass("show");
+        $("#menu-container .menu-list").toggleClass("active");
+        slideMenu();
+        $("body").toggleClass("overflow-hidden");
     });
 });
 </script>
