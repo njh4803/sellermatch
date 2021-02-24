@@ -283,10 +283,12 @@ a.sort.select{
   margin-left: 10px;
 }
 .infoBox3{
-  width: 260px;
-  height: 70px;
-  border-radius: 5px;
-  border: solid 1px #cccccc;
+	width: 260px;
+    height: 84px;
+    padding: 19px 30px 18px;
+    border-radius: 5px;
+    border: solid 1px #cccccc;
+    text-align: left;
 }
 .sFindBox{
   display: inline-block;
@@ -353,12 +355,13 @@ a.proj-link{
 	vertical-align: top;
 }
 .left-infoBox2{
+	width: 110%;
 }
 .tagBox{
   display: inline-block;
   height: 30px;
   margin-right: 10px;
-  padding: 6px 6px 7px 6px;
+  padding: 6px 10px 7px 10px;
   border-radius: 5px;
   background-color: #eeeeee;
   font-size: 15px;
@@ -392,6 +395,32 @@ a.proj-link{
 }
 .b-172{
 	bottom: 172;
+}
+.authBox{
+  display: inline-block;
+  margin: 0 0 14px 0;
+  font-family: NanumGothic;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.07;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+}
+.authBox:nth-child(odd){
+	margin-right: 17px;
+}
+.authImg{
+	margin-top: -3px;
+}
+.photoBox{
+  width: 160px;
+  height: 160px;
+  margin: 0 35px 14px 0;
+  object-fit: contain;
+  float: left;
 }
 /*--------------------------------------*/
 .search_chk {
@@ -896,6 +925,7 @@ a:focus, a:hover{
 					<div class="clearfix">
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
+							<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
 							<div class="left-infoBox">
 								<c:choose>
 									<c:when test="${output.projDday < 0}">
@@ -921,7 +951,7 @@ a:focus, a:hover{
 							</div>	
 							<div class="left-infoBox2">
 								<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-					           		<div class="tagBox">#${projKeywordList}</div>
+					           		<div class="tagBox">${projKeywordList}</div>
 					           	</c:forEach>
 							</div>
 						</div>								
@@ -944,23 +974,65 @@ a:focus, a:hover{
 								<div class="infoBox2"><span>마진</span> ${output.projMarginName}</div>
 							</c:if>
 							<div class="infoBox3">
-								<c:if test="${output.profileBizCerti == 1}">
-									<div class="tagBox">사업자인증</div>
-								</c:if>
 								<c:if test="${output.memRname == 1}">
-									<div class="tagBox">신원인증</div>
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
 								</c:if>
-								<c:if test="${output.projProfit == 1}">
-									<div class="tagBox">수익성검증</div>
+								<c:if test="${output.memRname == 0}">
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileBizCerti == 1}">
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileBizCerti == 0}">
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
 								</c:if>
 								<c:if test="${output.projProdCerti == 1}">
-									<div class="tagBox">상품검증</div>
+									<div class="authBox">상품검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.projProdCerti == 0}">
+									<div class="authBox">상품검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.projProfit == 1}">
+									<div class="authBox">수익성검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.projProfit == 0}">
+									<div class="authBox">수익성검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 1}">
-									<div class="tagBox">채널검증</div>
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileChChk == 0}">
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
 								</c:if>
 								<c:if test="${output.profileSaleChk == 1}">
-									<div class="tagBox">매출검증</div>
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileSaleChk == 0}">
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
 								</c:if>							
 							</div>
 						</div>
