@@ -39,10 +39,10 @@ input[type="checkbox"] + label span {
     margin: 0;
     line-height: 1.2;
     font-weight: normal;
-    background:url(/wesellglobal/local_assets/img/checkActiveNone.png) no-repeat;
+    background:url(/local_assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
-    background:url(/wesellglobal/local_assets/img/checkActive.png) no-repeat;
+    background:url(/local_assets/img/checkActive.png) no-repeat;
 }
 
 /*header*/
@@ -553,9 +553,6 @@ footer .footer_wrap .f_btm a{
 	    color: #343434;
 	    font-size: 3vw;
 	}
-	#menu-container .menu-list li.accordion-toggle a.menu-link:hover{
-		color: #ff540f !important;
-	} 
 	#menu-container .menu-list .menu-submenu li a:hover {
 	    background:#eee;
 	}
@@ -583,10 +580,6 @@ footer .footer_wrap .f_btm a{
 		font-size: 3vw !important;
 		color: #ffffff !important;
 		line-height: 187px !important; 
-	}
-	header .header_wrap .gnb div a:hover{
-		font-size: 3vw !important; 
-		color: #ff540f !important;
 	}
 	#menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
 	    font-size: 16px;

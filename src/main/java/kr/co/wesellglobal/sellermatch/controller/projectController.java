@@ -106,7 +106,11 @@ public class projectController {
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
-		input.setSort(sort);
+		if (sort != null & sort != "") {
+			input.setSort(sort);
+		} else {
+			input.setSort("regSort");
+		}
 		
 		
 		
@@ -196,7 +200,12 @@ public class projectController {
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
-		input.setSort(sort);
+		if (sort != null & sort != "") {
+			input.setSort(sort);
+		} else {
+			input.setSort("regSort");
+		}
+		
 		
 		
 		
@@ -238,6 +247,7 @@ public class projectController {
 		data.put("minusCount", minusCount);
 		data.put("pageData", pageData);
 		data.put("keyword", keyword);
+		data.put("sort", sort);
 
 		return webHelper.getJsonData(data);
 	}

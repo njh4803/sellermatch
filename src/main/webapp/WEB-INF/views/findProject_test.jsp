@@ -155,7 +155,6 @@ a.sort.select{
 }
 .contents{
   width: 100%;
-  height: 277px;
   margin: 9px 0 5px 0;
   padding: 30px;
   border-radius: 10px;
@@ -179,8 +178,7 @@ a.sort.select{
   height: 53px;
   object-fit: contain;
   font-family: NanumGothic;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 18px;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -193,6 +191,9 @@ a.sort.select{
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical; 
 }
+.project-titleBox a.proj-link{
+	font-weight: 800;
+} 
 .project-detailBox{
   height: 37px;
   object-fit: contain;
@@ -218,7 +219,7 @@ a.sort.select{
   letter-spacing: normal;
   text-align: right;
   color: #707070;
-  margin-bottom: 35px;
+  margin-bottom: 10px;
 }
 .regDate span{
   font-size: 15px;
@@ -280,7 +281,6 @@ a.sort.select{
   letter-spacing: normal;
   text-align: left;
   color: #343434;
-  margin-left: 10px;
 }
 .infoBox3{
 	width: 260px;
@@ -323,7 +323,7 @@ a.sort.select{
   line-height: normal !important;
 }
 .left-infoBox{
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 .areaBox{
   display: inline-block;
@@ -340,7 +340,6 @@ a.proj-link{
 .D-day{
 	display: inline-block;
 	width: 90px;
-	margin-right: 10px;
 	padding: 2px 0 1px;
 	border-radius: 5px;
 	border: solid 0.5px #ff0000;
@@ -418,9 +417,35 @@ a.proj-link{
 .photoBox{
   width: 160px;
   height: 160px;
-  margin: 0 35px 14px 0;
+  margin: 0 30px 13px 0;
   object-fit: contain;
   float: left;
+}
+#list-container{
+	min-height: 1000px;
+}
+.check_list_box{
+	margin-bottom: 16px;
+	cursor: pointer;
+}
+.check_list_box2{
+	display: inline-block;
+	margin-bottom: 16px;
+}
+div.partner_list > div:nth-child(2){
+	margin-right: 29px;
+}
+div.partner_list > div:nth-child(1) > ul, div.partner_list > div:nth-child(2) > ul, div.partner_list > div:nth-child(3) > ul{
+	display: block;
+}
+.emptyResult{
+	text-align: center;
+    height: 500px;
+    padding: 240px;
+    font-size: 24px;
+}
+a.sort:last-child{
+	margin-right: 0;
 }
 /*--------------------------------------*/
 .search_chk {
@@ -857,20 +882,116 @@ a:focus, a:hover{
 				            <input class="input-text" type="text" name="keyword" placeholder="원하는 키워드로 검색해보세요">
 				        </div>
 				        <button type="submit" class="search-btn">검색</button>
-				        <input type="hidden" value="defaultSort" id="sort" name="sort">
+				        <input type="hidden" value="regSort" id="sort" name="sort">
 				    </form>
 				</div>
 			</div>
 			<hr>
 		</div>
-		<div>
+		<div id="list-container">
 			<div class="left-container">
 				<div class="textBox1">
 					거래처 찾기 설정
 				</div>
 				<div class="partner_list">
 					<div>
+						<span>찾기 유형</span>
+						<ul>
+							<li><input type="checkbox" class="checkAll" id="projSort"><label for="projSort"><span>전체</span></label></li>
+							<li><input type="checkbox" class="check" name="projSort" id="projSort-sp" value="2">
+								<label for="projSort-sp">
+									<span>판매자 찾기</span>
+								</label>
+							</li>
+							<li><input type="checkbox" class="check" name="projSort" id="projSort-pp" value="1">
+								<label for="projSort-pp">
+									<span>공급자 찾기</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+					<div class="check_list_box2">
+						<span>공급자검증</span>
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="ppmemRname"><label for="ppmemRname"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1" id="pp1"><label for="pp1"><span>신원인증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1" id="pp2"><label for="pp2"><span>사업자인증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1" id="pp3"><label for="pp3"><span>상품검증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProfit" value="1" id="pp4"><label for="pp4"><span>수익성검증</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box2">
+	            		<span>판매자검증</span>
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="sp1"><label for="sp1"><span>신원인증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">판매채널</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="projChannel"><label for="projChannel"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+		            	<span class="check_list">상품분류</span>
+		            	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
+		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
+		            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
+		            		</c:forEach>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">상품단가</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="p2"><label for="p2"><span>2만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="p3"><label for="p3"><span>5만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p4"><label for="p4"><span>10만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="p5"><label for="p5"><span>10만원 이상</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">판매마진</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">공급방법</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="s1"><label for="s1"><span>OEM</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="2" id="s2"><label for="s2"><span>위탁판매</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="3" id="s3"><label for="s3"><span>도매공급</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="4" id="s4"><label for="s4"><span>운영대행</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
+		            	</ul>
+	            	</div>
+					<div class="check_list">
 						<span class="check_list">등록지역</span>
+						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
 						<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projNation"><label for="projNation"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
@@ -892,15 +1013,6 @@ a:focus, a:hover{
 		            		<li><input type="checkbox" class="check" name="projNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
 		            	</ul>
 					</div>
-		            <div>
-		            	<span class="check_list">상품분류</span>
-		            	<ul>
-		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
-		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
-		            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
-		            		</c:forEach>
-		            	</ul>
-	            	</div>
 	            </div>
         	</div>
         	<div class="contents-container">
@@ -941,13 +1053,13 @@ a:focus, a:hover{
 					        	<c:if test="${output.projSort == 2}">
 					        		<div class="pFindBox">공급자 찾음</div>
 					        	</c:if>
-					        	<div class="areaBox">${output.projNationName}지역</div>
+					        	<%-- <div class="areaBox">${output.projNationName}지역</div> --%>
 							</div>
 							<div class="project-titleBox">
-								<a class="proj-link" href="javascript:void(0);">${output.projTitle}</a>
+								<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projTitle}</a>
 							</div>
 							<div class="project-detailBox">
-								<a class="proj-link" href="javascript:void(0);">${output.projDetail}</a>
+								<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projDetail}</a>
 							</div>	
 							<div class="left-infoBox2">
 								<c:forEach var="projKeywordList" items="${output.projKeywordList}">
@@ -1150,104 +1262,162 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 });
 </script>
 <script type="text/x-handlebars-template" id="project-list-tmpl">
-		<div class="container2 countAllbox">
-			<div class="leftBox countAll">총 <span>{{projCount}}</span><span>건</span>이 검색되었습니다</div>
-			<div class="rightBox">
-				<a href="javascript:void(0)" class="sort select" id="defaultSort">기본정렬 </a>
-				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 </a>
-				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 </a>
-				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 </a>
-				<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
-			</div>
-		</div>
-		<hr class="count-hr">
-		{{#output}}
-			<div class="container1 contents">
-				<div class="container2">
-					<input type="hidden" id="projId{{@key}}" value="{{projId}}">
-					<div class="row1 leftBox">
+        	<div class="contents-container">
+        		<div class="contentsBox">
+      					<div class="countAllbox clearfix">
+						<div class="leftBox countAll">총 <span>{{projCount}}</span><span>건</span>이 검색되었습니다</div>
+						<div class="rightBox">
+							{{#ifCond sort '==' 'regSort'}}
+								<a href="javascript:void(0)" class="sort select" id="regSort">등록순
+									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								</a>
+							{{else}}
+								<a href="javascript:void(0)" class="sort" id="regSort">등록순
+									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								</a>
+							{{/ifCond}}
+							{{#ifCond sort '==' 'endSort'}}
+								<a href="javascript:void(0)" class="sort select" id="endSort">마감순
+									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								</a>
+							{{else}}
+								<a href="javascript:void(0)" class="sort" id="endSort">마감순
+									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								</a>
+							{{/ifCond}}
+							{{#ifCond sort '==' 'applySort'}}
+								<a href="javascript:void(0)" class="sort select" id="applySort">지원자순
+									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								</a>
+							{{else}}
+								<a href="javascript:void(0)" class="sort" id="applySort">지원자순
+									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								</a>
+							{{/ifCond}}
+						</div>
+					</div>
+        		</div>
+        		{{#output}}
+        		<div class="contents clearfix">
+					<div class="clearfix">
+						<input type="hidden" id="projId{{@key}}" value="{{projId}}">
 						<div class="leftBox">
-							{{#ifCond projSort '==' 1}}
-				        		<button class="pFindBox">{{projSortName}}</button>
-				        	{{/ifCond}}
-				        	{{#ifCond projSort '==' 2}}
-				        		<button class="sFindBox">{{projSortName}}</button>
-				        	{{/ifCond}}
-				        	<span class="reg"> 등록일 </span><span class="regDate">{{projRegDate}}</span>
-						</div>
-					</div>
-					<div class="row1 leftBox proj-link">
-						<div class="titleBox">
-							{{projTitle}}
-						</div>
-					</div>
-					<div class="row1 leftBox" style="margin-top: 13px;">
-						<button class="grayBox">{{projNationName}}지역</button>
-						<button class="grayBox">
-							{{#ifCond projSort '==' 1}}
-								판매자 찾음
+							<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+							<div class="left-infoBox">
+								{{#ifCond projDday '<' '0'}}
+									<div class="D-day">마감완료</div>
+								{{else}}
+									<div class="D-day">마감 {{projDday}}일전</div>
+								{{/ifCond}}
+								{{#ifCond projSort '==' '1'}}
+					        		<div class="sFindBox">판매자 찾음</div>
+								{{/ifCond}}
+					        	{{#ifCond projSort '==' '2'}}
+					        		<div class="pFindBox">공급자 찾음</div>
+					        	{{/ifCond}}
+							</div>
+							<div class="project-titleBox">
+								<a class="proj-link" href="javascript:void(0);"  data-index="{{@key}}">{{projTitle}}</a>
+							</div>
+							<div class="project-detailBox">
+								<a class="proj-link" href="javascript:void(0);"  data-index="{{@key}}">{{projDetail}}</a>
+							</div>	
+							<div class="left-infoBox2">
+								{{#each projKeywordList as |value key|}}
+		        					<div class="tagBox">{{value}}</div>
+		        				{{/each}}
+							</div>
+						</div>								
+						<div class="rightBox">
+							<div class="regDate">
+								<span>등록일</span>{{projRegDate}}
+							</div>
+							<div>
+								<div class="infoBox">
+									<span>모집수</span> {{projRecruitNum}}명
+								</div>
+								<div class="infoBox">
+									<span>지원수</span> {{applyCount}}명
+								</div>						
+							</div>
+							{{#ifCond projPrice '!=' '0'}}
+								<div class="infoBox2"><span>단가 / 마진</span> {{projPrice}}원 / {{projMarginName}}</div>
 							{{/ifCond}}
-							{{#ifCond projSort '==' 2}}
-								공급자 찾음
+							{{#ifCond projPrice '==' '0'}}
+								<div class="infoBox2"><span>마진</span> {{projMarginName}}</div>
 							{{/ifCond}}
-						</button>
-						{{#ifCond projDday '<' 0}}
-							<button class="redBox">마감완료</button>
-						{{else}}
-							<button class="grayBox">진행중</button>
-						{{/ifCond}}			
-					</div>		
-					<div class="row1 leftBox">
-						{{#ifCond profileBizCerti '==' 1}}
-							<div class="purpleBox">사업자인증</div>
-						{{/ifCond}}
-						{{#ifCond memRname '==' 1}}
-							<div class="purpleBox">신원인증</div>
-						{{/ifCond}}
-						{{#ifCond projProfit '==' 1}}
-							<div class="purpleBox">수익성검증</div>
-						{{/ifCond}}
-						{{#ifCond projProdCerti '==' 1}}
-							<div class="purpleBox">상품검증</div>
-						{{/ifCond}}
-						{{#ifCond sprofileChChk '==' 1}}
-							<div class="purpleBox">채널검증</div>
-						{{/ifCond}}
-						{{#ifCond sprofileSaleChk '==' 1}}
-							<div class="purpleBox">매출검증</div>
-						{{/ifCond}}
-						{{#ifCond projPrice '!=' 0}}
-							<div class="purpleBox">단가/마진 : {{projPrice}}원/{{projMarginName}}</div>
-						{{/ifCond}}
-						{{#ifCond projPrice '==' 0}}
-							<div class="purpleBox">마진 : {{projMarginName}}</div>
-						{{/ifCond}}
-					</div>
-					<div class="text-right">
-						<div class="infoBox" style="margin-right: 7px;">
-							모집수 <span>{{projRecruitNum}}명 </span>
+							<div class="infoBox3">
+								{{#ifCond memRname '==' '1'}}
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond memRname '==' '0'}}
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileBizCerti '==' '1'}}
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileBizCerti '==' '0'}}
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond projProdCerti '==' '1'}}
+									<div class="authBox">상품검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond projProdCerti '==' '0'}}
+									<div class="authBox">상품검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond projProfit '==' '1'}}
+									<div class="authBox">수익성검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond projProfit '==' '0'}}
+									<div class="authBox">수익성검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileChChk '==' '1'}}
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileChChk '==' '0'}}
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileSaleChk '==' '1'}}
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileSaleChk '==' '0'}}
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								{{/ifCond}}							
+							</div>
 						</div>
-						<div class="infoBox">
-							 지원수 <span>{{applyCount}}명 </span>
-						</div>
-						<button class="scrap">
-						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
-							관심등록
-						</button>
-						<button class="match" data-index="{{@key}}">
-						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-							지원하기
-						</button>
 					</div>
-				</div>
-			</div>
-		{{/output}}
-		{{#ifCond output '==' ''}}
-			<div class="emptyResult">검색결과가 없습니다.</div>
-		{{/ifCond}}
+        		</div>
+        		{{/output}}
+				{{#ifCond output '==' ''}}
+					<div class="emptyResult">검색결과가 없습니다.</div>
+				{{/ifCond}}
 </script>
 <script type="text/x-handlebars-template" id="page-tmpl">
-<div class="partner_bnr2 pageBox">
+<div class="partner_bnr2 pageBox clearfix">
 	<div class="row1">
 		<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 			<ul class="pagination">
@@ -1270,51 +1440,37 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 <script>
 $(document).ready(function() {
 
-	$(document).on("click", ".check_list", function(){
+	$(document).on("click", ".check_list_box", function(){
 		var checkList = $(this).closest("div").children('ul');
 		checkList.toggle();
 	});
 
-	$(function() {
+ 		
+
+  	$(window).on('scroll', function() {
   		var footerHei = $('footer').outerHeight()
+		var sT = $(window).scrollTop();
+	    var val = $(document).height() - $(window).height() - footerHei;
+	    
+	    console.log(sT+'st');
+	    console.log(val+'val');
 
-	  	$(window).on('scroll', function() {
- 		    var sT = $(window).scrollTop();
-		    var val = $(document).height() - $(window).height() - footerHei;
-		    
-		    console.log(sT+'st');
-		    console.log(val+'val');
-
-		    if (sT >= val){
-		    	$('.left-container').addClass('fix');
-		    	$('.b-172').css({"bottom": -1*parseInt(sT- footerHei)});
-		    } else if(window.pageYOffset >= $('.partner_bnr3 > hr').offset().top){
-		    	$('.left-container').addClass('b-172');
-		    	$('.left-container').removeClass('fix');
-		    	$('.left-container').removeAttr('style');
-		    }
-		    else{
-		    	$('.left-container').removeClass('fix');
-		    	$('.left-container').addClass('b-172');
-		    	$('.left-container').removeAttr('style');
-	    	}
-	  	});
-	});
+	    if (sT >= val){
+	    	$('.left-container').addClass('fix');
+	    	$('.b-172').css({"bottom": -1*parseInt(sT- footerHei)});
+	    } else if(window.pageYOffset >= $('.partner_bnr3 > hr').offset().top){
+	    	$('.left-container').addClass('b-172');
+	    	$('.left-container').removeClass('fix');
+	    	$('.left-container').removeAttr('style');
+	    }
+	    else{
+	    	$('.left-container').removeClass('fix');
+	    	$('.left-container').addClass('b-172');
+	    	$('.left-container').removeAttr('style');
+    	}
+  	});
 	
-	
-	$(document).on("click", ".search_chk", function(){
-		$('.search_chk').removeClass('search_check');
-		var id = $(this).id;
-		var value = $(this).attr('data-value');
-		$(this).addClass('search_check');
-		
-		$('#projSort').val(value);
-		
-		$("#projSort").trigger("click");
-		
-	});
-	
-	$(document).on("click", ".match", function(){
+	$(document).on("click", ".proj-link", function(){
 		
 		var idx = $(this).data('index');
 		var projId = $("#projId"+idx).val();
@@ -1342,7 +1498,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".countAllbox").remove();
 		$(".contents").remove();
-		$(".count-hr").remove();
+		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1450,7 +1606,7 @@ $(document).ready(function() {
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
-           		$("#premium").after(html);
+           		$("#list-container").append(html);
            		$("footer").before(page_html);
            }
     	});
@@ -1464,7 +1620,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".countAllbox").remove();
 		$(".contents").remove();
-		$(".count-hr").remove();
+		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1547,6 +1703,7 @@ $(document).ready(function() {
            data: param_list,
            success: function(json) {
         	   	var contents = json
+        	   	console.log(contents);
            		var template = Handlebars.compile($("#project-list-tmpl").html());
            		var html = template(contents);
            		
@@ -1555,7 +1712,7 @@ $(document).ready(function() {
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
-           		$("#premium").after(html);
+           		$("#list-container").append(html);
            		$("footer").before(page_html);
            }
     	});
@@ -1567,7 +1724,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".countAllbox").remove();
 		$(".contents").remove();
-		$(".count-hr").remove();
+		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1658,7 +1815,7 @@ $(document).ready(function() {
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
-           		$("#premium").after(html);
+           		$("#list-container").append(html);
            		$("footer").before(page_html);
            }
     	});
@@ -1670,7 +1827,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".countAllbox").remove();
 		$(".contents").remove();
-		$(".count-hr").remove();
+		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1778,7 +1935,7 @@ $(document).ready(function() {
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
-           		$("#premium").after(html);
+           		$("#list-container").append(html);
            		$("footer").before(page_html);
            }
     	});
@@ -1791,7 +1948,7 @@ $(document).ready(function() {
 		// 초기화
 		$(".countAllbox").remove();
 		$(".contents").remove();
-		$(".count-hr").remove();
+		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1861,7 +2018,7 @@ $(document).ready(function() {
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
-           		$("#premium").after(html);
+           		$("#list-container").append(html);
            		$("footer").before(page_html);
            }
     	});
