@@ -35,6 +35,7 @@
 .container1{
 	width: 900px;
 	display: inline-block;
+	margin-bottom: 51px;
 }
 .container2{
 	margin: 0 240px;
@@ -42,7 +43,7 @@
 }
 .container1 .container2{
 	margin: 0;
-    width: 900px;
+    width: 100%;
 	height: fit-content;
     float: left;
     padding: 60px;
@@ -157,20 +158,26 @@ a:focus, a:hover{
   color: #000000;
 }
 .detailBox3 .textBox2{
-  width: 780px;
-  height: 60px;
-  margin: 15px 29px 10px 0;
-  padding: 6px 0 7px 20px;
+  width: 100%;
+  margin: 16px 0 15px;
+  padding: 20px 20px 22px;
+  border-radius: 10px;
   border: solid 1px #cccccc;
-  font-size: 12px;
+  background-color: #ffffff;
+  text-align: left;
+  overflow: hidden;
+  resize: none;
+  font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.67;
   letter-spacing: normal;
   text-align: left;
-  color: #707070;
-  overflow: hidden;
+  color: #000000;
+  float: right;
+}
+textarea::placeholder {
+  color: #000000;
 }
 .detailBox4{
   display: contents;
@@ -259,303 +266,177 @@ a:focus, a:hover{
   background-color: #eeeeee;
   color: #343434;
 }
-/* ---------------------------------------------------------------------------------------------------------- */
-.search_chk{
-	width: 400px;
-    height: 100px;
-    background-color: #d6d6d6;
-    display: inline-block;
-    border-radius: 20px;
-    text-align: center;
-	padding: 40px 0;
-    margin: 0 40px;
-}
-.chk_list_container{
-	height: 150px;
-	margin: 0 260px;
-}
-.chk_listBox{
-	display: inline-block;
-	overflow-x:hidden;
-	overflow-y:auto;
-	width:12.27%;
-	height:200px;
-	border: 1px solid #e3e3e3;
-	text-align: left;
-	margin-right: -5px;
-}
-
-/* .container3{
-	border-left: 2px solid #e3e3e3;
-	border-bottom: 2px solid #e3e3e3;
-    height: 278px;
-    width: 362px;
-    float: right;
-    padding: 20px;
-} */
-.container3{
-  	width: 360px;
-  	padding: 60px 40px 145.4px;
-  	border: solid 1px #cccccc;
-  	background-color: #ffffff;
-    float: right;
-    padding: 60px 40px;
-}
-.container4{
-    border-left: 2px solid #e3e3e3;
-    border-bottom: 2px solid #e3e3e3;
-    border-right: 2px solid #e3e3e3;
-    width: 364px;
-    margin-right: -2px;
-    background-color: white;
-    float: right;
-    padding: 20px;
-}
-.row1{
-	height: 50px;
-	width: 97%;
-	margin-left: 0;
-	margin-right: 0;
-}
-.row2{
-	margin-left: 0;
-	margin-right: 0;
-}
-.height-500{
-	height: 500px;
-	margin: 0;
-}
-.leftBox{
-	float: left;
-}
-.rightBox{
-	float: right;
-	margin: 15px 15px;
-}
-.rightBox a{
-	margin: 0 15px;
-	font-weight: 0;
-	text-decoration: none;
-	color: #000;
-}
-
-.row2 .leftBox{
-	float: left;
-	padding: 0 5px;
-	margin:0;
-}
-.row2 .rightBox{
-	float: right;
-	padding: 0 5px;
-	margin:0;
-}
-.margin-0{
-	margin:0;
-}
-.sortBox span{
-	margin: 0 10px;
-}
-.p-findBtn{
-	background-color: #E62267;
-	color: white;
-	width: 100px;
-	height: 40px;
-}
-.s-findBtn{
-	background-color: #57207C;
-	color: white;
-	width: 100px;
-	height: 40px;
-}
-.orangeBox{
-	background-color: #ED7D31;
-	color: white;
-	display: inline-block;
-	border-radius: 5px;
-	padding: 15px 15px;
-	margin-right: 10px;
-}
-.endBox{
+.question-btn{
+  width: 100px;
+  height: 30px;
   border-radius: 4px;
-  width: fit-content;
-  height: 20px;
-  padding: 2px 7px;
-  background-color: #b20d5b;
-  font-size: 10px;
-  font-weight: 300;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(107deg, #ff8000, #ff540f 100%);
+  font-size: 15px;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+.reviewBox{
+	padding: 0 0 11px 0;
+	width: 100%;
+	height:fit-content;
+	border-top: solid 1px #cccccc
+}
+.reviewBox2{
+	display: inline-block;
+	width: 12%;
+	height:fit-content;
+	float: left;
+}
+.reviewNick{
+	display: inline-block;
+	margin: 0 20px 11px 0;
+	font-family: NanumGothic;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
+}
+.reviewDate{
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #ffffff;
-  display: inline-block;
+  color: #000000;
 }
-.contentsBox{
+.reviewContents{
+	display: inline-block;
+	width: 86%;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
 	text-align: left;
-	background-color: #F2F2F2;
-	padding: 15px;
+	color: #000000;
+}
+.container3{
+	width: 360px;
+	padding: 30px 40px;
 	border-radius: 10px;
-	min-height: 100px;
-	max-height: 100px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	float: right;
 }
-.tagContainer{
-	padding-top: 50px;
+.matchBtn{
+  width: 200px;
+  height: 40px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(101deg, #ff8000, #ff540f);
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
 }
-
-/* 스크롤바 디자인 */
-.chk_listBox::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
+.btnBox{
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	padding: 5px 5px;
+	margin: 0 3px;
+	border-radius: 5px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	text-align: center;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	color: #000000;	
 }
-.chk_listBox::-webkit-scrollbar-thumb {
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
-
-  .chk_listBox:hover {
-    background-color: #adb5bd;
-  }
-}
-.chk_listBox::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-/*post slider*/
-.post-slider{
-  width:90%;
-  margin:0px auto;
-  position:relative;
-}
-.post-slider .silder-title{
-  text-align:center;
-  margin:30px auto;
-}
-.post-slider .next{
-  position:absolute;
-  top:50%;
-  right:30px;
-  font-size:2em;
-  color:gray;
-  cursor: pointer;
-}
-.post-slider .prev{
-  position:absolute;
-  top:50%;
-  left:30px;
-  font-size:2em;
-  color:gray;
-    cursor: pointer;
-}
-.post-slider .post-wrapper{
-
-  width:84%;
-  height:350px;
-  margin:0px auto;
-  overflow: hidden;
-  padding:10px 0px 10px 0px;
-}
-.post-slider .post-wrapper .post{
-  width:300px;
-  height:300px;
-  margin:0px 10px;
-  display:inline-block;
-  background:white;
-  border-radius: 5px;
-}
-.post-slider .post-wrapper .post .post-info{
-  font-size:15px;
-  height:100%;
-  padding-left:10px;
-  border: 2px solid #e3e3e3;
-}
-.post-slider .post-wrapper .post .slider-image{
-  width:100%;
-  height:300px;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  display: none;
-}
-
 .profileImgBox{
     display: inline-block;
     border-radius: 70%;
     overflow: hidden;
-    margin: 15px;
-    width: 131px;
-	height: 131px;
+	width: 130px;
+	height: 130px;
+	object-fit: contain;
+}
+.btn-container{
+	margin-bottom: 30px;
 }
 .miniImgBox{
     display: inline-block;
     border-radius: 70%;
     overflow: hidden;
-    border: 1px solid #e3e3e3;
-	width: 52px;
+    width: 52px;
 	height: 52px;
-	margin: 10px;
+	margin: 0 10px 0 0;
+	object-fit: contain;
 }
-.intro{
+.btnBox img{
+	margin-top: -5px;
+}
+.profileNick{
+  margin: 15px 0 16px;
+  font-size: 20px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
+}
+.applyNumBox{
+  margin: 10px 0 0;
+  border-top: solid 1px #dddddd;
+  border-bottom: solid 1px #dddddd;
+  margin-top: 20px;
+  margin-bottom: 31px;
+  padding: 5px 0;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+}
+.applyNumBox span{
 	display: inline-block;
-    vertical-align: middle;
-    width: 126px;
-    margin-left: 10px;
-    font-size: 10px;
-    color: #aaa;
+	margin-bottom: 6px;
+	margin-top: 6px;
 }
-</style>
-<style media="screen">
-.a {
-	width: 100%;
-	border-bottom: 3px solid black;
-}
-.c {
-	display: inline-block;
-    text-align: center;
-    padding-top: 7px;
-    cursor: pointer;
-    width: 100px;
-    height: 30px;
-    margin-bottom: -2px;
-}
-.c:active {
-	background-color: #e3e3e3;
-	border: 1px solid black;
-}
-.c:hover {
-	background-color: #e3e3e3;
-	border: 1px solid black;
-}
-#bt01 {
-	background-color: #e3e3e3;
-	border: 1px solid black;
-}
-.window {
-	width: 100%;
-}
-.tabName{
-	font-size: 25px;
-}
-.tabContent {
-    padding: 20px;
-    border: 1px solid black;
-    min-height: 150px;
-    margin: 16px 0;
+.applyNumBox span:nth-child(2){
+  float: right;
+  color: #000000;
 }
 .applyStatus{
-	font-size: 16px;
-	font-weight: 500;
-	font-stretch: normal;
-	font-style: normal;
-	line-height: 1.88;
-	letter-spacing: normal;
-	text-align: left;
-	color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+  margin-bottom: 16px;
 }
 .applyNick{
 	display: inline-block;
     vertical-align: middle;
 	height: 21px;
 	font-size: 15px;
-	font-weight: 400;
+	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
 	letter-spacing: normal;
@@ -565,163 +446,23 @@ a:focus, a:hover{
 }
 .applyTag{
 	display: inline-block;
-	font-family: NotoSansKR;
 	font-size: 15px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	line-height: 1.4;
 	letter-spacing: normal;
 	text-align: left;
 	color: #4b4b4b;
+	margin: 1px 5px 0 0;
 }
-.bar{
-  width: 1920px;
-  height: 60px;
-  margin-bottom: 40px;
-  background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
-  padding: 12px;
-}
-.bar div{
-  width: 1280px;
-  font-size: 25px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.44;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff; 
-  margin: 0 auto;
-}
-.favoriteBtn{
-  width: 160px;
-  height: 40px;
-  border-radius: 4px;
-  border: solid 1px #cccccc;
-  background-color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.46;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000000;
-  margin-bottom: 10px;
-}
-.matchBtn{
-  width: 160px;
-  height: 40px;
-  border-radius: 4px;
-  background-image: linear-gradient(to right, #d90b54, #3b1374);
-  font-size: 13px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.46;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-}
-.star{
-  width: 11.6px;
-  height: 11.1px;
-  object-fit: contain;
-  margin-top: -4px;
-}
-.matchPass{
-  width: 12px;
-  height: 16.6px;
-  object-fit: contain;
-  margin-top: -4px;
-}
-
-.applyNumBox{
-  margin: 10px 0 0;
-  border-top: solid 1px #dddddd;
-  border-bottom: solid 1px #dddddd;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-.applyNumBox span{
-	display: inline-block;
-	margin-bottom: 12.5px;
-	margin-top: 10px;
-}
-.applyNumBox span:nth-child(2){
-  font-size: 14px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  float: right;
-  color: #000000;
-}
-.profileNick{
-  margin: 5px 0 20px;
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #57207c;
-}
-.question-btn{
-  width: 100px;
-  height: 30px;
-  border-radius: 4px;
-  background-image: linear-gradient(to right, #d90b54, #3b1374);
-  font-size: 15px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-}
-#question-form{
-	margin-bottom: 106px;
-}
-.reviewBox{
-	padding: 19px 0 20px 12px;
-	width: 808px;
-	height:fit-content;
-	border-top: solid 1px #ebebeb;
-	border-bottom: solid 1px #ebebeb;
-}
-.reviewNick{
-	display: inline-block;
-	margin-right: 10px;
-	font-size: 12px;
-	font-weight: 500;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
+.applyBox{
+	margin-bottom: 20px;
 	text-align: left;
-	color: #000000;
 }
-.reviewDate{
-	display: inline-block;
-	font-size: 12px;
-	font-weight: 400;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #a3a3a3;
+.applyBox:last-child{
+	margin-bottom: 0px;
 }
-.reviewContents{
-	padding: 11px 0 0 12px;
-}
-.red{
-	color: #ff0000 !important;
-}
-.detailImgBox{
-	width: 100%;
-	height: 100%;
-}
+/* ---------------------------------------------------------------------------------------------------------- */
 </style>
 <div class="partner_bnr">
 	<div class="partner_wrap">
@@ -834,6 +575,11 @@ a:focus, a:hover{
 						${output.projRequire}
 					</div>
 				</div>
+				<div class="detailBox3">첨부파일
+					<div class="textBox1">
+						싱싱청과 상세페이지 파일.hwp
+					</div>
+				</div>
 				<div class="detailBox3">특징</div>
 				<div>
 					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
@@ -846,10 +592,12 @@ a:focus, a:hover{
 					    <input type="submit" class="question-btn" value="문의하기">
 					</form>
 				</div>
-				<div class="detailBox4">후기
-					<div class="reviewBox">
-						<div class="reviewNick">최고최고</div>
-						<div class="reviewDate">2021.02.01</div>
+				<div class="detailBox4">
+					<div class="reviewBox clearfix">
+						<div class="reviewBox2">
+							<div class="reviewNick">최고최고</div>
+							<div class="reviewDate">2021.02.01</div>						
+						</div>
 						<div class="reviewContents">매치를 위한 필수요건 내용이 들어가면 됩니다. 매치를 위한 필수요건 내용이 들어가면 됩니다</div>
 					</div>
 					
@@ -857,15 +605,25 @@ a:focus, a:hover{
 			</div> 
 		</div>
 		<div class="container3">
-          	<div>
-       			<button class="favoriteBtn">
+<%--           	<div>
+       			<button class="Btn">
        				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">관심등록
        			</button>
-       		</div>
-       		<div>
-       			<button class="matchBtn" id="applyBtn">
-       				<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">프로젝트 지원하기 
+       		</div> --%>
+       		<div class="text-center"> 
+       			<button class="matchBtn" id="applyBtn">지원하기
        			</button>
+       		</div>
+       		<div class="btn-container">
+          		<div class="btnBox">스크랩
+          			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/scrap.png">
+	       		</div>
+	       		<div class="btnBox">좋아요
+	       			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/like.png">
+	       		</div>
+	       		<div class="btnBox">공유
+	       			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/share.png">
+	       		</div>    		
        		</div>
 			<div class="text-center">
 				<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
@@ -882,12 +640,12 @@ a:focus, a:hover{
 				</div>
 			</div>
 			<div class="text-center">
-				<div class="applyStatus">프로젝트 지원현황</div>
+				<div class="applyStatus">지원현황</div>
 			</div>
 			<c:choose>
 				<c:when test="${output.applyCount > 0}">
 					<c:forEach var="applyDto" items="${applyDto}">
-					<div class="text-letf" style="margin-top: 10px;">
+					<div class="applyBox">
 						<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
 						<div class="applyNick">
 							<div>${applyDto.memNick}</div>
