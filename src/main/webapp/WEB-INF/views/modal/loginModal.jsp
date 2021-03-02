@@ -11,9 +11,15 @@
 .modal-header {
 	display: block;
 }
+#loginModal .modal-dialog{
+	width: 560px;
+}
+#loginModal .modal-dialog#idPw-find{
+	width: 500px;
+}
 .modal-dialog .modal-content .modal-body {
     position: relative;
-    padding: 45px;
+    padding: 40px 45px;
 }
 #loginModal .modal-dialog .modal-content{
 	border-radius: 20px;
@@ -42,9 +48,6 @@
 	display: inline-block;
     vertical-align: middle;
 }
-.auth-box .row{
-	padding-bottom: 10px;
-}
 /* 필수항목 표시를 위한 `*` */
 .identify {
 	font-size: 14px;
@@ -72,14 +75,16 @@ label.error {
   width: 400px;
   height: 50px;
   border-radius: 12px;
-  background-image: linear-gradient(to left, #3b1374, #d10c56);
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(to right, #ff7e01, #ff540f);
   font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal; 
+  font-weight: 800;
+  font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+  border: none !important;
 }
 .communicate{
 	display: inline-block;
@@ -88,30 +93,49 @@ label.error {
 }
 .login_logo{
 	text-align: center;
-	margin-top: 50px;
-	margin-bottom: 40px;
+	margin-bottom: 30px;
+}
+.login_logo h5{
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
+  margin-top: 6px;
+}
+.login-logo{
+  width: 246.2px;
+  height: 50px;
+  object-fit: contain;
 }
 #login-form div .input-group input{
     width: 100%;
-    height: 50px;
-    border-radius: 12px;
-    border: solid 1px #d6d6d6;
-    background-color: #ffffff;
+	height: 50px;
+	border-radius: 12px;
+	border: solid 1px #d6d6d6;
+	background-color: #ffffff;
+    margin-bottom: 10px;
 }
+#loginRemember{
 
+}
 #login-form .btn-primary {
     width: 100%;
-    height: 50px;
-    border-radius: 12px;
-    background: linear-gradient(to left, #3b1374, #d10c56);
-    font-family: NotoSansKRBold;
-    font-size: 15px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #ffffff;
+	width: 470px;
+	height: 50px;
+	margin-bottom: 13px;
+	border-radius: 12px;
+	box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+	background-image: linear-gradient(to right, #ff7e01, #ff540f);
+	font-size: 15px;
+	font-weight: 800;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
     border: none !important;
 }
 #login-form a, a:focus, a:hover{
@@ -124,6 +148,13 @@ label.error {
   height: 21.4px;
   object-fit: contain;
   margin-top: -4px;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    color: #343434;
 }
 </style>
 
@@ -304,14 +335,14 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/x-handlebars-template" id="login-tmpl">
-    <div class="modal-dialog modal-xl" style="width: 560px;">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-body">
 			<form class="md-float-material" method="POST" id="login-form" action="${pageContext.request.contextPath}/member/login">
                             <div class="auth-box">
                                 <div class="row m-b-20">
                                     <div class="login_logo">
-                                        <img src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+                                        <img class="login-logo" src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
                                         <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
                                     </div>
                                 </div>
@@ -328,7 +359,6 @@ $(document).ready(function() {
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
                                         <button type="submit" id="loginBtn" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">
-										<img class="loginPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 										로그인</button>
                                     </div>
                                 </div>
@@ -345,17 +375,6 @@ $(document).ready(function() {
                                         <a href="#" class="text-right f-w-600 text-inverse font-10" id="idPwFind">ID PW 찾기</a>
                                     </div>
                                 </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-inverse text-center m-b-0">5초안에 셀러매치 간편하게 시작하기</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="bannerBox text-center"><br><br><br><br>배너</div>
-                                    </div>
-                                </div>
                             </div>
                         </form>
                                                                 <!-- 로그인 form end -->													
@@ -364,7 +383,7 @@ $(document).ready(function() {
     </div>
 </script>
 <script type="text/x-handlebars-template" id="idPw-find-tmpl">
-<div class="modal-dialog modal-xl" style="width: 500px;">
+<div class="modal-dialog modal-xl" id="idPw-find">
 <div class="modal-content">
 <div class="modal-body">
 	<div class="">
@@ -384,7 +403,7 @@ $(document).ready(function() {
 					<div class="tab-pane active fade in" id="idf">
 						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/idFind">
 						<div class="form-group">
-							<label for="memTel" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 39px;">연락처
+							<label for="memTel" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 42px;">연락처
 							</label>
                        	 	<div class="col-sm-9">
 								<div class="form-group">
@@ -407,11 +426,11 @@ $(document).ready(function() {
 					<div class="tab-pane fade" id="pwdf">
 						<form id="find-pw-form" method="post" action="${pageContext.request.contextPath}/pwFind">
 						<div class="form-group">
-							<label for="memId" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 39px;"> 이메일
+							<label for="memId" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 42px;"> 이메일
 							</label>
                        	 	<div class="col-sm-9">
 								<div class="form-group">
-									<input id="memId" type="email" name="memId" class="form-control" placeholder="이메일">
+									<input id="memId" type="email" name="memId" class="form-control" placeholder="가입시 이메일">
 								</div>
                         	</div>
 						</div>

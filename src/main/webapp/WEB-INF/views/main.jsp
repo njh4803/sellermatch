@@ -294,7 +294,7 @@
 }
 .table-title-row{
   width: 100%;
-  padding: 32px 0 35px;
+  padding: 20px 0 20px;
   background-color: #ff540f;
   font-size: 25px;
   font-weight: bold;

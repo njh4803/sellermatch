@@ -341,13 +341,12 @@ header .header_wrap .gnb .gnb_project a {
 
 footer {
   width: 100%;
-  height: 350px;
   background-color: #d9d9d9;
 }
 .footer-box{
   width: 100%;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 footer .footer_wrap {width:1280px; margin: 0 auto;padding-top: 1px;height: inherit;}
 footer .footer_wrap .f_top {
@@ -356,7 +355,7 @@ footer .footer_wrap .f_top {
   display: inline-block;
 }
 footer .footer_wrap .f_top0 {
-  font-size: 25px;
+  font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -364,7 +363,7 @@ footer .footer_wrap .f_top0 {
   letter-spacing: -0.1px;
   text-align: left;
   color: #484848;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 footer .footer_wrap .f_top1{
   width: 472px;
@@ -405,7 +404,7 @@ footer .footer_wrap .f_top ul li p:before {
     margin: -2px 30px 0 30px;
 }
 footer .footer_wrap .f_btm {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -645,7 +644,7 @@ footer .footer_wrap .f_btm a{
 	    margin-bottom: 40px !important;
 	    float: none !important;
 	    margin-left: 0 !important;
-	    width: 100% !important;
+	    width: 95% !important;
 	    text-align: center !important;	
 	}
 	.mainBox2, .mainBox4{
@@ -753,8 +752,8 @@ footer .footer_wrap .f_btm a{
 	.f_top_4{width: 40% !important; float: right; margin-top: 30px;}
 	.footer-box{text-align: center;}
 	footer{height: auto;}
-	footer .footer_wrap .f_btm{font-size: 3vw !important;}
-	footer .footer_wrap .f_top0{font-size: 4.3vw !important;}
+	footer .footer_wrap .f_btm{font-size: 1.5vw !important;}
+	footer .footer_wrap .f_top0{font-size: 2vw !important;}
 	footer .footer_wrap .f_top1{width: 100% !important;}
 	footer .footer_wrap .f_top2{width: 100% !important;}
 	footer .footer_wrap .f_top3{width: 100% !important;}
@@ -878,6 +877,8 @@ footer .footer_wrap .f_btm a{
 	}
 	footer .footer_wrap {width: 100% !important;}	
 	footer .footer_wrap {width: 100% !important;}
+	footer .footer_wrap .f_btm{font-size: 1.5vw !important;}
+	footer .footer_wrap .f_top0{font-size: 2vw !important;}
 
 	/* 햄버거 메뉴 */
 	ul { list-style: none; }
@@ -991,10 +992,6 @@ footer .footer_wrap .f_btm a{
 		color: #ffffff !important;
 		line-height: 187px !important; 
 	}
-	header .header_wrap .gnb div a:hover{
-		font-size: 3vw !important; 
-		color: #ff540f !important;
-	}
 	#menu-container .menu-list {
 		top: 0;
 	    padding-left: 0;
@@ -1057,40 +1054,68 @@ footer .footer_wrap .f_btm a{
 		margin-top: 50px !important;
 		font-size: 3em !important;
 		width: 100% !important;
+		height: auto !important;
+	}
+	.main-002{
+		margin-top: 50px !important;
+		margin-bottom: 50px !important;
+	}
+	.main-004{
+		margin: 100px 0 !important;
+	}
+	.main-006{
+		margin-bottom: 100px !important;
+	}
+	.img4{
+		margin: 100px 0 30px 0 !important;
+	}
+	.textBox7{
+		font-size: 2.5em !important;
 	}
 	.main-000 {width: 100% !important; text-align: center !important; height: auto !important;}
-	.main-0001 {width: 100% !important; padding-bottom: 200px !important;}
+	.main-0001 {width: 100% !important; padding-bottom: 100px !important;}
 	.main-0004 {width: 100% !important;}
 	.main-img1 {
+		background-position: center;
+		background-size: 80%;
 	    position: inherit !important;
 	    top: 0 !important;
 	    left: 0 !important;
 	}
 	.main-imgBox{
-		margin: 60px 0;
+		margin-top: 30px !important;
+		margin-bottom: 0 !important;
 	}
 	.mainBox{
 		display: block !important;
 	    margin-bottom: 40px !important;
 	    float: none !important;
 	    margin-left: 0 !important;
-	    width: 100% !important;
-	    text-align: center !important;	
+	    width: 95% !important;
+	    text-align: center !important;
 	}
 	.mainBox2, .mainBox4{
 		margin-top: 0 !important;
 		margin-right: 0 !important;
 	}
+	.table-title-row{
+		padding: 15px 0 15px !important;
+	}
 	.main-0003{
 		height: auto !important;
+		margin-bottom: 100px !important;
 	}
-	.boxText{width: 80% !important;}
-	.textBox1{font-size: 2.5em !important;}
+	.img3{
+		margin-top: 150px !important;
+	}
+	.boxText{width: 80% !important; height: auto !important;}
+	.textBox1{font-size: 2.5em !important; height: auto !important;}
 	.main-003{font-size: 2.5em !important;}
 	.shareBtn{width: 45% !important; font-size: 1.2em !important;}
 	.findBtn{width: 45% !important; font-size: 1.2em !important;}
 	.FAQ{
 		width: 80% !important;
+		margin-bottom: 100px !important;
 	}
 	.img5{
 	    vertical-align: top;
@@ -1103,6 +1128,8 @@ footer .footer_wrap .f_btm a{
 	}
 	.textBox3{
 		font-size: 2.5em !important;
+		margin-bottom: 100px !important;
+    	margin-top: 100px !important;
 	}
 	.main-img3 {
 	    background-image: url(../local_assets/img/down.png) !important;
@@ -1126,7 +1153,9 @@ footer .footer_wrap .f_btm a{
 	.textBox4{
 		font-size: 0.9em !important;
 	}
-	
+	.nowBtn{
+		margin-bottom: 100px !important;
+	}
 	.tableBox{width: 80% !important; margin: 0 !important; display: inline-block;}
 	.title-col1{width: 40% !important; font-size: 0.9em !important;}
 	.title-col2{width: 20% !important; font-size: 0.9em !important;}
