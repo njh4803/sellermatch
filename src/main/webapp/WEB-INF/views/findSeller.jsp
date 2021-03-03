@@ -3,992 +3,743 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <style>
-.font-30{
-	font-size: 30px;
-}
-.partner_bnr {
-    width: 100%;
-    padding: 0;
-}
-.partner_bnr .partner_wrap {
-    width: 1280px;
-    margin: 0 auto;
-    text-align: left;
-}
-.partner_bnr2 {
-    width: 100%;
-    padding-bottom: 100px;
-    text-align: center;
-}
-.partner_bnr3 {
-    width: 100%;
-    text-align: center;
-}
-.search_chk {
-  width: 98px;
-  height: 33px;
-  border: solid 1px #d6d6d6;
-  background-color: #ffffff;
-  object-fit: contain;
-  font-family: NotoSansKRRegular;
-  font-size: 13px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #1f1f1f;
-  float: left;
-}
-.search_chk.search_check{
-  background-image: linear-gradient(to left, #3b1374 , #c80c58 );
-  color: #ffffff;
-}
-.chk_list_container{
-	height: 250px;
-}
-.chk_list_container span{
-  display: inline-block;
-  margin-bottom : 13.3px;
-  object-fit: contain;
-  font-family: NotoSansKR;
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-}
-.container1{
-  height: 278px;
-  margin: 15px 0;
-  padding: 30px 50px;
-  object-fit: contain;
-  border: solid 1px #d8d8d8;
-}
-.container2{
-	height: 50px;
-}
-.container1 .container2{
-	margin: 0;
-    width: 100%;
-    height: 100%;
-    float: left;
-}
-.container3{
-	border-left: 2px solid #e3e3e3;
-    height: 100%;
-    width: 30%;
-    float: right;
-    padding: 60px;
-}
-.row1{
-	height: 50px;
-	width: 97%;
-	margin-left: 0;
-	margin-right: 0;
-}
-.row3{
-	width: 100%;
-	margin-left: 0;
-	margin-right: 0;
-}
-.row2{
-	margin-bottom: 15px !important;
-	width: 700px;
-}
-.height-500{
-	height: 500px;
-	margin: 0;
-}
-.leftBox{
-	float: left;
-	margin: 10px 0;
-}
-.leftBox2{
-	float: left;
-	height: 100%;
-}
-.row1.leftBox{
-    float: left;
-    margin: 0;
-    height: auto;
-    width: 700px;
-}
-.row1 .leftBox{
-	float: left;
-	margin: 0;
-}
-.rightBox{
-	float: right;
-    margin-top: 23px;
-}
-.rightBox a{
-	margin: 0 15px;
-	font-weight: 0;
-	text-decoration: none;
-	color: #000;
-}
-a.sort{
-  font-family: NotoSansKR;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: right;
-  color: #000000;
-}
-a.sort.select{
-	font-weight: bold;
-}
-.margin-0{
-	margin:0;
-}
-.sortBox span{
-	margin: 0 10px;
-}
-.p-findBtn{
-	background-color: #e52367;;
-	color: white;
-	width: 100%;
-	height: 70px;
-	object-fit: contain;
-	font-family: NotoSansKR;
-	font-size: 15px;
-	font-weight: 500;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: center;
-	color: #ffffff;
-	margin-top: -2px;
-	border-top-right-radius:10px;
-    border-top-left-radius:10px;
-}
-.s-findBtn{
-	background-color: #57207C;
-	color: white;
-	width: 100%;
-	height: 70px;
-	object-fit: contain;
-	font-family: NotoSansKR;
-	font-size: 15px;
-	font-weight: 500;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: center;
-	color: #ffffff;
-	margin-top: -2px;
-	border-top-right-radius:10px;
-    border-top-left-radius:10px;
-}
-.purpleBox{
-  display: inline-block;
-  width: fit-content;
-  height: 20px;
-  margin-left: 5px;
-  padding: 2px 8px;
-  border-radius: 11px;
-  border: solid 0.5px #5400d9;
-  background-color: #ffffff;
-  font-size: 10px;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #5400d9;
-  vertical-align: bottom;
-}
-.blueBox{
-	background-color: #71A6DB;
-	color: white;
-	display: inline-block;
-	border-radius: 1px;
-	padding: 13px 13px;
-	margin-right: 10px;
-}
-.grayBox{
-  height: 21px;
-  margin: 0 20px 0 0;
-  font-family: NotoSansKR;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: left;
-  color: #707070;
-  background-color: #ffffff;
-}
-.redBox{
-  height: 21px;
-  margin: 0 20px 0 0;
-  font-family: NotoSansKR;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ff0000;
-  background-color: #ffffff;
-}
-.pFindBox{
-  height: 26px;
-  margin: 0 10px 20px 0;
-  padding: 2px 17px 3px;
-  object-fit: contain;
-  border-radius: 13px;
-  background-color: #d80b54;
-  object-fit: contain;
-  font-family: NotoSansKRMedium;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-}
-.sFindBox{
-  height: 26px;
-  margin: 0 10px 20px 0;
-  padding: 2px 17px 3px;
-  object-fit: contain; 
-  border-radius: 13px;
-  background-color: #57207c;
-  object-fit: contain;
-  font-family: NotoSansKRMedium;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-}
-.titleBox{
-  object-fit: contain;
-  width: 700px;
-  height: 78px;
-  font-size: 20px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.3;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-}
-.contentsBox{
-	text-align: left;
-	background-color: #F2F2F2;
-	padding: 15px;
-	border-radius: 10px;
-	min-height: 100px;
-	max-height: 100px;
-}
-.tagBox{
-	display: inline-block;
-	color: #7F7F7F;
-	margin-right: 10px;
-}
-.countBox {
-  display: inline-block;
-  height: 21px;
-  font-family: NotoSansKR;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: right;
-  color: #000000;
-  margin-top: 48px;
-}
-.countBox span{
-  font-weight: normal;
-}
-.projDetail a{
-	text-decoration: none;
-	color: black;
-	cursor: pointer;
-}
-a:focus, a:hover{
-	text-decoration: none;
-}
 /* 스크롤바 디자인 */
-.chkBox::-webkit-scrollbar {
+.left-container::-webkit-scrollbar {
   width: 4px;
   height: 10px;
   background: #ffffff;
 }
-.chkBox::-webkit-scrollbar-thumb {
+.left-container::-webkit-scrollbar-thumb { 
   border-radius: 3.5px;
   background-color: #D9D9D9;
 
-  .chkBox:hover {
+  .left-container:hover {
     background-color: #adb5bd;
   }
 }
-.chkBox::-webkit-scrollbar-track {
+.left-container::-webkit-scrollbar-track {
   background: #ffffff;
 }
-/*post slider*/
-.post-slider{
-  width:100%;
-  margin:0px auto;
-  position:relative;
+.titleBox{
+  width: 100%;
+  font-size: 30px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+  margin-bottom: 2px;
 }
-.post-slider .silder-title{
-  text-align:center;
-  margin:30px auto;
+.searchBox{
+	width: 100%;
+	height: 30px;
 }
-.post-slider .next{
-  position:absolute;
-  top:50%;
-  right: -80px;
-  font-size:2em;
-  color:gray;
-  cursor: pointer;
+.search-letfBox{
+	float: left;
+    height: 30px;
+    padding-top: 13px;
 }
-.post-slider .prev{
-  position:absolute;
-  top:50%;
-  left: -80px;
-  font-size:2em;
-  color:gray;
-    cursor: pointer;
+.search-rightBox{
+	float: right;
+	height: 30px;
 }
-.post-slider .post-wrapper{
-  width:100%;
-  margin:0px auto;
-  overflow: hidden;
-  padding:10px 0px 10px 0px;
+.search-btn{
+  width: 60px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 6px 0 7px;
+  border-radius: 4px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(117deg, #ff8000, #ff540f);
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff; 
 }
-.post-slider .post-wrapper .post{
-  width:300px;
-  margin:0px 10px;
-  display:inline-block;
-  background:white;
-  border-radius: 5px;
+.input_group{
+	display: inline-block;
+    width: 300px;
+    padding: 4px 15px 4px 15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0 rgb(0 0 0 / 16%);
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+    text-align: left;
 }
-.post-slider .post-wrapper .post .post-info{
-  font-size:15px;
-  height:100%;
-  border: 2px solid #e3e3e3;
-  border-top-right-radius:10px;
-  border-top-left-radius:10px;
+.search-rightBox .input-text{
+	width: 100%;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
 }
-.post-slider .post-wrapper .post .slider-image{
-  width:100%;
-  height:300px;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  display: none;
+.partner_bnr3 hr{
+  width: 100%;
+  height: 0;
+  margin: 15px 0;
+  border: solid 2px #343434;
 }
-.findPass{
-  width: 32.3px;
-  height: 45px;
-  margin-bottom: 45px;
-  margin-top: 60px;
-  object-fit: contain;
+.left-container.fix{
+	position: absolute;
 }
-.hotPass{
-  width: 20px;
-  height: 27.9px;
-  object-fit: contain;
-  margin-right: 5px;
-  margin-bottom: 10px;
-}
-.hotPass2{
-  width: 11px;
-  height: 15.3px;
-  object-fit: contain;
-  margin: 0 auto;
-  margin-bottom: 5px;
-}
-.searchPass{
-  width: 26.5px;
-  height: 37px;
-  margin-right: 16.5px;
-  object-fit: contain;
+.left-container{
+    position: fixed;
+    width: 260px;
+    height: 500px;
+    margin-right: 20px;
+    padding: 20px 0;
+    border-radius: 10px;
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .textBox1{
-  height: 58px;
-  margin-bottom: 10px;
-  object-fit: contain;
-  font-family: NotoSansKRBold;
-  font-size: 40px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #1f1f1f;
-}
-.textBox2{
-  height: 29px;
-  margin-top: 10px;
-  margin-bottom: 80px;
-  object-fit: contain;
-  font-family: NotoSansKRRegular;
   font-size: 20px;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #1f1f1f;
+  color: #343434;
+  margin-bottom: 20px;
 }
-.container2.hot-contents span{
-  font-family: NotoSansKR;
-  font-size: 25px;
+.contents-container{
+	width: 100%;
+    min-height: 1000px;
+    padding-left: 280px;
+}
+.contentsBox{
+	width: 100%;
+}
+.countAll{
+  font-size: 20px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
+  color: #343434;
+}
+.countAll span{
+  color: #ff540f;
+  font-weight: 800;
+}
+.leftBox{
+	float: left;
+}
+.rightBox{
+	float: right;
+}
+a.sort{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
   color: #000000;
+  margin-right: 20px;
 }
-.container2.hot-contents{
-  margin-bottom: 30px;
-  height: 36px;
+a.sort.select{
+	font-weight: bold;
 }
-.hotNation{
-  height: 19px;
-  margin: 15px 0 12px 20px;
-  padding: 2px 9px;
-  object-fit: contain;
-  border-radius: 11px;
-  border: solid 0.5px #5400d9;
+.contents{
+  width: 100%;
+  margin: 9px 0 5px 0;
+  padding: 30px;
+  border-radius: 10px;
+  border: solid 1px #cccccc;
   background-color: #ffffff;
-  font-family: NotoSansKRMedium;
-  font-size: 10px;
+}
+.contents .leftBox{
+    float: left;
+    margin: 0;
+    height: auto;
+    width: 600px;
+}
+.contents .rightBox{
+    float: right;
+    margin: 0;
+    height: auto;
+    width: 260px;
+    text-align: right;
+}
+.seller-intro{
+  height: 55px;
+  margin: 9px 0 22px 0;
+  object-fit: contain;
+  font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #5400d9;
-  width: fit-content;
-  line-height: 1.5;
-}
-.hotTitle{
-  margin: 0 22px;
-  margin-bottom: 10.5px; 
-  object-fit: contain;
-  font-family: NotoSansKRRegular;
-  font-size: 16px;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  line-height: 1.5;
   color: #000000;
-  height: 72px;
+  /* 말줄임 표시 */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical; 
 }
-.hot-hr{
-	margin-bottom: 16.5px;
-	border: solid 1px #cbcbcb;
-	width: 80%;
-	margin-top: 0;
-}
-.applyBtn{
-  height: 40px;
-  margin: 17px 0 0;
-  padding: 10px 0;
+.seller-intro a.s-link:hover{
+	font-weight: 800;
+} 
+.project-detailBox{
+  height: 37px;
   object-fit: contain;
-  background-color: #f0f0f0;
-  object-fit: contain;
-  font-family: NotoSansKRBold;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.71;
-  letter-spacing: normal;
-  color: #505050;
-  width: 100%;
-}
-.countAll{
-  font-family: NotoSansKRMedium;
-  font-size: 25px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.44;
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+  margin-bottom: 26px;
+  /* 말줄임 표시 */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
 }
-.countAll span{
-  color: #e52367;
-}
-.countAllbox{
-	margin-top: 40px;
-}
-.count-hr{
-  height: 0;
-  border: solid 2px #000000;
-  margin-bottom: 20px;
-  margin-top: 0;
-  width: 1280px;
-}
-.scrap{
-  width: 160px;
-  height: 40px;
-  border-radius: 4px;
-  border: solid 1px #c6c6c6;
-  background-color: #ffffff;
+.regDate{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #707070;
   margin-bottom: 10px;
-  font-family: NotoSansKRMedium;
-  font-size: 13px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.46;
-  letter-spacing: normal;
+}
+.regDate span{
+  font-size: 15px;
+  font-weight: bold;
   color: #000000;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  margin-right: 10px;
 }
-.match{
-  width: 160px;
-  height: 40px;
-  border-radius: 4px;
-  background-image: linear-gradient(to right, #d90b54, #3b1374);
-  font-family: NotoSansKRMedium;
-  font-size: 13px;
+.infoBox {
+  display: inline-block;
+  width: 125px;
+  padding: 9px 0 9px 0;
+  border-radius: 5px;
+  border: solid 1px #cccccc;
+  text-align: center;
+  font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.46;
   letter-spacing: normal;
-  color: #ffffff;
-  margin-bottom: 6px;
+  text-align: center;
+  color: #343434;
 }
-.matchPass{
-  width: 10px;
-  height: 16.6px;
-  object-fit: contain;
-  margin-top: -3px;
+.infoBox:first-child{
+    margin-right: 5px;
 }
-.star{
-  width: 11.6px;
-  height: 11.1px;
-  object-fit: contain;
-  margin-top: -3px;
-}
-.textBox3{
-  font-size: 25px;
+.infoBox span{
+  margin-right: 12px;
+  font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.44;
   letter-spacing: normal;
-  text-align: left;
-  color: #000000;
+  text-align: center;
+  color: #343434;
 }
-.selectBox{
-	display: inline-block;
-	width: 320px;
-	height: 50px;
-	margin: 20px 0;
-	border: solid 1px #cccccc;
-	background-color: #ffffff;
-	margin-right: -3px;
-	padding-left: 50px;
-    padding-top: 15px;
-    padding-right: 25px;
-    padding-bottom: 14px;
-}
-.textBox4{
+.infoBox2{
+	width: 100%;
 	font-size: 15px;
-	height: 21px;
-	font-weight: 500;
+	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
 	letter-spacing: normal;
 	text-align: left;
-	color: #4b4b4b;
+	color: #343434;
+    border-bottom: solid 1px #cccccc;
+    padding: 7px 0 8px 0;
 }
-.textBox5{
+.infoBox2 span:nth-child(2){
+	float: right;
+}
+.infoBox3{
+	width: 260px;
+    height: 84px;
+    padding: 19px 30px 18px;
+    border-radius: 5px;
+    border: solid 1px #cccccc;
+    text-align: left;
+}
+.sFindBox{
   display: inline-block;
+  width: 90px;
+  padding: 3px 0 4px;
+  border-radius: 5px;
+  background-color: #8000c9;
   font-size: 15px;
-  font-weight: normal;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
-  text-align: left;
-  color: #707070;
-  margin-right: 20px;
+  text-align: center;
+  color: #ffffff;
+  vertical-align: top;
+  line-height: normal !important;  
 }
-.selectResult{
-  height: 50px;
-  margin: 20px 0 0;
-  padding: 15px 50px 14px 48px;
-  border-radius: 37px;
-  border: solid 1px #cccccc;.selectResult
+.pFindBox{
+  display: inline-block;
+  padding: 3px 0 4px;
+  width: 90px;
+  border-radius: 5px;
+  background-color: #eb00bc;
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  vertical-align: top;
+  line-height: normal !important;
+}
+.left-infoBox{
+	margin-bottom: 11px;
+}
+.areaBox{
+  display: inline-block;
+  width: 90px;
+  height: 26px;
+  padding: 4px 0 5px;
+  border-radius: 5px;
+  border: solid 0.5px #ff0000;
   background-color: #ffffff;
 }
-.selectResult2{
- margin-top: 200px !important;
+a.s-link{
+	color: #000 !important;
 }
-.resultText{
-  display:inline-block;
-  height: 21px;
-  font-size: 15px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #989898;
-  float: left;
+.seller-status{
+	display: inline-block;
+	width: 60px;
+	padding: 5px 0;
+	border-radius: 5px;
+	background-color: #0800ff;
+	font-size: 15px;
+	font-weight: 800;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	vertical-align: top;
 }
-.resultReset{
-  display:inline-block;
-  height: 21px;
-  margin: 0 0 0 9.3px;
-  font-size: 15px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #989898;
-  float: right;
-  cursor: pointer;
-}
-.photoBox{
-  width: 140px;
-  height: 140px;
-  border-radius: 70%;
-  overflow: hidden;
-  margin: 38px 50px 38px 0;
-}
-.nick{
+.seller-auth{
   display: inline-block;
-  font-size: 16px;
+  width: 60px;
+  padding: 5px 0;
+  border-radius: 5px;
+  background-color: #44ab00;
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  vertical-align: top;
+}
+.profileBizSort{
+	display: inline-block;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #343434;
+	vertical-align: -webkit-baseline-middle;
+	margin-left: 10px;
+}
+.left-infoBox2{
+	width: 110%;
+}
+.tagBox{
+  display: inline-block;
+  height: 30px;
+  margin-right: 10px;
+  padding: 6px 10px 7px 10px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+  font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
-  text-align: left;
-  color: #57207c;
-  margin-right: 10px;
+  text-align: center;
+  color: #343434;
 }
-.btnBox{
-	float: right;
-	width: 160px;
-	margin-top: -135px;
+.partner_list{
+	display: inline-block;
+    width: 100%;
+    padding: 0 25px;
 }
-.sellerInfo{
-  height: 50px;
-  padding: 15px 15px 14px;
-  border: solid 1px #d8d8d8;
+.partner_list span{
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000000;
-  width: 101%;
-}
-.sellerInfo span{
-  display: inline-block;
-  font-weight: normal;
   color: #343434;
-  margin-left: 5px;
-  margin-right: 20px;
 }
-/*----------------------------*/
-
-.orangeBox{
-	background-color: #ED7D31;
-	color: white;
-	display: inline-block;
-	border-radius: 5px;
-	padding: 15px 15px;
-	margin-right: 10px;
+.partner_list ul{
+	display: none;
+	margin-bottom: 30px;
 }
-.blueBox{
-	background-color: #71A6DB;
-	color: white;
-	display: inline-block;
-	border-radius: 1px;
-	padding: 15px 15px;
-	margin-right: 10px;
+.partner_list ul li{
+	margin-top: 3px;
 }
-.titleBox{
-	font-size: 30px;
+.b-172{
+	bottom: 172;
 }
-.titleBox .pp{
-	width: 100px;
-	height: 40px;
-	color: #E62267;
+.authBox{
+  display: inline-block;
+  margin: 0 0 14px 0;
+  font-family: NanumGothic;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.07;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
 }
-.titleBox .sp{
-	width: 100px;
-	height: 40px;
-	color: #57207C;
+.authBox:nth-child(odd){
+	margin-right: 17px;
 }
-.contentsBox{
-	text-align: left;
-	background-color: #F2F2F2;
-	padding: 15px;
-	border-radius: 10px;
-	min-height: 100px;
-	max-height: 100px;
+.authImg{
+	margin-top: -3px;
 }
-.tagBox{
-	display: inline-block;
-	color: #7F7F7F;
-	margin-right: 10px;
+.photoBox{
+	width: 140px;
+    height: 140px;
+    margin: 0 30px 11px 0;
+    object-fit: contain;
+    border-radius: 70%;
 }
-.tagContainer{
-	padding-top: 50px;
+#list-container{
+	min-height: 1000px;
 }
-
-.projDetail a{
-	text-decoration: none;
-	color: black;
-}
-a:focus, a:hover{
-	text-decoration: none;
-}
-/* 스크롤바 디자인 */
-.chk_listBox::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
-}
-.chk_listBox::-webkit-scrollbar-thumb {
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
-}
-  
-.chk_listBox::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-/*post slider*/
-.post-slider{
-  width:90%;
-  margin:0px auto;
-  position:relative;
-}
-.post-slider .silder-title{
-  text-align:center;
-  margin:30px auto;
-}
-.post-slider .next{
-  position:absolute;
-  top:50%;
-  right:30px;
-  font-size:2em;
-  color:gray;
-  cursor: pointer;
-}
-.post-slider .prev{
-  position:absolute;
-  top:50%;
-  left:30px;
-  font-size:2em;
-  color:gray;
-    cursor: pointer;
-}
-.post-slider .post-wrapper{
-
-  width:84%;
-  height:350px;
-  margin:0px auto;
-  overflow: hidden;
-  padding:10px 0px 10px 0px;
-}
-.post-slider .post-wrapper .post{
-  width:300px;
-  height:300px;
-  margin:0px 10px;
-  display:inline-block;
-  background:white;
-  border-radius: 5px;
-}
-.post-slider .post-wrapper .post .post-info{
-  font-size:15px;
-  height:100%;
-  padding-left:10px;
-  border: 2px solid #e3e3e3;
-}
-.post-slider .post-wrapper .post .slider-image{
-  width:100%;
-  height:300px;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  display: none;
-}
-.right-box{
-	display: inline-block;
-    float: right;
-    width: 950px;
-}
-.search-box{
-	padding: 15px;
-	background-color: #f7f7f7;
-    border: 1px solid #fff; 
-}
-.search-box > div{
-	margin: 15px 0;
-	height: 30px;
-}
-.search-box > div > span{
-	font-size: 13px;
-}
-.search {
-	border: 1px solid #e3e3e3;
-	width: 900px;
-	height: 45px;
-	border-radius: 10px;
-	background-image: url("../local_assets/img/검색아이콘.jpg");
-	background-position:5px center;
-	background-repeat: no-repeat;
-	box-sizing: border-box;
-	outline: none;
-	position: absolute;
-}
-.search:focus{
-	background-image: none;
-}
-.scrapBtn{
-	background-image: url("../local_assets/img/star.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
-	box-sizing: border-box;
-	outline: none;
-	position: absolute;
-    width: 30px;
-    height: 28px;
-    margin: 7px;
-}
-.imgBox{
-	width: 150px;
-	height: 150px;
-	border-radius: 70%;
-	overflow: hidden;
-	border: 1px solid #e3e3e3;
-	margin: 15px;
-	display: inline-block;
-}
-.profile{
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-.leftBox strong{
-	font-size: 17px;
-    font-weight: bolder;
-}
-.chkBox  ul  li{
-	margin-left: 50px;
-}
-/* 체크박스 2줄로  */
-/* .chkBox  ul  li{
-    width: 106px;
-    display: inline-block;
-    font-size: 12px;
-} */
-.indus{
-    background-color: #D72B62;
-    height: 30px;
-    padding: 10px;
-    color: white;
-    font-size: 10px;
-    border-radius: 7px;
-    font-weight: normal;
-    margin: 0 0 15px 15px;
-}
-.span-box{
-	display: inline-block;
-    padding: 7px 0 7px 15px;
-}
-.seller-tag{
-	display: inline-block;
-    height: 30px;
-    padding: 9px;
-    color: purple;
-    border: 1px solid purple;
-    font-size: 10px;
-    border-radius: 12px;
-    font-weight: bold;
-    margin: 0 0 15px 15px;
-}
-.s-box{
-	width: 180px;
-    margin-top: 27px;
-}
-.sellerDetail{
+.check_list_box{
+	margin-bottom: 16px;
 	cursor: pointer;
 }
-.arrow{
-    position: relative;
-    right: -226px;
-    top: -22px;
+div.partner_list > div:nth-child(2){
+	margin-right: 29px;
 }
-.rotation{
-    margin-right: 9.3px;
-    width: 15.7px;
-    height: 15.8px;
-    margin-top: -3.8px;
+div.partner_list > div:nth-child(1) > ul, div.partner_list > div:nth-child(2) > ul{
+	display: block;
 }
-.chkBox{
-	display:none;
-    position: relative;
-	top: -8px;
-    left: -48px;
-    width: 320px;
-    border: 1px solid;
-    height: 180px;
-    padding: 20px 0 20px 0;
-    background-color: #ffffff;
-    margin-left: -3px;
-    overflow-x:hidden;
-	overflow-y:auto;
-	border: solid 1px #cccccc;
-	border-top: none;
+.emptyResult{
+	text-align: center;
+    height: 500px;
+    padding: 240px;
+    font-size: 24px;
 }
-.chkContainer{
-	position: relative;
+a.sort:last-child{
+	margin-right: 0;
 }
-/* 스크롤바 디자인 */
-.chk_listBox::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
+.photo-container{
+	float: left;
 }
-.chk_listBox::-webkit-scrollbar-thumb {
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
-
-  .chk_listBox:hover {
-    background-color: #adb5bd;
-  }
+.star-score{
+	text-align: center;
+	width: 140px;
 }
-.chk_listBox::-webkit-scrollbar-track {
-  background: #ffffff;
-}
+/*--------------------------------------*/
 </style>
+<div class="partner_bnr">
+	<div class="partner_wrap">
+		<div class="partner_bnr3">
+			<div class="titleBox">판매자 찾기</div>
+			<div class="searchBox clearfix">
+				<div class="search-letfBox">
+					원하는 판매자를 찾아 지원하기 요청을 할 수 있습니다.
+				</div>
+				<div class="search-rightBox">
+					<form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
+				        <div class="input_group">
+				            <input class="input-text" type="text" name="keyword" placeholder="원하는 키워드로 검색해보세요">
+				        </div>
+				        <button type="submit" class="search-btn">검색</button>
+				        <input type="hidden" value="regSort" id="sort" name="sort">
+				    </form>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<div id="list-container">
+			<div class="left-container">
+				<div class="textBox1">
+					판매자 조건 설정
+				</div>
+				<div class="partner_list">
+					<div>
+						<span>판매자유형</span>
+		            	<ul>
+							<li><input type="checkbox" class="checkAll" id="profileBizSort"><label for="profileBizSort"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileBizSort" value="1" id="b1"><label for="b1"><span>법인사업자</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileBizSort" value="2" id="b2"><label for="b2"><span>개인사업자</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileBizSort" value="3" id="b3"><label for="b3"><span>간이과세자</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileBizSort" value="4" id="b4"><label for="b4"><span>개인(사업자없음)</span></label></li>
+		            	</ul>
+					</div>
+					<div class="check_list_box">
+						<span>판매자검증</span>
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="sp1"><label for="sp1"><span>신원인증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">판매채널</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="profileChannel"><label for="profileChannel"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+		            	<span class="check_list">판매상품</span>
+		            	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input id="profileIndus" class="checkAll" type="checkbox"><label for="profileIndus"><span>전체</span></label></li>
+		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
+		            			<li><input type="checkbox" class="check" name="profileIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
+		            		</c:forEach>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">매출규모</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="p2"><label for="p2"><span>2만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="p3"><label for="p3"><span>5만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p4"><label for="p4"><span>10만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="p5"><label for="p5"><span>10만원 이상</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">판매경력</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
+		            	</ul>
+	            	</div>
+	            	<div class="check_list_box">
+	            		<span class="check_list">판매자특징</span>
+	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="s1"><label for="s1"><span>OEM</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="2" id="s2"><label for="s2"><span>위탁판매</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="3" id="s3"><label for="s3"><span>도매공급</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="4" id="s4"><label for="s4"><span>운영대행</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
+		            	</ul>
+	            	</div>
+					<div class="check_list_box">
+						<span class="check_list">판매자지역</span>
+						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+			           	<ul>
+			           		<li><input type="checkbox" class="checkAll" id="profileNation"><label for="profileNation"><span>전체</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="031" id="n2"><label for="n2"><span>경기</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="032" id="n3"><label for="n3"><span>인천</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="033" id="n4"><label for="n4"><span>강원</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="041" id="n5"><label for="n5"><span>충남</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="042" id="n6"><label for="n6"><span>대전</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="043" id="n7"><label for="n7"><span>충북</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="051" id="n8"><label for="n8"><span>부산</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="052" id="n9"><label for="n9"><span>울산</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="053" id="n10"><label for="n10"><span>대구</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="054" id="n11"><label for="n11"><span>경북</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="055" id="n12"><label for="n12"><span>경남</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="061" id="n13"><label for="n13"><span>전남</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="062" id="n14"><label for="n14"><span>광주</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="063" id="n15"><label for="n15"><span>전북</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="044" id="n16"><label for="n16"><span>세종특별자치시</span></label></li>
+			           		<li><input type="checkbox" class="check" name="profileNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
+			           	</ul>
+					</div>
+	            </div>
+        	</div>
+        	<div class="contents-container">
+        		<div class="contentsBox">
+      					<div class="countAllbox clearfix">
+						<div class="leftBox countAll">총<span>${totalCount}건</span>이 검색되었습니다</div>
+						<div class="rightBox">
+							<a href="javascript:void(0)" class="sort select" id="regSort">등록순
+								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							</a>
+							<a href="javascript:void(0)" class="sort" id="endSort">매출순
+								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							</a>
+							<a href="javascript:void(0)" class="sort" id="applySort">요청받은순
+								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							</a>
+						</div>
+					</div>
+        		</div>
+        		<c:forEach var="output" items="${output}" varStatus="status">
+        		<div class="contents clearfix">
+					<div class="clearfix">
+						<input type="hidden" id="profileId${status.index}" value="${output.profileId}">
+						<div class="leftBox">
+							<div class="photo-container">
+								<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+								<div class="star-score">
+									<div>
+										닉네임자리입니다
+									</div>
+									<div>
+										★★★★★
+									</div>
+								</div>
+							</div>
+							<div class="left-infoBox">
+								<div class="seller-status">활동 중</div>
+								<div class="profileBizSort">${output.profileBizSortName}</div>
+							</div>
+							<div class="left-infoBox">
+								<div class="seller-auth">검 증</div>
+								<div class="profileBizSort"></div>
+							</div>
+							<div class="seller-intro">
+								<a class="s-link" href="javascript:void(0);"  data-index="${status.index}">${output.profileIntro}</a>
+							</div>
+							<div class="left-infoBox">
+								<c:forEach var="hashtag" items="${output.profileHashtagList}">
+									<c:if test="${hashtag == null}">
+										<div class="tagBox"></div>
+									</c:if>
+									<c:if test="${hashtag != null}">
+										<div class="tagBox">${hashtag}</div>
+									</c:if>
+					           	</c:forEach>
+							</div>
+						</div>
+						<div class="rightBox">
+							<div class="infoBox2"><span>계약 프로젝트</span><span>건</span></div>
+							<div class="infoBox2"><span>등록 프로젝트</span><span>건</span></div>
+							<div class="infoBox2"><span>요청 받은 수</span><span>건</span></div>
+							<div class="infoBox2"><span>판매채널</span><span>건</span></div>
+							<div class="infoBox2"><span>매출규모</span><span>건</span></div>
+							<div class="infoBox2"><span>판매경력</span><span>건</span></div>
+						</div>
+					</div>
+        		</div>
+        		</c:forEach>
+				<c:if test="${output == ''}">
+					<div class="emptyResult">검색결과가 없습니다.</div>
+				</c:if>
+				<div class="partner_bnr2 pageBox clearfix">
+					<div class="row1">
+						<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
+							<ul class="pagination">
+							<!-- 페이지 번호 구현 -->
+						    <%-- 이전 그룹에 대한 링크 --%>
+						    <c:choose>
+						        <%-- 이전 그룹으로 이동 가능하다면? --%>
+						        <c:when test="${pageData.prevPage > 0}">
+						            <%-- 이동할 URL 생성 --%>
+						            <c:url value="/seller/find" var="prevPageUrl">
+						                <c:param name="page" value="${pageData.prevPage}" />
+						                <c:param name="keyword" value="${keyword}" />
+						            </c:url>
+						            <li><a href="${prevPageUrl}">&laquo;</a></li>
+						        </c:when>
+						        <c:otherwise>
+						            <li><a>&laquo;</a></li>
+						        </c:otherwise>
+						    </c:choose>
+						    
+						    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+						    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
+						        <%-- 이동할 URL 생성 --%>
+						        <c:url value="/seller/find" var="pageUrl">
+						            <c:param name="page" value="${i}"/>
+						            <c:param name="keyword" value="${keyword}"/>
+						        </c:url>
+						        
+						        <%-- 페이지 번호 출력 --%>
+						        <c:choose>
+						            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						            <c:when test="${pageData.nowPage == i}">
+						                <li><a><strong>${i}</strong></a></li>
+						            </c:when>
+						            <%-- 나머지 페이지의 경우 링크 적용함 --%>
+						            <c:otherwise>
+						                <li><a href="${pageUrl}">${i}</a></li>
+						            </c:otherwise>
+						        </c:choose>
+						    </c:forEach>
+						    
+						    <%-- 다음 그룹에 대한 링크 --%>
+						    <c:choose>
+						        <%-- 다음 그룹으로 이동 가능하다면? --%>
+						        <c:when test="${pageData.nextPage > 0}">
+						            <%-- 이동할 URL 생성 --%>
+						            <c:url value="/seller/find" var="nextPageUrl">
+						                <c:param name="page" value="${pageData.nextPage}" />
+						                <c:param name="keyword" value="${keyword}" />
+						            </c:url>
+						            <li><a href="${nextPageUrl}">&raquo;</a></li>
+						        </c:when>
+						        <c:otherwise>
+						            <li><a>&raquo;</a></li>
+						        </c:otherwise>
+						    </c:choose>
+							</ul>
+						</div>
+					</div>
+				</div>				
+        	</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
 <div class="partner_bnr">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
@@ -1123,9 +874,7 @@ a:focus, a:hover{
 					</div>
 					<div class="row1 leftBox">
 						<div class="row2 leftBox">
-							<div class="titleBox">
-								${output.profileIntro}
-							</div>
+
 						</div>
 					</div>
 					<div class="row1 leftBox">
@@ -1332,7 +1081,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 					</div>
 					<div class="row1 leftBox">
 						<div class="row2 leftBox">
-							<div class="titleBox">
+							<div class="intro">
 								{{profileIntro}}
 							</div>
 						</div>
@@ -1387,6 +1136,44 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
+	
+	$(document).on("click", ".s-link", function(){
+		
+		var idx = $(this).data('index');
+		var profileId = $("#profileId"+idx).val();
+		console.log(profileId);
+		console.log(idx);
+		window.location.href = ROOT_URL+"/seller/detail?profileId="+profileId;
+	});	
+	
+	$(document).on("click", ".check_list_box", function(){
+		var checkList = $(this).closest("div").children('ul');
+		checkList.toggle();
+	});
+
+
+  	$(window).on('scroll', function() {
+  		var footerHei = $('footer').outerHeight()
+		var sT = $(window).scrollTop();
+	    var val = $(document).height() - $(window).height() - footerHei;
+	    
+	    console.log(sT+'st');
+	    console.log(val+'val');
+
+	    if (sT >= val){
+	    	$('.left-container').addClass('fix');
+	    	$('.b-172').css({"bottom": -1*parseInt(sT- footerHei)});
+	    } else if(window.pageYOffset >= $('.partner_bnr3 > hr').offset().top){
+	    	$('.left-container').addClass('b-172');
+	    	$('.left-container').removeClass('fix');
+	    	$('.left-container').removeAttr('style');
+	    }
+	    else{
+	    	$('.left-container').removeClass('fix');
+	    	$('.left-container').addClass('b-172');
+	    	$('.left-container').removeAttr('style');
+    	}
+  	});
 	
 	$(document).on("click", ".resultReset", function(){
 		

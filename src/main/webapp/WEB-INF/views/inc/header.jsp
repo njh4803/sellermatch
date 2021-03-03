@@ -82,6 +82,7 @@
 	            <div class="menu-background"></div>
             	<div class="menu-list accordion">
 	            	<div class="gnb_login show">
+	            		<img class="mobile-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/mobile.png">
 		            	<c:choose>
 		            		<c:when test="${member == null}">
 		            			<a href="javascript:void(0);" id="login">로그인</a>
@@ -96,23 +97,38 @@
 		            </div>
          	        <!-- menu-wrapper -->
 		            <ul>
-		                <li id="nav1" class="toggle accordion-toggle"> 
-		                    <span class="icon-plus"></span>
-		                    <a class="menu-link" href="${pageContext.request.contextPath}/project/find">거래처 찾기</a>
+		                <li id="nav1" class="toggle accordion-toggle">
+		                    <a class="menu-link" href="${pageContext.request.contextPath}/project/find">거래처 찾기
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    </a>
 		                </li>
-		                <li id="nav2" class="toggle accordion-toggle"> 
-		                    <span class="icon-plus"></span>
-		                    <a class="menu-link" href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a>
+		                <ul class="menu-submenu accordion-content">
+	                    </ul>           
+		                <li id="nav2" class="toggle accordion-toggle">
+		                    <a class="menu-link" href="${pageContext.request.contextPath}/seller/find">판매자 찾기
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    </a>
 		                </li>
-		                <li id="nav3" class="toggle accordion-toggle"> 
-		                    <span class="icon-plus"></span>
-		                    <a class="menu-link" href="#">커뮤니티</a>
+		                <ul class="menu-submenu accordion-content">
+	                    </ul>		                
+		                <li id="nav3" class="toggle accordion-toggle">
+		                    <a class="menu-link" href="#">커뮤니티
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    </a>
 		                </li>
-		                <li id="nav4" class="toggle accordion-toggle"> 
-		                    <span class="icon-plus"></span>
-		                    <a class="menu-link" href="${pageContext.request.contextPath}/usageFee">이용안내</a>
+		                <ul class="menu-submenu accordion-content">
+	                    </ul>
+		                <li id="nav4" class="toggle accordion-toggle">
+		                    <a class="menu-link" href="#">이용안내
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    </a>
 		                </li>
-		            </ul>
+	                    <ul class="menu-submenu accordion-content">
+							<li><a class="head" href="${pageContext.request.contextPath}/usageFee">Submenu1</a></li>
+	                        <li><a class="head" href="#">Submenu2</a></li>
+	                        <li><a class="head" href="#">Submenu3</a></li>
+	                        <li><a class="head" href="#">Submenu4</a></li>
+	                    </ul>
 		            <!-- menu-list accordion-->
 	            </div>
 	        </div>

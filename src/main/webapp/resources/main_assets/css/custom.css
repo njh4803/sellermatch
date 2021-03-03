@@ -18,6 +18,9 @@ body.modal-open[style] {
     padding-right: 0px !important;
 
 }
+body.modal-open .modal[style]{
+	padding-right: 0px !important;
+}
 input[type="checkbox"] {
 	display: none;
 }
@@ -40,6 +43,7 @@ input[type="checkbox"] + label span {
     line-height: 1.2;
     font-weight: normal;
     background:url(/local_assets/img/checkActiveNone.png) no-repeat;
+    background-size: 
 }
 input[type="checkbox"]:checked + label span {
     background:url(/local_assets/img/checkActive.png) no-repeat;
@@ -89,15 +93,6 @@ header .header_wrap .gnb .gnb_login a {
 	letter-spacing: normal;
 	text-align: left;
 	color: #1f1f1f;	
-}
-header .header_wrap .gnb .gnb_login a:before {
-    display: inline-block;
-    content: '';
-    width: 1px;
-    height: 15px;
-    vertical-align: middle;
-    background: #555;
-    margin: -2px 15px 0 15px;
 }
 header .header_wrap .gnb .gnb_login a:first-child:before {display:none;}
 header .header_wrap .gnb .gnb_project {margin-left:32px;}
@@ -433,8 +428,26 @@ footer .footer_wrap .f_btm a{
     /* background-color: rgba( 255, 255, 255, 0.5 ); */
 	visibility: visible;
 }
+.mobile-img{
+	position: absolute;
+    left: 9vw;
+    top: 11vw;
+    width: 42vw;
+}
 /* 모바일 */
 @media screen and (max-width: 767px){
+	/* 부트스트랩 CSS 변경 */
+	.input-group{
+		display: block !important;
+	}
+	#loginModal .modal-dialog{
+		margin: 30px auto;
+		width: 80% !important;
+	}
+	form > div.row > img {
+		width: 100% !important; 
+	}
+	
 	header .header_wrap {width:100%; height:100%; margin: 0 auto;}
     header .header_wrap nav {display:none; overflow: hidden;}
     header .header_wrap .gnb .gnb_login {
@@ -470,7 +483,12 @@ footer .footer_wrap .f_btm a{
 	    /* border:1px solid red; */
 	    cursor: pointer;
 	}
-	
+	.sidebar-img{
+		width: 3vw;
+	    float: right;
+	    margin-top: 0.5vh;
+	    margin-right: 15px;	
+	}
 	
 	#menu-wrapper #hamburger-menu {
 	    position: relative;
@@ -541,6 +559,14 @@ footer .footer_wrap .f_btm a{
 	#menu-container .menu-list .menu-submenu {
 	    padding:0;
 	}
+	#menu-container .menu-list .menu-submenu li a {
+	    display:block;
+	    padding:10px 0 10px 20px;
+	
+	}
+	#menu-container .menu-list .menu-submenu li a:hover {
+	    background:#eee;
+	}
 	#menu-container .menu-list li.accordion-toggle a.menu-link {
 	    display:block;
 	    padding:10px 0 10px 20px;
@@ -552,6 +578,9 @@ footer .footer_wrap .f_btm a{
 	    color: #343434;
 	    font-size: 3vw;
 	}
+	#menu-container .menu-list li.accordion-toggle a.menu-link:hover{
+		color: #ff540f !important;
+	}	
 	#menu-container .menu-list .menu-submenu li a:hover {
 	    background:#eee;
 	}
@@ -570,21 +599,21 @@ footer .footer_wrap .f_btm a{
 	}
 	header .header_wrap .gnb .gnb_login{
 		background-color: #ff540f !important;
-	}
-	header .header_wrap .gnb .gnb_login a:before{
-		background: #ffffff !important;
-		height: 3vw !important;
+		height: 10vw;
+    	padding: 25vw 0;
 	}	
 	header .header_wrap .gnb .gnb_login a{
 		font-size: 3vw !important;
 		color: #ffffff !important;
-		line-height: 187px !important; 
+		margin-top: 10vw !important;
+		margin-left: 1vw !important;
+    	margin-right: 1vw !important;
 	}
 	#menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
 	    font-size: 16px;
 	    padding: 10px;
 	    text-transform: uppercase;
-	    border-top: 1px solid #dbdcd2;
+	    border-bottom: 1px solid #ccc;
 	}
 	#menu-container .menu-list li:first-of-type {
 	    border-top: 0;
@@ -606,7 +635,7 @@ footer .footer_wrap .f_btm a{
 	}
 	
 	.accordion-toggle.active-tab {
-	  background: yellowgreen;
+	  /* background: yellowgreen; */
 	  transition: all 0.3s ease;
 	}
 	.accordion-toggle a.active:before {
@@ -752,8 +781,8 @@ footer .footer_wrap .f_btm a{
 	.f_top_4{width: 40% !important; float: right; margin-top: 30px;}
 	.footer-box{text-align: center;}
 	footer{height: auto;}
-	footer .footer_wrap .f_btm{font-size: 1.5vw !important;}
-	footer .footer_wrap .f_top0{font-size: 2vw !important;}
+	footer .footer_wrap .f_btm{font-size: 2vw !important;}
+	footer .footer_wrap .f_top0{font-size: 2.3vw !important;}
 	footer .footer_wrap .f_top1{width: 100% !important;}
 	footer .footer_wrap .f_top2{width: 100% !important;}
 	footer .footer_wrap .f_top3{width: 100% !important;}
@@ -877,8 +906,8 @@ footer .footer_wrap .f_btm a{
 	}
 	footer .footer_wrap {width: 100% !important;}	
 	footer .footer_wrap {width: 100% !important;}
-	footer .footer_wrap .f_btm{font-size: 1.5vw !important;}
-	footer .footer_wrap .f_top0{font-size: 2vw !important;}
+	footer .footer_wrap .f_btm{font-size: 2vw !important;}
+	footer .footer_wrap .f_top0{font-size: 2.5vw !important;}
 
 	/* 햄버거 메뉴 */
 	ul { list-style: none; }
@@ -980,17 +1009,17 @@ footer .footer_wrap .f_btm a{
 	#menu-container .menu-list .menu-submenu li a:hover {
 	    background:#eee;
 	}
-	header .header_wrap .gnb .gnb_login{
+	header .header_wrap .gnb .gnb_login{ 
 		background-color: #ff540f !important;
+		height: 10vw;
+    	padding: 25vw 0;
 	}
-	header .header_wrap .gnb .gnb_login a:before{
-		background: #ffffff !important;
-		height: 3vw !important;
-	}	
 	header .header_wrap .gnb .gnb_login a{
 		font-size: 3vw !important;
 		color: #ffffff !important;
-		line-height: 187px !important; 
+		margin-top: 10vw !important;
+		margin-left: 1vw !important;
+    	margin-right: 1vw !important;
 	}
 	#menu-container .menu-list {
 		top: 0;
@@ -1010,7 +1039,7 @@ footer .footer_wrap .f_btm a{
 	    font-size: 16px;
 	    padding: 10px;
 	    text-transform: uppercase;
-	    border-top: 1px solid #dbdcd2;
+	    border-bottom: 1px solid #ccc;
 	}
 	#menu-container .menu-list li:first-of-type {
 	    border-top: 0;
@@ -1031,7 +1060,7 @@ footer .footer_wrap .f_btm a{
 	}
 	
 	.accordion-toggle.active-tab {
-	  background: yellowgreen;
+	  /* background: yellowgreen; */
 	  transition: all 0.3s ease;
 	}
 	.accordion-toggle a.active:before {
@@ -1155,6 +1184,13 @@ footer .footer_wrap .f_btm a{
 	}
 	.nowBtn{
 		margin-bottom: 100px !important;
+	}
+	
+	.sidebar-img{
+		width: 3vw;
+	    float: right;
+	    margin-top: 0.5vh;
+	    margin-right: 15px;	
 	}
 	.tableBox{width: 80% !important; margin: 0 !important; display: inline-block;}
 	.title-col1{width: 40% !important; font-size: 0.9em !important;}

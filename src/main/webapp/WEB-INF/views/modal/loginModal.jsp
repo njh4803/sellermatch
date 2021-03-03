@@ -72,7 +72,7 @@ label.error {
 	margin: 0;
 }
 .form-group .id_btn{
-  width: 400px;
+  width: 100%;
   height: 50px;
   border-radius: 12px;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
@@ -110,20 +110,23 @@ label.error {
   height: 50px;
   object-fit: contain;
 }
-#login-form div .input-group input{
+form div .input-group input.form-control{
     width: 100%;
 	height: 50px;
-	border-radius: 12px;
+	border-radius: 12px !important; 
 	border: solid 1px #d6d6d6;
 	background-color: #ffffff;
     margin-bottom: 10px;
+}
+.form-group {
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 #loginRemember{
 
 }
 #login-form .btn-primary {
     width: 100%;
-	width: 470px;
 	height: 50px;
 	margin-bottom: 13px;
 	border-radius: 12px;
@@ -363,7 +366,7 @@ $(document).ready(function() {
                                     </div>
                                 </div>
                                 <div class="row m-t-25 text-left">
-                                    <div class="col-sm-7 col-xs-12">
+                                    <div class="col-sm-6 col-xs-6">
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
                                                 <input type="checkbox" value="" id="loginRemember">
@@ -371,7 +374,7 @@ $(document).ready(function() {
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5 col-xs-12 forgot-phone text-right">
+                                    <div class="col-sm-6 col-xs-6 forgot-phone text-right">
                                         <a href="#" class="text-right f-w-600 text-inverse font-10" id="idPwFind">ID PW 찾기</a>
                                     </div>
                                 </div>
@@ -387,9 +390,11 @@ $(document).ready(function() {
 <div class="modal-content">
 <div class="modal-body">
 	<div class="">
-		<div class="login_logo" style="margin-top:0;">
-        	<img src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
-        	<h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
+		<div class="row m-b-20">
+			<div class="login_logo" style="margin-top:0;">
+        		<img src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+        		<h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
@@ -403,13 +408,9 @@ $(document).ready(function() {
 					<div class="tab-pane active fade in" id="idf">
 						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/idFind">
 						<div class="form-group">
-							<label for="memTel" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 42px;">연락처
-							</label>
-                       	 	<div class="col-sm-9">
-								<div class="form-group">
+							<div class="input-group col-sm-12">
 									<input id="memTel" type="text" name="memTel" class="form-control" placeholder="가입시 연락처">
-								</div>
-                        	</div>
+							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-2"></div>
@@ -426,13 +427,9 @@ $(document).ready(function() {
 					<div class="tab-pane fade" id="pwdf">
 						<form id="find-pw-form" method="post" action="${pageContext.request.contextPath}/pwFind">
 						<div class="form-group">
-							<label for="memId" class="col-sm-2 col-form-label" style="padding: 6px 0; margin: 0px 30px;width: 42px;"> 이메일
-							</label>
-                       	 	<div class="col-sm-9">
-								<div class="form-group">
-									<input id="memId" type="email" name="memId" class="form-control" placeholder="가입시 이메일">
-								</div>
-                        	</div>
+							<div class="input-group col-sm-12">
+								<input id="memId" type="email" name="memId" class="form-control" placeholder="가입시 이메일">
+							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-2"></div>
