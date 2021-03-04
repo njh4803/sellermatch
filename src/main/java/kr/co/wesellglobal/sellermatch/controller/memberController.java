@@ -2,11 +2,14 @@ package kr.co.wesellglobal.sellermatch.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -65,5 +68,17 @@ public class memberController {
 	public ModelAndView joinMain(Model model) {
 		
 		return new ModelAndView("joinMain");
+	}
+	
+	// 카카오 로그인창 호출
+	@RequestMapping(value = "/login/getKakaoAuthUrl")
+	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception {
+		
+		String kakaoApiKey = "1dbcd212ddc07cec13bac032add76058";
+		String redirectURI = "http://127.0.0.1:8080/member/join";
+		
+		String reqUrl = "https://kauth.kakao.com" + "/oauth/authorize?client_id=" + kakaoApiKey + "&redirect_uri="+ redirectURI + "&response_type=code";
+		
+		return reqUrl;
 	}
 }
