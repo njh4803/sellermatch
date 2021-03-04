@@ -103,12 +103,6 @@ color: #343434;
   text-align: center;
   color: #343434;
 }
-.bar{
-  width: 1920px;
-  height: 40px;
-  margin-bottom: 110.5px;
-  background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
-}
 .textbox1{
 	height: 36px;
     margin: 4.5px 0 15px 0;

@@ -59,6 +59,7 @@ $(function () {
         // 성공,실패에 상관 없이 맨 마지막에 무조건 호출됨 ex) 로딩바 닫기
         complete: function () {
             console.log('>> Ajax 통신 종료!!!!');
+			loader.hide();
 		// 시간 지연 (1초)
 /*			setTimeout(function(){
 				loader.hide();
