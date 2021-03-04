@@ -75,8 +75,8 @@ public class memberController {
 	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception {
 		
 		String kakaoApiKey = "1dbcd212ddc07cec13bac032add76058";
-		String redirectURI = "http://127.0.0.1:8080/member/join";
-		
+		//String redirectURI = "http://127.0.0.1:8080/member/join"; //개발
+		String redirectURI = "http://sellermatch.co.kr/member/join"; //운영
 		String reqUrl = "https://kauth.kakao.com" + "/oauth/authorize?client_id=" + kakaoApiKey + "&redirect_uri="+ redirectURI + "&response_type=code";
 		
 		return reqUrl;
