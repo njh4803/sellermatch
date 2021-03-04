@@ -189,7 +189,7 @@ color: #343434;
 	        </div>
 	        <div class="joinBox kakao">
 	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/kakao.png">
-	        	<a class="" href="#">카카오톡으로 회원가입</a>
+	        	<a class="" href="javascript:loginWithKakao()">카카오톡으로 회원가입</a>
 	        </div>
 	        <div class="joinBox google">
 	        	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/google.png">
@@ -206,9 +206,20 @@ color: #343434;
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
-$(document).ready(function() {
-       
-});
+
+//카카오 로그인 버튼 클릭
+function loginWithKakao() {
+    $.ajax({
+        url: '/login/getKakaoAuthUrl',
+        type: 'get',
+        async: false,
+        dataType: 'text',
+        success: function (res) {
+            location.href = res;
+        }
+    });
+}
+
 </script>    
     </body>
 </html>
