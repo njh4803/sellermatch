@@ -51,10 +51,12 @@
     color: #4a6076;
     font-size: 14px;
 }
-.headerPass{
-  width: 10.2px;
-  height: 14.3px;
-  margin-top: -3px;
+.bar{
+	display: inline-block;
+    color: #343434;
+    vertical-align: text-bottom;
+    font-size: 13px;
+    padding: 0 10px;	
 }
 .clearfix:after { content: '';display: block; float: none; clear: both; }
 </style>
@@ -86,11 +88,12 @@
 		            	<c:choose>
 		            		<c:when test="${member == null}">
 		            			<a href="javascript:void(0);" id="login">로그인</a>
+		            			<span class="bar">|</span>
 			                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
 		            		</c:when>
 		            		<c:otherwise>
-			            		<a href="#">${member.memNick}님</a>
-			            		<a href="${pageContext.request.contextPath}/member/myPage">마이페이지</a>
+			            		<a href="${pageContext.request.contextPath}/member/myPage">${member.memNick}님</a>
+			            		<span class="bar">|</span>
 		            			<a id="logout" href="javascript:void(0);">로그아웃</a>
 		            		</c:otherwise>
 		            	</c:choose>
@@ -136,11 +139,12 @@
             	<c:choose>
             		<c:when test="${member == null}">
             			<a href="javascript:void(0);" id="login2">로그인</a>
+            			<span class="bar">|</span>
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
-	            		<a href="#">${member.memNick}님</a>
-	            		<a href="${pageContext.request.contextPath}/member/myPage">마이페이지</a>
+	            		<a href="${pageContext.request.contextPath}/member/myPage">${member.memNick}님</a>
+	            		<span class="bar">|</span>
             			<a id="logout2" href="javascript:void(0);">로그아웃</a>
             		</c:otherwise>
             	</c:choose>

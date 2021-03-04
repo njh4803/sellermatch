@@ -25,14 +25,13 @@
 }
 .titleBox{
   width: 100%;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
   color: #343434;
-  margin-bottom: 2px;
 }
 .searchBox{
 	width: 100%;
@@ -41,7 +40,7 @@
 .search-letfBox{
 	float: left;
     height: 30px;
-    padding-top: 13px;
+    padding-top: 10px;
 }
 .search-rightBox{
 	float: right;
@@ -165,7 +164,7 @@ a.sort.select{
     float: left;
     margin: 0;
     height: auto;
-    width: 600px;
+    width: 60%;
 }
 .contents .rightBox{
     float: right;
@@ -195,6 +194,7 @@ a.sort.select{
 	font-weight: 800;
 } 
 .project-detailBox{
+  height: 40px;
   object-fit: contain;
   font-size: 15px;
   font-weight: normal;

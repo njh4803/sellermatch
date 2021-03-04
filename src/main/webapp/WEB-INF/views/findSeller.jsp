@@ -22,14 +22,13 @@
 }
 .titleBox{
   width: 100%;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
   color: #343434;
-  margin-bottom: 2px;
 }
 .searchBox{
 	width: 100%;
@@ -38,7 +37,7 @@
 .search-letfBox{
 	float: left;
     height: 30px;
-    padding-top: 13px;
+    padding-top: 10px;
 }
 .search-rightBox{
 	float: right;

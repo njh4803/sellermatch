@@ -193,7 +193,6 @@ label.error {
 }
 .formControl{
 	width: 400px;
-    height: 34px;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
@@ -263,12 +262,6 @@ label.error {
   height: 312px;
   object-fit: contain;
   margin-top: 100px;
-}
-.bar{
-  width: 1920px;
-  height: 40px;
-  margin-bottom: 140px;
-  background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
 }
 .imgContainer{
 	width: 1280px;
@@ -411,6 +404,81 @@ input[type="checkbox"].findCheck:checked + label span {
     left: -40px;
     width: 12.6px;
     height: 22.6px;
+}
+/* 모바일 */
+@media screen and (max-width: 767px){
+	.partner_bnr{
+		padding-bottom: 50px !important;
+	}
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
+	
+	.partner_bnr .partner_wrap h2{
+		font-size: 4.5vw !important;
+		margin: 0 0 40px 0 !important;
+	}
+	.partner_bnr .partner_wrap h3{
+		font-size: 2.5vw !important;
+		margin-bottom: 0 !important;
+	}
+	.partner_bnr .partner_wrap{
+		margin: 20px auto !important;
+	}
+	.default-check, .check, .none-check {
+    	width: 30vw !important;
+    	height: 12vw !important;
+    }
+    .p-img{
+    	width: 90% !important;
+    	margin-top: 20vw !important;
+   	}
+   	input[type="checkbox"] + label{
+   		margin-bottom: 5px !important;
+   		margin-right: 9px !important;
+   	}
+	input[type="checkbox"] + label span {
+	    vertical-align: middle;
+	    font-size: 2.5vw !important;
+	}
+	.projTable{
+		width: 100% !important;
+	}
+	table tr td:nth-child(1){
+		width: 20% !important;
+		font-size: 1vw;
+	}
+	table tr td:nth-child(2){
+		width: 80% !important;
+		font-size: 1vw;
+	}
+	.formControl{
+		width: 100% !important;
+	}
+	.inputForm {
+		height: auto !important;
+		font-size: 1vw !important;
+	}
+}
+
+/* 테블릿 세로 */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
+}
+
+/* 테블릿 가로 */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
 }
 </style>
 <div class="partner_bnr">

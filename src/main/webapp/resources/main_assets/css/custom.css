@@ -40,7 +40,6 @@ input[type="checkbox"] + label span {
 	color: #707070;
     padding-left: 20px;
     margin: 0;
-    line-height: 1.2;
     font-weight: normal;
     background:url(/local_assets/img/checkActiveNone.png) no-repeat;
     background-size: 
@@ -442,12 +441,31 @@ footer .footer_wrap .f_btm a{
 	}
 	#loginModal .modal-dialog{
 		margin: 30px auto;
-		width: 80% !important;
+		width: 85% !important;
 	}
 	form > div.row > img {
 		width: 100% !important; 
 	}
 	
+	.login_logo h5{
+		font-size: 3vw !important;
+	}
+	.form-control{
+		font-size: 2.5vw !important;
+	}
+	.login-logo{
+		width: 66vw !important;
+	}
+	input[type="checkbox"] + label span {
+		font-size: 2.8vw !important;
+	}
+	#idPwFind{
+		font-size: 3vw !important;
+	}
+	.bar{
+		font-size: 3vw !important;
+		color: #fff !important;
+	}
 	header .header_wrap {width:100%; height:100%; margin: 0 auto;}
     header .header_wrap nav {display:none; overflow: hidden;}
     header .header_wrap .gnb .gnb_login {
@@ -608,6 +626,7 @@ footer .footer_wrap .f_btm a{
 		margin-top: 10vw !important;
 		margin-left: 1vw !important;
     	margin-right: 1vw !important;
+    	line-height: 10vw !important;
 	}
 	#menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
 	    font-size: 16px;

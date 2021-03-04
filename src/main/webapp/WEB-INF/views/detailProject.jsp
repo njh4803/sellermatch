@@ -12,7 +12,7 @@
   letter-spacing: normal;
   text-align: left;
   color: #343434;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .top-Box2{
 	width: 100%;
@@ -28,8 +28,8 @@
 .partner_bnr3 hr{
   width: 100%;
   height: 0;
-  margin-top: 15;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border: solid 2px #ff570e;
 }
 .container1{
