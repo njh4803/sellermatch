@@ -59,6 +59,20 @@
     padding: 0 10px;	
 }
 .clearfix:after { content: '';display: block; float: none; clear: both; }
+header #m-search_frm{
+	display: none;
+}
+.m-search-btn{
+    position: relative;
+    top: 1.8vw;
+    width: 4vw;
+    left: -8vw;
+    background-size: 100%;
+    height: 5vw;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    vertical-align: super;
+}
 </style>
 </head>
 <%@ include file="../modal/loginModal.jsp"%>
@@ -75,6 +89,15 @@
                </li>
            </ul>
        </nav>
+		<form id="m-search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
+	        <div class="input_group">
+	            <input class="input-text" type="text" name="m-keyword" placeholder="원하는 키워드로 검색해보세요">
+	        </div>
+	        <button type="submit" class="m-search-btn" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/search.png');">
+	        </button>
+	        <input type="hidden" value="regSort" id="m-sort" name="sort">
+	    </form>
+       <!---------------------------- 모바일 ------------------------------->
        <div class="gnb">
        		<div id="menu-container">
 	            <div id="menu-wrapper">
@@ -135,6 +158,7 @@
 		            <!-- menu-list accordion-->
 	            </div>
 	        </div>
+	        <!---------------------------- 모바일  끝------------------------------->
             <div class="gnb_login">
             	<c:choose>
             		<c:when test="${member == null}">

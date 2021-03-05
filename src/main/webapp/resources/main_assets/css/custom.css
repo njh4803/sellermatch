@@ -8,10 +8,9 @@ body  a a:focus a:hover{
  color: #484848 !important;
 }
 
-/* button:focus{ 	
-    border: none !important;
+button:focus button:active button:hover{
     outline:none !important;
-} */
+}
 
 body.modal-open[style] {
 
@@ -42,10 +41,43 @@ input[type="checkbox"] + label span {
     margin: 0;
     font-weight: normal;
     background:url(/local_assets/img/checkActiveNone.png) no-repeat;
-    background-size: 
 }
 input[type="checkbox"]:checked + label span {
     background:url(/local_assets/img/checkActive.png) no-repeat;
+}
+input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+	 transition: background-color 5000s ease-in-out 0s;
+	 -webkit-transition: background-color 9999s ease-out;
+     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+#m-search_frm .input_group input, #search_frm .input_group input{
+	width: 100% !important;
+    outline: none !important;
+    font-size: 15px;
+    vertical-align: text-top;
+}
+
+/* paging */
+.pagination>li>a, .pagination>li>span { 
+	margin-left: -1px !important;
+	width: 34px !important;
+	height: 34px !important;
+	margin: 0 8px 0 6px !important;
+	border-radius: 5px !important;
+	background-color: #ffffff !important;
+	font-size: 14px !important;
+	font-weight: normal !important;
+	font-stretch: normal !important;
+	font-style: normal !important;
+	letter-spacing: normal !important;
+	color: #8b8b8b !important;
+}
+.pagination>li>a.pageSelect{
+	background-color: #ff540f !important;
+	color: #ffffff !important;
 }
 
 /*header*/
@@ -422,7 +454,7 @@ footer .footer_wrap .f_btm a{
     z-index: 15;
     width: 100%;
     background-color: #000000;
-    opacity: 70%;
+    opacity: 60%;
     height: 100%;
     /* background-color: rgba( 255, 255, 255, 0.5 ); */
 	visibility: visible;

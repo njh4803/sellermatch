@@ -698,7 +698,7 @@ a.sort:last-child{
 						        <c:choose>
 						            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
 						            <c:when test="${pageData.nowPage == i}">
-						                <li><a><strong>${i}</strong></a></li>
+						                <li><a class="pageSelect"><strong>${i}</strong></a></li>
 						            </c:when>
 						            <%-- 나머지 페이지의 경우 링크 적용함 --%>
 						            <c:otherwise>
@@ -995,7 +995,7 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 	var tag = '';
 	for (var i = startPage; i < endPage+1; i++) {
 	    if (nowPage == i) {
-	    	tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'><strong>'+i+'</strong></a></li>'
+	    	tag += '<li><a href="javascript:void(0)" class="pageMove pageSelect" value='+i+'><strong>'+i+'</strong></a></li>'
 		} else {
 			tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'>'+i+'</a></li>'
 		}

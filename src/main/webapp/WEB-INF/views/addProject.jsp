@@ -33,7 +33,6 @@
   border-radius: 10px;
   box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
   border: solid 0.5px #ff540e;
-  font-size: 20px;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
@@ -131,8 +130,8 @@ a {
     background-image: none;
     border-radius: 4px;
 }
-select.inputForm{
-	border-left: 1px solid #ccc;
+textarea.inputForm{
+	resize: none;
 }
 .width-70{
 	width: 70%;
@@ -167,6 +166,7 @@ label.error {
 	display: inline-block;
 	padding: 5px 10px;
 	margin: 0;
+	float: left;
 }
 .jFiler-input-dragDrop {
     width: 100%;
@@ -201,7 +201,6 @@ label.error {
     background-color: #e3e3e3;
     background-image: none;
     border: 1px solid #ccc;
-    border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -438,8 +437,8 @@ input[type="checkbox"].findCheck:checked + label span {
    		margin-right: 9px !important;
    	}
 	input[type="checkbox"] + label span {
-	    vertical-align: middle;
 	    font-size: 2.5vw !important;
+	    background-size: 3vw !important;
 	}
 	.projTable{
 		width: 100% !important;
@@ -454,6 +453,10 @@ input[type="checkbox"].findCheck:checked + label span {
 	}
 	.formControl{
 		width: 100% !important;
+		font-size: 1vw !important;
+	}
+	.fileLable{
+		font-size: 1vw !important;
 	}
 	.inputForm {
 		height: auto !important;
@@ -1125,7 +1128,7 @@ $(function() {
    				<tr>
    					<td>첨부파일</td>
    					<td>
-    					<div class="row1">
+    					<div>
     						<div style="display: flex;">
                                	<input id = "file_route" type="text" class="formControl" readonly="readonly"/>
                              	<label class="fileLable">

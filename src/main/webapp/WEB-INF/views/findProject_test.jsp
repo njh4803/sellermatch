@@ -7,20 +7,20 @@
 <%@ include file="inc/header.jsp"%>
 <style>
 /* 스크롤바 디자인 */
-.left-container::-webkit-scrollbar {
+.left-container::-webkit-scrollbar, .check_list_box::-webkit-scrollbar {
   width: 4px;
   height: 10px;
   background: #ffffff;
 }
-.left-container::-webkit-scrollbar-thumb { 
+.left-container::-webkit-scrollbar-thumb, .check_list_box::-webkit-scrollbar-thumb { 
   border-radius: 3.5px;
   background-color: #D9D9D9;
 
-  .left-container:hover {
+  .left-container:hover, .check_list_box:hover {
     background-color: #adb5bd;
   }
 }
-.left-container::-webkit-scrollbar-track {
+.left-container::-webkit-scrollbar-track, .check_list_box::-webkit-scrollbar-track{
   background: #ffffff;
 }
 .titleBox{
@@ -80,7 +80,7 @@
 	font-style: normal;
 	letter-spacing: normal;
 	text-align: left;
-	color: #000000;
+	color: #343434;
 }
 .partner_bnr3 hr{
   width: 100%;
@@ -146,7 +146,7 @@ a.sort{
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
-  color: #000000;
+  color: #343434;
   margin-right: 20px;
 }
 a.sort.select{
@@ -182,7 +182,7 @@ a.sort.select{
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000000;
+  color: #343434;
   margin-bottom: 15px;
   /* 말줄임 표시 */
   overflow: hidden;
@@ -202,7 +202,7 @@ a.sort.select{
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000000;
+  color: #343434;
   margin-bottom: 26px;
   /* 말줄임 표시 */
   overflow: hidden;
@@ -223,7 +223,7 @@ a.sort.select{
 .regDate span{
   font-size: 15px;
   font-weight: bold;
-  color: #000000;
+  color: #343434;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -446,9 +446,553 @@ div.partner_list > div:nth-child(1) > ul, div.partner_list > div:nth-child(2) > 
 a.sort:last-child{
 	margin-right: 0;
 }
+.filter-box{
+	display: none;
+	width: 90%;
+	border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-left: 5vw;
+    margin-top: 10px
+}
+.filter{
+	width: 100%;
+	display: flex;
+	border-radius: 10px;
+}
+.filter:nth-child(1), .filter:nth-child(2){
+	border-bottom: 1px solid #ccc;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.check_list_box:nth-child(2){
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-radius: 0;
+}
+.filter-box ul {
+    display: none;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 70%;
+    margin: 0 auto;
+}
+.m-contentsBox{
+	display: none;
+	width: 100%;
+}
+.find-box{
+	display: none;
+    width: 100%;
+    display: inline-block;
+    position: fixed;
+    background-color: #fff;
+}
+.m-infoBox{
+	float: right;
+}
+.m-infoBox2{
+	padding: 17px 10px 17px 10px !important;
+}
 /*--------------------------------------*/
+/* 모바일 */
+@media screen and (max-width: 767px){
+	.w-find{
+		display: none !important;
+	}
+	.partner_bnr .partner_wrap{
+		width: 90% !important;
+	}
+	.contents-container{
+		padding: 0 !important;
+		width: 95% !important;
+		margin: 0 auto;
+	}
+	.left-container{
+		display: none !important;
+	}
+	header .header_wrap h1{
+		display: none !important;
+	}
+	.searchBox  {
+		display: none !important;
+	}
+	.search-letfBox{
+		display: none !important;
+	}
+	#m-search_frm {
+		display: inline-block !important;
+    	padding: 2.7vh 0 !important;
+    	margin-left: 5vw !important;
+	}
+	.filter-box{
+		display: inline-block !important;
+	}
+	.check_list_box{
+	    width: 33.333333% !important;
+	    text-align: center !important;
+	    height: 100% !important;
+	    padding: 15px 0 !important;
+	    margin-bottom: 0 !important;
+        overflow-x: hidden;
+   		overflow-y: auto;
+   		background-color: #fff;
+   		border-radius: 10px;
+	}
+	.check_list_box span{
+		vertical-align: middle;
+		font-weight: 800 !important;
+	}
+	.partner_bnr3{
+		padding-top: 250px !important;
+	}
+	.titleBox{
+		letter-spacing: -0.2vw !important;
+		font-size: 5vw !important;
+	}
+	.input_group{
+		width: 70vw !important;
+		vertical-align: top !important;
+	}
+	.countAll{
+		font-size: 3vw !important;
+	}
+	.contentsBox{
+		display: none !important; 
+	}
+	a.sort{
+		font-size: 2.7vw !important;
+		margin-right: 1vw !important;
+	}
+	a.sort img{
+		width: 3vw !important;
+	}
+	.rightBox{
+		display: inline-flex;	
+	}
+	.m-contentsBox{
+		display: block !important;
+	    padding: 0 5vw;
+	    margin: 10px 0;
+	}
+	.find-box{
+		display: block !important;
+	}
+	.partner_bnr3 hr {
+		margin: 5px 0 !important;
+	}
+	
+	#m-search_frm .input_group input, #search_frm .input_group input{
+		font-size: 3vw !important;
+	}
+	
+	.contents{
+		padding: 15px !important;
+	}
+	
+	.D-day{
+		width: 15vw !important;
+		font-size: 3vw !important;
+	}
+	.pFindBox, .sFindBox{
+		width: 20vw !important;
+		font-size: 3vw !important;
+	}	
+	.contents .leftBox{
+		width: 100% !important;
+	}
+	.regDate, .regDate span{
+		font-size: 3vw !important;
+		display: inline-block !important;
+	}
+	.regDate{
+		float: right;
+	}
+	.photoBox{
+		width: 25vw !important;
+		height: auto !important;
+		margin: 0 10px 10px 0 !important;
+	}
+	.project-titleBox{
+		font-size: 4vw !important;
+		display: inline-block !important;
+		margin: 10px 0;
+		height: 11vw !important;
+	}
+	.project-detailBox{
+		font-size: 3vw !important;
+		height: 8.5vw !important;
+		margin-bottom: 10px !important;
+	}
+	.infoBox{
+		font-size: 3.5vw !important;
+		width: 26vw;
+	}
+	.infoBox span{
+		font-size: 3.5vw !important;
+		width: 26vw;
+	}
+	.infoBox:first-child{
+		margin-right: 0 !important;
+	}
+	.infoBox2 {
+		width: 53.3vw !important;
+		font-size: 3.5vw !important;
+		float: right;
+	}
+	.infoBox2 span{
+		font-size: 3.5vw !important;
+	}
+	.infoBox3{
+		float: right;
+		width: 100% !important;
+		height: auto !important;
+		padding: 1vw 1vw 1.5vw 1vw !important;
+		text-align: center;
+	}
+	.authBox{
+		font-size: 3vw !important;
+		margin: 0 !important;
+		margin-right: 0 !important;
+	}
+	.authImg{
+		width: 3.5vw !important;
+	}
+	.left-infoBox2{
+		width: 100% !important;
+	}
+	.tagBox{
+		font-size: 3.5vw !important;
+		padding: 1.5vw 1.5vw !important;
+		height: 7vw !important;	
+		margin-right: 5px !important;
+	}
+}
+
+/* 테블릿 세로 */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.partner_bnr .partner_wrap{
+		width: 90% !important;
+	}
+	.contents-container{
+		padding: 0 !important;
+		width: 95% !important;
+		margin: 0 auto;
+	}	
+	.left-container{
+		display: none !important;
+	}
+	.search-letfBox{
+		display: none !important;
+	}
+	.titleBox{
+		float: left;
+		width: auto !important;
+	}
+}
+
+/* 테블릿 가로 */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+	.partner_bnr .partner_wrap{
+		width: 90% !important;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+	.partner_bnr .partner_wrap{
+		width: 90% !important;
+	}
+}
 </style>
+<div class="find-box">
+	<div class="filter-box">
+		<div class="filter">
+			<div class="check_list_box">
+				<span>찾기 유형</span>
+				<ul>
+					<li><input type="checkbox" class="checkAll" id="projSort"><label for="projSort"><span>전체</span></label></li>
+					<li><input type="checkbox" class="check" name="projSort" id="projSort-sp" value="2">
+						<label for="projSort-sp">
+							<span>판매자 찾기</span>
+						</label>
+					</li>
+					<li><input type="checkbox" class="check" name="projSort" id="projSort-pp" value="1">
+						<label for="projSort-pp">
+							<span>공급자 찾기</span>
+						</label>
+					</li>
+				</ul>
+			</div>
+			<div class="check_list_box">
+				<span>공급자검증</span>
+			   	<ul>
+			   		<li><input type="checkbox" class="checkAll" id="ppmemRname"><label for="ppmemRname"><span>전체</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppmemRname" value="1" id="pp1"><label for="pp1"><span>신원인증</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="ppmemRname" name="ppBizCerti" value="1" id="pp2"><label for="pp2"><span>사업자인증</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProdCerti" value="1" id="pp3"><label for="pp3"><span>상품검증</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="ppmemRname" name="projProfit" value="1" id="pp4"><label for="pp4"><span>수익성검증</span></label></li>
+			   	</ul>
+		  	</div>
+			<div class="check_list_box">
+		 		<span>판매자검증</span>
+			   	<ul>
+			   		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="sp1"><label for="sp1"><span>신원인증</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
+			   		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
+			   	</ul>
+			</div>	
+		</div>
+		<div class="filter">
+		   	<div class="check_list_box">
+		   		<span class="check_list">판매채널</span>
+		    	<ul>
+		    		<li><input type="checkbox" class="checkAll" id="projChannel"><label for="projChannel"><span>전체</span></label></li>
+		    		<li><input type="checkbox" class="check" name="projChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
+		    		<li><input type="checkbox" class="check" name="projChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
+		    		<li><input type="checkbox" class="check" name="projChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
+		    		<li><input type="checkbox" class="check" name="projChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
+		    		<li><input type="checkbox" class="check" name="projChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
+		    		<li><input type="checkbox" class="check" name="projChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
+		    		<li><input type="checkbox" class="check" name="projChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+		    	</ul>
+		   	</div>
+		   	<div class="check_list_box">
+		    	<span class="check_list">상품분류</span>
+		    	<ul>
+		    		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
+		    		<c:forEach var="indusList" items="${indusList}" varStatus="status">
+		    			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
+		    		</c:forEach>
+		    	</ul>
+		   	</div>
+		  	<div class="check_list_box">
+		  		<span class="check_list">상품단가</span>
+			   	<ul>
+			   		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
+			   		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
+			   		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="p2"><label for="p2"><span>2만원 미만</span></label></li>
+			   		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="p3"><label for="p3"><span>5만원 미만</span></label></li>
+			   		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p4"><label for="p4"><span>10만원 미만</span></label></li>
+			   		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="p5"><label for="p5"><span>10만원 이상</span></label></li>
+			   	</ul>
+		  	</div>	
+		</div>
+		<div class="filter">
+		   	<div class="check_list_box">
+		   		<span class="check_list">판매마진</span>
+		    	<ul>
+		    		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
+		    		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
+		    		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
+		    		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
+		    		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
+		    	</ul>
+		   	</div>
+			<div class="check_list_box">
+		        <span class="check_list">공급방법</span>
+		       	<ul>
+		       		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
+		       		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="s1"><label for="s1"><span>OEM</span></label></li>
+		       		<li><input type="checkbox" class="check" name="projSupplyType" value="2" id="s2"><label for="s2"><span>위탁판매</span></label></li>
+		       		<li><input type="checkbox" class="check" name="projSupplyType" value="3" id="s3"><label for="s3"><span>도매공급</span></label></li>
+		       		<li><input type="checkbox" class="check" name="projSupplyType" value="4" id="s4"><label for="s4"><span>운영대행</span></label></li>
+		       		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
+		       	</ul>
+		  	</div>
+			<div class="check_list_box">
+				<span class="check_list">등록지역</span>
+				<ul>
+		      		<li><input type="checkbox" class="checkAll" id="projNation"><label for="projNation"><span>전체</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="031" id="n2"><label for="n2"><span>경기</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="032" id="n3"><label for="n3"><span>인천</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="033" id="n4"><label for="n4"><span>강원</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="041" id="n5"><label for="n5"><span>충남</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="042" id="n6"><label for="n6"><span>대전</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="043" id="n7"><label for="n7"><span>충북</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="051" id="n8"><label for="n8"><span>부산</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="052" id="n9"><label for="n9"><span>울산</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="053" id="n10"><label for="n10"><span>대구</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="054" id="n11"><label for="n11"><span>경북</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="055" id="n12"><label for="n12"><span>경남</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="061" id="n13"><label for="n13"><span>전남</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="062" id="n14"><label for="n14"><span>광주</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="063" id="n15"><label for="n15"><span>전북</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="044" id="n16"><label for="n16"><span>세종특별자치시</span></label></li>
+		      		<li><input type="checkbox" class="check" name="projNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
+		      	</ul>
+			</div>	
+		</div>
+	</div>
+	<div class="m-contentsBox">
+		<div class="countAllbox clearfix">
+			<div class="leftBox countAll">총 <span>${projCount}건</span>이 검색되었습니다</div>
+			<div class="rightBox">
+				<a href="javascript:void(0)" class="sort select" id="regSort">등록순
+					<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+				</a>
+				<a href="javascript:void(0)" class="sort" id="endSort">마감순
+					<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+				</a>
+				<a href="javascript:void(0)" class="sort" id="applySort">지원자순
+					<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="partner_bnr">
+	<div class="partner_wrap">
+		<div class="partner_bnr3">
+			<div class="titleBox">거래처 찾기</div>
+			<div class="searchBox clearfix">
+				<div class="search-letfBox">
+					조건에 맞는 공급자와 판매자를 찾고 거래 신청할 수 있습니다.
+				</div>
+				<div class="search-rightBox">
+					<form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
+				        <div class="input_group">
+				            <input class="input-text" type="text" name="keyword" placeholder="원하는 키워드로 검색해보세요">
+				        </div>
+				        <button type="submit" class="search-btn">검색</button>
+				        <input type="hidden" value="regSort" id="sort" name="sort">
+				    </form>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<c:forEach var="output" items="${output}" varStatus="status">
+		<div class="contents clearfix">
+			<div class="clearfix">
+				<input type="hidden" id="projId${status.index}" value="${output.projId}">
+				<div class="leftBox">
+					<div class="left-infoBox">
+						<c:choose>
+							<c:when test="${output.projDday < 0}">
+								<div class="D-day">마감완료</div>
+							</c:when>
+							<c:otherwise>
+								<div class="D-day">마감 ${output.projDday}일전</div>
+							</c:otherwise>
+						</c:choose>
+						<c:if test="${output.projSort == 1}">
+			        		<div class="sFindBox">판매자 찾음</div>
+			        	</c:if>
+			        	<c:if test="${output.projSort == 2}">
+			        		<div class="pFindBox">공급자 찾음</div>
+			        	</c:if>
+			        	<div class="regDate">
+							<span>등록일</span>${output.projRegDate}
+						</div>
+			        	<%-- <div class="areaBox">${output.projNationName}지역</div> --%>
+					</div>				
+					<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+					<div class="m-infoBox">
+						<div class="infoBox">
+							<span>모집수</span> ${output.projRecruitNum}명
+						</div>
+						<div class="infoBox">
+							<span>지원수</span> ${output.applyCount}명
+						</div>						
+					</div>
+					<c:if test="${output.projPrice != 0}">
+						<div class="infoBox2">
+							<div>
+								<span>단가</span> ${output.projPrice}원 
+							</div> 
+							<div>
+								<span>마진</span> ${output.projMarginName}
+							</div> 
+						</div>
+					</c:if>
+					<c:if test="${output.projPrice == 0}">
+						<div class="infoBox2 m-infoBox2"><span>마진</span> ${output.projMarginName}</div>
+					</c:if>
+					<div class="infoBox3">
+						<c:if test="${output.memRname == 1}">
+							<div class="authBox">신원인증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.memRname == 0}">
+							<div class="authBox">신원인증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.profileBizCerti == 1}">
+							<div class="authBox">사업자인증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.profileBizCerti == 0}">
+							<div class="authBox">사업자인증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.projProdCerti == 1}">
+							<div class="authBox">상품검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.projProdCerti == 0}">
+							<div class="authBox">상품검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.projProfit == 1}">
+							<div class="authBox">수익성검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.projProfit == 0}">
+							<div class="authBox">수익성검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.profileChChk == 1}">
+							<div class="authBox">채널검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.profileChChk == 0}">
+							<div class="authBox">채널검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.profileSaleChk == 1}">
+							<div class="authBox">매출검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+							</div>
+						</c:if>
+						<c:if test="${output.profileSaleChk == 0}">
+							<div class="authBox">매출검증
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+							</div>
+						</c:if>							
+					</div>					
+					<div class="project-titleBox">
+						<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projTitle}</a>
+					</div>
+					<div class="project-detailBox">
+						<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projDetail}</a>
+					</div>	
+					<div class="left-infoBox2">
+						<c:forEach var="projKeywordList" items="${output.projKeywordList}">
+			           		<div class="tagBox">${projKeywordList}</div>
+			           	</c:forEach>
+					</div>
+				</div>								
+				<div class="rightBox">
+				
+				</div>
+			</div>
+		</div>
+		</c:forEach>		
+	</div>
+</div>
+<div class="partner_bnr w-find">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
 			<div class="titleBox">거래처 찾기</div>
@@ -767,7 +1311,7 @@ a.sort:last-child{
 						        <c:choose>
 						            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
 						            <c:when test="${pageData.nowPage == i}">
-						                <li><a><strong>${i}</strong></a></li>
+						                <li><a class="pageSelect"><strong>${i}</strong></a></li>
 						            </c:when>
 						            <%-- 나머지 페이지의 경우 링크 적용함 --%>
 						            <c:otherwise>
@@ -805,7 +1349,7 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 	var tag = '';
 	for (var i = startPage; i < endPage+1; i++) {
 	    if (nowPage == i) {
-	    	tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'><strong>'+i+'</strong></a></li>'
+	    	tag += '<li><a href="javascript:void(0)" class="pageMove pageSelect" value='+i+'><strong>'+i+'</strong></a></li>'
 		} else {
 			tag += '<li><a href="javascript:void(0)" class="pageMove" value='+i+'>'+i+'</a></li>'
 		}
@@ -1187,7 +1731,7 @@ $(document).ready(function() {
            		var page_html = page_template(page_contents);
            		
            		$("#list-container").append(html);
-           		$("footer").before(page_html);
+           		$(".contents-container").append(page_html);
            }
     	});
 	});	
@@ -1293,7 +1837,7 @@ $(document).ready(function() {
            		var page_html = page_template(page_contents);
            		
            		$("#list-container").append(html);
-           		$("footer").before(page_html);
+           		$(".contents-container").append(page_html);
            }
     	});
 	});
@@ -1396,7 +1940,7 @@ $(document).ready(function() {
            		var page_html = page_template(page_contents);
            		
            		$("#list-container").append(html);
-           		$("footer").before(page_html);
+           		$(".contents-container").append(page_html);
            }
     	});
 	});
@@ -1516,7 +2060,7 @@ $(document).ready(function() {
            		var page_html = page_template(page_contents);
            		
            		$("#list-container").append(html);
-           		$("footer").before(page_html);
+           		$(".contents-container").append(page_html);
            }
     	});
 	});
@@ -1599,7 +2143,7 @@ $(document).ready(function() {
            		var page_html = page_template(page_contents);
            		
            		$("#list-container").append(html);
-           		$("footer").before(page_html);
+           		$(".contents-container").append(page_html);
            }
     	});
 	});
