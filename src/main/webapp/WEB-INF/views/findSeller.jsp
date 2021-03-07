@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
 /* 스크롤바 디자인 */
 .left-container::-webkit-scrollbar {
@@ -408,21 +409,21 @@ a.s-link{
 .b-172{
 	bottom: 172;
 }
+.auth-container{
+	display: inline-block;
+	margin-left: 10px;
+}
 .authBox{
   display: inline-block;
-  margin: 0 0 14px 0;
   font-family: NanumGothic;
   font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.07;
   letter-spacing: normal;
   text-align: left;
   color: #343434;
-}
-.authBox:nth-child(odd){
-	margin-right: 17px;
+  vertical-align: -webkit-baseline-middle;
 }
 .authImg{
 	margin-top: -3px;
@@ -462,6 +463,15 @@ a.sort:last-child{
 .star-score{
 	text-align: center;
 	width: 140px;
+}
+.nick{
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
 }
 /*--------------------------------------*/
 </style>
@@ -621,7 +631,7 @@ a.sort:last-child{
 							<div class="photo-container">
 								<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
 								<div class="star-score">
-									<div>
+									<div class="nick">
 										닉네임자리입니다
 									</div>
 									<div>
@@ -635,7 +645,48 @@ a.sort:last-child{
 							</div>
 							<div class="left-infoBox">
 								<div class="seller-auth">검 증</div>
-								<div class="profileBizSort"></div>
+								<div class="auth-container">
+								<c:if test="${output.memRname == 1}">
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.memRname == 0}">
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileBizCerti == 1}">
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileBizCerti == 0}">
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileChChk == 1}">
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileChChk == 0}">
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileSaleChk == 1}">
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									</div>
+								</c:if>
+								<c:if test="${output.profileSaleChk == 0}">
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									</div>
+								</c:if>									
+								</div>
 							</div>
 							<div class="seller-intro">
 								<a class="s-link" href="javascript:void(0);"  data-index="${status.index}">${output.profileIntro}</a>
@@ -652,12 +703,29 @@ a.sort:last-child{
 							</div>
 						</div>
 						<div class="rightBox">
-							<div class="infoBox2"><span>계약 프로젝트</span><span>건</span></div>
-							<div class="infoBox2"><span>등록 프로젝트</span><span>건</span></div>
-							<div class="infoBox2"><span>요청 받은 수</span><span>건</span></div>
-							<div class="infoBox2"><span>판매채널</span><span>건</span></div>
-							<div class="infoBox2"><span>매출규모</span><span>건</span></div>
-							<div class="infoBox2"><span>판매경력</span><span>건</span></div>
+							<div class="infoBox2"><span>계약 프로젝트</span><span>${output.contractCount}건</span></div>
+							<div class="infoBox2"><span>등록 프로젝트</span><span>${output.projAddCount}건</span></div>
+							<div class="infoBox2"><span>요청 받은 수</span><span>${output.recommendCount}건</span></div>
+							<div class="infoBox2">
+								<span>판매채널</span>
+								<span>
+								<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status2">
+			        					<c:if test="${status2.first}">
+			        						${profileChannel} 외
+			        					</c:if>
+			        					<c:if test="${status2.last}">
+			        						${status2.count-1}채널
+			        					</c:if>
+			        			</c:forEach>
+								</span>
+							</div>
+							<div class="infoBox2">
+								<span>매출규모</span>
+								<span>
+									<fmt:formatNumber value="${output.profileVolume}" type="number"/>원
+								</span>
+							</div>
+							<div class="infoBox2"><span>판매경력</span><span>${output.profileCareerName}</span></div>
 						</div>
 					</div>
         		</div>
@@ -901,7 +969,7 @@ a.sort:last-child{
 								계약<span>${output.contractCount}건</span>
 								등록프로젝트<span>${output.projAddCount}건</span>
 								요청수<span>${output.recommendCount}건</span>
-								매출<span>${output.profileVolume}원</span>
+								매출<span><fmt:formatNumber value="${output.profileVolume}" type="number"/>원</span>
 								경력<span style="margin-right: 0;">${output.profileCareerName}</span>
 							</div>
 						</div>
@@ -1139,10 +1207,8 @@ $(document).ready(function() {
 	$(document).on("click", ".s-link", function(){
 		
 		var idx = $(this).data('index');
-		var profileId = $("#profileId"+idx).val();
-		console.log(profileId);
-		console.log(idx);
-		window.location.href = ROOT_URL+"/seller/detail?profileId="+profileId;
+		var profileMemId = $("#profileId"+idx).val();
+		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
 	});	
 	
 	$(document).on("click", ".check_list_box", function(){
@@ -1173,105 +1239,6 @@ $(document).ready(function() {
 	    	$('.left-container').removeAttr('style');
     	}
   	});
-	
-	$(document).on("click", ".resultReset", function(){
-		
-		// 초기화
-		$('.resultText').text('선택이 없을시에는 전체를 기준으로 리스트가 보여집니다')
-		$(".count-hr").remove();
-		$(".content").remove();
-		$(".pageBox").remove();
-		$(".emptyResult").remove();
-		
-		var formData = $("#search_frm");
-		var profileBizSort;
-		var profileNation;
-		var profileIndus;
-		var profileChannel;
-		
-		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel'];
-		
-		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel
-				};
-		
-		for (var i = 0; i < param_list_name.length; i++) {
-			//초기화
-			param_list[param_list_name[i]]= [];
-			
-			$("input[name="+param_list_name[i] +"]").each(function(i,e){
-				this.checked = false;
-			});
-			
-			$("input[id="+param_list_name[i] +"]").each(function(){
-				this.checked = false;
-			});
-		}
-
-		
-		param_list["sort"] = $("#sort").val();
-		var url = formData.attr('action');
-		
-		$.ajax({
-	       type: "GET",
-	       url: ROOT_URL+"/seller/find2",
-	       data: param_list,
-	       success: function(json) {
-	    	   console.log(json);
-	    	   	var content = json
-	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
-	       		var html = template(content);
-	       		
-	       		var page_content = json.pageData
-	       		console.log(page_content)
-	       		var page_template = Handlebars.compile($("#page-tmpl").html());
-	       		var page_html = page_template(page_content);
-	       		
-	       		$(".profile-box").append(html);
-	       		$(".profile-box").append(page_html);
-	       		
-	       }
-		});
-	});
-	
-	$(document).on("click", ".selectBox", function(){
-		var id = $(this).data('value');
-		var state = $(this).data('state');
-		
-		if (state == 'on') {
-			$(this).data('state', 'off');
-			$(this).css('border-bottom', '1px solid #cccccc');
-		} else {
-			$(this).data('state', 'on');
-			$(this).css('border-bottom', 'none');
-		}
-		
-		var count = 0;		
-		
-		$('#'+id).toggle();
-		
-		$('.selectBox').each(function (i, e) { 
-			if ($('#selectBox'+i).data('state') == 'on') {
-				++count;
-			} 
-		});
-		
-		if (count > 0) {
-			$('.selectResult').addClass('selectResult2');
-		} else {
-			$('.selectResult').removeClass('selectResult2');
-		}
-
-		
-	});
-	
-	$(document).on("click", ".match", function(){
-		
-		var idx = $(this).data('index');
-		var profileMemId = $("#profileMemId"+idx).attr('data-value');
-		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
-	});
 	
 	$(document).on("submit", "#seller_frm", function(e){
 		e.preventDefault();
@@ -1354,11 +1321,6 @@ $(document).ready(function() {
 		});
 	});
 	
-	$(document).on("click", ".sellerDetail", function(){
-		var idx = $(this).data('index');
-		var profileMemId = $("#profileMemId"+idx).data('value');
-		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
-	});
 	// 정렬 선택시
 	$(document).on("click", ".sort", function(){
 		var value = this.id;
