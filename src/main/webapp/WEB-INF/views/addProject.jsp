@@ -845,6 +845,31 @@ $(document).ready(function() {
         });
         
     });
+    
+    /* 썸네일 이미지 업로드 */
+    $(document).ready(function() {
+    	$(document).on("change", "#image", handleImgfileSelect);
+    	
+    }); // end ready...
+
+    function handleImgfileSelect(e) {
+    	var files = e.target.files;
+    	var filesArr = Array.prototype.slice.call(files);
+    	
+    	
+    	filesArr.forEach(function(f) {
+    		if(!f.type.match("image.*")) {
+    			return;
+    		}
+    		sel_file = f;
+    		
+    		var reader = new FileReader();
+    		reader.onload = function(e) {
+    			$("#img").attr("src", e.target.result);
+    		}
+    		reader.readAsDataURL(f);
+    	});
+    };
 });
 </script>
 <script type="text/javascript">
@@ -893,6 +918,24 @@ $(function() {
 				<input type="hidden" name="projState" value="1">
 	    		<table class="projTable">
 	    			<tbody>
+	    				<tr>
+	    					<td>썸네일 사진</td>
+   							<td>
+    							<div>
+									<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
+										<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
+									    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+									</div>	
+    								<div style="display: flex;">
+                   		            	<input id = "file_route" type="text" class="formControl" readonly="readonly"/>
+                  		           		<label class="fileLable">
+                   		          			파일 선택
+                  		           		<input id = "image" name="projFile" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+                     		        	</label>
+                    		        </div>
+               		            </div>
+   							</td>
+	    				</tr>
 	    				<tr>
 	    					<td>프로젝트 제목</td>
 							{{#ifCond memSort '==' 1}}

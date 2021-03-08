@@ -37,8 +37,8 @@
 	</interceptors>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="/usr/local/img">
-		<!-- <beans:constructor-arg value="C:/wesell/workspace/upload"> -->
+		<!-- <beans:constructor-arg value="/usr/local/img"> -->
+		<beans:constructor-arg value="C:/wesell/workspace/upload">
 	</beans:constructor-arg>
 	</beans:bean>
 	
