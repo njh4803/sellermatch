@@ -95,7 +95,7 @@ header #m-search_frm{
 	        </div>
 	        <button type="submit" class="m-search-btn" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/search.png');">
 	        </button>
-	        <input type="hidden" value="regSort" id="m-sort" name="sort">
+	        <input type="hidden" value="regSort" id="sort" name="sort">
 	    </form>
        <!---------------------------- 모바일 ------------------------------->
        <div class="gnb">

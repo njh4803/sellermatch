@@ -1111,8 +1111,8 @@
    		<div class="main-0005">
    			<img class="img3" alt="" src="${pageContext.request.contextPath}/local_assets/img/main_img3.png">
    			<div class="textBox5">
-   				<span>직접 써보시는 것이 가장 빠릅니다!</span><br>
-				무료체험에는 어떠한 비용도 들지 않습니다
+   				<span>직접 써보시는 것이 가장 빠를거에요.</span><br>
+				무료체험에는 어떠한 비용도 들지 않아요.
    			</div>
    			<button class="nowBtn">바로 체험해보기</button>
    		</div>
