@@ -106,6 +106,7 @@ a:focus, a:hover{
   color: #ffffff;
   vertical-align: bottom;
   line-height: normal !important;  
+  border: 1px solid #8000c9;
 }
 .pFindBox{
   display: inline-block;
@@ -123,6 +124,7 @@ a:focus, a:hover{
   color: #ffffff;
   vertical-align: bottom;
   line-height: normal !important;
+  border: 1px solid #eb00bc; 
 }
 .detailBox1{
   width: 100%;
@@ -470,6 +472,13 @@ textarea::placeholder {
 /* ---------------------------------------------------------------------------------------------------------- */
 /* 모바일 */
 @media screen and (max-width: 767px){
+	.partner_wrap hr{
+		margin: 5px 0 !important;
+		border: 2px solid #ff540f !important;
+	}
+	.partner_bnr3{
+		padding-top: 30px !important;
+	}
 	.container1{
 		width: 100% !important;
 		margin-bottom: 10px !important;
@@ -486,6 +495,7 @@ textarea::placeholder {
 	}
 	.container1 .container2{
 		padding: 5vw !important;
+		margin-top: 5px !important;
 	}	
 	.titleBox{
 		width: 100% !important;
@@ -493,8 +503,10 @@ textarea::placeholder {
 	}
 	.D-day{
 		margin-left: 0 !important;
-		width: 20vw !important;
-		font-size: 2.8vw !important;
+	    width: 20vw !important;
+	    font-size: 2.8vw !important;
+	    padding: 1.3vw !important;
+	    height: 6.5vw !important;		
 	}
 	.pFindBox, .sFindBox{
 		width: 20vw !important;
@@ -514,21 +526,103 @@ textarea::placeholder {
 	}
 	.infoBox{
 		width: 32% !important;
+		height: 100% !important;
 	}
 	.infoBox2{
 		width: 49% !important;
+		height: 100% !important;
 	}
 	.infoBox2.infoBox3{
 		width: 100% !important;
 		text-align: center !important;
 	}
+	.detailBox3{
+		font-size: 4vw !important;
+	}
 	.detailBox3 .textBox1{
 		margin: 10px 0 0 0 !important;
+		font-size: 3vw !important;
 	}
 	.container3{
 		width: 100% !important;
 		float: none !important;
 		margin-bottom: 20px !important;
+		padding: 5vw !important;
+	}
+	.textBox2, .infoBox2 span{
+		font-size: 3vw !important;
+		margin-top: 1vh !important;
+		margin-bottom: 5px !important;
+	}
+	.infoBox .textRow span{
+		font-size: 3vw !important;
+	}
+	.textRow, .infoBox2 span.textRow2{
+		margin-bottom: 1vh !important;
+	}
+	.detailBox3 .textBox2{
+		font-size: 2vw !important;
+    	min-height: 90px;
+	}
+	.tagBox{
+		font-size: 2.5vw !important;
+		margin-bottom: 5px !important;
+	}
+	.reviewBox2{
+		width: 25% !important;
+	}
+	.reviewNick{
+		font-size: 2vw !important;
+		margin: 0 !important;
+	}	
+	.reviewContents{
+		font-size: 2vw !important;
+		width: 70% !important;
+		margin-top: 1.2vh !important;
+	}
+	.btnBox img{
+		margin-top: -0.3vh !important;
+	    width: 3vw !important;
+	}
+	.btnBox{
+		width: auto !important;
+	    height: auto !important;
+	    padding: 1vw 1vh !important;
+	    font-size: 3vw !important;
+	}
+	.btn-container{
+		text-align: center;
+	}
+	.detailBox2-b{
+		border-bottom: none !important;
+		border-top: none !important;
+	}
+	.question-btn{
+		width: 18vw !important;
+	    height: 3vh !important;
+	    font-size: 3vw !important;
+	}
+	.text-center{
+		width: 130px !important;
+    	display: inline-block !important;
+	}
+	.profileImgBox{
+	    display: inline-block !important;
+	    border-radius: 50% !important;
+	    width: 100px !important;
+	    height: 100px !important;
+	}
+	.profileNick{
+	    text-align: center !important;
+	    display: inline-block !important;
+	    width: 100% !important;		
+	    font-size: 3vw !important;
+	}
+	.applyNumBox{
+		display: inline-block !important;
+  		margin-left: 6vw !important;
+  	  	width: 35vw !important;
+    	vertical-align: top;
 	}
 }
 
@@ -622,7 +716,7 @@ textarea::placeholder {
 					<div class="infoBox2"><span>모집마감</span><span class="textRow2">${output.projEndDate}</span></div>
 					<div class="infoBox2"><span>판매마진</span><span class="textRow2">${output.projMarginName}</span></div>
 				</div>			
-				<div class="detailBox2">
+				<div class="detailBox2 detailBox2-b">
 					<div class="infoBox2 infoBox3"><span>판매채널</span><span class="textRow2">
 						<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
 							${projChannelList}&nbsp;
@@ -703,10 +797,6 @@ textarea::placeholder {
        				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">관심등록
        			</button>
        		</div> --%>
-       		<div class="text-center"> 
-       			<button class="matchBtn" id="applyBtn">지원하기
-       			</button>
-       		</div>
        		<div class="btn-container">
           		<div class="btnBox">스크랩
           			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/scrap.png">
@@ -724,11 +814,11 @@ textarea::placeholder {
 			</div>
 			<div class="applyNumBox">
 				<div>
-					<span>프로젝트 등록</span>
+					<span>거래 등록</span>
 					<span>${output.projAddCount}건</span>
 				</div>
 				<div>
-					<span>프로젝트 거래</span>
+					<span>계약</span>
 					<span>${output.contractCount}건</span>
 				</div>
 			</div>
@@ -927,11 +1017,11 @@ textarea::placeholder {
 			</div>
 			<div class="applyNumBox">
 				<div>
-					<span>프로젝트 등록</span>
+					<span>거래 등록</span>
 					<span>${output.projAddCount}건</span>
 				</div>
 				<div>
-					<span>프로젝트 거래</span>
+					<span>계약</span>
 					<span>${output.contractCount}건</span>
 				</div>
 			</div>
@@ -961,11 +1051,6 @@ textarea::placeholder {
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</div>
-</div>
-<div class="partner_bnr">
-    <div class="partner_wrap" style="text-align: left;">
-
 	</div>
 </div>
 <%@ include file="inc/footer.jsp"%>

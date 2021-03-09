@@ -528,7 +528,7 @@ a.sort:last-child{
 	}
 	#m-search_frm {
 		display: inline-block !important;
-    	padding: 2.7vh 0 !important;
+    	padding: 3vh 0 !important;
     	margin-left: 5vw !important;
 	}
 	.filter-box{
@@ -602,6 +602,7 @@ a.sort:last-child{
 	.pFindBox, .sFindBox{
 		width: 20vw !important;
 		font-size: 3vw !important;
+		padding: 3px 0 !important;
 	}	
 	.contents .leftBox{
 		width: 100% !important;
@@ -663,6 +664,8 @@ a.sort:last-child{
 	}
 	.authImg{
 		width: 3.5vw !important;
+		margin-top: -2px;
+   		width: 3.5vw !important;
 	}
 	.left-infoBox2{
 		width: 100% !important;
@@ -980,7 +983,7 @@ a.sort:last-child{
 								</div>
 							</c:if>							
 						</div>					
-						<div class="project-titleBox">
+						<div class="project-titleBox clearfix">
 							<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projTitle}</a>
 						</div>
 						<div class="project-detailBox">
@@ -1598,7 +1601,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								</div>
 							{{/ifCond}}						
 						</div>					
-						<div class="project-titleBox">
+						<div class="project-titleBox clearfix">
 							<a class="proj-link" href="javascript:void(0);"  data-index="{{@key}}">{{projTitle}}</a>
 						</div>
 						<div class="project-detailBox">
