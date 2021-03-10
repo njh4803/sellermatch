@@ -3,9 +3,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <!-- jquery file upload Frame work -->
-<link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css">
+<link href="${pageContext.request.contextPath}/template/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/template/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/template/assets/css/file.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
 .partner_bnr {
@@ -457,8 +457,8 @@ $(document).ready(function() {
 });
 </script>
 <!-- jquery file upload js -->
-<script src="${pageContext.request.contextPath}/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/assets/pages/filer/custom-filer.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/assets/pages/filer/jquery.fileuploads.init.js" type="text/javascript"></script>    
+<script src="${pageContext.request.contextPath}/template/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/template/assets/pages/filer/custom-filer.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/template/assets/pages/filer/jquery.fileuploads.init.js" type="text/javascript"></script> 
     </body>
 </html>

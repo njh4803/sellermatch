@@ -345,7 +345,7 @@ $(document).ready(function() {
                             <div class="auth-box">
                                 <div class="row m-b-20">
                                     <div class="login_logo">
-                                        <img class="login-logo" src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+                                        <img class="login-logo" src="${pageContext.request.contextPath}/assets/img/login-logo.png">
                                         <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
                                     </div>
                                 </div>
@@ -392,7 +392,7 @@ $(document).ready(function() {
 	<div class="">
 		<div class="row m-b-20">
 			<div class="login_logo" style="margin-top:0;">
-        		<img src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+        		<img src="${pageContext.request.contextPath}/assets/img/login-logo.png">
         		<h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
 			</div>
 		</div>
@@ -420,7 +420,7 @@ $(document).ready(function() {
 							</div>
 						</div>
 						<div class="row" style="margin: 0 auto;">
-							<img src="${pageContext.request.contextPath}/local_assets/img/find.png" style="width:400px;">
+							<img src="${pageContext.request.contextPath}/assets/img/find.png" style="width:400px;">
                         </div>
 						</form>
 					</div>
@@ -439,7 +439,7 @@ $(document).ready(function() {
 							</div>
 						</div>
 						<div class="row" style="margin: 0 auto;">
-							<img src="${pageContext.request.contextPath}/local_assets/img/find.png" style="width:400px;"> 
+							<img src="${pageContext.request.contextPath}/assets/img/find.png" style="width:400px;"> 
                         </div>
 						</form>
 					</div>

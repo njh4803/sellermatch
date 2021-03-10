@@ -7,8 +7,8 @@
     <title>SELLER MATCH</title>
 	<meta charset="utf-8" />
 	
-	<link href="${pageContext.request.contextPath}/local_assets/css/reset.css" rel="stylesheet" type="text/css">
-    <link href="${pageContext.request.contextPath}/local_assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/assets/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7ebcbe9e0a.js" crossorigin="anonymous"></script>
@@ -16,7 +16,7 @@
 <body>
     <div id="wrap">
         <div class="notice">
-            <img src="${pageContext.request.contextPath}/local_assets/img/sellermatch_notice.png" alt="sellermatch">
+            <img src="${pageContext.request.contextPath}/assets/img/sellermatch_notice.png" alt="sellermatch">
             <h1>홈페이지 <em>준비중</em>입니다.</h1>
             <p>빠른시일내에 찾아뵙도록 하겠습니다 :)</p>
         </div>

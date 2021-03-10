@@ -2,660 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
-<style>
-.top-Box{
-  width: 100%;
-  font-size: 25px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-  margin-bottom: 10px;
-}
-.top-Box2{
-	width: 100%;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #343434;
-	text-align: left;
-}
-.partner_bnr3 hr{
-  height: 0;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: solid 2px #ff570e;
-}
-.container1{
-	width: 900px;
-	display: inline-block;
-	margin-bottom: 51px;
-}
-.container2{
-	margin: 0 240px;
-	height: 50px;
-}
-.container1 .container2{
-	margin: 0;
-    width: 100%;
-	height: fit-content;
-    float: left;
-    padding: 60px;
-    border-radius: 10px;
-  	border: solid 1px #cccccc;
-}
-.projDetail{
-  width: 100%;
-  height: 53px;
-  margin-bottom: 32px;
-}
-.projDetail a{
-	text-decoration: none;
-	color: black;
-}
-a:focus, a:hover{
-	text-decoration: none;
-}
-.D-day{
-	display: inline-block;
-	width: 90px;
-	height: 26px;
-	padding: 2px 0 1px;
-	border-radius: 5px;
-	border: solid 0.5px #ff0000;
-	background-color: #ffffff;
-	font-size: 15px;
-	font-weight: 800;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: center;
-	color: #ff0000;
-	margin-left: 35px;
-	vertical-align: bottom;
-}
-.titleBox{
-	display: inline-block;
-	width: 550px;
-	font-size: 22px;
-    font-weight: 800;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
-}
-.sFindBox{
-  display: inline-block;
-  width: 90px;
-  height: 26px;
-  padding: 3px 0 4px;
-  border-radius: 5px;
-  background-color: #8000c9;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: bottom;
-  line-height: normal !important;  
-  border: 1px solid #8000c9;
-}
-.pFindBox{
-  display: inline-block;
-  padding: 3px 0 4px;
-  width: 90px;
-  height: 26px;
-  border-radius: 5px;
-  background-color: #eb00bc;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: bottom;
-  line-height: normal !important;
-  border: 1px solid #eb00bc; 
-}
-.detailBox1{
-  width: 100%;
-  border-top: solid 1px #cccccc;
-}
-.detailBox2{
-  width: 100%;
-  border-top: solid 1px #cccccc;
-  border-bottom: solid 1px #cccccc;
-}
-.detailBox3{
-  margin: 30px 0 16px;
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ff560f;
-  width: 100%;
-}
-.detailBox3 .textBox1{
-  margin: 16px 0 30px;
-  padding: 20px 20px 22px;
-  border-radius: 10px;
-  border: solid 1px #cccccc;
-  background-color: #ffffff;
-  font-size: 15px !important;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-}
-.detailBox3 .textBox2{
-  width: 100%;
-  margin: 16px 0 15px;
-  padding: 20px 20px 22px;
-  border-radius: 10px;
-  border: solid 1px #cccccc;
-  background-color: #ffffff;
-  text-align: left;
-  overflow: hidden;
-  resize: none;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-  float: right;
-}
-textarea::placeholder {
-  color: #000000;
-}
-.detailBox4{
-  display: contents;
-  height: 32px;
-  margin-bottom: 22px;
-  font-size: 22px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.36;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-}
-.infoBox{
-  text-align: center;
-  width: 24.5%;
-  height: 100px;
-  display: inline-block;
-}
-.textBox2{
-  display: inline-block;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #838383;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-.infoBox .textRow span{
-  margin-bottom: 20px;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000000;
-}
-.infoBox2{
-    display: inline-block;
-    text-align: center; 
-    width: 49.5%;
-    height: 100px;
-}
-.infoBox2 span{
-  margin-top: 20px;
-  margin-bottom: 10px;
-  width: 100%;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #838383;
-  display: inline-block;
-}
-.infoBox2 span.textRow2{
-  width: 100%;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000000;
-  display: inline-block;
-  margin: 0 !important;
-}
-.tagBox{
-  display: inline-block;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  margin-right: 10px;
-  padding: 6px 10px 8px;
-  border-radius: 5px;
-  background-color: #eeeeee;
-  color: #343434;
-}
-.question-btn{
-  width: 100px;
-  height: 30px;
-  border-radius: 4px;
-  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
-  background-image: linear-gradient(107deg, #ff8000, #ff540f 100%);
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-}
-.reviewBox{
-	padding: 0 0 11px 0;
-	width: 100%;
-	height:fit-content;
-	border-top: solid 1px #cccccc
-}
-.reviewBox2{
-	display: inline-block;
-	width: 12%;
-	height:fit-content;
-	float: left;
-}
-.reviewNick{
-	display: inline-block;
-	margin: 0 20px 11px 0;
-	font-family: NanumGothic;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #000000;
-}
-.reviewDate{
-  font-size: 10px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-}
-.reviewContents{
-	display: inline-block;
-	width: 86%;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #000000;
-}
-.container3{
-	width: 360px;
-	padding: 30px 40px;
-	border-radius: 10px;
-	border: solid 1px #cccccc;
-	background-color: #ffffff;
-	float: right;
-}
-.matchBtn{
-  width: 200px;
-  height: 40px;
-  margin-bottom: 30px;
-  border-radius: 4px;
-  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
-  background-image: linear-gradient(101deg, #ff8000, #ff540f);
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-}
-.btnBox{
-	display: inline-block;
-	width: 80px;
-	height: 30px;
-	padding: 5px 5px;
-	margin: 0 3px;
-	border-radius: 5px;
-	border: solid 1px #cccccc;
-	background-color: #ffffff;
-	text-align: center;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	color: #000000;	
-}
-.profileImgBox{
-    display: inline-block;
-    border-radius: 70%;
-    overflow: hidden;
-	width: 130px;
-	height: 130px;
-	object-fit: contain;
-}
-.btn-container{
-	margin-bottom: 30px;
-}
-.miniImgBox{
-    display: inline-block;
-    border-radius: 70%;
-    overflow: hidden;
-    width: 52px;
-	height: 52px;
-	margin: 0 10px 0 0;
-	object-fit: contain;
-}
-.btnBox img{
-	margin-top: -5px;
-}
-.profileNick{
-  margin: 15px 0 16px;
-  font-size: 20px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-.applyNumBox{
-  margin: 10px 0 0;
-  border-top: solid 1px #dddddd;
-  border-bottom: solid 1px #dddddd;
-  margin-top: 20px;
-  margin-bottom: 31px;
-  padding: 5px 0;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.applyNumBox span{
-	display: inline-block;
-	margin-bottom: 6px;
-	margin-top: 6px;
-}
-.applyNumBox span:nth-child(2){
-  float: right;
-  color: #000000;
-}
-.applyStatus{
-  font-size: 16px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-  margin-bottom: 16px;
-}
-.applyNick{
-	display: inline-block;
-    vertical-align: middle;
-	height: 21px;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #000000;
-	margin-top: -20px;
-}
-.applyTag{
-	display: inline-block;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #4b4b4b;
-	margin: 1px 5px 0 0;
-}
-.applyBox{
-	margin-bottom: 20px;
-	text-align: left;
-}
-.applyBox:last-child{
-	margin-bottom: 0px;
-}
-.m-detail{
-	display: none;
-}
-/* ---------------------------------------------------------------------------------------------------------- */
-/* 모바일 */
-@media screen and (max-width: 767px){
-	.partner_wrap hr{
-		margin: 5px 0 !important;
-		border: 2px solid #ff540f !important;
-	}
-	.partner_bnr3{
-		padding-top: 30px !important;
-	}
-	.container1{
-		width: 100% !important;
-		margin-bottom: 10px !important;
-	}
-	.w-detail{
-		display: none !important;
-	}
-	.m-detail{
-		display: block !important;
-	}
-	.partner_bnr .partner_wrap{
-		width: 90% !important;
-		margin: 0 auto !important;
-	}
-	.container1 .container2{
-		padding: 5vw !important;
-		margin-top: 5px !important;
-	}	
-	.titleBox{
-		width: 100% !important;
-		font-size: 5vw !important;
-	}
-	.D-day{
-		margin-left: 0 !important;
-	    width: 20vw !important;
-	    font-size: 2.8vw !important;
-	    padding: 1.3vw !important;
-	    height: 6.5vw !important;		
-	}
-	.pFindBox, .sFindBox{
-		width: 20vw !important;
-		font-size: 2.8vw !important;	
-		padding: 1.3vw !important;
-		height: 6.5vw !important;
-	}
-	.top-Box{
-		font-size: 5vw !important;
-		margin-bottom: 0 !important;
-	}
-	.partner_bnr3 hr{
-		margin: 5px !important;
-	}
-	.projDetail{
-		margin: 10px 0 !important;
-	}
-	.infoBox{
-		width: 32% !important;
-		height: 100% !important;
-	}
-	.infoBox2{
-		width: 49% !important;
-		height: 100% !important;
-	}
-	.infoBox2.infoBox3{
-		width: 100% !important;
-		text-align: center !important;
-	}
-	.detailBox3{
-		font-size: 4vw !important;
-	}
-	.detailBox3 .textBox1{
-		margin: 10px 0 0 0 !important;
-		font-size: 3vw !important;
-	}
-	.container3{
-		width: 100% !important;
-		float: none !important;
-		margin-bottom: 20px !important;
-		padding: 5vw !important;
-	}
-	.textBox2, .infoBox2 span{
-		font-size: 3vw !important;
-		margin-top: 1vh !important;
-		margin-bottom: 5px !important;
-	}
-	.infoBox .textRow span{
-		font-size: 3vw !important;
-	}
-	.textRow, .infoBox2 span.textRow2{
-		margin-bottom: 1vh !important;
-	}
-	.detailBox3 .textBox2{
-		font-size: 2vw !important;
-    	min-height: 90px;
-	}
-	.tagBox{
-		font-size: 2.5vw !important;
-		margin-bottom: 5px !important;
-	}
-	.reviewBox2{
-		width: 25% !important;
-	}
-	.reviewNick{
-		font-size: 2vw !important;
-		margin: 0 !important;
-	}	
-	.reviewContents{
-		font-size: 2vw !important;
-		width: 70% !important;
-		margin-top: 1.2vh !important;
-	}
-	.btnBox img{
-		margin-top: -0.3vh !important;
-	    width: 3vw !important;
-	}
-	.btnBox{
-		width: auto !important;
-	    height: auto !important;
-	    padding: 1vw 1vh !important;
-	    font-size: 3vw !important;
-	}
-	.btn-container{
-		text-align: center;
-	}
-	.detailBox2-b{
-		border-bottom: none !important;
-		border-top: none !important;
-	}
-	.question-btn{
-		width: 18vw !important;
-	    height: 3vh !important;
-	    font-size: 3vw !important;
-	}
-	.text-center{
-		width: 130px !important;
-    	display: inline-block !important;
-	}
-	.profileImgBox{
-	    display: inline-block !important;
-	    border-radius: 50% !important;
-	    width: 100px !important;
-	    height: 100px !important;
-	}
-	.profileNick{
-	    text-align: center !important;
-	    display: inline-block !important;
-	    width: 100% !important;		
-	    font-size: 3vw !important;
-	}
-	.applyNumBox{
-		display: inline-block !important;
-  		margin-left: 6vw !important;
-  	  	width: 35vw !important;
-    	vertical-align: top;
-	}
-}
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/detailProject.css">
 
-/* 테블릿 세로 */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-	.container1{
-		width: 100% !important;
-	}
-	.m-detail{
-		display: none !important;
-	}	
-}
-
-/* 테블릿 가로 */
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-	.container1{
-		width: 100% !important;
-	}
-	.m-detail{
-		display: none !important;
-	}		
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1300px) {
-	.container1{
-		width: 100% !important;
-	}
-	.m-detail{
-		display: none !important;
-	}	
-}
-
-</style>
 <div class="partner_bnr m-detail">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
@@ -794,22 +142,22 @@ textarea::placeholder {
 		<div class="container3">
 <%--           	<div>
        			<button class="Btn">
-       				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">관심등록
+       				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/assets/img/starNone.png">관심등록
        			</button>
        		</div> --%>
        		<div class="btn-container">
           		<div class="btnBox">스크랩
-          			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/scrap.png">
+          			<img alt="" src="${pageContext.request.contextPath}/assets/img/scrap.png">
 	       		</div>
 	       		<div class="btnBox">좋아요
-	       			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/like.png">
+	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/like.png">
 	       		</div>
 	       		<div class="btnBox">공유
-	       			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/share.png">
+	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/share.png">
 	       		</div>    		
        		</div>
 			<div class="text-center">
-				<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+				<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 				<div class="profileNick">${output.memNick}</div>
 			</div>
 			<div class="applyNumBox">
@@ -829,7 +177,7 @@ textarea::placeholder {
 				<c:when test="${output.applyCount > 0}">
 					<c:forEach var="applyDto" items="${applyDto}">
 					<div class="applyBox">
-						<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+						<img class="miniImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 						<div class="applyNick">
 							<div>${applyDto.memNick}</div>
 							<div class="applyTag">
@@ -993,7 +341,7 @@ textarea::placeholder {
 		<div class="container3">
 <%--           	<div>
        			<button class="Btn">
-       				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">관심등록
+       				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/assets/img/starNone.png">관심등록
        			</button>
        		</div> --%>
        		<div class="text-center"> 
@@ -1002,17 +350,17 @@ textarea::placeholder {
        		</div>
        		<div class="btn-container">
           		<div class="btnBox">스크랩
-          			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/scrap.png">
+          			<img alt="" src="${pageContext.request.contextPath}/assets/img/scrap.png">
 	       		</div>
 	       		<div class="btnBox">좋아요
-	       			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/like.png">
+	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/like.png">
 	       		</div>
 	       		<div class="btnBox">공유
-	       			<img alt="" src="${pageContext.request.contextPath}/local_assets/img/share.png">
+	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/share.png">
 	       		</div>    		
        		</div>
 			<div class="text-center">
-				<img class="profileImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+				<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 				<div class="profileNick">${output.memNick}</div>
 			</div>
 			<div class="applyNumBox">
@@ -1032,7 +380,7 @@ textarea::placeholder {
 				<c:when test="${output.applyCount > 0}">
 					<c:forEach var="applyDto" items="${applyDto}">
 					<div class="applyBox">
-						<img class="miniImgBox"  src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+						<img class="miniImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 						<div class="applyNick">
 							<div>${applyDto.memNick}</div>
 							<div class="applyTag">

@@ -233,7 +233,7 @@ tfoot{
 	background-color: #fff;
 }
 .searchBtn{
-    background-image: url(./local_assets/img/검색아이콘.jpg);
+    background-image: url(./assets/img/검색아이콘.jpg);
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;
@@ -941,13 +941,13 @@ $(document).ready(function(){
 	
 	$(document).on("click", "#spMember", function(e){
 		$("#show1").remove();
-		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법02.PNG">';
+		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/assets/img/이용방법02.PNG">';
 		$("#tab-4").append(html);
 	});
 	
 	$(document).on("click", "#ppMember", function(e){
 		$("#show1").remove();
-		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/local_assets/img/이용방법03.PNG">';
+		var html = '<img id="show1" alt="" src="${pageContext.request.contextPath}/assets/img/이용방법03.PNG">';
 		$("#tab-4").append(html);
 	});
 });
@@ -1215,13 +1215,13 @@ $(document).ready(function(){
 						<div>당신은 누구인가요? 선택해주세요!</div>
 					</div>
 					<div class="howUse-box2" id="spMember">
-						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller01.png">
+						<img alt="" src="${pageContext.request.contextPath}/assets/img/seller01.png">
 						<span>판매자 회원</span>
 					</div>
 					<div class="howUse-box3">
 					</div>
 					<div class="howUse-box2" id="ppMember">
-						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/seller02.png">
+						<img alt="" src="${pageContext.request.contextPath}/assets/img/seller02.png">
 						<span>공급자 회원</span>
 					</div>
 				</div>

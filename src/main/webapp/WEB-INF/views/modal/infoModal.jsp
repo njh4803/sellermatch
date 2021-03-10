@@ -56,7 +56,7 @@
 		<div class="modal-content">
 			<div class="modal-body">
 			<div class="topBox">
-				<img class="logoImg" src="${pageContext.request.contextPath}/local_assets/img/login-logo.png">
+				<img class="logoImg" src="${pageContext.request.contextPath}/assets/img/login-logo.png">
 				<div class="title">셀러매치 개인정보처리방침</div>
 			</div>
 				<div class="contents">

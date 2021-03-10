@@ -5,715 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="inc/header.jsp"%>
-<style>
-/* 스크롤바 디자인 */
-.left-container::-webkit-scrollbar, .check_list_box::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
-}
-.left-container::-webkit-scrollbar-thumb, .check_list_box::-webkit-scrollbar-thumb { 
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/findProject.css">
 
-  .left-container:hover, .check_list_box:hover {
-    background-color: #adb5bd;
-  }
-}
-.left-container::-webkit-scrollbar-track, .check_list_box::-webkit-scrollbar-track{
-  background: #ffffff;
-}
-.titleBox{
-  width: 100%;
-  font-size: 25px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.searchBox{
-	width: 100%;
-	height: 30px;
-}
-.search-letfBox{
-	float: left;
-    height: 30px;
-    padding-top: 10px;
-}
-.search-rightBox{
-	float: right;
-	height: 30px;
-}
-.search-btn{
-  width: 60px;
-  height: 30px;
-  margin-left: 10px;
-  padding: 6px 0 7px;
-  border-radius: 4px;
-  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
-  background-image: linear-gradient(117deg, #ff8000, #ff540f);
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff; 
-}
-.input_group{
-	display: inline-block;
-    width: 300px;
-    padding: 4px 15px 4px 15px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px 0 rgb(0 0 0 / 16%);
-    border: solid 1px #cccccc;
-    background-color: #ffffff;
-    text-align: left;
-}
-.search-rightBox .input-text{
-	width: 100%;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #343434;
-}
-.partner_bnr3 hr{
-  height: 0;
-  margin: 15px 0;
-  border: solid 2px #343434;
-}
-.left-container.fix{
-	position: absolute;
-}
-.left-container{
-    position: fixed;
-    width: 260px;
-    height: 500px;
-    margin-right: 20px;
-    padding: 20px 0;
-    border-radius: 10px;
-    border: solid 1px #cccccc;
-    background-color: #ffffff;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-.textBox1{
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-  margin-bottom: 20px;
-}
-.contents-container{
-	width: 100%;
-    min-height: 1000px;
-    padding-left: 280px;
-}
-.contentsBox{
-	width: 100%;
-}
-.countAll{
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.countAll span{
-  color: #ff540f;
-  font-weight: 800;
-}
-.leftBox{
-	float: left;
-}
-.rightBox{
-	float: right;
-}
-a.sort{
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  color: #343434;
-  margin-right: 20px;
-}
-a.sort.select{
-	font-weight: bold;
-}
-.contents{
-  width: 100%;
-  margin: 9px 0 5px 0;
-  padding: 30px;
-  border-radius: 10px;
-  border: solid 1px #cccccc;
-  background-color: #ffffff;
-}
-.contents .leftBox{
-    float: left;
-    margin: 0;
-    height: auto;
-    width: 60%;
-}
-.contents .rightBox{
-    float: right;
-    margin: 0;
-    height: auto;
-    width: 260px;
-    text-align: right;
-}
-.project-titleBox{
-  height: 53px;
-  object-fit: contain;
-  font-family: NanumGothic;
-  font-size: 18px;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-  margin-bottom: 15px;
-  /* 말줄임 표시 */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; 
-}
-.project-titleBox a.proj-link{
-	font-weight: 800;
-} 
-.project-detailBox{
-  height: 40px;
-  object-fit: contain;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-  margin-bottom: 26px;
-  /* 말줄임 표시 */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; 
-}
-.regDate{
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: right;
-  color: #707070;
-  margin-bottom: 10px;
-}
-.regDate span{
-  font-size: 15px;
-  font-weight: bold;
-  color: #343434;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  margin-right: 10px;
-}
-.infoBox {
-  display: inline-block;
-  width: 125px;
-  padding: 9px 0 9px 0;
-  border-radius: 5px;
-  border: solid 1px #cccccc;
-  text-align: center;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-.infoBox:first-child{
-    margin-right: 5px;
-}
-.infoBox span{
-  margin-right: 12px;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-.infoBox2{
-  width: 100%;
-  margin: 5px 0;
-  padding: 8px 10px 9px 10px;
-  border-radius: 5px;
-  border: solid 1px #cccccc;
-  text-align: center;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;  
-}
-.infoBox2 span{
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.infoBox3{
-	width: 260px;
-    height: 84px;
-    padding: 19px 30px 18px;
-    border-radius: 5px;
-    border: solid 1px #cccccc;
-    text-align: left;
-}
-.sFindBox{
-  display: inline-block;
-  width: 90px;
-  padding: 3px 0 4px;
-  border-radius: 5px;
-  background-color: #8000c9;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-  line-height: normal !important;  
-}
-.pFindBox{
-  display: inline-block;
-  padding: 3px 0 4px;
-  width: 90px;
-  border-radius: 5px;
-  background-color: #eb00bc;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-  line-height: normal !important;
-}
-.left-infoBox{
-	margin-bottom: 15px;
-}
-.areaBox{
-  display: inline-block;
-  width: 90px;
-  height: 26px;
-  padding: 4px 0 5px;
-  border-radius: 5px;
-  border: solid 0.5px #ff0000;
-  background-color: #ffffff;
-}
-a.proj-link{
-	color: #000 !important;
-}
-.D-day{
-	display: inline-block;
-	width: 90px;
-	padding: 2px 0 1px;
-	border-radius: 5px;
-	border: solid 0.5px #ff0000;
-	background-color: #ffffff;
-	font-size: 15px;
-	font-weight: 800;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: center;
-	color: #ff0000;
-	vertical-align: top;
-}
-.left-infoBox2{
-	width: 110%;
-}
-.tagBox{
-  display: inline-block;
-  height: 30px;
-  margin-right: 10px;
-  padding: 6px 10px 7px 10px;
-  border-radius: 5px;
-  background-color: #eeeeee;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-.partner_list{
-	display: inline-block;
-    width: 100%;
-    padding: 0 25px;
-}
-.partner_list span{
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.partner_list ul{
-	display: none;
-	margin-bottom: 30px;
-}
-.partner_list ul li{
-	margin-top: 3px;
-}
-.b-172{
-	bottom: 172;
-}
-.authBox{
-  display: inline-block;
-  margin: 0 0 14px 0;
-  font-family: NanumGothic;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.07;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.authBox:nth-child(odd){
-	margin-right: 17px;
-}
-.authImg{
-	margin-top: -3px;
-}
-.photoBox{
-  width: 160px;
-  height: 160px;
-  margin: 0 30px 13px 0;
-  object-fit: contain;
-  float: left;
-}
-#list-container{
-	min-height: 1000px;
-}
-.check_list_box, .m-check_list_box{
-	margin-bottom: 16px;
-	cursor: pointer;
-}
-.check_list_box2{
-	display: inline-block;
-	margin-bottom: 16px;
-}
-div.partner_list > div:nth-child(2){
-	margin-right: 29px;
-}
-div.partner_list > div:nth-child(1) > ul, div.partner_list > div:nth-child(2) > ul, div.partner_list > div:nth-child(3) > ul{
-	display: block;
-}
-.emptyResult{
-	text-align: center;
-    height: 500px;
-    padding: 240px;
-    font-size: 24px;
-}
-a.sort:last-child{
-	margin-right: 0;
-}
-.filter-box{
-	display: none;
-	width: 90%;
-	border-radius: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    margin-left: 5vw;
-    margin-top: 10px
-}
-.filter{
-	width: 100%;
-	display: flex;
-	border-radius: 10px;
-}
-.filter:nth-child(1), .filter:nth-child(2){
-	border-bottom: 1px solid #ccc;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-.check_list_box:nth-child(2){
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-radius: 0;
-}
-.filter-box ul {
-    display: none;
-    text-align: left;
-    margin-top: 15px;
-    margin-bottom: 0;
-    padding: 15px 10px;
-    border-top: 1px solid #ccc;
-}
-.m-contentsBox{
-	display: none;
-	width: 100%;
-}
-.find-box{
-	display: none;
-    width: 100%;
-    display: inline-block;
-    position: fixed;
-    background-color: #fff;
-}
-.m-infoBox{
-	float: right;
-}
-.m-infoBox2{
-	padding: 17px 10px 17px 10px !important;
-}
-.m-find{
-	display: none;
-}
-/*--------------------------------------*/
-/* 모바일 */
-@media screen and (max-width: 767px){
-	.w-find{
-		display: none !important;
-	}
-	.m-find{
-		display: block !important;
-	}
-	.partner_bnr .partner_wrap{
-		width: 90% !important;
-	}
-	.contents-container{
-		padding: 0 !important;
-		width: 95% !important;
-		margin: 0 auto;
-	}
-	.left-container{
-		display: none !important;
-	}
-	header .header_wrap h1{
-		display: none !important;
-	}
-	.searchBox  {
-		display: none !important;
-	}
-	.search-letfBox{
-		display: none !important;
-	}
-	#m-search_frm {
-		display: inline-block !important;
-    	padding: 3vh 0 !important;
-    	margin-left: 5vw !important;
-	}
-	.filter-box{
-		display: inline-block !important;
-	}
-	.m-check_list_box{
-	    width: 33.333333% !important;
-	    text-align: center !important;
-	    padding: 15px 0 !important;
-	    margin-bottom: 0 !important;
-        overflow-x: hidden;
-   		overflow-y: auto;
-   		background-color: #fff;
-   		border-radius: 10px;
-	}
-	.m-check_list_box span{
-		vertical-align: middle;
-		font-weight: 800 !important;
-	}
-	.partner_bnr3{
-		padding-top: 250px !important;
-	}
-	.titleBox{
-		letter-spacing: -0.2vw !important;
-		font-size: 5vw !important;
-	}
-	.input_group{
-		width: 70vw !important;
-		vertical-align: top !important;
-	}
-	.countAll{
-		font-size: 3vw !important;
-	}
-	.contentsBox{
-		display: none !important; 
-	}
-	a.sort{
-		font-size: 2.7vw !important;
-		margin-right: 1vw !important;
-	}
-	a.sort img{
-		width: 3vw !important;
-	}
-	.rightBox{
-		display: inline-flex;	
-	}
-	.m-contentsBox{
-		display: block !important;
-	    padding: 0 5vw;
-	    margin: 10px 0;
-	}
-	.find-box{
-		display: block !important;
-	}
-	.partner_bnr3 hr {
-		margin: 5px 0 !important;
-	}
-	
-	#m-search_frm .input_group input, #search_frm .input_group input{
-		font-size: 3vw !important;
-	}
-	
-	.contents{
-		padding: 15px !important;
-	}
-	
-	.D-day{
-		width: 15vw !important;
-		font-size: 3vw !important;
-	}
-	.pFindBox, .sFindBox{
-		width: 20vw !important;
-		font-size: 3vw !important;
-		padding: 3px 0 !important;
-	}	
-	.contents .leftBox{
-		width: 100% !important;
-	}
-	.regDate, .regDate span{
-		font-size: 3vw !important;
-		display: inline-block !important;
-	}
-	.regDate{
-		float: right;
-	}
-	.photoBox{
-		width: 25vw !important;
-		height: auto !important;
-		margin: 0 10px 10px 0 !important;
-	}
-	.project-titleBox{
-		font-size: 4vw !important;
-		display: inline-block !important;
-		margin: 10px 0;
-		height: 11vw !important;
-	}
-	.project-detailBox{
-		font-size: 3vw !important;
-		height: 8.5vw !important;
-		margin-bottom: 10px !important;
-	}
-	.infoBox{
-		font-size: 3.5vw !important;
-		width: 26vw;
-	}
-	.infoBox span{
-		font-size: 3.5vw !important;
-		width: 26vw;
-	}
-	.infoBox:first-child{
-		margin-right: 0 !important;
-	}
-	.infoBox2 {
-		width: 53.3vw !important;
-		font-size: 3.5vw !important;
-		float: right;
-		text-align: center !important;
-	}
-	.infoBox2 span{
-		font-size: 3.5vw !important;
-	}
-	.infoBox3{
-		float: right;
-		width: 100% !important;
-		height: auto !important;
-		padding: 1vw 1vw 1.5vw 1vw !important;
-		text-align: center;
-	}
-	.authBox{
-		font-size: 3vw !important;
-		margin: 0 !important;
-		margin-right: 0 !important;
-	}
-	.authImg{
-		width: 3.5vw !important;
-		margin-top: -2px;
-   		width: 3.5vw !important;
-	}
-	.left-infoBox2{
-		width: 100% !important;
-	}
-	.tagBox{
-		font-size: 3.5vw !important;
-		padding: 1.5vw 1.5vw !important;
-		height: 7vw !important;	
-		margin-right: 5px !important;
-		margin-bottom: 5px !important;
-	}
-}
-
-/* 테블릿 세로 */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-	.partner_bnr .partner_wrap{
-		width: 90% !important;
-	}
-	.contents-container{
-		padding: 0 !important;
-		width: 95% !important;
-		margin: 0 auto;
-	}	
-	.left-container{
-		display: none !important;
-	}
-	.search-letfBox{
-		display: none !important;
-	}
-	.titleBox{
-		float: left;
-		width: auto !important;
-	}
-}
-
-/* 테블릿 가로 */
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-	.partner_bnr .partner_wrap{
-		width: 90% !important;
-	}
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1300px) {
-	.partner_bnr .partner_wrap{
-		width: 90% !important;
-	}
-}
-</style>
 <div class="m-find">
 	<div class="find-box">
 		<div class="filter-box">
@@ -842,13 +135,13 @@ a.sort:last-child{
 				<div class="leftBox countAll">총 <span>${projCount}건</span>이 검색되었습니다</div>
 				<div class="rightBox">
 					<a href="javascript:void(0)" class="sort select" id="regSort">등록순
-						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+						<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 					</a>
 					<a href="javascript:void(0)" class="sort" id="endSort">마감순
-						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+						<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 					</a>
 					<a href="javascript:void(0)" class="sort" id="applySort">지원자순
-						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+						<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 					</a>
 				</div>
 			</div>
@@ -899,7 +192,7 @@ a.sort:last-child{
 							</div>
 				        	<%-- <div class="areaBox">${output.projNationName}지역</div> --%>
 						</div>				
-						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
 						<div class="m-infoBox">
 							<div class="infoBox">
 								<span>모집수</span> ${output.projRecruitNum}명
@@ -924,62 +217,62 @@ a.sort:last-child{
 						<div class="infoBox3">
 							<c:if test="${output.memRname == 1}">
 								<div class="authBox">신원인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.memRname == 0}">
 								<div class="authBox">신원인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileBizCerti == 1}">
 								<div class="authBox">사업자인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileBizCerti == 0}">
 								<div class="authBox">사업자인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.projProdCerti == 1}">
 								<div class="authBox">상품검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.projProdCerti == 0}">
 								<div class="authBox">상품검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.projProfit == 1}">
 								<div class="authBox">수익성검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.projProfit == 0}">
 								<div class="authBox">수익성검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileChChk == 1}">
 								<div class="authBox">채널검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileChChk == 0}">
 								<div class="authBox">채널검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileSaleChk == 1}">
 								<div class="authBox">매출검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileSaleChk == 0}">
 								<div class="authBox">매출검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							</c:if>							
 						</div>					
@@ -1125,7 +418,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">판매채널</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projChannel"><label for="projChannel"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
@@ -1139,7 +432,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 		            	<span class="check_list">상품분류</span>
-		            	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
 		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
@@ -1149,7 +442,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">상품단가</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
@@ -1161,7 +454,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">판매마진</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
@@ -1172,7 +465,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">공급방법</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="s1"><label for="s1"><span>OEM</span></label></li>
@@ -1184,7 +477,7 @@ a.sort:last-child{
 	            	</div>
 					<div class="check_list_box">
 						<span class="check_list">등록지역</span>
-						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+						<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 						<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projNation"><label for="projNation"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
@@ -1214,13 +507,13 @@ a.sort:last-child{
 						<div class="leftBox countAll">총 <span>${projCount}건</span>이 검색되었습니다</div>
 						<div class="rightBox">
 							<a href="javascript:void(0)" class="sort select" id="regSort">등록순
-								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 							</a>
 							<a href="javascript:void(0)" class="sort" id="endSort">마감순
-								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 							</a>
 							<a href="javascript:void(0)" class="sort" id="applySort">지원자순
-								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 							</a>
 						</div>
 					</div>
@@ -1230,7 +523,7 @@ a.sort:last-child{
 					<div class="clearfix">
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
-							<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+							<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
 							<div class="left-infoBox">
 								<c:choose>
 									<c:when test="${output.projDday < 0}">
@@ -1281,62 +574,62 @@ a.sort:last-child{
 							<div class="infoBox3">
 								<c:if test="${output.memRname == 1}">
 									<div class="authBox">신원인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.memRname == 0}">
 									<div class="authBox">신원인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileBizCerti == 1}">
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileBizCerti == 0}">
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.projProdCerti == 1}">
 									<div class="authBox">상품검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.projProdCerti == 0}">
 									<div class="authBox">상품검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.projProfit == 1}">
 									<div class="authBox">수익성검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.projProfit == 0}">
 									<div class="authBox">수익성검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 1}">
 									<div class="authBox">채널검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 0}">
 									<div class="authBox">채널검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileSaleChk == 1}">
 									<div class="authBox">매출검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileSaleChk == 0}">
 									<div class="authBox">매출검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>							
 							</div>
@@ -1460,29 +753,29 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 				<div class="rightBox">
 					{{#ifCond sort '==' 'regSort'}}
 						<a href="javascript:void(0)" class="sort select" id="regSort">등록순
-							<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 						</a>
 					{{else}}
 						<a href="javascript:void(0)" class="sort" id="regSort">등록순
-							<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 						</a>
 					{{/ifCond}}
 					{{#ifCond sort '==' 'endSort'}}
 						<a href="javascript:void(0)" class="sort select" id="endSort">마감순
-							<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 						</a>
 					{{else}}
 						<a href="javascript:void(0)" class="sort" id="endSort">마감순
-							<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 						</a>
 					{{/ifCond}}
 					{{#ifCond sort '==' 'applySort'}}
 						<a href="javascript:void(0)" class="sort select" id="applySort">지원자순
-							<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 						</a>
 					{{else}}
 						<a href="javascript:void(0)" class="sort" id="applySort">지원자순
-							<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+							<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 						</a>
 					{{/ifCond}}
 				</div>
@@ -1517,7 +810,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								<span>등록일</span>{{projRegDate}}
 							</div>
 						</div>				
-						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
 						<div class="m-infoBox">
 							<div class="infoBox">
 								<span>모집수</span> {{projRecruitNum}}명
@@ -1542,62 +835,62 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						<div class="infoBox3">
 							{{#ifCond memRname '==' '1'}}
 								<div class="authBox">신원인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond memRname '==' '0'}}
 								<div class="authBox">신원인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileBizCerti '==' '1'}}
 								<div class="authBox">사업자인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileBizCerti '==' '0'}}
 								<div class="authBox">사업자인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond projProdCerti '==' '1'}}
 								<div class="authBox">상품검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond projProdCerti '==' '0'}}
 								<div class="authBox">상품검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond projProfit '==' '1'}}
 								<div class="authBox">수익성검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond projProfit '==' '0'}}
 								<div class="authBox">수익성검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileChChk '==' '1'}}
 								<div class="authBox">채널검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileChChk '==' '0'}}
 								<div class="authBox">채널검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileSaleChk '==' '1'}}
 								<div class="authBox">매출검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileSaleChk '==' '0'}}
 								<div class="authBox">매출검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
 							{{/ifCond}}						
 						</div>					
@@ -1630,29 +923,29 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						<div class="rightBox">
 							{{#ifCond sort '==' 'regSort'}}
 								<a href="javascript:void(0)" class="sort select" id="regSort">등록순
-									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 								</a>
 							{{else}}
 								<a href="javascript:void(0)" class="sort" id="regSort">등록순
-									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 								</a>
 							{{/ifCond}}
 							{{#ifCond sort '==' 'endSort'}}
 								<a href="javascript:void(0)" class="sort select" id="endSort">마감순
-									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 								</a>
 							{{else}}
 								<a href="javascript:void(0)" class="sort" id="endSort">마감순
-									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 								</a>
 							{{/ifCond}}
 							{{#ifCond sort '==' 'applySort'}}
 								<a href="javascript:void(0)" class="sort select" id="applySort">지원자순
-									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 								</a>
 							{{else}}
 								<a href="javascript:void(0)" class="sort" id="applySort">지원자순
-									<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 								</a>
 							{{/ifCond}}
 						</div>
@@ -1663,7 +956,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 					<div class="clearfix">
 						<input type="hidden" id="projId{{@key}}" value="{{projId}}">
 						<div class="leftBox">
-							<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+							<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
 							<div class="left-infoBox">
 								{{#ifCond projDday '<' '0'}}
 									<div class="D-day">마감완료</div>
@@ -1710,62 +1003,62 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							<div class="infoBox3">
 								{{#ifCond memRname '==' '1'}}
 									<div class="authBox">신원인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond memRname '==' '0'}}
 									<div class="authBox">신원인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond profileBizCerti '==' '1'}}
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond profileBizCerti '==' '0'}}
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond projProdCerti '==' '1'}}
 									<div class="authBox">상품검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond projProdCerti '==' '0'}}
 									<div class="authBox">상품검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond projProfit '==' '1'}}
 									<div class="authBox">수익성검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond projProfit '==' '0'}}
 									<div class="authBox">수익성검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond profileChChk '==' '1'}}
 									<div class="authBox">채널검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond profileChChk '==' '0'}}
 									<div class="authBox">채널검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond profileSaleChk '==' '1'}}
 									<div class="authBox">매출검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								{{/ifCond}}
 								{{#ifCond profileSaleChk '==' '0'}}
 									<div class="authBox">매출검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								{{/ifCond}}							
 							</div>

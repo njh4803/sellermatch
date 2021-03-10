@@ -1,0 +1,476 @@
+@charset "UTF-8";
+
+.partner_bnr {
+    width: 100%;
+    padding-bottom: 100px;
+    margin-top: 77px;
+}
+.partner_bnr2 {
+    width: 100%;
+    padding-bottom: 100px;
+    text-align: center;
+}
+.check{
+  width: 240px;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(to right, #ff8000, #ff540f);
+  margin: 0 20px !important;
+}
+.default-check{
+  width: 240px;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  border: solid 0.5px #ff540e;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
+  margin: 0 20px !important;
+  background-color: #fff;
+}
+.none-check{
+	width: 240px;
+	height: 80px;
+	border-radius: 10px;
+	box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+	background-color: #e3e3e3;
+    margin: 0 20px !important;	
+	background-color: #fff;
+    border: 1px solid #ff540f;
+}
+.addBtn {
+	width: 160px;
+	height: 40px;
+	border-radius: 4px;
+	background-image: linear-gradient(to right, #ff8000, #ff540f);
+	font-size: 15px;
+	font-weight: 800;
+	font-stretch: normal;
+	font-style: normal;
+	padding: 10.5px 0;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+    margin: 30px 0;
+}
+.resultText{
+	margin-top: 15px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.partner_bnr .partner_wrap h2 {
+  margin: 20px 0 80px 0;
+  font-size: 30px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal !important;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.partner_bnr .partner_wrap h3 {
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal !important;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.partner_bnr .partner_wrap {
+    width: 1280px;
+    margin: 40px auto;
+    text-align: center;
+}
+.partner_bnr .partner_wrap hr {
+  width: 900px;
+  height: 0;
+  border: solid 1px #cccccc;
+}
+.projectBox{
+	display: inline-block;
+}
+.projTable{
+	border: 2px solid #ccc;
+	width: 700px;
+    height: 700px;
+}
+.projTable td{
+	border: 2px solid #ccc;
+    text-align: center;
+    width: 140px;
+}
+.inputForm{
+	width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+}
+textarea.inputForm{
+	resize: none;
+}
+.width-70{
+	width: 70%;
+	float: left;
+}
+.width-30{
+	width: 30%;
+	display: inline-block;
+}
+.row1{
+	display: inline-block;
+}
+/* 필수항목 표시를 위한 `*` */
+.identify {
+	font-size: 14px;
+	color: #f00;
+}
+
+/* 에러 메시지에 대한 글자 색상 */
+.error {
+	color: red;
+}
+
+/* 에러가 발생한 <input>태그 */
+input.error {
+	
+}
+/* 에러메시지가 표시중인 <label> 태그 */
+label.error {
+	font-size: 10px;
+	color: red;
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0;
+	float: left;
+}
+.jFiler-input-dragDrop {
+    width: 100%;
+    background-color: #fafafa;
+}
+.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+	height: 300px;
+}
+.fileLable{
+	position: relative;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100px;
+    height: 30px;
+	background-image: linear-gradient(to right, #ff8000, #ff540f);
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 2px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.formControl{
+	width: 400px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    display: inline-block;
+    background-color: #e3e3e3;
+    background-image: none;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.formControl input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.formControl input[type=text] {
+	vertical-align:middle;
+	display:inline-block;
+	width:400px;
+	height:28px;
+	line-height:28px;
+	font-size:11px;
+	padding:0;
+	border:0;
+	border:1px solid #777;
+	padding-left: 10px;
+}
+.projAdd span{
+	font-size: 30px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.47;
+	letter-spacing: normal;
+	color: #ffffff;
+	vertical-align: middle;
+}
+.projAdd{
+	background: linear-gradient(to right, #d90b54, #3b1374);
+	width: 500px;
+	height: 80px;
+	margin-top: 100px;
+	margin-bottom: 20px;
+	padding: 18px 0;
+	text-align: center;
+	border-radius: 10px
+}
+.projAdd:disabled{
+	background: #dddddd;
+	color: #ffffff;
+}
+.projAdd button:enabled{
+	background: linear-gradient(to right, #d90b54, #3b1374);
+}
+.p-img{
+  display:inline-block;
+  width: 389px;
+  height: 312px;
+  object-fit: contain;
+  margin-top: 100px;
+}
+.imgContainer{
+	width: 1280px;
+	margin: 0 auto;
+}
+.imgBox1{
+  display: inline-block;
+  width: 280px;
+  height: 420px;
+  padding-bottom: 25px;
+  border-radius: 10px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+  text-align: center;
+}
+.imgBox1 .textBox1{
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.imgBox1 .textBox2{
+
+  margin: 20px 0 27px;
+  font-size: 20px;
+  height: 54px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+.addPass{
+  width: 21.7px;
+  height: 33.1px;
+  object-fit: contain;
+  margin-right: 10.7px;
+}
+.addPass2{
+  width: 10px;
+  height: 16.6px;
+}
+.addBox{
+	width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+.addBox2{
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 393px;
+}
+/* checkbox */
+input[type="checkbox"].findCheck + label span {
+  font-size: 20px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
+  margin: 0;
+  height: auto;
+  background:url(../assets/img/checkActiveNone.png) no-repeat;
+  background-position-y: center;
+  background-position-x: 10px;
+  background-size: 15px;
+}
+input[type="checkbox"].findCheck:checked + label span {
+    background:url(../assets/img/checkActive20.png) no-repeat;
+    color: #ffffff;
+    background-position-y: center;
+    background-position-x: 10px;
+	background-size: 15px;
+}
+.addBox2 input[type="checkbox"] + label span {
+    display: inline-block;
+    object-fit: contain;
+	font-size: 15px;
+	font-weight: 500;
+	font-stretch: normal;
+	letter-spacing: normal;
+	color: #707070;
+    padding-left: 20px;
+    margin: 0;
+    height: auto;
+    line-height: normal;
+    font-weight: normal;
+    background:url(../assets/img/checkActiveNone.png) no-repeat;
+    background-position-y: center;
+}
+.addBox2 input[type="checkbox"]:checked + label span {
+    background:url(../assets/img/checkActive.png) no-repeat;
+    background-position-y: center;
+}
+.addBox2 a{
+  font-size: 15px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #707070;	
+}
+.addHr{
+  width: 1280px;
+  height: 0;
+  margin: 30px auto;
+  border: solid 1px #dddddd;
+}
+.circleArrow1{
+	position: absolute;
+    right: 1238px;
+    top: 725px;
+}
+.circleArrow2{
+    position: absolute;
+    right: 905px;
+    top: 725px;
+}
+.circleArrow3{
+    position: absolute;
+    right: 573px; 
+    top: 725px;
+}
+.circle{
+  width: 60px;
+  height: 60px;
+}
+.rightArrow{
+    position: relative;
+    left: -40px;
+    width: 12.6px;
+    height: 22.6px;
+}
+/* 모바일 */
+@media screen and (max-width: 767px){
+	.partner_bnr{
+		padding-bottom: 50px !important;
+	}
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
+	
+	.partner_bnr .partner_wrap h2{
+		font-size: 4.5vw !important;
+		margin: 0 0 40px 0 !important;
+	}
+	.partner_bnr .partner_wrap h3{
+		font-size: 2.5vw !important;
+		margin-bottom: 0 !important;
+	}
+	.partner_bnr .partner_wrap{
+		margin: 20px auto !important;
+	}
+	.default-check, .check, .none-check {
+    	width: 30vw !important;
+    	height: 12vw !important;
+    }
+    .p-img{
+    	width: 90% !important;
+    	margin-top: 20vw !important;
+   	}
+   	input[type="checkbox"] + label{
+   		margin-bottom: 5px !important;
+   		margin-right: 9px !important;
+   	}
+	input[type="checkbox"] + label span {
+	    font-size: 2.5vw !important;
+	    background-size: 3vw !important;
+	}
+	.projTable{
+		width: 100% !important;
+	}
+	table tr td:nth-child(1){
+		width: 20% !important;
+		font-size: 1vw;
+	}
+	table tr td:nth-child(2){
+		width: 80% !important;
+		font-size: 1vw;
+	}
+	.formControl{
+		width: 100% !important;
+		font-size: 1vw !important;
+	}
+	.fileLable{
+		font-size: 1vw !important;
+	}
+	.inputForm {
+		height: auto !important;
+		font-size: 1vw !important;
+	}
+}
+
+/* 테블릿 세로 */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
+}
+
+/* 테블릿 가로 */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+	.partner_bnr .partner_wrap hr{
+		width: 90% !important;
+	}
+}

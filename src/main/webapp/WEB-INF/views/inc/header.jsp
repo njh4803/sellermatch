@@ -23,8 +23,8 @@
 		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
 		
         
-        <link href="${pageContext.request.contextPath}/main_assets/css/reset.css" rel="stylesheet" type="text/css">
-        <link href='${pageContext.request.contextPath}/main_assets/css/custom.css' rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/assets/css/reset.css" rel="stylesheet" type="text/css">
+        <link href='${pageContext.request.contextPath}/assets/css/custom.css' rel="stylesheet" type="text/css">
         <link href='${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css' rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/7ebcbe9e0a.js" crossorigin="anonymous"></script>
         
@@ -93,7 +93,7 @@ header #m-search_frm{
 	        <div class="input_group">
 	            <input class="input-text" type="text" name="m-keyword" placeholder="원하는 키워드로 검색해보세요">
 	        </div>
-	        <button type="submit" class="m-search-btn" style="background-image: url('${pageContext.request.contextPath}/local_assets/img/search.png');">
+	        <button type="submit" class="m-search-btn" style="background-image: url('${pageContext.request.contextPath}/assets/img/search.png');">
 	        </button>
 	        <input type="hidden" value="regSort" id="sort" name="sort">
 	    </form>
@@ -107,7 +107,7 @@ header #m-search_frm{
 	            <div class="menu-background"></div>
             	<div class="menu-list accordion">
 	            	<div class="gnb_login show">
-	            		<img class="mobile-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/mobile.png">
+	            		<img class="mobile-img" alt="" src="${pageContext.request.contextPath}/assets/img/mobile.png">
 		            	<c:choose>
 		            		<c:when test="${member == null}">
 		            			<a href="javascript:void(0);" id="login">로그인</a>
@@ -125,28 +125,28 @@ header #m-search_frm{
 		            <ul>
 		                <li id="nav1" class="toggle accordion-toggle">
 		                    <a class="menu-link" href="${pageContext.request.contextPath}/project/find">거래처 찾기
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
 		                    </a>
 		                </li>
 		                <ul class="menu-submenu accordion-content">
 	                    </ul>           
 		                <li id="nav2" class="toggle accordion-toggle">
 		                    <a class="menu-link" href="${pageContext.request.contextPath}/seller/find">판매자 찾기
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
 		                    </a>
 		                </li>
 		                <ul class="menu-submenu accordion-content">
 	                    </ul>		                
 		                <li id="nav3" class="toggle accordion-toggle">
 		                    <a class="menu-link" href="#">커뮤니티
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
 		                    </a>
 		                </li>
 		                <ul class="menu-submenu accordion-content">
 	                    </ul>
 		                <li id="nav4" class="toggle accordion-toggle">
 		                    <a class="menu-link" href="#">이용안내
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/local_assets/img/sidebar.png">
+		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
 		                    </a>
 		                </li>
 	                    <ul class="menu-submenu accordion-content">

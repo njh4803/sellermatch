@@ -3,478 +3,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<style>
-/* 스크롤바 디자인 */
-.left-container::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
-}
-.left-container::-webkit-scrollbar-thumb { 
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/findSeller.css">
 
-  .left-container:hover {
-    background-color: #adb5bd;
-  }
-}
-.left-container::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-.titleBox{
-  width: 100%;
-  font-size: 25px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.searchBox{
-	width: 100%;
-	height: 30px;
-}
-.search-letfBox{
-	float: left;
-    height: 30px;
-    padding-top: 10px;
-}
-.search-rightBox{
-	float: right;
-	height: 30px;
-}
-.search-btn{
-  width: 60px;
-  height: 30px;
-  margin-left: 10px;
-  padding: 6px 0 7px;
-  border-radius: 4px;
-  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
-  background-image: linear-gradient(117deg, #ff8000, #ff540f);
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff; 
-}
-.input_group{
-	display: inline-block;
-    width: 300px;
-    padding: 4px 15px 4px 15px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px 0 rgb(0 0 0 / 16%);
-    border: solid 1px #cccccc;
-    background-color: #ffffff;
-    text-align: left;
-}
-.search-rightBox .input-text{
-	width: 100%;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #000000;
-}
-.partner_bnr3 hr{
-  width: 100%;
-  height: 0;
-  margin: 15px 0;
-  border: solid 2px #343434;
-}
-.left-container.fix{
-	position: absolute;
-}
-.left-container{
-    position: fixed;
-    width: 260px;
-    height: 500px;
-    margin-right: 20px;
-    padding: 20px 0;
-    border-radius: 10px;
-    border: solid 1px #cccccc;
-    background-color: #ffffff;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-.textBox1{
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-  margin-bottom: 20px;
-}
-.contents-container{
-	width: 100%;
-    min-height: 1000px;
-    padding-left: 280px;
-}
-.contentsBox{
-	width: 100%;
-}
-.countAll{
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.countAll span{
-  color: #ff540f;
-  font-weight: 800;
-}
-.leftBox{
-	float: left;
-}
-.rightBox{
-	float: right;
-}
-a.sort{
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  color: #000000;
-  margin-right: 20px;
-}
-a.sort.select{
-	font-weight: bold;
-}
-.contents{
-  width: 100%;
-  margin: 9px 0 5px 0;
-  padding: 30px;
-  border-radius: 10px;
-  border: solid 1px #cccccc;
-  background-color: #ffffff;
-}
-.contents .leftBox{
-    float: left;
-    margin: 0;
-    height: auto;
-    width: 600px;
-}
-.contents .rightBox{
-    float: right;
-    margin: 0;
-    height: auto;
-    width: 260px;
-    text-align: right;
-}
-.seller-intro{
-  height: 55px;
-  margin: 9px 0 22px 0;
-  object-fit: contain;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-  /* 말줄임 표시 */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical; 
-}
-.seller-intro a.s-link:hover{
-	font-weight: 800;
-} 
-.project-detailBox{
-  height: 37px;
-  object-fit: contain;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-  margin-bottom: 26px;
-  /* 말줄임 표시 */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; 
-}
-.regDate{
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: right;
-  color: #707070;
-  margin-bottom: 10px;
-}
-.regDate span{
-  font-size: 15px;
-  font-weight: bold;
-  color: #000000;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  margin-right: 10px;
-}
-.infoBox {
-  display: inline-block;
-  width: 125px;
-  padding: 9px 0 9px 0;
-  border-radius: 5px;
-  border: solid 1px #cccccc;
-  text-align: center;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-.infoBox:first-child{
-    margin-right: 5px;
-}
-.infoBox span{
-  margin-right: 12px;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-.infoBox2{
-	width: 100%;
-	font-size: 15px;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #343434;
-    border-bottom: solid 1px #cccccc;
-    padding: 7px 0 8px 0;
-}
-.infoBox2 span:nth-child(2){
-	float: right;
-}
-.infoBox3{
-	width: 260px;
-    height: 84px;
-    padding: 19px 30px 18px;
-    border-radius: 5px;
-    border: solid 1px #cccccc;
-    text-align: left;
-}
-.sFindBox{
-  display: inline-block;
-  width: 90px;
-  padding: 3px 0 4px;
-  border-radius: 5px;
-  background-color: #8000c9;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-  line-height: normal !important;  
-}
-.pFindBox{
-  display: inline-block;
-  padding: 3px 0 4px;
-  width: 90px;
-  border-radius: 5px;
-  background-color: #eb00bc;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-  line-height: normal !important;
-}
-.left-infoBox{
-	margin-bottom: 11px;
-}
-.areaBox{
-  display: inline-block;
-  width: 90px;
-  height: 26px;
-  padding: 4px 0 5px;
-  border-radius: 5px;
-  border: solid 0.5px #ff0000;
-  background-color: #ffffff;
-}
-a.s-link{
-	color: #000 !important;
-}
-.seller-status{
-	display: inline-block;
-	width: 60px;
-	padding: 5px 0;
-	border-radius: 5px;
-	background-color: #0800ff;
-	font-size: 15px;
-	font-weight: 800;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: center;
-	color: #ffffff;
-	vertical-align: top;
-}
-.seller-auth{
-  display: inline-block;
-  width: 60px;
-  padding: 5px 0;
-  border-radius: 5px;
-  background-color: #44ab00;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-}
-.profileBizSort{
-	display: inline-block;
-	font-size: 15px;
-	font-weight: bold;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #343434;
-	vertical-align: -webkit-baseline-middle;
-	margin-left: 10px;
-}
-.left-infoBox2{
-	width: 110%;
-}
-.tagBox{
-  display: inline-block;
-  height: 30px;
-  margin-right: 10px;
-  padding: 6px 10px 7px 10px;
-  border-radius: 5px;
-  background-color: #eeeeee;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-.partner_list{
-	display: inline-block;
-    width: 100%;
-    padding: 0 25px;
-}
-.partner_list span{
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-}
-.partner_list ul{
-	display: none;
-	margin-bottom: 30px;
-}
-.partner_list ul li{
-	margin-top: 3px;
-}
-.b-172{
-	bottom: 172;
-}
-.auth-container{
-	display: inline-block;
-	margin-left: 10px;
-}
-.authBox{
-  display: inline-block;
-  font-family: NanumGothic;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
-  vertical-align: -webkit-baseline-middle;
-}
-.authImg{
-	margin-top: -3px;
-}
-.photoBox{
-	width: 140px;
-    height: 140px;
-    margin: 0 30px 11px 0;
-    object-fit: contain;
-    border-radius: 70%;
-}
-#list-container{
-	min-height: 1000px;
-}
-.check_list_box{
-	margin-bottom: 16px;
-	cursor: pointer;
-}
-div.partner_list > div:nth-child(2){
-	margin-right: 29px;
-}
-div.partner_list > div:nth-child(1) > ul, div.partner_list > div:nth-child(2) > ul{
-	display: block;
-}
-.emptyResult{
-	text-align: center;
-    height: 500px;
-    padding: 240px;
-    font-size: 24px;
-}
-a.sort:last-child{
-	margin-right: 0;
-}
-.photo-container{
-	float: left;
-}
-.star-score{
-	text-align: center;
-	width: 140px;
-}
-.nick{
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
-/*--------------------------------------*/
-</style>
 <div class="partner_bnr">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
@@ -523,7 +53,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">판매채널</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="profileChannel"><label for="profileChannel"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="profileChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
@@ -537,7 +67,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 		            	<span class="check_list">판매상품</span>
-		            	<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+		            	<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input id="profileIndus" class="checkAll" type="checkbox"><label for="profileIndus"><span>전체</span></label></li>
 		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
@@ -547,7 +77,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">매출규모</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
@@ -559,7 +89,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">판매경력</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
@@ -570,7 +100,7 @@ a.sort:last-child{
 	            	</div>
 	            	<div class="check_list_box">
 	            		<span class="check_list">판매자특징</span>
-	            		<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+	            		<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="s1"><label for="s1"><span>OEM</span></label></li>
@@ -582,7 +112,7 @@ a.sort:last-child{
 	            	</div>
 					<div class="check_list_box">
 						<span class="check_list">판매자지역</span>
-						<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+						<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 			           	<ul>
 			           		<li><input type="checkbox" class="checkAll" id="profileNation"><label for="profileNation"><span>전체</span></label></li>
 			           		<li><input type="checkbox" class="check" name="profileNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
@@ -612,13 +142,13 @@ a.sort:last-child{
 						<div class="leftBox countAll">총<span>${totalCount}건</span>이 검색되었습니다</div>
 						<div class="rightBox">
 							<a href="javascript:void(0)" class="sort select" id="regSort">등록순
-								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 							</a>
 							<a href="javascript:void(0)" class="sort" id="endSort">매출순
-								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 							</a>
 							<a href="javascript:void(0)" class="sort" id="applySort">요청받은순
-								<img alt="" src="${pageContext.request.contextPath}/local_assets/img/sort-bottom.png">
+								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
 							</a>
 						</div>
 					</div>
@@ -629,7 +159,7 @@ a.sort:last-child{
 						<input type="hidden" id="profileId${status.index}" value="${output.profileId}">
 						<div class="leftBox">
 							<div class="photo-container">
-								<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/pruduct.png">
+								<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
 								<div class="star-score">
 									<div class="nick">
 										닉네임자리입니다
@@ -648,42 +178,42 @@ a.sort:last-child{
 								<div class="auth-container">
 								<c:if test="${output.memRname == 1}">
 									<div class="authBox">신원인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.memRname == 0}">
 									<div class="authBox">신원인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileBizCerti == 1}">
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileBizCerti == 0}">
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 1}">
 									<div class="authBox">채널검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 0}">
 									<div class="authBox">채널검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileSaleChk == 1}">
 									<div class="authBox">매출검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/v-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/v-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileSaleChk == 0}">
 									<div class="authBox">매출검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 									</div>
 								</c:if>									
 								</div>
@@ -877,7 +407,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 			<div class="container1 content">
 				<div class="container2">
 					<div class="leftBox2">
-						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/local_assets/img/profile.png">
+						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
 					</div>
 					<div class="row1 leftBox">
 						<div class="row2 leftBox">
@@ -923,15 +453,15 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 					</div>
 					<div class="btnBox">
 						<button class="scrap">
-						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/person.png">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/assets/img/person.png">
 							판매자 상세정보
 						</button>
 						<button class="scrap">
-						<img class="star" alt="" src="${pageContext.request.contextPath}/local_assets/img/starNone.png">
+						<img class="star" alt="" src="${pageContext.request.contextPath}/assets/img/starNone.png">
 							관심등록
 						</button>
 						<button class="match" id="profileMemId{{@key}}" data-value="{{profileMemId}}" data-index="{{@key}}">
-						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/assets/img/pass13.png">
 							지원요청
 						</button>
 					</div>
