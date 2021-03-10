@@ -18,14 +18,15 @@
   background: #ffffff;
 }
 .titleBox{
-  width: 100%;
   font-size: 25px;
-  font-weight: 800;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
+  line-height: 1.08;
   letter-spacing: normal;
   text-align: left;
-  color: #343434;
+  color: #484848;
+  float: left;
 }
 .searchBox{
 	width: 100%;
@@ -76,11 +77,6 @@
 	text-align: left;
 	color: #343434;
 }
-.partner_bnr3 hr{
-  height: 0;
-  margin: 15px 0;
-  border: solid 2px #343434;
-}
 .left-container.fix{
 	position: absolute;
 }
@@ -113,15 +109,19 @@
 }
 .contentsBox{
 	width: 100%;
+    height: 98px;
+    padding: 20px 30px;
+    border-radius: 5px;
+    border: solid 1px #d9d9d9;
+    background-color: #ffffff;	
 }
 .countAll{
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #343434;
+  color: #484848;
 }
 .countAll span{
   color: #ff540f;
@@ -133,21 +133,29 @@
 .rightBox{
 	float: right;
 }
+.sortBox{
+  width: 100%;
+  height: 30px;
+  margin: 12px 0 0;
+  padding: 4px 0 4px 10px;
+  border-radius: 5px;
+  background-color: #f7f7f7;	
+}
 a.sort{
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
-  color: #343434;
-  margin-right: 20px;
+  text-align: left;
+  margin-right: 15px;
+  color: #484848;
 }
 a.sort.select{
 	font-weight: bold;
 }
 .contents{
   width: 100%;
-  margin: 9px 0 5px 0;
+  margin: 5px 0 5px 0;
   padding: 30px;
   border-radius: 10px;
   border: solid 1px #cccccc;
@@ -415,6 +423,7 @@ a.proj-link{
 }
 #list-container{
 	min-height: 1000px;
+	margin-top: 15px;
 }
 .check_list_box, .m-check_list_box{
 	margin-bottom: 16px;
@@ -576,9 +585,6 @@ a.sort:last-child{
 	}
 	.find-box{
 		display: block !important;
-	}
-	.partner_bnr3 hr {
-		margin: 5px 0 !important;
 	}
 	
 	#m-search_frm .input_group input, #search_frm .input_group input{

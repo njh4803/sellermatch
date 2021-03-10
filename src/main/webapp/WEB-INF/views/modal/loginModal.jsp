@@ -345,7 +345,7 @@ $(document).ready(function() {
                             <div class="auth-box">
                                 <div class="row m-b-20">
                                     <div class="login_logo">
-                                        <img class="login-logo" src="${pageContext.request.contextPath}/assets/img/login-logo.png">
+                                        <img class="login-logo" src="${pageContext.request.contextPath}/assets/img/sellermatch_logo.png">
                                         <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
                                     </div>
                                 </div>

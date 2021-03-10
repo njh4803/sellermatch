@@ -78,7 +78,7 @@ header #m-search_frm{
 <%@ include file="../modal/loginModal.jsp"%>
 <header>
 	<div class="header_wrap">
-       <h1><a href="${pageContext.request.contextPath}/temp"><img src="${pageContext.request.contextPath}/main_assets/image/sellermatch_logo_2.png" alt="sellermatch"></a></h1>
+       <h1><a href="${pageContext.request.contextPath}/temp"><img src="${pageContext.request.contextPath}/assets/img/sellermatch_logo.png" alt="sellermatch"></a></h1>
        <nav>
            <ul>
                <li><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></li>
@@ -111,12 +111,12 @@ header #m-search_frm{
 		            	<c:choose>
 		            		<c:when test="${member == null}">
 		            			<a href="javascript:void(0);" id="login">로그인</a>
-		            			<span class="bar">|</span>
+		            			<!-- <span class="bar">|</span> -->
 			                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
 		            		</c:when>
 		            		<c:otherwise>
 			            		<a href="${pageContext.request.contextPath}/member/myPage">${member.memNick}님</a>
-			            		<span class="bar">|</span>
+			            		<!-- <span class="bar">|</span> -->
 		            			<a id="logout" href="javascript:void(0);">로그아웃</a>
 		            		</c:otherwise>
 		            	</c:choose>
@@ -163,12 +163,12 @@ header #m-search_frm{
             	<c:choose>
             		<c:when test="${member == null}">
             			<a href="javascript:void(0);" id="login2">로그인</a>
-            			<span class="bar">|</span>
+            			<!-- <span class="bar">|</span> -->
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
 	            		<a href="${pageContext.request.contextPath}/member/myPage">${member.memNick}님</a>
-	            		<span class="bar">|</span>
+	            		<!-- <span class="bar">|</span> -->
             			<a id="logout2" href="javascript:void(0);">로그아웃</a>
             		</c:otherwise>
             	</c:choose>
