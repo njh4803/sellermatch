@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <%@ include file="modal/recommendModal.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/detailSeller.css">
+<link href="${pageContext.request.contextPath}/assets/css/detailSeller.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
 	<div class="bar"><div>판매자 상세정보</div></div>
     <div class="partner_wrap" style="text-align: left;">

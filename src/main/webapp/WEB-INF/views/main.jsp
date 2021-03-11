@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
-<link href='${pageContext.request.contextPath}/assets/css/main.css' rel="stylesheet" type="text/css"> 
+<link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet" type="text/css">
 <div class="bnr">
 	<div class="main-0000" style="background-image: url('${pageContext.request.contextPath}/assets/img/main0000.png');">
 	 	<div class="main-000">
@@ -437,7 +437,7 @@
    			</div>
    		</div>
    		<div class="main-0005">
-   			<img class="img3" alt="" src="${pageContext.request.contextPath}/assets/img/main_img3.png"> 
+   			<img class="img3" alt="" src="${pageContext.request.contextPath}/assets/img/main_img3.png">
    			<div class="textBox5">
    				<span>직접 써보시는 것이 가장 빠를거에요.</span><br>
 				무료체험에는 어떠한 비용도 들지 않아요.

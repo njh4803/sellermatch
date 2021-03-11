@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/detailProject.css">
-
+<link href="${pageContext.request.contextPath}/assets/css/detailProject.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr m-detail">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">

@@ -6,8 +6,7 @@
 <%-- <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css"> --%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/myPage.css">
-
+<link href="${pageContext.request.contextPath}/assets/css/myPage.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
     <div class="partner_wrap">
     	<div class="mypage-title">회원정보 / 프로필관리</div>
@@ -68,7 +67,7 @@
 				<div class="myBox3">
 					<div class="textBox1">
 						<div class="myBox-row">
-							<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth01.png">
+							<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/auth01.png">
 							간단한 인증 한번으로<br>
 							경쟁력을 높여보세요!
 						</div>
@@ -201,7 +200,7 @@
 			    			</div>
 		    				<div>
 		    					<button type="submit" class="editBtn">
-			    					<img class="editPass" alt="" src="${pageContext.request.contextPath}/assets/img/pass13.png">
+			    					<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 			    					수정완료
 		    					</button>
 		    				</div>	
@@ -349,7 +348,7 @@
 						</div>
 				   		<div>
 	    					<button type="submit" class="editBtn">
-	    						<img class="editPass" alt="" src="${pageContext.request.contextPath}/assets/img/pass13.png">
+	    						<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 	    						수정완료
 	    					</button>
 	    				</div>	
@@ -1134,7 +1133,7 @@ $(document).ready(function() {
 			</div>
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/template/assets/daum/exeDaumPostcode.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
 <!-- jquery file upload js -->
 <%-- <script src="${pageContext.request.contextPath}/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/assets/pages/filer/custom-filer.js" type="text/javascript"></script>

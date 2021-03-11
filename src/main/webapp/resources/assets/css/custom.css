@@ -34,16 +34,16 @@ input[type="checkbox"] + label span {
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	
+	letter-spacing: normal;
 	text-align: left;
 	color: #707070;
     padding-left: 20px;
     margin: 0;
     font-weight: normal;
-    background:url(/assets/img/checkActiveNone.png) no-repeat;
+    background:url(/local_assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
-    background:url(/assets/img/checkActive.png) no-repeat;
+    background:url(/local_assets/img/checkActive.png) no-repeat;
 }
 input:-webkit-autofill,
     input:-webkit-autofill:hover,
@@ -81,75 +81,69 @@ input:-webkit-autofill,
 }
 
 /*header*/
-header {width:100%; background-color:#fff; height: 70px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee; margin-top: -70px;}
-header .header_wrap {width:1080px; height:100%; margin: 0 auto;}
+header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee; margin-top: -77px;}
+header .header_wrap {width:1280px; height:100%; margin: 0 auto;}
 header .header_wrap h1 {
 	float:left;
-	padding:20px 0; 
-    margin: 0 40px 0 0;
+	padding:23px 0; 
+    margin: 0 54px 0 0;
     font-size: 0;
 }
 header .header_wrap h1 a {display:inline-block; text-decoration: none;}
-header .header_wrap h1 a img {width:143px; height:30px;}
+header .header_wrap h1 a img {width:155px; height:30px;}
 header .header_wrap nav {float:left; overflow: hidden;}
-header .header_wrap nav ul {float:left; margin-bottom: 0;}
+header .header_wrap nav ul {float:left;}
 header .header_wrap nav ul > li {float:left;}
 header .header_wrap nav ul > li > a {
-	line-height: 70px;
+    line-height: 77px;
     display: inline-block;
+    color: #000;
     text-decoration: none;
-    text-align: left;
-    margin: 0 20px;
-    font-size: 14px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    
-    text-align: left;
-    color: #484848;
-}
-header .header_wrap nav ul > li > a:hover {
-	color: #ff540f !important;	
+    margin: 0px 25px;
+	font-size: 1em;
+	font-weight: 800;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #1f1f1f;
 }
 header .header_wrap nav ul > li > .operation_guide_list {position:fixed; width:192px; top:77px;background-color:#fff;}
 header .header_wrap nav ul > li > .operation_guide_list a {display:block; padding:15px 26px; text-decoration: none;}
 header .header_wrap .gnb {float:right;}
 header .header_wrap .gnb div {float:left;}
 header .header_wrap .gnb .gnb_login a {
-    line-height: 70px;
+    line-height: 77px;
     display: inline-block;
+    color: #000;
     text-decoration: none;
-	height: 16px;
-	font-size: 14px;
-	font-weight: bold;
+	font-size: 1em;
+	font-weight: 800;
 	font-stretch: normal;
 	font-style: normal;
-	
+	letter-spacing: normal;
 	text-align: left;
-	color: #484848;
-	margin-right: 20px;
-}
-header .header_wrap .gnb .gnb_login a:hover {
-	color: #ff540f !important;	
+	color: #1f1f1f;	
 }
 header .header_wrap .gnb .gnb_login a:first-child:before {display:none;}
+header .header_wrap .gnb .gnb_project {margin-left:32px;}
 header .header_wrap .gnb .gnb_project a {
 	display:inline-block;
-	width: 160px;
-	height: 30px;
-	padding: 7px 0;
-	margin-top: 20px;
+	width: 179px;
+	height: 40px;
+	padding: 8px 0;
+	margin-top: 18px;
 	border-radius: 4px;
 	box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
 	background-image: linear-gradient(103deg, #ff8000, #ff540f);
 	font-size: 15px;
 	font-weight: bold;
-	line-height: 1.07;
 	font-stretch: normal;
 	font-style: normal;
-	
+	line-height: 1.5;
+	letter-spacing: normal;
 	text-align: center;
-	color: #ffffff !important;
+	color: #ffffff;
 	text-decoration: none;
 }
 
@@ -220,7 +214,7 @@ header .header_wrap .gnb .gnb_project a {
     font-stretch: normal;
     font-style: normal;
     line-height: 1.44;
-    
+    letter-spacing: normal;
     color: #ffffff;
     margin-top: 45px;
 }
@@ -242,7 +236,7 @@ header .header_wrap .gnb .gnb_project a {
   font-stretch: normal;
   font-style: normal;
   line-height: 1.68;
-  
+  letter-spacing: normal;
   text-align: center;
   color: #ffffff;
 }
@@ -275,7 +269,7 @@ header .header_wrap .gnb .gnb_project a {
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    
+    letter-spacing: normal;
     color: #ffffff;
 	}
 
@@ -357,10 +351,9 @@ header .header_wrap .gnb .gnb_project a {
 .partner_bnr {
     width: 100%;
     padding: 0;
-    background-color: #f3f3f3;
 }
 .partner_bnr .partner_wrap {
-    width: 1080px;
+    width: 1280px;
     margin: 0 auto;
     text-align: left;
 }
@@ -630,7 +623,7 @@ footer .footer_wrap .f_btm a{
 		font-weight: 800;
 	    font-stretch: normal;
 	    font-style: normal;
-	    
+	    letter-spacing: normal;
 	    text-align: left;
 	    color: #343434;
 	    font-size: 3vw;
@@ -713,6 +706,7 @@ footer .footer_wrap .f_btm a{
 	
 	.main-0000{height: auto !important;}
 	.main-001{
+		margin-top: 50px !important;
 		font-size: 7vw !important;
 		width: 100% !important;
 		height: auto !important;
@@ -873,7 +867,7 @@ footer .footer_wrap .f_btm a{
 	    height: auto !important;
 	    left: 15px !important;
 	    top: -15vw !important;
-	    background-image: url(/assets/img/도형1.png) !important;
+	    background-image: url(/local_assets/img/도형1.png) !important;
 	}
 	.memBox .textBox4 span{
 		font-size: 4vw !important;
@@ -897,7 +891,7 @@ footer .footer_wrap .f_btm a{
    		margin-top: 80px !important;
 	}
 	.main-img3 {
-	    background-image: url(/assets/img/down.png) !important;
+	    background-image: url(/local_assets/img/down.png) !important;
 	    width: 20px !important;
 	    height: 20px !important;
 	    text-align: center;
@@ -1055,7 +1049,7 @@ footer .footer_wrap .f_btm a{
 		font-weight: 800;
 	    font-stretch: normal;
 	    font-style: normal;
-	    
+	    letter-spacing: normal;
 	    text-align: left;
 	    color: #343434;
 	    font-size: 3vw;
@@ -1137,6 +1131,7 @@ footer .footer_wrap .f_btm a{
 	
 	.main-0000{height: auto !important;}
 	.main-001{
+		margin-top: 50px !important;
 		font-size: 3em !important;
 		width: 100% !important;
 		height: auto !important;
@@ -1217,7 +1212,7 @@ footer .footer_wrap .f_btm a{
     	margin-top: 100px !important;
 	}
 	.main-img3 {
-	    background-image: url(../assets/img/down.png) !important;
+	    background-image: url(../local_assets/img/down.png) !important;
 	}
 	.memBox{ width: 300px !important; height: auto !important;}
 	.main_img4{
@@ -1330,6 +1325,7 @@ footer .footer_wrap .f_btm a{
 @media screen and (min-width: 1200px) and (max-width: 1300px) {
     header .header_wrap {width:100%; height:100%; margin: 0 auto;}
     footer .footer_wrap {width: 100% !important;}
+    .main-001{margin-top: 50px !important;}
 	.main-000 {width: 100% !important;}
 	.main-0001 {width: 100% !important;}
 	.main-0004 {width: 100% !important;}
