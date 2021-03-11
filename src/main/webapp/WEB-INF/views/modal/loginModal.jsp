@@ -369,7 +369,7 @@ $(document).ready(function() {
                                     <div class="col-sm-6 col-xs-6">
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
-                                                <input type="checkbox" value="" id="loginRemember">
+                                                <input type="checkbox" id="loginRemember" name="continueLogin">
                                                 <label for="loginRemember" class="text-inverse"><span>로그인 유지하기</span></label>
                                             </label>
                                         </div>

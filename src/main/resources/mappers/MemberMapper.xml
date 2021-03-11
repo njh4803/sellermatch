@@ -158,6 +158,19 @@
 		UPDATE MemList SET mem_login_date = now() WHERE mem_id=#{memId}
 	</update>
 	
+	<!-- 로그인된 경우 해당 세션id와 유효시간을 사용자 테이블에 세팅한다. -->
+    <update id="keepLogin"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
+        update MemList set session_key = #{sessionKey}, session_limit = #{sessionLimit} where mem_id=#{memId}
+    </update>
+     
+    <!-- 유효기간이 남아 있으면서 해당 sessionId를 가지는 사용자 정보를 꺼내오는 부분 -->
+    <select id="checkUserWithSessionKey"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+		resultMap="MemberMap">
+        select * from MemList where session_key = #{sessionKey} and session_limit > now()
+    </select>
+	
 	<!-- 회원조회 데이터 수 조회 -->
 	<select id="selectCountAll"
 		parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"

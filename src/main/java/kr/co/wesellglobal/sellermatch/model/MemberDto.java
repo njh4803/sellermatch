@@ -1,5 +1,7 @@
 package kr.co.wesellglobal.sellermatch.model;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 //회원리스트 
@@ -101,6 +103,12 @@ public class MemberDto {
 	
     // 프로필 등록 여부
     private String existProfile;
+    
+    // 자동로그인 세션ID
+    private String sessionKey;
+    
+    // 자동로그인 세션 유효시간
+    private Date sessionLimit;
 	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;

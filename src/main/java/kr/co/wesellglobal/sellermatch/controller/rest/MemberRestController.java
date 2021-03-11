@@ -1,10 +1,12 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,8 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.WebUtils;
 
-import com.sun.mail.handlers.multipart_mixed;
+import com.sun.swing.internal.plaf.metal.resources.metal_pt_BR;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
@@ -228,9 +231,10 @@ public class MemberRestController {
 	
 	
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
-	public Map<String, Object> adminLogin(HttpSession session, HttpServletRequest request,
+	public Map<String, Object> adminLogin(HttpSession session, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "memId", required = false) String memId,
-			@RequestParam(value = "memPw", required = false) String memPw) {
+			@RequestParam(value = "memPw", required = false) String memPw,
+			@RequestParam(value = "continueLogin", required = false) String continueLogin) {
 		
 		if (!regexHelper.isValue(memId)) {
 			return webHelper.getJsonWarning("아이디를 입력하세요.");
@@ -238,13 +242,20 @@ public class MemberRestController {
 		if (!regexHelper.isValue(memPw)) {
 			return webHelper.getJsonWarning("비밀번호를 입력하세요.");
 		}
+		
+		//String returnURL ="";
+        if ( session.getAttribute("member") !=null ){
+            // 기존에 member 세션 값이 존재한다면
+            session.removeAttribute("member");// 기존값을 제거해 준다.
+        }
+		
 		// 이전페이지 주소 가져오기
 		String referer = request.getHeader("referer");
 		
 		MemberDto input = new MemberDto();
 		input.setMemId(memId);
 		input.setMemPw(memPw);
-
+		
 		MemberDto output = null;
 		
 		ProfileDto input2 = new ProfileDto();
@@ -261,23 +272,73 @@ public class MemberRestController {
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
+		// 세션 저장
+		webHelper.setSession("member", output);
+		
+		// 로그인 유지를 체크했다면
+		if (continueLogin.equals("on")) {
+			int amount =60 *60 *24 *7;
+			
+            // 쿠키를 생성하고 현재 로그인되어 있을 때 생성되었던 세션의 id를 쿠키에 저장한다.
+            webHelper.setCookie("loginCookie", session.getId(), amount);// 단위는 (초)임으로 7일정도로 유효시간을 설정
+            
+            
+            
+            // currentTimeMills()가 1/1000초 단위임으로 1000곱해서 더해야함
+            Date sessionLimit =new Date(System.currentTimeMillis() + (1000*amount));
+			
+			input.setSessionLimit(sessionLimit);
+			input.setSessionKey(session.getId());
+			try {
+				memberService.keepLogin(input);
+			} catch (Exception e) {
+				return webHelper.getJsonError(e.getLocalizedMessage());
+			}
+		}		
 
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("referer", referer);
 		data.put("profile", profile);
 		data.put("output", output);
-		// 세션 저장
-		webHelper.setSession("member", output);
+
 		return webHelper.getJsonData(data);
 	}
 	/** 로그아웃 */
 	
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
-	public Map<String, Object> logout(HttpServletRequest request) {
-		webHelper.removeAllSession();
+	public Map<String, Object> logout(HttpSession session,HttpServletRequest request, 
+			HttpServletResponse response) {
+		
+		Object obj = webHelper.getSession("member");
+		
+		if (obj != null) {
+			MemberDto memDto = (MemberDto)obj;
+			// null이 아닐 경우 제거
+			webHelper.removeAllSession(); // 세션 전체를 삭제
+			String loginCookie = webHelper.getCookie("member");
+			if (loginCookie != null) { // 쿠키가 존재하면
+				// 쿠키의 유효시간을 0으로 설정
+				webHelper.setCookie("member", null , 0);
+				// 회원 테이블에서도 유효기간을 현재시간으로 다시 세팅
+                Date date =new Date(System.currentTimeMillis());
+                
+                MemberDto input = new MemberDto();
+                input.setMemId(memDto.getMemId());
+                input.setSessionKey(session.getId());
+                input.setSessionLimit(date);
+                
+                try {
+					memberService.keepLogin(input);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		// 이전페이지 주소 가져오기
 		String referer = request.getHeader("referer");
+		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("referer", referer);
 		return webHelper.getJsonData(data);

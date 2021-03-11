@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -17,12 +19,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.wesellglobal.sellermatch.controller.rest.AdminProjectRestController;
+import kr.co.wesellglobal.sellermatch.helper.UploadFileUtils;
+import kr.co.wesellglobal.sellermatch.helper.UploadItem;
+import kr.co.wesellglobal.sellermatch.helper.WebHelper;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping
 public class UploadController {
+	
+	@Autowired
+	WebHelper webHelper;
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 	
@@ -37,5 +53,29 @@ public class UploadController {
 		return IOUtils.toByteArray(in);
 	}
 
-	
+	@RequestMapping(value = "/admin/project/fileUpload", method = RequestMethod.POST)
+	public Map<String, Object> fileUpload(@RequestParam(value = "detailImg", required = false) MultipartFile detailImg){
+		/** 1) 업로드 처리 */
+		// 업로드 결과가 저장된 Beans를 리턴받는다.
+		UploadItem item = null;
+		String fName = "";
+		
+		log.debug("detailImg = " + detailImg);
+		ResponseEntity<String> insertFileName;
+		try {
+			insertFileName = new ResponseEntity<String>(
+					UploadFileUtils.uploadFile(uploadPath, detailImg.getOriginalFilename(), detailImg.getBytes()),
+					HttpStatus.CREATED);
+			fName = insertFileName.getBody();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("fName", fName);
+		return webHelper.getJsonData(data);
+		
+	}
 }

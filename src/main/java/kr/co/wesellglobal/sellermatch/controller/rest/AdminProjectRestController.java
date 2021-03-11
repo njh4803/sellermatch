@@ -219,30 +219,4 @@ public class AdminProjectRestController {
 		}
 		return webHelper.getJsonData();
 	}
-	
-	@RequestMapping(value = "/admin/project/fileUpload", method = RequestMethod.POST)
-	public Map<String, Object> fileUpload(@RequestParam(value = "detailImg", required = false) MultipartFile detailImg){
-		/** 1) 업로드 처리 */
-		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		UploadItem item = null;
-		String fName = "";
-		
-		log.debug("detailImg = " + detailImg);
-		ResponseEntity<String> insertFileName;
-		try {
-			insertFileName = new ResponseEntity<String>(
-					UploadFileUtils.uploadFile(uploadPath, detailImg.getOriginalFilename(), detailImg.getBytes()),
-					HttpStatus.CREATED);
-			fName = insertFileName.getBody();
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("fName", fName);
-		return webHelper.getJsonData(data);
-		
-	}
 }
