@@ -153,6 +153,12 @@ a.sort{
 a.sort.select{
 	font-weight: bold;
 }
+.partner_bnr3 hr{
+  width: 100%;
+  height: 0;
+  margin: 15px 0;
+  border: solid 2px #343434;
+}
 .contents{
   width: 100%;
   margin: 5px 0 5px 0;
@@ -557,6 +563,7 @@ a.sort:last-child{
 	.titleBox{
 		letter-spacing: -0.2vw !important;
 		font-size: 5vw !important;
+		float: none;
 	}
 	.input_group{
 		width: 70vw !important;
@@ -663,7 +670,6 @@ a.sort:last-child{
 		margin-right: 0 !important;
 	}
 	.authImg{
-		width: 3.5vw !important;
 		margin-top: -2px;
    		width: 3.5vw !important;
 	}
