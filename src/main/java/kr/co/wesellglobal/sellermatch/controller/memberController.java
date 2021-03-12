@@ -64,45 +64,10 @@ public class memberController {
 		return new ModelAndView("myPage");
 	}
 	
-	@RequestMapping(value = "/member/joinMain", method = RequestMethod.GET)
-	public ModelAndView joinMain(Model model) {
-		
-		return new ModelAndView("joinMain");
-	}
-	
-	// 카카오 로그인창 호출
-	@RequestMapping(value = "/login/getKakaoAuthUrl")
-	public @ResponseBody String getKakaoAuthUrl(HttpServletRequest request) throws Exception {
-		
-		String kakaoApiKey = "1dbcd212ddc07cec13bac032add76058";
-		//String redirectURI = "http://127.0.0.1:8080/member/join"; //개발
-		String redirectURI = "http://sellermatch.co.kr/member/join"; //운영
-		String reqUrl = "https://kauth.kakao.com" + "/oauth/authorize?client_id=" + kakaoApiKey + "&redirect_uri="+ redirectURI + "&response_type=code";
-		
-		return reqUrl;
-	}
-	// 구글 로그인창 호출
-	@RequestMapping(value = "/login/getGoogleAuthUrl")
-	public @ResponseBody String getGoogleAuthUrl(HttpServletRequest request) throws Exception {
-		
-		String googleApiKey = "401148449336-dhftt4anh287l238ii4nt2655l3ifknm.apps.googleusercontent.com";
-		//String redirectURI = "http://127.0.0.1:8080/member/join"; //개발
-		String redirectURI = "http://sellermatch.co.kr/member/join"; //운영
-		String reqUrl = "https://accounts.google.com/o/oauth2/v2/auth?client_id=" + googleApiKey + "&redirect_uri="+ redirectURI + "&response_type=code"
-				+ "&scope=profile";
-		
-		return reqUrl;
-	}
-	// 네이버 로그인창 호출
-	@RequestMapping(value = "/login/getNaverAuthUrl")
-	public @ResponseBody String getNaverAuthUrl(HttpServletRequest request) throws Exception {
-		
-		String naverApiKey = "WbIQH3jGvG5OtKT_lrMr";
-		//String redirectURI = "http://127.0.0.1:8080/member/join"; //개발
-		String redirectURI = "http://sellermatch.co.kr/member/join"; //운영
-		String reqUrl = "https://nid.naver.com/oauth2.0/authorize?client_id=" + naverApiKey + "&redirect_uri="+ redirectURI + "&response_type=code";
-		
-		return reqUrl;
-	}
-	
+	/*
+	 * @RequestMapping(value = "/member/joinMain", method = RequestMethod.GET)
+	 * public ModelAndView joinMain(Model model) {
+	 * 
+	 * return new ModelAndView("joinMain"); }
+	 */
 }

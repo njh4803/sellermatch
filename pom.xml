@@ -99,7 +99,6 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-
 		<!-- ========== Spring을 구성하기 위한 기본 라이브러리들 추가 ========== -->
 		<!-- 1) Spring Context Support -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
@@ -275,6 +274,48 @@
 		    <artifactId>jsoup</artifactId>
 		    <version>1.13.1</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.12.0</version>
+		</dependency>
+		<dependency><!-- SNS 연동 dependency 추가-->
+              <groupId>com.github.scribejava</groupId>
+              <artifactId>scribejava-apis</artifactId>
+              <version>5.6.0</version>
+        </dependency>
+
+        <dependency>
+              <groupId>com.github.scribejava</groupId>
+              <artifactId>scribejava-core</artifactId>
+              <version>5.6.0</version>
+        </dependency>
+
+        <dependency>
+              <groupId>org.springframework.social</groupId>
+              <artifactId>spring-social-google</artifactId>
+              <version>1.0.0.RELEASE</version>
+        </dependency>
+        
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.12.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.12.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.12.2</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

@@ -19,15 +19,15 @@
 	        <h2>셀러매치 5초 SNS 간편가입</h2>
 	        <div class="joinBox naver">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/naver.png">
-	        		<a class="" href="javascript:loginWithNaver()">네이버 아이디로 회원가입</a>
+	        		<a class="" href="${ naver_url }">네이버 아이디로 회원가입</a>
 	        </div>
 	        <div class="joinBox kakao">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/kakao.png">
-	        	<a class="" href="javascript:loginWithKakao()">카카오톡으로 회원가입</a>
+	        	<a class="" href="${kakao_url}">카카오톡으로 회원가입</a>
 	        </div>
 	        <div class="joinBox google">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/google.png">
-	        	<a class="" href="javascript:loginWithGoogle()">구글 계정으로 회원가입</a>
+	        	<a class="" href="${ google_url }">구글 계정으로 회원가입</a>
 	        </div>
 	        <div class="joinBox">
 	        	<img class="mail" alt="" src="${pageContext.request.contextPath}/assets/img/mail.png">
@@ -40,45 +40,6 @@
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
-
-//카카오 로그인 버튼 클릭
-function loginWithKakao() {
-    $.ajax({
-        url: '/login/getKakaoAuthUrl',
-        type: 'get',
-        async: false,
-        dataType: 'text',
-        success: function (res) {
-            location.href = res;
-        }
-    });
-}
-
-//구글 로그인 버튼 클릭
-function loginWithGoogle() {
-  $.ajax({
-      url: '/login/getGoogleAuthUrl',
-      type: 'get',
-      async: false,
-      dataType: 'text',
-      success: function (res) {
-          location.href = res;
-      }
-  });
-}
-
-//구글 로그인 버튼 클릭
-function loginWithNaver() {
-  $.ajax({
-      url: '/login/getNaverAuthUrl',
-      type: 'get',
-      async: false,
-      dataType: 'text',
-      success: function (res) {
-          location.href = res;
-      }
-  });
-}
 </script>    
     </body>
 </html>
