@@ -1,13 +1,37 @@
 @charset "UTF-8";
 
-.partner_bnr {
-    width: 100%;
-    padding-bottom: 110px;
+.partner_bnr3 hr{
+  height: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: solid 2px #ff570e;
 }
 .partner_bnr2 {
     width: 100%;
     padding-bottom: 100px;
     text-align: center;
+}
+.top-Box{
+  width: 100%;
+  font-size: 25px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+  margin-bottom: 10px;
+}
+.top-Box2{
+	width: 100%;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #343434;
+	text-align: left;
 }
 .container1{
 	width: 1280px;
@@ -15,6 +39,8 @@
 	border: solid 1px #cccccc;
 	display: inline-block;
 	padding: 60px 60px;
+	margin-bottom: 110px;
+	border-radius: 20px;
 }
 .container2{
 	margin-bottom: 58px;
@@ -23,26 +49,7 @@
 	margin: 0;
 	height: fit-content;
     float: left;
-    margin-bottom: 58px;
-}
-.bar{
-  width: 1920px;
-  height: 60px;
-  margin-bottom: 40px;
-  background-image: linear-gradient(to right, #d90b54, #153f92 51%, #57207c);
-  padding: 12px;
-}
-.bar div{
-  width: 1280px;
-  font-size: 25px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.44;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff; 
-  margin: 0 auto;
+    margin-bottom: 60px;
 }
 .leftBox{
 	float: left;
@@ -77,91 +84,64 @@
 	margin-bottom: 20px;
 	display: inline-block;
 }
-.infoBox2{
-	width: 718px;
-	display: inline-block;
-}
-.infoBox1 .textBox1{
-  display: inline-block;
-  width: 50px;
-  height: 20px;
-  margin-right: 15px;
-  background-color: #25398b;
-  font-size: 10px;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-}
 .infoBox2 .textBox2{
 	display: block;
-	width: 718px;
-    height: 29px;
-    font-size: 20px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    margin: 0;
-    color: #000000;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #343434;
+	margin: 0;
+}
+.infoBox2 .textBox2:nth-child(1){
+	margin-bottom: 10px !important;	
 }
 .infoBox2 .textBox2 span:nth-child(1){
 	margin-left: 20px;
 }
 .infoBox2 .textBox2 span{
 	display: inline-block;
-	font-size: 20px;
-	margin-right: 15px;
+	margin-right: 20px;
+	font-size: 15px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	line-height: 1.5;
-	letter-spacing: normal;
 	text-align: left;
-	color: #707070;
+	color: #343434;
 }
 .hashtag{
-  height: 21px;
-  margin-right: 15px;
+  margin-right: 28px;
   font-size: 15px;
-  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #4b4b4b;
+  color: #343434;
   display: inline-block;
 }
 .intro{
-  height: 60px;
   font-size: 30px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+  margin-bottom: 14px;
+}
+.match{
+  width: 200px;
+  height: 40px;
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(101deg, #ff8000, #ff540f);
+  font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
-}
-.match{
-  width: 250px;
-  height: 50px;
-  border-radius: 4px;
-  background-image: linear-gradient(to right, #d90b54, #3b1374);
-  font-size: 15px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
   text-align: center;
-  color: #ffffff;
+  color: #ffffff; 
 }
 .matchPass{
   width: 11px;
@@ -176,38 +156,36 @@
   margin-top: -3px;
 }
 .scrap{
-  width: 250px;
-  height: 50px;
+  width: 199px;
+  height: 40px;
   border-radius: 4px;
-  border: solid 1px #c6c6c6;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  border: solid 0.5px #fe5413;
   background-color: #ffffff;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
   text-align: center;
-  color: #000000;
+  color: #ff540f;
 }
 .btnBox{
 	float: right;
 	width: 250px;
 	margin-top: -110px;
+	text-align: center;
 }
 .detailBox1{
   display: inline-block;
   width: 1160px;
   border-top: solid 1px #cccccc;
-  border-bottom: solid 1px #cccccc;
   margin-bottom: 15px;
-  background-color: #fff8fa;
+  background-color: #fff6f2;
 }
 .detailBox2{
   display: inline-block;
   width: 1160px;
-  border-top: solid 1px #cccccc;
   border-bottom: solid 1px #cccccc;
   background-color: #faf6ff;
   margin-bottom: 60px;
@@ -233,45 +211,43 @@
 .infoBox .textRow{
   font-size: 20px;
   margin-bottom: 20px;
-  font-weight: 500;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: center;
-  color: #000000;
+  color: #343434;
+}
+.infoBox .textRow span{
+	font-weight: bold;
 }
 .infoBox2{
     display: inline-block;
     text-align: left;
-    width: 388px;
+    width: 60%;
 }
 .detailBox3{
   font-size: 24px;
-  font-weight: 500;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
   text-align: left;
-  color: #000000;
+  color: #ff550f;
 }
 .profile-hr{
   width: 1160px;
   height: 0;
-  margin: 10px 0;
+  margin: 12px 0;
   border: solid 1px #cccccc;
 }
 .ContentsBox1{
   width: 1160px;
   margin-bottom: 76px;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.73;
-  letter-spacing: normal;
   text-align: left;
-  color: #000000;
+  color: #343434;
 }
 .ContentsBox2{
   width: 1160px;
@@ -312,4 +288,162 @@
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+}
+/* 모바일 */
+@media screen and (max-width: 767px){
+	.partner_wrap hr{
+		margin: 5px 0 !important;
+		border: 2px solid #ff540f !important;
+	}
+	.partner_bnr3{
+		padding-top: 30px !important;
+	}
+	.container1{
+		width: 100% !important;
+		margin-bottom: 10px !important;
+	}
+	.w-detail{
+		display: none !important;
+	}
+	.m-detail{
+		display: block !important;
+	}
+	.partner_bnr .partner_wrap{
+		width: 90% !important;
+		margin: 0 auto !important;
+	}
+	.container1 {
+	    padding: 5vw !important;
+	    margin-top: 5px !important;
+	    border-radius: 10px !important;
+	}
+	.container2{
+		margin-bottom: 20px !important;
+	}
+	.container1 .container2{
+		float: none !important;
+		text-align: center !important;
+	}
+	.titleBox{
+		width: 100% !important;
+		font-size: 5vw !important;
+	}
+	.top-Box{
+		font-size: 5vw !important;
+		margin-bottom: 0 !important;
+	}
+	.partner_wrap .container1 .profile-hr{
+		width: 100% !important; 
+		border: solid 1px #cccccc !important;
+	}
+	.ContentsBox1{
+		width: 100% !important;
+	}
+	.ContentsBox2{
+		width: 100% !important;
+	}
+	.profileImgBox{
+		float: none !important;
+	}	
+	.profileImg{
+		margin-right: 0 !important;
+		width: 30vw !important;
+    	height: auto !important;
+	}
+	.infoBox1{
+		width: 100% !important;
+		margin-top: 10px !important;
+	}
+	.intro{
+		text-align: center !important;
+		font-size: 5vw !important;
+		margin-top: 10px !important;
+		margin-bottom: 0 !important;
+	}
+	.btnBox{
+		float: none !important;
+		width: 100% !important;
+		margin-top: 0 !important;
+	}
+	.scrap{
+		width: 15vw !important;
+	}
+	.match {
+    	width: 30vw !important;
+	}
+	.infoBox2{
+		width: 100% !important;
+	}
+	.infoBox2 .textBox2, .infoBox2 .textBox2 span{
+		font-size: 3vw !important;
+	}
+	.infoBox2 .textBox2 span{
+		margin-right: 10px !important;
+	}
+	.infoBox .textRow, .textBox2{
+		font-size: 3vw !important;
+	}
+	.detailBox1, .detailBox2{
+		width: 100% !important;
+	}
+	.detailBox2{
+		margin-bottom: 40px !important;
+	}
+	.infoBox{
+		width: 23.5% !important;
+		vertical-align: text-bottom;
+	}
+	.detailBox3{
+		font-size: 4vw !important;
+	}
+	.ContentsBox1 {
+		font-size: 3vw !important;
+		margin-top: 10px;
+	}
+	.infoBox2 .textBox2 span:nth-child(1){
+		margin-left: 10px !important;
+	}
+	.ContentsBox2 .projectDate{
+		font-size: 2.5vw !important;
+		padding: 0 20px 5px 0 !important;
+		width: auto !important;
+	}
+	.ContentsBox3{
+		font-size: 3vw !important;
+		margin-bottom: 10px;
+	}
+	.ContentsBox2 .project{
+		font-size: 2.5vw !important;
+		vertical-align: text-top;
+		width: 70% !important;
+	}
+}
+
+/* 테블릿 세로 */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.container1{
+		width: 100% !important;
+	}
+	.m-detail{
+		display: none !important;
+	}	
+}
+
+/* 테블릿 가로 */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+	.container1{
+		width: 100% !important;
+	}
+	.m-detail{
+		display: none !important;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+	.container1{
+		width: 100% !important;
+	}
+	.m-detail{
+		display: none !important;
+	}	
 }

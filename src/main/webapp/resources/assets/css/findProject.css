@@ -189,7 +189,8 @@ a.sort.select{
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #343434;
+  font-weight: 800;
+  color: #484848;
   margin-bottom: 15px;
   /* 말줄임 표시 */
   overflow: hidden;
@@ -197,9 +198,6 @@ a.sort.select{
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical; 
 }
-.project-titleBox a.proj-link{
-	font-weight: 800;
-} 
 .project-detailBox{
   height: 40px;
   object-fit: contain;
@@ -340,8 +338,8 @@ a.sort.select{
   border: solid 0.5px #ff0000;
   background-color: #ffffff;
 }
-a.proj-link{
-	color: #000 !important;
+.proj-link{
+	cursor: pointer;
 }
 .D-day{
 	display: inline-block;
@@ -505,6 +503,9 @@ a.sort:last-child{
 }
 .m-find{
 	display: none;
+}
+.authImg{
+	width: 15px;
 }
 /*--------------------------------------*/
 /* 모바일 */

@@ -4,9 +4,138 @@
 <%@ include file="inc/header.jsp"%>
 <%@ include file="modal/recommendModal.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/detailSeller.css" rel="stylesheet" type="text/css">
-<div class="partner_bnr">
-	<div class="bar"><div>판매자 상세정보</div></div>
-    <div class="partner_wrap" style="text-align: left;">
+<div class="partner_bnr m-detail">
+	<div class="partner_wrap">
+		<div class="partner_bnr3">
+			<div class="top-Box">판매자 상세페이지</div>
+		</div>
+		<hr>
+		<div class="container1 content clearfix">
+			<input type="hidden" id="profileMemId" value="${output.profileMemId}">
+			<div class="container2">
+				<div class="btnBox">
+					<button class="scrap">
+						스크랩
+					</button>
+					<button class="match" id="applyBtn">
+						지원하기
+					</button>
+				</div>
+				<div class="infoBox1">
+					<c:forEach var="profileHashtag" items="${output.profileHashtag}" varStatus="status">
+        				<div class="hashtag"># ${profileHashtag}</div>
+        			</c:forEach>
+				</div>
+				<div class="profileImgBox">
+					<img class="profileImg"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+				</div>
+				<div class="infoBox1">
+					<div class="intro">
+						${output.memNick} 
+					</div>
+				</div>
+				<div class="infoBox2">
+					<div class="textBox2">판매채널
+						<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status">
+	        				<span>${profileChannel}</span>
+	        			</c:forEach>
+	           		</div>
+	           		<div class="textBox2">검증내용
+						<c:if test="${output.profileBizCerti == 1}"> 
+							<span>사업자인증</span>
+						</c:if>
+						<c:if test="${output.memRname == 1}">
+							<span>신원인증</span>
+						</c:if>
+						<c:if test="${output.profileChChk == 1}">
+							<span>채널검증</span>
+						</c:if>
+						<c:if test="${output.profileSaleChk == 1}">
+							<span>매출검증</span>
+						</c:if>
+	           		</div>
+				</div>
+			</div>
+			<div class="detailBox1">
+				<div class="infoBox">
+					<div class="textBox2"><span>유형</span></div>
+					<c:if test="${output.profileBizSortName != ''}">
+						<div class="textRow"><span>${output.profileBizSortName}</span></div>
+					</c:if>
+					<c:if test="${output.profileBizSortName == ''}">
+						<div class="textRow"><span>등록X</span></div>
+					</c:if>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>분류</span></div>
+					<div class="textRow"><span>${output.profileIndusName}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>지역</span></div>
+					<div class="textRow"><span>${output.profileNationName}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>요청받은수</span></div>
+					<div class="textRow"><span>${output.recommendCount}명</span></div>
+				</div>
+			</div>
+			<div class="detailBox2">
+				<div class="infoBox">
+					<div class="textBox2"><span>매출규모</span></div>
+					<div class="textRow"><span>${output.profileVolume}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>판매경력</span></div>
+					<div class="textRow"><span>${output.profileCareerName}</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>계약 프로젝트</span></div>
+					<div class="textRow"><span>${output.contractCount}개</span></div>
+				</div>
+				<div class="infoBox">
+					<div class="textBox2"><span>등록 프로젝트</span></div>
+					<div class="textRow"><span>${output.projAddCount}개</span></div>
+				</div>				
+			</div>
+			<div class="detailBox3">상세정보</div>
+			<hr class="profile-hr">
+			<div class="ContentsBox1">
+				${output.profileIntro}
+			</div>			
+			<div class="detailBox3">프로젝트</div>
+			<hr class="profile-hr">
+			<div class="ContentsBox2">
+				<c:forEach var="project" items="${project}">
+					<div>
+						<div class="projectDate">${project.projRegDate}</div>
+						<div class="project">${project.projTitle}</div>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="detailBox3">공급자평가</div>
+			<hr class="profile-hr">
+			<div class="ContentsBox3">
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="partner_bnr w-detail">
+	<div class="partner_wrap">
+		<div class="partner_bnr3">
+			<div class="top-Box">판매자 상세페이지</div>
+			<div class="top-Box2">
+				조건에 맞는 공급자와 판매자를 찾고 거래 신청할 수 있습니다.
+			</div>
+			<hr>
+		</div>
 		<div class="container1 content">
 			<input type="hidden" id="profileMemId" value="${output.profileMemId}">
 			<div class="container2">
@@ -14,14 +143,13 @@
 					<img class="profileImg"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 				</div>
 				<div class="infoBox1 leftBox">
-					<div class="textBox1">추천셀러</div>
 					<c:forEach var="profileHashtag" items="${output.profileHashtag}" varStatus="status">
         				<div class="hashtag"># ${profileHashtag}</div>
         			</c:forEach>
 				</div>
 				<div class="infoBox1 leftBox">
 					<div class="intro">
-						${output.memNick}
+						${output.memNick} 
 					</div>
 				</div>
 				<div class="infoBox2 leftBox">
@@ -47,12 +175,10 @@
 				</div>
 				<div class="btnBox">
 					<button class="scrap">
-					<img class="star" alt="" src="${pageContext.request.contextPath}/assets/img/starNone.png">
-						관심등록
+						스크랩
 					</button>
 					<button class="match" id="applyBtn">
-					<img class="matchPass" alt="" src="${pageContext.request.contextPath}/assets/img/pass13.png">
-						지원요청
+						지원하기
 					</button>
 				</div>
 			</div>
@@ -122,7 +248,7 @@
 			</div>
 		</div>
 	</div>
-</div>			
+</div>	
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {

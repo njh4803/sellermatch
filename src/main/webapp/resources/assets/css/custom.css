@@ -40,10 +40,10 @@ input[type="checkbox"] + label span {
     padding-left: 20px;
     margin: 0;
     font-weight: normal;
-    background:url(/local_assets/img/checkActiveNone.png) no-repeat;
+    background:url(/assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
-    background:url(/local_assets/img/checkActive.png) no-repeat;
+    background:url(/assets/img/checkActive.png) no-repeat;
 }
 input:-webkit-autofill,
     input:-webkit-autofill:hover,
@@ -867,7 +867,7 @@ footer .footer_wrap .f_btm a{
 	    height: auto !important;
 	    left: 15px !important;
 	    top: -15vw !important;
-	    background-image: url(/local_assets/img/도형1.png) !important;
+	    background-image: url(/assets/img/도형1.png) !important;
 	}
 	.memBox .textBox4 span{
 		font-size: 4vw !important;
@@ -891,7 +891,7 @@ footer .footer_wrap .f_btm a{
    		margin-top: 80px !important;
 	}
 	.main-img3 {
-	    background-image: url(/local_assets/img/down.png) !important;
+	    background-image: url(/assets/img/down.png) !important;
 	    width: 20px !important;
 	    height: 20px !important;
 	    text-align: center;
@@ -1212,7 +1212,7 @@ footer .footer_wrap .f_btm a{
     	margin-top: 100px !important;
 	}
 	.main-img3 {
-	    background-image: url(../local_assets/img/down.png) !important;
+	    background-image: url(../assets/img/down.png) !important;
 	}
 	.memBox{ width: 300px !important; height: auto !important;}
 	.main_img4{

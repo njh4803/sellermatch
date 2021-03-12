@@ -494,11 +494,6 @@ a.sort:last-child{
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 }
-.check_list_box:nth-child(2){
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-radius: 0;
-}
 .filter-box ul {
     display: none;
     text-align: left;
@@ -526,6 +521,13 @@ a.sort:last-child{
 }
 .m-find{
 	display: none;
+}
+.authImg{
+	width: 15px;
+}
+.starImg{
+	width: 20px;
+	display: inline-block;
 }
 /* 모바일 */
 @media screen and (max-width: 767px){
@@ -644,10 +646,10 @@ a.sort:last-child{
 	}
 	.starImg{
 		width: 5vw !important;
-		display: inline-block;
 	}
 	.auth-container{
 		width: 56% !important;
+		margin-bottom: 2vh !important;
 	}
 	.authBox {
 	    font-size: 3vw !important;
@@ -671,12 +673,27 @@ a.sort:last-child{
 	    margin-bottom: 5px !important;
 	    margin-top: 10px !important;
 	}
+	.check_list_box:nth-child(2){
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		border-radius: 0;
+	}
 }
 /* 테블릿 세로 */
-/* @media screen and (min-width: 768px) and (max-width: 991px) {
-
-} */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.m-find{
+		display: none !important;
+	}
+}
 /* 테블릿 가로 */
-/* @media screen and (min-width: 992px) and (max-width: 1199px) {
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+	.m-find{
+		display: none !important;
+	}
+}
 
-} */
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+	.m-find{
+		display: none !important;
+	}	
+}

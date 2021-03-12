@@ -7,8 +7,8 @@
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
 			<div class="top-Box">거래처 상세페이지</div>
-			<hr>
 		</div>
+		<hr>
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">
 				<input type="hidden" id="projId" value="${output.projId}">
@@ -179,12 +179,13 @@
 						<img class="miniImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 						<div class="applyNick">
 							<div>${applyDto.memNick}</div>
-							<div class="applyTag">
-								<c:forEach var="hashtag" items="${applyDto.profileHashtagList}">
-	        						# ${hashtag}
-	        					</c:forEach>
-							</div>
-						</div>
+	
+						</div>						
+					</div>
+					<div class="applyTag">
+						<c:forEach var="hashtag" items="${applyDto.profileHashtagList}">
+       						# ${hashtag}
+       					</c:forEach>
 					</div>
 					</c:forEach>	
 				</c:when>

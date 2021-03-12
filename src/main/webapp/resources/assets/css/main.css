@@ -29,7 +29,7 @@
     color: #000000;
     height: 643px;
     margin: 0 auto;
-    margin-top: 70px !important;
+    margin-top: 77px !important;
     width: 1080px;
     position: relative;
 }
@@ -425,13 +425,13 @@
   background-color: #ffffff;
 }
 .memBox:hover .main_img4{
-	background-image: url(/local_assets/img/도형1.png) !important;
+	background-image: url(/assets/img/도형1.png) !important;
 }
 .main-img3{
-	background-image: url(/local_assets/img/down-gray.png);
+	background-image: url(/assets/img/down-gray.png);
 }
 .memBox:hover .main-img3{
-	background-image: url(/local_assets/img/down.png) !important;
+	background-image: url(/assets/img/down.png) !important;
 }
 .memBox:hover .textBox4 span{
   font-size: 25px !important;
@@ -502,7 +502,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
-    background-image: url(/local_assets/img/도형2.png);
+    background-image: url(/assets/img/도형2.png);
 }
 .main-0005{
   width: 100%;
@@ -657,7 +657,7 @@
 	display: block;
 }
 .img5-show{
-	background-image: url("/local_assets/img/bottomArrow2.png") !important;
+	background-image: url("/assets/img/bottomArrow2.png") !important;
 }
 .Qa{
 	display: inline-block;

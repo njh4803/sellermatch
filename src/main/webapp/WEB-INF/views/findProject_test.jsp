@@ -167,7 +167,7 @@
 				<hr>
 			</div>
 			<c:forEach var="output" items="${output}" varStatus="status">
-			<div class="contents clearfix">
+			<div class="contents clearfix proj-link" data-index="${status.index}">
 				<div class="clearfix">
 					<input type="hidden" id="projId${status.index}" value="${output.projId}">
 					<div class="leftBox">
@@ -211,9 +211,9 @@
 							</div>
 						</c:if>
 						<c:if test="${output.projPrice == 0}">
-							<div class="infoBox2 m-infoBox2"><span>마진</span> ${output.projMarginName}</div>
+							<div class="infoBox2 m-infoBox2 clearfix"><span>마진</span> ${output.projMarginName}</div>
 						</c:if>
-						<div class="infoBox3">
+						<div class="infoBox3 clearfix">
 							<c:if test="${output.memRname == 1}">
 								<div class="authBox">신원인증
 									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
@@ -276,10 +276,10 @@
 							</c:if>							
 						</div>					
 						<div class="project-titleBox clearfix">
-							<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projTitle}</a>
+							${output.projTitle}
 						</div>
 						<div class="project-detailBox">
-							<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projDetail}</a>
+							${output.projDetail}
 						</div>	
 						<div class="left-infoBox2">
 							<c:forEach var="projKeywordList" items="${output.projKeywordList}">
@@ -518,7 +518,7 @@
 					</div>
         		</div>
         		<c:forEach var="output" items="${output}" varStatus="status">
-        		<div class="contents clearfix">
+        		<div class="contents clearfix proj-link" data-index="${status.index}">
 					<div class="clearfix">
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
@@ -541,10 +541,10 @@
 					        	<%-- <div class="areaBox">${output.projNationName}지역</div> --%>
 							</div>
 							<div class="project-titleBox">
-								<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projTitle}</a>
+								${output.projTitle}
 							</div>
 							<div class="project-detailBox">
-								<a class="proj-link" href="javascript:void(0);"  data-index="${status.index}">${output.projDetail}</a>
+								${output.projDetail}
 							</div>	
 							<div class="left-infoBox2">
 								<c:forEach var="projKeywordList" items="${output.projKeywordList}">
@@ -788,7 +788,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 				<hr>
 			</div>
 			{{#output}}
-			<div class="contents clearfix">
+			<div class="contents clearfix proj-link" data-index="${status.index}">
 				<div class="clearfix">
 					<input type="hidden" id="projId{{@key}}" value="{{projId}}">
 					<div class="leftBox">
@@ -894,10 +894,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}						
 						</div>					
 						<div class="project-titleBox clearfix">
-							<a class="proj-link" href="javascript:void(0);"  data-index="{{@key}}">{{projTitle}}</a>
+							{{projTitle}}
 						</div>
 						<div class="project-detailBox">
-							<a class="proj-link" href="javascript:void(0);"  data-index="{{@key}}">{{projDetail}}</a>
+							{{projDetail}}
 						</div>	
 						<div class="left-infoBox2">
 							{{#each projKeywordList as |value key|}}
@@ -951,7 +951,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 					</div>
         		</div>
         		{{#output}}
-        		<div class="contents clearfix">
+        		<div class="contents clearfix proj-link" data-index="${status.index}">
 					<div class="clearfix">
 						<input type="hidden" id="projId{{@key}}" value="{{projId}}">
 						<div class="leftBox">
@@ -970,10 +970,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 					        	{{/ifCond}}
 							</div>
 							<div class="project-titleBox">
-								<a class="proj-link" href="javascript:void(0);"  data-index="{{@key}}">{{projTitle}}</a>
+								{{projTitle}}
 							</div>
 							<div class="project-detailBox">
-								<a class="proj-link" href="javascript:void(0);"  data-index="{{@key}}">{{projDetail}}</a>
+								{{projDetail}}
 							</div>	
 							<div class="left-infoBox2">
 								{{#each projKeywordList as |value key|}}

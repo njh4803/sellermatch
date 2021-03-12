@@ -515,7 +515,7 @@ textarea::placeholder {
 		font-size: 5vw !important;
 		margin-bottom: 0 !important;
 	}
-	.partner_bnr3 hr{
+	.partner_wrap hr{
 		margin: 5px !important;
 	}
 	.projDetail{
@@ -620,6 +620,12 @@ textarea::placeholder {
   		margin-left: 6vw !important;
   	  	width: 35vw !important;
     	vertical-align: top;
+	}
+	.applyTag{
+		font-size: 3vw !important;
+	}
+	.applyNick{
+		margin-top: 0 !important;
 	}
 }
 
