@@ -399,7 +399,12 @@ $(document).ready(function() {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="memberId" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
+<c:if test= "${result.memId == null}">
+	                                                                    	<input id="memberId1" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
+</c:if>
+<c:if test= "${result.memId != null}">
+																			<input id="memberId2" type="text" name="memberId" class="form-control" placeholder="이메일 입력" value="${result.memId}" readonly>
+</c:if>
 																	</div>
                                                                 </div>
                                                             </div>
