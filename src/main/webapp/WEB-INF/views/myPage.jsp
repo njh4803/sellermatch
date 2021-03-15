@@ -9,389 +9,402 @@
 <link href="${pageContext.request.contextPath}/assets/css/myPage.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
     <div class="partner_wrap">
-    	<div class="mypage-title">회원정보 / 프로필관리</div>
-       	<ul class="my-tabs">
-			<li class="tab-link current" data-tab="my-tab-1" id="select-my-tab1">MY홈</li>
-			<li class="tab-link" data-tab="my-tab-2" id="select-my-tab2">가입정보관리</li>
-			<li class="tab-link" data-tab="my-tab-3" id="select-my-tab3">프로필관리</li>
-			<li class="tab-link" data-tab="my-tab-4" id="select-my-tab4">프로젝트관리</li>
-		</ul>
-		<div id="my-tab-1" class="tab-content2 current">
-			<div class="my_home clearfix">
-				<div class="myBox">
-					<div style="float: left;">
-						<c:if test="${output.memRname == '1'}">
-							<div class="authBox">신원<br>인증</div>
-						</c:if>
-						<c:if test="${output.memRname == '0'}">
-							<div class="not-authBox">신원<br>미인증</div>
-						</c:if>
-						<c:if test="${output.profileBizCerti == '1'}">
-							<div class="authBox">사업자<br>인증</div>
-						</c:if>
-						<c:if test="${output.profileBizCerti == '0'}">
-							<div class="not-authBox">사업자<br>미인증</div>
-						</c:if>
-						<c:if test="${output.profileSaleChk == '1'}">
-							<div class="authBox">매출<br>검증</div>
-						</c:if>
-						<c:if test="${output.profileSaleChk == '0'}">
-							<div class="not-authBox">매출<br>미검증</div>
-						</c:if>
-						<c:if test="${output.profileChChk == '1'}">
-							<div class="authBox">채널<br>검증</div>
-						</c:if>
-						<c:if test="${output.profileChChk == '0'}">
-							<div class="not-authBox">채널<br>미검증</div>
-						</c:if>
+    	<div class="partner_bnr3">
+    		<div class="clearfix">
+	    		<div class="mypage-top-left">
+	    			<div class="mypage-title">회원정보 / 프로필관리</div>
+		    		<div class="mypage-text">원하는 판매자를 찾아 지원하기 요청을 할 수 있습니다.</div>
+	    		</div>
+		    	<div class="mypage-top-right">
+		    		<img class="mypage-img" alt="" src="${pageContext.request.contextPath}/assets/img/mypage-img.png">
+		    	</div>    		
+    		</div>
+	    	<hr class="mypage-hr">
+	       	<ul class="my-tabs">
+				<li class="tab-link current" data-tab="my-tab-1" id="select-my-tab1">MY홈</li>
+				<li class="tab-link" data-tab="my-tab-2" id="select-my-tab2">가입정보관리</li>
+				<li class="tab-link" data-tab="my-tab-3" id="select-my-tab3">프로필관리</li>
+				<li class="tab-link" data-tab="my-tab-4" id="select-my-tab4">프로젝트관리</li>
+			</ul>
+			<div id="my-tab-1" class="tab-content2 current">
+				<div class="my_home clearfix">
+					<div class="myBox">
+<%-- 						<div style="float: left;">
+							<c:if test="${output.memRname == '1'}">
+								<div class="authBox">신원<br>인증</div>
+							</c:if>
+							<c:if test="${output.memRname == '0'}">
+								<div class="not-authBox">신원<br>미인증</div>
+							</c:if>
+							<c:if test="${output.profileBizCerti == '1'}">
+								<div class="authBox">사업자<br>인증</div>
+							</c:if>
+							<c:if test="${output.profileBizCerti == '0'}">
+								<div class="not-authBox">사업자<br>미인증</div>
+							</c:if>
+							<c:if test="${output.profileSaleChk == '1'}">
+								<div class="authBox">매출<br>검증</div>
+							</c:if>
+							<c:if test="${output.profileSaleChk == '0'}">
+								<div class="not-authBox">매출<br>미검증</div>
+							</c:if>
+							<c:if test="${output.profileChChk == '1'}">
+								<div class="authBox">채널<br>검증</div>
+							</c:if>
+							<c:if test="${output.profileChChk == '0'}">
+								<div class="not-authBox">채널<br>미검증</div>
+							</c:if>
+						</div> --%>
+						<div class="myBox-inner">
+							<div class="textBox1">${output.profileGrade}</div>
+							<div class="textBox2">${output.memNick}님</div>
+						</div>
 					</div>
-					<div class="textBox1">${output.profileGrade}</div>
-					<div class="textBox2">${output.memNick}님</div>
+					<div class="myBox2">
+						<div class="myBox2-inner">
+							<div class="textBox1">프로젝트 등록</div>
+							<div class="textBox2 projAddCount" id="projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
+						</div>
+						<div class="myBox2-inner">
+							<div class="textBox1">평가건수</div>
+							<div class="textBox2">0건</div>
+						</div>
+						<div class="myBox2-inner">
+							<div class="textBox1">공급자 평가점수</div>	
+							<div class="textBox2">0점</div>
+						</div>
+					</div>
 				</div>
-				<div class="myBox2">
-					<div class="myBox2-1">
-						<div class="textBox1">프로젝트 등록</div>
-						<div class="textBox2 projAddCount" id="projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
-					</div>
-					<div class="myBox2-2">
-						<div class="textBox1">평가건수</div>
-						<div class="textBox2">0건</div>
-					</div>
-					<div class="myBox2-3">
-						<div class="textBox1">공급자 평가점수</div>	
-						<div class="textBox2">0점</div>
+				<div>
+					<div class="myBox3 clearfix">
+						<div class="textBox1">
+							<div class="myBox-row">
+								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/auth01.png">
+								간단한 인증 한번으로<br>
+								경쟁력을 높여보세요!
+							</div>
+							<div class="myBox-row2">
+								<button>바로 인증하기</button>
+							</div>
+						</div>
+						<div class="textBox1">
+							<div class="myBox-row">프로젝트 관리</div>
+							<div class="myBox-row2">
+								<button class="projAddCount">바로가기</button>
+							</div>
+						</div>
+						<div class="textBox1">
+							<div class="myBox-row">관심등록리스트(26)</div>
+							<div class="myBox-row2">
+								<button>바로가기</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div>
-				<div class="myBox3">
-					<div class="textBox1">
-						<div class="myBox-row">
-							<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/auth01.png">
-							간단한 인증 한번으로<br>
-							경쟁력을 높여보세요!
-						</div>
-						<div class="myBox-row3">
-							<button>바로 인증하기</button>
-						</div>
-					</div>
-					<div class="textBox2" style="margin: 0 14.5px;">
-						<div class="myBox-row2">프로젝트 관리</div>
-						<div class="myBox-row3">
-							<button class="projAddCount">바로가기</button>
-						</div>
-					</div>
-					<div class="textBox2">
-						<div class="myBox-row2">관심등록리스트(26)</div>
-						<div class="myBox-row3">
-							<button>바로가기</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="my-tab-2" class="tab-content2">
-		    <div class="partner_wrap addbox2">
-		    	<div class="text-center profileBox">
-					<form action="${pageContext.request.contextPath}/member/editOk" id="memEdit_form" name="memEdit_form" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="memRname" id="memRname">
-						<input type="hidden" name="memSort" id="memSort">
-						<div class="infoContainer">
-							<div>
+			<div id="my-tab-2" class="tab-content2">
+			    <div class="partner_wrap addbox2">
+			    	<div class="text-center profileBox">
+						<form action="${pageContext.request.contextPath}/member/editOk" id="memEdit_form" name="memEdit_form" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="memRname" id="memRname">
+							<input type="hidden" name="memSort" id="memSort">
+							<div class="infoContainer">
 								<div>
-									<div style="margin-top: 20px;">
-										<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
-											<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+									<div>
+										<div style="margin-top: 20px;">
+											<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
+												<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+											</div>
+										</div>
+										<div style="">
+											<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
+												<label class="fileLable">사진 선택
+													<input id="image" name="memPhoto" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+												</label>
 										</div>
 									</div>
-									<div style="">
-										<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
-											<label class="fileLable">사진 선택
-												<input id="image" name="memPhoto" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-											</label>
+								</div>
+								<div class="infoBox">
+									<div class="inputGroup">
+				    					<label>아이디</label>
+				    					<input id="memId" type="text" name="memId" class="inputForm" placeholder="이메일 입력" readonly="readonly">
+									</div>
+									<div class="inputGroup">
+										<label>비밀번호</label>
+										<input type="password" id="memPw" name="memPw" class="inputForm" placeholder="영문,숫자,특수문자 조합 최소 6글자">
+									</div>
+									<div class="inputGroup">
+										<label>비밀번호 확인</label>
+				    					<input type="password" name="memPw_confirm" class="inputForm" id="memPw_confirm"/>
+									</div>
+									<div class="inputGroup">
+										<label>이름</label>
+				    					<input type="text" class="inputForm" name="memName" id="memName">
+									</div>
+									<div class="inputGroup">
+										<label>닉네임</label>
+				    					<input type="text" class="inputForm" name="memNick" id="memNick">
+									</div>
+									<div class="inputGroup">
+										<label>국가</label>
+				    					<select id="memCountry" name="memCountry" class="inputForm">
+	                                           <option value="">선택하세요.</option>
+	                                           <option value="01">대한민국</option>
+	                                           <option value="02">베트남</option>
+	                                    </select>
+									</div>
+									<div class="inputGroup">
+										<label>지역</label>
+			    						<select id="memNation" name="memNation" class="inputForm">
+			    							<option value="">선택하세요.</option>
+		                                    <option value="02">서울</option>
+		                                    <option value="031">경기</option>
+		                                    <option value="032">인천</option>
+		                                    <option value="033">강원</option>
+		                                    <option value="041">충남</option>
+		                                    <option value="042">대전</option>
+		                                    <option value="043">충북</option>
+		                                    <option value="051">부산</option>
+		                                    <option value="052">울산</option>
+		                                    <option value="053">대구</option>
+		                                    <option value="054">경북</option>
+		                                    <option value="055">경남</option>
+		                                    <option value="061">전남</option>
+		                                    <option value="062">광주</option>
+		                                    <option value="063">전북</option>
+		                                    <option value="044">세종특별자치시</option>
+		                                    <option value="064">세종특별자치도</option>
+		                             	</select>
+									</div>
+									<div class="inputGroup">
+										<label>연락처</label>
+					    				<input type="text" name="memTel" class="inputForm" id="memTel" placeholder="`-`없이 숫자만 입력" />
+									</div>
+									<div class="inputGroup">
+										<label>우편번호</label>
+			    						<input type="text" name="memPost" class="inputForm" id="postcode" maxlength="5" readonly>
+										<button type="button" class="btn form-bg-primary postcode-finder"
+											data-postcode="postcode" data-addr1="addr1"
+											data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
+									</div>
+									<div class="inputGroup">
+										<label>주소</label>
+				    					<input type="text" name="memAddr" class="inputForm" id="memAddr" readonly />
+									</div>
+									<div class="inputGroup">
+										<label>상세주소</label>
+										<input type="text" name="memAddr2" class="inputForm" id="memAddr2"/>
+									</div>
+									<div class="inputGroup">
+										<label>이메일 인증</label>
+			    						<input type="text" name="memEmail" class="inputForm" id="memEmail" />
+										<button type="button" id="sendAuthEmail" class="btn form-bg-primary">인증번호 발송</button>
+									</div>
+				    				<div class="inputGroup">
+				    					<label>이메일 인증번호</label>
+			    						<input type="text" name="auth_confirm" class="inputForm" id="auth_confirm" />
+										<button type="button" id="authConfirm" class="btn form-bg-primary">인증번호 확인</button>			    				
+				    				</div>
+				    				<div class="inputGroup">
+				    					<label>회원가입일</label>
+				    					<input type="text" name="memDate" class="inputForm" id="memDate" readonly />
+				    				</div>
+				    			</div>
+			    				<div>
+			    					<button type="submit" class="editBtn">
+				    					<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+				    					수정완료
+			    					</button>
+			    				</div>	
+					   		</div>
+					   	</form>
+					</div>
+				</div>
+			</div>
+			<div id="my-tab-3" class="tab-content2">
+			    <div class="partner_wrap addbox2">
+			    	<div class="text-center profileBox">
+						<form action="${pageContext.request.contextPath}/profile" id="profile_form" name="profile_form" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="profileId" id="profileId">
+							<input type="hidden" name="profileSort" id="profileSort">
+							<input type="hidden" name="profileMemId" id="profileMemId">
+							<div class="infoContainer">
+								<div>
+									<div>
+										<div style="margin-top: 20px;">
+											<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
+												<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+											</div>
+										</div>
+										<div style="">
+											<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
+												<label class="fileLable">사진 선택
+													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+												</label>
+										</div>
 									</div>
 								</div>
+								<div class="infoBox">
+									<div class="inputGroup">
+									<c:if test="${output.memSort == '1'}">
+										<label>공급자 소개</label>
+										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다">
+									</c:if>
+				    				<c:if test="${output.memSort == '2'}">
+										<label>판매자 소개</label>
+										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
+									</c:if>	
+				    					
+									</div>
+									<c:if test="${output.memSort == '2'}">
+									<div class="inputGroup">
+				    					<label>매출 규모</label>
+				    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
+									</div>
+									<div class="inputGroup">
+				    					<label>판매경력</label>
+				    					<select id="profileCareer" name="profileCareer" class="inputForm">
+		                                    <option value="0">경력없음</option>
+		                                    <option value="1">1개월 이상 ~ 3개월 미만</option>
+		                                    <option value="3">3개월 이상 ~ 6개월 미만</option>
+		                                    <option value="6">6개월 이상 ~ 1년 미만</option>
+		                                    <option value="9">1년 이상 ~ 3년 미만</option>
+		                                    <option value="8">3년 이상</option>
+		                                </select>
+									</div>
+									<div class="inputGroup">
+				    					<label>채널</label>
+				    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
+				    						<input id="ch1" type="checkbox" name="profileCh" value="1">
+		                                	<label for="ch1"><span>오픈마켓</span></label>
+		                                	<input id="ch2" type="checkbox" name="profileCh" value="2">
+		                                	<label for="ch2"><span>종합몰</span></label>
+		                                	<input id="ch3" type="checkbox" name="profileCh" value="3">
+		                                	<label for="ch3"><span>폐쇄몰</span></label>
+		                                	<input id="ch4" type="checkbox" name="profileCh" value="4">
+		                                	<label for="ch4"><span>커뮤니티</span></label>
+		                                	<input id="ch5" type="checkbox" name="profileCh" value="5">
+		                                	<label for="ch5"><span>SNS</span></label>
+		                                	<input id="ch6" type="checkbox" name="profileCh" value="6">
+		                                	<label for="ch6"><span>오프라인</span></label>
+		                                	<input id="ch7" type="checkbox" name="profileCh" value="7">
+		                                	<label for="ch7"><span>해외</span></label>
+		                                </div>
+									</div>
+									</c:if>
+									<div class="inputGroup">
+				    					<label>등록자 지역</label>
+			    						<select id="profileNation" name="profileNation" class="inputForm">
+		                                    <option value="">선택하세요.</option>
+		                                    <option value="02">서울</option>
+		                                    <option value="031">경기</option>
+		                                    <option value="032">인천</option>
+		                                    <option value="033">강원</option>
+		                                    <option value="041">충남</option>
+		                                    <option value="042">대전</option>
+		                                    <option value="043">충북</option>
+		                                    <option value="051">부산</option>
+		                                    <option value="052">울산</option>
+		                                    <option value="053">대구</option>
+		                                    <option value="054">경북</option>
+		                                    <option value="055">경남</option>
+		                                    <option value="061">전남</option>
+		                                    <option value="062">광주</option>
+		                                    <option value="063">전북</option>
+		                                    <option value="044">세종특별자치시</option>
+		                                    <option value="064">세종특별자치도</option>
+		                                </select>
+									</div>
+									<div class="inputGroup">
+				    					<label>상품분야</label>
+			    						<select id="profileIndus" name="profileIndus" class="inputForm">
+		                                    <option value="">선택하세요.</option>
+		                                    <c:forEach var="indusList" items="${indusList}">
+		                                    	<option value="${indusList.indusId}">${indusList.indusName}</option>
+		                                    </c:forEach>
+		                                </select>
+									</div>
+									<div class="inputGroup">
+				    					<label>사업자 번호</label>
+			    						<input type="text" name="profileBizNum" id="profileBizNum" class="inputForm"/>
+									</div>
+									<div class="inputGroup">
+				    					<label>사업자 유형</label>
+		   								<select id="profileBizSort" name="profileBizSort" class="inputForm">
+		                                       <option value="">선택하세요.</option>
+		                                       <option value="1">법인사업자</option>
+		                                       <option value="2">개인사업자</option>
+		                                       <option value="3">간이과세자</option>
+		                                       <option value="4">개인</option>
+		                                       <option value="5">기타</option>
+		                                </select>
+									</div>
+									<c:if test="${output.memSort == '2'}">
+									<div class="inputGroup">
+				    					<label>해시태그</label>
+				    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
+		                                	<input id="ht1" type="checkbox" name="profileHashtag" value="다양한 채널운영">
+		                                	<label for="ht1"><span>다양한 채널운영</span></label>
+		                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은 매출 셀러">
+		                                	<label for="ht2"><span>높은 매출 셀러</span></label>
+		                                	<input id="ht3" type="checkbox" name="profileHashtag" value="장기판매경력">
+		                                	<label for="ht3"><span>장기판매경력</span></label>
+		                                	<input id="ht4" type="checkbox" name="profileHashtag" value="탁월한 판매능력">
+		                                	<label for="ht4"><span>탁월한 판매능력</span></label>
+		                                	<input id="ht5" type="checkbox" name="profileHashtag" value="다양한 판매분야">
+		                                	<label for="ht5"><span>다양한 판매분야</span></label>
+				                        </div>
+									</div>
+									</c:if>
+								</div>							
 							</div>
-							<div class="infoBox">
-								<div class="inputGroup">
-			    					<label>아이디</label>
-			    					<input id="memId" type="text" name="memId" class="inputForm" placeholder="이메일 입력" readonly="readonly">
-								</div>
-								<div class="inputGroup">
-									<label>비밀번호</label>
-									<input type="password" id="memPw" name="memPw" class="inputForm" placeholder="영문,숫자,특수문자 조합 최소 6글자">
-								</div>
-								<div class="inputGroup">
-									<label>비밀번호 확인</label>
-			    					<input type="password" name="memPw_confirm" class="inputForm" id="memPw_confirm"/>
-								</div>
-								<div class="inputGroup">
-									<label>이름</label>
-			    					<input type="text" class="inputForm" name="memName" id="memName">
-								</div>
-								<div class="inputGroup">
-									<label>닉네임</label>
-			    					<input type="text" class="inputForm" name="memNick" id="memNick">
-								</div>
-								<div class="inputGroup">
-									<label>국가</label>
-			    					<select id="memCountry" name="memCountry" class="inputForm">
-                                           <option value="">선택하세요.</option>
-                                           <option value="01">대한민국</option>
-                                           <option value="02">베트남</option>
-                                    </select>
-								</div>
-								<div class="inputGroup">
-									<label>지역</label>
-		    						<select id="memNation" name="memNation" class="inputForm">
-		    							<option value="">선택하세요.</option>
-	                                    <option value="02">서울</option>
-	                                    <option value="031">경기</option>
-	                                    <option value="032">인천</option>
-	                                    <option value="033">강원</option>
-	                                    <option value="041">충남</option>
-	                                    <option value="042">대전</option>
-	                                    <option value="043">충북</option>
-	                                    <option value="051">부산</option>
-	                                    <option value="052">울산</option>
-	                                    <option value="053">대구</option>
-	                                    <option value="054">경북</option>
-	                                    <option value="055">경남</option>
-	                                    <option value="061">전남</option>
-	                                    <option value="062">광주</option>
-	                                    <option value="063">전북</option>
-	                                    <option value="044">세종특별자치시</option>
-	                                    <option value="064">세종특별자치도</option>
-	                             	</select>
-								</div>
-								<div class="inputGroup">
-									<label>연락처</label>
-				    				<input type="text" name="memTel" class="inputForm" id="memTel" placeholder="`-`없이 숫자만 입력" />
-								</div>
-								<div class="inputGroup">
-									<label>우편번호</label>
-		    						<input type="text" name="memPost" class="inputForm" id="postcode" maxlength="5" readonly>
-									<button type="button" class="btn form-bg-primary postcode-finder"
-										data-postcode="postcode" data-addr1="addr1"
-										data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
-								</div>
-								<div class="inputGroup">
-									<label>주소</label>
-			    					<input type="text" name="memAddr" class="inputForm" id="memAddr" readonly />
-								</div>
-								<div class="inputGroup">
-									<label>상세주소</label>
-									<input type="text" name="memAddr2" class="inputForm" id="memAddr2"/>
-								</div>
-								<div class="inputGroup">
-									<label>이메일 인증</label>
-		    						<input type="text" name="memEmail" class="inputForm" id="memEmail" />
-									<button type="button" id="sendAuthEmail" class="btn form-bg-primary">인증번호 발송</button>
-								</div>
-			    				<div class="inputGroup">
-			    					<label>이메일 인증번호</label>
-		    						<input type="text" name="auth_confirm" class="inputForm" id="auth_confirm" />
-									<button type="button" id="authConfirm" class="btn form-bg-primary">인증번호 확인</button>			    				
-			    				</div>
-			    				<div class="inputGroup">
-			    					<label>회원가입일</label>
-			    					<input type="text" name="memDate" class="inputForm" id="memDate" readonly />
-			    				</div>
-			    			</div>
-		    				<div>
+					   		<div>
 		    					<button type="submit" class="editBtn">
-			    					<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-			    					수정완료
+		    						<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
+		    						수정완료
 		    					</button>
 		    				</div>	
-				   		</div>
-				   	</form>
+					   	</form>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div id="my-tab-3" class="tab-content2">
-		    <div class="partner_wrap addbox2">
-		    	<div class="text-center profileBox">
-					<form action="${pageContext.request.contextPath}/profile" id="profile_form" name="profile_form" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="profileId" id="profileId">
-						<input type="hidden" name="profileSort" id="profileSort">
-						<input type="hidden" name="profileMemId" id="profileMemId">
-						<div class="infoContainer">
-							<div>
-								<div>
-									<div style="margin-top: 20px;">
-										<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
-											<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
-										</div>
-									</div>
-									<div style="">
-										<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
-											<label class="fileLable">사진 선택
-												<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-											</label>
-									</div>
-								</div>
-							</div>
-							<div class="infoBox">
-								<div class="inputGroup">
-								<c:if test="${output.memSort == '1'}">
-									<label>공급자 소개</label>
-									<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다">
-								</c:if>
-			    				<c:if test="${output.memSort == '2'}">
-									<label>판매자 소개</label>
-									<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
-								</c:if>	
-			    					
-								</div>
-								<c:if test="${output.memSort == '2'}">
-								<div class="inputGroup">
-			    					<label>매출 규모</label>
-			    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
-								</div>
-								<div class="inputGroup">
-			    					<label>판매경력</label>
-			    					<select id="profileCareer" name="profileCareer" class="inputForm">
-	                                    <option value="0">경력없음</option>
-	                                    <option value="1">1개월 이상 ~ 3개월 미만</option>
-	                                    <option value="3">3개월 이상 ~ 6개월 미만</option>
-	                                    <option value="6">6개월 이상 ~ 1년 미만</option>
-	                                    <option value="9">1년 이상 ~ 3년 미만</option>
-	                                    <option value="8">3년 이상</option>
-	                                </select>
-								</div>
-								<div class="inputGroup">
-			    					<label>채널</label>
-			    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
-			    						<input id="ch1" type="checkbox" name="profileCh" value="1">
-	                                	<label for="ch1"><span>오픈마켓</span></label>
-	                                	<input id="ch2" type="checkbox" name="profileCh" value="2">
-	                                	<label for="ch2"><span>종합몰</span></label>
-	                                	<input id="ch3" type="checkbox" name="profileCh" value="3">
-	                                	<label for="ch3"><span>폐쇄몰</span></label>
-	                                	<input id="ch4" type="checkbox" name="profileCh" value="4">
-	                                	<label for="ch4"><span>커뮤니티</span></label>
-	                                	<input id="ch5" type="checkbox" name="profileCh" value="5">
-	                                	<label for="ch5"><span>SNS</span></label>
-	                                	<input id="ch6" type="checkbox" name="profileCh" value="6">
-	                                	<label for="ch6"><span>오프라인</span></label>
-	                                	<input id="ch7" type="checkbox" name="profileCh" value="7">
-	                                	<label for="ch7"><span>해외</span></label>
-	                                </div>
-								</div>
-								</c:if>
-								<div class="inputGroup">
-			    					<label>등록자 지역</label>
-		    						<select id="profileNation" name="profileNation" class="inputForm">
-	                                    <option value="">선택하세요.</option>
-	                                    <option value="02">서울</option>
-	                                    <option value="031">경기</option>
-	                                    <option value="032">인천</option>
-	                                    <option value="033">강원</option>
-	                                    <option value="041">충남</option>
-	                                    <option value="042">대전</option>
-	                                    <option value="043">충북</option>
-	                                    <option value="051">부산</option>
-	                                    <option value="052">울산</option>
-	                                    <option value="053">대구</option>
-	                                    <option value="054">경북</option>
-	                                    <option value="055">경남</option>
-	                                    <option value="061">전남</option>
-	                                    <option value="062">광주</option>
-	                                    <option value="063">전북</option>
-	                                    <option value="044">세종특별자치시</option>
-	                                    <option value="064">세종특별자치도</option>
-	                                </select>
-								</div>
-								<div class="inputGroup">
-			    					<label>상품분야</label>
-		    						<select id="profileIndus" name="profileIndus" class="inputForm">
-	                                    <option value="">선택하세요.</option>
-	                                    <c:forEach var="indusList" items="${indusList}">
-	                                    	<option value="${indusList.indusId}">${indusList.indusName}</option>
-	                                    </c:forEach>
-	                                </select>
-								</div>
-								<div class="inputGroup">
-			    					<label>사업자 번호</label>
-		    						<input type="text" name="profileBizNum" id="profileBizNum" class="inputForm"/>
-								</div>
-								<div class="inputGroup">
-			    					<label>사업자 유형</label>
-	   								<select id="profileBizSort" name="profileBizSort" class="inputForm">
-	                                       <option value="">선택하세요.</option>
-	                                       <option value="1">법인사업자</option>
-	                                       <option value="2">개인사업자</option>
-	                                       <option value="3">간이과세자</option>
-	                                       <option value="4">개인</option>
-	                                       <option value="5">기타</option>
-	                                </select>
-								</div>
-								<c:if test="${output.memSort == '2'}">
-								<div class="inputGroup">
-			    					<label>해시태그</label>
-			    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
-	                                	<input id="ht1" type="checkbox" name="profileHashtag" value="다양한 채널운영">
-	                                	<label for="ht1"><span>다양한 채널운영</span></label>
-	                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은 매출 셀러">
-	                                	<label for="ht2"><span>높은 매출 셀러</span></label>
-	                                	<input id="ht3" type="checkbox" name="profileHashtag" value="장기판매경력">
-	                                	<label for="ht3"><span>장기판매경력</span></label>
-	                                	<input id="ht4" type="checkbox" name="profileHashtag" value="탁월한 판매능력">
-	                                	<label for="ht4"><span>탁월한 판매능력</span></label>
-	                                	<input id="ht5" type="checkbox" name="profileHashtag" value="다양한 판매분야">
-	                                	<label for="ht5"><span>다양한 판매분야</span></label>
-			                        </div>
-								</div>
-								</c:if>
-							</div>							
+			<div id="my-tab-4" class="tab-content2">
+				<div id="myProject">
+					<div style="display: inline-block;">
+						<div>
+							<div>등록한 것</div>
+							<div>2건</div>
 						</div>
-				   		<div>
-	    					<button type="submit" class="editBtn">
-	    						<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
-	    						수정완료
-	    					</button>
-	    				</div>	
-				   	</form>
-				</div>
-			</div>
-		</div>
-		<div id="my-tab-4" class="tab-content2">
-			<div id="myProject">
-				<div style="display: inline-block;">
-					<div>
-						<div>등록한 것</div>
-						<div>2건</div>
+						<div>
+							<div>제안 받은 것</div>
+							<div>2건</div>
+						</div>
 					</div>
-					<div>
-						<div>제안 받은 것</div>
-						<div>2건</div>
-					</div>
+					<table id="myProject-table">
+						<thead>
+							<tr>
+								<th>등록일</th>
+								<th>종류</th>
+								<th>프로젝트명</th>
+								<th>등록자 닉네임</th>
+								<th>마감일</th>
+								<th>지원자 수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2020-12-25</td>
+								<td>종류</td>
+								<td>다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집</td>
+								<td>위셀글로벌</td>
+								<td>2021-03-01</td>
+								<td>10명</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<table id="myProject-table">
-					<thead>
-						<tr>
-							<th>등록일</th>
-							<th>종류</th>
-							<th>프로젝트명</th>
-							<th>등록자 닉네임</th>
-							<th>마감일</th>
-							<th>지원자 수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>2020-12-25</td>
-							<td>종류</td>
-							<td>다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집</td>
-							<td>위셀글로벌</td>
-							<td>2021-03-01</td>
-							<td>10명</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
+			</div>    	
+    	</div>
     </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
@@ -526,7 +539,7 @@ $(document).ready(function(){
 						$("input[name=profileCh]").attr('checked', false);
 						for (var i = 0; i < profileCh.length; i++) {
 							$("input[name=profileCh]").eq(profileCh[i]-1).attr('checked', true);
-						}ㅑ
+						}
 					}
 					
 					if (json.output.profileHashtag != null) {
@@ -555,6 +568,7 @@ $(document).ready(function(){
 					
 					var content = {
 						output : json.output,
+						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -583,11 +597,15 @@ $(document).ready(function(){
 		$.ajax({
 			type: "GET",
 	        url: ROOT_URL + '/member/mypage/project',
+	        data:{
+	        	applyType:2
+	        },
 			success : function(json) {
 				console.log(json.output)
 				
 				var content = {
 					output : json.output,
+					output2 : json.output2,
 					contractCount : json.output[0].contractCount,
 					projAddCount : json.output[0].projAddCount,
 					recommendCount : json.output[0].recommendCount,
@@ -779,7 +797,7 @@ $(document).ready(function(){
 			
 			$.ajax({
 				type: "GET",
-		        url: ROOT_URL + '/member/mypage/project2',
+		        url: ROOT_URL + '/member/mypage/project',
 		        data:{
 		        	applyProjState:5
 		        },
@@ -788,6 +806,7 @@ $(document).ready(function(){
 					
 					var content = {
 						output : json.output,
+						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -817,11 +836,15 @@ $(document).ready(function(){
 			$.ajax({
 				type: "GET",
 		        url: ROOT_URL + '/member/mypage/project',
+		        data:{
+		        	applyType:2
+		        },
 				success : function(json) {
 					console.log(json.output)
 					
 					var content = {
 						output : json.output,
+						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -858,13 +881,14 @@ $(document).ready(function(){
 			
 			$.ajax({
 				type: "GET",
-		        url: ROOT_URL + '/member/mypage/project2',
+		        url: ROOT_URL + '/member/mypage/project',
 		        data:{
 		        	applyType:2
 		        },
 				success : function(json) {
 					var content = {
 						output : json.output,
+						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -1106,30 +1130,56 @@ $(document).ready(function() {
 					</div>
 				</div>
 				<input type="hidden" id="myMemSort" value="{{memSort}}">
-				<table id="myProject-table" class="myProject-table">
-					<thead>
-						<tr>
-							<th>등록일</th>
-							<th></th>						
-							<th>프로젝트명</th>
-							<th>등록자 닉네임</th>
-							<th>마감일</th>
-							<th>지원자 수</th>
-						</tr>
-					</thead>
-					<tbody>
+				<div id="myProject-table" class="myProject-table">
+					<div>
+						<div>
+							<div class="th">등록일</div>
+							<div class="th">프로젝트명</div>						
+							<div class="th">등록자 닉네임</div>
+							<div class="th">마감일</div>
+							<div class="th">지원자수</div>
+							<div class="th">지원자 관리</div>
+						</div>
+					</div>
+					<div>
 					{{#output}}
-						<tr>
-							<td>{{projRegDate}}</td>
-							<td></td>
-							<td class="project-title" data-projId="{{projId}}">{{projTitle}}</td>
-							<td>{{memNick}}</td>
-							<td>{{projEndDate}}</td>
-							<td>{{applyCount}}명</td>
-						</tr>
+						<div>
+							<div class="td">{{projRegDate}}</div>
+							<div class="td project-title" data-projId="{{projId}}">{{projTitle}}</div>
+							<div class="td">{{memNick}}</div>
+							<div class="td">{{projEndDate}}</div>
+							<div class="td">{{applyCount}}명</div>
+							<div class="td">
+								<button>관리하기 v</button>
+							</div>
+						</div>
+						<div class="apply-table">
+							<div>
+								<div class="tr">
+									<div class="th">지원날짜</div>
+									<div class="th">지원자 닉네임</div>						
+									<div class="th">판매채널</div>
+									<div class="th">매출규모</div>
+									<div class="th">판매경력</div>
+									<div class="th">승인/거절</div>
+								</div>
+								{{#each ../output2}}
+								<div class="tr">
+									<div class="td">2020-01-01</div>
+									<div class="td">123</div>
+									<div class="td">SNS, 커뮤니티, 종합몰, 폐쇄몰, 오픈마켓, 해외</div>
+									<div class="td">2020-01-03</div>
+									<div class="td">2년 11개월</div>
+									<div class="td">
+										<button>지원거절</button>
+									</div>
+								</div>
+								{{/each}}
+							</div>
+						</div>
 					{{/output}}
-					</tbody>
-				</table>
+					</div>
+				</div>
 			</div>
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

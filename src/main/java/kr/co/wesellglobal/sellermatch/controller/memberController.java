@@ -1,6 +1,8 @@
 package kr.co.wesellglobal.sellermatch.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,16 +11,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
+import kr.co.wesellglobal.sellermatch.model.ApplyDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.service.ApplyService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.MemberService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
+import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -36,6 +43,10 @@ public class memberController {
 	ProfileService profileService;
 	@Autowired
 	IndusService indusService;
+	@Autowired
+	ProjectService projectService;
+	@Autowired
+	ApplyService applyService;
 	
 	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
 	public ModelAndView join(Model model) {
@@ -63,7 +74,7 @@ public class memberController {
 		
 		return new ModelAndView("myPage");
 	}
-	
+
 	/*
 	 * @RequestMapping(value = "/member/joinMain", method = RequestMethod.GET)
 	 * public ModelAndView joinMain(Model model) {

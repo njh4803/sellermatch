@@ -234,7 +234,7 @@ public class MemberRestController {
 	public Map<String, Object> adminLogin(HttpSession session, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "memId", required = false) String memId,
 			@RequestParam(value = "memPw", required = false) String memPw,
-			@RequestParam(value = "continueLogin", required = false) String continueLogin) {
+			@RequestParam(value = "continueLogin", defaultValue = "off") String continueLogin) {
 		
 		if (!regexHelper.isValue(memId)) {
 			return webHelper.getJsonWarning("아이디를 입력하세요.");
@@ -444,46 +444,59 @@ public class MemberRestController {
 	}
 	
 	@RequestMapping(value = "/member/mypage/project", method = RequestMethod.GET)
-	public Map<String, Object> myProject(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
+	public Map<String, Object> myProject(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "applyType", required = false)String applyType,
+			@RequestParam(value = "applyProjState", required = false)String applyProjState) {
+		
 		ProjectDto input = new ProjectDto();
 		input.setProjMemId(member.getMemId());
 		
 		List<ProjectDto> output = null;
+		
+		ApplyDto input2 = new ApplyDto();
+		input2.setApplyMemId(member.getMemId());
+		input2.setApplyType(applyType);
+		input2.setApplyProjState(applyProjState);
+		
+		List<ApplyDto> output2 = null;
+		
 		Map<String, Object> data = new HashMap<String, Object>();
 		
 		try {
 			output = projectService.getProjectList(input);
+			output2 = applyService.getApplyList(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		data.put("output", output);
+		data.put("output2", output2);
 		data.put("memSort", member.getMemSort());
 		
 		return webHelper.getJsonData(data);
 	}
 	
-	@RequestMapping(value = "/member/mypage/project2", method = RequestMethod.GET)
-	public Map<String, Object> myProject2(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
-			@RequestParam(value = "applyType", required = false)String applyType,
-			@RequestParam(value = "applyProjState", required = false)String applyProjState) {
-		ApplyDto input = new ApplyDto();
-		input.setApplyMemId(member.getMemId());
-		input.setApplyType(applyType);
-		input.setApplyProjState(applyProjState);
-		
-		List<ApplyDto> output = null;
-		Map<String, Object> data = new HashMap<String, Object>();
-		
-		try {
-			output = applyService.getApplyList(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		data.put("output", output);
-		data.put("memSort", member.getMemSort());
-		
-		return webHelper.getJsonData(data);
-	}
+	/*
+	 * @RequestMapping(value = "/member/mypage/project2", method =
+	 * RequestMethod.GET) public Map<String, Object> myProject2(Model
+	 * model, @SessionAttribute(value = "member", required = false) MemberDto
+	 * member,
+	 * 
+	 * @RequestParam(value = "applyType", required = false)String applyType,
+	 * 
+	 * @RequestParam(value = "applyProjState", required = false)String
+	 * applyProjState) { ApplyDto input = new ApplyDto();
+	 * input.setApplyMemId(member.getMemId()); input.setApplyType(applyType);
+	 * input.setApplyProjState(applyProjState);
+	 * 
+	 * List<ApplyDto> output = null; Map<String, Object> data = new HashMap<String,
+	 * Object>();
+	 * 
+	 * try { output = applyService.getApplyList(input); } catch (Exception e) {
+	 * e.printStackTrace(); }
+	 * 
+	 * data.put("output", output); data.put("memSort", member.getMemSort());
+	 * 
+	 * return webHelper.getJsonData(data); }
+	 */
 }

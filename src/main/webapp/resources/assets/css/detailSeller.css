@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+.m-detail{
+	display: none;
+}
 .partner_bnr3 hr{
   height: 0;
   margin-top: 15px;
@@ -424,9 +427,6 @@
 	.container1{
 		width: 100% !important;
 	}
-	.m-detail{
-		display: none !important;
-	}	
 }
 
 /* 테블릿 가로 */
@@ -434,16 +434,10 @@
 	.container1{
 		width: 100% !important;
 	}
-	.m-detail{
-		display: none !important;
-	}
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1300px) {
 	.container1{
 		width: 100% !important;
 	}
-	.m-detail{
-		display: none !important;
-	}	
 }
