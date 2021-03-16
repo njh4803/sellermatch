@@ -18,15 +18,14 @@
   background: #ffffff;
 }
 .titleBox{
+  width: 100%;
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.08;
   letter-spacing: normal;
   text-align: left;
-  color: #484848;
-  float: left;
+  color: #343434;
 }
 .searchBox{
 	width: 100%;

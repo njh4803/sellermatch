@@ -295,6 +295,11 @@ label.error {
   line-height: 1.4;
   margin-bottom: 0;
 }
+.inputGroup2{
+	width: auto !important;
+	height: auto !important;
+	border: none !important;
+}
 .inputGroup2 label{
 	display: inline-block;
 	width: auto;
@@ -329,18 +334,15 @@ label.error {
   background-color: #ffffff;
 }
 .editBtn{
-  width: 160px;
-  height: 40px;
-  margin: 19px 0 74px 0;
+  width: 100px;
+  height: 30px;
+  margin: 20px 0 150px 0;
   border-radius: 4px;
-  background-image: linear-gradient(to right, #d90b54, #3b1374);	
-  font-family: NotoSansKRMedium;
-  font-size: 13px;
-  font-weight: normal;
+  background-image: linear-gradient(103deg, #ff8000, #ff540f);
+  font-size: 15px;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.46;
-  letter-spacing: normal;
   text-align: center;
   color: #ffffff;
 }

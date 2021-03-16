@@ -212,7 +212,6 @@
 				    			</div>
 			    				<div>
 			    					<button type="submit" class="editBtn">
-				    					<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 				    					수정완료
 			    					</button>
 			    				</div>	
@@ -274,7 +273,7 @@
 									</div>
 									<div class="inputGroup">
 				    					<label>채널</label>
-				    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
+				    					<div class="inputForm inputGroup2">
 				    						<input id="ch1" type="checkbox" name="profileCh" value="1">
 		                                	<label for="ch1"><span>오픈마켓</span></label>
 		                                	<input id="ch2" type="checkbox" name="profileCh" value="2">
@@ -342,7 +341,7 @@
 									<c:if test="${output.memSort == '2'}">
 									<div class="inputGroup">
 				    					<label>해시태그</label>
-				    					<div class="inputForm inputGroup2" style="border: none; width: 581px;">
+				    					<div class="inputForm inputGroup2">
 		                                	<input id="ht1" type="checkbox" name="profileHashtag" value="다양한 채널운영">
 		                                	<label for="ht1"><span>다양한 채널운영</span></label>
 		                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은 매출 셀러">
@@ -360,7 +359,6 @@
 							</div>
 					   		<div>
 		    					<button type="submit" class="editBtn">
-		    						<img class="editPass" alt="" src="${pageContext.request.contextPath}/local_assets/img/pass13.png">
 		    						수정완료
 		    					</button>
 		    				</div>	
@@ -568,7 +566,6 @@ $(document).ready(function(){
 					
 					var content = {
 						output : json.output,
-						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -605,7 +602,6 @@ $(document).ready(function(){
 				
 				var content = {
 					output : json.output,
-					output2 : json.output2,
 					contractCount : json.output[0].contractCount,
 					projAddCount : json.output[0].projAddCount,
 					recommendCount : json.output[0].recommendCount,
@@ -806,7 +802,6 @@ $(document).ready(function(){
 					
 					var content = {
 						output : json.output,
-						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -844,7 +839,6 @@ $(document).ready(function(){
 					
 					var content = {
 						output : json.output,
-						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -888,7 +882,6 @@ $(document).ready(function(){
 				success : function(json) {
 					var content = {
 						output : json.output,
-						output2 : json.output2,
 						contractCount : json.output[0].contractCount,
 						projAddCount : json.output[0].projAddCount,
 						recommendCount : json.output[0].recommendCount,
@@ -902,11 +895,36 @@ $(document).ready(function(){
 			});
 		}
     });
-    $(document).on("click", ".project-title", function(e){
+    
+    //거래처 찾기 상세페이지로 이동
+/*     $(document).on("click", ".project-title", function(e){
     	var projId = $(this).attr('data-projId');
     	window.location = ROOT_URL + "/project/detail?projId="+projId;
-    });
+    }); */
     
+    $(document).on("click", ".show-apply", function(e){
+    	$("#applyList").remove();
+    	
+    	var applyProjId = $(this).attr('data-projId');
+    	var idx = $(this).attr('data-index');
+    	
+		$.ajax({
+			type: "GET",
+	        url: ROOT_URL + '/member/mypage/apply',
+	        data:{
+	        	'applyProjId':applyProjId
+	        },
+			success : function(json) {
+				var content = {
+					output : json.output
+				} 
+	       		var template = Handlebars.compile($("#apply-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		$("#apply-table"+idx).append(html);
+			}
+		});
+    });
     	
 	//파일 업로드
     var objDragAndDrop = $(".dragAndDropDiv");
@@ -1143,7 +1161,7 @@ $(document).ready(function() {
 					</div>
 					<div>
 					{{#output}}
-						<div>
+						<div class="show-apply" data-projId="{{projId}}" data-index="{{@key}}">
 							<div class="td">{{projRegDate}}</div>
 							<div class="td project-title" data-projId="{{projId}}">{{projTitle}}</div>
 							<div class="td">{{memNick}}</div>
@@ -1153,34 +1171,43 @@ $(document).ready(function() {
 								<button>관리하기 v</button>
 							</div>
 						</div>
-						<div class="apply-table">
-							<div>
-								<div class="tr">
-									<div class="th">지원날짜</div>
-									<div class="th">지원자 닉네임</div>						
-									<div class="th">판매채널</div>
-									<div class="th">매출규모</div>
-									<div class="th">판매경력</div>
-									<div class="th">승인/거절</div>
-								</div>
-								{{#each ../output2}}
-								<div class="tr">
-									<div class="td">2020-01-01</div>
-									<div class="td">123</div>
-									<div class="td">SNS, 커뮤니티, 종합몰, 폐쇄몰, 오픈마켓, 해외</div>
-									<div class="td">2020-01-03</div>
-									<div class="td">2년 11개월</div>
-									<div class="td">
-										<button>지원거절</button>
-									</div>
-								</div>
-								{{/each}}
-							</div>
+						<div class="apply-table" id="apply-table{{@key}}">
+
 						</div>
 					{{/output}}
 					</div>
 				</div>
 			</div>
+</script>
+<script type="text/x-handlebars-template" id="apply-tmpl">
+							<div id="applyList">
+								{{#ifCond output '!=' 0}}
+									<div class="tr">
+										<div class="th">지원날짜</div>
+										<div class="th">지원자 닉네임</div>						
+										<div class="th">판매채널</div>
+										<div class="th">매출규모</div>
+										<div class="th">판매경력</div>
+										<div class="th">승인/거절</div>
+									</div>
+									{{#output}}
+										<div class="tr">
+											<div class="td">{{applyRegDate}}</div>
+											<div class="td">{{memNick}}</div>
+											<div class="td">SNS, 커뮤니티, 종합몰, 폐쇄몰, 오픈마켓, 해외</div>
+											<div class="td">1111</div>
+											<div class="td">2년 11개월</div>
+											<div class="td">
+												<button>지원거절</button>
+											</div>
+										</div>
+									{{/output}}
+								{{else}}
+									<div class="tr">
+										<div class="th" style="width: 1120px;">지원자 없음</div>
+									</div>	
+								{{/ifCond}}
+							</div>
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>

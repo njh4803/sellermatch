@@ -476,27 +476,26 @@ public class MemberRestController {
 		return webHelper.getJsonData(data);
 	}
 	
-	/*
-	 * @RequestMapping(value = "/member/mypage/project2", method =
-	 * RequestMethod.GET) public Map<String, Object> myProject2(Model
-	 * model, @SessionAttribute(value = "member", required = false) MemberDto
-	 * member,
-	 * 
-	 * @RequestParam(value = "applyType", required = false)String applyType,
-	 * 
-	 * @RequestParam(value = "applyProjState", required = false)String
-	 * applyProjState) { ApplyDto input = new ApplyDto();
-	 * input.setApplyMemId(member.getMemId()); input.setApplyType(applyType);
-	 * input.setApplyProjState(applyProjState);
-	 * 
-	 * List<ApplyDto> output = null; Map<String, Object> data = new HashMap<String,
-	 * Object>();
-	 * 
-	 * try { output = applyService.getApplyList(input); } catch (Exception e) {
-	 * e.printStackTrace(); }
-	 * 
-	 * data.put("output", output); data.put("memSort", member.getMemSort());
-	 * 
-	 * return webHelper.getJsonData(data); }
-	 */
+	@RequestMapping(value = "/member/mypage/apply", method = RequestMethod.GET)
+	public Map<String, Object> applyList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "applyProjId", required = false)String applyProjId) {
+		
+		ApplyDto input = new ApplyDto();
+		input.setApplyProjId(applyProjId);
+		
+		List<ApplyDto> output = null;
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		
+		try {
+			output = applyService.getApplyList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		data.put("output", output);
+		
+		return webHelper.getJsonData(data);
+	}
+	 
 }

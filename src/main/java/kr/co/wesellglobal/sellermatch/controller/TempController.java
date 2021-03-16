@@ -43,20 +43,34 @@ public class TempController {
 		return new ModelAndView("main");
 	}
 	
-	@RequestMapping(value = "/usageFee", method = RequestMethod.GET)
-	public ModelAndView usageFee(Model model) {
+	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	public ModelAndView board(Model model,
+			@RequestParam(value = "boardType", required = false) String boardType,
+			@RequestParam(value = "tabNum", required = false) String tabNum,
+			@RequestParam(value = "boardQaType", required = false) String boardQaType,
+			// 검색어
+			@RequestParam(value = "keyword", required = false) String keyword,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		if (boardType.equals("4")) {
+			return new ModelAndView("/boardOneToOne");
+		}
 		
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
 		int listCount = 10;		// 한 페이지당 표시할 목록 수
 		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
-		int nowPage = 1;
 		
 		// 페이지 번호를 계산한 결과가 저장될 객체
 		PageData pageData = null;
 				
 		BoardDto input = new BoardDto();
-		input.setBoardType("1");
+		input.setBoardType(boardType);
+		if (boardType.equals("2") && boardQaType != null) {
+			input.setBoardQaType(boardQaType);
+		}
+		
 		
 		//목록조회
 		
@@ -84,6 +98,14 @@ public class TempController {
 		model.addAttribute("boardCount", boardCount);
 		model.addAttribute("minusCount", minusCount);
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("boardQaType", boardQaType);
+		
+		if (boardType.equals("1")) {
+			return new ModelAndView("/boardNotice");
+		}
+		if (boardType.equals("2")) {
+			return new ModelAndView("/boardFaq");
+		}
 		
 		return new ModelAndView("/usageFee");
 	}
