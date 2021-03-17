@@ -732,7 +732,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 <script type="text/x-handlebars-template" id="seller-list-tmpl">
         		<div class="contentsBox">
       					<div class="countAllbox clearfix">
-						<div class="leftBox countAll">총 <span>{{totalCount}}}명</span>이 검색되었습니다</div>
+						<div class="leftBox countAll">총 <span>{{totalCount}}명</span>이 검색되었습니다</div>
 						<div class="rightBox">
 							{{#ifCond sort '==' 'regSort'}}
 								<a href="javascript:void(0)" class="sort select" id="regSort">등록순
@@ -866,7 +866,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							<div class="infoBox2">
 								<span>매출규모</span>
 								<span>
-									<fmt:formatNumber value="{{profileVolume}}" type="number"/>원
+									{{profileVolume}}원
 								</span>
 							</div>
 							<div class="infoBox2"><span>판매경력</span><span>{{profileCareerName}}</span></div>

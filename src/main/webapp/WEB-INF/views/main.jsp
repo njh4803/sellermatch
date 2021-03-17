@@ -313,6 +313,14 @@
 								③ 판매자 프로필 등록하고, 나에게 지원요청한<br>
 								<span class="space"></span>공급자 상품정보를 본 후, 거래<br>
 							</div>
+							<br><br>
+							<div class="main-img3"></div>
+							<br><br>
+							<span>거래승인 후 완료</span><br>
+							<div class="textBox6">
+								① 조건에 맞는 지원자를 승인 또는 승인 받기<br>
+								② 거래완료 후 상대방에 대한 평가남기기<br>
+							</div>
 		   				</div>
 	   				</div>
 	   				<div class="memBox" style="margin-left: 60px;">
@@ -334,6 +342,14 @@
 								② 거래처 찾기에서 판매자가 등록한 공급 상품<br>
 								<span class="space"></span>거래처 찾기에 공급자로 지원하고 거래<br>
 								③ 판매자 찾기에서 판매자 지원요청 후, 거래<br>
+							</div>
+							<br><br>
+							<div class="main-img3"></div>
+							<br><br>
+							<span>거래승인 후 완료</span><br>
+							<div class="textBox6">
+								① 조건에 맞는 지원자를 승인 또는 승인 받기<br>
+								② 거래완료 후 상대방에 대한 평가남기기<br>
 							</div>
 		   				</div>  					
 	   				</div>
@@ -375,7 +391,7 @@
    					</div>
    					<div class="answerBox">
 	   					현재는 가능하지 않습니다. 판매자와 공급자 중 하나를 꼭 선택해서 가입하셔야 합니다.<br>
-        				다만, 판매자로 가입하신 후, 공급자로 다시 가입하여 2개의 계정을 사용하는 것은 가능합니다.
+        				다만, 추후에 기능을 업데이트 할 예정이오니 마이페이지에서 회원전환을 해주시면 됩니다.
 	   				</div>
    				</div>
    				<div class="FAQBox">
