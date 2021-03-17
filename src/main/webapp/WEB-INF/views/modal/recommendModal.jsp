@@ -7,24 +7,31 @@
 <style>
 .modal-header {
 	display: block;
+}
+#recommendModal .modal-content{
+	border-radius: 25px;	
 }   
 #recommendModal .modal-content .modal-body {
     position: relative;
-    padding: 50px 40px 40px 40px;
+    padding: 25px;
+    border-radius: 20px;
+	border: solid 1px #707070;
+	background-color: #ffffff;    
 }
 .recommend {
 	display: inline-block;
-	width: 126px;
-    height: 30px;
-	padding: 4px 0 5px;
-	border-radius: 10px;
-	background-image: linear-gradient(to left, #3b1374 , #d10c56 );
-	text-align: center;
-	margin-bottom: 15px;
+	width: 140px;
+	height: 30px;
+	margin: 0 10px 25px 0;
+	padding: 7px 0;
+	border-radius: 4px;
+	box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+	background-image: linear-gradient(102deg, #ff8000, #ff540f);
 	font-size: 15px;
 	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
+	line-height: 1.07;
 	letter-spacing: normal;
 	text-align: center;
 	color: #ffffff;
@@ -32,18 +39,17 @@
 .recommend-btn {
 	width: 100px;
 	height: 30px;
-	margin: 15px 0 0 239px;
-	padding: 4.1px 21.8px 4.9px 22.2px;
+	margin-top: 10px;
 	border-radius: 4px;
-	background-image: linear-gradient(to left, #3b1374, #d10c56);
+	box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+	background-image: linear-gradient(107deg, #ff8000, #ff540f 100%);
 	float: right;
 	font-size: 15px;
 	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
-	letter-spacing: normal;
 	text-align: center;
-	color: #ffffff;	
+	color: #ffffff;
 }
 .recommendBox .recommend p{
 	margin: 0;
@@ -53,8 +59,8 @@
     font-size: 15px;
     font-weight: bold;
     text-align: left;
-    width: 446px;
-    margin: 15px 0 0 15px;
+    width: 440px;
+    margin: 10px 0 0 15px;
     padding: 12px 0 13px 15px;
     border: solid 1px #cccccc;
 }
@@ -63,27 +69,25 @@
 }
 .recommendText{
 	display: inline-block;
-    width: 323px;
-	height: 24px;
-	font-size: 16px;
-	font-weight: 400;
+	width: 290px;
+	font-size: 15px;
+	font-weight: bold;
 	font-stretch: normal;
 	font-style: normal;
-	letter-spacing: normal;
 	text-align: left;
 	color: #000000;
-	margin-left: 11px;
+	margin-left: 1px;
 }
 </style>
 
   <!-- Modal -->
 <div class="modal fade" id="recommendModal" role="dialog">
-	<div class="modal-dialog modal-xl" style="width: 560px;">
+	<div class="modal-dialog modal-xl" style="width: 530px;">
 		<div class="modal-content">
 			<div class="modal-body">
                	<div class="recommendBox clearfix">
                		<div class="recommend">
-               			프로젝트 지원요청
+               			프로젝트 지원하기
                		</div>
                		<div>
                			<button class="recommend-btn">지원하기</button>

@@ -40,10 +40,10 @@ input[type="checkbox"] + label span {
     padding-left: 20px;
     margin: 0;
     font-weight: normal;
-    background:url(/assets/img/checkActiveNone.png) no-repeat;
+    background:url(/wesellglobal/assets/img/checkActiveNone.png) no-repeat;
 }
 input[type="checkbox"]:checked + label span {
-    background:url(/assets/img/checkActive.png) no-repeat;
+    background:url(/wesellglobal/assets/img/checkActive.png) no-repeat;
 }
 input:-webkit-autofill,
     input:-webkit-autofill:hover,

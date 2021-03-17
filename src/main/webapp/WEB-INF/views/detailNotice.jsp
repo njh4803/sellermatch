@@ -8,7 +8,8 @@
 		height: 270px;
 		border-bottom: solid 3px #000000;
 		background-color: #ffffff;
-		padding-top: 60px;	
+		padding-top: 60px;
+		text-align: center;	
 	}
 	.tab-title{
 		margin: 0 206px 15px 205px;
@@ -91,7 +92,7 @@
     <div class="partner_wrap notice-detail">
         <div class="tabBox">
         	<div class="tab-title">공지사항</div>
-        	<div class="tab-text">셀러매치 서비스의 새소식, 오류, 장애, 기타 공지사항을 안내드립니다</div>
+        	<div class="tab-text">셀러매치 서비스의 새소식, 오류, 장애, 기타 공지사항을 안내드립니다.</div>
         </div>
         <div class="notice-header">
         	<div>${output.boardTitle}</div>
