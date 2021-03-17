@@ -12,29 +12,29 @@
 				<div class="m-check_list_box">
 					<span>판매자유형</span>
 	            	<ul>
-						<li><input type="checkbox" class="checkAll" id="profileBizSort"><label for="profileBizSort"><span>전체</span></label></li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="1" id="b1"><label for="b1"><span>법인사업자</span></label></li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="2" id="b2"><label for="b2"><span>개인사업자</span></label></li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="3" id="b3"><label for="b3"><span>간이과세자</span></label></li>
-	            		<li><input type="checkbox" class="check" name="profileBizSort" value="4" id="b4"><label for="b4"><span>개인(사업자없음)</span></label></li>
+						<li><input type="checkbox" class="checkAll" id="m-profileBizSort"><label for="m-profileBizSort"><span>전체</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="1" id="m-b1"><label for="m-b1"><span>법인사업자</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="2" id="m-b2"><label for="m-b2"><span>개인사업자</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="3" id="m-b3"><label for="m-b3"><span>간이과세자</span></label></li>
+	            		<li><input type="checkbox" class="check" name="profileBizSort" value="4" id="m-b4"><label for="m-b4"><span>개인(사업자없음)</span></label></li>
 	            	</ul>
 				</div>
 				<div class="m-check_list_box">
 					<span>판매자검증</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="sp1"><label for="sp1"><span>신원인증</span></label></li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
+	            		<li><input type="checkbox" class="checkAll" id="m-sellermemRname"><label for="m-sellermemRname"><span>전체</span></label></li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="m-sp1"><label for="m-sp1"><span>신원인증</span></label></li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="m-sp2"><label for="m-sp2"><span>사업자인증</span></label></li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="m-sp3"><label for="m-sp3"><span>채널검증</span></label></li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="m-sp4"><label for="m-sp4"><span>매출검증</span></label></li>
 	            	</ul>
 			  	</div>
 				<div class="m-check_list_box">
 	            	<span class="check_list">판매상품</span>
 	            	<ul>
-	            		<li><input id="profileIndus" class="checkAll" type="checkbox"><label for="profileIndus"><span>전체</span></label></li>
+	            		<li><input id="m-profileIndus" class="checkAll" type="checkbox"><label for="m-profileIndus"><span>전체</span></label></li>
 	            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
-	            			<li><input type="checkbox" class="check" name="profileIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
+	            			<li><input type="checkbox" class="check" name="profileIndus" value="${indusList.indusId}" id="m-i${status.count}"><label for="m-i${status.count}"><span>${indusList.indusName}</span></label></li>
 	            		</c:forEach>
 	            	</ul>
 				</div>	
@@ -43,35 +43,35 @@
 			   	<div class="m-check_list_box">
 			   		<span class="check_list">판매채널</span>
 			    	<ul>
-			    		<li><input type="checkbox" class="checkAll" id="projChannel"><label for="projChannel"><span>전체</span></label></li>
-			    		<li><input type="checkbox" class="check" name="projChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
-			    		<li><input type="checkbox" class="check" name="projChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
-			    		<li><input type="checkbox" class="check" name="projChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
-			    		<li><input type="checkbox" class="check" name="projChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
-			    		<li><input type="checkbox" class="check" name="projChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
-			    		<li><input type="checkbox" class="check" name="projChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
-			    		<li><input type="checkbox" class="check" name="projChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+			    		<li><input type="checkbox" class="checkAll" id="m-projChannel"><label for="m-projChannel"><span>전체</span></label></li>
+			    		<li><input type="checkbox" class="check" name="projChannel" value="1" id="m-c1"><label for="m-c1"><span>오픈마켓</span></label></li>
+			    		<li><input type="checkbox" class="check" name="projChannel" value="2" id="m-c2"><label for="m-c2"><span>종합몰</span></label></li>
+			    		<li><input type="checkbox" class="check" name="projChannel" value="3" id="m-c3"><label for="m-c3"><span>폐쇄몰</span></label></li>
+			    		<li><input type="checkbox" class="check" name="projChannel" value="4" id="m-c4"><label for="m-c4"><span>커뮤니티</span></label></li>
+			    		<li><input type="checkbox" class="check" name="projChannel" value="5" id="m-c5"><label for="m-c5"><span>SNS</span></label></li>
+			    		<li><input type="checkbox" class="check" name="projChannel" value="6" id="m-c6"><label for="m-c6"><span>오프라인</span></label></li>
+			    		<li><input type="checkbox" class="check" name="projChannel" value="7" id="m-c7"><label for="m-c7"><span>해외</span></label></li>
 			    	</ul>
 			   	</div>
 			  	<div class="m-check_list_box">
             		<span class="check_list">판매경력</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
-	            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
+	            		<li><input type="checkbox" class="checkAll"  id="m-projMargin"><label for="m-projMargin"><span>전체</span></label></li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m-m1"><label for="m-m1"><span>10%이하</span></label></li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m-m2"><label for="m-m2"><span>11%~20%</span></label></li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m-m3"><label for="m-m3"><span>21%~30%</span></label></li>
+	            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m-m4"><label for="m-m4"><span>30%초과</span></label></li>
 	            	</ul>
 			  	</div>
 			  	<div class="m-check_list_box">
             		<span class="check_list">매출규모</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="p2"><label for="p2"><span>2만원 미만</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="p3"><label for="p3"><span>5만원 미만</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p4"><label for="p4"><span>10만원 미만</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="p5"><label for="p5"><span>10만원 이상</span></label></li>
+	            		<li><input type="checkbox" class="checkAll" id="m-projPrice"><label for="m-projPrice"><span>전체</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="m-p1"><label for="m-p1"><span>1만원 미만</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="m-p2"><label for="m-p2"><span>2만원 미만</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="m-p3"><label for="m-p3"><span>5만원 미만</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="m-p4"><label for="m-p4"><span>10만원 미만</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="m-p5"><label for="m-p5"><span>10만원 이상</span></label></li>
 	            	</ul>
             	</div>	
 			</div>
@@ -79,45 +79,45 @@
 			   	<div class="m-check_list_box">
 			   		<span class="check_list">판매마진</span>
 			    	<ul>
-			    		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
-			    		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
-			    		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
-			    		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
-			    		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
+			    		<li><input type="checkbox" class="checkAll"  id="m-projMargin"><label for="m-projMargin"><span>전체</span></label></li>
+			    		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m-m1"><label for="m-m1"><span>10%이하</span></label></li>
+			    		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m-m2"><label for="m-m2"><span>11%~20%</span></label></li>
+			    		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m-m3"><label for="m-m3"><span>21%~30%</span></label></li>
+			    		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m-m4"><label for="m-m4"><span>30%초과</span></label></li>
 			    	</ul>
 			   	</div>
 				<div class="m-check_list_box">
             		<span class="check_list">판매자특징</span>
 	            	<ul>
-	            		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="s1"><label for="s1"><span>OEM</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="2" id="s2"><label for="s2"><span>위탁판매</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="3" id="s3"><label for="s3"><span>도매공급</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="4" id="s4"><label for="s4"><span>운영대행</span></label></li>
-	            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
+	            		<li><input type="checkbox" class="checkAll" id="m-projSupplyType"><label for="m-projSupplyType"><span>전체</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="1" id="m-s1"><label for="m-s1"><span>OEM</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="2" id="m-s2"><label for="m-s2"><span>위탁판매</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="3" id="m-s3"><label for="m-s3"><span>도매공급</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="4" id="m-s4"><label for="m-s4"><span>운영대행</span></label></li>
+	            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="m-s5"><label for="m-s5"><span>경매공급</span></label></li>
 	            	</ul>
 			  	</div>
 				<div class="m-check_list_box">
 					<span class="check_list">판매자지역</span>
 		           	<ul>
-		           		<li><input type="checkbox" class="checkAll" id="profileNation"><label for="profileNation"><span>전체</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="02" id="n1"><label for="n1"><span>서울</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="031" id="n2"><label for="n2"><span>경기</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="032" id="n3"><label for="n3"><span>인천</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="033" id="n4"><label for="n4"><span>강원</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="041" id="n5"><label for="n5"><span>충남</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="042" id="n6"><label for="n6"><span>대전</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="043" id="n7"><label for="n7"><span>충북</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="051" id="n8"><label for="n8"><span>부산</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="052" id="n9"><label for="n9"><span>울산</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="053" id="n10"><label for="n10"><span>대구</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="054" id="n11"><label for="n11"><span>경북</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="055" id="n12"><label for="n12"><span>경남</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="061" id="n13"><label for="n13"><span>전남</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="062" id="n14"><label for="n14"><span>광주</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="063" id="n15"><label for="n15"><span>전북</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="044" id="n16"><label for="n16"><span>세종특별자치시</span></label></li>
-		           		<li><input type="checkbox" class="check" name="profileNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
+		           		<li><input type="checkbox" class="checkAll" id="m-profileNation"><label for="m-profileNation"><span>전체</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="02" id="m-n1"><label for="m-n1"><span>서울</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="031" id="m-n2"><label for="m-n2"><span>경기</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="032" id="m-n3"><label for="m-n3"><span>인천</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="033" id="m-n4"><label for="m-n4"><span>강원</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="041" id="m-n5"><label for="m-n5"><span>충남</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="042" id="m-n6"><label for="m-n6"><span>대전</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="043" id="m-n7"><label for="m-n7"><span>충북</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="051" id="m-n8"><label for="m-n8"><span>부산</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="052" id="m-n9"><label for="m-n9"><span>울산</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="053" id="m-n10"><label for="m-n10"><span>대구</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="054" id="m-n11"><label for="m-n11"><span>경북</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="055" id="m-n12"><label for="m-n12"><span>경남</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="061" id="m-n13"><label for="m-n13"><span>전남</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="062" id="m-n14"><label for="m-n14"><span>광주</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="063" id="m-n15"><label for="m-n15"><span>전북</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="044" id="m-n16"><label for="m-n16"><span>세종특별자치시</span></label></li>
+		           		<li><input type="checkbox" class="check" name="profileNation" value="064" id="m-n17"><label for="m-n17"><span>세종특별자치도</span></label></li>
 		           	</ul>
 				</div>	
 			</div>
@@ -730,81 +730,149 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 	</div>
 </script>
 <script type="text/x-handlebars-template" id="seller-list-tmpl">
-		<div class="container2 countAllbox content">
-			<div class="leftBox countAll">전체 <span>{{totalCount}}</span><span>건</span>이 검색되었습니다</div>
-			<div class="rightBox">
-				<a href="javascript:void(0)" class="sort select" id="defaultSort">기본정렬 </a>
-				<a href="javascript:void(0)" class="sort" id="endSort">마감일순 </a>
-				<a href="javascript:void(0)" class="sort" id="regSort">최신등록순 </a>
-				<a href="javascript:void(0)" class="sort" id="applySort">참여자순 </a>
-				<a href="javascript:void(0)" class="sort" id="hitSort" style="margin-right: 0;">조회순</a>
-			</div>
-		</div>
-		<hr class="count-hr">
-		{{#output}}
-			<div class="container1 content">
-				<div class="container2">
-					<div class="leftBox2">
-						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
-					</div>
-					<div class="row1 leftBox">
-						<div class="row2 leftBox">
-							<div class="nick">{{memNick}}</div>
-							{{#each profileHashtagList as |value key|}}
-		        				<div class="purpleBox"># {{value}}</div>
-		        			{{/each}}
+        		<div class="contentsBox">
+      					<div class="countAllbox clearfix">
+						<div class="leftBox countAll">총 <span>{{totalCount}}}명</span>이 검색되었습니다</div>
+						<div class="rightBox">
+							{{#ifCond sort '==' 'regSort'}}
+								<a href="javascript:void(0)" class="sort select" id="regSort">등록순
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
+								</a>
+							{{else}}
+								<a href="javascript:void(0)" class="sort" id="regSort">등록순
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
+								</a>
+							{{/ifCond}}
+							{{#ifCond sort '==' 'endSort'}}
+								<a href="javascript:void(0)" class="sort select" id="endSort">매출순
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
+								</a>
+							{{else}}
+								<a href="javascript:void(0)" class="sort" id="endSort">매출순
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
+								</a>
+							{{/ifCond}}
+							{{#ifCond sort '==' 'applySort'}}
+								<a href="javascript:void(0)" class="sort select" id="applySort">요청받은순
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
+								</a>
+							{{else}}
+								<a href="javascript:void(0)" class="sort" id="applySort">요청받은순
+									<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
+								</a>
+							{{/ifCond}}
 						</div>
 					</div>
-					<div class="row1 leftBox">
-						<div class="row2 leftBox">
-							<div class="intro">
-								{{profileIntro}}
-							</div>
-						</div>
-					</div>
-					<div class="row1 leftBox">
-						<div class="row2 leftBox">
-							<span class="textBox5">{{profileIndusName}}</span>
-							<span class="textBox5">{{profileNationName}}지역</span>
-							<span class="textBox5">{{profileBizSortName}}</span>
-							<span class="textBox5">
-								{{#each profileChannelList as |value key|}}
-						        	{{#if @last}}
-						        		{{value}}
-						        	{{else}}
-						        		{{value}}, 
-						        	{{/if}}
-								{{/each}}
-		        			</span>
-						</div>
-					</div>
-					<div class="row1 leftBox">
+        		</div>
+        		{{#output}}
+        		<div class="contents clearfix">
+					<div class="clearfix">
+						<input type="hidden" id="profileId{{@key}}" value="{{profileId}}">
 						<div class="leftBox">
-							<div class="sellerInfo">
-								계약<span>{{contractCount}}건</span>
-								등록프로젝트<span>{{projAddCount}}건</span>
-								요청수<span>{{recommendCount}}건</span>
-								매출<span>{{profileVolume}}원</span>
-								경력<span style="margin-right: 0;">{{profileCareerName}}</span>
+							<div class="photo-container">
+								<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
+								<div class="star-score">
+									<div class="nick">
+										{{memNick}}
+									</div>
+									<div>
+										<img class="starImg" alt="" src="${pageContext.request.contextPath}/assets/img/star.png">
+										<img class="starImg" alt="" src="${pageContext.request.contextPath}/assets/img/star.png">
+										<img class="starImg" alt="" src="${pageContext.request.contextPath}/assets/img/star.png">
+										<img class="starImg" alt="" src="${pageContext.request.contextPath}/assets/img/star.png">
+										<img class="starImg" alt="" src="${pageContext.request.contextPath}/assets/img/star.png">
+									</div>
+								</div>
+							</div>
+							<div class="left-infoBox">
+								<div class="seller-status">활동 중</div>
+								<div class="profileBizSort">{{profileBizSortName}}</div>
+							</div>
+							<div class="left-infoBox">
+								<div class="seller-auth">검 증</div>
+								<div class="auth-container">
+								{{#ifCond memRname '==' '1'}}
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond memRname '==' '0'}}
+									<div class="authBox">신원인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileBizCerti '==' '1'}}
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileBizCerti '==' '0'}}
+									<div class="authBox">사업자인증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileChChk '==' '1'}}
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileChChk '==' '0'}}
+									<div class="authBox">채널검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileSaleChk '==' '1'}}
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+									</div>
+								{{/ifCond}}
+								{{#ifCond profileSaleChk '==' '0'}}
+									<div class="authBox">매출검증
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									</div>
+								{{/ifCond}}				
+								</div>
+							</div>
+							<div class="seller-intro">
+								<a class="s-link" href="javascript:void(0);" id="profileMemId{{@key}}" data-value="{{profileMemId}}" data-index="{{@key}}">{{profileIntro}}</a>
+							</div>
+							<div class="left-infoBox">
+								{{#each profileHashtagList as |value key|}}
+									{{#ifCond value "==" "null"}}
+										<div class="tagBox"></div>
+									{{/ifCond}}
+									{{#ifCond value "!=" "null"}}
+										<div class="tagBox">${value}</div>
+									{{/ifCond}}
+		        				{{/each}}
 							</div>
 						</div>
+						<div class="rightBox">
+							<div class="infoBox2"><span>계약 프로젝트</span><span>{{contractCount}}건</span></div>
+							<div class="infoBox2"><span>등록 프로젝트</span><span>{{projAddCount}}건</span></div>
+							<div class="infoBox2"><span>요청 받은 수</span><span>{{recommendCount}}건</span></div>
+							<div class="infoBox2">
+								<span>판매채널</span>
+								<span>
+									{{#each profileChannelList as |value key|}}
+						        		{{#if @last}}
+						        			{{value}} 외
+						        		{{else}}
+						        			{{key-1}} 채널
+						        		{{/if}}
+									{{/each}}
+								</span>
+							</div>
+							<div class="infoBox2">
+								<span>매출규모</span>
+								<span>
+									<fmt:formatNumber value="{{profileVolume}}" type="number"/>원
+								</span>
+							</div>
+							<div class="infoBox2"><span>판매경력</span><span>{{profileCareerName}}</span></div>
+						</div>
 					</div>
-					<div class="btnBox">
-						<button class="scrap">
-						<img class="star" alt="" src="${pageContext.request.contextPath}/assets/img/person.png">
-							판매자 상세정보
-						</button>
-						<button class="scrap">
-						<img class="star" alt="" src="${pageContext.request.contextPath}/assets/img/starNone.png">
-							관심등록
-						</button>
-						<button class="match" id="profileMemId{{@key}}" data-value="{{profileMemId}}" data-index="{{@key}}">
-						<img class="matchPass" alt="" src="${pageContext.request.contextPath}/assets/img/pass13.png">
-							지원요청
-						</button>
-					</div>
-				</div>
-			</div>
+        		</div>
 	    {{/output}}
 		{{#ifCond output '==' ''}}
 	        <div class="emptyResult">검색결과가 없습니다.</div>
@@ -871,8 +939,8 @@ $(document).ready(function() {
 		}
 		
 		// 초기화
-		$(".count-hr").remove();
-		$(".content").remove();
+		$(".contentsBox").remove();
+		$(".contents").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -928,8 +996,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".profile-box").append(html);
-	       		$(".profile-box").append(page_html);
+	       		$(".contents-container").append(html);
+	       		$(".contents-container").append(page_html);
 	       		
 	       }
 		});
@@ -941,8 +1009,8 @@ $(document).ready(function() {
 		$("#sort").val(value);
 		
 		// 초기화
-		$(".count-hr").remove();
-		$(".content").remove();
+		$(".contentsBox").remove();
+		$(".contents").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1001,8 +1069,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".profile-box").append(html);
-	       		$(".profile-box").append(page_html);
+	       		$(".contents-container").append(html);
+	       		$(".contents-container").append(page_html);
 	       		
 	       }
 		});
@@ -1013,8 +1081,8 @@ $(document).ready(function() {
 		$("#sort").val();
 		// 초기화
 		var str = ''
-		$(".count-hr").remove();
-		$(".content").remove();
+		$(".contentsBox").remove();
+		$(".contents").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1102,8 +1170,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".profile-box").append(html);
-	       		$(".profile-box").append(page_html);
+	       		$(".contents-container").append(html);
+	       		$(".contents-container").append(page_html);
 	       		
 	       }
 		});
@@ -1114,8 +1182,8 @@ $(document).ready(function() {
 	$(".check").click(function(){
 		// 초기화
 		var str = ''
-		$(".count-hr").remove();
-		$(".content").remove();
+		$(".contentsBox").remove();
+		$(".contents").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1215,8 +1283,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".profile-box").append(html);
-	       		$(".profile-box").append(page_html);
+	       		$(".contents-container").append(html);
+	       		$(".contents-container").append(page_html);
 	       		
 	       }
 		});
@@ -1227,8 +1295,8 @@ $(document).ready(function() {
 		var keyword = $("input[name=keyword]").val();
 		 
 		// 초기화
-		$(".count-hr").remove();
-		$(".content").remove();
+		$(".contentsBox").remove();
+		$(".contents").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
 		
@@ -1285,8 +1353,8 @@ $(document).ready(function() {
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
-	       		$(".profile-box").append(html);
-	       		$(".profile-box").append(page_html);
+	       		$(".contents-container").append(html);
+	       		$(".contents-container").append(page_html);
 	       }
 		});
 	});

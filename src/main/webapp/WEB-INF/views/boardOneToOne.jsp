@@ -20,7 +20,7 @@
 			<form action="${pageContext.request.contextPath}/OneToOne" id="OneToOne-form" name="OneToOne-form" method="post" enctype="multipart/form-data">
 				<div id="OneToOne">
 				</div>
-				<div class="qa-container">
+				<div class="qa-container clearfix">
 					<div class="qa-row">
 						<div class="qa-rowBox">
 							<div class="qa-text">문의제목</div>
@@ -88,3 +88,44 @@
    </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).on("click", "#boardEmail3", function(e){
+		var boardEmail3 = $('#boardEmail3').val();
+		$('#boardEmail2').val(boardEmail3);
+	});
+	
+	// 유효성 검사
+	$(document).on("focus", "#OneToOne-form", function(e){
+	    $('#OneToOne-form').validate({
+			
+	        rules: {
+	            boardTitle: 'required',
+	            boardContents: 'required',
+	            
+	        },
+	        messages: {
+	            boardTitle: '문의제목을 입력해 주세요.',
+	            boardContents: '문의내용을 입력해주세요',
+	        }
+	    });
+	});
+	$(document).on("submit", "#OneToOne-form", function(e){
+		e.preventDefault();
+		
+	    $('#OneToOne-form').ajaxForm({
+	        // submit 전에 호출된다.
+	        beforeSubmit: function(arr, form, options) {
+	            return $(form).valid();
+	        },
+	        success: function(json) {
+				swal('알림', '문의가 접수되었습니다.', 'success').then(function(result) {    					
+		            if (result.value) {
+		            	window.location = ROOT_URL+ "/usageFee"
+		            }
+		        });
+	        },
+	    });
+	});
+});
+</script>
