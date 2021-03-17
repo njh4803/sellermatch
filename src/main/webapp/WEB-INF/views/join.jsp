@@ -34,7 +34,7 @@
 					<div class="resultText" id="resultText1">판매자가입을 선택하셨습니다. 다양한
 						고마진 공급자를 찾아 수익을 향상시키세요!</div>
 					<div class="resultText" id="resultText2" style="display: none;">공급자가입을
-						선택하셨습니다. 검증된 고매출 공급자를 찾아 거래해보세요!</div>
+						선택하셨습니다. 검증된 고매출 판매자를 찾아 거래해보세요!</div>
 					<div class="resultText">판매자 유형은 마이페이지에서 추후에 전환 가능합니다.</div>
 				</div>
 				<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
