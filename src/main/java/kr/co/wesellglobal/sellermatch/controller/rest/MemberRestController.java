@@ -97,7 +97,12 @@ public class MemberRestController {
 			@RequestParam(value = "memSort", required = false) String memSort,
 			@RequestParam(value = "memPost", required = false) String memPost,
 			@RequestParam(value = "memAddr", required = false) String memAddr,
-			@RequestParam(value = "memAddr2", required = false) String memAddr2) {
+			@RequestParam(value = "memAddr2", required = false) String memAddr2,
+			@RequestParam(value = "memSnsCh", required = false) String memSnsCh,
+			@RequestParam(value = "googleId", required = false) String googleId,
+			@RequestParam(value = "naverId", required = false) String naverId,
+			@RequestParam(value = "kakaoId", required = false) String kakaoId
+			) {
 		
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
@@ -139,6 +144,12 @@ public class MemberRestController {
 		} else {
 			input.setMemNick(memNick);
 		}
+		//SNS 회원가입 추가
+		input.setGoogleId(googleId);//구글아이디
+		input.setNaverId(naverId);//네이버아이디
+		input.setKakaoId(kakaoId);//카카오아이디
+		input.setMemSnsCh(memSnsCh);	//가입 SNS채널
+		
 		
 		// 프로필
 		ProfileDto input2 = new ProfileDto();

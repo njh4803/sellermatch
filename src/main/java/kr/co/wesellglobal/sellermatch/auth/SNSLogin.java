@@ -1,11 +1,5 @@
 package kr.co.wesellglobal.sellermatch.auth;
 
-import java.util.Iterator;
-
-import org.apache.commons.lang3.StringUtils;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.builder.ServiceBuilder;
@@ -23,20 +17,26 @@ public class SNSLogin {
 	private SnsValue sns;
 	
 	public SNSLogin(SnsValue sns) {
-		this.oauthService = new ServiceBuilder(sns.getClientId())
-				.apiSecret(sns.getClientSecret())
-				.callback(sns.getRedirectUrl())
-				.scope("profile")
-				.build(sns.getApi20Instance());
+		if(sns.isKakao()) {
+			this.oauthService = new ServiceBuilder(sns.getClientId())
+					.apiSecret(sns.getClientSecret())
+					.callback(sns.getRedirectUrl())
+					.build(sns.getApi20Instance());
+		} else {
+			this.oauthService = new ServiceBuilder(sns.getClientId())
+					.apiSecret(sns.getClientSecret())
+					.callback(sns.getRedirectUrl())
+					//.scope("profile")
+					.build(sns.getApi20Instance());
+		}
 		
 		this.sns = sns;
-		
-	}
-	
-	public String getNaverAuthURL() {
-		return this.oauthService.getAuthorizationUrl();
 	}
 
+	public String getAuthURL() {
+		return this.oauthService.getAuthorizationUrl();
+	}
+	
 	public SnsMember getUserProfile(String code) throws Exception {
 		OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
 		
@@ -53,31 +53,20 @@ public class SNSLogin {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode rootNode = mapper.readTree(body);
-		System.out.println("#####################################");
-		System.out.println(rootNode);
-		System.out.println("#####################################");
 		if (this.sns.isGoogle()) {
-			String id = rootNode.get("id").asText();
-			if (sns.isGoogle())
-				member.setGoogleId(id);
-			member.setMemNick(rootNode.get("displayName").asText());
 			
-
-			Iterator<JsonNode> iterEmails = rootNode.path("emails").elements();
-			while(iterEmails.hasNext()) {
-				JsonNode emailNode = iterEmails.next();
-				String type = emailNode.get("type").asText();
-				if (StringUtils.equals(type, "account")) {
-					member.setMemId(emailNode.get("value").asText());
-					break;
-				}
-			}
+			String email = rootNode.get("email").asText();
+			member.setMemId(email);
+			member.setGoogleId(email);
 			
 		} else if (this.sns.isNaver()) {
 			JsonNode resNode = rootNode.get("response");
-			member.setNavareId(resNode.get("id").asText());
-			member.setMemNick(resNode.get("nickname").asText());
+			//member.setMemNick(resNode.get("nickname").asText());
 			member.setMemId(resNode.get("email").asText());
+			member.setNaverId(member.getMemId());
+		} else if (this.sns.isKakao()) {
+			member.setMemId((rootNode.get("kakao_account").get("email")).asText());
+			member.setKakaoId(member.getMemId());
 		}
 		
 		return member;

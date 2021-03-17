@@ -8,107 +8,46 @@ import lombok.Data;
 @Data
 public class MemberDto {
 
-	// 자동번호 
-	private int memIdx;
+	private int memIdx;		// 자동번호
+	private String memId;	// 회원고유번호 이메일 계정
+	private String memPw;	// 비밀번호 
+	private String memState; 	// 회원상태 정상(1),  탈퇴(2), 휴면(3) – 1년 단위
+	private String memClass;	// 유료회원상태 기본(무료)-0 /1m/3m/6m/1y  /  결제테이블필수
+	private String memClassSdate; 	// 유료시작일 
+	private String memClassEdate;// 유료종료일 
+	private String memSort;	// 회원분류 공급자, 셀러, 일반(기본선택), 관리자
+	private String memCountry;	// 국가 
+	private String memNation;	// 지역 
+	private String memAddr;	// 주소 
+	private String memAddr2;	// 상세주소 
+	private String memPost;	// 우편번호 
+	private String memTel;	// 연락처 
+	private String memName;	// 이름 
+	private String memRname;	// 실명인증 미인증(0), 인증완료(1), 이메일 본인인증
+	private String memNick;// 별명 닉네임
+	private String memPhoto;	// 대표사진 파일명 자동생성(기본 Null값 이미지)
+	private String memIp;	// 가입시 IP 
+	private String memLoginDate;	// 최근로그인 업데이트
+	private String memOutDate;	// 탈퇴일자 업데이트
+	private String memDate;	// 회원 등록일 
+	private String memEditDate;	// 회원정보 수정일 업데이트
+	private String memXxx; 	// 예비컬럼 
+    private int projAddCount;   // 프로젝트 등록 수
+    private int recommendCount;    // 프로젝트 요청(제안)받은 수
+    private int contractCount;    // 프로젝트 계약된 수
+    private String profileGrade;    // 회원 등급 
+    private String profileChChk;    // 채널 검증 미검증(0),검증(1)
+    private String profileSaleChk;    // 판매자 매출 검증 미검증(0),검증(1)
+    private String profileBizCerti;    // 사업자인증 미인증(0), 인증완료(1)
+    private String existProfile;    // 프로필 등록 여부
+    private String sessionKey;    // 자동로그인 세션ID
+    private Date sessionLimit;    // 자동로그인 세션 유효시간
+	private String googleId;	//구글아이디
+	private String naverId;	//네이버아이디
+	private String kakaoId;		//카카오아이디
 	
-	// 회원고유번호 이메일 계정
-	private String memId;
-	
-	// 비밀번호 
-	private String memPw;
-	
-	// 회원상태 정상(1),  탈퇴(2), 휴면(3) – 1년 단위
-	private String memState;
-	
-	// 유료회원상태 기본(무료)-0 /1m/3m/6m/1y  /  결제테이블필수
-	private String memClass;
-	
-	// 유료시작일 
-	private String memClassSdate;
-	
-	// 유료종료일 
-	private String memClassEdate;
-	
-	// 회원분류 공급자, 셀러, 일반(기본선택), 관리자
-	private String memSort;
-	
-	// 국가 
-	private String memCountry;
-	
-	// 지역 
-	private String memNation;
-	
-	// 주소 
-	private String memAddr;
-	
-	// 상세주소 
-	private String memAddr2;
-	
-	// 우편번호 
-	private String memPost;
-	
-	// 연락처 
-	private String memTel;
-	
-	// 이름 
-	private String memName;
-	
-	// 실명인증 미인증(0), 인증완료(1), 이메일 본인인증
-	private String memRname;
-	
-	// 별명 닉네임
-	private String memNick;
-	
-	// 대표사진 파일명 자동생성(기본 Null값 이미지)
-	private String memPhoto;
-	
-	// 가입시 IP 
-	private String memIp;
-	
-	// 최근로그인 업데이트
-	private String memLoginDate;
-	
-	// 탈퇴일자 업데이트
-	private String memOutDate;
-	
-	// 회원 등록일 
-	private String memDate;
-	
-	// 회원정보 수정일 업데이트
-	private String memEditDate;
-	
-	// 예비컬럼 
-	private String memXxx;
-	
-    // 프로젝트 등록 수
-    private int projAddCount;
-    
-    // 프로젝트 요청(제안)받은 수
-    private int recommendCount;
-    
-    // 프로젝트 계약된 수
-    private int contractCount;
-    
-    // 회원 등급 
-    private String profileGrade;
-    
-    // 채널 검증 미검증(0),검증(1)
-    private String profileChChk;
-
-    // 판매자 매출 검증 미검증(0),검증(1)
-    private String profileSaleChk;
-    
-    // 사업자인증 미인증(0), 인증완료(1)
-    private String profileBizCerti;
-	
-    // 프로필 등록 여부
-    private String existProfile;
-    
-    // 자동로그인 세션ID
-    private String sessionKey;
-    
-    // 자동로그인 세션 유효시간
-    private Date sessionLimit;
+	private String memSnsCh;	//가입 SNS채널
+	private String Mem_sns_ch_tkn;	//가입 SNS 토큰
 	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;

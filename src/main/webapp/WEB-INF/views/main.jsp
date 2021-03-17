@@ -18,7 +18,7 @@
 				        찾고 직거래하세요.<br>
 	    		</div>
 	    		<button class="findBtn">거래처 찾기 무료등록</button>
-    			<button class="shareBtn">친구들과 공유하기</button>
+    			<button class="shareBtn" id="shareBtn">친구들과 공유하기</button>
 	 		</div>
 	 		<div class="main-imgBox">
 	 			<div class="main-img1" style="background-image: url('${pageContext.request.contextPath}/assets/img/main_img1.png');">
@@ -446,6 +446,7 @@
    		</div>
     </div>
 </div>
+<input type="text" value="http://sellermatch.co.kr/temp" id="urlAddress" style="display:none;">
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
@@ -512,5 +513,26 @@ $(document).ready(function() {
 	});
 });
 </script>    
-    </body>
+
+<script type="text/javascript">
+
+$('.shareBtn').click(function(){	
+
+	var urlAddress= $('#urlAddress');
+
+	urlAddress.css('display','block').select();
+
+	document.execCommand("Copy");
+
+	urlAddress.css('display','none');
+
+	alert('URL 주소가 복사 되었습니다');	
+
+	return false;
+
+});
+
+</script>
+    
+</body>
 </html>

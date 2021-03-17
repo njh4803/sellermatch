@@ -1,6 +1,5 @@
 package kr.co.wesellglobal.sellermatch.service.impl;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -216,6 +215,14 @@ public class MemberServiceImpl implements MemberService{
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");
 		}
+		return result;
+	}
+
+	@Override
+	public int idCheckSNS(MemberDto input) throws Exception {
+		
+		int result = sqlSession.selectOne("MemberMapper.idCheck", input);
+		
 		return result;
 	}
 
