@@ -38,6 +38,10 @@
         <result property="profileSaleChk" column="profile_sale_chk" />
         <result property="profileBizCerti" column="profile_biz_certi" />
         <result property="existProfile" column="exist_profile" />
+        <result property="memSnsCh"   column="memSnsCh" />
+        <result property="googleId"   column="googleId" />
+        <result property="naverId"   column="naverId" />
+        <result property="kakaoId"   column="kakaoId" />
     </resultMap> 
     
     <insert id="insertItem"
@@ -47,11 +51,11 @@
     	INSERT INTO MemList
     		(`Mem_id`, `Mem_pw`, `Mem_state`, `Mem_class`, `Mem_sort`, `Mem_country`, 
     		`Mem_nation`, `Mem_addr`, `Mem_addr2`, `Mem_post`, `Mem_tel`, `Mem_name`, `Mem_rname`, `Mem_nick`, 
-    		`Mem_photo`, `Mem_ip`, `Mem_date`)
+    		`Mem_photo`, `Mem_sns_ch`, `googleId`, `naverId`, `kakaoId`, `Mem_ip`, `Mem_date`)
     	 VALUES 
     	 	(#{memId}, md5(#{memPw}), #{memState}, #{memClass}, #{memSort}, #{memCountry}, 
     	 	#{memNation}, #{memAddr}, #{memAddr2}, #{memPost}, #{memTel}, #{memName}, #{memRname}, #{memNick}, 
-    	 	#{memPhoto}, #{memIp}, now());
+    	 	#{memPhoto}, #{memSnsCh}, #{googleId}, #{naverId}, #{kakaoId}, #{memIp}, now());
 
     </insert>
     

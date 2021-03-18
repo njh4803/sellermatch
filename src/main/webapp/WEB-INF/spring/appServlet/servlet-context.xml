@@ -49,26 +49,47 @@
 		</beans:constructor-arg>
 	</beans:bean>
 
-	<!-- oauth2 login -->
+	<!-- 네이버 login -->
 	<beans:bean id="naverClientID" class="java.lang.String">
 		<beans:constructor-arg
 			value="WbIQH3jGvG5OtKT_lrMr" />
 	</beans:bean>
-	<beans:bean id="naverClientSecret" class="java.lang.String">
+ 	<beans:bean id="naverClientSecret" class="java.lang.String">
 		<beans:constructor-arg value="gh1BURAxGe" />
-	</beans:bean>
+	</beans:bean> 
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg
-			value="http://localhost:8080/auth/naver/callback" />
+		<!-- <beans:constructor-arg value="http://localhost:8080/auth/naver/callback" /> 개발-->
+		<beans:constructor-arg value="http://sellermatch.co.kr/auth/naver/callback" /> <!--운영  -->
 	</beans:bean>
 
 	<beans:bean id="naverSns" class="kr.co.wesellglobal.sellermatch.auth.SnsValue">
 		<beans:constructor-arg value="naver" />
 		<beans:constructor-arg ref="naverClientID" />
-		<beans:constructor-arg ref="naverClientSecret" />
+ 		<beans:constructor-arg ref="naverClientSecret" />
 		<beans:constructor-arg ref="naverRedirectUrl" />
 	</beans:bean>
 	
+	<!--카카오 로그인-->
+	<beans:bean id="kakaoClientID" class="java.lang.String">
+		<beans:constructor-arg
+			value="82777ea2e1ea44d0c18eb3de4da5805d" />
+	</beans:bean>
+	<beans:bean id="kakaoClientSecret" class="java.lang.String">
+		<beans:constructor-arg value="3AkrPO2Iad32qgEiQgqQUs620VWOuPMs" />
+	</beans:bean>
+	<beans:bean id="kakaoRedirectUrl" class="java.lang.String">
+		<!-- <beans:constructor-arg value="http://localhost:8080/auth/kakao/callback" /> 개발-->
+		<beans:constructor-arg value="http://sellermatch.co.kr/auth/kakao/callback" /> <!--운영  -->
+	</beans:bean>
+
+	<beans:bean id="kakaoSns" class="kr.co.wesellglobal.sellermatch.auth.SnsValue">
+		<beans:constructor-arg value="kakao" />
+		<beans:constructor-arg ref="kakaoClientID" />
+		<beans:constructor-arg ref="kakaoClientSecret" />
+		<beans:constructor-arg ref="kakaoRedirectUrl" />
+	</beans:bean>
+	
+	<!--구글 로그인-->
 	<beans:bean id="googleClientID" class="java.lang.String">
 	   <beans:constructor-arg value="401148449336-dhftt4anh287l238ii4nt2655l3ifknm.apps.googleusercontent.com" />
     </beans:bean>
@@ -76,7 +97,8 @@
 		<beans:constructor-arg value="FP_2K3l_3Q1nIzpDY4bNYvSa" />
 	</beans:bean>
 	<beans:bean id="googleRedirectUrl" class="java.lang.String">
-		<beans:constructor-arg value="http://localhost:8080/auth/google/callback" />
+		<!-- <beans:constructor-arg value="http://localhost:8080/auth/google/callback" /> 개발-->
+		<beans:constructor-arg value="http://sellermatch.co.kr/auth/google/callback" /> <!--운영  -->
 	</beans:bean>
 
 	<beans:bean id="googleSns" class="kr.co.wesellglobal.sellermatch.auth.SnsValue">

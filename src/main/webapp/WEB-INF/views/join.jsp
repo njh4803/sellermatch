@@ -2,44 +2,178 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/join.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/assets/css/join.css">
 
 <div class="partner_bnr">
-    <div class="partner_wrap">
-        <h2>공급자 또는 판매자 중 하나를 선택하세요</h2>
-        <h3>아래 간단한 내용만 입력하면, 회원가입이 완료됩니다!</h3>
-    </div>
-    <div id="findCheckBox">
-    	<div class="partner_wrap addbox2">
-		    <hr>
+	<div class="partner_wrap">
+		<div class="partner_wrap2">
+			<h2>공급자 또는 판매자 중 하나를 선택하세요</h2>
+			<h3>아래 간단한 내용만 입력하면, 회원가입이 완료됩니다!</h3>
 		</div>
-		<div class="partner_wrap addbox2 selectProfile">
-			<div style="display: inline-block;">
-				<button id="spBtn" class="default-check text-center" value="판매자">
-					<input type="checkbox" class="findCheck spFind" id="spFind" value="판매자">
-					<label for="spFind"><span>&nbsp;&nbsp;판매자 가입</span></label>
-				</button>
+		<div id="findCheckBox">
+			<div class="partner_wrap addbox2"></div>
+
+			<!-- 			<div class="partner_wrap addbox2 selectProfile">
+				<div style="display: inline-block;">
+					<button id="spBtn" class="default-check text-center" value="판매자">
+						<input type="checkbox" class="findCheck spFind" id="spFind" value="판매자">
+						<label for="spFind"><span>&nbsp;&nbsp;판매자 가입</span></label>
+					</button>
+				</div>
+				<div style="display: inline-block;">
+				    <button id="ppBtn" class="default-check text-center" value="공급자">
+				    	<input type="checkbox" class="findCheck ppFind" id="ppFind" value="공급자">
+				    	<label for="ppFind"><span>&nbsp;&nbsp;공급자 가입</span></label>
+				    </button>
+				</div>
 			</div>
-			<div style="display: inline-block;">
-			    <button id="ppBtn" class="default-check text-center" value="공급자">
-			    	<input type="checkbox" class="findCheck ppFind" id="ppFind" value="공급자">
-			    	<label for="ppFind"><span>&nbsp;&nbsp;공급자 가입</span></label>
-			    </button>
+			 -->
+			<div class="joinForm">
+				<div class="resultBox">
+					<div class="resultText" id="resultText1">판매자가입을 선택하셨습니다. 다양한
+						고마진 공급자를 찾아 수익을 향상시키세요!</div>
+					<div class="resultText" id="resultText2" style="display: none;">공급자가입을
+						선택하셨습니다. 검증된 고매출 판매자를 찾아 거래해보세요!</div>
+					<div class="resultText">판매자 유형은 마이페이지에서 추후에 전환 가능합니다.</div>
+				</div>
+				<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
+					<!-- <input type="hidden" id="memSort" name="memSort" value="{{memSort}}"> <input type="hidden" name="memRname" id="memRname" value="0" readonly="readonly"> -->
+<c:if test="${result.googleId != null}">
+					<input type="hidden" name="googleId" value="${result.googleId}">
+</c:if>					
+<c:if test="${result.naverId != null}">
+					<input type="hidden" name="naverId" value="${result.naverId}">
+</c:if>
+<c:if test="${result.kakaoId != null}">					
+					<input type="hidden" name="kakkaoId" value="${result.kakaoId}">
+</c:if>
+					<div class="form-group row userrow">
+						<label class="col-sm-2 colForm-label">회원유형 <span class="identify">*</span></label>
+						<div class="col-sm-9">
+							<input type="radio" id="memSort1" value="2" name="memSort" checked="checked" /><span class="radio-sort"> 판매자로 가입</span>
+							<input type="radio" id="memSort2" value="1" name="memSort" style="margin-left:30px;"/><span class="radio-sort"> 공급자로 가입</span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="memberId" class="col-sm-2 colForm-label">아이디 <span class="identify">*</span></label>
+						<div class="col-sm-9">
+							<div class="form-group">
+								<c:if test="${result.memId == null}">
+									<input id="memberId" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
+									<input id="Mem_sns_ch" type="hidden" name="memSnsCh" class="form-control" placeholder="SNS채널" value="01">
+								</c:if>
+								<c:if test="${result.memId != null}">
+									<input id="memberId" type="text" name="memberId" class="form-control" placeholder="이메일 입력" value="${result.memId}" readonly>
+									<input id="Mem_sns_ch" type="hidden" name="memSnsCh" class="form-control" placeholder="SNS채널" value="${result.memSnsCh}">
+								</c:if>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 colForm-label">비밀번호 <span class="identify">*</span></label>
+						<div class="col-sm-9">
+							<input type="password" id="memPw2" name="memPw2" class="form-control" placeholder="비밀번호를 입력해주세요. (6자 이상)">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="memPw_confirm" class="col-sm-2 colForm-label">비밀번호 확인 <span class="identify">*</span>	</label>
+						<div class="col-sm-9">
+							<input type="password" name="memPw_confirm" class="form-control" id="memPw_confirm" placeholder="비밀번호를 한번 더 입력해주세요." />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 colForm-label">닉네임 <span class="identify">*</span></label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="memNick" id="memNick" placeholder="별명을 입력하세요. (회사명 등 정보성 닉네임은 사용 불가)">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="memTel" class="col-sm-2 colForm-label">연락처 <span class="identify">*</span>
+						</label>
+						<div class="col-sm-9">
+							<input type="text" name="memTel" class="form-control" id="memTel" placeholder="`-` 없이 숫자만 입력(연락처는 아이디를 찾을 때 이용됩니다.)" />
+						</div>
+					</div>
+					<div class="Agreement-container">
+						<div class="Agreement">
+							<input type="checkbox" class="agree-all" id="checkAll"><label for="checkAll"><span class="r-span">전체 약관동의</span></label>
+						</div>
+						<div class="Agreement-box clearfix">
+							<div class="Agreement" style="float: left;">
+								<input type="checkbox" id="chk1" class="agree-chk chk">
+								<label for="chk1"><span class="r-span">(필수) 이용약관동의</span></label>
+							</div>
+							<!-- 						<div id="termsOfService" href="javascipt:void(0);" style="float: right;">
+							내용보기 V
+						</div> -->
+							<textarea
+								style="width: 100%; height: 100px; padding: 15px; resize: none;">약관.....</textarea>
+							<div class="Agreement" style="float: left;">
+								<input type="checkbox" id="chk2" class="select-chk chk">
+								<label for="chk2"><span class="r-span">(선택) 개인정보 수집 및 이용동의</span></label>
+							</div>
+							<!-- 						<div style="float: right;">
+							내용보기 V
+						</div> -->
+						</div>
+						<div class="join-btn-div" style="text-align-last: center;">
+							<button class="join-btn" type="submit" disabled="disabled" style="background-image: linear-gradient(98deg, #D9D9D9, #D9D9D9);">가입하기</button>
+						</div>
+					</div>
+				</form>
+				<!-- 회원가입 form end -->
 			</div>
+
 		</div>
-    </div>
-    
-    <div id="hiddenBox" style="display: none;">
-    	<input type="hidden" id="memSort">
-    </div>
-    <div class="partner_wrap join-temp-Box">
-    	
-    </div>
+	</div>
+	<div id="hiddenBox" style="display: none;">
+		<input type="hidden" id="memSort">
+	</div>
+	<div class="partner_wrap join-temp-Box"></div>
 </div>
 <%@ include file="inc/footer.jsp"%>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/template/assets/daum/exeDaumPostcode.js"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/template/assets/daum/exeDaumPostcode.js"></script>
 <script>
+$(function (){
+	$('input[type="radio"][id="memSort1"]').on('click', function(){
+	  var chkValue = $('input[type=radio][id="memSort1"]:checked').val();
+	  if(chkValue){
+	             $('#resultText1').css('display','block');
+	             $('#resultText2').css('display','none');
+	  }else{
+	             $('#resultText1').css('display','none');
+	             $('#resultText2').css('display','block');
+	  }
+});
+});
+$(function (){
+	$('input[type="radio"][id="memSort2"]').on('click', function(){
+	  var chkValue = $('input[type=radio][id="memSort2"]:checked').val();
+	  if(chkValue){
+	             $('#resultText1').css('display','none');
+	             $('#resultText2').css('display','block');
+	  }else{
+          		 $('#resultText1').css('display','block');
+		         $('#resultText2').css('display','none');
+	  }
+});
+});
+
+
+$(document).ready(function() {
+	$('#info').on('click', function(){
+		$('#infoModal').modal();
+	});
+	
+	$('#termsOfService').on('click', function(){
+		$('#termsOfServiceModal').modal();
+	});
+});
+
 $(document).ready(function() {
 	
 	$(document).on("change", "#image" ,handleImgfileSelect);
@@ -49,10 +183,10 @@ $(document).ready(function() {
 		$(".select-chk").prop("checked", this.checked);
 		
 		if (this.checked) {
-			$('.join-btn').css("background-color", "#595959");
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
 			$('.join-btn').attr('disabled', false);
 		} else {
-			$('.join-btn').css("background-color", "#D9D9D9");
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
 			$('.join-btn').attr('disabled', true);
 		}
 	});
@@ -89,60 +223,16 @@ $(document).ready(function() {
 		}
 		
 		if (this.checked) {
-			$('.join-btn').css("background-color", "#595959");
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
 			$('.join-btn').attr('disabled', false);
 		} else {
-			$('.join-btn').css("background-color", "#D9D9D9");
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
 			$('.join-btn').attr('disabled', true);
 			$(".agree-all").prop("checked", false);
 		}
 		
 	});
-	
-	$(document).on("click", ".findCheck", function(){
-		$(".joinForm").remove();
-		var value = this.value;
-		var tag;
-		if (this.checked) {
-			
-			if ('판매자' == value) {
-				$("#ppBtn").attr('disabled', true);
-				$("#ppBtn").attr('class','none-check text-center');
-				$("#spBtn").attr('class','check text-center');
-				//$(".ppFind").attr('disabled', true);
-				$(".ppFind").prop("checked", false); 
-				$("#memSort").val("2");
-				tag = '<div class="resultText">판매자가입을 선택하셨습니다. <span>다양한 고마진 공급자를 찾아 수익을 향상시키세요!</span></div>';
-			}
-			if ('공급자' == value) {
-				$("#spBtn").attr('disabled', true);
-				$("#spBtn").attr('class','none-check text-center');
-				$("#ppBtn").attr('class','check text-center');
-				//$(".spFind").attr('disabled', true);
-				$(".spFind").prop("checked", false);
-				$("#memSort").val("1");
-				tag = '<div class="resultText">공급자가입을 선택하셨습니다. <span>검증된 고매출 판매자를 찾아 매출을 올려보세요!</span></div>';
-			}
-			
-			var content = {
-             		memSort: $("#memSort").val(),
-        			tag: tag
-        		}
-       		var template = Handlebars.compile($("#project-join-tmpl").html());
-       		var html = template(content);
-       		$(".join-temp-Box").append(html);
-       		
-		} else {
-			$("#ppBtn").attr('disabled', false);
-			$(".ppFind").attr('disabled', false);
-			$("#spBtn").attr('disabled', false);
-			$(".spFind").attr('disabled', false);
-			$("#ppBtn").attr('class','default-check text-center');
-			$("#spBtn").attr('class','default-check text-center');
-			$("#memSort").val("");
-		}
-	});
-	
+		
 	$(document).on("click", "#sendAuthEmail", function(){
 	    const memEmail = $("#memEmail").val();
 	
@@ -223,8 +313,10 @@ $(document).ready(function() {
 	            memPw2: { required: true, passwordCk:true, minlength: 6, maxlength: 30 },
 	            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
 	            memPw_confirm: { required: true, equalTo: '#memPw2' },
+	            // 닉네임 필수, 길이제한
+	            memNick: { required: true, maxlength: 25 },
 	            // [연락처] 필수
-	            memTel: { phone: true },
+	            memTel: { phone: true, required: true, minlength: 10, maxlength: 11 },
 	            // [우편번호] 필수 입력
 	            postcode: 'required',
 	            // [주소1] 우편번호가 입력된 경우만 필수
@@ -254,7 +346,13 @@ $(document).ready(function() {
 	                remote: '이미 사용중인 이메일 입니다.'
 	            },
 	            memTel: {
+	            	required: '연락처를 입력하세요.',
 	                phone: '연락처 형식이 잘못되었습니다.',
+	                minlength: '연락처는 최소 {0}글자 이상 입력하셔야 합니다.',
+	                maxlength: '연락처는 최대 {0}글자까지 가능합니다.',
+	            },
+	            memNick: {
+	            	maxlength: '닉네임은 최대 {0}글자까지 가능합니다.',
 	            },
 	            postcode: '우편번호를 입력해 주세요.',
 	            memAddr: '기본주소를 입력해 주세요.',
@@ -367,195 +465,11 @@ $(document).ready(function() {
 });
 
 </script>
-<script type="text/x-handlebars-template" id="project-join-tmpl">
-<div class="joinForm">
-    	<div class="resultBox">
-    		{{createTag tag}}
-    	</div>
-    	<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
-																<input type="hidden" id="memSort" name="memSort" value="{{memSort}}">
-																<input type="hidden" name="memRname" id="memRname" value="0" readonly="readonly">
-                                                            <%-- <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">프로필 사진</label>
-                                                                <div class="col-sm-10 file_input">
-                                                                	<div class="input-group profile">
-                                                                		<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
-									                                    </div>
-									                                    <div style="display: flow-root;">
-									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
-										                                	<label class="fileLable">
-										                                		파일 선택
-										                                		<input id = "image" name="memPhoto" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-										                                	</label>
-									                                    </div>
-																	</div>
-                                                                </div>
-                                                            </div> --%>
-                                                            <div class="form-group row">
-                                                                <label for="memberId" class="col-sm-2 colForm-label">아이디
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                	<div class="form-group">
-<c:if test= "${result.memId == null}">
-	                                                                    	<input id="memberId1" type="text" name="memberId" class="form-control" placeholder="이메일 입력">
-</c:if>
-<c:if test= "${result.memId != null}">
-																			<input id="memberId2" type="text" name="memberId" class="form-control" placeholder="이메일 입력" value="${result.memId}" readonly>
-</c:if>
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">비밀번호
-                                                                	<span class="identify">*</span>
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="password" id="memPw2" name="memPw2" class="form-control" placeholder="비밀번호를 입력해주세요. (6자 이상)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-																<label for="memPw_confirm" class="col-sm-2 colForm-label">비밀번호 확인
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-9">
-																	<input type="password" name="memPw_confirm" class="form-control"
-																		id="memPw_confirm" placeholder="비밀번호를 한번 더 입력해주세요." />
-																</div>
-															</div>
-                                                            <!-- <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">이름</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="memName" id="memName">
-                                                                </div>
-                                                            </div> -->
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">닉네임</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" name="memNick" id="memNick" 
-                                                                    placeholder="별명을 입력하세요. 회사명 등 정보성 닉네임을 입력하시면 이용제한을 받을 수 있습니다.">
-                                                                </div>
-                                                            </div>
-															<div class="form-group row">
-																<label for="memTel" class="col-sm-2 colForm-label">연락처
-																</label>
-																<div class="col-sm-9">
-																	<input type="text" name="memTel" class="form-control" id="memTel"
-																		placeholder="`-`  없이 숫자만 입력(연락처는 아이디를 찾을 때 이용됩니다.)" />
-																</div>
-															</div>
-                                                            <!-- <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">국가</label>
-                                                                <div class="col-sm-10">
-                                                                    <select id="memCountry" name="memCountry" class="form-control">
-						                                                <option value="">선택하세요.</option>
-						                                                <option value="01">대한민국</option>
-						                                                <option value="02">베트남</option>
-						                                            </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 colForm-label">지역</label>
-                                                                <div class="col-sm-10">
-                                                                    <select id="memNation" name="memNation" class="form-control">
-						                                                <option value="">선택하세요.</option>
-						                                                <option value="02">서울</option>
-						                                                <option value="032">인천</option>
-						                                            </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-																<label for="memEmail" class="col-sm-2 colForm-label">이메일 인증</label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="memEmail" class="form-control" id="memEmail" />
-																		<span class="input-group-btn">
-																			<button type="button" id="sendAuthEmail"
-																				class="btn form-bg-primary">인증 번호 발송</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="" class="col-sm-2 colForm-label"></label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="auth_confirm" class="form-control" id="auth_confirm" />
-																		<span class="input-group-btn">
-																			<button type="button" id="authConfirm"
-																				class="btn form-bg-primary">인증 번호 확인</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label" style="display: flow-root;">우편번호
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-10">
-																	<div class="input-group">
-																		<input type="text" name="memPost" class="form-control"
-																			id="postcode" maxlength="5" readonly> <span
-																			class="input-group-btn">
-																			<button type="button" class="btn form-bg-primary postcode-finder"
-																				data-postcode="postcode" data-addr1="addr1"
-																				data-frame="postcode-frame" onClick="exeDaumPostcode()">우편번호검색</button>
-																		</span>
-																	</div>
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label">주소
-																	<span class="identify">*</span>
-																</label>
-																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr" class="form-control" id="memAddr"
-																		readonly />
-																</div>
-															</div>
-															<div class="form-group row">
-																<label for="address" class="col-sm-2 control-label">상세주소</label>
-																<div class="col-sm-10 col-sm-offset-2">
-																	<input type="text" name="memAddr2" class="form-control" id="memAddr2"
-																		placeholder="나머지 주소" />
-																</div>
-															</div>
-															<div style="text-align-last: center;">
-																<input class="btn form-bg-primary" type="submit" value="등록">
-																<input class="btn form-bg-submit" type="reset" value="취소">
-															</div> -->
-			<div class="Agreement-container">
-				<div class="Agreement">
-					<input type="checkbox" class="agree-all" id="checkAll"><label for="checkAll"><span>전체약관동의</span></label>
-				</div>
-				<div class="Agreement-box clearfix">
-					<div class="Agreement" style="float: left;">
-						<input type="checkbox" id="chk1" class="agree-chk chk">
-						<label for="chk1"><span class="r-span">(필수)</span>이용약관동의</label>
-					</div>
-					<div style="float: right;">
-						내용보기 V
-					</div>
-					<textarea style="width: 100%; height: 100px; padding: 15px;">제 1조 (목적)</textarea>
-					
-					<div class="Agreement" style="float: left;">
-						<input type="checkbox" id="chk2" class="select-chk chk">
-						<label for="chk2"><span class="s-span">(선택)</span>개인정보 수집 및 이용동의</label>
-					</div>
-					<div style="float: right;">
-						내용보기 V
-					</div>
-				</div>
-				<div style="text-align-last: center;">
-					<button class="join-btn" type="submit" disabled="disabled">가입하기</button>
-				</div>
-			</div>
-															
-                                                                </form>
-                                                                <!-- 회원가입 form end -->
-    	</div>
-</script>    
-    </body>
+<script>
+    <c:if test= "${url != null}">
+    alert('${msg}');
+    location.href='${url}';
+    </c:if>
+</script>
+</body>
 </html>
