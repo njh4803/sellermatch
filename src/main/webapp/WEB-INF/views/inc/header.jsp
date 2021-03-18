@@ -87,8 +87,8 @@ header #m-search_frm{
                <li class="operation">
                    <a href="javascipt:void(0);" class="operation_guide">이용안내</a>
 	               <div class="operation_guide_list" style="display: none;">
-	                    <a href="${pageContext.request.contextPath}/usageFee">이용방법</a>
-	                    <a href="#">이용요금</a>
+	                    <!-- <a href="javascript:void(0);">이용방법</a> -->
+	                    <a href="${pageContext.request.contextPath}/usageFee">이용요금</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a>

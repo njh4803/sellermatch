@@ -18,6 +18,7 @@ import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.BoardDto;
+import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -147,7 +148,7 @@ public class BoardRestController {
 		
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		UploadItem item = null;
+		FileDto item = null;
 		
 		BoardDto input = new BoardDto();
 		input.setBoardId(webHelper.getUniqueId("B-", 4));

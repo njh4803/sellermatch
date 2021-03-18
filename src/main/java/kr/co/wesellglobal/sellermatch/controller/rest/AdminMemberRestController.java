@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
-import kr.co.wesellglobal.sellermatch.helper.UploadItem;
+import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
@@ -160,7 +160,7 @@ public class AdminMemberRestController {
 		
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		UploadItem item = null;
+		FileDto item = null;
 		
 		String clientIp = webHelper.getClientIP(request);
 		
@@ -246,7 +246,7 @@ public class AdminMemberRestController {
 		
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		UploadItem item = null;
+		FileDto item = null;
 			
 		try {
 			if (memPhoto != null) {

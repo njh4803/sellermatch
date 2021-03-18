@@ -110,6 +110,12 @@ public class TempController {
 		return new ModelAndView("/usageFee");
 	}
 	
+	@RequestMapping(value = "/usageFee", method = RequestMethod.GET)
+	public ModelAndView usageFee(Model model) {
+		
+		return new ModelAndView("/usageFee");
+	}
+	
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
 	public ModelAndView notice(Model model,
 			@RequestParam(value = "boardId", required = false) String boardId) {

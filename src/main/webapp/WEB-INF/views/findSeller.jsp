@@ -148,12 +148,12 @@
 						원하는 판매자를 찾아 지원하기 요청을 할 수 있습니다.
 					</div>
 					<div class="search-rightBox">
-						<form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
+						<form id="seller_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
 					        <div class="input_group">
-					            <input class="input-text" type="text" name="keyword" placeholder="원하는 키워드로 검색해보세요">
+					            <input class="input-text" type="text" name="m-keyword" placeholder="원하는 키워드로 검색해보세요">
 					        </div>
 					        <button type="submit" class="search-btn">검색</button>
-					        <input type="hidden" value="regSort" id="sort" name="sort">
+					        <input type="hidden" value="regSort" id="m-sort" name="sort">
 					    </form>
 					</div>
 				</div>
@@ -350,7 +350,7 @@
 					원하는 판매자를 찾아 지원하기 요청을 할 수 있습니다.
 				</div>
 				<div class="search-rightBox">
-					<form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
+					<form id="seller_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
 				        <div class="input_group">
 				            <input class="input-text" type="text" name="keyword" placeholder="원하는 키워드로 검색해보세요">
 				        </div>
