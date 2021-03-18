@@ -102,6 +102,7 @@ public class profileController {
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("sort", sort);
 		
 		return new ModelAndView("findSeller");
 	}

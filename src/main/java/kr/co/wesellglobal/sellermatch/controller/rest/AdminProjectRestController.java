@@ -27,7 +27,7 @@ import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadFileUtils;
-import kr.co.wesellglobal.sellermatch.helper.UploadItem;
+import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
@@ -81,7 +81,7 @@ public class AdminProjectRestController {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		
-		UploadItem item = null;
+		FileDto item = null;
 		
 		String str = "";
 		for (int i = 0; i < projDetailImg.length; i++) {
@@ -172,7 +172,7 @@ public class AdminProjectRestController {
 			@RequestParam(value = "ProjProfitChkDate", required = false) String projProfitChkDate) {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		UploadItem item = null;
+		FileDto item = null;
 		
 		try {
 			if (projFile != null) {

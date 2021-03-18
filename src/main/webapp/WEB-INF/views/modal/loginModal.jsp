@@ -462,7 +462,7 @@ $(document).ready(function() {
 						<form id="find-id-form" method="post" action="${pageContext.request.contextPath}/idFind">
 						<div class="form-group">
 							<div class="input-group col-sm-12">
-									<input id="memTel" type="text" name="memTel" class="form-control" placeholder="가입시 연락처">
+									<input id="memTel" type="text" name="memTel" class="form-control" placeholder="가입시 등록한 연락처">
 							</div>
 						</div>
 						<div class="form-group">
@@ -481,7 +481,7 @@ $(document).ready(function() {
 						<form id="find-pw-form" method="post" action="${pageContext.request.contextPath}/pwFind">
 						<div class="form-group">
 							<div class="input-group col-sm-12">
-								<input id="memId" type="email" name="memId" class="form-control" placeholder="가입시 이메일">
+								<input id="memId" type="email" name="memId" class="form-control" placeholder="가입시 등록한 이메일">
 							</div>
 						</div>
 						<div class="form-group">

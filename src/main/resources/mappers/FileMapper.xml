@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FileMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="FileMap"
+        type="kr.co.wesellglobal.sellermatch.model.FileDto">
+        <result property="fileIdx"   column="file_idx" />
+        <result property="orginName"   column="orgin_name" />
+        <result property="contentType" column="content_type" />
+        <result property="fileSize" column="file_size" />
+        <result property="filePath" column="file_path" />
+        <result property="thumbnailPath" column="thumbnail_path" />
+         <result property="fileRegDate" column="file_reg_date" />
+         <result property="projId" column="proj_id" />
+         <result property="profileId" column="profile_id" />
+         <result property="projThumbnail" column="proj_thumbnail" />
+    </resultMap>
+    
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.FileDto"
+    	useGeneratedKeys="true"
+    	keyProperty="fileIdx">
+    	INSERT INTO fileList
+    		(`orgin_name`, `content_type`, `file_size`, `file_path`, `thumbnail_path`, 
+    		`file_reg_date`, `proj_id`, `profile_id`, `proj_thumbnail`)
+    	 VALUES 
+    	 	(#{orginName}, #{contentType}, #{fileSize}, #{filePath}, 
+    	 	#{thumbnailPath}, now(), #{projId}, #{profileId}, #{projThumbnail});
+    </insert>
+
+</mapper>

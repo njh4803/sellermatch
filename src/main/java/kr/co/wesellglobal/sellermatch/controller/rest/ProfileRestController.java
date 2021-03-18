@@ -20,12 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
-import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
+import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.service.FileService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
@@ -46,6 +47,8 @@ public class ProfileRestController {
 	WebHelper webHelper;
 	@Autowired
 	MailHelper mailHelper;
+	@Autowired
+	FileService fileService;
 	
 	@RequestMapping(value = "/seller/find2", method = RequestMethod.GET)
 	public Map<String, Object> findSeller2(
@@ -110,20 +113,44 @@ public class ProfileRestController {
 		data.put("totalCount", totalCount);
 		data.put("pageData", pageData);
 		data.put("keyword", keyword);
+		data.put("sort", sort);
 
 		return webHelper.getJsonData(data);
 	};
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public Map<String, Object> addProfile(
-			@ModelAttribute("profileDto") ProfileDto profileDto) {
+			@ModelAttribute("profileDto") ProfileDto profileDto,
+			@RequestParam(value = "profilePhotoFile", required = false) MultipartFile photo) {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		UploadItem item = null;
+		FileDto item = null;
+		
 		
 		try {
-			if (profileDto.getProfilePhotoFile() != null && profileDto.getProfilePhotoFile().getSize() != 0) {
-				item = webHelper.saveMultipartFile(profileDto.getProfilePhotoFile());
+			if (photo != null && photo.getSize() != 0) {
+				item = webHelper.saveMultipartFile(photo);
+				
+				// 썸네일 이미지 생성하기
+				if (item != null && item.getContentType().indexOf("image") > -1) {
+					//필요한 이미지 사이즈로 썸네일 생성
+					String thumbnailPath = null;
+					
+					try {
+						thumbnailPath = webHelper.createThumbnail(item.getFilePath(), 240, 240, true);
+					} catch (Exception e) {
+						e.printStackTrace();
+						return webHelper.getJsonError("썸네일 이미지 생성에 실패했습니다");
+					}
+					// 썸네일 경로를 URL로 변환
+					//String thumbnailUrl = webHelper.getUploadUrl(thumbnailPath);
+					// 리턴할 객체에 썸네일 정보 추가
+					item.setThumbnailPath(thumbnailPath);
+					item.setProfileId(profileDto.getProfileMemId());
+					item.setProjThumbnail("0");
+				}
+				// 파일 정보를 DB에 저장
+				fileService.addFile(item);
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
@@ -143,7 +170,7 @@ public class ProfileRestController {
 		input.setProfileSaleChk("0");
 		input.setProfileBizCerti("0");
 		input.setProfileState("1");
-		if (profileDto.getProfilePhotoFile() != null && profileDto.getProfilePhotoFile().getSize() != 0) {
+		if (photo != null && photo.getSize() != 0) {
 			input.setProfilePhoto(item.getFilePath());
 		}
 		input.setProfileIntro(profileDto.getProfileIntro());

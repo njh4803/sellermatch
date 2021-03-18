@@ -16,15 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.AbstractView;
+
+import kr.co.wesellglobal.sellermatch.model.FileDto;
+import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.Thumbnails.Builder;
 import net.coobird.thumbnailator.geometry.Positions;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class WebHelper {
@@ -59,7 +60,7 @@ public class WebHelper {
 
     /** Multipart 전송시 File정보를 저장하기 위한 컬렉션 */
     @Deprecated
-    private List<UploadItem> fileList;
+    private List<FileDto> fileList;
 
     /** Multipart 전송시 텍스트 데이터를 저장하기 위한 컬렉션 */
     @Deprecated
@@ -182,12 +183,12 @@ public class WebHelper {
     }
 
     @Deprecated
-    public List<UploadItem> getFileList() {
+    public List<FileDto> getFileList() {
         return fileList;
     }
 
     @Deprecated
-    public void setFileList(List<UploadItem> fileList) {
+    public void setFileList(List<FileDto> fileList) {
         this.fileList = fileList;
     }
 
@@ -596,7 +597,7 @@ public class WebHelper {
 //    public void upload() throws Exception {
 //        /** 1) 업로드 사전 준비하기 */
 //        // items에 저장 데이터가 분류될 컬렉션들 할당하기
-//        fileList = new ArrayList<UploadItem>();
+//        fileList = new ArrayList<FileDto>();
 //        paramMap = new HashMap<String, String>();
 //
 //        // 업로드가 수행될 폴더의 존재 여부 체크해서 없다면 생성하기
@@ -699,7 +700,7 @@ public class WebHelper {
 //                /** 3-4) 파일 정보 분류 처리 */
 //                // 생성된 정보를 Beans의 객체로 설정해서 컬렉션에 저장한다.
 //                // --> 이 정보는 추후 파일의 업로드 내역을 DB에 저장할 때 사용된다.
-//                UploadItem info = new UploadItem();
+//                FileDto info = new FileDto();
 //                info.setFieldName(fieldName);
 //                info.setOrginName(orginName);
 //                info.setFilePath(filePath);
@@ -711,7 +712,7 @@ public class WebHelper {
 //        } // end for
 
 //        /** 4) 취득한 정보를 로그로 기록한다. */
-//        for (UploadItem item : fileList) {
+//        for (FileDto item : fileList) {
 //            log.debug(String.format("(f) <-- %s", item.toString()));
 //        }
 //
@@ -922,8 +923,8 @@ public class WebHelper {
      * @throws NullPointerException     업로드 된 파일이 없는 경우
      * @throws Exception                파일 저장에 실패한 경우
      */
-    public UploadItem saveMultipartFile(MultipartFile multipartFile) throws NullPointerException, Exception {
-        UploadItem item = null;
+    public FileDto saveMultipartFile(MultipartFile multipartFile) throws NullPointerException, Exception {
+        FileDto item = null;
         
         /** 1) 업로드 파일 저장하기 */
         // 파일의 원본 이름 추출
@@ -971,7 +972,7 @@ public class WebHelper {
         filePath = filePath.replace("/", "");
         
         // 리턴할 정보를 구성한다.
-        item = new UploadItem();
+        item = new FileDto();
         item.setContentType(multipartFile.getContentType());
         item.setFieldName(multipartFile.getName());
         item.setFileSize(multipartFile.getSize());
@@ -989,17 +990,17 @@ public class WebHelper {
      * @throws NullPointerException     업로드 된 파일이 없는 경우
      * @throws Exception                파일 저장에 실패한 경우
      */
-    public List<UploadItem> saveMultipartFile(MultipartFile[] uploadFiles) throws NullPointerException, Exception {
+    public List<FileDto> saveMultipartFile(MultipartFile[] uploadFiles) throws NullPointerException, Exception {
         
         if (uploadFiles.length < 1) {
             throw new NullPointerException("업로드 된 파일이 없음.");
         }
 
-        List<UploadItem> uploadList = new ArrayList<UploadItem>();
+        List<FileDto> uploadList = new ArrayList<FileDto>();
         
         for (int i=0; i<uploadFiles.length; i++) {
             try {
-                UploadItem item = this.saveMultipartFile(uploadFiles[i]);
+                FileDto item = this.saveMultipartFile(uploadFiles[i]);
                 uploadList.add(item);
             } catch (NullPointerException e) {
                 log.error(String.format("%d번째 항목이 업로드 되지 않음", i));

@@ -24,7 +24,7 @@
 				<li class="tab-link current" data-tab="my-tab-1" id="select-my-tab1">MY홈</li>
 				<li class="tab-link" data-tab="my-tab-2" id="select-my-tab2">가입정보관리</li>
 				<li class="tab-link" data-tab="my-tab-3" id="select-my-tab3">프로필관리</li>
-				<li class="tab-link" data-tab="my-tab-4" id="select-my-tab4">프로젝트관리</li>
+				<li class="tab-link" data-tab="my-tab-4" id="select-my-tab4">거래관리</li>
 			</ul>
 			<div id="my-tab-1" class="tab-content2 current">
 				<div class="my_home clearfix">
@@ -62,7 +62,7 @@
 					</div>
 					<div class="myBox2">
 						<div class="myBox2-inner">
-							<div class="textBox1">프로젝트 등록</div>
+							<div class="textBox1">거래 등록</div>
 							<div class="textBox2 projAddCount" id="projAddCount" data-value="${output.projAddCount}">${output.projAddCount}건</div>
 						</div>
 						<div class="myBox2-inner">
@@ -88,7 +88,7 @@
 							</div>
 						</div>
 						<div class="textBox1">
-							<div class="myBox-row">프로젝트 관리</div>
+							<div class="myBox-row">거래 관리</div>
 							<div class="myBox-row2">
 								<button class="projAddCount">바로가기</button>
 							</div>
@@ -383,7 +383,7 @@
 							<tr>
 								<th>등록일</th>
 								<th>종류</th>
-								<th>프로젝트명</th>
+								<th>거래명</th>
 								<th>등록자 닉네임</th>
 								<th>마감일</th>
 								<th>지원자 수</th>
@@ -496,7 +496,7 @@ $(document).ready(function(){
 							text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
 						}
 						swal({
-		    	            title: '<div>프로필 등록을 해야</div><div>프로젝트 등록을 할 수 있습니다.</div>',
+		    	            title: '<div>프로필 등록을 해야</div><div>거래 등록을 할 수 있습니다.</div>',
 		    	            text: text,
 		    	            type: "question",
 		    	            icon: 'warning',
@@ -580,7 +580,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	//프로젝트관리 바로가기
+	//거래관리 바로가기
 	$(document).on("click", "#myProject-go", function(e){		
 		$("#myProject").remove();
 		
@@ -615,12 +615,13 @@ $(document).ready(function(){
 		});
 	});
 	
+	//프로필 수정
 	$(document).on("focus", "#profile_form", function(e){
 		
 		$('#profile_form').validate({
 			
 		    rules: {
-		        // [프로젝트 제목] 필수
+		        // [자기소개] 필수
 		        profileIntro: {
 		            required: true, minlength: 5, maxlength: 20, 
 		        },
@@ -781,7 +782,7 @@ $(document).ready(function(){
     $(document).on("click", "#contractCount", function(e){
     	var contractCount = $('#contractCount').val();
 		if (contractCount == 0) {
-			swal('알림', '계약된 프로젝트가 없습니다.', 'warning')
+			swal('알림', '계약된 거래가 없습니다.', 'warning')
 		} else {
 			$("#myProject").remove();
 			
@@ -818,7 +819,7 @@ $(document).ready(function(){
     $(document).on("click", ".projAddCount", function(e){
     	var projAddCount = $('#projAddCount').attr('data-value');
 		if (projAddCount == 0) {
-			swal('알림', '등록된 프로젝트가 없습니다.', 'warning')
+			swal('알림', '등록된 거래가 없습니다.', 'warning')
 		} else {
 			$("#myProject").remove();
 			
@@ -858,10 +859,10 @@ $(document).ready(function(){
 		if (recommendCount == 0) {
 			var text = '';
 			if (mem_sort == 1) {
-				text = '제안한 프로젝트가 없습니다.';
+				text = '제안한 거래가 없습니다.';
 			}
 			if (mem_sort == 2) {
-				text = '제안 받은 프로젝트가 없습니다.';
+				text = '제안 받은 거래가 없습니다.';
 			}
 			swal('알림', text, 'warning')
 		} else {
@@ -1112,37 +1113,37 @@ $(document).ready(function() {
 				<div class="myProjBox">
 					<div class="proj-type">
 						<div class="myProjBox2">
-							<div class="p-type">등록한 프로젝트</div>
+							<div class="p-type">등록한 거래</div>
 							<div class="textBox1"><button class="projAddCount" data-value="{{projAddCount}}">{{projAddCount}}건</button></div>
 						</div>
 					</div>
 					<div class="proj-type">
 						<div class="myProjBox2">
-							<div class="p-type">계약한 프로젝트</div>
+							<div class="p-type">계약한 거래</div>
 							<div class="textBox1"><button id="contractCount" value="{{contractCount}}">{{contractCount}}건</button></div>
 						</div>
 					</div>
 					<div class="proj-type">
 						<div class="myProjBox2">
-							<div class="p-type">찜한 프로젝트</div>
+							<div class="p-type">찜한 거래</div>
 							<div class="textBox1">0건</div>
 						</div>
 					</div>
 					<div class="proj-type">
 						<div class="myProjBox2">						
 						{{#ifCond memSort '==' 1}}
-							<div class="p-type">제안한 프로젝트</div>
+							<div class="p-type">제안한 거래</div>
 						    <div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
 						{{/ifCond}}
 						{{#ifCond memSort '==' 2}}
-							<div class="p-type">제안받은 프로젝트</div>
+							<div class="p-type">제안받은 거래</div>
 							<div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
 						{{/ifCond}}
 						</div>
 					</div>
 					<div class="proj-type">
 						<div class="myProjBox2" style="border-right:0;">
-							<div class="p-type">마감한 프로젝트</div>
+							<div class="p-type">마감한 거래</div>
 							<div class="textBox1">0건</div>
 						</div>
 					</div>
@@ -1152,7 +1153,7 @@ $(document).ready(function() {
 					<div>
 						<div>
 							<div class="th">등록일</div>
-							<div class="th">프로젝트명</div>						
+							<div class="th">거래명</div>						
 							<div class="th">등록자 닉네임</div>
 							<div class="th">마감일</div>
 							<div class="th">지원자수</div>
