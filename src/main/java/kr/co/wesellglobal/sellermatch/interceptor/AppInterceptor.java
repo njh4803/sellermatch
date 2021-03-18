@@ -1,17 +1,23 @@
 package kr.co.wesellglobal.sellermatch.interceptor;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.springframework.web.util.WebUtils;
 
+import kr.co.wesellglobal.sellermatch.auth.SNSLogin;
+import kr.co.wesellglobal.sellermatch.auth.SnsValue;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.service.MemberService;
@@ -25,6 +31,17 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	WebHelper webHelper;
 	@Autowired
 	MemberService memberService;
+	
+	@Inject
+	private SnsValue naverSns;
+	@Inject
+	private SnsValue googleSns;
+	@Inject
+	private SnsValue kakaoSns;
+	@Inject
+	private GoogleConnectionFactory googleConnectionFactory;
+	@Inject
+	private OAuth2Parameters googleOAuth2Parameters;
 	
 	/**
 	 * Controller 실행 요청 전에 수행되는 메서드
@@ -116,6 +133,17 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+		
+		/* 로그인 인증 URL 생성하여 뿌려줌*/
+    	SNSLogin snsLoginNaver = new SNSLogin(naverSns);
+    	SNSLogin snsLoginKakao = new SNSLogin(kakaoSns);
+    	OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+    	String googleUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+    	
+        request.getSession().setAttribute("naver_url", snsLoginNaver.getAuthURL());
+        request.getSession().setAttribute("kakao_url", snsLoginKakao.getAuthURL());
+        request.getSession().setAttribute("google_url", googleUrl);
+		
 		log.debug("AppInterceptor.postHandle 실행됨");
 		//컨트롤러 종료시의 시각을 지운다.
 		endTime = System.currentTimeMillis();

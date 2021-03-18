@@ -219,9 +219,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int idCheckSNS(MemberDto input) throws Exception {
+	public MemberDto loginSNS(MemberDto input) throws Exception {
+		MemberDto result = null;
 		
-		int result = sqlSession.selectOne("MemberMapper.idCheck", input);
+		result = sqlSession.selectOne("MemberMapper.loginSNS", input);
 		
 		return result;
 	}

@@ -119,6 +119,18 @@
     	resultType="int">
     	SELECT COUNT(*) FROM MemList WHERE mem_id = #{memId}
     </select>
+
+    <select id="loginSNS"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	resultMap="MemberMap">
+    	SELECT 
+    		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
+    		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
+    		mem_name, mem_rname, mem_nick, mem_photo, mem_sns_ch, googleId, naverId, kakaoId, mem_ip, mem_login_date, mem_out_date, 
+    		mem_date, mem_edit_date, 
+    		(SELECT profile_indus FROM ProfileList where profile_mem_id = #{memId}) as exist_profile
+    	FROM MemList WHERE mem_id = #{memId}
+    </select>
 	
 	<update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
 		UPDATE MemList 

@@ -1,4 +1,4 @@
-package kr.co.wesellglobal.sellermatch.auth;
+ package kr.co.wesellglobal.sellermatch.auth;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,19 +17,11 @@ public class SNSLogin {
 	private SnsValue sns;
 	
 	public SNSLogin(SnsValue sns) {
-		if(sns.isKakao()) {
-			this.oauthService = new ServiceBuilder(sns.getClientId())
+		this.oauthService = new ServiceBuilder(sns.getClientId())
 					.apiSecret(sns.getClientSecret())
 					.callback(sns.getRedirectUrl())
 					.build(sns.getApi20Instance());
-		} else {
-			this.oauthService = new ServiceBuilder(sns.getClientId())
-					.apiSecret(sns.getClientSecret())
-					.callback(sns.getRedirectUrl())
-					//.scope("profile")
-					.build(sns.getApi20Instance());
-		}
-		
+			
 		this.sns = sns;
 	}
 
@@ -53,6 +45,9 @@ public class SNSLogin {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode rootNode = mapper.readTree(body);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println(rootNode);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
 		if (this.sns.isGoogle()) {
 			
 			String email = rootNode.get("email").asText();
@@ -61,10 +56,11 @@ public class SNSLogin {
 			
 		} else if (this.sns.isNaver()) {
 			JsonNode resNode = rootNode.get("response");
-			//member.setMemNick(resNode.get("nickname").asText());
+			member.setMemNick(resNode.get("nickname").asText());
 			member.setMemId(resNode.get("email").asText());
 			member.setNaverId(member.getMemId());
 		} else if (this.sns.isKakao()) {
+			member.setMemNick((rootNode.get("properties").get("nickname")).asText());
 			member.setMemId((rootNode.get("kakao_account").get("email")).asText());
 			member.setKakaoId(member.getMemId());
 		}

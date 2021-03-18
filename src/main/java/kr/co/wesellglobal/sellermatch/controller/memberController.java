@@ -75,10 +75,11 @@ public class memberController {
 		return new ModelAndView("myPage");
 	}
 
-	/*
-	 * @RequestMapping(value = "/member/joinMain", method = RequestMethod.GET)
-	 * public ModelAndView joinMain(Model model) {
-	 * 
-	 * return new ModelAndView("joinMain"); }
-	 */
+
+	@RequestMapping(value = "/member/joinMain", method = RequestMethod.GET)
+	public ModelAndView joinMain(Model model) {
+
+		return new ModelAndView("joinMain"); 
+	}
+
 }

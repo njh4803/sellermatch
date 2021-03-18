@@ -17,7 +17,7 @@ public interface MemberService {
 	
 	public void idCheck(MemberDto input) throws Exception;
 	
-	public int idCheckSNS(MemberDto input) throws Exception;
+	public MemberDto loginSNS(MemberDto input) throws Exception;
 	
 	public MemberDto login(MemberDto input) throws Exception;
 	
