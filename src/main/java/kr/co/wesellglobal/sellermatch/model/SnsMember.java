@@ -17,5 +17,8 @@ public class SnsMember {
 	private String memSnsCh;	//가입 SNS채널
 	private String Mem_sns_ch_tkn;	//가입 SNS 토큰
 	
+	private String naver_url;
+	private String kakao_url;
+	private String google_url;
 	
 }

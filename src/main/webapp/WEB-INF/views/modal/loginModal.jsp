@@ -159,6 +159,47 @@ form div .input-group input.form-control{
     border-radius: 4px 4px 0 0;
     color: #343434;
 }
+
+.joinBox2 {
+	width: 100%;
+	height: 45px;
+    display: inline-block;
+    margin: 5px;
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
+	background-color: #ffffff;
+	padding: 10px;
+	text-align: center;
+}
+.joinBox2 img{
+    margin-top: -5px;
+}
+.joinBox2 .naver2{
+	background-color: #ffffff;
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
+}
+.joinBox2 .naver2 a{
+	color: #343434;
+}
+.joinBox2 .kakao2{
+	background-color: #ffffff;
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
+}
+.joinBox2 .kakao2 a{
+	color: #343434;
+	text-align: center;
+}
+.joinBox2 .google2{
+ border-radius: 5px;
+  border: solid 1px #e3e3e3;
+	background-color: #ffffff;
+}
+.joinBox2 .google2 a{
+color: #343434;
+text-align: center;
+}
 </style>
 
   <!-- Modal -->
@@ -335,6 +376,7 @@ $(document).ready(function() {
   		var html = template(content);
   		$("#loginModal").append(html);
 	});
+	
 });
 </script>
 <script type="text/x-handlebars-template" id="login-tmpl">
@@ -381,6 +423,18 @@ $(document).ready(function() {
                             </div>
                         </form>
                                                                 <!-- 로그인 form end -->													
+	        <div class="joinBox2 naver2" id="naver2" OnClick="location.href ='${ naver_url }'" style="cursor:pointer;">
+	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/naver.png">
+	        		네이버 아이디로 로그인
+	        </div>
+	        <div class="joinBox2 kakao2" id="kakao2" OnClick="location.href ='${ kakao_url }'" style="cursor:pointer;">
+	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/kakao.png">
+	        	카카오톡으로 로그인
+	        </div>
+	        <div class="joinBox2 google2" id="google2" OnClick="location.href ='${ google_url }'" style="cursor:pointer;">
+	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/google.png">
+	        	구글 계정으로 로그인
+	        </div>
         </div>
       </div>
     </div>

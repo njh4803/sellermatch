@@ -499,7 +499,6 @@ public class WebHelper {
         } else {
             log.debug(String.format("(c) <-- %s = %s (%dsec)", key, value, timeout));
         }
-
         /** 전달된 값을 URLEncoding 처리 한다. */
         if (value != null) {
             try {
