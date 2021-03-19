@@ -54,7 +54,18 @@ public class projectController {
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			HttpServletRequest request) {
 		
+		IndusDto input = new IndusDto();
+		List<IndusDto> indusList = null;
+		
+		try {
+			indusList = indusService.getIndusList(input);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		model.addAttribute("member", member);
+		model.addAttribute("indusList", indusList);
 
 		return new ModelAndView("addProject");
 	}

@@ -84,8 +84,8 @@ public class ProjectDto {
 	// 수익성 검증일
 	private String projProfitChkDate;
 	
-	// 예비컬럼
-	private String projXxx;
+	// 썸네일 이미지
+	private String projThumbnailImg;
 
 	// 회원이름
 	private String memName;

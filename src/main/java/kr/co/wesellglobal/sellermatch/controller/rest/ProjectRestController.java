@@ -21,6 +21,7 @@ import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.service.FileService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +41,8 @@ public class ProjectRestController {
 	WebHelper webHelper;
 	@Autowired
 	MailHelper mailHelper;
+	@Autowired
+	FileService fileService;
 	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -63,23 +66,14 @@ public class ProjectRestController {
 			@RequestParam(value = "projKeyword", required = false) String projKeyword,
 			@RequestParam(value = "detailImgList", required = false) String projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
+			@RequestParam(value = "projThumbnailImg", required = false) MultipartFile projThumbnailImg,
 			@RequestParam(value = "projState", required = false) String projState,
 			@RequestParam(value = "projChannel", required = false) String projChannel,
 			@RequestParam(value = "projProdCerti", required = false) String projProdCerti) throws Exception {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
-		
-		try {
-			if (projFile != null) {
-				
-				item = webHelper.saveMultipartFile(projFile);
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		FileDto item2 = null;
 		
 		ProjectDto input = new ProjectDto();
 		input.setProjId(webHelper.getUniqueId("P-", Integer.parseInt(projSort)));
@@ -87,11 +81,6 @@ public class ProjectRestController {
 		input.setProjTitle(projTitle);
 		input.setProjSort(projSort);
 		input.setProjIndus(projIndus);
-		if (projPrice == null) {
-			input.setProjPrice(0);
-		} else {
-			input.setProjPrice(projPrice);
-		}
 		input.setProjMargin(projMargin);
 		input.setProjNation(projNation);
 		input.setProjSupplyType(projSupplyType);
@@ -101,17 +90,84 @@ public class ProjectRestController {
 		input.setProjRequire(projRequire);
 		input.setProjKeyword(projKeyword);
 		input.setProjProdCerti(projProdCerti);
-		if (projDetailImg != "" && projDetailImg != null) {
+		input.setProjState(projState);
+		input.setProjChannel(projChannel);
+		if (projPrice == null) {
+			input.setProjPrice(0);
+		} else {
+			input.setProjPrice(projPrice);
+		}
+		
+		try {
+			if (projFile != null) {
+				item = webHelper.saveMultipartFile(projFile);
+				
+				item.setThumbnailPath("none");
+				item.setProjId(input.getProjId());
+				item.setProjThumbnail("0");
+				
+				// 파일 정보를 DB에 저장
+				fileService.addFile(item);
+			}
+			
+			if (projThumbnailImg != null) {
+				item2 = webHelper.saveMultipartFile(projThumbnailImg);
+				// 썸네일 이미지 생성하기
+				if (item2 != null && item2.getContentType().indexOf("image") > -1) {
+					//필요한 이미지 사이즈로 썸네일 생성
+					String thumbnailPath = null;
+					
+					try {
+						thumbnailPath = webHelper.createThumbnail(item2.getFilePath(), 240, 240, true);
+					} catch (Exception e) {
+						e.printStackTrace();
+						return webHelper.getJsonError("썸네일 이미지 생성에 실패했습니다");
+					}
+					// 썸네일 경로를 URL로 변환
+					//String thumbnailUrl = webHelper.getUploadUrl(thumbnailPath);
+					// 리턴할 객체에 썸네일 정보 추가
+					item2.setThumbnailPath(thumbnailPath);
+					item2.setProjId(input.getProjId());
+					item2.setProjThumbnail("1");
+					
+					
+				}
+				// 파일 정보를 DB에 저장
+				fileService.addFile(item2);
+			}
+			
+		if (projPrice != null) {
 			input.setProjDetailImg(projDetailImg);
 		}
 		if (projFile != null) {
 			input.setProjFile(item.getFilePath());
 		}
-		input.setProjState(projState);
-		input.setProjChannel(projChannel);
+		if (projThumbnailImg != null) {
+			input.setProjThumbnailImg(item2.getFilePath());
+		}
+			
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		try {
 			projectService.addProject(input);
+			
+			if (projDetailImg != null) {
+				
+				FileDto fileDto = new FileDto();
+				fileDto.setProjId(input.getProjId());
+				
+				String projDetailImgList[] = projDetailImg.split("\\|");
+				for (int i = 0; i < projDetailImgList.length; i++) {
+					fileDto.setFilePath(projDetailImgList[i]);
+					fileService.editFile(fileDto);
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());

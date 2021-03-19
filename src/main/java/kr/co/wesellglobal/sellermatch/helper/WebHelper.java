@@ -942,10 +942,12 @@ public class WebHelper {
         File targetFile = null; // 저장된 파일 정보를 담기 위한 File객체
         int count = 0;          // 중복된 파일 수
 
+        int random = (int) (100 * Math.random()); // 랜덤번호
+        
         // 일단 무한루프
         while (true) {
             // 저장될 파일 이름 --> 현재시각 + 카운트값 + 확장자
-            fileName = String.format("%d%d%s", System.currentTimeMillis(), count, ext);
+            fileName = String.format("%d%d%s", System.currentTimeMillis(), random, ext);
             // 업로드 파일이 저장될 폴더 + 파일이름으로 파일객체를 생성한다.
             targetFile = new File(this.uploadDir, fileName);
 

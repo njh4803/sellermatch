@@ -309,11 +309,11 @@
 						${output.projRequire}
 					</div>
 				</div>
-				<div class="detailBox3">첨부파일
+<!-- 				<div class="detailBox3">첨부파일
 					<div class="textBox1">
 						싱싱청과 상세페이지 파일.hwp
 					</div>
-				</div>
+				</div> -->
 				<div class="detailBox3">특징</div>
 				<div>
 					<c:forEach var="projKeywordList" items="${output.projKeywordList}">

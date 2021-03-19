@@ -31,4 +31,12 @@
     	 	#{thumbnailPath}, now(), #{projId}, #{profileId}, #{projThumbnail});
     </insert>
 
+	<update id="updateItem"
+		parameterType="kr.co.wesellglobal.sellermatch.model.FileDto">
+		UPDATE fileList
+		SET
+			proj_id = #{projId}
+		WHERE file_path = #{filePath}
+	</update>
+	
 </mapper>
