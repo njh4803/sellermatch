@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.auth.SNSLogin;
 import kr.co.wesellglobal.sellermatch.auth.SnsValue;
@@ -48,7 +50,7 @@ public class SNSController {
 	private SnsValue kakaoSns;
 
 	@RequestMapping(value = "/auth/{snsService}/callback", method = { RequestMethod.GET, RequestMethod.POST })
-	public String snsLoginCallback(HttpSession session, HttpServletResponse response, @PathVariable String snsService, Model model, @RequestParam String code)
+	public ModelAndView snsLoginCallback(HttpSession session, HttpServletResponse response, @PathVariable String snsService, Model model, @RequestParam String code)
 			throws Exception {
 
 		logger.info("snsLoginCallback: service={}", snsService);
@@ -80,10 +82,36 @@ public class SNSController {
 		input.setMemId(member.getMemId());
 		MemberDto result;
 		result = memberService.loginSNS(input);
-
+		
+		
 		// 4. 존재시 강제 로그인, 미존재시 가입페이지로
-		if(result== null) {
-		/*if(result.getGoogleId() == null && result.getKakaoId() == null && result.getNaverId() == null) {*/
+		if(result!= null) {
+			//존재 시 강제 로그인
+	        if ( session.getAttribute("member") !=null ){
+	            // 기존에 member 세션 값이 존재한다면
+	            session.removeAttribute("member");// 기존값을 제거해 준다.
+	        } 
+
+	        if (!result.getMemSnsCh().equals(memSnsCh)) {
+	        	//접근한 SNS 채널이 달라서 로그인 실패
+	        	model.addAttribute("failLogin", "가입했던 SNS를 확인해주세요.");
+	        	
+	        } else {
+		        ProfileDto input2 = new ProfileDto();
+				ProfileDto profile = null;
+				input2.setProfileSort(input.getMemSort());
+				input2.setProfileMemId(member.getMemId());
+				profile = profileService.getProfile(input2);
+				
+		    	// 세션 저장
+		    	webHelper.setSession("member", result);
+	        }
+	    	
+	        return new ModelAndView ("redirect:/temp");
+
+			/* return new ModelAndView("main"); */
+	    	
+		} else {
 			//미존재 회원가입 필요
 			if(memSnsCh=="03") {	//구글
 				model.addAttribute("msg", "구글계정을 통한 회원가입 후 이용해 주세요");
@@ -92,31 +120,7 @@ public class SNSController {
 			} else if (memSnsCh=="02"){ 	//카카오
 				model.addAttribute("msg", "카카오계정을 통한 회원가입 후 이용해 주세요");
 			}
-			return "join";
-			
-		} else {
-			//존재 시 강제 로그인
-			
-	        if ( session.getAttribute("member") !=null ){
-	            // 기존에 member 세션 값이 존재한다면
-	            session.removeAttribute("member");// 기존값을 제거해 준다.
-	    		
-	        }
-	        
-	    	ProfileDto input2 = new ProfileDto();
-	    	ProfileDto profile = null;
-			/* profile = profileService.getProfile(input2); */
-	    	
-	    	// 세션 저장
-	    	webHelper.setSession("member", result);
-	        
-			Map<String, Object> data = new HashMap<String, Object>();
-			
-			data.put("profile", profile);
-			data.put("output", result);
-
-			return "main";
-
+			return new ModelAndView("join");
 		}
 	}
 

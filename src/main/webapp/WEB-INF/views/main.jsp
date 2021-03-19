@@ -549,6 +549,10 @@ $('.shareBtn').click(function(){
 });
 
 </script>
-    
+<script>
+    <c:if test= "${failLogin != null}">
+    alert('${failLogin}');
+    </c:if>
+</script>    
 </body>
 </html>

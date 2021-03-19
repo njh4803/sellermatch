@@ -376,6 +376,7 @@ $(document).ready(function() {
   		var html = template(content);
   		$("#loginModal").append(html);
 	});
+	
 });
 </script>
 <script type="text/x-handlebars-template" id="login-tmpl">
@@ -422,17 +423,17 @@ $(document).ready(function() {
                             </div>
                         </form>
                                                                 <!-- 로그인 form end -->													
-	        <div class="joinBox2 naver2" OnClick="location.href ='${ naver_url }'" style="cursor:pointer;">
+	        <div class="joinBox2 naver2" id="naver2" OnClick="location.href ='${ naver_url }'" style="cursor:pointer;">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/naver.png">
-	        		<a>네이버 아이디로 로그인</a>
+	        		네이버 아이디로 로그인
 	        </div>
-	        <div class="joinBox2 kakao2" OnClick="location.href ='${ kakao_url }'" style="cursor:pointer;">
+	        <div class="joinBox2 kakao2" id="kakao2" OnClick="location.href ='${ kakao_url }'" style="cursor:pointer;">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/kakao.png">
-	        	<a>카카오톡으로 로그인</a>
+	        	카카오톡으로 로그인
 	        </div>
-	        <div class="joinBox2 google2" OnClick="location.href ='${ google_url }'" style="cursor:pointer;">
+	        <div class="joinBox2 google2" id="google2" OnClick="location.href ='${ google_url }'" style="cursor:pointer;">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/google.png">
-	        	<a>구글 계정으로 로그인</a>
+	        	구글 계정으로 로그인
 	        </div>
         </div>
       </div>

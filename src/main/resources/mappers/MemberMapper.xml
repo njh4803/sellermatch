@@ -38,7 +38,7 @@
         <result property="profileSaleChk" column="profile_sale_chk" />
         <result property="profileBizCerti" column="profile_biz_certi" />
         <result property="existProfile" column="exist_profile" />
-        <result property="memSnsCh"   column="memSnsCh" />
+        <result property="memSnsCh"   column="mem_sns_ch" />
         <result property="googleId"   column="googleId" />
         <result property="naverId"   column="naverId" />
         <result property="kakaoId"   column="kakaoId" />
