@@ -107,7 +107,7 @@ public class SNSController {
 		    	webHelper.setSession("member", result);
 	        }
 	    	
-	        return new ModelAndView ("redirect:/temp");
+	        return new ModelAndView ("main");
 
 			/* return new ModelAndView("main"); */
 	    	

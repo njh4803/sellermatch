@@ -538,7 +538,6 @@ $('.shareBtn').click(function(){
 
 	urlAddress.css('display','block').select();
 
-	document.execCommand("Copy");
 
 	urlAddress.css('display','none');
 
@@ -549,10 +548,5 @@ $('.shareBtn').click(function(){
 });
 
 </script>
-<script>
-    <c:if test= "${failLogin != null}">
-    alert('${failLogin}');
-    </c:if>
-</script>    
 </body>
 </html>
