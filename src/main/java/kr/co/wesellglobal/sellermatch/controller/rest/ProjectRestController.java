@@ -74,6 +74,9 @@ public class ProjectRestController {
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
 		FileDto item2 = null;
+		log.debug("projDetailImg============================================"+projDetailImg);
+		log.debug("projFile============================================"+projFile);
+		log.debug("projThumbnailImg============================================"+projThumbnailImg);
 		
 		ProjectDto input = new ProjectDto();
 		input.setProjId(webHelper.getUniqueId("P-", Integer.parseInt(projSort)));
@@ -155,7 +158,6 @@ public class ProjectRestController {
 		
 		try {
 			projectService.addProject(input);
-			
 			if (projDetailImg != null) {
 				
 				FileDto fileDto = new FileDto();
