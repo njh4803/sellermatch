@@ -22,7 +22,7 @@
         </div>
         <div class="addr">
             <address>인천 연수구 송도미래로 30 송도 BRC 스마트밸리 지식산업센터, 디동 909호</address>
-            <p>ceo_song@sellermatch.co.kr</p>
+            <p>ceo_song@sellermatch.co.kr</p> 
         </div>
     </div><!--wrap-->
 </body>
