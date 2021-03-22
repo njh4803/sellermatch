@@ -139,13 +139,13 @@ public class ProjectRestController {
 				fileService.addFile(item2);
 			}
 			
-		if (projPrice != null) {
+		if (projDetailImg != null && projDetailImg.length() != 0) {
 			input.setProjDetailImg(projDetailImg);
 		}
-		if (projFile != null) {
+		if (projFile != null && projFile.getSize() != 0) {
 			input.setProjFile(item.getFilePath());
 		}
-		if (projThumbnailImg != null) {
+		if (projThumbnailImg != null && projThumbnailImg.getSize() != 0) {
 			input.setProjThumbnailImg(item2.getFilePath());
 		}
 			
@@ -158,7 +158,7 @@ public class ProjectRestController {
 		
 		try {
 			projectService.addProject(input);
-			if (projDetailImg != null) {
+			if (projDetailImg != null && projDetailImg.length() != 0) {
 				
 				FileDto fileDto = new FileDto();
 				fileDto.setProjId(input.getProjId());
