@@ -191,7 +191,7 @@
 							</div>
 				        	<%-- <div class="areaBox">${output.projNationName}지역</div> --%>
 						</div>				
-						<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
+						<img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}">
 						<div class="m-infoBox">
 							<div class="infoBox">
 								<span>모집수</span> ${output.projRecruitNum}명
@@ -365,7 +365,7 @@
 				<div class="search-rightBox">
 					<form id="search_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/project/find">
 				        <div class="input_group">
-				            <input class="input-text" type="text" name="keyword" placeholder="원하는 키워드로 검색해보세요">
+				            <input class="input-text" type="text" name="keyword">
 				        </div>
 				        <button type="submit" class="search-btn">검색</button>
 				    </form>
@@ -522,7 +522,7 @@
 					<div class="clearfix">
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
-							<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/pruduct.png">
+							<img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}">
 							<div class="left-infoBox">
 								<c:choose>
 									<c:when test="${output.projDday < 0}">
@@ -1116,9 +1116,9 @@ $(document).ready(function() {
 	    if (sT >= val){
 	    	$('.left-container').addClass('fix');
 	    	$('.b-172').css({"bottom": -1*parseInt(sT- footerHei)});
-	    } else if(window.pageYOffset >= $('.partner_bnr3 > hr').offset().top){
+	    }  else if(window.pageYOffset >= $('.partner_bnr3 > hr').offset().top){
 	    	$('.left-container').addClass('b-172');
-	    	$('.left-container').removeClass('fix');
+	    	$('.left-container').removeClass('fix'); 
 	    	$('.left-container').removeAttr('style');
 	    }
 	    else{

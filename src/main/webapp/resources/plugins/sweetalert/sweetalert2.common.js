@@ -42,7 +42,7 @@ var defaultParams = {
   imageAlt: '',
   imageClass: null,
   timer: null,
-  width: 500,
+  width: 400,
   padding: 20,
   background: '#fff',
   input: null,

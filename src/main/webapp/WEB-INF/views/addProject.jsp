@@ -572,7 +572,9 @@ $(document).ready(function() {
 	     	// [상품 상세내용] 필수
 	        projDetail: 'required',
 	        projEndDate: 'required',
-	        projRecruitNum: 'required',
+	        projRecruitNum: {
+	            required: true, min: 1, max: 100,
+	        },
 	        projChannel: 'required',
 	        projNation: 'required',
 	    },
@@ -602,7 +604,11 @@ $(document).ready(function() {
 	        projDetail: '상품 상세내용를 입력해주세요.',
 	        projIndus: '상품분류를 선택해주세요.',
 	        projEndDate: '모집마감일을 선택해주세요.',
-	        projRecruitNum: '모집인원을 입력해주세요.',
+	        projRecruitNum: {
+	            required: '모집인원을 입력해주세요.',
+	            min: '모집인원은 최소 {1} 명 이상 입력하셔야 합니다.',
+	            max: '모집인원은 최소 {100} 명까지 가능합니다.',
+	        },
 	        projChannel: '채널을 선택해주세요.',
 	        projNation: '등록지역을 선택해주세요.',
 	    }

@@ -93,7 +93,7 @@
     	resultMap="ProjectMap">
     	SELECT distinct
     		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
-    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
+    		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_thumbnail_img, 
     		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
@@ -229,7 +229,7 @@
         </where>
         
        	<if test="sort == 'defaultSort'">
-       		ORDER BY proj_idx DESC
+       		ORDER BY proj_reg_date DESC, proj_idx DESC
        	</if>
        	<if test="sort == 'endSort'">
        		ORDER BY proj_end_date DESC

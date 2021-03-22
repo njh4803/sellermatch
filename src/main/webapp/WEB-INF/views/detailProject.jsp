@@ -488,6 +488,7 @@ $(document).ready(function() {
 	  		          title: '확인',
 	  		          text: '지원 하시겠습니까?', 
 	  		          type: "question",
+	  		          width: '400px',
 	  		          showCancelButton: true
 	  		    }).then(function(result) {			
 	  		        if (result.value) {
@@ -502,8 +503,17 @@ $(document).ready(function() {
 	  			   	        url: ROOT_URL+"/apply/project",
 	  			   	        data: data,
 	  		                success: function() {
-	  		                	swal('알림', '지원 완료.', 'success');
-	  		                	window.location.href = ROOT_URL+"/project/detail?projId="+$("#projId").val();
+	  		                	swal({
+				  		          title: '완료',
+				  		          text: '확인하러 가기?', 
+				  		          type: "success",
+				  		          width: '400px',
+				  		          showCancelButton: true
+		  			  		    }).then(function(result) {	
+		  			  		    	if (result.value) {
+		  			  		    		window.location.href = ROOT_URL+"/project/detail?projId="+$("#projId").val();
+		  			  		    	}
+		  			  		    });
 	  		                }
 	  			      	});
 	  		      	}
