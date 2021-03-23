@@ -232,13 +232,13 @@
        		ORDER BY proj_reg_date DESC, proj_idx DESC
        	</if>
        	<if test="sort == 'endSort'">
-       		ORDER BY proj_end_date DESC
+       		ORDER BY proj_end_date DESC, proj_idx DESC
        	</if>
        	<if test="sort == 'regSort'">
-       		ORDER BY proj_reg_date DESC
+       		ORDER BY proj_reg_date DESC, proj_idx DESC
        	</if>
        	<if test="sort == 'applySort'">
-       		ORDER BY apply_count DESC
+       		ORDER BY apply_count DESC, proj_idx DESC
        	</if>
        	<if test="sort == 'hitSort'">
        		ORDER BY proj_hit DESC

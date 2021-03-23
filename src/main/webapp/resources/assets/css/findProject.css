@@ -1,21 +1,12 @@
 @charset "UTF-8";
 
-/* 스크롤바 디자인 */
-.left-container::-webkit-scrollbar, .check_list_box::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
-  background: #ffffff;
+.pageBox{
+	margin-top: 50px;
+	margin-bottom: 49px;
 }
-.left-container::-webkit-scrollbar-thumb, .check_list_box::-webkit-scrollbar-thumb { 
-  border-radius: 3.5px;
-  background-color: #D9D9D9;
 
-  .left-container:hover, .check_list_box:hover {
-    background-color: #adb5bd;
-  }
-}
-.left-container::-webkit-scrollbar-track, .check_list_box::-webkit-scrollbar-track{
-  background: #ffffff;
+.partner_bnr{
+	background-color: #f8f8f8;
 }
 .titleBox{
   width: 100%;
@@ -25,7 +16,7 @@
   font-style: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #343434;
+  color: #484848;
 }
 .searchBox{
 	width: 100%;
@@ -33,35 +24,46 @@
 .search-letfBox{
 	float: left;
     height: 30px;
-    padding-top: 10px;
+    padding-top: 21px;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	text-align: left;
+	color: #858585;
 }
 .search-rightBox{
 	float: right;
 }
 .search-btn{
-  width: 60px;
+  width: 65px;
+  height: 40px;
   margin-left: 10px;
-  padding: 6px 0 7px;
   border-radius: 4px;
-  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
-  background-image: linear-gradient(117deg, #ff8000, #ff540f);
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #ff540f;
+  background-color: #ffffff;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: center;
-  color: #ffffff; 
+  color: #ff540f;
+}
+.sort-check{
+	width: 12px;
+	height: 12px;	
+	margin-right: 3px;
 }
 .input_group{
 	display: inline-block;
-    width: 320px;
-    box-shadow: 5px 5px 10px 0 rgb(0 0 0 / 16%);
-    height: 40px;
-    border-radius: 12px !important;
-    border: solid 1px #d6d6d6;
-    background-color: #ffffff;
-    vertical-align: middle;    
+	width: 320px;
+	height: 40px;
+	border-radius: 5px;
+	box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+    vertical-align: top;
 }
 .search-rightBox .input-text{
 	width: 100%;
@@ -71,23 +73,14 @@
 	font-style: normal;
 	letter-spacing: normal;
 	text-align: left;
-	color: #343434;
+	color: #484848;
 	margin: 7px 0;
 }
-.left-container.fix{
-	position: absolute;
-}
 .left-container{
-    position: fixed;
     width: 260px;
-    height: 500px;
     margin-right: 20px;
-    padding: 20px 0;
-    border-radius: 10px;
-    border: solid 1px #cccccc;
-    background-color: #ffffff;
-    overflow-x: hidden;
-    overflow-y: auto;
+    float: left;
+    display: inline-block;
 }
 .textBox1{
   font-size: 20px;
@@ -96,13 +89,13 @@
   font-style: normal;
   letter-spacing: normal;
   text-align: center;
-  color: #343434;
+  color: #484848;
   margin-bottom: 20px;
 }
 .contents-container{
-	width: 100%;
+	display: inline-block;
+	width: 1000px;
     min-height: 1000px;
-    padding-left: 280px;
 }
 .contentsBox{
 	width: 100%;
@@ -118,6 +111,7 @@
   font-style: normal;
   text-align: left;
   color: #484848;
+  margin-bottom: 12px;
 }
 .countAll span{
   color: #ff540f;
@@ -147,18 +141,19 @@ a.sort{
   color: #484848;
 }
 a.sort.select{
-	font-weight: bold;
+	color: #ff540f;
 }
 .partner_bnr3 hr{
-  width: 100%;
+  width: 1275px;
   height: 0;
   margin: 15px 0;
-  border: solid 2px #343434;
+  border: solid 2px #484848;
 }
 .contents{
+  height: 206px;
   width: 100%;
-  margin: 5px 0 5px 0;
-  padding: 30px;
+  margin: 15px 0 15px 0;
+  padding: 22px 30px 20px;
   border-radius: 10px;
   border: solid 1px #cccccc;
   background-color: #ffffff;
@@ -167,160 +162,152 @@ a.sort.select{
     float: left;
     margin: 0;
     height: auto;
-    width: 60%;
+    width: 71%;
+    margin-top: 10px;
 }
 .contents .rightBox{
     float: right;
     margin: 0;
     height: auto;
-    width: 260px;
+    width: 265px;
     text-align: right;
 }
 .project-titleBox{
-  height: 53px;
+  width: 500px;
   object-fit: contain;
-  font-family: NanumGothic;
   font-size: 18px;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: left;
-  font-weight: 800;
   color: #484848;
   margin-bottom: 15px;
   /* 말줄임 표시 */
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical; 
 }
 .project-detailBox{
-  height: 40px;
-  object-fit: contain;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #343434;
-  margin-bottom: 26px;
+  color: #484848;
+  margin-bottom: 15px;
   /* 말줄임 표시 */
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical; 
 }
 .regDate{
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: right;
-  color: #707070;
-  margin-bottom: 10px;
+  color: #858585;
+  margin-bottom: 11px;
 }
 .regDate span{
-  font-size: 15px;
-  font-weight: bold;
-  color: #343434;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  margin-right: 10px;
-}
-.infoBox {
-  display: inline-block;
-  width: 125px;
-  padding: 9px 0 9px 0;
-  border-radius: 5px;
-  border: solid 1px #cccccc;
-  text-align: center;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
+  text-align: right;
+  color: #858585;
+  margin-right: 11px;
+}
+.infoBox {
+  width: 130px;
+  height: 30px;
+  margin-bottom: 5px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: solid 1px #cccccc;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #858585;
+  float: left;
 }
 .infoBox:first-child{
     margin-right: 5px;
 }
 .infoBox span{
-  margin-right: 12px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
+  text-align: right;
   color: #343434;
+  float: right;
+  margin-top: 3px;
 }
 .infoBox2{
-  width: 100%;
-  margin: 5px 0;
-  padding: 8px 10px 9px 10px;
+  width: 130px;
+  height: 30px;
+  margin-bottom: 5px;
+  padding: 3px 10px;
   border-radius: 5px;
   border: solid 1px #cccccc;
-  text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #343434;  
+  color: #858585;
+  float: left;
+}
+.infoBox2:first-child{
+    margin-right: 5px;
 }
 .infoBox2 span{
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
+  float: right;
+  margin-top: 3px;
   color: #343434;
 }
 .infoBox3{
-	width: 260px;
-    height: 84px;
-    padding: 15px 30px 18px;
+	width: 265px;
+    height: 60px;
+    padding: 10px;
     border-radius: 5px;
     border: solid 1px #cccccc;
     text-align: left;
 }
 .sFindBox{
-  display: inline-block;
-  width: 90px;
-  padding: 3px 0 4px;
-  border-radius: 5px;
-  background-color: #8000c9;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-  line-height: normal !important;  
+	display: inline-block;
+	min-width: 75px;
+	padding: 2px 0;
+	border-radius: 5px;
+	background-color: #988dfe;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	text-align: center;
+	color: #ffffff;
 }
 .pFindBox{
-  display: inline-block;
-  padding: 3px 0 4px;
-  width: 90px;
-  border-radius: 5px;
-  background-color: #eb00bc;
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  vertical-align: top;
-  line-height: normal !important;
+	display: inline-block;
+	min-width: 75px;
+	padding: 2px 0;
+	border-radius: 5px;
+	background-color: #90c28c;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	text-align: center;
+	color: #ffffff;
 }
 .left-infoBox{
 	margin-bottom: 15px;
@@ -340,84 +327,136 @@ a.sort.select{
 .proj-link:hover{
     border: 1px solid #ff540f;
 }
+.proj-link:hover .tagBox{
+  background-color: #fff9ec;
+  color: #ff9900;
+}
 .D-day{
 	display: inline-block;
-	width: 90px;
-	padding: 2px 0 1px;
+	min-width: 75px;
+	padding: 2px 0;
 	border-radius: 5px;
-	border: solid 0.5px #ff0000;
-	background-color: #ffffff;
-	font-size: 15px;
-	font-weight: 800;
+	background-color: #d098f1;
+	font-size: 12px;
+	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	letter-spacing: normal;
 	text-align: center;
-	color: #ff0000;
-	vertical-align: top;
+	color: #ffffff;
 }
 .left-infoBox2{
 	width: 110%;
 }
 .tagBox{
+  width: fit-content;
   display: inline-block;
-  height: 30px;
-  margin-right: 10px;
-  padding: 6px 10px 7px 10px;
+  padding: 4px 8px;
   border-radius: 5px;
-  background-color: #eeeeee;
-  font-size: 15px;
+  background-color: #ececec;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #858585;
+}
+.partner_list input[name="projSort"] + label span{
+  width: 90px;
+  height: 26px;
+  padding: 2px 0 5px;
+  border-radius: 5px;
+  border: solid 1px #cccccc;	
+  font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: center;
-  color: #343434;
+  color: #484848;
+  margin: 0 3px;
+}
+.partner_list input[name="projSort"]:checked + label span{
+  width: 90px;
+  height: 26px;
+  padding: 2px 0 5px;
+  border-radius: 5px;
+  border: solid 1px #ff540f;	
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #ff540f;
+  margin: 0 3px;
 }
 .partner_list{
 	display: inline-block;
     width: 100%;
-    padding: 0 25px;
+	padding: 25px 30px;
+	border-radius: 5px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	margin-bottom: 15px;
+	text-align: center;
 }
 .partner_list span{
-  font-size: 15px;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #343434;
+    font-size: 15px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #484848;
+    width: 100%;
+    display: block;
 }
 .partner_list ul{
 	display: none;
-	margin-bottom: 30px;
 }
 .partner_list ul li{
 	margin-top: 3px;
 }
+.authContainer{
+	width: 121px;
+    display: table-cell;
+    height: 40px;
+    vertical-align: top;
+}
+.authContainer:first-child{
+	border-right: 1px solid #cccccc;
+	padding-right: 9px;
+}
+.authContainer:last-child{
+	padding-left: 9px;
+}
+.sortBox{
+  width: 100%;
+  height: 30px;
+  padding: 4px 0 4px 10px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+}
 .authBox{
   display: inline-block;
-  margin: 0 0 14px 0;
-  font-family: NanumGothic;
-  font-size: 15px;
-  font-weight: bold;
+  width: 100%;
+  font-size: 14px;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.07;
-  letter-spacing: normal;
   text-align: left;
-  color: #343434;
-}
-.authBox:nth-child(odd){
-	margin-right: 17px;
+  color: #858585;
 }
 .authImg{
-	margin-top: -3px;
+  width: 14px;
+  height: 14px;
+  margin-top: 3px;
+  object-fit: contain;
+  float: right;
 }
 .photoBox{
-  width: 160px;
-  height: 160px;
-  margin: 0 30px 13px 0;
+  width: 140px;
+  height: 140px;
+  margin: 0 20px 0 0;
+  border-radius: 10px;
   object-fit: contain;
   float: left;
 }
@@ -425,16 +464,16 @@ a.sort.select{
 	min-height: 1000px;
 	margin-top: 15px;
 }
-.check_list_box, .m-check_list_box{
+.m-check_list_box{
 	margin-bottom: 16px;
 	cursor: pointer;
 }
-.check_list_box2{
-	display: inline-block;
-	margin-bottom: 16px;
-}
-div.partner_list > div:nth-child(2){
-	margin-right: 29px;
+.check_list_box{
+    display: inline-block;
+    float: left;
+    text-align: left;
+    margin-top: 25px;
+    margin-left: 11px;
 }
 div.partner_list > div:nth-child(1) > ul, div.partner_list > div:nth-child(2) > ul, div.partner_list > div:nth-child(3) > ul{
 	display: block;
@@ -466,11 +505,6 @@ a.sort:last-child{
 	border-bottom: 1px solid #ccc;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
-}
-.check_list_box:nth-child(2){
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-radius: 0;
 }
 .filter-box ul {
     display: none;

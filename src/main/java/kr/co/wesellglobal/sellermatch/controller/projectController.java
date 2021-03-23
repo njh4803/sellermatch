@@ -88,7 +88,7 @@ public class projectController {
 			@RequestParam(value = "sellerSaleChk[]", required = false) String sellerSaleChk,
 			@RequestParam(value = "projChannel[]", required = false) String[] projChannel,
 			// 정렬 기준
-			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "sort", defaultValue = "regSort") String sort,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -117,11 +117,7 @@ public class projectController {
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
-		if (sort != null & sort != "") {
-			input.setSort(sort);
-		} else {
-			input.setSort("regSort");
-		}
+		input.setSort(sort);
 		
 		
 		
@@ -159,6 +155,7 @@ public class projectController {
 		model.addAttribute("minusCount", minusCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("sort", sort);
 
 		return new ModelAndView("findProject_test");
 	}
@@ -182,7 +179,7 @@ public class projectController {
 			@RequestParam(value = "sellerSaleChk[]", required = false) String sellerSaleChk,
 			@RequestParam(value = "projChannel[]", required = false) String[] projChannel,
 			// 정렬 기준
-			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "sort", defaultValue = "regSort") String sort,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -211,11 +208,7 @@ public class projectController {
 		input.setSellerBizCerti(sellerBizCerti);
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
-		if (sort != null & sort != "") {
-			input.setSort(sort);
-		} else {
-			input.setSort("regSort");
-		}
+		input.setSort(sort);
 		
 		
 		
