@@ -3,6 +3,39 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet" type="text/css">
+<style>
+#swal2-title {
+	height: 16px;
+	font-family: NanumGothic;
+    font-size: 15px;
+    color: #484848;
+    text-align: left;
+}
+.swal2-content {
+	height: 
+}
+.swalSNSshare {
+	width: 360px !important;
+	height: 298px !important;
+	padding: 25px !important;
+}
+.swal2-content img{
+	width: 40px !important;
+	height: 40px !important;
+}
+.swal2-content span{
+	width: 78px !important;
+	height: 14px !important;
+	font-size: 14px;
+	color: #707070;
+	display: block;
+}
+.SNSinnerbox {
+	width: 64px; 
+	display: inline-block;
+	
+}
+</style>
 <div class="bnr">
 	<div class="main-0000" style="background-image: url('${pageContext.request.contextPath}/assets/img/main0000.png');">
 	 	<div class="main-000">
@@ -17,9 +50,9 @@
 				        오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰, 수출 등 판매자를 <br>
 				        찾고 직거래하세요.<br>
 	    		</div>
-	    		<button class="findBtn">거래처 찾기 무료등록</button>
+	    		<button class="findBtn projectInsert" href="javascript:void(0);">거래처 찾기 무료등록</button>
     			<button class="shareBtn" id="shareBtn">친구들과 공유하기</button>
-	 		</div>
+			</div>
 	 		<div class="main-imgBox">
 	 			<div class="main-img1" style="background-image: url('${pageContext.request.contextPath}/assets/img/main_img1.png');">
 	 			</div>
@@ -92,72 +125,6 @@
 				더 많은 이익을 남길 수 있어요.
 			</div>
 			<img class="table-img" src="${pageContext.request.contextPath}/assets/img/table.png">
-			<%-- <table class="tableBox">
-				<thead class="table-title-row">
-					<tr>
-						<th class="title-col1">특징</th>
-						<th class="title-col2">셀러매치</th>
-						<th class="title-col3">도매사이트</th>
-					</tr>
-				</thead>
-				<tbody class="table-row">
-					<tr>
-						<td class="table-col1">첫 이용까지 소요시간</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">약 1일 내외</td>
-					</tr>
-					<tr>
-						<td class="table-col1">사업자 없이 이용 가능한가요?</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">대다수 필요</td>
-					</tr>
-					<tr>
-						<td class="table-col1">상세페이지없어도 이용 가능한가요?</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">X</td>
-					</tr>
-					<tr>
-						<td class="table-col1">구매비용 충전 없이 이용 가능한가요?</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">대다수 필요</td>
-					</tr>
-					<tr>
-						<td class="table-col1">중개 수수료 없나요?</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">공급가 3~10%</td>
-					</tr>
-					<tr>
-						<td class="table-col1">직거래 가능한가요?</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">X</td>
-					</tr>
-					<tr>
-						<td class="table-col1">조건별 거래처 찾기</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">일부 가능</td>
-					</tr>
-					<tr>
-						<td class="table-col1">검증된 거래처 찾기</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">X</td>
-					</tr>
-					<tr>
-						<td class="table-col1">거래처 추천 기능</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">X</td>
-					</tr>
-					<tr>
-						<td class="table-col1">판매자 검색 / 열람</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">X</td>
-					</tr>
-					<tr>
-						<td class="table-col1">해외 거래처 찾기</td>
-						<td class="table-col2"><img alt="" src="${pageContext.request.contextPath}/assets/img/check.png"></td>
-						<td class="table-col3">X</td>
-					</tr>
-				</tbody>
-			</table> --%>
    			<div class="tableBox">
    				<div class="table-title-row">
    					<div class="title-col1">특징</div>
@@ -458,7 +425,7 @@
    				<span>직접 써보시는 것이 가장 빠를거에요.</span><br>
 				무료체험에는 어떠한 비용도 들지 않아요.
    			</div>
-   			<button class="nowBtn">바로 체험해보기</button>
+   			<button class="nowBtn projectInsert">바로 체험해보기</button>
    		</div>
     </div>
 </div>
@@ -527,26 +494,111 @@ $(document).ready(function() {
 		  nextArrow:$('.next'),
 		  prevArrow:$('.prev'),
 	});
+	
+	
 });
-</script>    
-
-<script type="text/javascript">
-
-$('.shareBtn').click(function(){	
-
-	var urlAddress= $('#urlAddress');
-
-	urlAddress.css('display','block').select();
-
-
-	urlAddress.css('display','none');
-
-	alert('URL 주소가 복사 되었습니다');	
-
-	return false;
-
-});
-
 </script>
+<script type="text/javascript">
+var url_default_ks = "https://story.kakao.com/share?url=";
+var url_default_fb = "https://www.facebook.com/sharer/sharer.php?u=";
+var url_default_tw_txt = "https://twitter.com/intent/tweet?text="; 
+var url_default_tw_url = "&url="; 
+var url_default_naver = "http://share.naver.com/web/shareView?url="; 
+var url_default_line = "https://social-plugins.line.me/lineit/share?url=";
+var url_default_band = "https://band.us/plugin/share?body=";
+var url_this_page = location.href;
+var title_this_page = document.title; 
+var url_combine_ks = url_default_ks + url_this_page; 
+var url_combine_fb = url_default_fb + url_this_page; 
+var url_combine_tw = url_default_tw_txt + document.title + url_default_tw_url + url_this_page; 
+var url_combine_naver = url_default_naver + encodeURI(url_this_page) + "&title=" + encodeURI(title_this_page); 
+var url_combine_line = url_default_line + encodeURI(url_this_page);
+var url_combine_band = url_default_band + encodeURI(title_this_page) + "\n" + encodeURI(url_this_page) + "&route=" + encodeURI(url_this_page);
+
+$(function(){
+	var text = $("#sns-link-tmpl").html();
+	$(".shareBtn").on("click", function(){
+			swal({
+				customClass: 'swalSNSshare',
+                title: '친구들과 공유하기',
+                html: text,
+                showConfirmButton: false,
+                input:'text',
+                inputValue: url_this_page,
+                inputPlaceholder: 'Write something',
+                animation: 'slide-from-top'
+            });
+	});
+});
+    
+Kakao.init('e3526049c8f7ae79005d88c0e163cad7');   //발급받은 Javascript 키를 입력합니다.
+function sendLinkKakao() {
+  Kakao.Link.sendScrap({
+	requestUrl:url_this_page,
+	templateId: 50199,
+    templateArgs: {
+      title:
+    	  url_this_page,
+      description:
+        '셀러매치는 상품공급자와 판매대행자 직거래 사이트입니다.',
+    },
+    installTalk : true
+  })
+}
+
+function sendLinkKakaoStory() {
+	Kakao.Story.share({
+      url: url_this_page,
+      text: '셀러매치는 상품공급자와 판매대행자 직거래 사이트입니다.',
+    })
+  }
+</script>
+<script type="text/x-handlebars-template" id="sns-link-tmpl">
+	<div style="width: 100%; height: 60px; display: inline;">
+		<div class="SNSinnerbox">
+			<a href="" onclick="window.open(url_combine_naver, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-naver.png" title="네이버로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			<span style="display: inline-block">네이버</span>
+		</div>
+		<div class="SNSinnerbox">
+			<a href="" onclick="window.open(url_combine_line, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-line.png" title="라인으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			<span>라인</span>
+		</div>
+		<div class="SNSinnerbox">
+			<a href="" onclick="javascript:sendLinkKakao();">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-kakao.png" title="카카톡으로 공유하기" id="kakao-link-btn" class="sharebtn_custom kakao-link-btn" style="width: 48px;"></a>
+			<span style="display: inline-block">카카오톡</span>
+		</div>
+		<div class="SNSinnerbox">
+			<a href="" onclick="javascript:sendLinkKakaoStory();" return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-kakaostory.png" title="카카오스토리로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			<span>카카오스토리</span>
+		</div>
+	</div>
+	<div style="width: 100%; height: 60px; display: inline;">
+		<div class="SNSinnerbox">
+			<a href="" onclick="window.open(url_combine_band, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-line.png" title="밴드로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			<span>Band</span>
+		</div>
+		<div class="SNSinnerbox">
+			<a href="" onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-facebook.png" title="페이스북으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			<span>Facebook</span>
+		</div>
+		<div class="SNSinnerbox">
+			<a href="" onclick="window.open(url_combine_naver, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-instagram.png" title="인스타그램으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			 <span>Instagram</span>
+		</div>
+		<div class="SNSinnerbox">
+			<a href="" onclick="window.open(url_combine_tw, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-twitter.png" title="트위터로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			<span>Twitter</span>
+		</div>
+	</div>
+</script>
+
 </body>
 </html>

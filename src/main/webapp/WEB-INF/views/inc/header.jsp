@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
-        <title>sellermacth</title>
+        <title>전세계 검증된 판매자를 만나는 곳, 셀러매치</title>
         <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -35,7 +35,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<!-- bootstrap js -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		
+		<!--카카오API-->
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 		
     
@@ -108,7 +109,9 @@ color: #343434;
   text-align: center;
   color: #343434;
 }
-
+.swalcustom {
+	width: 350px !important;
+}
 </style>
 </head>
 <%@ include file="../modal/loginModal.jsp"%>
@@ -119,15 +122,15 @@ color: #343434;
            <ul>
                <li><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></li>
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></li>
-               <li><a href="javascipt:void(0);">커뮤니티</a></li>
+               <!-- <li><a href="javascipt:void(0);">커뮤니티</a></li> -->
                <li class="operation">
                    <a href="javascipt:void(0);" class="operation_guide">이용안내</a>
 	               <div class="operation_guide_list" style="display: none;">
 	                    <!-- <a href="javascript:void(0);">이용방법</a> -->
-	                    <a href="${pageContext.request.contextPath}/usageFee">이용요금</a>
+	                    <%-- <a href="${pageContext.request.contextPath}/usageFee">이용요금</a> --%>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a>
-	                    <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a>
+	                    <%-- <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a> --%>
 	               </div>
                </li>
            </ul>
@@ -217,7 +220,7 @@ color: #343434;
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
+                <a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
                 	거래처 찾기 무료등록
                 </a>
             </div>
@@ -232,7 +235,7 @@ $(function(){
 		
 	});
 	
-	$('#login, #login2').on('click', function(){
+	$('#login, #login2, #login3').on('click', function(){
 		$('#loginModal .modal-dialog').remove();
 		$(".modal-open").attr('style','');
 		var content = {
@@ -268,12 +271,13 @@ $(function(){
         });
 
 	});
-	$("#projectInsert").on("click", function(){
-		var login_id = $('#projectInsert').data('member');
-		var profile = $('#projectInsert').data('profile');
+	$(".projectInsert").on("click", function(){
+		var login_id = $('.projectInsert').data('member');
+		var profile = $('.projectInsert').data('profile');
 		
 		if (login_id == '') {
 			swal({
+				customClass: 'swalcustom',
                 title: '알림',
                 text: '로그인 후 이용가능합니다.',
                	type: 'warning',
@@ -281,6 +285,7 @@ $(function(){
 		} else {
 			if (profile == '') {
 				swal({
+					customClass: 'swalcustom',
 	                title: '알림',
 	                text: '프로필 등록 후 이용가능합니다.',
 	               	type: 'warning',
