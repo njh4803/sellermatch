@@ -59,6 +59,8 @@ public class ProjectDto {
 	
 	// 첨부파일 계약서 등
 	private String projFile;
+	// 첨부파일 OriginName
+	private String orginName;
 	
 	// 상품 검증 미검증(0), 검증(1)
 	private String projProdCerti;
@@ -99,6 +101,8 @@ public class ProjectDto {
 	private int projAddCount;
 	// 프로젝트 제안 수 (제안받거나 제안한 수)
 	private int recommendCount;
+	// 승인 수
+	private int okeyCount;
 	
 	// 지원자 수
 	private int applyCount;

@@ -4,10 +4,6 @@
 	margin-top: 50px;
 	margin-bottom: 49px;
 }
-
-.partner_bnr{
-	background-color: #f8f8f8;
-}
 .titleBox{
   width: 100%;
   font-size: 25px;
@@ -373,6 +369,7 @@ a.sort.select{
   text-align: center;
   color: #484848;
   margin: 0 3px;
+  background-image: none;
 }
 .partner_list input[name="projSort"]:checked + label span{
   width: 90px;
@@ -387,6 +384,7 @@ a.sort.select{
   text-align: center;
   color: #ff540f;
   margin: 0 3px;
+  background-image: none; 
 }
 .partner_list{
 	display: inline-block;

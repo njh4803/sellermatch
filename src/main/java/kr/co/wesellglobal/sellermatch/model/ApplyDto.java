@@ -27,7 +27,7 @@ public class ApplyDto {
     // 지원유형 1-지원, 2-제안
 	private String applyType;
 	
-	// 계약진행상태 0-거절, 1-취소  2- 지원  3- 제안 4 - 대기 5- 계약
+	// 계약진행상태 0-거절, 1-취소  2- 지원  3- 제안 4 - 승인 5- 계약
 	private String applyProjState;
 	
 	// 지원자 닉네임

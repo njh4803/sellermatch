@@ -352,6 +352,7 @@ header .header_wrap .gnb .gnb_project a {
 .partner_bnr {
     width: 100%;
     padding: 0;
+    background-color: #f8f8f8;
 }
 .partner_bnr .partner_wrap {
     width: 1280px;

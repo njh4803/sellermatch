@@ -52,6 +52,8 @@
         <result property="projAddCount" column="proj_add_count" />
         <result property="contractCount" column="contract_count" />
         <result property="recommendCount" column="recommend_count" />
+        <result property="okeyCount" column="okey_count" />
+        <result property="orginName" column="orgin_name" />
     </resultMap>
     
     <insert id="insertItem"
@@ -98,9 +100,11 @@
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, mem_nick, mem_name, profile_intro, profile_photo,
+    		(select Orgin_name FROM fileList where File_path = proj_file) as orgin_name,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
-    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 4) as okey_count
     		<if test="ppBizCerti != '' and ppBizCerti != null">
 	        	, profile_biz_certi
 	        </if>
@@ -261,6 +265,7 @@
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, profile_ch_chk as seller_ch_chk, profile_sale_chk as seller_sale_chk,
     		mem_nick, mem_name, profile_intro, profile_photo,
+    		(select Orgin_name FROM fileList where File_path = proj_file) as orgin_name,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count

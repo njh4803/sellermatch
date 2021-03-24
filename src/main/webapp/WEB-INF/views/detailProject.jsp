@@ -203,7 +203,7 @@
 		<div class="partner_bnr3">
 			<div class="top-Box">거래처 상세페이지</div>
 			<div class="top-Box2">
-				조건에 맞는 공급자와 판매자를 찾고 거래 신청할 수 있습니다.
+				조건에 맞는 공급자와 판매자를 찾고 거래 조율할 수 있습니다.
 			</div>
 			<hr>
 		</div>
@@ -213,6 +213,12 @@
 				<input type="hidden" id="projSort" value="${output.projSort}">
 	           	<div class="projDetail"  data-index="${status.index}">
 					<div class="titleBox">${output.projTitle}</div>
+					<c:if test="${output.projSort == 1}">
+		        		<div class="sFindBox">판매자 찾음</div>
+		        	</c:if>
+		        	<c:if test="${output.projSort == 2}">
+		        		<div class="pFindBox">공급자 찾음</div>
+		        	</c:if>
 					<c:choose>
 						<c:when test="${output.projDday < 0}">
 							<div class="D-day">마감</div>
@@ -221,80 +227,77 @@
 							<div class="D-day">마감 ${output.projDday}일전</div>
 						</c:otherwise>
 					</c:choose>
-					<c:if test="${output.projSort == 1}">
-		        		<div class="sFindBox">판매자 찾음</div>
-		        	</c:if>
-		        	<c:if test="${output.projSort == 2}">
-		        		<div class="pFindBox">공급자 찾음</div>
-		        	</c:if>
+
 				</div>
 				<div class="clearfix"></div>
-				<div class="detailBox1">
-					<div class="infoBox">
-						<div class="textBox2"><span>상품분류</span></div>
-						<div class="textRow"><span>${output.projIndusName}</span></div>
+				<div class="detailContainer">
+					<div class="detailBox1">
+						<div class="infoBox">
+							<div class="textBox2"><span>상품분류</span></div>
+							<div class="textRow"><span>${output.projIndusName}</span></div>
+						</div>
+						<div class="infoBox">
+							<div class="textBox2"><span>상품단가</span></div>
+							<div class="textRow"><span>${output.projPrice}원</span></div>
+						</div>
+						<div class="infoBox">
+							<div class="textBox2"><span>판매마진</span></div>
+							<div class="textRow"><span>${output.projMarginName}</span></div>
+						</div>
+						<div class="infoBox">
+							<div class="textBox2"><span>등록지역</span></div>
+							<div class="textRow"><span>${output.projNationName}</span></div>
+						</div>				
 					</div>
-					<div class="infoBox">
-						<div class="textBox2"><span>상품단가</span></div>
-						<div class="textRow"><span>${output.projPrice}원</span></div>
+					<div class="detailBox1">
+						<div class="infoBox">
+							<div class="textBox2"><span>공급방법</span></div>
+							<div class="textRow"><span>${output.projSupplyTypeName}</span></div>
+						</div>
+						<div class="infoBox">
+							<div class="textBox2"><span>모집마감</span></div>
+							<div class="textRow"><span>${output.projEndDate}</span></div>
+						</div>
+						<div class="infoBox">
+							<div class="textBox2"><span>모집인원</span></div>
+							<div class="textRow"><span>${output.projRecruitNum}명</span></div>
+						</div>
+						<div class="infoBox">
+							<div class="textBox2"><span>지원자수</span></div>
+							<div class="textRow"><span>${output.applyCount}명</span></div>
+						</div>
 					</div>
-					<div class="infoBox">
-						<div class="textBox2"><span>판매마진</span></div>
-						<div class="textRow"><span>${output.projMarginName}</span></div>
-					</div>
-					<div class="infoBox">
-						<div class="textBox2"><span>등록지역</span></div>
-						<div class="textRow"><span>${output.projNationName}</span></div>
+					<div class="detailBox2">
+						<div class="infoBox2"><span>판매채널</span><span class="textRow2">
+							<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
+								${projChannelList}&nbsp;
+			           		</c:forEach>
+			           		</span>
+		           		</div>
+						<div class="infoBox2"><span>검증내용</span><span class="textRow2">
+							<c:if test="${output.profileBizCerti == 1}"> 
+								사업자인증
+							</c:if>
+							<c:if test="${output.memRname == 1}">
+								신원인증
+							</c:if>
+							<c:if test="${output.projProfit == 1}">
+								수익성검증
+							</c:if>
+							<c:if test="${output.projProdCerti == 1}"> 
+								상품검증
+							</c:if>
+							<c:if test="${output.profileChChk == 1}">
+								채널검증
+							</c:if>
+							<c:if test="${output.profileSaleChk == 1}">
+								매출검증
+							</c:if>
+							</span>
+						</div>
 					</div>				
 				</div>
-				<div class="detailBox1">
-					<div class="infoBox">
-						<div class="textBox2"><span>공급방법</span></div>
-						<div class="textRow"><span>${output.projSupplyTypeName}</span></div>
-					</div>
-					<div class="infoBox">
-						<div class="textBox2"><span>모집마감</span></div>
-						<div class="textRow"><span>${output.projEndDate}</span></div>
-					</div>
-					<div class="infoBox">
-						<div class="textBox2"><span>모집인원</span></div>
-						<div class="textRow"><span>${output.projRecruitNum}명</span></div>
-					</div>
-					<div class="infoBox">
-						<div class="textBox2"><span>지원자수</span></div>
-						<div class="textRow"><span>${output.applyCount}명</span></div>
-					</div>
-				</div>
-				<div class="detailBox2">
-					<div class="infoBox2"><span>판매채널</span><span class="textRow2">
-						<c:forEach var="projChannelList" items="${output.projChannelList}" varStatus="status">
-							${projChannelList}&nbsp;
-		           		</c:forEach>
-		           		</span>
-	           		</div>
-					<div class="infoBox2"><span>검증내용</span><span class="textRow2">
-						<c:if test="${output.profileBizCerti == 1}"> 
-							사업자인증
-						</c:if>
-						<c:if test="${output.memRname == 1}">
-							신원인증
-						</c:if>
-						<c:if test="${output.projProfit == 1}">
-							수익성검증
-						</c:if>
-						<c:if test="${output.projProdCerti == 1}"> 
-							상품검증
-						</c:if>
-						<c:if test="${output.profileChChk == 1}">
-							채널검증
-						</c:if>
-						<c:if test="${output.profileSaleChk == 1}">
-							매출검증
-						</c:if>
-						</span>
-					</div>
-				</div>
-				<div class="detailBox3">상세설명
+				<div class="detailBox3"><span>상세설명</span>
 					<div class="textBox1">
 						${output.projDetail}
 						<c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
@@ -304,26 +307,41 @@
 						</c:forEach>
 					</div>
 				</div>
-				<div class="detailBox3">필수요건
+				<div class="detailBox3"><span>필수요건</span>
 					<div class="textBox1">
 						${output.projRequire}
 					</div>
 				</div>
-<!-- 				<div class="detailBox3">첨부파일
-					<div class="textBox1">
-						싱싱청과 상세페이지 파일.hwp
-					</div>
-				</div> -->
-				<div class="detailBox3">특징</div>
-				<div>
+				<div class="detailBox3"><span>해시태그</span>
 					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
 		           		<div class="tagBox">${projKeywordList}</div>
-		           	</c:forEach>					
+		           	</c:forEach>				
 				</div>
-				<div class="detailBox3">문의하기
+				<c:if test="${output.projFile != null}">
+					<div class="detailBox3"><span>첨부파일</span>
+						<div class="fileBox">
+							<div class="fileInfo">
+								${output.orginName}
+								<a class="download" href="/upload/${output.projFile}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a>
+							</div>
+						</div>
+					</div>				
+				</c:if>
+			</div> 
+			<div class="reviewContainer clearfix">
+				<div class="detailBox3"><span>문의</span>
 					<form action="javascript:void(0);" method="post" id="question-form" class="text-right">
-					    <textarea name="question" class="textBox2 question" placeholder="-작성한 내용은 수정 및 삭제가 불가합니다&#13;&#10;-이메일. 전화번호 등을 게시하여 직거래를 유도할 경우 서비스 이용에 제재를 받을 수 있습니다"></textarea>
-					    <input type="submit" class="question-btn" value="문의하기">
+						<div class="textBox2">
+						    <textarea name="question" class="question" placeholder="- 작성한 내용은 수정 및 삭제가 불가합니다&#13;&#10;- 이메일. 전화번호 등을 게시하여 직거래를 유도할 경우 서비스 이용에 제재를 받을 수 있습니다"></textarea>
+						    <hr>
+						    <div class="clearfix">
+						    	<input type="checkbox" id="scrit" name="scrit-pw">
+					    		<label for="scrit">
+					    			<span>비밀글</span>
+					    		</label>
+						    	<input type="submit" class="question-btn" value="작성하기">
+						    </div>						
+						</div>
 					</form>
 				</div>
 				<div class="detailBox4">
@@ -334,9 +352,8 @@
 						</div>
 						<div class="reviewContents">매치를 위한 필수요건 내용이 들어가면 됩니다. 매치를 위한 필수요건 내용이 들어가면 됩니다</div>
 					</div>
-					
 				</div>
-			</div> 
+			</div>
 		</div>
 		<div class="container3">
 <%--           	<div>
@@ -345,32 +362,46 @@
        			</button>
        		</div> --%>
        		<div class="text-center"> 
-       			<button class="matchBtn" id="applyBtn">지원하기
+       			<button class="matchBtn" id="applyBtn">
+       				<img class="applyImg" alt="" src="${pageContext.request.contextPath}/assets/img/applying.png">지원하기
        			</button>
        		</div>
        		<div class="btn-container">
-          		<div class="btnBox">스크랩
+<%--           		<div class="btnBox">스크랩
           			<img alt="" src="${pageContext.request.contextPath}/assets/img/scrap.png">
 	       		</div>
 	       		<div class="btnBox">좋아요
 	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/like.png">
-	       		</div>
-	       		<div class="btnBox">공유
-	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/share.png">
+	       		</div> --%>
+	       		<div class="btnBox">
+	       			<img class="shareImg" alt="" src="${pageContext.request.contextPath}/assets/img/share.png">공유하기
 	       		</div>    		
        		</div>
 			<div class="text-center">
-				<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+				<c:choose>
+					<c:when test="${output.profilePhoto != null}">
+						<img class="profileImgBox"  src="${pageContext.request.contextPath}/upload/${output.profilePhoto}">
+					</c:when>
+					<c:otherwise>
+						<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+					</c:otherwise>
+				</c:choose>
 				<div class="profileNick">${output.memNick}</div>
 			</div>
 			<div class="applyNumBox">
 				<div>
-					<span>거래 등록</span>
+					<span>등록한 거래</span>
 					<span>${output.projAddCount}건</span>
 				</div>
 				<div>
-					<span>계약</span>
+					<span>완료한 거래</span>
 					<span>${output.contractCount}건</span>
+				</div>
+			</div>
+			<div class="applyNumBox2">
+				<div>
+					<span>지원승인 수</span>
+					<span>${output.okeyCount}건</span>
 				</div>
 			</div>
 			<div class="text-center">
@@ -405,38 +436,6 @@
 <script>
 $(document).ready(function() {
 	
-	$(document).on("click", "#bt01" ,function(){
-		var position = $("#window1").offset(); /* 함수 position에 #window1의 위치를 담는다 */
-		$("html").stop().animate({scrollTop:(position.top-130)}, 500); /* 문서의 스크롤 위치를 애니메이션으로 이동 -> 그 위치는 함수 position(#window1의 좌표값)의 top값 */
-		$(".c").css("background-color", "#fff");
-		$(".c").css("border", "0");
-		$("#bt01").css("background-color", "#e3e3e3");
-		$("#bt01").css("border", "1px solid black");
-	});
-	$(document).on("click", "#bt02" ,function(){
-		var position = $("#window2").offset();
-		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
-		$(".c").css("background-color", "#fff");
-		$(".c").css("border", "0");
-		$("#bt02").css("background-color", "#e3e3e3");
-		$("#bt02").css("border", "1px solid black");
-	});
-	$(document).on("click", "#bt03" ,function(){
-		var position = $("#window3").offset();
-		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
-		$(".c").css("background-color", "#fff");
-		$(".c").css("border", "0");
-		$("#bt03").css("background-color", "#e3e3e3");
-		$("#bt03").css("border", "1px solid black");
-	});
-	$(document).on("click", "#bt04" ,function(){
-		var position = $("#window4").offset();
-		$("html").stop().animate({scrollTop:(position.top-130)}, 500);
-		$(".c").css("background-color", "#fff");
-		$(".c").css("border", "0");
-		$("#bt04").css("background-color", "#e3e3e3");
-		$("#bt04").css("border", "1px solid black");
-	});
 	
 	$(document).on("click", "#applyBtn", function(){
 		var login_id = $('#projectInsert').data('member');
