@@ -388,7 +388,7 @@ $(document).ready(function() {
                                 <div class="row m-b-20">
                                     <div class="login_logo">
                                         <img class="login-logo" src="${pageContext.request.contextPath}/assets/img/sellermatch_logo.png">
-                                        <h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
+                                        <h5>전세계 검증된 판매자를 만나는 곳</h5>
                                     </div>
                                 </div>
                                 <div class="input-group col-sm-12">
@@ -411,7 +411,7 @@ $(document).ready(function() {
                                     <div class="col-sm-6 col-xs-6">
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
-                                                <input type="checkbox" id="loginRemember" name="continueLogin">
+                                                <input type="checkbox" id="loginRemember" name="continueLogin" checked>
                                                 <label for="loginRemember" class="text-inverse"><span>로그인 유지하기</span></label>
                                             </label>
                                         </div>
@@ -446,8 +446,8 @@ $(document).ready(function() {
 	<div class="">
 		<div class="row m-b-20">
 			<div class="login_logo" style="margin-top:0;">
-        		<img src="${pageContext.request.contextPath}/assets/img/login-logo.png">
-        		<h5>판매자와 공급자를 잇는 공간, 셀러매치입니다</h5>
+        		<img src="${pageContext.request.contextPath}/assets/img/sellermatch_logo.png">
+        		<h5>전세계 검증된 판매자를 만나는 곳</h5>
 			</div>
 		</div>
 		<div class="row">
@@ -473,9 +473,6 @@ $(document).ready(function() {
 									찾기</button>
 							</div>
 						</div>
-						<div class="row" style="margin: 0 auto;">
-							<img src="${pageContext.request.contextPath}/assets/img/find.png" style="width:400px;">
-                        </div>
 						</form>
 					</div>
 					<div class="tab-pane fade" id="pwdf">
@@ -492,9 +489,6 @@ $(document).ready(function() {
 									찾기</button>
 							</div>
 						</div>
-						<div class="row" style="margin: 0 auto;">
-							<img src="${pageContext.request.contextPath}/assets/img/find.png" style="width:400px;"> 
-                        </div>
 						</form>
 					</div>
 				</div>

@@ -13,29 +13,13 @@
 		</div>
 		<div id="findCheckBox">
 			<div class="partner_wrap addbox2"></div>
-
-			<!-- 			<div class="partner_wrap addbox2 selectProfile">
-				<div style="display: inline-block;">
-					<button id="spBtn" class="default-check text-center" value="판매자">
-						<input type="checkbox" class="findCheck spFind" id="spFind" value="판매자">
-						<label for="spFind"><span>&nbsp;&nbsp;판매자 가입</span></label>
-					</button>
-				</div>
-				<div style="display: inline-block;">
-				    <button id="ppBtn" class="default-check text-center" value="공급자">
-				    	<input type="checkbox" class="findCheck ppFind" id="ppFind" value="공급자">
-				    	<label for="ppFind"><span>&nbsp;&nbsp;공급자 가입</span></label>
-				    </button>
-				</div>
-			</div>
-			 -->
 			<div class="joinForm">
 				<div class="resultBox">
 					<div class="resultText" id="resultText1">판매자가입을 선택하셨습니다. 다양한
 						고마진 공급자를 찾아 수익을 향상시키세요!</div>
 					<div class="resultText" id="resultText2" style="display: none;">공급자가입을
 						선택하셨습니다. 검증된 고매출 판매자를 찾아 거래해보세요!</div>
-					<div class="resultText">판매자 유형은 마이페이지에서 추후에 전환 가능합니다.</div>
+					<div class="resultText">회원유형은 마이페이지에서 추후에 전환 가능합니다.</div>
 				</div>
 				<form action="${pageContext.request.contextPath}/member/join" id="join_form" name="join_form" method="post" enctype="multipart/form-data">
 					<!-- <input type="hidden" id="memSort" name="memSort" value="{{memSort}}"> <input type="hidden" name="memRname" id="memRname" value="0" readonly="readonly"> -->
@@ -70,6 +54,7 @@
 							</div>
 						</div>
 					</div>
+					<c:if test="${result.memId == null}">
 					<div class="form-group row">
 						<label class="col-sm-2 colForm-label">비밀번호 <span class="identify">*</span></label>
 						<div class="col-sm-9">
@@ -82,6 +67,7 @@
 							<input type="password" name="memPw_confirm" class="form-control" id="memPw_confirm" placeholder="비밀번호를 한번 더 입력해주세요." />
 						</div>
 					</div>
+					</c:if>
 					<div class="form-group row">
 						<label class="col-sm-2 colForm-label">닉네임 <span class="identify">*</span></label>
 						<div class="col-sm-9">

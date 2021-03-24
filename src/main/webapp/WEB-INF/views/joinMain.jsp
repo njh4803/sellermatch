@@ -33,7 +33,6 @@
 	        	<img class="mail" alt="" src="${pageContext.request.contextPath}/assets/img/mail.png">
 	        	<a href="${pageContext.request.contextPath}/member/join">이메일로 회원가입</a>
 	        </div>
-	        <div class="csCenter">고객센터 : help@sellermatch.co.kr</div>
 	    </div>
     </div>
 

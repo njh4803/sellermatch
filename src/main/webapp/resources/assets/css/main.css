@@ -174,7 +174,7 @@
   font-style: normal;
   letter-spacing: -0.3px;
   text-align: left;
-  color: #dddddd;
+  color: #ff540f;
   vertical-align: top;
 }
 .mainBox1{
@@ -428,7 +428,7 @@
 	background-image: url(/assets/img/도형1.png) !important;
 }
 .main-img3{
-	background-image: url(/assets/img/down-gray.png);
+	background-image: url(/assets/img/down.png);
 }
 .memBox:hover .main-img3{
 	background-image: url(/assets/img/down.png) !important;
@@ -454,7 +454,7 @@
 .memBox .textBox4 span{
   font-size: 25px;
   font-weight: 800;
-  color: #707070;
+  color: #ff540f;
   display: inline-block;
   margin-bottom: 10px;
 }
@@ -502,7 +502,7 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
-    background-image: url(/assets/img/도형2.png);
+    background-image: url(/assets/img/도형1.png);
 }
 .main-0005{
   width: 100%;

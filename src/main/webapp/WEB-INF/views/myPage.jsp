@@ -109,7 +109,7 @@
 							<input type="hidden" name="memRname" id="memRname">
 							<input type="hidden" name="memSort" id="memSort">
 							<div class="infoContainer">
-								<div>
+<%-- 								<div>
 									<div>
 										<div style="margin-top: 20px;">
 											<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
@@ -123,7 +123,7 @@
 												</label>
 										</div>
 									</div>
-								</div>
+								</div> --%>
 								<div class="infoBox">
 									<div class="inputGroup">
 				    					<label>아이디</label>

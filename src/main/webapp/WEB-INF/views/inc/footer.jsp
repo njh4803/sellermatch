@@ -3,6 +3,16 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="../modal/infoModal.jsp"%>
 <%@ include file="../modal/termsOfServiceModal.jsp"%>
+<style>
+.footer_wrap .f_top .f_top0
+{
+	font-size : 20px !important;
+}
+.footer_wrap .f_btm
+{
+	font-size : 15px !important;
+}
+</style>
 <footer>
     <div class="footer_wrap clearfix">
     	<div class="footer-box clearfix">
@@ -13,11 +23,11 @@
         		<div class="f_btm">
 	        		회사명 : 위셀글로벌 주식회사<br>
 					소재지 : 인천광역시 연수구 컨벤시아대로 204, 인천 스타트업파크 인스타1 521호<br>
-					대표이사 : 송진일   개인정보책임관리자 : 안준수<br>
+					대표이사 : 송진일   개인정보책임관리자 : 정윤용<br>
 					사업자등록번호 : 181-87-01992<br>
 					통신판매업신고 : 2020-인천연수구-1558<br>
 					연락처 : 032-459-2236<br>
-					호스팅 서비스 제공 : 스마일서브 호스팅 주소
+					<!-- 호스팅 서비스 제공 : 스마일서브 호스팅 주소 -->
 	            </div>
         	</div>
         	<div class="f_top f_top_2">
