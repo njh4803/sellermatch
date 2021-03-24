@@ -82,4 +82,9 @@ public class memberController {
 		return new ModelAndView("joinMain"); 
 	}
 
+	@RequestMapping(value = "/member/joinComplete", method = RequestMethod.GET)
+	public ModelAndView joinComplete(Model model) {
+
+		return new ModelAndView("joinComplete"); 
+	}
 }

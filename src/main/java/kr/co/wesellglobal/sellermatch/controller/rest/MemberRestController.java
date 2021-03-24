@@ -324,23 +324,17 @@ public class MemberRestController {
 			// null이 아닐 경우 제거
 			webHelper.removeAllSession(); // 세션 전체를 삭제
 			String loginCookie = webHelper.getCookie("member");
-			if (loginCookie != null) { // 쿠키가 존재하면
-				// 쿠키의 유효시간을 0으로 설정
-				webHelper.setCookie("member", null , 0);
-				// 회원 테이블에서도 유효기간을 현재시간으로 다시 세팅
-                Date date =new Date(System.currentTimeMillis());
-                
-                MemberDto input = new MemberDto();
-                input.setMemId(memDto.getMemId());
-                input.setSessionKey(session.getId());
-                input.setSessionLimit(date);
-                
-                try {
-					memberService.keepLogin(input);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
+			/*
+			 * if (loginCookie != null) { // 쿠키가 존재하면 // 쿠키의 유효시간을 0으로 설정
+			 * webHelper.setCookie("member", null , 0); // 회원 테이블에서도 유효기간을 현재시간으로 다시 세팅 Date
+			 * date =new Date(System.currentTimeMillis());
+			 * 
+			 * MemberDto input = new MemberDto(); input.setMemId(memDto.getMemId());
+			 * input.setSessionKey(session.getId()); input.setSessionLimit(date);
+			 * 
+			 * try { memberService.keepLogin(input); } catch (Exception e) {
+			 * e.printStackTrace(); } }
+			 */
 		}
 		
 		// 이전페이지 주소 가져오기

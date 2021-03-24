@@ -74,41 +74,6 @@ header #m-search_frm{
     background-color: transparent;
     vertical-align: super;
 }
-/* jyy 수정 시작 */
-.joinBox.naver{
-	background-color: #ffffff;
- border-radius: 5px;
-  border: solid 1px #e3e3e3;
-}
-.joinBox.naver a{
-	color: #343434;
-}
-.joinBox.kakao{
-	background-color: #ffffff;
- border-radius: 5px;
-  border: solid 1px #e3e3e3;
-}
-.joinBox.kakao a{
-	color: #343434;
-}
-.joinBox.google{
- border-radius: 5px;
-  border: solid 1px #e3e3e3;
-	background-color: #ffffff;
-}
-.joinBox.google a{
-color: #343434;
-}
-.joinBox a{
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: normal;
-  text-align: center;
-  color: #343434;
-}
 .swalcustom {
 	width: 350px !important;
 }
@@ -262,6 +227,9 @@ $(function(){
         			url: ROOT_URL+"/member/logout",
         			dataType: "json",
         			success: function(json){
+        				window.location.href = ROOT_URL+"/temp";
+        			},
+        			error: function(json){
         				window.location.href = ROOT_URL+"/temp";
         			}
         		});
