@@ -352,7 +352,7 @@
 				<div class="search-rightBox">
 					<form id="seller_frm" name="searchform" method="get" action="${pageContext.request.contextPath}/seller/find">
 				        <div class="input_group">
-				            <input class="input-text" type="text" name="keyword" placeholder="원하는 키워드로 검색해보세요">
+				            <input class="input-text" type="text" name="keyword">
 				        </div>
 				        <button type="submit" class="search-btn">검색</button>
 				        <input type="hidden" value="regSort" id="sort" name="sort">
@@ -363,9 +363,6 @@
 		</div>
 		<div id="list-container">
 			<div class="left-container">
-				<div class="textBox1">
-					판매자 조건 설정
-				</div>
 				<div class="partner_list">
 					<div>
 						<span>판매자유형</span>
@@ -475,17 +472,44 @@
         	<div class="contents-container">
         		<div class="contentsBox">
       					<div class="countAllbox clearfix">
-						<div class="leftBox countAll">총 <span>${totalCount}명</span>이 검색되었습니다</div>
-						<div class="rightBox">
-							<a href="javascript:void(0)" class="sort select" id="regSort">등록순
-								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
-							</a>
-							<a href="javascript:void(0)" class="sort" id="endSort">매출순
-								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
-							</a>
-							<a href="javascript:void(0)" class="sort" id="applySort">요청받은순
-								<img alt="" src="${pageContext.request.contextPath}/assets/img/sort-bottom.png">
-							</a>
+						<div class="countAll">총 <span>${totalCount}</span>명의 판매자</div>
+						<div class="sortBox">
+							<c:choose>
+								<c:when test="${sort == 'regSort'}">
+									<a href="javascript:void(0)" class="sort select" id="regSort">
+										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-check.png">최신 등록순
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="javascript:void(0)" class="sort" id="regSort">
+										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">최신 등록순
+									</a>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${sort == 'endSort'}">
+									<a href="javascript:void(0)" class="sort select" id="endSort">
+										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-check.png">매출 높은 순
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="javascript:void(0)" class="sort" id="endSort">
+										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">매출 높은 순
+									</a>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${sort == 'applySort'}">
+									<a href="javascript:void(0)" class="sort select" id="applySort">
+										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-check.png">요청 많은 순
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="javascript:void(0)" class="sort" id="applySort">
+										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">요청 많은 순
+									</a>
+								</c:otherwise>
+							</c:choose>							
 						</div>
 					</div>
         		</div>

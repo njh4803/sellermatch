@@ -3,12 +3,6 @@
 .m-detail{
 	display: none;
 }
-.partner_bnr3 hr{
-  height: 0;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: solid 2px #ff570e;
-}
 .partner_bnr2 {
     width: 100%;
     padding-bottom: 100px;
@@ -17,12 +11,11 @@
 .top-Box{
   width: 100%;
   font-size: 25px;
-  font-weight: 800;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #343434;
+  color: #484848;
   margin-bottom: 10px;
 }
 .top-Box2{
@@ -31,10 +24,14 @@
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	letter-spacing: normal;
 	text-align: left;
-	color: #343434;
-	text-align: left;
+	color: #858585;
+}
+.partner_bnr3 hr{
+  height: 0;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border: solid 2px #ff570e;
 }
 .container1{
 	width: 1280px;
