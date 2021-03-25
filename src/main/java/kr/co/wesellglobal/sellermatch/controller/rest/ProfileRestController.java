@@ -57,7 +57,7 @@ public class ProfileRestController {
 			@RequestParam(value = "profileIndus[]", required = false) String[] profileIndus,
 			@RequestParam(value = "profileChannel[]", required = false) int[] profileChannel,
 			// 정렬 기준
-			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "sort", defaultValue = "regSort") String sort,
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호

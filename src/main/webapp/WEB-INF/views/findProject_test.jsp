@@ -1137,10 +1137,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 <script>
 $(document).ready(function() {
 
-	$(document).on("click", ".check_list_box", function(){
+/* 	$(document).on("click", ".check_list_box", function(){
 		var checkList = $(this).closest("div").children('ul');
 		checkList.toggle();
-	});
+	}); */
 	
 	$(document).on("click", ".m-check_list_box", function(){
 		var m_checkList = $(this).closest(".filter").children('.m-check_list_box').children('ul');
