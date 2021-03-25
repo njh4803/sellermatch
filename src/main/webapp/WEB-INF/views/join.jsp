@@ -544,7 +544,8 @@ $(document).ready(function() {
 	        	   return $('#join_form').valid();
                },
                success: function() {
-            	   swal('알림', '회원가입이 완료되었습니다.', 'success').then(function(result) {
+            	   window.location.href = ROOT_URL+"/member/joinComplete";
+/*             	   swal('알림', '회원가입이 완료되었습니다.', 'success').then(function(result) {
             		    var text = '';
 	   					if (profileSort == 1) {
 	   						text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
@@ -569,7 +570,7 @@ $(document).ready(function() {
 		    	            	window.location = ROOT_URL + '/temp';
 		    	            }
 		    	        });
-                   });
+                   }); */
                }
         });
     });

@@ -108,9 +108,6 @@ public class SNSController {
 	        }
 	    	
 	        return new ModelAndView ("main");
-
-			/* return new ModelAndView("main"); */
-	    	
 		} else {
 			//미존재 회원가입 필요
 			if(memSnsCh=="03") {	//구글
