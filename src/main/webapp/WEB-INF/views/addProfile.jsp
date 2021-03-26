@@ -10,7 +10,6 @@
 <style>
 .partner_bnr {
     width: 100%;
-    padding-top: 180px;
     padding-bottom: 100px;
 }
 .partner_bnr2 {
@@ -64,9 +63,11 @@ a {
     margin-bottom: 10px;
 }
 .partner_bnr .partner_wrap {
-    width: 1280px;
-    margin: 40px auto;
+	width: 1280px;
+    margin: 77px auto;
+    margin-bottom: 0;
     text-align: center;
+    padding-top: 60px;
 }
 .profileBox{
 	display: inline-block;
@@ -392,9 +393,6 @@ label.error {
    	</form>    	
   	</div>
   </div>
-    <div class="partner_wrap">
-    	
-    </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>

@@ -38,9 +38,10 @@
 	margin: 0 auto;
 	border: solid 1px #cccccc;
 	display: inline-block;
-	padding: 60px 60px;
-	margin-bottom: 110px;
+	padding: 60px 90px;
+	margin-bottom: 170px;
 	border-radius: 20px;
+	background-color: #ffffff;
 }
 .container2{
 	margin-bottom: 58px;
@@ -86,68 +87,125 @@
 }
 .infoBox2 .textBox2{
 	display: block;
-	font-size: 15px;
-	font-weight: bold;
-	font-stretch: normal;
-	font-style: normal;
-	letter-spacing: normal;
-	text-align: left;
-	color: #343434;
-	margin: 0;
-}
-.infoBox2 .textBox2:nth-child(1){
-	margin-bottom: 10px !important;	
-}
-.infoBox2 .textBox2 span:nth-child(1){
-	margin-left: 20px;
-}
-.infoBox2 .textBox2 span{
-	display: inline-block;
-	margin-right: 20px;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
 	text-align: left;
-	color: #343434;
+	color: #858585;
+	margin-bottom: 10px;
+	margin-top: 0;
+}
+.infoBox2 .textBox2 span{
+	display: inline-block;
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	text-align: left;
+	color: #838383;
 }
 .hashtag{
-  margin-right: 28px;
-  font-size: 15px;
+  height: 28px;
+  margin-right: 5px;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: #fff9ec;
+  font-size: 14px;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  text-align: left;
-  color: #343434;
+  text-align: center;
+  color: #ff9900; 
   display: inline-block;
 }
+.hashtag:first-child{
+	margin-left: 20px;	
+}
 .intro{
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 22px;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: left;
-  color: #343434;
-  margin-bottom: 14px;
+  color: #484848;
+}
+.channelBox{
+	display: inline-block;
+	height: 40px;
+	padding: 8px 15px;
+	border-radius: 5px;
+	border: solid 1px #d9d9d9;
+	background-color: #ffffff;
+	margin-left: 20px;
+}
+.auth-container{
+	display: inline-block;
+	height: 40px;
+	width: 390px;
+	padding: 8px 15px;
+	border-radius: 5px;
+	border: solid 1px #d9d9d9;
+	background-color: #ffffff;
+	margin-left: 20px;
+}
+.authBox{
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #858585;
+  margin: 0 4px;
+}
+.authImg{
+	width: 14px;
+	height: 14px;
+	margin-top: -3px;
+	margin-left: -1px;
 }
 .match{
-  width: 200px;
-  height: 40px;
-  border-radius: 4px;
-  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
-  background-image: linear-gradient(101deg, #ff8000, #ff540f);
-  font-size: 16px;
+  width: 300px;
+  height: 60px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ff9164;
+  font-size: 20px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   text-align: center;
-  color: #ffffff; 
+  color: #ffffff;
 }
-.matchPass{
-  width: 11px;
-  height: 15.3px;
-  object-fit: contain;
+.share{
+  width: 300px;
+  height: 60px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+}
+.applyImg{
+  width: 22px;
+  height: 22px;
   margin-top: -3px;
+  object-fit: contain;
+  margin-right: 5px;
+}
+.shareImg{
+  width: 22px;
+  height: 22px;
+  margin-top: -3px;
+  object-fit: contain;
+  margin-right: 5px;
 }
 .star{
   width: 11.6px;
@@ -172,53 +230,63 @@
 }
 .btnBox{
 	float: right;
-	width: 250px;
-	margin-top: -110px;
-	text-align: center;
+    width: 300px;
+    margin-top: -189px;
+    text-align: center;
 }
 .detailBox1{
   display: inline-block;
-  width: 1160px;
-  border-top: solid 1px #cccccc;
-  margin-bottom: 15px;
-  background-color: #fff6f2;
+  width: 100%;
+  background-color: #fff9f2;
+  border-top: solid 2px #d9d9d9;
 }
 .detailBox2{
   display: inline-block;
-  width: 1160px;
-  border-bottom: solid 1px #cccccc;
-  background-color: #faf6ff;
-  margin-bottom: 60px;
+  width: 100%;
+  border-bottom: solid 2px #d9d9d9;
+  background-color: #fffdf9;
+  margin-bottom: 80px;
 }
 .infoBox{
   text-align: center;
-  width: 286px;
-  height: 100px;
+  width: 24.5%;
   display: inline-block;
+  position:relative;
+}
+.infoBox:before, .infoBox2:before{
+	position: absolute;
+    left: 0;
+    top: 24.5px;
+    content: "";
+    width: 1px;
+	height: 35px;
+    overflow: hidden;
+    display: block;
+    background: #cccccc;
+}
+.detailBox1 .infoBox:first-child:before, .detailBox2 .infoBox:first-child:before{
+	display: none;
 }
 .textBox2{
   display: inline-block;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
   text-align: center;
-  color: #707070;
+  color: #838383;
   margin-top: 20px;
   margin-bottom: 10px;
 }
-.infoBox .textRow{
-  font-size: 20px;
-  margin-bottom: 20px;
+.infoBox .textRow span{
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   text-align: center;
-  color: #343434;
-}
-.infoBox .textRow span{
-	font-weight: bold;
+  color: #484848;
 }
 .infoBox2{
     display: inline-block;
@@ -226,7 +294,7 @@
     width: 60%;
 }
 .detailBox3{
-  font-size: 24px;
+  font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -234,60 +302,61 @@
   color: #ff550f;
 }
 .profile-hr{
-  width: 1160px;
   height: 0;
-  margin: 12px 0;
+  margin: 15px 0 10px;
   border: solid 1px #cccccc;
 }
 .ContentsBox1{
   width: 1160px;
-  margin-bottom: 76px;
+  margin-bottom: 80px;
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   text-align: left;
-  color: #343434;
+  color: #484848;
 }
 .ContentsBox2{
-  width: 1160px;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   font-size: 15px;
   font-weight: 400;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.73;
-  letter-spacing: normal;
   text-align: left;
-  color: #000000;
+  color: #484848;
+}
+.ContentsBox3{
+  font-size: 15px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #484848;
 }
 .ContentsBox2 .projectDate{
 	display: inline-block;
     width: 95px;
     height: fit-content;
-    padding: 0 15px 5px 0;
+    padding: 0 0 5px 0;
     font-size: 15px;
     font-weight: 400;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1.73;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
-    border-right: solid 0.5px #cccccc;
+    text-align: center;
+    color: #484848;
+    vertical-align: top;
 }
 .ContentsBox2 .project{
-  width: 90%;
+  width: 998px;
   display: inline-block;
-  margin: 0 0 5px 15px;
+  padding: 0 0 5px 15px;
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.73;
-  letter-spacing: normal;
   text-align: left;
-  color: #000000;
+  color: #484848;
+  border-left: solid 0.5px #cccccc;
 }
 /* 모바일 */
 @media screen and (max-width: 767px){

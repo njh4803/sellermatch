@@ -88,6 +88,9 @@ public class ProfileDto {
     // 회원 닉네임
     private String memNick;
     
+    // 지원자 닉네임
+    private String applyMemNick;
+    
     // 신원 인증
     private String memRname;
     

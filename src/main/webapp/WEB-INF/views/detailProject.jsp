@@ -413,10 +413,12 @@
 					<div class="applyBox">
 						<img class="miniImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 						<div class="applyNick">
-							<div>${applyDto.memNick}</div>
+							<div>${applyDto.applyMemNick}</div>
 							<div class="applyTag">
-								<c:forEach var="hashtag" items="${applyDto.profileHashtagList}">
-	        						# ${hashtag}
+								<c:forEach var="hashtag" items="${applyDto.profileHashtagList}" varStatus="status">
+									<c:if test="${status.index < 2}">
+										# ${hashtag}
+									</c:if>
 	        					</c:forEach>
 							</div>
 						</div>

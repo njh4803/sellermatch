@@ -16,6 +16,7 @@
         <result property="applyType"   column="apply_type" />
         <result property="applyProjState" column="apply_proj_state" />
         <result property="memNick" column="mem_nick" />
+        <result property="applyMemNick" column="apply_mem_nick" />
         <result property="profilePhoto" column="profile_photo" />
         <result property="profileHashtag" column="Profile_hashtag" />
         <!--  -->
@@ -51,7 +52,8 @@
     	SELECT 
 	   		apply_idx, apply_id, apply_proj_id, apply_mem_id, apply_reg_date, 
 	   		apply_Profile, apply_type, apply_proj_state, profile_photo, Profile_hashtag, 
-	   		(SELECT mem_nick FROM MemList where mem_id = (SELECT proj_mem_id FROM ProjectList where proj_id = apply_proj_id)) as mem_nick,  
+	   		(SELECT mem_nick FROM MemList where mem_id = (SELECT proj_mem_id FROM ProjectList where proj_id = apply_proj_id)) as mem_nick,
+	   		(SELECT mem_nick FROM MemList where mem_id = apply_mem_id) as apply_mem_nick,    
 	   		proj_id, proj_title, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit, 
 	   		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
 	   		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 

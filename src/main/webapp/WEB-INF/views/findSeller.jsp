@@ -599,8 +599,8 @@
 							</div>
 						</div>
 						<div class="rightBox">
-							<div class="infoBox2"><span>계약 프로젝트</span><span>${output.contractCount}건</span></div>
-							<div class="infoBox2"><span>등록 프로젝트</span><span>${output.projAddCount}건</span></div>
+							<div class="infoBox2"><span>등록한 거래</span><span>${output.contractCount}건</span></div>
+							<div class="infoBox2"><span>완료한 거래</span><span>${output.projAddCount}건</span></div>
 							<div class="infoBox2"><span>요청 받은 수</span><span>${output.recommendCount}건</span></div>
 							<div class="infoBox2">
 								<span>판매채널</span>
@@ -875,8 +875,8 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							</div>
 						</div>
 						<div class="rightBox">
-							<div class="infoBox2"><span>계약 프로젝트</span><span>{{contractCount}}건</span></div>
-							<div class="infoBox2"><span>등록 프로젝트</span><span>{{projAddCount}}건</span></div>
+							<div class="infoBox2"><span>등록한 거래</span><span>{{contractCount}}건</span></div>
+							<div class="infoBox2"><span>완료한 거래</span><span>{{projAddCount}}건</span></div>
 							<div class="infoBox2"><span>요청 받은 수</span><span>{{recommendCount}}건</span></div>
 							<div class="infoBox2">
 								<span>판매채널</span>

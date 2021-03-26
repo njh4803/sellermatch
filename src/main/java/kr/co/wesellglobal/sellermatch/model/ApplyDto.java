@@ -30,8 +30,11 @@ public class ApplyDto {
 	// 계약진행상태 0-거절, 1-취소  2- 지원  3- 제안 4 - 승인 5- 계약
 	private String applyProjState;
 	
-	// 지원자 닉네임
+	// 거래처 등록자 닉네임
 	private String memNick;
+	
+	// 지원자 닉네임
+	private String applyMemNick;
 	
 	// 지원자 프로필사진
 	private String profilePhoto;

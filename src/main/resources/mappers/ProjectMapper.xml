@@ -46,6 +46,7 @@
         <result property="projXxx" column="proj_XXX" />
         <!--  -->
         <result property="memNick" column="mem_nick" />
+        <result property="applyMemNick" column="apply_mem_nick" />
         <result property="memName" column="mem_name" />
         <result property="profileIntro" column="profile_intro" />
         <result property="profilePhoto" column="profile_photo" />
@@ -230,13 +231,17 @@
 		    	AND mem_rname = #{sellerMemRname} AND proj_sort = "2"
         	</if>
         	
+        	<if test="sort == 'endSort'">
+        		AND proj_end_date > now() 
+        	</if>
+        	
         </where>
         
        	<if test="sort == 'defaultSort'">
        		ORDER BY proj_reg_date DESC, proj_idx DESC
        	</if>
        	<if test="sort == 'endSort'">
-       		ORDER BY proj_end_date DESC, proj_idx DESC
+       		ORDER BY proj_end_date , proj_idx DESC
        	</if>
        	<if test="sort == 'regSort'">
        		ORDER BY proj_reg_date DESC, proj_idx DESC
@@ -397,6 +402,9 @@
 		    	AND mem_rname = #{sellerMemRname} AND proj_sort = "2"
         	</if>
         	
+        	<if test="sort == 'endSort'">
+        		AND proj_end_date > now() 
+        	</if>
         </where>
 	</select>
 
