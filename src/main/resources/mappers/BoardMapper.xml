@@ -39,55 +39,45 @@
     	resultMap="boardMap">
     	SELECT 
 	   		b.board_idx, b.board_id, b.board_title, b.board_contents, b.board_writer, b.board_type, b.board_qa_type, b.board_email, b.board_hit, 
-	   		b.board_file, b.board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		b.board_file, date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
 	   		FROM BoardList b
-    	<where>
-				<if test="boardTitle != null and boardTitle != ''">
-					OR 
-					<if test="boardContents != null and boardContents != '' or boardWriter != null and boardWriter != ''">
-						(
-					</if>
-					board_title LIKE concat('%', #{boardTitle}, '%')
-				</if>
-				<if test="boardContents != null and boardContents != ''">
-					OR 
-					<if test="boardTitle == null and boardTitle == '' and boardWriter != null and boardWriter != ''">
-						(
-					</if>
-					board_contents LIKE concat('%', #{boardContents}, '%')
-				</if>
-				<if test="boardWriter != null and boardWriter != ''">
-					OR 
-					<if test="boardContents == null and boardContents == '' and boardTitle == null and boardTitle == ''">
-						(
-					</if>
-					board_writer LIKE concat('%', #{boardWriter}, '%')
-				</if>
-			<if test="boardTitle != null and boardTitle != '' or boardContents != null and boardContents != '' or boardWriter != null and boardWriter != ''">
-				)
-			</if>
-			
+	   	WHERE b.board_Notice_Top != '1'
 			<if test="boardType != null and boardType != ''">
-    			AND board_type = #{boardType}
+				<if test="boardType == 1 ">
+					AND board_type IN ('1','2')
+				</if>
+				<if test="boardType != 1 ">
+    				AND board_type = #{boardType}
+    			</if>
     		</if>
     		<if test="boardQaType != null and boardQaType != ''">
     			AND board_qa_type = #{boardQaType}
     		</if>
-		</where>
     	ORDER BY board_reg_date DESC
     	<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
     </select>
     
+        <select id="selectListNoticeTop"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
+    	resultMap="boardMap">
+    	SELECT 
+	   		b.board_idx, b.board_id, b.board_title, b.board_contents, b.board_writer, b.board_type, b.board_qa_type, b.board_email, b.board_hit, 
+	   		b.board_file, date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		FROM BoardList b
+	   	WHERE 1=1
+	   	AND  b.board_Notice_Top = '1'
+	   	</select>
+    
     <select id="selectItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
     	resultMap="boardMap">
     	SELECT 
     		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
-	   		board_file, board_reg_date, board_edit_date
+	   		board_file, date_format(board_reg_date, '%Y-%m-%d') as board_reg_date, board_edit_date
     	FROM BoardList
-    	where board_id = #{boardId} AND board_type = #{boardType}
+    	where board_id = #{boardId} AND board_type IN ('1','2')
     </select>
 
 	<update id="updateItem"
@@ -111,40 +101,18 @@
 		resultType="int">
 		SELECT COUNT(*)
 		FROM BoardList
-		<where>
-    		
-				<if test="boardTitle != null and boardTitle != ''">
-					OR 
-					<if test="boardContents != null and boardContents != '' or boardWriter != null and boardWriter != ''">
-						(
-					</if>
-					board_title LIKE concat('%', #{boardTitle}, '%')
-				</if>
-				<if test="boardContents != null and boardContents != ''">
-					OR 
-					<if test="boardTitle == null and boardTitle == '' and boardWriter != null and boardWriter != ''">
-						(
-					</if>
-					board_contents LIKE concat('%', #{boardContents}, '%')
-				</if>
-				<if test="boardWriter != null and boardWriter != ''">
-					OR 
-					<if test="boardContents == null and boardContents == '' and boardTitle == null and boardTitle == ''">
-						(
-					</if>
-					board_writer LIKE concat('%', #{boardWriter}, '%')
-				</if>
-			<if test="boardTitle != null and boardTitle != '' or boardContents != null and boardContents != '' or boardWriter != null and boardWriter != ''">
-				)
-			</if>
-			
+		WHERE board_Notice_Top != '1'
 			<if test="boardType != null and boardType != ''">
-    			AND board_type = #{boardType}
+    			<if test ="boardType == 1 ">
+					AND board_type in ('1','2')
+				</if>
+				<if test ="boardType != 1 ">
+    				AND board_type = #{boardType}
+    			</if>
     		</if>
     		<if test="boardQaType != null and boardQaType != ''">
     			AND board_qa_type = #{boardQaType}
     		</if>
-		</where>
 	</select>
 	
 	<delete id="deleteItem"

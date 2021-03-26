@@ -448,7 +448,8 @@ form div .input-group input.form-control {
 
 															if (json.profile.profileIndus == undefined
 																	|| json.profile.profileIndus == '') {
-																var text = '';
+																window.location = json.referer;
+/* 																var text = '';
 																if (json.profile.profileSort == 1) {
 																	text = '프로필 등록 후 여러분이 원하는 판매자와 더 가까워집니다.'
 																}
@@ -479,7 +480,7 @@ form div .input-group input.form-control {
 																					} else {
 																						window.location = json.referer;
 																					}
-																				});
+																				}); */
 															} else {
 																window.location = json.referer;
 															}
@@ -556,7 +557,7 @@ form div .input-group input.form-control {
 	        </div>
 	        <div class="joinBox2 kakao2" id="kakao2" OnClick="location.href ='${ kakao_url }'" style="cursor:pointer;">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/kakao.png">
-	        	<a>카카오톡으로 로그인
+	        	<a>카카오톡으로 로그인</a>
 	        </div>
 	        <div class="joinBox2 google2" id="google2" OnClick="location.href ='${ google_url }'" style="cursor:pointer;">
 	        	<img alt="" src="${pageContext.request.contextPath}/assets/img/google.png">

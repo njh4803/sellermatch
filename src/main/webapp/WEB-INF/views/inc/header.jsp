@@ -89,14 +89,14 @@ header #m-search_frm{
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></li>
                <!-- <li><a href="javascipt:void(0);">커뮤니티</a></li> -->
                <li class="operation">
-                   <a href="javascipt:void(0);" class="operation_guide">이용안내</a>
-	               <div class="operation_guide_list" style="display: none;">
-	                    <!-- <a href="javascript:void(0);">이용방법</a> -->
-	                    <%-- <a href="${pageContext.request.contextPath}/usageFee">이용요금</a> --%>
+                   <a href="${pageContext.request.contextPath}/board?boardType=1" class="operation_guide">이용안내</a>
+<%-- 	               <div class="operation_guide_list" style="display: none;">
+	                    <a href="javascript:void(0);">이용방법</a>
+	                    <a href="${pageContext.request.contextPath}/usageFee">이용요금</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a>
-	                    <%-- <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a> --%>
-	               </div>
+	                    <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a>
+	               </div> --%>
                </li>
            </ul>
        </nav>
@@ -251,16 +251,16 @@ $(function(){
                	type: 'warning',
             });
 		} else {
-			if (profile == '') {
+/* 			if (profile == '') {
 				swal({
 					customClass: 'swalcustom',
 	                title: '알림',
 	                text: '프로필 등록 후 이용가능합니다.',
 	               	type: 'warning',
 	            });
-			} else {
+			} else { */
 				window.location.href = ROOT_URL+'/project/add';
-			}
+/* 			} */
 		}
 		
 		

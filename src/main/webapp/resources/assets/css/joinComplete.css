@@ -90,8 +90,8 @@
 	border-radius: 4px;
 	box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
 	background-image: linear-gradient(101deg, #ff8000, #ff540f 100%);
-	  margin-left: 10px;
-	  padding-top: 6px;
+/* 	  margin-left: 10px;
+ */	  padding-top: 6px;
 }
 
 .goProfile a {

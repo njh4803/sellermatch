@@ -20,21 +20,21 @@
 			<div class="joinMainSub2">
 			    <div class="partner_wrap2">
 			        <h2>셀러매치 5초 SNS 간편가입</h2>
-			        <div class="joinBox">
+			        <div class="joinBox" OnClick="location.href ='${pageContext.request.contextPath}/member/join'" style="cursor:pointer;">
 			        	<img class="mail" alt="" src="${pageContext.request.contextPath}/assets/img/mail_2.png">
-			        	<a href="${pageContext.request.contextPath}/member/join">이메일로 회원가입</a>
+			        	<a>이메일로 회원가입</a>
 			        </div>
-			        <div class="joinBox naver">
+			        <div class="joinBox naver" OnClick="location.href ='${ naver_url }'" style="cursor:pointer;">
 			        	<img alt="" src="${pageContext.request.contextPath}/assets/img/naver_2.png">
-			        		<a class="" href="${ naver_url }">네이버로 회원가입</a>
+			        	<a>네이버로 회원가입</a>
 			        </div>
-			        <div class="joinBox kakao">
+			        <div class="joinBox kakao" OnClick="location.href ='${ kakao_url }'" style="cursor:pointer;">
 			        	<img alt="" src="${pageContext.request.contextPath}/assets/img/kakao_2.png">
-			        	<a class="" href="${ kakao_url }">카카오톡으로 회원가입</a>
+			        	<a>카카오톡으로 회원가입</a>
 			        </div>
-			        <div class="joinBox google">
+			        <div class="joinBox google" OnClick="location.href ='${ google_url }'" style="cursor:pointer;">
 			        	<img alt="" src="${pageContext.request.contextPath}/assets/img/google_2.png">
-			        	<a class="" href="${ google_url }">구글계정으로 회원가입</a>
+			        	<a>구글계정으로 회원가입</a>
 			        </div>
 			    </div>
 		    </div>

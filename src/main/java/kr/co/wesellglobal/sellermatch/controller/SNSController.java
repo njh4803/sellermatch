@@ -111,11 +111,11 @@ public class SNSController {
 		} else {
 			//미존재 회원가입 필요
 			if(memSnsCh=="03") {	//구글
-				model.addAttribute("msg", "구글계정을 통한 회원가입 후 이용해 주세요");
+				model.addAttribute("msg", "구글로 회원가입 후<br>이용해 주세요");
 			} else if (memSnsCh=="04"){ 	//네이버
-				model.addAttribute("msg", "네이버계정을 통한 회원가입 후 이용해 주세요");
+				model.addAttribute("msg", "네이버로 회원가입 후<br>이용해 주세요");
 			} else if (memSnsCh=="02"){ 	//카카오
-				model.addAttribute("msg", "카카오계정을 통한 회원가입 후 이용해 주세요");
+				model.addAttribute("msg", "카카오로 회원가입 후<br>이용해 주세요");
 			}
 			return new ModelAndView("join");
 		}

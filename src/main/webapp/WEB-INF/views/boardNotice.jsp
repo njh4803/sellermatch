@@ -2,15 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
-<link href="${pageContext.request.contextPath}/assets/css/usageFee.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/boardNotice.css" rel="stylesheet" type="text/css">
 
 <div class="partner_bnr">
     <div class="partner_wrap">
     	<div class="partner_bnr3">
     		<div class="clearfix">
 	    		<div class="use-top-left">
-	    			<div class="use-title">공지사항</div>
-		    		<div class="use-text">셀러매치 서비스의 새소식, 오류, 장애, 기타 공지사항을 안내드립니다.</div>
+	    			<div class="use-title">이용안내</div>
+		    		<div class="use-text">공지사항, 자주 묻는 질문 등 여러 사항들을 확인할 수 있습니다.</div>
 	    		</div>
 		    	<div class="use-top-right">
 		    		<img class="use-img" alt="" src="${pageContext.request.contextPath}/assets/img/mypage-img.png">
@@ -23,16 +23,26 @@
 						<th class="notice-sort">분류</th>
 						<th class="notice-title">제목</th>
 						<th class="notice-regdate">등록일</th>
-						<th class="notice-hit">조회수</th>
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="outputTopNotice" items="${outputTopNotice}" varStatus="status">
+					<tr>
+						<td class="useTopNotice">공지사항</td>
+						<td class="noticeTopDetail" data-id="${outputTopNotice.boardId}">${outputTopNotice.boardTitle}</td>
+						<td>${outputTopNotice.boardRegDate}</td>
+					</tr>
+				</c:forEach>
 				<c:forEach var="output" items="${output}" varStatus="status">
 					<tr>
-						<td>${boardCount - minusCount - status.count +1}</td>
+					<c:if test="${output.boardType == '1'}">
+						<td class="useNotice">공지사항</td>
+					</c:if>
+					<c:if test="${output.boardType != '1'}">
+						<td class="useFnQ">자주 묻는 질문</td>
+					</c:if>
 						<td class="noticeDetail" data-id="${output.boardId}">${output.boardTitle}</td>
 						<td>${output.boardRegDate}</td>
-						<td>${output.boardHit}</td>
 					</tr>
 				</c:forEach>
 				</tbody>
@@ -47,7 +57,7 @@
 					        <%-- 이전 그룹으로 이동 가능하다면? --%>
 					        <c:when test="${pageData.prevPage > 0}">
 					            <%-- 이동할 URL 생성 --%>
-					            <c:url value="/project/find" var="prevPageUrl">
+					            <c:url value="/board?boardType=1" var="prevPageUrl">
 					                <c:param name="page" value="${pageData.prevPage}" />
 					                <c:param name="keyword" value="${keyword}" />
 					            </c:url>
@@ -61,7 +71,7 @@
 					    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
 					    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 					        <%-- 이동할 URL 생성 --%>
-					        <c:url value="/project/find" var="pageUrl">
+					        <c:url value="/board?boardType=1" var="pageUrl">
 					            <c:param name="page" value="${i}"/>
 					            <c:param name="keyword" value="${keyword}"/>
 					        </c:url>
@@ -84,7 +94,7 @@
 					        <%-- 다음 그룹으로 이동 가능하다면? --%>
 					        <c:when test="${pageData.nextPage > 0}">
 					            <%-- 이동할 URL 생성 --%>
-					            <c:url value="/project/find" var="nextPageUrl">
+					            <c:url value="/board?boardType=1" var="nextPageUrl">
 					                <c:param name="page" value="${pageData.nextPage}" />
 					                <c:param name="keyword" value="${keyword}" />
 					            </c:url>
@@ -98,12 +108,12 @@
 					</div>
 				</div>
 			</div>
-			<div>
+<%-- 			<div>
 				<form action="${pageContext.request.contextPath}/usageFee2" id="notice-form">
 					<input type="search" id="noticeSearch" class="boardSearch" placeholder="제목 또는 내용으로 검색">
 					<button type="submit" class="searchBtn"></button>
 				</form>
-			</div>
+			</div> --%>
 	    </div>
    </div>
 </div>
@@ -185,6 +195,10 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click", ".noticeDetail", function(){
+		var boardId = $(this).data('id');
+		window.location = ROOT_URL + '/notice?boardId='+boardId;
+	});
+	$(document).on("click", ".noticeTopDetail", function(){
 		var boardId = $(this).data('id');
 		window.location = ROOT_URL + '/notice?boardId='+boardId;
 	});

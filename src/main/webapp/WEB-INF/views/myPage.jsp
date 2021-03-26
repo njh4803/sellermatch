@@ -487,7 +487,7 @@ $(document).ready(function(){
 				type: "GET",
 		        url: ROOT_URL + '/member/mypage/profile',
 				success : function(json) {
-					if (json.output.profileIndus == undefined) {
+/* 					if (json.output.profileIndus == undefined) {
 						var text = '';
 						if (json.output.profileSort == 1) {
 							text = '프로필 등록 후 여러분이 원하는 공급자와 더 가까워집니다.'
@@ -512,7 +512,7 @@ $(document).ready(function(){
 		    	            	window.location = ROOT_URL+ '/member/myPage';
 		    	            }
 		    	        });
-					}
+					} */
 					$('#profileId').val(json.output.profileId);
 					$('#profileMemId').val(json.output.profileMemId);
 					$('#profileSort').val(json.output.profileSort);

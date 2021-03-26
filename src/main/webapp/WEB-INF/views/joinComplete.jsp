@@ -17,10 +17,10 @@
 		    <div class="textbox2">거래처 찾기 등록, 내용은 풍부하게</div>
 		    <div class="textbox3">매력적인 프로필 등록은 필수!</div>
 		    <div class="goBox">
-		  		<div class="goProfile">
+<%-- 		  		<div class="goProfile" OnClick="location.href ='${pageContext.request.contextPath}/profile'" style="cursor:pointer;">
 			      	<a href="${pageContext.request.contextPath}/profile">프로필 등록하기</a>
-			    </div>
-			    <div class="goBack">
+			    </div> --%>
+			    <div class="goBack" OnClick="location.href ='${pageContext.request.contextPath}/temp'" style="cursor:pointer;">
 			      	<a href="${pageContext.request.contextPath}/temp">원래 페이지로 돌아가기</a>
 			    </div>
 		    </div>

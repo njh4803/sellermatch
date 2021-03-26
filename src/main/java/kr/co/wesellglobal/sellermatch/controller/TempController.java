@@ -59,7 +59,7 @@ public class TempController {
 		
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
-		int listCount = 10;		// 한 페이지당 표시할 목록 수
+		int listCount = 8;		// 한 페이지당 표시할 목록 수
 		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
 		
 		// 페이지 번호를 계산한 결과가 저장될 객체
@@ -73,8 +73,8 @@ public class TempController {
 		
 		
 		//목록조회
-		
 		List<BoardDto> output = null;
+		List<BoardDto> outputTopNotice = null;
 		int boardCount = 0;
 		int minusCount = ((nowPage-1)*listCount);
 		
@@ -88,6 +88,7 @@ public class TempController {
 			BoardDto.setOffset(pageData.getOffset());
 			BoardDto.setListCount(pageData.getListCount());
 			output = boardService.getBoardList(input);
+			outputTopNotice = boardService.getBoardListNoticeTop(input);
 			boardCount = boardService.getBoardCount(input);
 			
 		} catch (Exception e) {
@@ -99,13 +100,14 @@ public class TempController {
 		model.addAttribute("minusCount", minusCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("boardQaType", boardQaType);
+		model.addAttribute("outputTopNotice", outputTopNotice);
 		
 		if (boardType.equals("1")) {
 			return new ModelAndView("/boardNotice");
 		}
-		if (boardType.equals("2")) {
-			return new ModelAndView("/boardFaq");
-		}
+		/*
+		 * if (boardType.equals("2")) { return new ModelAndView("/boardFaq"); }
+		 */
 		
 		return new ModelAndView("/usageFee");
 	}
@@ -133,6 +135,6 @@ public class TempController {
 		
 		model.addAttribute("output", output);
 		
-		return new ModelAndView("/detailNotice");
+		return new ModelAndView("boardNoticeDetail");
 	}
 }

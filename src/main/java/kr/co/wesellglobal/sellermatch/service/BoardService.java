@@ -9,6 +9,8 @@ public interface BoardService {
 	
 	public List<BoardDto> getBoardList(BoardDto input) throws Exception;
 	
+	public List<BoardDto> getBoardListNoticeTop(BoardDto input) throws Exception;
+	
 	public void addBoard(BoardDto input) throws Exception;
 	
 	public BoardDto getBoard(BoardDto input) throws Exception;

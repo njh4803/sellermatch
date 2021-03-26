@@ -633,7 +633,7 @@ $(document).ready(function() {
 </script>
 <script>
     <c:if test= "${msg != null}">
-    alert('${msg}');
+    swal('${msg}');
     </c:if>
 </script>
 </body>
