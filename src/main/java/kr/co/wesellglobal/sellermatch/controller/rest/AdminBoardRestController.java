@@ -20,12 +20,8 @@ import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.BoardDto;
-import kr.co.wesellglobal.sellermatch.model.PpProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.model.SearchCriteria;
-import kr.co.wesellglobal.sellermatch.model.SellerProfileDto;
-import kr.co.wesellglobal.sellermatch.service.PpProfileService;
-import kr.co.wesellglobal.sellermatch.service.SellerProfileService;
 import kr.co.wesellglobal.sellermatch.service.impl.BoardServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 

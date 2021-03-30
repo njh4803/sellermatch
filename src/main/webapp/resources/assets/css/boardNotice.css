@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 .partner_bnr .partner_wrap{
-	width: 1120px !important;
+	width: 1280px !important;
 }
 .partner_bnr .partner_wrap2{
 	width: 830px;
 	margin: 0 auto;
 }
 .partner_bnr3{
+	width: 1280px !important;
 	padding-top: 90px !important;
 }
 .use-top-left{
@@ -58,6 +59,9 @@
 	background-color: #ffffff;
 	padding-top: 60px;
 }
+#noticeTable thead tr{
+	font-family: NanumGothic !important;
+}
 
 .tab-title {
 	margin: 0 206px 15px 205px;
@@ -90,6 +94,7 @@
 	text-align: center;
 	color: #000000;
 	background-color: #fff6f2;
+	font-family: NanumGothic !important;
 }
 
 #noticeTable tbody td {
@@ -102,6 +107,7 @@
 	font-style: normal;
 	text-align: center;
 	color: #484848;
+	font-family: NanumGothic !important;
 }
 
 #noticeTable tbody td:nth-child(2) {
@@ -134,6 +140,14 @@
 .notice-sort  {
 	width: 260px;
 	height: 40px;
+	font-family: NanumGothic !important;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
 }
 
 input::placeholder {
@@ -148,7 +162,20 @@ input::placeholder {
 
 .useTopNotice {
 	color: #ea551f !important;
+	font-family: NanumGothic !important;
+	font-weight: bold !important;
 }
 .noticeTopDetail {
 	font-weight: bold !important;
+	font-family: NanumGothic !important;
+}
+.pageBox {
+	padding-bottom: 147px;
+}
+.pagination {
+	margin-top: 50px;
+}
+#noticeTable thead tr {
+	border-top: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
 }
