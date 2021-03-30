@@ -417,7 +417,7 @@ $(document).ready(function(){
 		var tabNum = $(this).data('num');
 
 		if (tab_id == 'my-tab-4') {
-			location.href="/member/delngManage";
+			location.href="/myPage/delngManage/registDelng";
 		}
 		
 		$('ul.my-tabs li').removeClass('current');

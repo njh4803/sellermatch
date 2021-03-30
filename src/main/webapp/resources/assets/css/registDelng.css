@@ -96,13 +96,14 @@ font-family: NanumGothic !important;
 	margin-top: 15px;
 	margin-bottom: 27px;
 	height: 80px;
+	border-radius: 5px;
+  border: solid 1px #cccccc;
 }
 
 .myProjBox2 {
 	display: inline-block;
 	height: 60px;
 	width: 100%;
-	border-right: 1px solid #cccccc;
 }
 
 .proj-type {
