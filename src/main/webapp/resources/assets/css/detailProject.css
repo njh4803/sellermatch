@@ -70,10 +70,11 @@ a:focus, a:hover{
 	text-align: center;
 	color: #ffffff;
 	vertical-align: top;
+	float: right;
 }
 .titleBox{
 	display: inline-block;
-	width: 550px;
+	max-width: 540px;
 	height: 53px;
 	font-size: 22px;
 	font-weight: bold;
@@ -81,6 +82,7 @@ a:focus, a:hover{
 	font-style: normal;
 	text-align: left;
 	color: #484848;
+	float: left;
 }
 .sFindBox{
   display: inline-block;
@@ -98,10 +100,11 @@ a:focus, a:hover{
   color: #ffffff;
   vertical-align: top;
   line-height: normal !important;
+  float: right;
 }
 .pFindBox{
   display: inline-block;
-  padding: 6px 0;
+  padding: 5px 0;
   width: 85px;
   height: 30px;
   margin-left: 50px;
@@ -115,6 +118,7 @@ a:focus, a:hover{
   color: #ffffff;
   vertical-align: top;
   line-height: normal !important;
+  float: right;
 }
 .detailBox1{
   width: 100%;
@@ -156,7 +160,7 @@ a:focus, a:hover{
 }
 .detailBox3 .textBox1{
   display: inline-block;
-  width: 674px;
+  width: 670px;
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -169,7 +173,7 @@ a:focus, a:hover{
 }
 .fileBox{
   display: inline-block;
-  width: 674px;
+  width: 670px;
   padding: 22px 30px 23px;
   border-radius: 10px;
   border: solid 1px #cccccc;

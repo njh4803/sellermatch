@@ -25,14 +25,17 @@
 			    		<table class="projTable">
 			    			<tbody>
 			    				<tr>
-			    					<td>썸네일 사진</td>
+			    					<td>썸네일 사진
+			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">'거래처 찾기' 리스트에 보여질 썸네일용 이미지입니다.</div>
+			    					</td>
 		   							<td>
 		    							<div>
 											<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
 												<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-											    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+											    	src="${pageContext.request.contextPath}/assets/img/profile.png"/>
 											</div>	
-		    								<div style="display: flex;">
+		    								<div>
 		                   		            	<input id = "file_route" type="text" name="file_route" class="formControl" readonly="readonly"/>
 		                  		           		<label class="fileLable">
 		                   		          			파일 선택
@@ -43,7 +46,10 @@
 		   							</td>
 			    				</tr>
 			    				<tr>
-			    					<td>프로젝트 제목</td>
+			    					<td>프로젝트 제목
+			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">찾고자 하는 공급자 또는 판매자와 관련한 제목을 넣는 곳입니다.</div>			    					
+			    					</td>
 									<c:if test="${member.memSort == 1}">
 			    					<td>
 			    						<div class="width-70">
@@ -88,14 +94,20 @@
 			    				</tr>
 								<c:if test="${member.memSort == 1}">
 			    				<tr>
-			    					<td>상품가격</td>
+			    					<td>상품단가
+			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">제품의 최종 판매가격(소비자가격)을 말합니다.</div>				    					
+			    					</td>
 			    					<td>
 			    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="100000000" value="0">
 			    					</td>
 			    				</tr>
 								</c:if>
 			    				<tr>
-			    					<td>판매마진</td>
+			    					<td>판매마진
+			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">판매를 했을 때 남는 수익금액을 말합니다.</div>				    					
+			    					</td>
 			    					<td>
 			    						<select id="projMargin" name="projMargin" class="inputForm width-100">
 		                                    <option value="">선택하세요.</option>
@@ -107,7 +119,10 @@
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>등록지역</td>
+			    					<td>등록지역
+			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">이 글을 쓰고 있는 분(판매자 또는 공급자)이 거주하는 곳의 지역을 말합니다.</div>					    					
+			    					</td>
 			    					<td>
 			    						<select id="projNation" name="projNation" class="inputForm width-100">
 		                                    <option value="">선택하세요.</option>
@@ -132,7 +147,10 @@
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>공급방법</td>
+			    					<td>공급방법
+			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">공급업체에서 공급하는 방식에 대한 것입니다.</div>				    					
+			    					</td>
 			    					<td>
 				    					<select id="projSupplyType" name="projSupplyType" class="inputForm width-100">
 			                                <option value="">선택하세요.</option>
@@ -145,12 +163,16 @@
 			    					</td>
 			    				</tr>
 			    				<tr>
-									<c:if test="${member.memSort == 1}">
-										<td>채널</td>
-									</c:if>
-									<c:if test="${member.memSort == 2}">
-										<td>판매 채널</td>
-									</c:if>
+			    					<td>
+										<c:if test="${member.memSort == 1}">
+											채널
+										</c:if>
+										<c:if test="${member.memSort == 2}">
+											판매 채널
+										</c:if>
+										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">판매자가 판매하는 채널(방식)에 대한 것입니다.</div>										
+									</td>	
 			    					<td>
 				    					<div class="inputForm width-100">
 				    						<div class="row1">
@@ -197,109 +219,117 @@
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>상세설명</td>
+			    					<td>상세설명
+										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+			    						<div class="questionBox">거래 상대방에게 전달할 내용을 입력하는 곳입니다. 회사명이나 연락처 정보를 남기시면 이용에 제재를 받을 수 있습니다.</div>				    					
+			    					</td>
 			    					<td>
-			    						<div>
-					                       	<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"></textarea>
-											
+		    						<div>
+				                       	<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"></textarea>
 			                        </div>
-		   					</td>
-		   				</tr>
-		   				<tr>
-		   					<td>필수요건</td>
-		   					<td>
-		   						<div class="width-70">
-		   							<input type="text" class="inputForm" id="projRequire" name="projRequire">
-		   						</div>
-								<c:if test="${member.memSort == 1}">
-		   						<div class="width-30">
-		    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
-		    							<option value="" selected="selected">[기본문구선택]</option>
-		                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
-		                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
-		                               	<option value="마진협상가능">마진협상가능</option>
-		                            </select>
-		   						</div>
-								</c:if>
-								<c:if test="${member.memSort == 2}">
-		   						<div class="width-30">
-		    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
-		    							<option value="" selected="selected">[기본문구선택]</option>
-		                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
-		                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
-		                               	<option value="마진협상가능">마진협상가능</option>
-		                            </select>
-		   						</div>
-								</c:if>
-		   					</td>
-		   				</tr>
-		   				<tr>
-		   					<td>해시태그</td>
-		   					<td>
-		    					<div class="inputForm width-100">
-		    						<div class="row1">
-		                                   	<input type="checkbox" name="projKeyword" id="hash1" value="고경력선호">
-		                                   	<label for="hash1"><span>고경력선호</span></label>
-		                              	</div>
-		                              	<div class="row1">
-		                                   	<input type="checkbox" name="projKeyword" id="hash2" value="고마진상품">
-		                                   	<label for="hash2"><span>고마진상품</span></label>
-		                              	</div>
-		                              	<div class="row1">
-		                                   	<input type="checkbox" name="projKeyword" id="hash3" value="수익보장공급자">
-		                                   	<label for="hash3"><span>수익보장공급자</span></label></span>
-		                              	</div>
-		                              	<div class="row1">
-		                                   	<input type="checkbox" name="projKeyword" id="hash4" value="수출가능상품">
-		                                   	<label for="hash4"><span>수출가능상품</span></label>
-		                              	</div>
-		                              	<div class="row1">
-		                                   	<input type="checkbox" name="projKeyword" id="hash5" value="요즘뜨는제품">
-		                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
-		                              	</div>
-		                           </div>
-		   					</td>
-		   				</tr>
-		   				<!-- <tr>
-		   					<td>상세사진</td>
-		   					<td>
-								<div class="row1">
-									<div class="card-block">
-										<input type="hidden" id=detailImgList name="detailImgList">
-										<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
-										<input type="file" name="projDetailImg" id="fileUpload" style="display:none;" multiple/>
-		  									<div id="imgBox" class="jFiler-items jFiler-row">
-																	
-										</div>
-				                    </div>
-				                </div>                                                       
-		   					</td>
-		   				</tr> -->
-		   				<tr>
-		   					<td>첨부파일</td>
-		   					<td>
-		    					<div>
-		    						<div style="display: flex;">
-		                               	<input id = "file_route2" type="text" class="formControl" readonly="readonly"/>
-		                             	<label class="fileLable">
-		                             		파일 선택
-		                             		<input id = "projFile" name="projFile" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route2').value=this.value"/>
-		                             	</label>
-		                               </div>
-		                           </div>
-		   					</td>
-		   				</tr>
-		   			</tbody>
-		   		</table>
-		   		<div>
-			    	<button class="addBtn" type="submit">
-						거래처 등록
-					</button>
-			    </div>
-		   	</form>    	
-		  	</div>
-		</div>	    
-    </div>
+				   					</td>
+				   				</tr>
+				   				<tr>
+				   					<td>필수요건
+										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+					    				<div class="questionBox">거래 상대방이 필수로 지켜야 하는 내용을 입력하는 곳입니다.</div>		   					
+				   					</td>
+				   					<td>
+				   						<div class="width-70">
+				   							<input type="text" class="inputForm" id="projRequire" name="projRequire">
+				   						</div>
+										<c:if test="${member.memSort == 1}">
+				   						<div class="width-30">
+				    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
+				    							<option value="" selected="selected">[기본문구선택]</option>
+				                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
+				                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
+				                               	<option value="마진협상가능">마진협상가능</option>
+				                            </select>
+				   						</div>
+										</c:if>
+										<c:if test="${member.memSort == 2}">
+				   						<div class="width-30">
+				    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
+				    							<option value="" selected="selected">[기본문구선택]</option>
+				                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
+				                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
+				                               	<option value="마진협상가능">마진협상가능</option>
+				                            </select>
+				   						</div>
+										</c:if>
+				   					</td>
+				   				</tr>
+				   				<tr>
+				   					<td>해시태그
+										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
+					    				<div class="questionBox">태그는 거래처 찾기를 등록하는 이가 강조하고 싶은 것을 자유롭게 작성하는 곳입니다. 판매자/공급자가 선호하는 태그를 선택해서 입력할수도 있습니다.</div>				   					
+				   					</td>
+				   					<td>
+				    					<div class="inputForm width-100">
+				    						<div class="row1">
+				                                   	<input type="checkbox" name="projKeyword" id="hash1" value="고경력선호">
+				                                   	<label for="hash1"><span>고경력선호</span></label>
+				                              	</div>
+				                              	<div class="row1">
+				                                   	<input type="checkbox" name="projKeyword" id="hash2" value="고마진상품">
+				                                   	<label for="hash2"><span>고마진상품</span></label>
+				                              	</div>
+				                              	<div class="row1">
+				                                   	<input type="checkbox" name="projKeyword" id="hash3" value="수익보장공급자">
+				                                   	<label for="hash3"><span>수익보장공급자</span></label></span>
+				                              	</div>
+				                              	<div class="row1">
+				                                   	<input type="checkbox" name="projKeyword" id="hash4" value="수출가능상품">
+				                                   	<label for="hash4"><span>수출가능상품</span></label>
+				                              	</div>
+				                              	<div class="row1">
+				                                   	<input type="checkbox" name="projKeyword" id="hash5" value="요즘뜨는제품">
+				                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
+				                              	</div>
+				                           </div>
+				   					</td>
+				   				</tr>
+					   				<!-- <tr>
+					   					<td>상세사진</td>
+					   					<td>
+											<div class="row1">
+												<div class="card-block">
+													<input type="hidden" id=detailImgList name="detailImgList">
+													<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
+													<input type="file" name="projDetailImg" id="fileUpload" style="display:none;" multiple/>
+					  									<div id="imgBox" class="jFiler-items jFiler-row">
+																				
+													</div>
+							                    </div>
+							                </div>                                                       
+					   					</td>
+					   				</tr> -->
+				   				<tr>
+				   					<td>첨부파일</td>
+				   					<td>
+				    					<div>
+			    							<div style="display: flex;">
+			                              	 	<input id = "file_route2" type="text" class="formControl" readonly="readonly"/>
+			                             		<label class="fileLable">
+			                             			파일 선택
+			                             			<input id = "projFile" name="projFile" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route2').value=this.value"/>
+			                            	 	</label>
+			                               </div>
+			                           </div>
+				   					</td>
+				   				</tr>
+			   				</tbody>
+			   			</table>
+				   		<div>
+					    	<button class="addBtn" type="submit">
+								거래처 등록
+							</button>
+					    </div>
+		   			</form>    	
+			  	</div>
+			</div>	    
+	    </div>
 <%-- 	<div class="partner_wrap addbox2 selectFind">
 		<input type="hidden" id="member" name="member" value="${member.memSortName}">
 		<div style="display: inline-block;">

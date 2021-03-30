@@ -364,7 +364,7 @@
 		<div id="list-container">
 			<div class="left-container">
 				<div class="partner_list">
-					<span class="check_list">판매자유형</span>
+					<span class="check_list upImg">판매자유형</span>
 					<div class="check_list_box">
 		            	<ul>
 							<li><input type="checkbox" class="checkAll" id="profileBizSort"><label for="profileBizSort"><span>전체</span></label></li>
@@ -376,7 +376,7 @@
 	            	</div>
 				</div>
 				<div class="partner_list">
-					<span class="check_list">판매자검증</span>
+					<span class="check_list downImg">판매자검증</span>
 					<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
@@ -387,8 +387,8 @@
 		            	</ul>
 	            	</div>
             	</div>
-<!--             	<div class="partner_list">
-            		<span class="check_list">판매채널</span>
+				<div class="partner_list">
+            		<span class="check_list downImg">판매채널</span>
             		<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="profileChannel"><label for="profileChannel"><span>전체</span></label></li>
@@ -401,9 +401,9 @@
 		            		<li><input type="checkbox" class="check" name="profileChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
 		            	</ul>
 	            	</div>
-            	</div> -->
-<%--             	<div class="partner_list">
-	            	<span class="check_list">판매상품</span>
+            	</div>
+             	<div class="partner_list">
+	            	<span class="check_list downImg">판매상품</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input id="profileIndus" class="checkAll" type="checkbox"><label for="profileIndus"><span>전체</span></label></li>
@@ -412,33 +412,33 @@
 		            		</c:forEach>
 		            	</ul>
 	            	</div>
-            	</div> --%>
+            	</div>
             	<div class="partner_list">
-            		<span class="check_list">매출규모</span>
+            		<span class="check_list downImg">매출규모</span>
             		<div class="check_list_box">
 		            	<ul>
-		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="p2"><label for="p2"><span>2만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="p3"><label for="p3"><span>5만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p4"><label for="p4"><span>10만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="p5"><label for="p5"><span>10만원 이상</span></label></li>
+		            		<li><input type="checkbox" class="checkAll" id="profileVolume"><label for="profileVolume"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="9999" id="p1"><label for="p1"><span>1000만원  미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="19999" id="p2"><label for="p2"><span>1000만원~2999만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="49999" id="p3"><label for="p3"><span>3000만원~4999만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="99999" id="p4"><label for="p4"><span> 5000만원~1억원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="100000" id="p5"><label for="p5"><span>1억 초과</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
             	<div class="partner_list">
-            		<span class="check_list">판매경력</span>
+            		<span class="check_list downImg">판매경력</span>
             		<div class="check_list_box">
 		            	<ul>
-		            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
-		            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
-		            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
-		            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
-		            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
+		            		<li><input type="checkbox" class="checkAll"  id="profileCareer"><label for="profileCareer"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="profileCareer" value="1" id="m1"><label for="m1"><span> 1개월 이상~3개월 미만</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="profileCareer" value="3" id="m2"><label for="m2"><span>3개월 이상~6개월 미만</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="profileCareer" value="6" id="m3"><label for="m3"><span>6개월 이상~1년 미만</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="profileCareer" value="9" id="m4"><label for="m4"><span>1년 이상</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
-<!--             	<div class="partner_list">
+<!--              	<div class="partner_list">
             		<span class="check_list">판매자특징</span>
             		<div class="check_list_box">
 		            	<ul>
@@ -450,9 +450,9 @@
 		            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
 		            	</ul>
 	            	</div>
-            	</div>
+            	</div> -->
 				<div class="partner_list">
-					<span class="check_list">판매자지역</span>
+					<span class="check_list downImg">판매자지역</span>
 					<div class="check_list_box">
 			           	<ul>
 			           		<li><input type="checkbox" class="checkAll" id="profileNation"><label for="profileNation"><span>전체</span></label></li>
@@ -475,7 +475,7 @@
 			           		<li><input type="checkbox" class="check" name="profileNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
 			           	</ul>
 		           	</div>
-				</div> -->
+				</div>
         	</div>
         	<div class="contents-container">
         		<div class="contentsBox">
@@ -527,7 +527,12 @@
 						<input type="hidden" id="profileId${status.index}" value="${output.profileId}">
 						<div class="leftBox">
 							<div class="photo-container">
-								<img class="photoBox" alt="" src="/upload/${output.profilePhoto}">
+								<c:if test="${output.profilePhoto == null}">
+									<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
+								</c:if>
+								<c:if test="${output.profilePhoto != null}">
+									<img class="photoBox" alt="" src="/upload/${output.profilePhoto}">
+								</c:if>
 								<div class="star-score">
 									<div>
 										<c:forEach begin="1" end="5">
@@ -607,10 +612,12 @@
 								<span>
 								<c:forEach var="profileChannel" items="${output.profileChannelList}" varStatus="status2">
 			        					<c:if test="${status2.first}">
-			        						${profileChannel} 외
+			        						${profileChannel}
 			        					</c:if>
 			        					<c:if test="${status2.last}">
-			        						${status2.count-1}채널
+			        						<c:if test="${status2.count-1 > 0}">
+			        							외 ${status2.count-1}채널
+			        						</c:if>
 			        					</c:if>
 			        			</c:forEach>
 								</span>
@@ -799,7 +806,8 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						<input type="hidden" id="profileId{{@key}}" value="{{profileId}}">
 						<div class="leftBox">
 							<div class="photo-container">
-								{{#ifCond memRname '==' ' '}}
+								<div>{{profilePhoto}}</div>
+								{{#ifCond profilePhoto '==' ''}}
 									<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
 								{{else}}	
 									<img class="photoBox" alt="" src="/upload/{{profilePhoto}}">
@@ -915,10 +923,20 @@ $(document).ready(function() {
 		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
 	});
 	
-/* 	$(document).on("click", ".check_list_box", function(){
-		var checkList = $(this).closest("div").children('ul');
-		checkList.toggle();
-	}); */
+ 	$(document).on("click", ".check_list", function(){
+		var check_list_box = $(this).closest(".partner_list").children('.check_list_box');
+		var checkList = $(this).closest(".partner_list").children('.check_list');
+		console.log(check_list_box);
+		check_list_box.toggle();
+		
+		if (checkList.hasClass("upImg")) {
+			checkList.removeClass("upImg");
+			checkList.addClass("downImg");
+		} else {
+			checkList.removeClass("downImg");
+			checkList.addClass("upImg");		
+		}
+	});
 	
 	$(document).on("click", ".m-check_list_box", function(){
 		var m_checkList = $(this).closest(".filter").children('.m-check_list_box').children('ul');

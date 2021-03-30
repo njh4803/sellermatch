@@ -281,7 +281,7 @@
 						<div class="project-detailBox">
 							${output.projDetail}
 						</div>	
-						<div class="left-infoBox2">
+						<div class="left-infoBox">
 							<c:forEach var="projKeywordList" items="${output.projKeywordList}">
 				           		<div class="tagBox">${projKeywordList}</div>
 				           	</c:forEach>
@@ -388,7 +388,7 @@
 					</div>
 				</div>
 				<div class="partner_list">
-					<span>공급자검증</span>
+					<span class="check_list upImg">공급자검증</span>
 					<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="ppmemRname"><label for="ppmemRname"><span>전체</span></label></li>
@@ -400,7 +400,7 @@
 	            	</div>
 	            </div>
 	            <div class="partner_list">
-	            	<span>판매자검증</span>
+	            	<span class="check_list upImg">판매자검증</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
@@ -411,8 +411,8 @@
 		            	</ul>
 	            	</div>
 	            </div>
-<!-- 	            <div class="partner_list">
-	            	<span class="check_list">판매채널</span>
+ 	            <div class="partner_list">
+	            	<span class="check_list upImg">판매채널</span>
 	            	<div class="check_list_box">
 	            		<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projChannel"><label for="projChannel"><span>전체</span></label></li>
@@ -425,9 +425,9 @@
 		            		<li><input type="checkbox" class="check" name="projChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
 		            	</ul>
 	            	</div>
-	            </div> -->
+	            </div>
 	            <div class="partner_list">
-	            	<span class="check_list">상품단가</span>
+	            	<span class="check_list upImg">상품단가</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
@@ -440,7 +440,7 @@
 	            	</div>
 	            </div>
 	            <div class="partner_list">	
-	            	<span class="check_list">판매마진</span>
+	            	<span class="check_list upImg">판매마진</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
@@ -452,7 +452,7 @@
 	            	</div>
 	            </div>
 	            <div class="partner_list">
-	            	<span class="check_list">상품분류</span>
+	            	<span class="check_list upImg">상품분류</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
@@ -462,7 +462,7 @@
 		            	</ul>
 	            	</div>
 	            </div>
-<!-- 	            <div class="partner_list">	
+<!--  	            <div class="partner_list">	
 	            	<span class="check_list">공급방법</span>
 	            	<div class="check_list_box">
 		            	<ul>
@@ -474,9 +474,9 @@
 		            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
 		            	</ul>
 	            	</div>
-	            </div>
+	            </div> -->
 	            <div class="partner_list">	
-	            	<span class="check_list">등록지역</span>
+	            	<span class="check_list upImg">등록지역</span>
 					<div class="check_list_box">
 						<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projNation"><label for="projNation"><span>전체</span></label></li>
@@ -499,7 +499,7 @@
 		            		<li><input type="checkbox" class="check" name="projNation" value="064" id="n17"><label for="n17"><span>세종특별자치도</span></label></li>
 		            	</ul>
 					</div>
-	            </div> -->
+	            </div>
         	</div>
         	<div class="contents-container">
         		<div class="contentsBox">
@@ -574,7 +574,7 @@
 							<div class="project-detailBox">
 								${output.projDetail}
 							</div>	
-							<div class="left-infoBox2">
+							<div class="left-infoBox">
 								<c:forEach var="projKeywordList" items="${output.projKeywordList}">
 					           		<div class="tagBox">${projKeywordList}</div>
 					           	</c:forEach>
@@ -936,7 +936,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						<div class="project-detailBox">
 							{{projDetail}}
 						</div>	
-						<div class="left-infoBox2">
+						<div class="left-infoBox">
 							{{#each projKeywordList as |value key|}}
 		        				<div class="tagBox">{{value}}</div>
 		        			{{/each}}
@@ -1012,7 +1012,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							<div class="project-detailBox">
 								{{projDetail}}
 							</div>	
-							<div class="left-infoBox2">
+							<div class="left-infoBox">
 								{{#each projKeywordList as |value key|}}
 		        					<div class="tagBox">{{value}}</div>
 		        				{{/each}}
@@ -1036,6 +1036,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								<div class="infoBox2">마진<span>{{projMarginName}}</span></div>
 							{{/ifCond}}
 							{{#ifCond projPrice '==' '0'}}
+								<div class="infoBox2">단가<span>협상</span></div>
 								<div class="infoBox2">마진<span>{{projMarginName}}</span></div>
 							{{/ifCond}}
 							</div>
@@ -1137,11 +1138,21 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
-
-/* 	$(document).on("click", ".check_list_box", function(){
-		var checkList = $(this).closest("div").children('ul');
-		checkList.toggle();
-	}); */
+ 	
+ 	$(document).on("click", ".check_list", function(){
+		var check_list_box = $(this).closest(".partner_list").children('.check_list_box');
+		var checkList = $(this).closest(".partner_list").children('.check_list');
+		console.log(check_list_box);
+		check_list_box.toggle();
+		
+		if (checkList.hasClass("upImg")) {
+			checkList.removeClass("upImg");
+			checkList.addClass("downImg");
+		} else {
+			checkList.removeClass("downImg");
+			checkList.addClass("upImg");		
+		}
+	});
 	
 	$(document).on("click", ".m-check_list_box", function(){
 		var m_checkList = $(this).closest(".filter").children('.m-check_list_box').children('ul');

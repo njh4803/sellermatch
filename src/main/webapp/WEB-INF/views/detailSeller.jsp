@@ -139,9 +139,18 @@
 		<div class="container1 content">
 			<input type="hidden" id="profileMemId" value="${output.profileMemId}">
 			<div class="container2">
-				<div class="profileImgBox">
-					<img class="profileImg"  src="${pageContext.request.contextPath}/assets/img/profile.png">
-				</div>
+				<c:choose>
+					<c:when test="${output.profilePhoto == 'null'}">
+						<div class="profileImgBox">
+							<img class="profileImg"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="profileImgBox">
+							<img class="profileImg"  src="upload/${output.profilePhoto}">
+						</div>
+					</c:otherwise>	
+				</c:choose>
 				<div class="infoBox1 leftBox">
 					<div class="intro">
 						${output.memNick} 

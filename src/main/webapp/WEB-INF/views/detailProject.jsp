@@ -156,7 +156,12 @@
 	       		</div>    		
        		</div>
 			<div class="text-center">
-				<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+				<c:if test="${output.profilePhoto != null}">
+					<img class="profileImgBox"  src="upload/${output.profilePhoto}">
+				</c:if>
+				<c:if test="${output.profilePhoto == null}">
+					<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+				</c:if>
 				<div class="profileNick">${output.memNick}</div>
 			</div>
 			<div class="applyNumBox">
@@ -213,21 +218,20 @@
 				<input type="hidden" id="projSort" value="${output.projSort}">
 	           	<div class="projDetail"  data-index="${status.index}">
 					<div class="titleBox">${output.projTitle}</div>
+					<c:choose>
+						<c:when test="${output.projDday < 0}">
+							<div class="D-day">마감완료</div>
+						</c:when>
+						<c:otherwise>
+							<div class="D-day">마감 ${output.projDday}일전</div>
+						</c:otherwise>
+					</c:choose>	
 					<c:if test="${output.projSort == 1}">
 		        		<div class="sFindBox">판매자 찾음</div>
 		        	</c:if>
 		        	<c:if test="${output.projSort == 2}">
 		        		<div class="pFindBox">공급자 찾음</div>
 		        	</c:if>
-					<c:choose>
-						<c:when test="${output.projDday < 0}">
-							<div class="D-day">마감</div>
-						</c:when>
-						<c:otherwise>
-							<div class="D-day">마감 ${output.projDday}일전</div>
-						</c:otherwise>
-					</c:choose>
-
 				</div>
 				<div class="clearfix"></div>
 				<div class="detailContainer">

@@ -421,7 +421,7 @@ a.sort.select{
 .partner_list{
 	display: inline-block;
     width: 100%;
-	padding: 25px 30px;
+	padding: 20px 30px;
 	border-radius: 5px;
 	border: solid 1px #cccccc;
 	background-color: #ffffff;
@@ -434,10 +434,11 @@ a.sort.select{
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
-    text-align: center;
+    text-align: left;
     color: #484848;
     width: 100%;
     display: block;
+    cursor: pointer;
 }
 .partner_list ul{
 	display: none;
@@ -450,12 +451,13 @@ a.sort.select{
 }
 .auth-container{
 	display: inline-block;
-	height: 40px;
-	width: 390px;
-	padding: 3px 15px;
-	border-radius: 5px;
-	border: solid 1px #d9d9d9;
-	background-color: #ffffff;
+    height: 40px;
+    width: 380px;
+    padding: 3px;
+    border-radius: 5px;
+    border: solid 1px #d9d9d9;
+    text-align: center;
+    background-color: #ffffff;
 }
 .authBox{
   display: inline-block;
@@ -479,11 +481,14 @@ a.sort.select{
     object-fit: contain;
     border-radius: 70%;
 }
+.partner_list:first-child .check_list_box{
+	display: block;
+}
 .check_list_box{
-    display: inline-block;
+	display: none;
     float: left;
     text-align: left;
-    margin-top: 25px;
+    margin-top: 10px;
     margin-left: 11px;
 }
 div.partner_list > div:nth-child(2){
@@ -575,6 +580,20 @@ a.sort:last-child{
 .starImg{
 	width: 20px;
 	display: inline-block;
+}
+.upImg{
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-image: url(/assets/img/up_btn.png);
+    background-position-x: 185px;
+    background-position-y: center;
+}
+.downImg{
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-image: url(/assets/img/down_btn.png);
+    background-position-x: 185px;
+    background-position-y: center;
 }
 /* 모바일 */
 @media screen and (max-width: 767px){

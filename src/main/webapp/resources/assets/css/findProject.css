@@ -146,7 +146,7 @@ a.sort.select{
   border: solid 2px #484848;
 }
 .contents{
-  height: 206px;
+  min-height: 206px;
   width: 100%;
   margin: 15px 0 15px 0;
   padding: 22px 30px 20px;
@@ -178,6 +178,7 @@ a.sort.select{
   text-align: left;
   color: #484848;
   margin-bottom: 15px;
+  margin-top: 15px;
   /* 말줄임 표시 */
   overflow: hidden;
   display: -webkit-box;
@@ -240,9 +241,9 @@ a.sort.select{
   font-stretch: normal;
   font-style: normal;
   text-align: right;
-  color: #343434;
+  color: #484848;
   float: right;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 .infoBox2{
   width: 130px;
@@ -268,8 +269,8 @@ a.sort.select{
   font-stretch: normal;
   font-style: normal;
   float: right;
-  margin-top: 3px;
-  color: #343434;
+  margin-top: 2px;
+  color: #484848;
 }
 .infoBox3{
 	width: 265px;
@@ -306,7 +307,8 @@ a.sort.select{
 	color: #ffffff;
 }
 .left-infoBox{
-	margin-bottom: 15px;
+	display: inline-block;
+	width: 500px;
 }
 .areaBox{
   display: inline-block;
@@ -355,6 +357,8 @@ a.sort.select{
   font-style: normal;
   text-align: center;
   color: #858585;
+  margin-bottom: 7px;
+  margin-right: 5px;
 }
 .partner_list input[name="projSort"] + label span{
   width: 90px;
@@ -389,7 +393,7 @@ a.sort.select{
 .partner_list{
 	display: inline-block;
     width: 100%;
-	padding: 25px 30px;
+	padding: 20px 30px;
 	border-radius: 5px;
 	border: solid 1px #cccccc;
 	background-color: #ffffff;
@@ -402,10 +406,11 @@ a.sort.select{
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
-    text-align: center;
+    text-align: left;
     color: #484848;
     width: 100%;
     display: block;
+    cursor: pointer;
 }
 .partner_list ul{
 	display: none;
@@ -466,11 +471,14 @@ a.sort.select{
 	margin-bottom: 16px;
 	cursor: pointer;
 }
+.partner_list:first-child .check_list_box{
+	display: block;
+}
 .check_list_box{
-    display: inline-block;
+	display: none;
     float: left;
     text-align: left;
-    margin-top: 25px;
+    margin-top: 10px;
     margin-left: 11px;
 }
 div.partner_list > div:nth-child(1) > ul, div.partner_list > div:nth-child(2) > ul, div.partner_list > div:nth-child(3) > ul{
@@ -534,6 +542,20 @@ a.sort:last-child{
 }
 .authImg{
 	width: 15px;
+}
+.upImg{
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-image: url(/assets/img/up_btn.png);
+    background-position-x: 185px;
+    background-position-y: center;
+}
+.downImg{
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-image: url(/assets/img/down_btn.png);
+    background-position-x: 185px;
+    background-position-y: center;
 }
 /*--------------------------------------*/
 /* 모바일 */
