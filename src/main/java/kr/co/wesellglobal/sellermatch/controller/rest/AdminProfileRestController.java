@@ -14,19 +14,13 @@ import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
-import kr.co.wesellglobal.sellermatch.service.PpProfileService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
-import kr.co.wesellglobal.sellermatch.service.SellerProfileService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
 public class AdminProfileRestController {
 	
-	@Autowired
-	SellerProfileService sellerProfileService;
-	@Autowired
-	PpProfileService ppProfileService;
 	@Autowired
 	ProfileService profileService;
 	@Autowired

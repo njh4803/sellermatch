@@ -87,4 +87,25 @@ public class memberController {
 
 		return new ModelAndView("joinComplete"); 
 	}
+	
+	@RequestMapping(value = "/member/delngManage", method = RequestMethod.GET)
+	public ModelAndView delngManage(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		
+		MemberDto output = null;
+		IndusDto input = new IndusDto();
+		List<IndusDto> indusList = null;
+		
+		
+		try {
+			output = memberService.getMember(member);
+			indusList = indusService.getIndusList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+		model.addAttribute("indusList", indusList);
+		
+		return new ModelAndView("delngManage");
+	}
 }

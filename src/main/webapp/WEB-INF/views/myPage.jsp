@@ -24,7 +24,7 @@
 				<li class="tab-link current" data-tab="my-tab-1" id="select-my-tab1">MY홈</li>
 				<li class="tab-link" data-tab="my-tab-2" id="select-my-tab2">가입정보관리</li>
 				<li class="tab-link" data-tab="my-tab-3" id="select-my-tab3">프로필관리</li>
-				<li class="tab-link" data-tab="my-tab-4" id="select-my-tab4">거래관리</li>
+				<li class="tab-link2" data-tab="my-tab-4" id="select-my-tab4">거래관리</li>
 			</ul>
 			<div id="my-tab-1" class="tab-content2 current">
 				<div class="my_home clearfix">
@@ -365,43 +365,7 @@
 					   	</form>
 					</div>
 				</div>
-			</div>
-			<div id="my-tab-4" class="tab-content2">
-				<div id="myProject">
-					<div style="display: inline-block;">
-						<div>
-							<div>등록한 것</div>
-							<div>2건</div>
-						</div>
-						<div>
-							<div>제안 받은 것</div>
-							<div>2건</div>
-						</div>
-					</div>
-					<table id="myProject-table">
-						<thead>
-							<tr>
-								<th>등록일</th>
-								<th>종류</th>
-								<th>거래명</th>
-								<th>등록자 닉네임</th>
-								<th>마감일</th>
-								<th>지원자 수</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>2020-12-25</td>
-								<td>종류</td>
-								<td>다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집</td>
-								<td>위셀글로벌</td>
-								<td>2021-03-01</td>
-								<td>10명</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>    	
+			</div> 	
     	</div>
     </div>
 </div>
@@ -449,10 +413,13 @@ $(document).ready(function(){
 	$(document).on("change", "#image" ,handleImgfileSelect1);
 	
 	$(document).on("click", "ul.my-tabs li", function(e){
-		
 		var tab_id = $(this).attr('data-tab');
 		var tabNum = $(this).data('num');
 
+		if (tab_id == 'my-tab-4') {
+			location.href="/member/delngManage";
+		}
+		
 		$('ul.my-tabs li').removeClass('current');
 		$('.tab-content2').removeClass('current');
 
@@ -555,64 +522,6 @@ $(document).ready(function(){
 				}
 			});
 		}
-		
-		if (tab_id == 'my-tab-4') {
-			$("#myProject").remove();
-			$.ajax({
-				type: "GET",
-		        url: ROOT_URL + '/member/mypage/project',
-				success : function(json) {
-					console.log(json.output)
-					
-					var content = {
-						output : json.output,
-						contractCount : json.output[0].contractCount,
-						projAddCount : json.output[0].projAddCount,
-						recommendCount : json.output[0].recommendCount,
-						memSort : json.memSort
-					} 
-		       		var template = Handlebars.compile($("#myProject-tmpl").html());
-		       		var html = template(content);
-		       		
-		       		$("#my-tab-4").append(html);
-				}
-			});
-		}
-	});
-	
-	//거래관리 바로가기
-	$(document).on("click", "#myProject-go", function(e){		
-		$("#myProject").remove();
-		
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content2').removeClass('current');
-
-		$('#select-tab4').addClass('current');
-		$("#tab-4").addClass('current');
-		
-		
-		$.ajax({
-			type: "GET",
-	        url: ROOT_URL + '/member/mypage/project',
-	        data:{
-	        	applyType:2
-	        },
-			success : function(json) {
-				console.log(json.output)
-				
-				var content = {
-					output : json.output,
-					contractCount : json.output[0].contractCount,
-					projAddCount : json.output[0].projAddCount,
-					recommendCount : json.output[0].recommendCount,
-					memSort : json.memSort
-				} 
-	       		var template = Handlebars.compile($("#myProject-tmpl").html());
-	       		var html = template(content);
-	       		
-	       		$("#my-tab-4").append(html);
-			}
-		});
 	});
 	
 	//프로필 수정
@@ -779,154 +688,6 @@ $(document).ready(function(){
         },
     });
     
-    $(document).on("click", "#contractCount", function(e){
-    	var contractCount = $('#contractCount').val();
-		if (contractCount == 0) {
-			swal('알림', '계약된 거래가 없습니다.', 'warning')
-		} else {
-			$("#myProject").remove();
-			
-			$('ul.tabs li').removeClass('current');
-			$('.tab-content2').removeClass('current');
-
-			$('#select-tab4').addClass('current');
-			$("#tab-4").addClass('current');
-			
-			$.ajax({
-				type: "GET",
-		        url: ROOT_URL + '/member/mypage/project',
-		        data:{
-		        	applyProjState:5
-		        },
-				success : function(json) {
-					console.log(json.output)
-					
-					var content = {
-						output : json.output,
-						contractCount : json.output[0].contractCount,
-						projAddCount : json.output[0].projAddCount,
-						recommendCount : json.output[0].recommendCount,
-						memSort : json.memSort
-					} 
-		       		var template = Handlebars.compile($("#myProject-tmpl").html());
-		       		var html = template(content);
-		       		
-		       		$("#tab-4").append(html);
-				}
-			});
-		}
-    })
-    $(document).on("click", ".projAddCount", function(e){
-    	var projAddCount = $('#projAddCount').attr('data-value');
-		if (projAddCount == 0) {
-			swal('알림', '등록된 거래가 없습니다.', 'warning')
-		} else {
-			$("#myProject").remove();
-			
-			$('ul.my-tabs li').removeClass('current');
-			$('.tab-content2').removeClass('current');
-
-			$('#select-my-tab4').addClass('current');
-			$("#my-tab-4").addClass('current');
-			
-			$.ajax({
-				type: "GET",
-		        url: ROOT_URL + '/member/mypage/project',
-		        data:{
-		        	applyType:2
-		        },
-				success : function(json) {
-					console.log(json.output)
-					
-					var content = {
-						output : json.output,
-						contractCount : json.output[0].contractCount,
-						projAddCount : json.output[0].projAddCount,
-						recommendCount : json.output[0].recommendCount,
-						memSort : json.memSort
-					} 
-		       		var template = Handlebars.compile($("#myProject-tmpl").html());
-		       		var html = template(content);
-		       		
-		       		$("#my-tab-4").append(html);
-				}
-			});
-		}
-    })
-    $(document).on("click", "#recommendCount", function(e){
-    	var recommendCount = $('#recommendCount').attr('data-value');
-    	var mem_sort = $('#myMemSort').val();
-		if (recommendCount == 0) {
-			var text = '';
-			if (mem_sort == 1) {
-				text = '제안한 거래가 없습니다.';
-			}
-			if (mem_sort == 2) {
-				text = '제안 받은 거래가 없습니다.';
-			}
-			swal('알림', text, 'warning')
-		} else {
-			$("#myProject").remove();
-			
-			$('ul.my-tabs li').removeClass('current');
-			$('.tab-content2').removeClass('current');
-
-			$('#select-my-tab4').addClass('current');
-			$("#my-tab-4").addClass('current');
-			
-			$.ajax({
-				type: "GET",
-		        url: ROOT_URL + '/member/mypage/project',
-		        data:{
-		        	applyType:2
-		        },
-				success : function(json) {
-					var content = {
-						output : json.output,
-						contractCount : json.output[0].contractCount,
-						projAddCount : json.output[0].projAddCount,
-						recommendCount : json.output[0].recommendCount,
-						memSort : json.memSort
-					} 
-		       		var template = Handlebars.compile($("#myProject-tmpl").html());
-		       		var html = template(content);
-		       		
-		       		$("#my-tab-4").append(html);
-				}
-			});
-		}
-    });
-    
-    //거래처 찾기 상세페이지로 이동
-/*     $(document).on("click", ".project-title", function(e){
-    	var projId = $(this).attr('data-projId');
-    	window.location = ROOT_URL + "/project/detail?projId="+projId;
-    }); */
-    
-    $(document).on("click", ".show-apply", function(e){
-    	$("#applyList").remove();
-    	
-    	var applyProjId = $(this).attr('data-projId');
-    	var idx = $(this).attr('data-index');
-    	
-		$.ajax({
-			type: "GET",
-	        url: ROOT_URL + '/member/mypage/apply',
-	        data:{
-	        	'applyProjId':applyProjId
-	        },
-			success : function(json) {
-				var content = {
-					output : json.output
-				} 
-	       		var template = Handlebars.compile($("#apply-tmpl").html());
-	       		var html = template(content);
-	       		
-	       		$("#apply-table"+idx).append(html);
-			}
-		});
-    });
-    	
 	//파일 업로드
     var objDragAndDrop = $(".dragAndDropDiv");
 	var imgBox = $("#imgBox");
@@ -1107,108 +868,6 @@ $(document).ready(function() {
 	});	
 });
 
-</script>
-<script type="text/x-handlebars-template" id="myProject-tmpl">
-			<div id="myProject">
-				<div class="myProjBox">
-					<div class="proj-type">
-						<div class="myProjBox2">
-							<div class="p-type">등록한 거래</div>
-							<div class="textBox1"><button class="projAddCount" data-value="{{projAddCount}}">{{projAddCount}}건</button></div>
-						</div>
-					</div>
-					<div class="proj-type">
-						<div class="myProjBox2">
-							<div class="p-type">계약한 거래</div>
-							<div class="textBox1"><button id="contractCount" value="{{contractCount}}">{{contractCount}}건</button></div>
-						</div>
-					</div>
-					<div class="proj-type">
-						<div class="myProjBox2">
-							<div class="p-type">찜한 거래</div>
-							<div class="textBox1">0건</div>
-						</div>
-					</div>
-					<div class="proj-type">
-						<div class="myProjBox2">						
-						{{#ifCond memSort '==' 1}}
-							<div class="p-type">제안한 거래</div>
-						    <div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
-						{{/ifCond}}
-						{{#ifCond memSort '==' 2}}
-							<div class="p-type">제안받은 거래</div>
-							<div class="textBox1"><button id="recommendCount" value="{{recommendCount}}">{{recommendCount}}건</button></div>
-						{{/ifCond}}
-						</div>
-					</div>
-					<div class="proj-type">
-						<div class="myProjBox2" style="border-right:0;">
-							<div class="p-type">마감한 거래</div>
-							<div class="textBox1">0건</div>
-						</div>
-					</div>
-				</div>
-				<input type="hidden" id="myMemSort" value="{{memSort}}">
-				<div id="myProject-table" class="myProject-table">
-					<div>
-						<div>
-							<div class="th">등록일</div>
-							<div class="th">거래명</div>						
-							<div class="th">등록자 닉네임</div>
-							<div class="th">마감일</div>
-							<div class="th">지원자수</div>
-							<div class="th">지원자 관리</div>
-						</div>
-					</div>
-					<div>
-					{{#output}}
-						<div class="show-apply" data-projId="{{projId}}" data-index="{{@key}}">
-							<div class="td">{{projRegDate}}</div>
-							<div class="td project-title" data-projId="{{projId}}">{{projTitle}}</div>
-							<div class="td">{{memNick}}</div>
-							<div class="td">{{projEndDate}}</div>
-							<div class="td">{{applyCount}}명</div>
-							<div class="td">
-								<button>관리하기 v</button>
-							</div>
-						</div>
-						<div class="apply-table" id="apply-table{{@key}}">
-
-						</div>
-					{{/output}}
-					</div>
-				</div>
-			</div>
-</script>
-<script type="text/x-handlebars-template" id="apply-tmpl">
-							<div id="applyList">
-								{{#ifCond output '!=' 0}}
-									<div class="tr">
-										<div class="th">지원날짜</div>
-										<div class="th">지원자 닉네임</div>						
-										<div class="th">판매채널</div>
-										<div class="th">매출규모</div>
-										<div class="th">판매경력</div>
-										<div class="th">승인/거절</div>
-									</div>
-									{{#output}}
-										<div class="tr">
-											<div class="td">{{applyRegDate}}</div>
-											<div class="td">{{memNick}}</div>
-											<div class="td">SNS, 커뮤니티, 종합몰, 폐쇄몰, 오픈마켓, 해외</div>
-											<div class="td">1111</div>
-											<div class="td">2년 11개월</div>
-											<div class="td">
-												<button>지원거절</button>
-											</div>
-										</div>
-									{{/output}}
-								{{else}}
-									<div class="tr">
-										<div class="th" style="width: 1120px;">지원자 없음</div>
-									</div>	
-								{{/ifCond}}
-							</div>
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>
