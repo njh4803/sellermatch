@@ -598,6 +598,7 @@
 								<div class="infoBox2">마진<span>${output.projMarginName}</span></div>
 							</c:if>
 							<c:if test="${output.projPrice == 0}">
+								<div class="infoBox2">단가<span>협상</span></div>
 								<div class="infoBox2">마진<span>${output.projMarginName}</span></div>
 							</c:if>
 							</div>

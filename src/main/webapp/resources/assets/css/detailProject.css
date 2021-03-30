@@ -268,7 +268,7 @@ textarea::placeholder {
     display: block;
     background: #cccccc;
 }
-.detailBox1 .infoBox:first-child:before, .detailBox2 .infoBox:first-child:before{
+.detailBox1 .infoBox:first-child:before, .detailBox2 .infoBox2:first-child:before{
 	display: none;
 }
 .textBox2{

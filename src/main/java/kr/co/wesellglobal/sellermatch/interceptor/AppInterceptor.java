@@ -1,7 +1,5 @@
 package kr.co.wesellglobal.sellermatch.interceptor;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -58,28 +56,29 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 		// login처리를 담당하는 사용자 정보를 담고 있는 객체를 가져옴
         Object loginSession = webHelper.getSession("member");
         
-		/*
-		 * if (loginSession == null) { // 로그인된 세션이 없는 경우 // 우리가 만들어 논 쿠키 loginCookie의 값을
-		 * 꺼내온다 -> 저장해놓은 세션ID String loginCookie = webHelper.getCookie("loginCookie");
-		 * if (loginCookie != null) { // 쿠키가 존재하는 경우(이전에 로그인떄 생성된 쿠키가 존재한다는 것) String
-		 * sessionId = loginCookie;
-		 * 
-		 * MemberDto input = new MemberDto(); input.setSessionKey(sessionId);
-		 * 
-		 * // 세션Id를 checkUserWithSessionKey에 전달해 이전에 로그인한적이 있는지 체크하는 메서드를 거쳐서 // 유효시간이 >
-		 * now() 인 즉 아직 유효시간이 지나지 않으면서 해당 sessionId 정보를 가지고 있는 사용자 정보를 반환한다. MemberDto
-		 * member = memberService.checkUserWithSessionKey(input);
-		 * 
-		 * if (member != null) { //세션 생성 webHelper.setSession("member", member); }
-		 * 
-		 * }
-		 * 
-		 * }
-		 */
+		
+		 if (loginSession == null) { // 로그인된 세션이 없는 경우
+			// 우리가 만들어 논 쿠키 loginCookie의 값을 꺼내온다 -> 저장해놓은 세션ID 
+		 	String loginCookie = webHelper.getCookie("loginCookie");
+			 if (loginCookie != null) { 
+				 // 쿠키가 존재하는 경우(이전에 로그인떄 생성된 쿠키가 존재한다는 것) 
+				 String sessionId = loginCookie;
+			 
+			 MemberDto input = new MemberDto(); input.setSessionKey(sessionId);
+			 
+			 // 세션Id를 checkUserWithSessionKey에 전달해 이전에 로그인한적이 있는지 체크하는 메서드를 거쳐서
+			 // 유효시간이 > now() 인 즉 아직 유효시간이 지나지 않으면서 해당 sessionId 정보를 가지고 있는 사용자 정보를 반환한다. 
+			 MemberDto member = memberService.checkUserWithSessionKey(input);
+			 
+			 	if (member != null) { 
+				 //세션 생성 
+				 webHelper.setSession("member", member); 
+				 }
+			 }
+		 
+		 }
         
 		log.debug("AppInterceptor.preHandle 실행됨");
-		
-		webHelper.init(request, response);
 		
 		//컨트롤러 실행 직전에 현재 시각을 저장한다.
 		startTime = System.currentTimeMillis();

@@ -513,6 +513,8 @@ public class WebHelper {
         Cookie cookie = new Cookie(key, value);
         cookie.setPath("/");
         cookie.setDomain(this.domain);
+        
+        log.debug("webHelper에서 쿠키 생성 완료 = " + cookie.getName() + ", " + cookie.getValue());
 
         /** 유효시간 설정 */
         // 시간값이 0보다 작은 경우는 이 메서드를 설정하지 않도록 한다. (브라우저를 닫으면 삭제)

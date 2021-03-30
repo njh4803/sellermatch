@@ -322,7 +322,7 @@
 						<div class="fileBox">
 							<div class="fileInfo">
 								${output.orginName}
-								<a class="download" href="/upload/${output.projFile}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a>
+								<a class="download" href="/upload/${output.projFile}" download="${output.orginName}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a>
 							</div>
 						</div>
 					</div>				
@@ -482,7 +482,7 @@ $(document).ready(function() {
 		    },
             success: function(json) {
           		if (json.result == 1) {
-          			swal('알림', '이미 지원한 프로젝트입니다.', 'success');
+          			swal('알림', '이미 지원한 거래입니다.', 'success');
           			return;
 				}
 				swal({
@@ -512,7 +512,7 @@ $(document).ready(function() {
 				  		          showCancelButton: true
 		  			  		    }).then(function(result) {	
 		  			  		    	if (result.value) {
-		  			  		    		window.location.href = ROOT_URL+"/project/detail?projId="+$("#projId").val();
+		  			  		    		window.location.href = ROOT_URL+"/member/myPage";
 		  			  		    	}
 		  			  		    });
 	  		                }
