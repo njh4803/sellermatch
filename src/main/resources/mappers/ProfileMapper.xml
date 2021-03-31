@@ -115,7 +115,7 @@
 		ON s.profile_mem_id = m.mem_id
 		<where>
  			<if test="needIndus != '' and needIndus != null">
-				mem_rname = 1  임시수정 인증완료 안되었어도 판매자찾기 리스트에 노출될 수 있도록  3/26(금)
+				mem_rname = 1
 			</if> 
 			<if test="memNick != '' and memNick != null">
         		OR mem_nick LIKE concat('%', #{memNick}, '%')
@@ -155,6 +155,33 @@
         		AND profile_ch IN
 	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator=",">
 	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileCareerArr != '' and profileCareerArr != null">
+        		AND profile_career IN
+	            <foreach collection="profileCareerArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileVolumeArr != '' and profileVolumeArr != null">
+	            <foreach collection="profileVolumeArr" item="item" index="index">
+	           		<if test="item == '9999'">
+	            		OR profile_volume <![CDATA[ < ]]> #{item}
+	            	</if>
+	            	<if test="item == '29999'">
+	            		OR profile_volume <![CDATA[ >= ]]> 10000000 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '99999'">
+	            		OR profile_volume <![CDATA[ > ]]> 29999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '499999'">
+	            		OR profile_volume <![CDATA[ > ]]> 49999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '500000'">
+	            		OR profile_volume <![CDATA[ > ]]> #{item}
+	            	</if>
 	            </foreach>
         	</if>
 		</where>
@@ -263,6 +290,32 @@
         		AND profile_ch IN
 	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator=",">
 	            	#{item}
+	            </foreach>
+        	</if>
+        	<if test="profileCareerArr != '' and profileCareerArr != null">
+        		AND profile_career IN
+	            <foreach collection="profileCareerArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
+	            </foreach>
+        	</if>
+        	
+        	<if test="profileVolumeArr != '' and profileVolumeArr != null">
+	            <foreach collection="profileVolumeArr" item="item" index="index">
+	           		<if test="item == '9999'">
+	            		OR profile_volume <![CDATA[ < ]]> #{item}
+	            	</if>
+	            	<if test="item == '29999'">
+	            		OR profile_volume <![CDATA[ >= ]]> 10000000 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '99999'">
+	            		OR profile_volume <![CDATA[ > ]]> 29999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '499999'">
+	            		OR profile_volume <![CDATA[ > ]]> 49999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '500000'">
+	            		OR profile_volume <![CDATA[ > ]]> #{item}
+	            	</if>
 	            </foreach>
         	</if>
 		</where>

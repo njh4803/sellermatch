@@ -165,11 +165,20 @@
         	
         	<if test="projPriceArr != '' and projPriceArr != null">
 	            <foreach collection="projPriceArr" item="item" index="index">
-	            	<if test="item != '100000'">
-	            		AND proj_price <![CDATA[ <= ]]> #{item}
+	           		<if test="item == '9999'">
+	            		OR proj_price <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '100000'">
-	            		AND proj_price <![CDATA[ >= ]]> #{item}
+	            	<if test="item == '29999'">
+	            		OR proj_price <![CDATA[ > ]]> 9999 AND proj_price <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '99999'">
+	            		OR proj_price <![CDATA[ > ]]> 29999 AND proj_price <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '499999'">
+	            		OR proj_price <![CDATA[ > ]]> 99999 AND proj_price <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '500000'">
+	            		OR proj_price <![CDATA[ >= ]]> #{item}
 	            	</if>
 	            </foreach>
         	</if>
@@ -336,11 +345,20 @@
         	
         	<if test="projPriceArr != '' and projPriceArr != null">
 	            <foreach collection="projPriceArr" item="item" index="index">
-	            	<if test="item != '100000'">
-	            		AND proj_price <![CDATA[ <= ]]> #{item}
+	           		<if test="item == '9999'">
+	            		OR proj_price <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '100000'">
-	            		AND proj_price <![CDATA[ >= ]]> #{item}
+	            	<if test="item == '29999'">
+	            		OR proj_price <![CDATA[ > ]]> 9999 AND proj_price <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '99999'">
+	            		OR proj_price <![CDATA[ > ]]> 29999 AND proj_price <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '499999'">
+	            		OR proj_price <![CDATA[ > ]]> 99999 AND proj_price <![CDATA[ <= ]]> #{item}
+	            	</if>
+	            	<if test="item == '500000'">
+	            		OR proj_price <![CDATA[ >= ]]> #{item}
 	            	</if>
 	            </foreach>
         	</if>

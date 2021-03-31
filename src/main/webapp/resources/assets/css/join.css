@@ -308,7 +308,7 @@ input[type="checkbox"].findCheck:checked + label span {
 }
 .colForm-label {
 	padding-right: 0;
-    width: 114px;
+    width: 122px;
   	font-size: 15px;
     
   	font-family: NanumGothic !important;

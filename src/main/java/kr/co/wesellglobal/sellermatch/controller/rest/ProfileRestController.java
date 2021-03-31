@@ -56,6 +56,8 @@ public class ProfileRestController {
 			@RequestParam(value = "profileNation[]", required = false) String[] profileNation,
 			@RequestParam(value = "profileIndus[]", required = false) String[] profileIndus,
 			@RequestParam(value = "profileChannel[]", required = false) int[] profileChannel,
+			@RequestParam(value = "profileCareer[]", required = false) String[] profileCareer,
+			@RequestParam(value = "profileVolume[]", required = false) String[] profileVolume,
 			// 정렬 기준
 			@RequestParam(value = "sort", defaultValue = "regSort") String sort,
 			// 검색어
@@ -64,7 +66,7 @@ public class ProfileRestController {
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		// 페이지 구현에 필요한 변수값 생성
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 2; // 한 페이지당 표시할 목록 수
+		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int groupCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		// 페이지 번호를 계산한 결과가 저장될 객체
@@ -75,6 +77,8 @@ public class ProfileRestController {
 		input.setProfileChannelArr(profileChannel);
 		input.setProfileIndusArr(profileIndus);
 		input.setProfileNationArr(profileNation);
+		input.setProfileCareerArr(profileCareer);
+		input.setProfileVolumeArr(profileVolume);
 		input.setProfileSort("2");
 		input.setNeedIndus("Y");
 		input.setSort(sort);

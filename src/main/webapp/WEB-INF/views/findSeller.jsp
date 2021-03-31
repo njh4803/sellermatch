@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link href="${pageContext.request.contextPath}/assets/css/findSeller.css" rel="stylesheet" type="text/css">
 
-<div class="m-find">
+<%-- <div class="m-find">
 	<div class="find-box">
 		<div class="filter-box">
 			<div class="filter">
@@ -279,11 +279,11 @@
 							<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 								<ul class="pagination">
 								<!-- 페이지 번호 구현 -->
-							    <%-- 이전 그룹에 대한 링크 --%>
+							    이전 그룹에 대한 링크
 							    <c:choose>
-							        <%-- 이전 그룹으로 이동 가능하다면? --%>
+							        이전 그룹으로 이동 가능하다면?
 							        <c:when test="${pageData.prevPage > 0}">
-							            <%-- 이동할 URL 생성 --%>
+							            이동할 URL 생성
 							            <c:url value="/seller/find" var="prevPageUrl">
 							                <c:param name="page" value="${pageData.prevPage}" />
 							                <c:param name="keyword" value="${keyword}" />
@@ -295,32 +295,32 @@
 							        </c:otherwise>
 							    </c:choose>
 							    
-							    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+							    페이지 번호 (시작 페이지 부터 끝 페이지까지 반복)
 							    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
-							        <%-- 이동할 URL 생성 --%>
+							        이동할 URL 생성
 							        <c:url value="/seller/find" var="pageUrl">
 							            <c:param name="page" value="${i}"/>
 							            <c:param name="keyword" value="${keyword}"/>
 							        </c:url>
 							        
-							        <%-- 페이지 번호 출력 --%>
+							        페이지 번호 출력
 							        <c:choose>
-							            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+							            현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함
 							            <c:when test="${pageData.nowPage == i}">
 							                <li><a class="pageSelect"><strong>${i}</strong></a></li>
 							            </c:when>
-							            <%-- 나머지 페이지의 경우 링크 적용함 --%>
+							            나머지 페이지의 경우 링크 적용함
 							            <c:otherwise>
 							                <li><a href="${pageUrl}">${i}</a></li>
 							            </c:otherwise>
 							        </c:choose>
 							    </c:forEach>
 							    
-							    <%-- 다음 그룹에 대한 링크 --%>
+							    다음 그룹에 대한 링크
 							    <c:choose>
-							        <%-- 다음 그룹으로 이동 가능하다면? --%>
+							        다음 그룹으로 이동 가능하다면?
 							        <c:when test="${pageData.nextPage > 0}">
-							            <%-- 이동할 URL 생성 --%>
+							            이동할 URL 생성
 							            <c:url value="/seller/find" var="nextPageUrl">
 							                <c:param name="page" value="${pageData.nextPage}" />
 							                <c:param name="keyword" value="${keyword}" />
@@ -339,7 +339,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> --%>
 
 <div class="partner_bnr w-find">
 	<div class="partner_wrap">
@@ -418,11 +418,11 @@
             		<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="profileVolume"><label for="profileVolume"><span>전체</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileVolume" value="9999" id="p1"><label for="p1"><span>1000만원  미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileVolume" value="19999" id="p2"><label for="p2"><span>1000만원~2999만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileVolume" value="49999" id="p3"><label for="p3"><span>3000만원~4999만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileVolume" value="99999" id="p4"><label for="p4"><span> 5000만원~1억원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileVolume" value="100000" id="p5"><label for="p5"><span>1억 초과</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="10000000" id="p1"><label for="p1"><span>1000만원  미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="29999999" id="p2"><label for="p2"><span>1000만원~2999만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="49999999" id="p3"><label for="p3"><span>3000만원~4999만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="100000000" id="p4"><label for="p4"><span> 5000만원~1억원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="100000000" id="p5"><label for="p5"><span>1억 초과</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
@@ -524,7 +524,7 @@
         		<c:forEach var="output" items="${output}" varStatus="status">
         		<div class="contents s-link clearfix" data-index="${status.index}">
 					<div class="clearfix">
-						<input type="hidden" id="profileId${status.index}" value="${output.profileId}">
+						<input type="hidden" id="profileMemId${status.index}" name="profileMemId" value="${output.profileMemId}">
 						<div class="leftBox">
 							<div class="photo-container">
 								<c:if test="${output.profilePhoto == null}">
@@ -803,11 +803,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
         		{{#output}}
         		<div class="contents s-link clearfix" data-index="{{@key}}">
 					<div class="clearfix">
-						<input type="hidden" id="profileId{{@key}}" value="{{profileId}}">
+						<input type="hidden" id="profileMemId{{@key}}" name="profileMemId" value="{{profileMemId}}">
 						<div class="leftBox">
 							<div class="photo-container">
-								<div>{{profilePhoto}}</div>
-								{{#ifCond profilePhoto '==' ''}}
+								{{#ifCond profilePhoto '!=' '{{profilePhoto}}'}}
 									<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
 								{{else}}	
 									<img class="photoBox" alt="" src="/upload/{{profilePhoto}}">
@@ -890,10 +889,13 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								<span>판매채널</span>
 								<span>
 									{{#each profileChannelList as |value key|}}
+						        		{{#if @first}}
+						        			{{value}}
+										{{/if}}
 						        		{{#if @last}}
-						        			{{value}} 외
-						        		{{else}}
-						        			{{key-1}} 채널
+											{{#ifCond @key "!=" "0"}}
+			        							외 {{@key}}채널
+											{{/ifCond}}
 						        		{{/if}}
 									{{/each}}
 								</span>
@@ -918,8 +920,8 @@ $(document).ready(function() {
 	
 	$(document).on("click", ".s-link", function(){
 		
-		var idx = $(this).data('index');
-		var profileMemId = $("#profileMemId"+idx).attr('data-value');
+		var idx = $(this).attr('data-index');
+		var profileMemId = $("#profileMemId"+idx).val();
 		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
 	});
 	
@@ -994,12 +996,14 @@ $(document).ready(function() {
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
+		var profileCareer;
+		var profileVolume;	
 		
 		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel'];
+			'profileChannel', 'profileCareer', 'profileVolume'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
 				};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
@@ -1064,12 +1068,14 @@ $(document).ready(function() {
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
+		var profileCareer;
+		var profileVolume;	
 		
 		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel'];
+			'profileChannel', 'profileCareer', 'profileVolume'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
 				};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
@@ -1136,12 +1142,14 @@ $(document).ready(function() {
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
+		var profileCareer;
+		var profileVolume;	
 		
 		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel'];
+			'profileChannel', 'profileCareer', 'profileVolume'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
 				};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
@@ -1237,12 +1245,14 @@ $(document).ready(function() {
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
+		var profileCareer;
+		var profileVolume;		
 		
 		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel'];
+			'profileChannel', 'profileCareer', 'profileVolume'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
 				};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
@@ -1350,12 +1360,14 @@ $(document).ready(function() {
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
+		var profileCareer;
+		var profileVolume;
 		
 		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel'];
+			'profileChannel', 'profileCareer', 'profileVolume'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
 				};
 		
 		for (var i = 0; i < param_list_name.length; i++) {

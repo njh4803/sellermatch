@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="inc/header.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/findProject.css" rel="stylesheet" type="text/css">
-<div class="m-find">
+<%-- <div class="m-find">
 	<div class="find-box">
 		<div class="filter-box">
 			<div class="filter">
@@ -189,7 +189,6 @@
 				        	<div class="regDate">
 								<span>등록일</span>${output.projRegDate}
 							</div>
-				        	<%-- <div class="areaBox">${output.projNationName}지역</div> --%>
 						</div>				
 						<img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}">
 						<div class="m-infoBox">
@@ -203,7 +202,7 @@
 						<c:if test="${output.projPrice != 0}">
 							<div class="infoBox2">
 								<div>
-									<span>단가</span> ${output.projPrice}원 
+									<span>단가</span> <fmt:formatNumber value="${output.projPrice}" type="number"/>원 
 								</div> 
 								<div>
 									<span>마진</span> ${output.projMarginName}
@@ -239,7 +238,7 @@
 									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
 								</div>
 							</c:if>
-							<c:if test="${output.projProdCerti == 0}">
+							<c:if test="${output.projProdCerti == '0'}">
 								<div class="authBox">상품검증
 									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
 								</div>
@@ -290,17 +289,17 @@
 				</div>
 			</div>
 			</c:forEach>		
-		</div>
-		<div class="partner_bnr2 pageBox clearfix">
+		</div> --%>
+		<%--< div class="partner_bnr2 pageBox clearfix">
 			<div class="row1">
 				<div class="col-lg-12 col-md-12 col-sm12 topsub-pagenation text-center">
 					<ul class="pagination">
 					<!-- 페이지 번호 구현 -->
-				    <%-- 이전 그룹에 대한 링크 --%>
+				    이전 그룹에 대한 링크
 				    <c:choose>
-				        <%-- 이전 그룹으로 이동 가능하다면? --%>
+				        이전 그룹으로 이동 가능하다면?
 				        <c:when test="${pageData.prevPage > 0}">
-				            <%-- 이동할 URL 생성 --%>
+				            이동할 URL 생성
 				            <c:url value="/project/find" var="prevPageUrl">
 				                <c:param name="page" value="${pageData.prevPage}" />
 				                <c:param name="keyword" value="${keyword}" />
@@ -312,32 +311,32 @@
 				        </c:otherwise>
 				    </c:choose>
 				    
-				    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+				    페이지 번호 (시작 페이지 부터 끝 페이지까지 반복)
 				    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
-				        <%-- 이동할 URL 생성 --%>
+				        이동할 URL 생성
 				        <c:url value="/project/find" var="pageUrl">
 				            <c:param name="page" value="${i}"/>
 				            <c:param name="keyword" value="${keyword}"/>
 				        </c:url>
 				        
-				        <%-- 페이지 번호 출력 --%>
+				        페이지 번호 출력
 				        <c:choose>
-				            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+				            현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함
 				            <c:when test="${pageData.nowPage == i}">
 				                <li><a class="pageSelect"><strong>${i}</strong></a></li>
 				            </c:when>
-				            <%-- 나머지 페이지의 경우 링크 적용함 --%>
+				            나머지 페이지의 경우 링크 적용함
 				            <c:otherwise>
 				                <li><a href="${pageUrl}">${i}</a></li>
 				            </c:otherwise>
 				        </c:choose>
 				    </c:forEach>
 				    
-				    <%-- 다음 그룹에 대한 링크 --%>
+				    다음 그룹에 대한 링크
 				    <c:choose>
-				        <%-- 다음 그룹으로 이동 가능하다면? --%>
+				        다음 그룹으로 이동 가능하다면?
 				        <c:when test="${pageData.nextPage > 0}">
-				            <%-- 이동할 URL 생성 --%>
+				            이동할 URL 생성
 				            <c:url value="/project/find" var="nextPageUrl">
 				                <c:param name="page" value="${pageData.nextPage}" />
 				                <c:param name="keyword" value="${keyword}" />
@@ -351,9 +350,9 @@
 					</ul>
 				</div>
 			</div>
-		</div>		
-	</div>
-</div>
+		</div> --%>		
+<!-- 	</div>
+</div> -->
 <div class="partner_bnr w-find">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
@@ -388,7 +387,7 @@
 					</div>
 				</div>
 				<div class="partner_list">
-					<span class="check_list upImg">공급자검증</span>
+					<span class="check_list downImg">공급자검증</span>
 					<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="ppmemRname"><label for="ppmemRname"><span>전체</span></label></li>
@@ -400,7 +399,7 @@
 	            	</div>
 	            </div>
 	            <div class="partner_list">
-	            	<span class="check_list upImg">판매자검증</span>
+	            	<span class="check_list downImg">판매자검증</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
@@ -412,7 +411,7 @@
 	            	</div>
 	            </div>
  	            <div class="partner_list">
-	            	<span class="check_list upImg">판매채널</span>
+	            	<span class="check_list downImg">판매채널</span>
 	            	<div class="check_list_box">
 	            		<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projChannel"><label for="projChannel"><span>전체</span></label></li>
@@ -427,32 +426,32 @@
 	            	</div>
 	            </div>
 	            <div class="partner_list">
-	            	<span class="check_list upImg">상품단가</span>
+	            	<span class="check_list downImg">상품단가</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="19999" id="p2"><label for="p2"><span>2만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="49999" id="p3"><label for="p3"><span>5만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p4"><label for="p4"><span>10만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="100000" id="p5"><label for="p5"><span>10만원 이상</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>~1만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="29999" id="p2"><label for="p2"><span>1만원 ~ 3만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p3"><label for="p3"><span>3만원 ~ 10만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="499999" id="p4"><label for="p4"><span>10만원 ~50만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="500000" id="p5"><label for="p5"><span>50만원 이상</span></label></li>
 		            	</ul>
 	            	</div>
 	            </div>
 	            <div class="partner_list">	
-	            	<span class="check_list upImg">판매마진</span>
+	            	<span class="check_list downImg">판매마진</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll"  id="projMargin"><label for="projMargin"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="projMargin" value="10" id="m1"><label for="m1"><span>10%이하</span></label></li>
-		            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11%~20%</span></label></li>
-		            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21%~30%</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11~20%</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21~30%</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
 		            	</ul>
 	            	</div>
 	            </div>
 	            <div class="partner_list">
-	            	<span class="check_list upImg">상품분류</span>
+	            	<span class="check_list downImg">상품분류</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
@@ -476,7 +475,7 @@
 	            	</div>
 	            </div> -->
 	            <div class="partner_list">	
-	            	<span class="check_list upImg">등록지역</span>
+	            	<span class="check_list downImg">등록지역</span>
 					<div class="check_list_box">
 						<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projNation"><label for="projNation"><span>전체</span></label></li>
@@ -594,7 +593,7 @@
 							</div>
 							<div class="clearfix">
 							<c:if test="${output.projPrice != 0}">
-								<div class="infoBox2">단가<span>${output.projPrice}원</span></div>
+								<div class="infoBox2">단가<span><fmt:formatNumber value="${output.projPrice}" type="number"/>원</span></div>
 								<div class="infoBox2">마진<span>${output.projMarginName}</span></div>
 							</c:if>
 							<c:if test="${output.projPrice == 0}">
@@ -990,7 +989,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
         		{{#output}}
         		<div class="contents clearfix proj-link" data-index="{{@key}}">
 					<div class="clearfix">
-						<input type="hidden" id="projId${status.index}" value="{{projId}}">
+						<input type="hidden" id="projId{{@key}}" value="{{projId}}">
 						<div class="leftBox">
 							<img class="photoBox" alt="" src="/upload/{{projThumbnailImg}}">
 							<div class="left-infoBox">

@@ -39,8 +39,7 @@
 	        		<div><a href="${pageContext.request.contextPath}/temp">메인</a></div>
 	        		<div><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></div>
 	        		<div><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></div>
-	        		<div><a href="javascipt:void(0);">커뮤니티</a></div>
-	        		<div><a href="${pageContext.request.contextPath}/usageFee">이용안내</a></div>
+	        		<div><a href="${pageContext.request.contextPath}/board?boardType=1">이용안내</a></div>
 	            </div>
         	</div>
         	<div class="f_top f_top_3">

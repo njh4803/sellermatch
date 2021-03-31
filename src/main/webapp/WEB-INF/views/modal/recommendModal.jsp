@@ -87,10 +87,10 @@
 			<div class="modal-body">
                	<div class="recommendBox clearfix">
                		<div class="recommend">
-               			프로젝트 지원하기
+               			거래 제안하기
                		</div>
                		<div>
-               			<button class="recommend-btn">지원하기</button>
+               			<button class="recommend-btn">제안하기</button>
                		</div>
                	</div>          
 			</div>
@@ -104,7 +104,7 @@ $(document).ready(function() {
 	$(document).on("click", ".recommend-btn", function(){
 		var recommendProj = $("input[name=recommendProj]:checked").val();
 		if (recommendProj == undefined) {
-			swal('알림', '프로젝트를 선택해주세요.', 'warning');
+			swal('알림', '제안할 거래명을 선택해주세요.', 'warning');
 			return;
 		}
 		$.ajax({
@@ -117,12 +117,12 @@ $(document).ready(function() {
 		    },
 	        success: function(json) {
 	      		if (json.result == 1) {
-	      			swal('알림', '이미 지원요청한 프로젝트입니다.', 'success');
+	      			swal('알림', '이미 제안한 거래입니다.', 'success');
 	      			return;
 				}
 				swal({
 	  		          title: '확인',
-	  		          text: '지원요청 하시겠습니까?', 
+	  		          text: '거래제안 하시겠습니까?', 
 	  		          type: "question",
 	  		          showCancelButton: true
 	  		    }).then(function(result) {			
@@ -139,7 +139,7 @@ $(document).ready(function() {
 	  			   	        url: ROOT_URL+"/recommend/project",
 	  			   	        data: data,
 	  		                success: function() {
-	  		                	swal('알림', '지원요청 완료.', 'success');
+	  		                	swal('알림', '거래제안 완료.', 'success');
 	  		                	window.location.href = ROOT_URL+"/seller/detail?profileMemId="+$("#profileMemId").val();
 	  		                }
 	  			      	});

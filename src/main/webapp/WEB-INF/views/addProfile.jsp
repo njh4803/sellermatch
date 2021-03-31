@@ -74,7 +74,7 @@ a {
 }
 .profileTable{
 	border: 2px solid #ccc;
-	width: 700px;
+	width: 750px;
 }
 .profileTable td{
 	border: 2px solid #ccc;
@@ -248,7 +248,7 @@ label.error {
 	    				<tr>
 	    					<td>매출 규모</td>
 	    					<td>
-	    						<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
+	    						<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출" min="0" step="1000000">
 	    					</td>
 	    				</tr>
 	    				<tr>
@@ -256,9 +256,9 @@ label.error {
 	    					<td>
 	    						<select id="profileCareer" name="profileCareer" class="form-control">
                                     <option value="0">경력없음</option>
-                                    <option value="1">1개월 이상</option>
-                                    <option value="3">3개월 이상</option>
-                                    <option value="6">6개월 이상</option>
+                                    <option value="1">1개월 이상~3개월 미만</option>
+                                    <option value="3">3개월 이상~6개월 미만</option>
+                                    <option value="6">6개월 이상~1년 미만</option>
                                     <option value="9">1년 이상</option>
                                 </select>
 	    					</td>
@@ -320,7 +320,7 @@ label.error {
                                     <option value="062">광주</option>
                                     <option value="063">전북</option>
                                     <option value="044">세종특별자치시</option>
-                                    <option value="064">세종특별자치도</option>
+                                    <option value="064">제주특별자치도</option>
                                 </select>
 	    					</td>
 	    				</tr>
@@ -362,24 +362,24 @@ label.error {
 	    					<td>
 		    					<div class="inputForm width-100" style="border: none;">
 		    						<div class="row1">
-	                                	<input type="checkbox" name="profileHashtag" value="다양한 채널운영">
-	                                	<span>다양한 채널운영</span>
+	                                	<input type="checkbox" name="profileHashtag" value="다양한 채널운영" id="profileHashtag1">
+	                                	<label for="profileHashtag1"><span>다양한 채널운영</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileHashtag" value="높은 매출 셀러">
-	                                	<span>높은 매출 셀러</span>
+	                                	<input type="checkbox" name="profileHashtag" value="높은 매출 셀러" id="profileHashtag2">
+	                                	<label for="profileHashtag2"><span>높은 매출 셀러</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileHashtag" value="장기판매경력">
-	                                	<span>장기판매경력</span>
+	                                	<input type="checkbox" name="profileHashtag" value="장기판매경력" id="profileHashtag3">
+	                                	<label for="profileHashtag3"><span>장기판매경력</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileHashtag" value="탁월한 판매능력">
-	                                	<span>탁월한 판매능력</span>
+	                                	<input type="checkbox" name="profileHashtag" value="탁월한 판매능력" id="profileHashtag4">
+	                                	<label for="profileHashtag4"><span>탁월한 판매능력</span></label>
 		                           	</div>
 		                           	<div class="row1">
-	                                	<input type="checkbox" name="profileHashtag" value="다양한 판매분야">
-	                                	<span>다양한 판매분야</span>
+	                                	<input type="checkbox" name="profileHashtag" value="다양한 판매분야" id="profileHashtag5">
+	                                	<label for="profileHashtag5"><span>다양한 판매분야</span></label>
 		                           	</div>
 		                        </div>
 	    					</td>
@@ -409,7 +409,7 @@ $(document).ready(function() {
 		    rules: {
 		        // [프로젝트 제목] 필수
 		        profileIntro: {
-		            required: true, minlength: 5, maxlength: 20, 
+		            required: true, minlength: 5, maxlength: 500, 
 		        },
 		        // [상품분류] 필수
 		        profileIndus: 'required',
@@ -417,16 +417,26 @@ $(document).ready(function() {
 		        profileCh: 'required',
 		     	// [등록자 지역] 필수
 		        profileNation: 'required',
+		        profileBizNum:  {
+		            minlength: 10, maxlength: 10, 
+		        },
+		        profileVolume: {
+		        	min: 10000000
+		        }
 		    },
 		    messages: {
 		        profileIntro: {
 		            required: '프로젝트 제목을 입력해주세요.',
 		            minlength: '제목은 최소 {5}글자 이상 입력하셔야 합니다.',
-		            maxlength: '제목은 최대 {20}글자까지 가능합니다.',
+		            maxlength: '제목은 최대 {500}글자까지 가능합니다.',
 		        },
 		        profileIndus: '상품분류를 선택해주세요.',
 		        profileCh: '채널을 선택해주세요.',
 		        profileNation: '등록자 지역을 선택해주세요.',
+		        profileBizNum: '사업자번호는 10자리입니다.',
+		        profileVolume: {
+		        	min: '최소 1,000,000원부터 입력 가능합니다.'
+		        }
 		    }
 		});
 	});

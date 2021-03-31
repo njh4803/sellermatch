@@ -38,7 +38,7 @@
 					</div>
 					<div class="infoBox">
 						<div class="textBox2"><span>상품단가</span></div>
-						<div class="textRow"><span>${output.projPrice}원</span></div>
+						<div class="textRow"><span><fmt:formatNumber value="${output.projPrice}" type="number"/>원</span></div>
 					</div>
 					<div class="infoBox">
 						<div class="textBox2"><span>등록지역</span></div>
@@ -242,7 +242,7 @@
 						</div>
 						<div class="infoBox">
 							<div class="textBox2"><span>상품단가</span></div>
-							<div class="textRow"><span>${output.projPrice}원</span></div>
+							<div class="textRow"><span><fmt:formatNumber value="${output.projPrice}" type="number"/>원</span></div>
 						</div>
 						<div class="infoBox">
 							<div class="textBox2"><span>판매마진</span></div>
@@ -510,7 +510,7 @@ $(document).ready(function() {
 	  		                success: function() {
 	  		                	swal({
 				  		          title: '완료',
-				  		          text: '확인하러 가기?', 
+				  		          text: '지원 확인하시겠습니까?', 
 				  		          type: "success",
 				  		          width: '400px',
 				  		          showCancelButton: true

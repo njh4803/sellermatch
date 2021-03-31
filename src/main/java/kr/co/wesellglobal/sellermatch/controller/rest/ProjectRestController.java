@@ -92,7 +92,8 @@ public class ProjectRestController {
 		input.setProjDetail(projDetail);
 		input.setProjRequire(projRequire);
 		input.setProjKeyword(projKeyword);
-		input.setProjProdCerti(projProdCerti);
+		input.setProjProdCerti("0");
+		input.setProjProfit("0");
 		input.setProjState(projState);
 		input.setProjChannel(projChannel);
 		if (projPrice == null) {

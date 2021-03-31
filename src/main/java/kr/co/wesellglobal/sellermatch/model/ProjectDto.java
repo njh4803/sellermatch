@@ -230,10 +230,10 @@ public class ProjectDto {
 			return this.projMarginName = "10% 미만";
 		}
 		if (this.projMargin == 20) {
-			return this.projMarginName = "11% ~ 20%";
+			return this.projMarginName = "11 ~ 20%";
 		}
 		if (this.projMargin == 30) {
-			return this.projMarginName = "21% ~ 30%";
+			return this.projMarginName = "21 ~ 30%";
 		}
 		if (this.projMargin == 31) {
 			return this.projMarginName = "30% 초과";
@@ -291,7 +291,7 @@ public class ProjectDto {
 			return this.projNationName = "세종특별자치시";
 		}
 		if (this.projNation.equals("064")) {
-			return this.projNationName = "세종특별자치도";
+			return this.projNationName = "제주특별자치도";
 		}
 		return this.projNationName = "해외";
 	}

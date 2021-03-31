@@ -130,6 +130,8 @@ public class ProfileDto {
 	private String[] profileIndusArr;
 	private int[] profileChannelArr;
 	private String[] profileBizSortArr;
+	private String[] profileCareerArr;
+	private String[] profileVolumeArr;
 	 
 	 public static int getOffset() {
 			return offset;
@@ -263,7 +265,7 @@ public class ProfileDto {
 			return this.profileNationName = "세종특별자치시";
 		}
 		if (this.profileNation.equals("064")) {
-			return this.profileNationName = "세종특별자치도";
+			return this.profileNationName = "제주특별자치도";
 		}
 		 return this.profileNationName = "해외";
 	 }

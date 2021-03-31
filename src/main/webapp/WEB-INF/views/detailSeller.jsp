@@ -140,14 +140,14 @@
 			<input type="hidden" id="profileMemId" value="${output.profileMemId}">
 			<div class="container2">
 				<c:choose>
-					<c:when test="${output.profilePhoto == 'null'}">
+					<c:when test="${output.profilePhoto == null}">
 						<div class="profileImgBox">
 							<img class="profileImg"  src="${pageContext.request.contextPath}/assets/img/profile.png">
 						</div>
 					</c:when>
 					<c:otherwise>
 						<div class="profileImgBox">
-							<img class="profileImg"  src="upload/${output.profilePhoto}">
+							<img class="profileImg"  src="/upload/${output.profilePhoto}">
 						</div>
 					</c:otherwise>	
 				</c:choose>
@@ -226,7 +226,7 @@
 						스크랩
 					</button> -->
 					<button class="match" id="applyBtn">
-						<img class="applyImg" alt="" src="${pageContext.request.contextPath}/assets/img/applying.png">지원하기
+						<img class="applyImg" alt="" src="${pageContext.request.contextPath}/assets/img/applying.png">제안하기
 					</button>
 					<button class="share" id="shareBtn">
 						<img class="shareImg" alt="" src="${pageContext.request.contextPath}/assets/img/share.png">공유하기
@@ -369,7 +369,7 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/x-handlebars-template" id="recommend-tmpl">
-<div class="recommendText">지원요청 할 프로젝트를 선택해주세요.</div>
+<div class="recommendText">거래 제안하기</div>
 {{#projectList}}
 <div class="radioBox">
 	<input type="radio" name="recommendProj" value="{{projId}}">
