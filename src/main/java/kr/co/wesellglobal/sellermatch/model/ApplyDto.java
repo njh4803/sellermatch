@@ -38,6 +38,12 @@ public class ApplyDto {
 	
 	// 지원자 프로필사진
 	private String profilePhoto;
+	//매출규모
+	private Integer profileVolume;
+	//판매경력
+	private String profileCareer;
+	
+	private String memTel;
 	
 	// 해시태그 해시태그(검색 키워드) 구분자(,)
     private String profileHashtag;

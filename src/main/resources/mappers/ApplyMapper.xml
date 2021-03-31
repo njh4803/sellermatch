@@ -19,6 +19,9 @@
         <result property="applyMemNick" column="apply_mem_nick" />
         <result property="profilePhoto" column="profile_photo" />
         <result property="profileHashtag" column="Profile_hashtag" />
+        <result property="profileVolume" column="Profile_volume" />
+        <result property="profileCareer" column="Profile_career" />
+        <result property="memTel" column="Mem_tel" />
         <!--  -->
         <result property="projId"   column="proj_id" />
         <result property="projTitle"   column="proj_title" />
@@ -49,38 +52,41 @@
     <select id="selectList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
     	resultMap="applyMap">
-    	SELECT 
-	   		apply_idx, apply_id, apply_proj_id, apply_mem_id, apply_reg_date, 
-	   		apply_Profile, apply_type, apply_proj_state, profile_photo, Profile_hashtag, 
+		SELECT 
+	   		apply_idx, 
+	   		apply_id, 
+	   		apply_proj_id, 
+	   		apply_mem_id,
+	   		date_format(apply_reg_date, '%Y-%m-%d') AS apply_reg_date,
+	   		apply_Profile, 
+	   		apply_type, 
+	   		apply_proj_state, 
+	   		profile_photo, 
+	   		Profile_hashtag, 
 	   		(SELECT mem_nick FROM MemList where mem_id = (SELECT proj_mem_id FROM ProjectList where proj_id = apply_proj_id)) as mem_nick,
 	   		(SELECT mem_nick FROM MemList where mem_id = apply_mem_id) as apply_mem_nick,    
-	   		proj_id, proj_title, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit, 
+	   		proj_id, 
+	   		proj_title, 
+	   		proj_state,
+	   		date_format(proj_reg_date, '%Y-%m-%d') AS proj_reg_date,
+	   		proj_hit,
+	   		Profile_volume,
+	   		Mem_tel,
+	   		(SELECT CMMN_CODE_VALUE_KO_NM FROM TB_CMMN_CODE WHERE CMMN_CODE_TY='A10' AND CMMN_CODE_VALUE=pf.Profile_career) AS Profile_career,
 	   		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
 	   		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 
 	   		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
-    	FROM ApplyList a
-		INNER JOIN ProjectList p
-		ON p.proj_id = a.Apply_proj_id
-        INNER JOIN MemList m
-		ON a.apply_mem_id = m.mem_id
-        INNER JOIN ProfileList pf
-		ON a.apply_mem_id = pf.profile_mem_id
-		<where>
-			<if test="applyMemId != '' and applyMemId != null">
-		    	AND apply_mem_id = #{applyMemId}
-		    </if>
-			<if test="applyProjId != '' and applyProjId != null">
-		    	AND apply_proj_id = #{applyProjId}
-		    </if>
-			<if test="applyType != '' and applyType != null">
-		    	AND apply_type = #{applyType}
-		    </if>
-		    <if test="applyProjState != '' and applyProjState != null">
-		    	AND apply_proj_state = #{applyProjState}
-		    </if>
-		</where>
+    	FROM ApplyList a, ProjectList p, MemList m, ProfileList pf
+		WHERE 1=1
+		AND apply_mem_id = IFNULL(#{applyMemId},apply_mem_id)
+		AND apply_proj_id = IFNULL(#{applyProjId},apply_proj_id)
+		AND apply_type = IFNULL(#{applyType},apply_type)
+		AND apply_proj_state = IFNULL(#{applyProjState},apply_proj_state)
+		AND p.proj_id = a.Apply_proj_id
+		AND a.apply_mem_id = m.mem_id
+		AND a.apply_mem_id = pf.profile_mem_id
 		ORDER BY proj_reg_date DESC
     </select>
     
@@ -108,8 +114,12 @@
     <select id="reduplicationCheck"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
     	resultType="int">
-    	SELECT COUNT(*) FROM ApplyList WHERE apply_mem_id = #{applyMemId}
-    	AND apply_proj_id = #{applyProjId} AND apply_type = #{applyType}
+    	SELECT 
+    		COUNT(*) 
+    	FROM ApplyList 
+    	WHERE apply_mem_id = #{applyMemId}
+    	AND apply_proj_id = #{applyProjId} 
+    	AND apply_type = #{applyType}
     </select>
 
 </mapper>

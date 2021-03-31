@@ -492,32 +492,10 @@ public class MemberRestController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		data.put("output", output);
 		data.put("output2", output2);
 		data.put("memSort", member.getMemSort());
-		
-		return webHelper.getJsonData(data);
-	}
-	
-	@RequestMapping(value = "/member/mypage/apply", method = RequestMethod.GET)
-	public Map<String, Object> applyList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
-			@RequestParam(value = "applyProjId", required = false)String applyProjId) {
-		
-		ApplyDto input = new ApplyDto();
-		input.setApplyProjId(applyProjId);
-		
-		List<ApplyDto> output = null;
-		
-		Map<String, Object> data = new HashMap<String, Object>();
-		
-		try {
-			output = applyService.getApplyList(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		data.put("output", output);
 		
 		return webHelper.getJsonData(data);
 	}

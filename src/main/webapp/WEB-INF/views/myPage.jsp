@@ -79,7 +79,6 @@
 					<div class="myBox3 clearfix">
 						<div class="textBox1">
 							<div class="myBox-row">
-								<img class="authImg" alt="" src="${pageContext.request.contextPath}/local_assets/img/auth01.png">
 								간단한 인증 한번으로<br>
 								경쟁력을 높여보세요!
 							</div>

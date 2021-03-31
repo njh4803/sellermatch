@@ -38,10 +38,21 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
     	resultMap="boardMap">
     	SELECT 
-	   		b.board_idx, b.board_id, b.board_title, b.board_contents, b.board_writer, b.board_type, b.board_qa_type, b.board_email, b.board_hit, 
-	   		b.board_file, date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		b.board_idx, 
+	   		b.board_id, 
+	   		b.board_title, 
+	   		b.board_contents, 
+	   		b.board_writer, 
+	   		b.board_type, 
+	   		b.board_qa_type, 
+	   		b.board_email, 
+	   		b.board_hit, 
+	   		b.board_file, 
+	   		date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, 
+	   		b.board_edit_date, 
+	   		(SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
 	   		FROM BoardList b
-	   	WHERE b.board_Notice_Top != '1'
+	   	WHERE b.board_Notice_Top IS NULL
 			<if test="boardType != null and boardType != ''">
 				<if test="boardType == 1 ">
 					AND board_type IN ('1','2')
@@ -54,9 +65,7 @@
     			AND board_qa_type = #{boardQaType}
     		</if>
     	ORDER BY board_reg_date DESC
-    	<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
-		</if>
     </select>
     
         <select id="selectListNoticeTop"
@@ -101,7 +110,7 @@
 		resultType="int">
 		SELECT COUNT(*)
 		FROM BoardList
-		WHERE board_Notice_Top != '1'
+		WHERE board_Notice_Top IS NULL
 			<if test="boardType != null and boardType != ''">
     			<if test ="boardType == 1 ">
 					AND board_type in ('1','2')

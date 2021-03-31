@@ -94,28 +94,28 @@ font-family: NanumGothic !important;
 
 .myProjBox {
 	margin-top: 15px;
-	margin-bottom: 27px;
+	margin-bottom: 15px;
 	height: 80px;
 	border-radius: 5px;
-  border: solid 1px #cccccc;
+    border: solid 1px #cccccc;
+    padding: 14px 0 14px 0;
+    background-color: #ffffff;
 }
 
 .myProjBox2 {
 	display: inline-block;
-	height: 60px;
+	height: 50px;
 	width: 100%;
 }
 
 .proj-type {
+	vertical-align: middle;
 	display: table-cell;
 	width: 256px;
-	height: 80px;
-	padding: 7px 0;
-	border-top: solid 1px #cccccc;
-	border-bottom: solid 1px #cccccc;
+	height: 50px;
 	background-color: #ffffff;
+	border-right: solid 1px #cccccc;
 }
-
 .proj-type .textBox1 {
  font-family: NanumGothic !important;
   font-size: 20px;
@@ -127,10 +127,16 @@ font-family: NanumGothic !important;
 color: #484848;
 background-color: #ffffff;
   /* color: #ff570e; */
-	margin-top: 10px;
 }
 
-.proj-type .textBox1 button {
+.proj-type .textBox1 button  {
+	font-family: NanumGothic !important;
+	font-size: 20px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
 	background-color: #ffffff;
 }
 
@@ -150,30 +156,36 @@ background-color: #ffffff;
 	display: table-cell;
 	padding: 9px 0;
 	background-color: #fff6f2;
-	font-size: 15px;
-	font-weight: bold;
-	font-stretch: normal;
-	font-style: normal;
-	text-align: center;
-	color: #484848;
 	margin-top: 15px;
 	border-top: solid 1px #cccccc;
 	border-bottom: solid 1px #cccccc;
 	height: 38px;
+	
+	font-family: NanumGothic !important;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
 }
 
 .myProject-table .td {
 	display: table-cell;
 	padding: 4px 0;
 	background-color: #ffffff;
-	font-size: 15px;
+	height: 38px;
+	border-bottom: solid 1px #cccccc;
+	
+	font-family: NanumGothic !important;
+	font-size: 16px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
+	letter-spacing: normal;
 	text-align: center;
 	color: #484848;
-	height: 38px;
-	border-bottom: solid 1px #cccccc;
 }
 
 .myProject-table .td button {
@@ -203,7 +215,7 @@ background-color: #ffffff;
 }
 
 .myProject-table .th:nth-child(2), .myProject-table .td:nth-child(2) {
-	width: 730px;
+	width: 550px;
 }
 
 .myProject-table .th:nth-child(3), .myProject-table .td:nth-child(3) {
@@ -211,15 +223,15 @@ background-color: #ffffff;
 }
 
 .myProject-table .th:nth-child(4), .myProject-table .td:nth-child(4) {
-	width: 140px;
+	width: 160px;
 }
 
 .myProject-table .th:nth-child(5), .myProject-table .td:nth-child(5) {
-	width: 130px;
+	width: 160px;
 }
 
 .myProject-table .th:nth-child(6), .myProject-table .td:nth-child(6) {
-	width: 100px;
+	width: 140px;
 }
 
 .apply-table .th:nth-child(1), .apply-table .td:nth-child(1) {
@@ -229,7 +241,7 @@ background-color: #ffffff;
 
 .apply-table .th:nth-child(2), .apply-table .td:nth-child(2) {
 	display: table-cell;
-	width: 730px;
+	width: 550px;
 }
 
 .apply-table .th:nth-child(3), .apply-table .td:nth-child(3) {
@@ -239,17 +251,17 @@ background-color: #ffffff;
 
 .apply-table .th:nth-child(4), .apply-table .td:nth-child(4) {
 	display: table-cell;
-	width: 140px;
+	width: 160px;
 }
 
 .apply-table .th:nth-child(5), .apply-table .td:nth-child(5) {
 	display: table-cell;
-	width: 130px;
+	width: 160px;
 }
 
 .apply-table .th:nth-child(6), .apply-table .td:nth-child(6) {
 	display: table-cell;
-	width: 100px;
+	width: 140px;
 }
 
 .myProject-table .project-title {
@@ -262,4 +274,49 @@ background-color: #ffffff;
 	position: absolute;
 	left: 324px;
 	top: 620px;
+}
+#projAddCount {
+  color: #ff570e;
+}
+.projAddCountText {
+  color: #ff570e;
+}
+
+#applyList .th:nth-child(1), #applyList .td:nth-child(1) {
+	background-color: #fff6f2;
+}
+#applyList .th:nth-child(2), #applyList .td:nth-child(2) {
+	background-color: #ffede5;
+}
+#applyList .th:nth-child(3), #applyList .td:nth-child(3) {
+	background-color: #fff6f2;
+}
+#applyList .th:nth-child(4), #applyList .td:nth-child(4) {
+	background-color: #ffede5;
+}
+#applyList .th:nth-child(5), #applyList .td:nth-child(5) {
+	background-color: #fff6f2;
+}
+#applyList .th:nth-child(6), #applyList .td:nth-child(6) {
+	background-color: #ffede5;
+}
+#applyList .tr .th  {
+	font-family: NanumGothic !important;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
+}
+#applyList .tr .td  {
+  font-family: NanumGothic !important;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #484848;
 }

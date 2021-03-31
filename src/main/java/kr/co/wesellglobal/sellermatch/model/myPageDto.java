@@ -4,7 +4,7 @@ import lombok.Data;
 
 //프로젝트리스트 
 @Data
-public class ProjectDto {
+public class myPageDto {
 
 	// 자동번호 
 	private int projIdx;
@@ -92,6 +92,8 @@ public class ProjectDto {
 	// 회원이름
 	private String memName;
 	private String memNick;
+	private String memSort;
+	private String profileMemId;
 	private String profileIntro;
 	private String profilePhoto;
 	
@@ -101,6 +103,8 @@ public class ProjectDto {
 	private int projAddCount;
 	// 프로젝트 제안 수 (제안받거나 제안한 수)
 	private int recommendCount;
+	//지원 수
+	private int appliedCount;
 	// 승인 수
 	private int okeyCount;
 	
@@ -156,13 +160,13 @@ public class ProjectDto {
 		return offset;
 	}
 	public static void setOffset(int offset) {
-		ProjectDto.offset = offset;
+		myPageDto.offset = offset;
 	}
 	public static int getListCount() {
 		return listCount;
 	}
 	public static void setListCount(int listCount) {
-		ProjectDto.listCount = listCount;
+		myPageDto.listCount = listCount;
 	}
 		 
 	public String[] getProjDetailImgList() {
@@ -175,20 +179,6 @@ public class ProjectDto {
 	
 	public String getProjIndusName() {
 		return projIndusName;
-	}
-	
-	public String getProjSortName() {
-		if (this.projSort.equals("0")) {
-			return this.projSortName = "일반";
-		}else if (this.projSort.equals("1")) {
-			return this.projSortName = "공급자";
-		}else if (this.projSort.equals("2")) {
-			return this.projSortName = "판매자";
-		}else if (this.projSort.equals("3")) {
-			return this.projSortName = "관리자";
-		}else {
-			return this.projSortName = "";
-		}
 	}
 	
 	public String getProjSupplyTypeName() {
@@ -223,90 +213,6 @@ public class ProjectDto {
 		return "";
 	}
 	
-	public String getProjMarginName() {
-		if (this.projMargin == 10) {
-			return this.projMarginName = "10% 미만";
-		}
-		if (this.projMargin == 20) {
-			return this.projMarginName = "11 ~ 20%";
-		}
-		if (this.projMargin == 30) {
-			return this.projMarginName = "21 ~ 30%";
-		}
-		if (this.projMargin == 31) {
-			return this.projMarginName = "30% 초과";
-		}
-		return this.projMarginName = "";
-	}
-	
-	public String getProjNationName() {
-		if (this.projNation.equals("02")) {
-			return this.projNationName = "서울";
-		}
-		if (this.projNation.equals("031")) {
-			return this.projNationName = "경기";
-		}
-		if (this.projNation.equals("032")) {
-			return this.projNationName = "인천";
-		}
-		if (this.projNation.equals("033")) {
-			return this.projNationName = "강원";
-		}
-		if (this.projNation.equals("041")) {
-			return this.projNationName = "충남";
-		}
-		if (this.projNation.equals("042")) {
-			return this.projNationName = "대전";
-		}
-		if (this.projNation.equals("043")) {
-			return this.projNationName = "충북";
-		}
-		if (this.projNation.equals("051")) {
-			return this.projNationName = "부산";
-		}
-		if (this.projNation.equals("052")) {
-			return this.projNationName = "울산";
-		}
-		if (this.projNation.equals("053")) {
-			return this.projNationName = "대구";
-		}
-		if (this.projNation.equals("054")) {
-			return this.projNationName = "경북";
-		}
-		if (this.projNation.equals("055")) {
-			return this.projNationName = "경남";
-		}
-		if (this.projNation.equals("061")) {
-			return this.projNationName = "전남";
-		}
-		if (this.projNation.equals("062")) {
-			return this.projNationName = "광주";
-		}
-		if (this.projNation.equals("063")) {
-			return this.projNationName = "전북";
-		}
-		if (this.projNation.equals("044")) {
-			return this.projNationName = "세종특별자치시";
-		}
-		if (this.projNation.equals("064")) {
-			return this.projNationName = "제주특별자치도";
-		}
-		return this.projNationName = "해외";
-	}
-	
-	public String getProjProdCertiName() {
-		if (this.projProdCerti == null) {
-			 return "미검증";
-		 }
-		 if (this.projProdCerti.equals("0")) {
-			 return "미검증";
-		 }
-		 if (this.projProdCerti.equals("1")) {
-			 return "검증";
-		 }
-		 return "";
-	 }
-	
 	public String[] getProjKeywordList() {
 		if (this.projKeyword == null) {
 			return this.projKeywordList;
@@ -315,32 +221,4 @@ public class ProjectDto {
 		return this.projKeywordList;
 	}
 	
-	public String[] getProjChannelList() {
-		this.projChannelList = this.projChannel.split(",");
-		for (int i = 0; i < this.projChannelList.length; i++) {
-			if (this.projChannelList[i].equals("1")) {
-				this.projChannelList[i] = "오픈마켓";
-			}
-			if (this.projChannelList[i].equals("2")) {
-				this.projChannelList[i] = "종합몰";
-			}
-			if (this.projChannelList[i].equals("3")) {
-				this.projChannelList[i] = "폐쇄몰";
-			}
-			if (this.projChannelList[i].equals("4")) {
-				this.projChannelList[i] = "커뮤니티";
-			}
-			if (this.projChannelList[i].equals("5")) {
-				this.projChannelList[i] = "SNS";
-			}
-			if (this.projChannelList[i].equals("6")) {
-				this.projChannelList[i] = "오프라인";
-			}
-			if (this.projChannelList[i].equals("7")) {
-				this.projChannelList[i] = "해외";
-			}
-		}
-		
-		return this.projChannelList;
-	}
 }

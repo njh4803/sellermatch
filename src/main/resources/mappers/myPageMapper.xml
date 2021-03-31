@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myPageMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="myPageMap"
+        type="kr.co.wesellglobal.sellermatch.model.myPageDto">
+        <result property="projIdx"   column="proj_idx" />
+        <result property="projId"   column="proj_id" />
+        <result property="projMemId"   column="proj_mem_id" />
+        <result property="projTitle"   column="proj_title" />
+        <result property="projSort"   column="proj_sort" />
+        <result property="projSortName"   column="proj_sort_name" />
+        <result property="projIndus" column="proj_indus" />
+        <result property="projPrice" column="proj_price" />
+        <result property="projMargin" column="proj_margin" />
+        <result property="projMarginName" column="proj_margin_name" />
+        <result property="projNation" column="proj_nation" />
+        <result property="projNationName" column="proj_nation_name" />
+        <result property="projSupplyType" column="proj_supply_type" />
+        <result property="projRecruitNum" column="proj_recruit_num" />
+        <result property="projDetail" column="proj_detail" />
+        <result property="projDetailImg" column="proj_detail_img" />
+        <result property="projRequire" column="proj_require" />
+        <result property="projKeyword" column="proj_keyword" />
+        <result property="projFile" column="proj_file" />
+        <result property="projThumbnailImg" column="proj_thumbnail_img" />
+        <result property="projProdCerti" column="proj_prod_certi" />
+        <result property="projState" column="proj_state" />
+        <result property="projRegDate" column="proj_reg_date" />
+        <result property="projEndDate" column="proj_end_date" />
+        <result property="projDday" column="proj_Day" />
+        <result property="projEditDate" column="proj_edit_date" />
+        <result property="projIndusName" column="proj_indus_name" />
+        <result property="projHit" column="proj_hit" />
+        <result property="projChannel" column="proj_channel" />
+        <result property="applyCount" column="apply_count" />
+        <result property="profileBizCerti" column="profile_biz_certi" />
+        <result property="sellerChChk" column="profile_ch_chk" />
+        <result property="sellerSaleChk" column="profile_sale_chk" />
+        <result property="memRname" column="mem_rname" />
+        <result property="projProfit" column="proj_profit" />
+        <result property="projProfitChkDate" column="proj_profit_chk_date" />
+        <result property="projXxx" column="proj_XXX" />
+        <!--  -->
+        <result property="memNick" column="mem_nick" />
+        <result property="applyMemNick" column="apply_mem_nick" />
+        <result property="memName" column="mem_name" />
+        <result property="profileIntro" column="profile_intro" />
+        <result property="profilePhoto" column="profile_photo" />
+        <result property="projAddCount" column="proj_add_count" />
+        <result property="contractCount" column="contract_count" />
+        <result property="recommendCount" column="recommend_count" />
+        <result property="myApplyCount" column="my_apply_count" />
+        <result property="okeyCount" column="okey_count" />
+        <result property="orginName" column="orgin_name" />
+        
+        <result property="profileMemId" column="profile_mem_id" />
+        <result property="memSort" column="mem_sort" />
+        <result property="projAddCount" column="proj_add_count" />
+        <result property="appliedCount" column="applied_count" />
+    </resultMap>
+
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultMap="myPageMap">
+    	SELECT distinct
+    		proj_idx, 
+    		proj_id, 
+    		proj_mem_id, 
+    		proj_title, 
+    		proj_recruit_num, 
+    		proj_state,
+    		proj_recruit_num,
+    		proj_sort,
+    		proj_nation,
+    		proj_supply_type,
+    		date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, 
+    		proj_hit,
+    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
+    		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
+    		proj_profit, 
+    		proj_profit_chk_date,
+    		proj_channel, 
+    		profile_biz_certi, 
+    		mem_nick, 
+    		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count, 
+    		(SELECT COUNT(*) FROM ProjectList WHERE Proj_mem_id = Profile_mem_id) as proj_add_count, 
+    		(SELECT COUNT(*) FROM ApplyList WHERE Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
+    		(SELECT COUNT(*) FROM ApplyList WHERE Apply_mem_id = Profile_mem_id and apply_proj_state = 4) as okey_count,
+    		(SELECT COUNT(*) FROM ApplyList WHERE Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
+    		(SELECT COUNT(1) FROM ApplyList WHERE Apply_mem_id = Profile_mem_id and apply_proj_state = 2) as my_apply_count
+    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
+		WHERE 1=1
+		AND p.proj_indus = i.indus_id
+		AND p.proj_mem_id = m.mem_id
+		AND p.proj_mem_id = pf.profile_mem_id
+		AND p.proj_mem_id = #{projMemId}
+	</select>
+	<select id="selectpRegistedProjectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultMap="myPageMap">
+    	SELECT distinct
+    		proj_idx, 
+    		proj_id, 
+    		date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, 
+    		proj_title, 
+    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
+    		proj_recruit_num, 
+    		proj_state,
+    		proj_sort,
+    		proj_nation,
+    		proj_supply_type,
+    		proj_hit,
+    		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
+    		proj_channel,
+    		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count
+    	FROM ProjectList p, MemList m, ProfileList pf
+		WHERE 1=1
+		AND p.proj_mem_id = m.mem_id
+		AND p.proj_mem_id = pf.profile_mem_id
+		AND p.proj_mem_id = #{projMemId}
+	</select>
+	<select id="selectpMyProjectCount"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultMap="myPageMap">
+		SELECT 
+			profile_mem_id,
+			mem_sort,
+			(SELECT COUNT(1) FROM ProjectList WHERE Proj_mem_id=Profile_mem_id)  AS proj_add_count,
+			(SELECT COUNT(1) FROM ApplyList WHERE Apply_mem_id =Profile_mem_id) AS applied_count,
+			(SELECT COUNT(1) FROM ApplyList A, ProjectList B WHERE 1=1 AND A.Apply_type = Mem_sort AND A.Apply_proj_id =B.Proj_id AND B.Proj_mem_id =Profile_mem_id) AS recommend_count
+		FROM ProfileList A, MemList B
+		WHERE 1=1
+		AND A.Profile_mem_id =B.Mem_id 
+		AND A.Profile_mem_id = #{projMemId}
+	</select>
+	
+</mapper>
