@@ -25,7 +25,7 @@
 			    		<table class="projTable">
 			    			<tbody>
 			    				<tr>
-			    					<td>썸네일 사진
+			    					<td>대표 이미지
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">'거래처 찾기' 리스트에 보여질 썸네일용 이미지입니다.</div>
 			    					</td>
@@ -46,7 +46,7 @@
 		   							</td>
 			    				</tr>
 			    				<tr>
-			    					<td>프로젝트 제목
+			    					<td>찾기 제목
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">찾고자 하는 공급자 또는 판매자와 관련한 제목을 넣는 곳입니다.</div>			    					
 			    					</td>
@@ -82,7 +82,7 @@
 									</c:if>
 			    				</tr>
 			    				<tr>
-			    					<td>상품분류</td>
+			    					<td>상품 분류</td>
 			    					<td>
 			    						<select id="projIndus" name="projIndus" class="inputForm width-100">
 		                                    <option value="">선택하세요.</option>
@@ -94,7 +94,7 @@
 			    				</tr>
 								<c:if test="${member.memSort == 1}">
 			    				<tr>
-			    					<td>상품단가
+			    					<td>상품 단가
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">제품의 최종 판매가격(소비자가격)을 말합니다.</div>				    					
 			    					</td>
@@ -104,7 +104,7 @@
 			    				</tr>
 								</c:if>
 			    				<tr>
-			    					<td>판매마진
+			    					<td>판매 마진
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">판매를 했을 때 남는 수익금액을 말합니다.</div>				    					
 			    					</td>
@@ -119,7 +119,7 @@
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>등록지역
+			    					<td>등록 지역
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">이 글을 쓰고 있는 분(판매자 또는 공급자)이 거주하는 곳의 지역을 말합니다.</div>					    					
 			    					</td>
@@ -147,7 +147,7 @@
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>공급방법
+			    					<td>공급 방법
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">공급업체에서 공급하는 방식에 대한 것입니다.</div>				    					
 			    					</td>
@@ -207,19 +207,19 @@
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>모집마감일</td>
+			    					<td>모집 마감일</td>
 			    					<td>
 			    						<input type="date" name="projEndDate" id="projEndDate" class="inputForm width-100">
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>모집인원</td>
+			    					<td>모집 인원</td>
 			    					<td>
 			    						<input type="number" name="projRecruitNum" id="projRecruitNum" class="inputForm width-100" min="1" max="100" value="1"/>
 			    					</td>
 			    				</tr>
 			    				<tr>
-			    					<td>상세설명
+			    					<td>상세 설명
 										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">거래 상대방에게 전달할 내용을 입력하는 곳입니다. 회사명이나 연락처 정보를 남기시면 이용에 제재를 받을 수 있습니다.</div>				    					
 			    					</td>
@@ -230,7 +230,7 @@
 				   					</td>
 				   				</tr>
 				   				<tr>
-				   					<td>필수요건
+				   					<td>필수 조건
 										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 					    				<div class="questionBox">거래 상대방이 필수로 지켜야 하는 내용을 입력하는 곳입니다.</div>		   					
 				   					</td>
@@ -261,7 +261,7 @@
 				   					</td>
 				   				</tr>
 				   				<tr>
-				   					<td>해시태그
+				   					<td>태그
 										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 					    				<div class="questionBox">태그는 거래처 찾기를 등록하는 이가 강조하고 싶은 것을 자유롭게 작성하는 곳입니다. 판매자/공급자가 선호하는 태그를 선택해서 입력할수도 있습니다.</div>				   					
 				   					</td>

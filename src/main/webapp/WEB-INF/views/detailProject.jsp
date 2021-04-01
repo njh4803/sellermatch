@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/detailProject.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/share.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr m-detail">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
@@ -377,7 +378,7 @@
 	       		<div class="btnBox">좋아요
 	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/like.png">
 	       		</div> --%>
-	       		<div class="btnBox">
+	       		<div class="btnBox shareBtn">
 	       			<img class="shareImg" alt="" src="${pageContext.request.contextPath}/assets/img/share.png">공유하기
 	       		</div>    		
        		</div>
@@ -528,5 +529,6 @@ $(document).ready(function() {
 	})
 });
 </script>
+<script src="${pageContext.request.contextPath}/assets/js/share.js"></script>
     </body>
 </html>

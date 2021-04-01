@@ -4,6 +4,7 @@
 <%@ include file="inc/header.jsp"%>
 <%@ include file="modal/recommendModal.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/detailSeller.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/share.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr m-detail">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
@@ -228,7 +229,7 @@
 					<button class="match" id="applyBtn">
 						<img class="applyImg" alt="" src="${pageContext.request.contextPath}/assets/img/applying.png">제안하기
 					</button>
-					<button class="share" id="shareBtn">
+					<button class="share shareBtn" id="shareBtn">
 						<img class="shareImg" alt="" src="${pageContext.request.contextPath}/assets/img/share.png">공유하기
 					</button>
 				</div>
@@ -377,5 +378,6 @@ $(document).ready(function() {
 </div>
 {{/projectList}}
 </script>
+<script src="${pageContext.request.contextPath}/assets/js/share.js"></script>
     </body>
 </html>

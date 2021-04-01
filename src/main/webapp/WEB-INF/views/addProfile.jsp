@@ -421,7 +421,7 @@ $(document).ready(function() {
 		            minlength: 10, maxlength: 10, 
 		        },
 		        profileVolume: {
-		        	min: 10000000
+		        	min: 1000000
 		        }
 		    },
 		    messages: {

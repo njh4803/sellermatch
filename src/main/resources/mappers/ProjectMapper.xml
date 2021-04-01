@@ -223,7 +223,7 @@
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
 	            <foreach collection="projChannelArr" item="item" index="index">
-	            	 AND proj_channel Like concat('%', #{item}, '%')
+	            	 OR proj_channel Like concat('%', #{item}, '%')
 	            </foreach>
         	</if>
         	
@@ -403,7 +403,7 @@
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
 	            <foreach collection="projChannelArr" item="item" index="index">
-	            	 AND proj_channel Like concat('%', #{item}, '%')
+	            	 OR proj_channel Like concat('%', #{item}, '%')
 	            </foreach>
         	</if>
         	

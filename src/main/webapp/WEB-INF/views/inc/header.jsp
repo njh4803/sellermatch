@@ -313,4 +313,84 @@ $(function(){
     <c:if test= "${failLogin != null}">
     alert('${failLogin}');
     </c:if>
+</script>
+<script type="text/x-handlebars-template" id="sns-link-tmpl">
+	<div class="SNSouterbox">
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="window.open(url_combine_naver, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-naver.png" title="네이버로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">네이버</span>
+			</div>
+		</div>
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="window.open(url_combine_line, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-line.png" title="라인으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">라인</span>
+			</div>
+		</div>
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="javascript:sendLinkKakao();">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-kakao.png" title="카카톡으로 공유하기" id="kakao-link-btn" class="sharebtn_custom kakao-link-btn" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">카카오톡</span>
+			</div>
+		</div>
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="javascript:sendLinkKakaoStory();" return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-kakaostory.png" title="카카오스토리로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">카카오스토리</span>
+			</div>
+		</div>
+	</div>
+	<div class="SNSouterbox">
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="window.open(url_combine_band, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-line.png" title="밴드로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">Band</span>
+			</div>
+		</div>
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="window.open(url_combine_fb, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-facebook.png" title="페이스북으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">Facebook</span>
+			</div>
+		</div>
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="window.open(url_combine_tw, '', 'scrollbars=no, width=600, height=600'); return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-twitter.png" title="트위터로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">Twitter</span>
+			</div>
+		</div>
+		<div class="SNSinnerbox">
+			<div>
+			<a href="" onclick="" return false;">
+			<img src="${pageContext.request.contextPath}/assets/img/sns-share-instagram.png" title="인스타그램으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
+			</div>
+			<div class="SNSinnerTextbox">
+			<span style="display: inline-block">Instagram</span>
+			</div>
+		</div>
+		<input id="swal-input1" class="swal2-input" read-only>
+		<input type="submit" value="복사" class="SNScopyBtn btn btn-default">
+	</div>
 </script>    
