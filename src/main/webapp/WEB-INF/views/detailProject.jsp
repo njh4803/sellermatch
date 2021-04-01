@@ -304,7 +304,7 @@
 				</div>
 				<div class="detailBox3"><span>상세설명</span>
 					<div class="textBox1">
-						${output.projDetail}
+						<p>${output.projDetail}</p>
 						<c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
 							<div class="detailImgBox">
 								<img alt="" src="${pageContext.request.contextPath}/upload?name=${projDetailImgList}">
@@ -416,7 +416,14 @@
 				<c:when test="${output.applyCount > 0}">
 					<c:forEach var="applyDto" items="${applyDto}">
 					<div class="applyBox">
-						<img class="miniImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+						<c:choose>
+							<c:when test="${applyDto.profilePhoto != null}">
+								<img class="miniImgBox"  src="${pageContext.request.contextPath}/upload/${applyDto.profilePhoto}">
+							</c:when>
+							<c:otherwise>
+								<img class="miniImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
+							</c:otherwise>
+						</c:choose>
 						<div class="applyNick">
 							<div>${applyDto.applyMemNick}</div>
 							<div class="applyTag">

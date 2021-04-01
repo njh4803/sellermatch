@@ -272,6 +272,7 @@ public class ProjectRestController {
 		List<ProjectDto> projectList = null;
 		
 		try {
+			ProjectDto.setListCount(0);
 			projectList = projectService.getProjectList(input);
 		} catch (Exception e) {
 			e.printStackTrace();

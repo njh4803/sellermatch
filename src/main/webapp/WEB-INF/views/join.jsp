@@ -469,7 +469,7 @@ $(document).ready(function() {
 	                    data : {
 	                    	memberId : function() {
                             return $('#memberId').val();
-                        }
+                       		}
 	                    }
 	                }
 	            },
@@ -477,8 +477,20 @@ $(document).ready(function() {
 	            memPw2: { required: true, passwordCk:true, minlength: 6, maxlength: 30 },
 	            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
 	            memPw_confirm: { required: true, equalTo: '#memPw2' },
-	            // 닉네임 필수, 길이제한
-	            memNick: { required: true, maxlength: 25 },
+	            // 닉네임 필수, 길이제한, 중복검사
+	            memNick: { 
+	            	required: true, 
+	            	maxlength: 6,
+	            	remote : {
+	                    url : ROOT_URL + '/member/nickCheck',
+	                    type : 'post',
+	                    data : {
+	                    	memberId : function() {
+                            return $('#memNick').val();
+                       		}
+	                    }
+	                }
+	            },
 	            // [연락처] 필수
 	            memTel: { phone: true, required: true, minlength: 10, maxlength: 11 },
 	            // [우편번호] 필수 입력
@@ -516,7 +528,8 @@ $(document).ready(function() {
 	                maxlength: '연락처는 최대 {0}글자까지 가능합니다.',
 	            },
 	            memNick: {
-	            	maxlength: '닉네임은 최대 {0}글자까지 가능합니다.',
+	            	maxlength: '닉네임은 최대 {6}글자까지 가능합니다.',
+	            	remote: '이미 사용중인 닉네임입니다.'
 	            },
 	            postcode: '우편번호를 입력해 주세요.',
 	            memAddr: '기본주소를 입력해 주세요.',

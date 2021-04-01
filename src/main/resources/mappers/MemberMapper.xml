@@ -113,12 +113,19 @@
     	WHERE mem_id = #{memId}
     </select>
     
-    <!-- 단일행 조회를 위한 기능 정의 -->
+    <!-- 아이디 중복검사 -->
     <select id="idCheck"
     	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
     	resultType="int">
     	SELECT COUNT(*) FROM MemList WHERE mem_id = #{memId}
     </select>
+    
+    <!-- 닉네임 중복검사 -->
+    <select id="nickCheck"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	resultType="int">
+    	SELECT COUNT(*) FROM MemList WHERE mem_nick = #{memNick}
+    </select>    
 
     <select id="loginSNS"
     	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"

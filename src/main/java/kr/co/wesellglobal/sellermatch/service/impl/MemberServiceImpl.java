@@ -227,4 +227,22 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public void nickCheck(MemberDto input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.selectOne("MemberMapper.nickCheck", input);
+			if (result > 0) {
+				throw new NullPointerException("result=" + result);
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("이미 사용중인 닉네임 입니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("닉네임 중복검사에 실패했습니다.");
+		}
+	}
+
 }

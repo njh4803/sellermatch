@@ -142,7 +142,7 @@
 		                                    <option value="062">광주</option>
 		                                    <option value="063">전북</option>
 		                                    <option value="044">세종특별자치시</option>
-		                                    <option value="064">세종특별자치도</option>
+		                                    <option value="064">제주특별자치도</option>
 		                                </select>
 			    					</td>
 			    				</tr>
@@ -657,7 +657,7 @@ $(document).ready(function() {
             return $(form).valid();
         },
         success: function(json) {
-        	swal('알림', '프로젝트가 등록되었습니다.', 'success').then(function(result) {
+        	swal('알림', '거래처가 등록되었습니다.', 'success').then(function(result) {
                 window.location = ROOT_URL + '/temp';
             });
         },

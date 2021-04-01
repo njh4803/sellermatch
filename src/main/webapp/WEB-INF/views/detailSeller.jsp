@@ -217,9 +217,11 @@
 						</div>
 	           		</div>	    
 					<div class="textBox2">해시태그
+						<div class="tagBox">
 						<c:forEach var="profileHashtag" items="${output.profileHashtag}" varStatus="status">
 	        				<div class="hashtag"> ${profileHashtag}</div>
 	        			</c:forEach>
+	        			</div>
         			</div>           		
 				</div>
 				<div class="btnBox">
@@ -370,7 +372,6 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/x-handlebars-template" id="recommend-tmpl">
-<div class="recommendText">거래 제안하기</div>
 {{#projectList}}
 <div class="radioBox">
 	<input type="radio" name="recommendProj" value="{{projId}}">

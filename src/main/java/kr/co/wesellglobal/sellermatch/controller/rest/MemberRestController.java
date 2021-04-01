@@ -80,6 +80,30 @@ public class MemberRestController {
 		} catch (IOException e) {
 		}
 	}
+
+	/** 닉네임 중복검사 */
+	@ResponseBody
+	@RequestMapping(value = "/member/nickCheck", method = RequestMethod.POST)
+	public void nickUniqueCheckjQuery(HttpServletResponse response,
+			// 닉네임
+			@RequestParam(value = "memNick", required = false) String memNick) {
+
+		MemberDto input = new MemberDto();
+		input.setMemNick(memNick);
+		String result = "true";
+
+		try {
+			memberService.nickCheck(input);
+		} catch (Exception e) {
+			result = "false";
+		}
+
+		// out객체를 생성하여 문자열을 직접 출력함
+		try {
+			response.getWriter().print(result);
+		} catch (IOException e) {
+		}
+	}	
 	
 	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
 	public Map<String, Object> adminJoin(HttpServletRequest request, 
@@ -133,6 +157,7 @@ public class MemberRestController {
 		input.setMemPost(memPost);
 		input.setMemAddr(memAddr);
 		input.setMemAddr2(memAddr2);
+		input.setMemRname("0");
 		//input.setMemPhoto(item.getFilePath());
 		input.setMemState("0");
 		input.setMemIp(clientIp);

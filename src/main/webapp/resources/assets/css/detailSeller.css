@@ -108,6 +108,7 @@
 .hashtag{
   height: 28px;
   margin-right: 5px;
+  margin-bottom: 5px;
   padding: 3px;
   border-radius: 5px;
   background-color: #fff9ec;
@@ -118,9 +119,6 @@
   text-align: center;
   color: #ff9900; 
   display: inline-block;
-}
-.hashtag:first-child{
-	margin-left: 20px;	
 }
 .intro{
   font-size: 22px;
@@ -231,7 +229,7 @@
 .btnBox{
 	float: right;
     width: 300px;
-    margin-top: -189px;
+    margin-top: -51px;
     text-align: center;
 }
 .detailBox1{
@@ -291,7 +289,7 @@
 .infoBox2{
     display: inline-block;
     text-align: left;
-    width: 60%;
+    width: 600px;
 }
 .detailBox3{
   font-size: 14px;
@@ -357,6 +355,12 @@
   text-align: left;
   color: #484848;
   border-left: solid 0.5px #cccccc;
+}
+.tagBox{
+	width: 520px;
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 20px;	
 }
 /* 모바일 */
 @media screen and (max-width: 767px){
