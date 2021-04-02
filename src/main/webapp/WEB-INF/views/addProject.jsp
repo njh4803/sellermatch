@@ -225,7 +225,22 @@
 			    					</td>
 			    					<td>
 		    						<div>
-				                       	<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"></textarea>
+		    							<c:if test="${member.memSort == 1}">
+		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
+		    								placeholder="공급자 작성팁! 내용을 상세히 작성해주세요. 더 많은 거래지원을 받을 수 있습니다.
+
+예시) 주방용품, 그릇류 위탁공급하고 있습니다.
+SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
+함께 오래갈 판매 사장님 연락기다리고 있습니다."></textarea>
+		    							</c:if>
+		    							<c:if test="${member.memSort == 2}">
+		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
+		    								placeholder="판매자 작성팁! 내용을 상세히 작성해주세요. 더 많은 거래지원을 받을 수 있습니다.
+
+예시) 주방용품 그릇 공급처 찾고있습니다. 
+라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
+함께 오래갈 공급처 사장님 연락기다리고 있습니다."></textarea>
+		    							</c:if>
 			                        </div>
 				   					</td>
 				   				</tr>

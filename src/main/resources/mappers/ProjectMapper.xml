@@ -118,13 +118,10 @@
 	        <if test="sellerSaleChk != '' and sellerSaleChk != null">
 	        	, profile_sale_chk as seller_sale_chk
 	        </if>
-    	FROM ProjectList p
-		INNER JOIN IndusList i
-		ON p.proj_indus = i.indus_id
-		INNER JOIN MemList m
-		ON p.proj_mem_id = m.mem_id
-		INNER JOIN ProfileList pf
-		ON p.proj_mem_id = pf.profile_mem_id
+    	FROM ProjectList p,  IndusList i, MemList m, ProfileList pf
+		WHERE p.proj_indus = i.indus_id
+		AND p.proj_mem_id = m.mem_id
+		AND p.proj_mem_id = pf.profile_mem_id
         <where>
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
@@ -283,14 +280,11 @@
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
-    	FROM ProjectList p
-		INNER JOIN IndusList i
-		ON p.proj_indus = i.indus_id
-		INNER JOIN MemList m
-		ON p.proj_mem_id = m.mem_id
-		INNER JOIN ProfileList pf
-		ON p.proj_mem_id = pf.profile_mem_id
-    	WHERE proj_id = #{projId}
+    	FROM ProjectList p,  IndusList i, MemList m, ProfileList pf
+		WHERE p.proj_indus = i.indus_id
+		AND p.proj_mem_id = m.mem_id
+		AND p.proj_mem_id = pf.profile_mem_id
+    	AND proj_id = #{projId}
     </select>
     
     <!-- 프로젝트조회 데이터 수 조회 -->
@@ -298,13 +292,10 @@
 		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
 		resultType="int">
 		SELECT COUNT(proj_idx)
-		FROM ProjectList p
-		INNER JOIN IndusList i
-		ON p.proj_indus = i.indus_id
-		INNER JOIN MemList m
-		ON p.proj_mem_id = m.mem_id
-		INNER JOIN ProfileList pf
-		ON p.proj_mem_id = pf.profile_mem_id
+    	FROM ProjectList p,  IndusList i, MemList m, ProfileList pf
+		WHERE p.proj_indus = i.indus_id
+		AND p.proj_mem_id = m.mem_id
+		AND p.proj_mem_id = pf.profile_mem_id
         <where>
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
