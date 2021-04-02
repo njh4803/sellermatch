@@ -99,7 +99,7 @@ public class myPageController {
 		model.addAttribute("member", member);
 		
 		System.out.println("@@@@@@@@@@@@@@@@@@@");
-		System.out.println(output);
+		System.out.println(member);
 		System.out.println("@@@@@@@@@@@@@@@@@@@");
 		
 		return new ModelAndView("profileManage");

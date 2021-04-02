@@ -8,7 +8,8 @@
 	<!-- DB연동에 필요한 환경설정 값 -->
 	<util:properties id="dbConfig">
         <!-- 데이터베이스 호스트 이름 -->
-        <prop key="dbHost">49.247.0.132</prop>
+        <prop key="dbHost">wesellglobal.cejibjnizpmh.ap-northeast-2.rds.amazonaws.com</prop><!-- 운영 -->
+        <!-- <prop key="dbHost">49.247.0.132</prop> --><!-- 개발 --> 
        	<!-- 데이터베이스 포트번호 -->
         <prop key="dbPort">3306</prop>
        	<!-- 데이터베이스 이름 -->
@@ -31,8 +32,8 @@
 	   <prop key="smtpUsername">njh4803@gmail.com</prop>
 	   <prop key="smtpPassword">nomuqsathmjosxyc</prop>
 	   <!-- 업로드 디렉토리 -->
-	   <!-- <prop key="uploadDir">C:/wesell/workspace/upload</prop> -->
-	   <prop key="uploadDir">/usr/local/img</prop>
+	   <prop key="uploadDir">C:/wesell/workspace/upload</prop>
+	   <!-- <prop key="uploadDir">/usr/local/img</prop> -->
 	   <!-- 업로드 디렉토리에 대한 WebPath (server.xml에 명시한 Path값과 일치해야한다. -->
 	   <prop key="uploadPath">/upload</prop>
 	</util:properties>

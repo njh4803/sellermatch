@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.auth.SNSLogin;
@@ -31,7 +32,7 @@ import kr.co.wesellglobal.sellermatch.service.ProfileService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller
+@RestController
 public class SNSController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SNSController.class);
@@ -105,6 +106,7 @@ public class SNSController {
 				
 		    	// 세션 저장
 		    	webHelper.setSession("member", result);
+		    	webHelper.setSession("profile", profile);
 	        }
 	    	
 	        return new ModelAndView ("main");

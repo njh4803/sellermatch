@@ -90,10 +90,7 @@
 			</if>
 		</where>
 		ORDER BY mem_date DESC
-		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
-		</if>
-    	
     </select>
     
     <select id="selectItem"
@@ -142,21 +139,13 @@
 	<update id="updateItem" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
 		UPDATE MemList 
 		SET 
-			<if test="memPw != ' ' and memPw != null">
-				mem_pw = md5(#{memPw}), 
-			</if>
+			mem_pw = IFNULL(md5(#{memPw}),mem_pw),
 		    mem_sort = #{memSort},  
 		    mem_country = #{memCountry}, mem_nation = #{memNation}, mem_addr = #{memAddr}, mem_addr2 = #{memAddr2}, mem_post =  #{memPost}, 
     	 	mem_tel = #{memTel}, mem_name = #{memName}, mem_rname = #{memRname}, mem_nick = #{memNick}, 
-    	 	<if test="memClass != '' and memClass != null">
-    	 		mem_class = #{memClass}, 
-    	 	</if>
-    	 	<if test="memState != '' and memState != null">
-    	 		mem_state = #{memState}, 
-    	 	</if>
-    	 	<if test="memPhoto != '' and memPhoto != null">
-    	 		mem_photo = #{memPhoto}, 
-    	 	</if>
+    	 	mem_class = IFNULL(#{memClass},mem_class),
+    	 	mem_state = IFNULL(#{memState},mem_state),
+    	 	mem_photo = IFNULL(#{memPhoto},mem_photo),
     	 	mem_edit_date = now()
 		where mem_id = #{memId}
 	</update>

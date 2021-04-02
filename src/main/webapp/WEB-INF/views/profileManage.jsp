@@ -44,7 +44,7 @@
 										<div style="">
 											<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
 												<label class="fileLable">사진 선택
-													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button"  value="${output.profilePhoto}" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
 												</label>
 										</div>
 									</div>
@@ -80,62 +80,62 @@
 									<div class="inputGroup">
 				    					<label>채널</label>
 				    					<div class="inputForm inputGroup2">
-				    						<input id="ch1" type="checkbox" name="profileCh" value="1">
+				    						<input id="ch1" type="checkbox" name="profileCh" value="1" <c:if test="${fn:contains(output.profileCh,'1')}"> checked </c:if>/>
 		                                	<label for="ch1"><span>오픈마켓</span></label>
-		                                	<input id="ch2" type="checkbox" name="profileCh" value="2">
+		                                	<input id="ch2" type="checkbox" name="profileCh" value="2" <c:if test="${fn:contains(output.profileCh,'2')}"> checked </c:if>/>
 		                                	<label for="ch2"><span>종합몰</span></label>
-		                                	<input id="ch3" type="checkbox" name="profileCh" value="3">
+		                                	<input id="ch3" type="checkbox" name="profileCh" value="3" <c:if test="${fn:contains(output.profileCh,'3')}"> checked </c:if>/>
 		                                	<label for="ch3"><span>폐쇄몰</span></label>
-		                                	<input id="ch4" type="checkbox" name="profileCh" value="4">
+		                                	<input id="ch4" type="checkbox" name="profileCh" value="4" <c:if test="${fn:contains(output.profileCh,'4')}"> checked </c:if>/>
 		                                	<label for="ch4"><span>커뮤니티</span></label>
-		                                	<input id="ch5" type="checkbox" name="profileCh" value="5">
+		                                	<input id="ch5" type="checkbox" name="profileCh" value="5" <c:if test="${fn:contains(output.profileCh,'5')}"> checked </c:if>/>
 		                                	<label for="ch5"><span>SNS</span></label>
-		                                	<input id="ch6" type="checkbox" name="profileCh" value="6">
+		                                	<input id="ch6" type="checkbox" name="profileCh" value="6" <c:if test="${fn:contains(output.profileCh,'6')}"> checked </c:if>/>
 		                                	<label for="ch6"><span>오프라인</span></label>
-		                                	<input id="ch7" type="checkbox" name="profileCh" value="7">
+		                                	<input id="ch7" type="checkbox" name="profileCh" value="7" <c:if test="${fn:contains(output.profileCh,'7')}"> checked </c:if>/>
 		                                	<label for="ch7"><span>해외</span></label>
 		                                </div>
 									</div>
 									</c:if>
 									<div class="inputGroup">
 				    					<label>등록자 지역</label>
-			    						<select id="profileNation" name="profileNation" class="inputForm" value="${output.profileNation}">
+			    						<select id="profileNation" name="profileNation" class="inputForm">
 		                                    <option value="">선택하세요.</option>
-		                                    <option value="02">서울</option>
-		                                    <option value="031">경기</option>
-		                                    <option value="032">인천</option>
-		                                    <option value="033">강원</option>
-		                                    <option value="041">충남</option>
-		                                    <option value="042">대전</option>
-		                                    <option value="043">충북</option>
-		                                    <option value="051">부산</option>
-		                                    <option value="052">울산</option>
-		                                    <option value="053">대구</option>
-		                                    <option value="054">경북</option>
-		                                    <option value="055">경남</option>
-		                                    <option value="061">전남</option>
-		                                    <option value="062">광주</option>
-		                                    <option value="063">전북</option>
-		                                    <option value="044">세종특별자치시</option>
-		                                    <option value="064">세종특별자치도</option>
+		                                    <option value="02" <c:if test="${output.profileNation eq '02'}">selected</c:if>>서울</option>
+		                                    <option value="031" <c:if test="${output.profileNation eq '031'}">selected</c:if>>경기</option>
+		                                    <option value="032" <c:if test="${output.profileNation eq '032'}">selected</c:if>>인천</option>
+		                                    <option value="033" <c:if test="${output.profileNation eq '033'}">selected</c:if>>강원</option>
+		                                    <option value="041" <c:if test="${output.profileNation eq '041'}">selected</c:if>>충남</option>
+		                                    <option value="042" <c:if test="${output.profileNation eq '042'}">selected</c:if>>대전</option>
+		                                    <option value="043" <c:if test="${output.profileNation eq '043'}">selected</c:if>>충북</option>
+		                                    <option value="051" <c:if test="${output.profileNation eq '051'}">selected</c:if>>부산</option>
+		                                    <option value="052" <c:if test="${output.profileNation eq '052'}">selected</c:if>>울산</option>
+		                                    <option value="053" <c:if test="${output.profileNation eq '053'}">selected</c:if>>대구</option>
+		                                    <option value="054" <c:if test="${output.profileNation eq '054'}">selected</c:if>>경북</option>
+		                                    <option value="055" <c:if test="${output.profileNation eq '055'}">selected</c:if>>경남</option>
+		                                    <option value="061" <c:if test="${output.profileNation eq '061'}">selected</c:if>>전남</option>
+		                                    <option value="062" <c:if test="${output.profileNation eq '062'}">selected</c:if>>광주</option>
+		                                    <option value="063" <c:if test="${output.profileNation eq '063'}">selected</c:if>>전북</option>
+		                                    <option value="044" <c:if test="${output.profileNation eq '044'}">selected</c:if>>세종특별자치시</option>
+		                                    <option value="064" <c:if test="${output.profileNation eq '064'}">selected</c:if>>세종특별자치도</option>
 		                                </select>
 									</div>
 									<div class="inputGroup">
 				    					<label>상품분야</label>
-			    						<select id="profileIndus" name="profileIndus" class="inputForm" value="${output.profileIndus}">
+			    						<select id="profileIndus" name="profileIndus" class="inputForm">
 		                                    <option value="">선택하세요.</option>
-		                                    <option value="01">가구/인테리어</option>
-		                                    <option value="02">도서</option> 
-		                                    <option value="03">디지털/가전</option>
-		                                    <option value="04">생활/건강</option>
-		                                    <option value="05">스포츠/레저</option>
-		                                    <option value="06">식품</option>
-		                                    <option value="07">여가/생활편의</option>
-		                                    <option value="08">출산/육아</option>
-		                                    <option value="09">패션의류</option>
-		                                    <option value="10">패션잡화</option>
-		                                    <option value="11">화장품/미용</option>
-		                                    <option value="12">기타</option>
+		                                    <option value="01" <c:if test="${output.profileIndus eq '01'}">selected</c:if>>가구/인테리어</option>
+		                                    <option value="02" <c:if test="${output.profileIndus eq '02'}">selected</c:if>>도서</option> 
+		                                    <option value="03" <c:if test="${output.profileIndus eq '03'}">selected</c:if>>디지털/가전</option>
+		                                    <option value="04" <c:if test="${output.profileIndus eq '04'}">selected</c:if>>생활/건강</option>
+		                                    <option value="05" <c:if test="${output.profileIndus eq '05'}">selected</c:if>>스포츠/레저</option>
+		                                    <option value="06" <c:if test="${output.profileIndus eq '06'}">selected</c:if>>식품</option>
+		                                    <option value="07" <c:if test="${output.profileIndus eq '07'}">selected</c:if>>여가/생활편의</option>
+		                                    <option value="08" <c:if test="${output.profileIndus eq '08'}">selected</c:if>>출산/육아</option>
+		                                    <option value="09" <c:if test="${output.profileIndus eq '09'}">selected</c:if>>패션의류</option>
+		                                    <option value="10" <c:if test="${output.profileIndus eq '10'}">selected</c:if>>패션잡화</option>
+		                                    <option value="11" <c:if test="${output.profileIndus eq '11'}">selected</c:if>>화장품/미용</option>
+		                                    <option value="12" <c:if test="${output.profileIndus eq '12'}">selected</c:if>>기타</option>
 		                                </select>
 									</div>
 									<div class="inputGroup">
@@ -144,28 +144,28 @@
 									</div>
 									<div class="inputGroup">
 				    					<label>사업자 유형</label>
-		   								<select id="profileBizSort" name="profileBizSort" class="inputForm" value="${output.profileBizSort}">
+		   								<select id="profileBizSort" name="profileBizSort" class="inputForm">
 		                                       <option value="">선택하세요.</option>
-		                                       <option value="1">법인사업자</option>
-		                                       <option value="2">개인사업자</option>
-		                                       <option value="3">간이과세자</option>
-		                                       <option value="4">개인</option>
-		                                       <option value="5">기타</option>
+		                                       <option value="1" <c:if test="${output.profileBizSort eq '1'}">selected</c:if>>법인사업자</option>
+		                                       <option value="2" <c:if test="${output.profileBizSort eq '2'}">selected</c:if>>개인사업자</option>
+		                                       <option value="3" <c:if test="${output.profileBizSort eq '3'}">selected</c:if>>간이과세자</option>
+		                                       <option value="4" <c:if test="${output.profileBizSort eq '4'}">selected</c:if>>개인</option>
+		                                       <option value="5" <c:if test="${output.profileBizSort eq '5'}">selected</c:if>>기타</option>
 		                                </select>
 									</div>
 									<c:if test="${member.memSort == '2'}">
 									<div class="inputGroup">
 				    					<label>해시태그</label>
 				    					<div class="inputForm inputGroup2">
-		                                	<input id="ht1" type="checkbox" name="profileHashtag" value="다양한 채널운영">
+		                                	<input id="ht1" type="checkbox" name="profileHashtag" value="다양한 채널운영" <c:if test="${fn:contains(output.profileHashtag,'다양한 채널운영')}"> checked </c:if> />
 		                                	<label for="ht1"><span>다양한 채널운영</span></label>
-		                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은 매출 셀러">
+		                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은 매출 셀러" <c:if test="${fn:contains(output.profileHashtag,'높은 매출 셀러')}"> checked </c:if> />
 		                                	<label for="ht2"><span>높은 매출 셀러</span></label>
-		                                	<input id="ht3" type="checkbox" name="profileHashtag" value="장기판매경력">
+		                                	<input id="ht3" type="checkbox" name="profileHashtag" value="장기판매경력" <c:if test="${fn:contains(output.profileHashtag,'장기판매경력')}"> checked </c:if> />
 		                                	<label for="ht3"><span>장기판매경력</span></label>
-		                                	<input id="ht4" type="checkbox" name="profileHashtag" value="탁월한 판매능력">
+		                                	<input id="ht4" type="checkbox" name="profileHashtag" value="탁월한 판매능력" <c:if test="${fn:contains(output.profileHashtag,'탁월한 판매능력')}"> checked </c:if> />
 		                                	<label for="ht4"><span>탁월한 판매능력</span></label>
-		                                	<input id="ht5" type="checkbox" name="profileHashtag" value="다양한 판매분야">
+		                                	<input id="ht5" type="checkbox" name="profileHashtag" value="다양한 판매분야" <c:if test="${fn:contains(output.profileHashtag,'다양한 판매분야')}"> checked </c:if> />
 		                                	<label for="ht5"><span>다양한 판매분야</span></label>
 				                        </div>
 									</div>
@@ -187,6 +187,46 @@
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
+		function handleImgfileSelect1(e) {
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+			
+			
+			filesArr.forEach(function(f) {
+				if(!f.type.match("image.*")) {
+					return;
+				}
+				sel_file = f;
+				
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$("#img").attr("src", e.target.result);
+				}
+				reader.readAsDataURL(f);
+			});
+		};
+		
+		function handleImgfileSelect2(e) {
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+			
+			
+			filesArr.forEach(function(f) {
+				if(!f.type.match("image.*")) {
+					return;
+				}
+				sel_file = f;
+				
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$("#profile-img").attr("src", e.target.result);
+				}
+				reader.readAsDataURL(f);
+			});
+		};
+		$(document).on("change", "#profile-image" ,handleImgfileSelect2);
+		$(document).on("change", "#image" ,handleImgfileSelect1);
+		
 	$(document).on("click", "ul.my-tabs li", function(e){
 		var tab_id = $(this).attr('data-tab');
 		var tabNum = $(this).data('num');
@@ -345,154 +385,6 @@ $(document).ready(function(){
                 window.location = ROOT_URL + '/member/myPage';
             });
         },
-    });
-    
-	//파일 업로드
-    var objDragAndDrop = $(".dragAndDropDiv");
-	var imgBox = $("#imgBox");
-    
-    $(document).on("dragenter",".dragAndDropDiv",function(e){
-        e.stopPropagation();
-        e.preventDefault();
-        $(this).css('border', '2px solid #0B85A1');
-    });
-    $(document).on("dragover",".dragAndDropDiv",function(e){
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    $(document).on("drop",".dragAndDropDiv",function(e){
-        
-        $(this).css('border', '2px dotted #0B85A1');
-        e.preventDefault();
-        var files = e.originalEvent.dataTransfer.files;
-        var imgListStr = $("#detailImgList").val();
-        //$('#imgBox ul').remove();
-        handleFileUpload(files,imgBox,imgListStr);
-    });
-    
-    $(document).on('dragenter', function (e){
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    $(document).on('dragover', function (e){
-      e.stopPropagation();
-      e.preventDefault();
-      objDragAndDrop.css('border', '2px dotted #0B85A1');
-    });
-    $(document).on('drop', function (e){
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    //drag 영역 클릭시 파일 선택창
-    objDragAndDrop.on('click',function (e){
-        $('input[name=projDetailImg]').trigger('click');
-    });
-
-    $('input[name=projDetailImg]').on('change', function(e) {
-        var files = e.originalEvent.target.files;
-        var imgListStr = $("#detailImgList").val();
-        //$('#imgBox ul').remove();
-        handleFileUpload(files,imgBox,imgListStr);
-    });
-    
-    function handleFileUpload(files,imgBox,imgListStr) {
-    	
-    	var imgList = [];
-    	imgList = imgListStr.split("|");
-    	
-    	if (files.length > 5 || imgList.length > 5) {
-			alert('사진은 최대 5개까지 첨부가능합니다.');
-			return;
-		}
-    	
-		for (var i = 0; i < files.length; i++) 
-		{
-			var fd = new FormData();
-		    var src_tag = new createimgBox(imgBox,files[i]); //Using this we can set progress.
-		    fd.append('detailImg', files[i]);
-		    sendFileToServer(fd,src_tag);
-		}
-		
-    }  
-
-    function createimgBox(obj, img){
-
-    	var tag1 = $('<ul class="jFiler-items-list jFiler-items-grid"></ul>').appendTo(obj);
-    	var tag2 = $('<li class="jFiler-item"></li>').appendTo(tag1);
-    	var tag3 = $('<div class="jFiler-item-container"></div>').appendTo(tag2);
-    	var tag4 = $('<div class="jFiler-item-inner"></div>').appendTo(tag3);
-    	var tag5 = $('<div class="jFiler-item-thumb"></div>').appendTo(tag4);
-    	var tag6 = $('<div class="jFiler-item-assets jFiler-row"></div>').appendTo(tag4);
-    	var tag7 = $('<div class="jFiler-item-status"></div>').appendTo(tag5);
-    	/* var tag8 = $('<div class="jFiler-item-info"></div>').appendTo(tag5); */
-    	var tag9 = $('<div class="jFiler-item-thumb-image"></div>').appendTo(tag5);
-    	var tag10 = $('<img style="max-width: 100%" draggable="false">').appendTo(tag9);
-    	/* var tag11 = $('<span class="jFiler-item-title"><b title="1">1</b></span>').appendTo(tag8); */
-    	/* var tag12 = $('<span class="jFiler-item-others">2</span>').appendTo(tag8); */
-    	var tag13 = $('<ul class="list-inline pull-left"></ul>').appendTo(tag6);
-    	var tag14 = $('<ul class="list-inline pull-right"></ul>').appendTo(tag6);
-    	var tag15 = $('<input class="btn removeImg" type="button" value="x">').appendTo(tag14);
-    	
-    	obj.append(obj.tag1);
-    	
-    	const reader = new FileReader()
-    	reader.onload = function(img) {
-    	  tag10.attr('src', img.target.result);
-    	}
-    	reader.readAsDataURL(img)
-    	return tag10;
-    }
-    function sendFileToServer(formData,src_tag)
-    {
-        var uploadURL = ROOT_URL + "/admin/project/fileUpload"; //Upload URL
-        var detailImgStr = $('#detailImgList').val();
-        $.ajax({
-            url: uploadURL,
-            type: "POST",
-            contentType:false,
-            processData: false,
-            cache: false,
-            data: formData,
-            success: function(json){
-            	console.log(json.fName);
-            	var result = '';
-            	if ($('#detailImgList').val() == undefined) {
-            		$('#detailImgList').val(json.fName + '|');
-            		result = $('#detailImgList').val();
-				} else {
-					result = $('#detailImgList').val() + json.fName + '|';
-				}
-            	console.log(result);
-            	$('#detailImgList').val(result);
-            	src_tag.attr('data-src', json.fName + '|');
-            }
-        });
-    }
-    
-    $(document).on("click",".removeImg",function(event){
-    	var parent = event.target.parentNode;
-    	console.log(parent)
-    	var imgItem = parent.parentNode.parentNode.parentNode.parentNode.parentNode;
-    	var img_src = parent.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].getAttribute('data-src');
-    	console.log(img_src);
-    	imgItem.remove();
-    	var imgListStr = $("#detailImgList").val();
-    	var imgList = [];
-    	var result = '';
-    	imgList = imgListStr.split("|");
-    	img_src = img_src.replace("|","");
-    	for (var i = 0; i < imgList.length-1; i++) {
-    		console.log(imgList[i]);
-    		console.log(img_src);
-    		console.log('------------------------------------------------------------------------------------------');
-			if (imgList[i] == img_src) {
-				console.log('건너뜀');
-				continue;
-			}
-			result += imgList[i]+"|";
-		}
-    	console.log(result);
-    	$('#detailImgList').val(result);
     });
 });
 </script>
