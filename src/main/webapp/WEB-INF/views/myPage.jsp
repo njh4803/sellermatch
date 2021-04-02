@@ -13,7 +13,7 @@
     		<div class="clearfix">
 	    		<div class="mypage-top-left">
 	    			<div class="mypage-title">회원정보 / 프로필관리</div>
-		    		<div class="mypage-text">원하는 판매자를 찾아 지원하기 요청을 할 수 있습니다.</div>
+		    		<div class="mypage-text">나의 활동 정보를 한 눈에 볼 수 있습니다.</div>
 	    		</div>
 		    	<div class="mypage-top-right">
 		    		<img class="mypage-img" alt="" src="${pageContext.request.contextPath}/assets/img/mypage-img.png">
@@ -257,7 +257,7 @@
 									<c:if test="${output.memSort == '2'}">
 									<div class="inputGroup">
 				    					<label>매출 규모</label>
-				    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
+				    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출" step="1000000" min="0">
 									</div>
 									<div class="inputGroup">
 				    					<label>판매경력</label>
@@ -317,9 +317,18 @@
 				    					<label>상품분야</label>
 			    						<select id="profileIndus" name="profileIndus" class="inputForm">
 		                                    <option value="">선택하세요.</option>
-		                                    <c:forEach var="indusList" items="${indusList}">
-		                                    	<option value="${indusList.indusId}">${indusList.indusName}</option>
-		                                    </c:forEach>
+		                                    	<option value="01">가구/인테리어</option>
+		                                    	<option value="02">도서</option>
+		                                    	<option value="03">디지털/가전</option>
+		                                    	<option value="04">생활/건강</option>
+		                                    	<option value="05">스포츠/레저</option>
+		                                    	<option value="06">식품</option>
+		                                    	<option value="07">여가/생활편의</option>
+		                                    	<option value="08">출산/육아</option>
+		                                    	<option value="09">패션의류</option>
+		                                    	<option value="10">패션잡화</option>
+		                                    	<option value="11">화장품/미용</option>
+		                                    	<option value="12">기타</option>
 		                                </select>
 									</div>
 									<div class="inputGroup">
@@ -553,7 +562,7 @@ $(document).ready(function(){
 		});
 	});
 
-/*     $(document).on("submit", "#profile_form", function(e){
+     $(document).on("submit", "#profile_form", function(e){
 		e.preventDefault();
 		
 		var form = $(this);
@@ -573,7 +582,7 @@ $(document).ready(function(){
                }
         });
         
-    }); */
+    }); 
     
     $('#profile_form').ajaxForm({
         // submit 전에 호출된다.

@@ -1,0 +1,514 @@
+@charset "UTF-8";
+
+.partner_bnr .partner_wrap{
+	width: 1120px !important;
+}
+
+.partner_bnr3{
+	padding-top: 90px !important;
+	padding-bottom: 1px;
+}
+.mypage-top-left{
+	float: left;
+}
+.mypage-top-right{
+	float: right;
+}
+.mypage-img{
+  width: 210px;
+  height: 104px;
+  object-fit: contain;
+  margin-top: -33px;
+}
+
+	ul.my-tabs{
+		list-style: none;
+		text-align: left;
+		margin-bottom: 15px;
+		border-top: solid 1px #cccccc;
+		border-bottom: solid 1px #cccccc;
+	}
+	ul.my-tabs li{
+		display: table-cell;
+		padding: 16px 0 15px;
+		cursor: pointer;
+		width: 280px;
+		height: 40px;
+		padding: 10px 0;
+		background-color: #ffffff;
+		font-size: 15px; 
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+		text-align: center;
+		color: #757575;
+	}
+	
+	ul.my-tabs li.current{
+		background-image: linear-gradient(to right, #ff9901, #ff560e);
+		color: #ffffff;
+	}
+	.tab-content2{
+		text-align: center;
+	}
+	
+	.tab-content2.current{
+		display: inherit;
+	}
+.check{
+	background-color: #E52867;
+    color: white;
+    border-radius: 10px;
+    width: 300px;
+    height: 100px;
+    font-size: 20px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.row1{
+	display: inline-block;
+}
+/* 필수항목 표시를 위한 `*` */
+.identify {
+	font-size: 14px;
+	color: #f00;
+}
+
+/* 에러 메시지에 대한 글자 색상 */
+.error {
+	color: red;
+}
+
+/* 에러가 발생한 <input>태그 */
+input.error {
+	
+}
+/* 에러메시지가 표시중인 <label> 태그 */
+label.error {
+	font-size: 10px !important;
+	color: red !important;
+	display: inline-block;
+	padding: 5px 10px !important;
+	margin: 0 !important;
+}
+.jFiler-input-dragDrop {
+    width: 100%;
+    background-color: #fafafa;
+}
+.fileLable{
+  width: 80px;
+  height: 30px;
+  padding: 6.5px 0;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: solid 1px #cccccc;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: #707070;
+}
+.addBtn {
+	background-color: #E52867;
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    margin: 30px 0;
+}
+.my_home{
+	margin: 15px 0;
+}
+.myBox{
+	display: inline-block;
+	width: 400px;
+	height: 120px;
+	border: solid 1px #cccccc; 	
+	float: left;
+}
+.myBox-inner{
+	padding: 24px 0;
+}
+.myBox .textBox1{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+  margin-bottom: 15px;
+}
+.myBox .textBox2{
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+}
+.myBox2{
+  display: inline-block;
+  height: 120px;
+  width: 705px;
+  background-color: #ffffff;
+  text-align: center;
+  border: solid 1px #cccccc;
+  float: right;
+}
+.authBox{
+  width: 40px;
+  height: 40px;
+  margin-bottom:13px;
+  margin-left: 10px;
+  padding: 5px 0 4px;
+  border: dotted 1px #707070;
+  background-color: #ffffff;
+  font-family: SegoeUI;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #707070;
+  line-height: 1.25;
+}
+.not-authBox{
+  width: 40px;
+  height: 40px;
+  margin-bottom:13px;
+  margin-left: 10px;
+  padding: 5px 0 4px;
+  border: dotted 1px #ff0000;
+  background-color: #ffffff;
+  font-family: SegoeUI;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  line-height: 1.25;
+  color: #ff0000;
+}
+.myBox2-inner{
+  display: table-cell;
+  width: 235px;
+  padding: 24px 0;
+}
+.myBox2 .textBox1{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+  margin-bottom: 15px;
+}
+.myBox2 .textBox2{
+  font-size: 25px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+}
+.myBox3{
+	width: 100%;
+	text-align: center;
+	margin-bottom: 214px;
+}
+.myBox3 .textBox1{
+  display: inline-block;
+  width: 360px;
+  padding: 30px 0 15px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+  float: left;
+  margin-left: 20px;
+}
+.myBox3 .textBox1:nth-child(1){
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-left: 0;
+}
+.myBox-row{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+}
+.myBox-row2{
+	display: inline-block;
+	text-align: right;
+	width: 100%;
+}
+.myBox3 button{
+	 height: 17px;
+	 margin-right: 15px; 
+	 font-size: 12px;
+	 font-weight: 500;
+	 font-stretch: normal;
+	 font-style: normal;
+	 letter-spacing: normal;
+	 text-align: right;
+	 color: #484848;
+     background-color: #ffffff;
+}
+.infoContainer{
+	display: inline-block;
+	text-align: center;
+	width: 900px;
+}
+.infoBox{
+	display: inline-block;
+	text-align: center;
+	width: 900px;
+	border-top: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+}
+.inputGroup{
+    text-align: left;
+}
+.inputGroup label{
+  width: 300px;
+  height: 50px;
+  padding: 15px 0 14px;
+  background-color: #f8f2f9;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #484848;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+.inputGroup2{
+	width: auto !important;
+	height: auto !important;
+	border: none !important;
+}
+.inputGroup2 label{
+	display: inline-block;
+	width: auto;
+    height: auto;
+    background-color: #ffffff;
+    padding: 0;
+}
+.inputForm{
+  width: 350px;
+  height: 30px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+  margin: 6px 0 4px 15px;
+  display: inline-block;
+}
+.inputGroup button{
+  width: 100px;
+  height: 30px;
+  margin: 0 0 0 15px;
+  padding: 6.5px 0;
+  border-radius: 4px;
+  border: solid 1px #cccccc;
+  font-family: NotoSansKRMedium;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: #707070;
+  background-color: #ffffff;
+}
+.editBtn{
+  width: 100px;
+  height: 30px;
+  margin: 20px 0 150px 0;
+  border-radius: 4px;
+  background-image: linear-gradient(103deg, #ff8000, #ff540f);
+  font-size: 15px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #ffffff;
+}
+.editPass{
+  width: 10px;
+  height: 16.6px;
+  object-fit: contain;
+  margin-top: -3px;
+}
+.mypage-title{
+  font-size: 25px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #343434;
+  margin-bottom: 15px;
+}
+.mypage-text{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #343434;	
+}
+.mypage-hr{
+  margin: 15px 0;
+  border: solid 2px #343434;	
+}
+.myProjBox{
+	margin: 25px 0;
+}
+.myProjBox2{
+	display: inline-block;
+	height: 60px;
+	width: 100%;
+	border-right: 1px solid #cccccc;
+}
+.proj-type{
+	display: table-cell;
+	width: 224px;
+	height: 80px;
+	padding: 15px 0;
+    border-top: solid 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
+}
+.proj-type .textBox1{
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+  margin-top: 10px;
+}
+.proj-type .textBox1 button{
+	background-color: #ffffff;
+}
+.p-type{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+  margin-bottom: 10px;
+}
+.myProject-table{
+	margin-bottom: 337px;
+}
+.myProject-table .th {
+  display: table-cell;
+  padding: 15px 0;
+  background-color: #fff6f2;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+  margin-top: 15px;
+  border-top: solid 1px #cccccc;
+  border-bottom: solid 1px #cccccc;
+}
+.myProject-table .td {
+  display: table-cell;
+  padding: 12px 0 13px;
+  background-color: #ffffff;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;
+  height: 40px;
+  border-bottom: solid 1px #cccccc;
+}
+.myProject-table .td button{
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;	
+}
+.apply-table .th {
+	border-top: none !important;
+	border-bottom: none !important;
+}
+.apply-table .td {
+	border-bottom: none !important;
+  	background-color: #fff6f2;
+}
+.myProject-table div .tr:last-child{
+	border-bottom: solid 1px #cccccc !important;
+}
+.myProject-table .th:nth-child(1), .myProject-table .td:nth-child(1){
+  width: 120px;
+}
+.myProject-table .th:nth-child(2), .myProject-table .td:nth-child(2){
+  width: 480px;
+}
+.myProject-table .th:nth-child(3), .myProject-table .td:nth-child(3){
+  width: 180px;
+}
+.myProject-table .th:nth-child(4), .myProject-table .td:nth-child(4){
+  width: 120px;
+}
+.myProject-table .th:nth-child(5), .myProject-table .td:nth-child(5){
+  width: 120px;
+}
+.myProject-table .th:nth-child(6), .myProject-table .td:nth-child(6){
+  width: 100px;
+}
+.apply-table .th:nth-child(1), .apply-table .td:nth-child(1){
+	display: table-cell;
+	width: 120px;
+}
+.apply-table .th:nth-child(2), .apply-table .td:nth-child(2){
+	display: table-cell;
+	width: 180px;
+}
+.apply-table .th:nth-child(3), .apply-table .td:nth-child(3){
+	display: table-cell;
+	width: 450px;
+}
+.apply-table .th:nth-child(4), .apply-table .td:nth-child(4){
+	display: table-cell;
+	width: 150px;
+}
+.apply-table .th:nth-child(5), .apply-table .td:nth-child(5){
+	display: table-cell;
+	width: 120px;
+}
+.apply-table .th:nth-child(6), .apply-table .td:nth-child(6){
+	display: table-cell;
+	width: 100px;
+}
+.myProject-table .project-title{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
+.authImg{
+	position: absolute;
+    left: 324px;
+    top: 620px;
+}

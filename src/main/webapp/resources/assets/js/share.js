@@ -7,6 +7,7 @@ var url_default_naver = "http://share.naver.com/web/shareView?url=";
 var url_default_line = "https://social-plugins.line.me/lineit/share?url=";
 var url_default_band = "https://band.us/plugin/share?body=";
 var url_this_page = location.href;
+var path = location.pathname + location.search;
 var title_this_page = document.title; 
 var url_combine_ks = url_default_ks + url_this_page; 
 var url_combine_fb = url_default_fb + url_this_page; 
@@ -46,11 +47,11 @@ function sendLinkKakao() {
 	templateId: 50199,
     templateArgs: {
       title:
-    	  url_this_page,
+    	  title_this_page,
       description:
         '셀러매치는 상품공급자와 판매대행자 직거래 사이트입니다.',
-    },
-    installTalk : true
+      url: path,
+    }
   });
 };
 
