@@ -118,26 +118,16 @@
 	        <if test="sellerSaleChk != '' and sellerSaleChk != null">
 	        	, profile_sale_chk as seller_sale_chk
 	        </if>
-    	FROM ProjectList p,  IndusList i, MemList m, ProfileList pf
-		WHERE p.proj_indus = i.indus_id
-		AND p.proj_mem_id = m.mem_id
-		AND p.proj_mem_id = pf.profile_mem_id
+    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
         <where>
-        	<if test="projDetail != '' and projDetail != null">
-        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
-        	</if>
-        	<if test="projIndusName != '' and projIndusName != null">
-        		OR i.indus_name LIKE concat('%', #{projIndusName}, '%')
-        	</if>
-        	<if test="projKeyword != '' and projKeyword != null">
-        		OR proj_keyword LIKE concat('%', #{projKeyword}, '%')
-        	</if>
-        	<if test="projMemId != '' and projMemId != null">
-        		OR proj_mem_id = #{projMemId}
-        	</if>
-        	<if test="projTitle != '' and projTitle != null">
-        		OR proj_title LIKE concat('%', #{projTitle}, '%')
-        	</if>
+	        AND p.proj_indus = i.indus_id
+			AND p.proj_mem_id = m.mem_id
+			AND p.proj_mem_id = pf.profile_mem_id
+			AND (
+				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
+				OR proj_keyword REGEXP IFNULL(#{projKeyword}, proj_keyword)
+				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
+			)
         	
         	<if test="projSortArr != '' and projSortArr != null">
         		AND proj_sort IN
@@ -280,8 +270,8 @@
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
-    	FROM ProjectList p,  IndusList i, MemList m, ProfileList pf
-		WHERE p.proj_indus = i.indus_id
+    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
+        AND p.proj_indus = i.indus_id
 		AND p.proj_mem_id = m.mem_id
 		AND p.proj_mem_id = pf.profile_mem_id
     	AND proj_id = #{projId}
@@ -292,26 +282,16 @@
 		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
 		resultType="int">
 		SELECT COUNT(proj_idx)
-    	FROM ProjectList p,  IndusList i, MemList m, ProfileList pf
-		WHERE p.proj_indus = i.indus_id
-		AND p.proj_mem_id = m.mem_id
-		AND p.proj_mem_id = pf.profile_mem_id
+    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
         <where>
-        	<if test="projDetail != '' and projDetail != null">
-        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
-        	</if>
-        	<if test="projIndusName != '' and projIndusName != null">
-        		OR i.indus_name LIKE concat('%', #{projIndusName}, '%')
-        	</if>
-        	<if test="projKeyword != '' and projKeyword != null">
-        		OR proj_keyword LIKE concat('%', #{projKeyword}, '%')
-        	</if>
-        	<if test="projMemId != '' and projMemId != null">
-        		OR proj_mem_id LIKE concat('%', #{projMemId}, '%')
-        	</if>
-        	<if test="projTitle != '' and projTitle != null">
-        		OR proj_title LIKE concat('%', #{projTitle}, '%')
-        	</if>
+	        AND p.proj_indus = i.indus_id
+			AND p.proj_mem_id = m.mem_id
+			AND p.proj_mem_id = pf.profile_mem_id
+			AND (
+				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
+				OR proj_keyword REGEXP IFNULL(#{projKeyword}, proj_keyword)
+				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
+			)
         	
         	<if test="projSortArr != '' and projSortArr != null">
         		AND proj_sort IN
