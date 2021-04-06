@@ -82,7 +82,16 @@
 						<c:forEach var="registedProjectList" items="${registedProjectList}" varStatus="status">
 						<div class="show-apply" data-projId="${registedProjectList.projId}" data-index="${status.count}">
 							<div class="td">${registedProjectList.projRegDate}</div>
-							<div class="td project-title" data-projId="${registedProjectList.projId}">${registedProjectList.projTitle}</div>
+							<div class="td project-title" data-projId="${registedProjectList.projId}">
+					         <c:choose>
+					           <c:when test="${fn:length(registedProjectList.projTitle) > 30}">
+					            <c:out value="${fn:substring(registedProjectList.projTitle,0,29)}"/>...
+					           </c:when>
+					           <c:otherwise>
+					            <c:out value="${registedProjectList.projTitle}"/>
+					           </c:otherwise> 
+					          </c:choose>
+							</div>
 							<div class="td">${registedProjectList.projEndDate}</div>
 							<div class="td">${registedProjectList.projRecruitNum}명</div>
 							<div class="td">${registedProjectList.applyCount}명</div>
@@ -491,7 +500,7 @@ $(document).ready(function() {
 										<div class="tr">
 											<div class="td" style="width: 140px;">{{applyRegDate}}</div>
 											<div class="td" style="width: 180px;">{{applyMemNick}}</div>
-											<div class="td" style="width: 500px;">SNS, 커뮤니티, 종합몰, 폐쇄몰, 오픈마켓, 해외</div>
+											<div class="td" style="width: 500px;">{{profileCh}}</div>
 										{{#ifCond profileVolume '==' null}}
 											<div class="td" style="width: 165px;">미등록</div>
 										{{else}}

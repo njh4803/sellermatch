@@ -19,6 +19,7 @@
         <result property="applyMemNick" column="apply_mem_nick" />
         <result property="profilePhoto" column="profile_photo" />
         <result property="profileHashtag" column="Profile_hashtag" />
+        <result property="profileCh" column="Profile_ch" />
         <result property="profileVolume" column="Profile_volume" />
         <result property="profileCareer" column="Profile_career" />
         <result property="memTel" column="Mem_tel" />
@@ -70,6 +71,7 @@
 	   		proj_state,
 	   		date_format(proj_reg_date, '%Y-%m-%d') AS proj_reg_date,
 	   		proj_hit,
+	   		Profile_ch,
 	   		Profile_volume,
 	   		Mem_tel,
 	   		(SELECT CMMN_CODE_VALUE_KO_NM FROM TB_CMMN_CODE WHERE CMMN_CODE_TY='A10' AND CMMN_CODE_VALUE=pf.Profile_career) AS Profile_career,

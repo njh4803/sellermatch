@@ -158,6 +158,9 @@ public class myPageController {
 		}
 		
 		data.put("output", output);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println("output>>>>>>>>>>>>"+output);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		
 		return webHelper.getJsonData(data);
 	}

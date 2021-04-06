@@ -38,6 +38,8 @@ public class ApplyDto {
 	
 	// 지원자 프로필사진
 	private String profilePhoto;
+	//판매자 판매채널
+	private String profileCh;
 	//매출규모
 	private Integer profileVolume;
 	//판매경력

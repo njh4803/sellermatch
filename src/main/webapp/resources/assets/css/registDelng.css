@@ -263,13 +263,6 @@ background-color: #ffffff;
 	display: table-cell;
 	width: 140px;
 }
-
-.myProject-table .project-title {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
 .authImg {
 	position: absolute;
 	left: 324px;
