@@ -447,7 +447,7 @@ input[type="checkbox"].findCheck:checked + label span {
     color: #858585;
 }
 
-.tag-item:hover {
+#proj_form .tag-item:hover {
 	background-color: #fff9ec;
 	color: #ff9900;
 }
