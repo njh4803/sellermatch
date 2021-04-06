@@ -117,9 +117,21 @@
 				</div>
 				<div class="detailBox3">특징</div>
 				<div>
-					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-		           		<div class="tagBox">${projKeywordList}</div>
-		           	</c:forEach>					
+					<c:if test="${output.hashTag1 != null}">
+						<div class="tagBox">${output.hashTag1}</div>
+					</c:if>
+		           	<c:if test="${output.hashTag2 != null}">
+						<div class="tagBox">${output.hashTag2}</div>
+					</c:if>
+					<c:if test="${output.hashTag3 != null}">
+						<div class="tagBox">${output.hashTag3}</div>
+					</c:if>
+					<c:if test="${output.hashTag4 != null}">
+						<div class="tagBox">${output.hashTag4}</div>
+					</c:if>
+					<c:if test="${output.hashTag5 != null}">
+						<div class="tagBox">${output.hashTag5}</div>
+					</c:if>				
 				</div>
 				<div class="detailBox3">문의하기
 					<form action="javascript:void(0);" method="post" id="question-form" class="text-right">
@@ -318,9 +330,21 @@
 					</div>
 				</div>
 				<div class="detailBox3"><span>해시태그</span>
-					<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-		           		<div class="tagBox">${projKeywordList}</div>
-		           	</c:forEach>				
+					<c:if test="${output.hashTag1 != null}">
+						<div class="tagBox">${output.hashTag1}</div>
+					</c:if>
+		           	<c:if test="${output.hashTag2 != null}">
+						<div class="tagBox">${output.hashTag2}</div>
+					</c:if>
+					<c:if test="${output.hashTag3 != null}">
+						<div class="tagBox">${output.hashTag3}</div>
+					</c:if>
+					<c:if test="${output.hashTag4 != null}">
+						<div class="tagBox">${output.hashTag4}</div>
+					</c:if>
+					<c:if test="${output.hashTag5 != null}">
+						<div class="tagBox">${output.hashTag5}</div>
+					</c:if>				
 				</div>
 				<c:if test="${output.projFile != null}">
 					<div class="detailBox3"><span>첨부파일</span>

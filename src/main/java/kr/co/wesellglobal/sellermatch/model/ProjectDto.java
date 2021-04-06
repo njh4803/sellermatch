@@ -88,6 +88,13 @@ public class ProjectDto {
 	
 	// 썸네일 이미지
 	private String projThumbnailImg;
+	
+	// 해시태그
+	private String hashTag1;
+	private String hashTag2;
+	private String hashTag3;
+	private String hashTag4;
+	private String hashTag5;
 
 	// 회원이름
 	private String memName;

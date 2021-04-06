@@ -18,10 +18,14 @@ import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.FileDto;
+import kr.co.wesellglobal.sellermatch.model.HashTagDto;
+import kr.co.wesellglobal.sellermatch.model.HashTagListDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.service.FileService;
+import kr.co.wesellglobal.sellermatch.service.HashTagListService;
+import kr.co.wesellglobal.sellermatch.service.HashTagService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +47,10 @@ public class ProjectRestController {
 	MailHelper mailHelper;
 	@Autowired
 	FileService fileService;
+	@Autowired
+	HashTagListService hashTagListService;
+	@Autowired
+	HashTagService hashTagService;
 	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -64,6 +72,7 @@ public class ProjectRestController {
 			@RequestParam(value = "projDetail", required = false) String projDetail,
 			@RequestParam(value = "projRequire", required = false) String projRequire,
 			@RequestParam(value = "projKeyword", required = false) String projKeyword,
+			@RequestParam(value = "tag", required = false) String tag,
 			@RequestParam(value = "detailImgList", required = false) String projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
 			@RequestParam(value = "projThumbnailImg", required = false) MultipartFile projThumbnailImg,
@@ -74,9 +83,20 @@ public class ProjectRestController {
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
 		FileDto item2 = null;
-		log.debug("projDetailImg============================================"+projDetailImg);
-		log.debug("projFile============================================"+projFile);
-		log.debug("projThumbnailImg============================================"+projThumbnailImg);
+		String projhashtag = null;
+		
+		// tag 합치기
+		if (projKeyword != null && tag != null) {
+			projhashtag = tag + "," + projKeyword;
+		} else if (projKeyword == null) {
+			projhashtag = tag;
+		} else if (tag == null){
+			projhashtag = projKeyword;
+		}
+			
+		
+		
+		log.debug("projhashtag ====================================== " + projhashtag);
 		
 		ProjectDto input = new ProjectDto();
 		input.setProjId(webHelper.getUniqueId("P-", Integer.parseInt(projSort)));
@@ -91,7 +111,6 @@ public class ProjectRestController {
 		input.setProjRecruitNum(projRecruitNum);
 		input.setProjDetail(projDetail);
 		input.setProjRequire(projRequire);
-		input.setProjKeyword(projKeyword);
 		input.setProjProdCerti("0");
 		input.setProjProfit("0");
 		input.setProjState(projState);
@@ -101,6 +120,72 @@ public class ProjectRestController {
 		} else {
 			input.setProjPrice(projPrice);
 		}
+		
+		// 해시태그리스트
+		HashTagListDto hashTagList = new HashTagListDto();
+		hashTagList.setFrstRegistMngr(member.getMemId());
+		// 프로젝트 해시태그
+		HashTagDto hashTag = new HashTagDto();
+		hashTag.setId(input.getProjId());
+		hashTag.setHashType('1');
+		hashTag.setFrstRegistMngr(member.getMemId());
+		
+		
+		if (projhashtag != null) {
+			String projhashtagList[] = projhashtag.split(",");
+			
+			for (int i = 0; i < projhashtagList.length; i++) {
+				
+				hashTagList.setHashNm(projhashtagList[i]);
+				
+				// 기존에 존재하는지 검사
+				int result = hashTagListService.reduplicationCheck(hashTagList);
+				// 기존에 똑같은 해시태그가 존재한다면
+				if (result != 0) {
+					
+					switch (i+1) {
+					case 1:
+						hashTag.setHashTag1(result);
+						break;
+					case 2:
+						hashTag.setHashTag2(result);
+						break;
+					case 3:
+						hashTag.setHashTag3(result);
+						break;
+					case 4:
+						hashTag.setHashTag4(result);
+						break;
+					case 5:
+						hashTag.setHashTag5(result);
+						break;
+					}
+				} else {
+					int hashId = hashTagListService.addHashTagList(hashTagList);
+					
+					switch (i+1) {
+					case 1:
+						hashTag.setHashTag1(hashId);
+						break;
+					case 2:
+						hashTag.setHashTag2(hashId);
+						break;
+					case 3:
+						hashTag.setHashTag3(hashId);
+						break;
+					case 4:
+						hashTag.setHashTag4(hashId);
+						break;
+					case 5:
+						hashTag.setHashTag5(hashId);
+						break;
+					}
+				}
+			}
+			hashTagService.addHashTag(hashTag);			
+		}
+
+
 		
 		try {
 			if (projFile != null) {

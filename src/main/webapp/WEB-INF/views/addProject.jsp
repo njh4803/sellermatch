@@ -283,26 +283,30 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 				   					<td>
 				    					<div class="inputForm width-100">
 				    						<div class="row1">
-				                                   	<input type="checkbox" name="projKeyword" id="hash1" value="고경력선호">
-				                                   	<label for="hash1"><span>고경력선호</span></label>
-				                              	</div>
-				                              	<div class="row1">
-				                                   	<input type="checkbox" name="projKeyword" id="hash2" value="고마진상품">
-				                                   	<label for="hash2"><span>고마진상품</span></label>
-				                              	</div>
-				                              	<div class="row1">
-				                                   	<input type="checkbox" name="projKeyword" id="hash3" value="수익보장공급자">
-				                                   	<label for="hash3"><span>수익보장공급자</span></label></span>
-				                              	</div>
-				                              	<div class="row1">
-				                                   	<input type="checkbox" name="projKeyword" id="hash4" value="수출가능상품">
-				                                   	<label for="hash4"><span>수출가능상품</span></label>
-				                              	</div>
-				                              	<div class="row1">
-				                                   	<input type="checkbox" name="projKeyword" id="hash5" value="요즘뜨는제품">
-				                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
-				                              	</div>
-				                           </div>
+			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash1" value="고경력선호">
+			                                   	<label for="hash1"><span>고경력선호</span></label>
+			                              	</div>
+			                              	<div class="row1">
+			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash2" value="고마진상품">
+			                                   	<label for="hash2"><span>고마진상품</span></label>
+			                              	</div>
+			                              	<div class="row1">
+			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash3" value="수익보장공급자">
+			                                   	<label for="hash3"><span>수익보장공급자</span></label></span>
+			                              	</div>
+			                              	<div class="row1">
+			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash4" value="수출가능상품">
+			                                   	<label for="hash4"><span>수출가능상품</span></label>
+			                              	</div>
+			                              	<div class="row1">
+			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash5" value="요즘뜨는제품">
+			                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
+			                              	</div>
+			                           </div>
+				                        <ul id="tag-list">
+										</ul>
+			                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기">
+			                        	<input type="hidden" value="" name="tag" id="rdTag" />
 				   					</td>
 				   				</tr>
 					   				<!-- <tr>
@@ -361,6 +365,87 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
+	
+    var tag = {};
+    var counter = 0;
+
+    // 태그를 추가한다.
+    function addTag (value) {
+        tag[counter] = value; // 태그를 Object 안에 추가
+        counter++; // counter 증가 삭제를 위한 del-btn 의 고유 id 가 된다.
+    }
+	
+	// 해시태그
+    $("#tag").on("keypress", function (e) {
+        var self = $(this);
+        var checkTag_count = $('input[name=projKeyword]:checked').length;
+        var tag_count = $('.tag-item').length;
+        var count = checkTag_count + tag_count + 1;
+
+        // input 에 focus 되있을 때 엔터 및 스페이스바 입력시 구동
+        if (e.key === "Enter" || e.keyCode == 32) {
+
+            var tagValue = self.val(); // 값 가져오기
+
+            // 값이 없으면 동작 ㄴㄴ
+            if (tagValue !== "") {          	
+
+                // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+                var result = Object.values(tag).filter(function (word) {
+                    return word === tagValue;
+                })
+                
+                // 태그 중복 검사
+                if (result.length == 0) { 
+                	
+                	// 태그값 20글자 제한
+                	if (tagValue.length > 20) {
+                		swal('알림', '20글자까지 입력가능합니다.', 'info');
+    				} else if(count > 5){
+    					swal('알림', '5개까지 등록가능합니다.', 'info');
+    				} else {
+                        $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
+                        addTag(tagValue);
+                        self.val("");    					
+    				}
+                } else {
+                	swal('알림', '이미 입력한 태그입니다.', 'info');
+                }
+            }
+            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+        }
+        var value = marginTag(); // return array
+        console.log(value);
+        $("#rdTag").val(value); 
+    });
+
+    // 삭제 버튼 
+    // 삭제 버튼은 비동기적 생성이므로 document 최초 생성시가 아닌 검색을 통해 이벤트를 구현시킨다.
+    $(document).on("click", ".del-btn", function (e) {
+        var index = $(this).attr("idx");
+        tag[index] = "";
+        $(this).parent().remove();
+        var value = marginTag(); // return array
+        $("#rdTag").val(value);
+    });	
+
+    // 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+    function marginTag () {
+        return Object.values(tag).filter(function (word) {
+            return word !== "";
+        });
+    }
+    
+    // 해시태그 체크박스 + 직접입력 5개이상 막기
+    $(document).on("click", ".projKeyword", function(){
+        var checkTag_count = $('input[name=projKeyword]:checked').length;
+        var tag_count = $('.tag-item').length;
+        var count = checkTag_count + tag_count;
+    	if (count > 5) {
+    		$(this).prop('checked', false);
+    		swal('알림', '5개까지 등록가능합니다.', 'info');
+		}
+    });
 	
 	$(document).on("click", ".findCheck", function(){
 		$(".resultText").remove();

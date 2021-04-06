@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="HashTagListMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="HashTagListMap"
+        type="kr.co.wesellglobal.sellermatch.model.HashTagListDto">
+        <result property="hashId"   column="hash_id" />
+        <result property="hashNm"   column="hash_nm" />
+        <result property="frstRegistMngr"   column="frst_regist_mngr" />
+        <result property="frstRegistDt"   column="frst_regist_dt" />
+        <result property="lastRegistMngr"   column="last_regist_mngr" />
+        <result property="lastRegistDt"   column="last-regist_dt" />
+    </resultMap>
+    
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagListDto"
+    	useGeneratedKeys="true"
+    	keyProperty="hashId">
+    	INSERT INTO HashTagList
+    		(`hash_nm`, `frst_regist_mngr`, `frst_regist_dt`)
+    	 VALUES 
+    	 	(#{hashNm}, #{frstRegistMngr}, now());
+
+    </insert>
+    
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagListDto"
+    	resultMap="HashTagListMap">
+    </select>
+    
+    <select id="selectItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagListDto"
+    	resultMap="HashTagListMap">
+    </select>
+    
+    <update id="updateItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagListDto">
+    </update>
+    
+    <!--중복 확인 -->
+    <select id="reduplicationCheck"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagListDto"
+    	resultType="int">
+    	SELECT 
+    		hash_id
+    	FROM HashTagList 
+    	WHERE hash_nm = #{hashNm}
+    </select>
+
+</mapper>

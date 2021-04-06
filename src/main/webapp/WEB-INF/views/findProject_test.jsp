@@ -574,9 +574,21 @@
 								${output.projDetail}
 							</div>	
 							<div class="left-infoBox">
-								<c:forEach var="projKeywordList" items="${output.projKeywordList}">
-					           		<div class="tagBox">${projKeywordList}</div>
-					           	</c:forEach>
+								<c:if test="${output.hashTag1 != null}">
+									<div class="tagBox">${output.hashTag1}</div>
+								</c:if>
+					           	<c:if test="${output.hashTag2 != null}">
+									<div class="tagBox">${output.hashTag2}</div>
+								</c:if>
+								<c:if test="${output.hashTag3 != null}">
+									<div class="tagBox">${output.hashTag3}</div>
+								</c:if>
+								<c:if test="${output.hashTag4 != null}">
+									<div class="tagBox">${output.hashTag4}</div>
+								</c:if>
+								<c:if test="${output.hashTag5 != null}">
+									<div class="tagBox">${output.hashTag5}</div>
+								</c:if>
 							</div>
 						</div>								
 						<div class="rightBox">
@@ -1012,9 +1024,21 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								{{projDetail}}
 							</div>	
 							<div class="left-infoBox">
-								{{#each projKeywordList as |value key|}}
-		        					<div class="tagBox">{{value}}</div>
-		        				{{/each}}
+								{{#ifCond hashTag1 '!=' 'null'}}
+									<div class="tagBox">{{hashTag1}}</div>
+								{{/ifCond}}
+					           	{{#ifCond hashTag2 '!=' 'null'}}
+									<div class="tagBox">{{hashTag2}}</div>
+								{{/ifCond}}	
+					           	{{#ifCond hashTag3 '!=' 'null'}}
+									<div class="tagBox">{{hashTag3}}</div>
+								{{/ifCond}}	
+					           	{{#ifCond hashTag4 '!=' 'null'}}
+									<div class="tagBox">{{hashTag4}}</div>
+								{{/ifCond}}	
+					           	{{#ifCond hashTag5 '!=' 'null'}}
+									<div class="tagBox">{{hashTag5}}</div>
+								{{/ifCond}}	
 							</div>
 						</div>								
 						<div class="rightBox">

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="HashTagMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="HashTagMap"
+        type="kr.co.wesellglobal.sellermatch.model.HashTagDto">
+        <result property="no"   column="no" />
+        <result property="id"   column="id" />
+        <result property="hashType"   column="hash_type" />
+        <result property="hashTag1"   column="hash_tag1" />
+        <result property="hashTag2"   column="hash_tag2" />
+        <result property="hashTag3"   column="hash_tag3" />
+        <result property="hashTag4"   column="hash_tag4" />
+        <result property="hashTag5"   column="hash_tag5" />
+        <result property="frstRegistMngr"   column="frst_regist_mngr" />
+        <result property="frstRegistDt"   column="frst_regist_dt" />
+        <result property="lastRegistMngr"   column="last_regist_mngr" />
+        <result property="lastRegistDt"   column="last-regist_dt" />
+    </resultMap>
+    
+    <insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagDto"
+    	useGeneratedKeys="true"
+    	keyProperty="no">
+    	INSERT INTO HashTag
+    		(`id`, `hash_type`, `hash_tag1`, `hash_tag2`, `hash_tag3`, `hash_tag4`, `hash_tag5`, `frst_regist_mngr`, `frst_regist_dt` )
+    	 VALUES 
+    	 	(#{id}, #{hashType}, #{hashTag1}, #{hashTag2}, #{hashTag3}, #{hashTag4}, #{hashTag5}, #{frstRegistMngr}, now());
+
+    </insert>
+    
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagDto"
+    	resultMap="HashTagMap">
+    </select>
+    
+    <select id="selectItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagDto"
+    	resultMap="HashTagMap">
+    </select>
+    
+    <update id="updateItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagDto">
+    </update>
+    
+
+</mapper>

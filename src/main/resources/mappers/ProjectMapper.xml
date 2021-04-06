@@ -24,7 +24,6 @@
         <result property="projDetail" column="proj_detail" />
         <result property="projDetailImg" column="proj_detail_img" />
         <result property="projRequire" column="proj_require" />
-        <result property="projKeyword" column="proj_keyword" />
         <result property="projFile" column="proj_file" />
         <result property="projThumbnailImg" column="proj_thumbnail_img" />
         <result property="projProdCerti" column="proj_prod_certi" />
@@ -54,7 +53,11 @@
         <result property="contractCount" column="contract_count" />
         <result property="recommendCount" column="recommend_count" />
         <result property="okeyCount" column="okey_count" />
-        <result property="orginName" column="orgin_name" />
+        <result property="hashTag1" column="hash_tag1" />
+        <result property="hashTag2" column="hash_tag2" />
+        <result property="hashTag3" column="hash_tag3" />
+        <result property="hashTag4" column="hash_tag4" />
+        <result property="hashTag5" column="hash_tag5" />
     </resultMap>
     
     <insert id="insertItem"
@@ -63,11 +66,11 @@
     	keyProperty="projIdx">
     	INSERT INTO ProjectList
     		(`proj_id`, `proj_mem_id`, `proj_title`, `proj_sort`, `proj_indus`, `proj_price`, `proj_margin`, 
-    		`proj_nation`, `proj_supply_type`, `proj_recruit_num`, `proj_detail`, `proj_detail_img`, `proj_require`, `proj_keyword`, `proj_file`, `proj_thumbnail_img`,  
+    		`proj_nation`, `proj_supply_type`, `proj_recruit_num`, `proj_detail`, `proj_detail_img`, `proj_require`, `proj_file`, `proj_thumbnail_img`,  
     		`proj_state`, `proj_reg_date`, `proj_end_date`, `proj_edit_date`, `proj_prod_certi`, `proj_hit`, `proj_channel`, `proj_profit`, `proj_profit_chk_date`)
     	 VALUES 
     	 	(#{projId}, #{projMemId}, #{projTitle}, #{projSort}, #{projIndus}, #{projPrice}, #{projMargin}, 
-    	 	#{projNation}, #{projSupplyType}, #{projRecruitNum}, #{projDetail}, #{projDetailImg}, #{projRequire}, #{projKeyword}, #{projFile}, 
+    	 	#{projNation}, #{projSupplyType}, #{projRecruitNum}, #{projDetail}, #{projDetailImg}, #{projRequire}, #{projFile}, 
     	 	#{projThumbnailImg}, #{projState}, now(), #{projEndDate}, #{projEditDate}, #{projProdCerti}, #{projHit}, #{projChannel}, #{projProfit}, #{projProfitChkDate});
     </insert>
     
@@ -76,7 +79,7 @@
 		SET 
 		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
 		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
-		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_require = #{projRequire}, proj_keyword = #{projKeyword},
+		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_require = #{projRequire}, 
 		    proj_hit = #{projHit}, proj_channel = #{projChannel}, proj_profit = #{projProfit}, proj_profit_chk_date = #{projProfitChkDate}
 		    <if test="projEndDate !='' and projEndDate != null">
 		    	proj_end_date = #{projEndDate}, 
@@ -97,7 +100,7 @@
     	SELECT distinct
     		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_thumbnail_img, 
-    		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
+    		proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, mem_nick, mem_name, profile_intro, profile_photo,
@@ -105,7 +108,12 @@
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
-    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 4) as okey_count
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 4) as okey_count,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag1 from HashTag where id = Proj_id)) as hash_tag1, 
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag2 from HashTag where id = Proj_id)) as hash_tag2,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag3 from HashTag where id = Proj_id)) as hash_tag3,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag4 from HashTag where id = Proj_id)) as hash_tag4,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag5 from HashTag where id = Proj_id)) as hash_tag5
     		<if test="ppBizCerti != '' and ppBizCerti != null">
 	        	, profile_biz_certi
 	        </if>
@@ -118,14 +126,13 @@
 	        <if test="sellerSaleChk != '' and sellerSaleChk != null">
 	        	, profile_sale_chk as seller_sale_chk
 	        </if>
-    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
+    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf, HashTag t
         <where>
 	        AND p.proj_indus = i.indus_id
 			AND p.proj_mem_id = m.mem_id
 			AND p.proj_mem_id = pf.profile_mem_id
 			AND (
 				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
-				OR proj_keyword REGEXP IFNULL(#{projKeyword}, proj_keyword)
 				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
 			)
         	
@@ -258,10 +265,10 @@
     <select id="selectItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
     	resultMap="ProjectMap">
-    	SELECT 
+    	SELECT DISTINCT
     		proj_idx, proj_id, proj_mem_id, proj_title, proj_sort, i.indus_name as proj_indus_name, proj_indus, proj_price, proj_margin, 
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, 
-    		proj_keyword, proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
+    		proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, proj_edit_date, 
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, profile_ch_chk as seller_ch_chk, profile_sale_chk as seller_sale_chk,
@@ -269,9 +276,14 @@
     		(select Orgin_name FROM fileList where File_path = proj_file) as orgin_name,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
-    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
-    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
-        AND p.proj_indus = i.indus_id
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag1 from HashTag where id = IFNULL(#{projId}, ''))) as hash_tag1, 
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag2 from HashTag where id = IFNULL(#{projId}, ''))) as hash_tag2,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag3 from HashTag where id = IFNULL(#{projId}, ''))) as hash_tag3,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag4 from HashTag where id = IFNULL(#{projId}, ''))) as hash_tag4,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag5 from HashTag where id = IFNULL(#{projId}, ''))) as hash_tag5
+    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf, HashTag t
+        WHERE p.proj_indus = i.indus_id
 		AND p.proj_mem_id = m.mem_id
 		AND p.proj_mem_id = pf.profile_mem_id
     	AND proj_id = #{projId}
@@ -289,7 +301,6 @@
 			AND p.proj_mem_id = pf.profile_mem_id
 			AND (
 				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
-				OR proj_keyword REGEXP IFNULL(#{projKeyword}, proj_keyword)
 				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
 			)
         	
