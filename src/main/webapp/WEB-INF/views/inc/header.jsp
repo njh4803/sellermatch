@@ -382,13 +382,13 @@ $(function(){
 			</div>
 		</div>
 		<div class="SNSinnerbox">
-			<div>
+<!--			<div>
 			<a href="" onclick="" return false;">
 			<img src="${pageContext.request.contextPath}/assets/img/sns-share-instagram.png" title="인스타그램으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
 			</div>
 			<div class="SNSinnerTextbox">
 			<span style="display: inline-block">Instagram</span>
-			</div>
+			</div>-->
 		</div>
 		<input id="swal-input1" class="swal2-input" read-only>
 		<input type="submit" value="복사" class="SNScopyBtn btn btn-default">

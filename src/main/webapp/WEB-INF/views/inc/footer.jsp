@@ -6,11 +6,11 @@
 <style>
 .footer_wrap .f_top .f_top0
 {
-	font-size : 20px !important;
+	font-size : 18px !important;
 }
 .footer_wrap .f_btm
 {
-	font-size : 15px !important;
+	font-size : 13px !important;
 }
 </style>
 <footer>
@@ -22,7 +22,8 @@
         		</div>
         		<div class="f_btm">
 	        		회사명 : 위셀글로벌 주식회사<br>
-					소재지 : 인천광역시 연수구 컨벤시아대로 204, 인천 스타트업파크 인스타1 521호<br>
+					서울사무실: 서울시 강남구 언주로 147길 43, Sellermatch(호성빌딩,1층)<br>
+					인천사무실: 인천시 연수구 컨벤시아대로 204, 인천 스타트업파크 인스타1 521호<br>
 					대표이사 : 송진일   <br>
 					개인정보책임관리자 : 정윤용<br>
 					사업자등록번호 : 181-87-01992<br>
