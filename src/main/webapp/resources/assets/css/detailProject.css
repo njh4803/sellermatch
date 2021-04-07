@@ -445,6 +445,9 @@ textarea::placeholder {
 	margin-top: -5px;
 	margin-right: 3px;
 }
+.scrapBtn {
+	margin-bottom: 15px;
+}
 /* .btnBox{
 	display: inline-block;
 	width: 80px;

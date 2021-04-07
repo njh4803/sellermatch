@@ -198,5 +198,47 @@ public class myPageController {
 		return webHelper.getJsonData(data);
 	}
 	
+	@RequestMapping(value = "/myPage/scrap", method = RequestMethod.POST)
+	public Map<String, Object> scrap(
+			@RequestParam(value = "projIdx", required = false)int projIdx,
+			@SessionAttribute(value = "member", required = false) MemberDto member){
+		
+		myPageDto input = new myPageDto();
+		input.setProjIdx(projIdx);
+		input.setMemIdx(member.getMemIdx());
+		input.setMemId(member.getMemId());
+		
+		try {
+			myPageService.addScrap(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
+	}
+	
+	@RequestMapping(value = "/myPage/scrapDupCheck", method = RequestMethod.GET)
+	public Map<String, Object> scrapDupCheck(
+			@RequestParam(value = "projIdx", required = false)int projIdx,
+			@SessionAttribute(value = "member", required = false) MemberDto member){
+		
+		myPageDto input = new myPageDto();
+		input.setProjIdx(projIdx);
+		input.setMemIdx(member.getMemIdx());
+		input.setMemId(member.getMemId());
+		
+		int result;
+		try {
+			result = myPageService.scrapDupCheck(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("result", result);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@result>>>>>>>>>>>>"+result);
+		
+		return webHelper.getJsonData(data);
+	}
 	
 }

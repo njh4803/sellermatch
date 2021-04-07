@@ -61,6 +61,10 @@
         <result property="memSort" column="mem_sort" />
         <result property="projAddCount" column="proj_add_count" />
         <result property="appliedCount" column="applied_count" />
+        <result property="memIdx" column="mem_idx" />
+        <result property="scrapNo" column="SCRAP_NO" />
+        
+        
     </resultMap>
 
     <select id="selectList"
@@ -138,4 +142,24 @@
 		AND A.Profile_mem_id = #{projMemId}
 	</select>
 	
+	<insert id="addScrap"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	useGeneratedKeys="true"
+    	keyProperty="scrapNo">
+    	INSERT INTO TB_SCRAP
+    		(`MEM_IDX`, `PROJ_IDX`, `FRST_REGIST_MNGR`, `FRST_REGIST_DT`, `LAST_REGIST_MNGR`, `LAST_REGIST_DT`)
+    	 VALUES 
+    	 	(#{memIdx}, #{projIdx}, #{memId}, now(), #{memId}, now());
+    </insert>
+    
+    <select id="scrapDupCheck"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultType="int">
+    	SELECT 
+    		COUNT(1) 
+    	FROM TB_SCRAP 
+    	WHERE 1=1
+    	AND MEM_IDX = #{memIdx} 
+    	AND PROJ_IDX = #{projIdx}
+    </select>
 </mapper>

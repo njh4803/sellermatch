@@ -76,5 +76,39 @@ public class myPageServiceImpl implements myPageService {
 		
 		return result;
 	}
-
+	
+	@Override
+	public void addScrap(myPageDto input) throws Exception {
+		int result= 0;
+		
+		try {
+			result = sqlSession.insert("myPageMapper.addScrap", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+	}
+	
+	@Override
+	public int scrapDupCheck(myPageDto input) throws Exception {
+		int result= 0;
+		
+		try {
+			result = sqlSession.selectOne("myPageMapper.scrapDupCheck", input);
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("중복검사에 실패했습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("중복검사에 실패했습니다.");
+		}
+		
+		return result;
+	}
 }

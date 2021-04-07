@@ -11,5 +11,9 @@ public interface myPageService {
 	public List<myPageDto> selectpRegistedProjectList(myPageDto input) throws Exception;
 	
 	public myPageDto selectpMyProjectCount(myPageDto input) throws Exception;
-
+	
+	public void addScrap(myPageDto input) throws Exception;
+	
+	public int scrapDupCheck(myPageDto input) throws Exception;
+	
 }

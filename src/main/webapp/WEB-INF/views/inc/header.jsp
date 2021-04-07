@@ -185,7 +185,7 @@ header #m-search_frm{
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
+                <a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
                 	거래처 찾기 무료등록
                 </a>
             </div>

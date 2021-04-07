@@ -9,6 +9,9 @@ public class myPageDto {
 	// 자동번호 
 	private int projIdx;
 	
+	private int memIdx;
+	private String memId;
+	
 	// 프로젝트고유번호
 	private String projId;
 	
