@@ -276,6 +276,8 @@ public class projectController {
 			e.printStackTrace();
 		}
 		
+		log.debug("========================================================="+ output.getOrginName());
+		
 		model.addAttribute("output", output);
 		model.addAttribute("applyDto", applyDto);
 		model.addAttribute("replyDto", replyDto);

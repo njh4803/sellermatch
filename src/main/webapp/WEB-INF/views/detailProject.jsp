@@ -346,7 +346,7 @@
 						<div class="fileBox">
 							<div class="fileInfo">
 								${output.orginName}
-								<a class="download" href="/upload/${output.projFile}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');" download="${output.orginName}"></a>
+								<a class="download" href="/upload/${output.projFile}" download="${output.orginName}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a>
 							</div>
 						</div>
 					</div>				
