@@ -197,7 +197,7 @@ public class ProfileDto {
 			 return this.profileCareerName = "1년 이상 ~ 3년 미만";
 		 }
 		 if (this.profileCareer.equals("8")) {
-			 return this.profileCareerName = "1년 이상 ~ 3년 미만";
+			 return this.profileCareerName = "3년 이상";
 		 }
 		 return "";
 	 }
