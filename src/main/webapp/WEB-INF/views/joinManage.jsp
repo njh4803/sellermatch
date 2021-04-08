@@ -190,10 +190,12 @@ $(document).ready(function(){
 	});
 	
 	$.validator.addMethod("passwordCk",  function( value, element ) {
-
 		return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
-
 	}); 
+	
+	$.validator.addMethod("noSpace", function(value, element) { 
+		  return value.indexOf(" ") < 0 && value != ""; 
+	});
 	
     $('#memEdit_form').validate({
 		
@@ -205,7 +207,7 @@ $(document).ready(function(){
             // [연락처]
             memTel: { phone: true, minlength: 9, maxlength: 11 },
          	// [닉네임] 필수
-            memNick: 'required',
+            memNick: {required: true, noSpace: true},
             
         },
         messages: {
@@ -229,7 +231,10 @@ $(document).ready(function(){
                 minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
                 maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
             },
-            memNick: '닉네임을 입력해주세요.',
+            memNick: {
+            	required: '닉네임을 입력해주세요.',
+            	noSpace: '공백은 사용이 불가능 합니다.'
+            },
         }
     });
     
@@ -242,7 +247,7 @@ $(document).ready(function(){
         },
         success: function(json) {
             swal('알림', '회원정보가 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/member/myPage';
+                window.location = ROOT_URL + '/myPage/joinManage';
             });
         },
     });

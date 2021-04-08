@@ -61,7 +61,7 @@ public class ProfileDto {
 
     // 프로필소개이미지 멀티이미지(5장)
     private String profilePhoto;
-    private MultipartFile profilePhotoFile;
+	/* private MultipartFile profilePhotoFile; */
 
     // 프로필 상태 중지(0), 정상(1)
     private String profileState;
