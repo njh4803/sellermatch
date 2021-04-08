@@ -61,7 +61,7 @@ public class ProfileDto {
 
     // 프로필소개이미지 멀티이미지(5장)
     private String profilePhoto;
-    private MultipartFile profilePhotoFile;
+	/* private MultipartFile profilePhotoFile; */
 
     // 프로필 상태 중지(0), 정상(1)
     private String profileState;
@@ -197,7 +197,7 @@ public class ProfileDto {
 			 return this.profileCareerName = "1년 이상 ~ 3년 미만";
 		 }
 		 if (this.profileCareer.equals("8")) {
-			 return this.profileCareerName = "1년 이상 ~ 3년 미만";
+			 return this.profileCareerName = "3년 이상";
 		 }
 		 return "";
 	 }

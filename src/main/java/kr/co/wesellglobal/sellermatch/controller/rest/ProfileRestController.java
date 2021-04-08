@@ -1,5 +1,6 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -124,13 +126,12 @@ public class ProfileRestController {
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public Map<String, Object> addProfile(
-			@ModelAttribute("profileDto") ProfileDto profileDto,
-			@RequestParam(value = "profilePhotoFile", required = false) MultipartFile photo) {
+			@RequestParam(value="profilePhotoFile", required = false) MultipartFile photo,
+			@ModelAttribute("profileDto") ProfileDto profileDto) {
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
-		
-		
 		try {
 			if (photo != null && photo.getSize() != 0) {
 				item = webHelper.saveMultipartFile(photo);

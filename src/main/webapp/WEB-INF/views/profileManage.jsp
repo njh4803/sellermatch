@@ -44,7 +44,8 @@
 										<div style="">
 											<input id = "file_route" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
 												<label class="fileLable">사진 선택
-													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button"  value="${output.profilePhoto}" style="display: none" type="file" onchange="javascript:document.getElementById('file_route').value=this.value"/>
+													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" 
+													onchange="javascript:document.getElementById('file_route').value=this.value" accept=".jpg,.jpeg,.png,.gif,.bmp"/>
 												</label>
 										</div>
 									</div>
@@ -253,7 +254,7 @@ $(document).ready(function(){
 		    rules: {
 		        // [자기소개] 필수
 		        profileIntro: {
-		            required: true, minlength: 5, maxlength: 20, 
+		            required: true, minlength: 5, maxlength: 100, 
 		        },
 		        // [상품분류] 필수
 		        profileIndus: 'required',
@@ -265,8 +266,8 @@ $(document).ready(function(){
 		    messages: {
 		        profileIntro: {
 		            required: '소개를 입력해주세요.',
-		            minlength: '제목은 최소 {5}글자 이상 입력하셔야 합니다.',
-		            maxlength: '제목은 최대 {20}글자까지 가능합니다.',
+		            minlength: '제목은 최소 5 글자 이상 입력하셔야 합니다.',
+		            maxlength: '제목은 최대 100 글자까지 가능합니다.',
 		        },
 		        profileIndus: '상품분류를 선택해주세요.',
 		        profileCh: '채널을 선택해주세요.',
@@ -284,7 +285,7 @@ $(document).ready(function(){
         },
         success: function(json) {
             swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/member/myPage';
+                window.location = ROOT_URL + '/myPage/profileManage';
             });
         },
     });
@@ -382,7 +383,7 @@ $(document).ready(function(){
         },
         success: function(json) {
             swal('알림', '회원정보가 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/member/myPage';
+                window.location = ROOT_URL + '/myPage/profileManage';
             });
         },
     });

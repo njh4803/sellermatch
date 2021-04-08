@@ -26,8 +26,8 @@
 			    <div class="partner_wrap addbox2">
 			    	<div class="text-center profileBox">
 						<form action="${pageContext.request.contextPath}/member/editOk" id="memEdit_form" name="memEdit_form" method="post" enctype="multipart/form-data">
-							<input type="hidden" name="memRname" id="memRname">
-							<input type="hidden" name="memSort" id="memSort">
+							<input type="hidden" name="memRname" id="memRname" value="${output.memRname}">
+							<input type="hidden" name="memSort" id="memSort" value="${output.memSort}">
 							<div class="infoContainer">
 								<div class="infoBox">
 									<div class="inputGroup">
@@ -40,7 +40,7 @@
 									</div>
 									<div class="inputGroup">
 										<label>비밀번호 확인</label>
-				    					<input type="password" name="memPw_confirm" class="inputForm" id="memPw_confirm"/>
+				    					<input type="password" name="memPw_confirm" class="inputForm" id="memPw_confirm" />
 									</div>
 									<div class="inputGroup">
 										<label>이름</label>
@@ -60,25 +60,25 @@
 									</div>
 									<div class="inputGroup">
 										<label>지역</label>
-			    						<select id="memNation" name="memNation" class="inputForm"  value="${output.memNation}">
+			    						<select id="memNation" name="memNation" class="inputForm">
 			    							<option value="">선택하세요.</option>
-		                                    <option value="02">서울</option>
-		                                    <option value="031">경기</option>
-		                                    <option value="032">인천</option>
-		                                    <option value="033">강원</option>
-		                                    <option value="041">충남</option>
-		                                    <option value="042">대전</option>
-		                                    <option value="043">충북</option>
-		                                    <option value="051">부산</option>
-		                                    <option value="052">울산</option>
-		                                    <option value="053">대구</option>
-		                                    <option value="054">경북</option>
-		                                    <option value="055">경남</option>
-		                                    <option value="061">전남</option>
-		                                    <option value="062">광주</option>
-		                                    <option value="063">전북</option>
-		                                    <option value="044">세종특별자치시</option>
-		                                    <option value="064">세종특별자치도</option>
+		                                    <option value="02"  <c:if test="${output.memNation eq '02'}">selected</c:if>>서울</option>
+		                                    <option value="031" <c:if test="${output.memNation eq '031'}">selected</c:if>>경기</option>
+		                                    <option value="032" <c:if test="${output.memNation eq '032'}">selected</c:if>>인천</option>
+		                                    <option value="033" <c:if test="${output.memNation eq '033'}">selected</c:if>>강원</option>
+		                                    <option value="041" <c:if test="${output.memNation eq '041'}">selected</c:if>>충남</option>
+		                                    <option value="042" <c:if test="${output.memNation eq '042'}">selected</c:if>>대전</option>
+		                                    <option value="043" <c:if test="${output.memNation eq '043'}">selected</c:if>>충북</option>
+		                                    <option value="051" <c:if test="${output.memNation eq '051'}">selected</c:if>>부산</option>
+		                                    <option value="052" <c:if test="${output.memNation eq '052'}">selected</c:if>>울산</option>
+		                                    <option value="053" <c:if test="${output.memNation eq '053'}">selected</c:if>>대구</option>
+		                                    <option value="054" <c:if test="${output.memNation eq '054'}">selected</c:if>>경북</option>
+		                                    <option value="055" <c:if test="${output.memNation eq '055'}">selected</c:if>>경남</option>
+		                                    <option value="061" <c:if test="${output.memNation eq '061'}">selected</c:if>>전남</option>
+		                                    <option value="062" <c:if test="${output.memNation eq '062'}">selected</c:if>>광주</option>
+		                                    <option value="063" <c:if test="${output.memNation eq '063'}">selected</c:if>>전북</option>
+		                                    <option value="044" <c:if test="${output.memNation eq '044'}">selected</c:if>>세종특별자치시</option>
+		                                    <option value="064" <c:if test="${output.memNation eq '064'}">selected</c:if>>세종특별자치도</option>
 		                             	</select>
 									</div>
 									<div class="inputGroup">
@@ -190,10 +190,12 @@ $(document).ready(function(){
 	});
 	
 	$.validator.addMethod("passwordCk",  function( value, element ) {
-
 		return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
-
 	}); 
+	
+	$.validator.addMethod("noSpace", function(value, element) { 
+		  return value.indexOf(" ") < 0 && value != ""; 
+	});
 	
     $('#memEdit_form').validate({
 		
@@ -205,7 +207,7 @@ $(document).ready(function(){
             // [연락처]
             memTel: { phone: true, minlength: 9, maxlength: 11 },
          	// [닉네임] 필수
-            memNick: 'required',
+            memNick: {required: true, noSpace: true},
             
         },
         messages: {
@@ -229,7 +231,10 @@ $(document).ready(function(){
                 minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
                 maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
             },
-            memNick: '닉네임을 입력해주세요.',
+            memNick: {
+            	required: '닉네임을 입력해주세요.',
+            	noSpace: '공백은 사용이 불가능 합니다.'
+            },
         }
     });
     
@@ -242,7 +247,7 @@ $(document).ready(function(){
         },
         success: function(json) {
             swal('알림', '회원정보가 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/member/myPage';
+                window.location = ROOT_URL + '/myPage/joinManage';
             });
         },
     });
