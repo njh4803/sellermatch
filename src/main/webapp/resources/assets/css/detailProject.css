@@ -614,6 +614,16 @@ textarea::placeholder {
 	display: inline-block;
 	margin-left: 24px;
 }
+.secretPw{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 110px;
+    height: 25px;
+    vertical-align: -webkit-baseline-middle;
+    margin-top: 2px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
 /* ---------------------------------------------------------------------------------------------------------- */
 /* 모바일 */
 @media screen and (max-width: 767px){

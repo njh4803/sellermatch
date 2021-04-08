@@ -7,52 +7,56 @@
     <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
     <resultMap id="replyMap"
         type="kr.co.wesellglobal.sellermatch.model.ReplyDto">
-        <result property="replyIdx"   column="reply_idx" />
         <result property="replyId"     column="reply_id" />
+        <result property="replyParent"   column="reply_parent" />
         <result property="replyWriter"   column="reply_writer" />
         <result property="replyContents" column="reply_contents" />
         <result property="replyProjId" column="reply_proj_id" />
         <result property="replyBoardId" column="reply_board_id" />
-        <result property="replyGno" column="reply_gno" />
-         <result property="replyGseq" column="reply_gseq" />
-         <result property="replyDepth" column="reply_depth" />
-         <result property="replyPw" column="reply_pw" />
-         <result property="replyRegDate" column="reply_reg_date" />
+        <result property="replyPw" column="reply_pw" />
+        <result property="replySecret" column="reply_secret" />
+        <result property="replyRegDate" column="reply_reg_date" />
     </resultMap>
     
     <insert id="insertItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
     	useGeneratedKeys="true"
-    	keyProperty="replyIdx">
+    	keyProperty="replyId">
     	INSERT INTO ReplyList
-    		(`reply_id`, `reply_writer`, `reply_contents`, `reply_proj_id`, `reply_board_id`, `reply_gno`, 
-    		`reply_gseq`, `reply_depth`, `reply_pw`, `reply_reg_date`)
+    		(`reply_parent`, `reply_writer`, `reply_contents`, `reply_proj_id`, `reply_board_id`, `reply_pw`, `reply_reg_date`, reply_secret)
     	 VALUES 
-    	 	(#{replyId}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, 
-    	 	#{replyGno}, #{replyGseq}, #{"replyDepth"}, #{replyPw}, now());
+    	 	(#{replyParent}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, #{replyPw}, now(), #{replySecret});
     </insert>
     
     <select id="selectList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
     	resultMap="replyMap">
     	SELECT 
-	   		reply_idx, reply_id, reply_writer, reply_contents, reply_proj_id, reply_board_id, reply_gno, reply_gseq, reply_depth, 
-	   		reply_pw, reply_reg_date
+	   		reply_id, reply_parent, reply_writer, reply_contents, reply_proj_id, reply_board_id, reply_secret, reply_pw, reply_reg_date
     	FROM ReplyList
-    	WHERE reply_board_id = #{replyBoardId}
-    	ORDER BY reply_gno DESC, reply_gseq ASC
+    	WHERE reply_proj_id = #{replyProjId}
+    	ORDER BY reply_reg_date
     	
     	<!-- <if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if> -->
     </select>
 	
-	<!-- 게시판조회 데이터 수 조회 -->
+	<!-- 댓글 수 조회 -->
 	<select id="selectCountAll"
 		parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
 		resultType="int">
 		SELECT COUNT(*)
 		FROM ReplyList
-		WHERE reply_board_id = #{replyBoardId}
+		WHERE reply_proj_id = #{reply_proj_id}
+	</select>
+	
+	
+	<!-- 시퀀스 조회 -->
+	<select id="selectSeq"
+		parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
+		resultType="int">
+		SELECT max(reply_id)
+		FROM ReplyList;
 	</select>
 </mapper>

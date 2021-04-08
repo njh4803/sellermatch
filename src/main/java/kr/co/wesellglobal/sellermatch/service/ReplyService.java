@@ -12,4 +12,5 @@ public interface ReplyService {
 			
 	public int getReplyCount(ReplyDto input) throws Exception;
 	
+	public int getSeq() throws Exception;
 }
