@@ -356,17 +356,17 @@
 				<div class="detailBox3"><span>문의</span>
 					<form action="${pageContext.request.contextPath}/project/reply" method="post" id="question-form" class="text-right">
 						<div class="textBox2">
-						    <textarea name="replyContents" class="question" placeholder="- 작성한 내용은 수정 및 삭제가 불가합니다&#13;&#10;- 이메일. 전화번호 등을 게시하여 직거래를 유도할 경우 서비스 이용에 제재를 받을 수 있습니다"></textarea>
+						    <textarea name="replyContents" id="replyContents" class="question" placeholder="- 작성한 내용은 수정 및 삭제가 불가합니다&#13;&#10;- 이메일. 전화번호 등을 게시하여 직거래를 유도할 경우 서비스 이용에 제재를 받을 수 있습니다"></textarea>
 						    <hr>
 						    <div class="clearfix">
 						    	<input type="checkbox" id="secret" name="secret">
 					    		<label for="secret">
 					    			<span>비밀글</span>
 					    		</label>
-					    		<input type="password" class="secretPw" name="replyPw" placeholder="비밀번호" readonly>
+					    		<input type="password" class="secretPw" id="replyPw" name="replyPw" placeholder="비밀번호" readonly>
 					    		<input type="hidden" id="projId" name="replyProjId" value="${output.projId}">
-					    		<input type="hidden" name="replySecret" value="">
-						    	<input type="submit" class="question-btn" value="작성하기">
+					    		<input type="hidden" id="replySecret" name="replySecret" value="N">
+						    	<input type="button" class="question-btn" value="작성하기">
 						    </div>						
 						</div>
 					</form>
@@ -378,7 +378,12 @@
 							<div class="reviewNick">${replyDto.replyWriter}</div>
 							<div class="reviewDate">${replyDto.replyRegDate}</div>						
 						</div>
-						<div class="reviewContents">${replyDto.replyContents}</div>
+						<c:if test="${replyDto.replySecret == 'N'}">
+							<div class="reviewContents">${replyDto.replyContents}</div>
+						</c:if>
+						<c:if test="${replyDto.replySecret == 'Y'}">
+							<div class="reviewContents">비밀글입니다.</div>
+						</c:if>
 					</div>					
 					</c:forEach>
 				</div>
@@ -470,21 +475,25 @@
 <script>
 $(document).ready(function() {
 	
-	$(document).on("submit", "#question-form", function(){
-		e.preventdefault();
+	$(document).on("click", ".question-btn", function(){
+		
 		var projId = $("#projId").val();
 		var secretChk = $("input[name=secret]:checkbox").attr('checked');
 		$('input[name=replySecret]').attr('value', secretChk);
 		
-		var form = $(this);
-		var url = form.attr('action');
+		var data = {
+	        		replyProjId: $("#projId").val(),
+	        		replySecret: $('#replySecret').val(),
+					replyPw: $('#replyPw').val(),
+					replyContents: $('#replyContents').val()
+	    		};
 		
       	$.ajax({
    			type: "POST",
-   	        url: url,
+   	        url: ROOT_URL+"/project/reply",
    	        data: data,
             success: function() {
-             	window.location.href = ROOT_URL+"/project/detail?projId="+projId;
+            	window.location.href = ROOT_URL+"/project/detail?projId="+projId;
            }
       	});		
 	});

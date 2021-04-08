@@ -377,7 +377,7 @@ public class ProjectRestController {
 		return webHelper.getJsonData(data);
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping(value = "/project/reply", method = RequestMethod.POST)
 	public Map<String, Object> addReply(
 			@SessionAttribute(value = "member", required = false) MemberDto member,

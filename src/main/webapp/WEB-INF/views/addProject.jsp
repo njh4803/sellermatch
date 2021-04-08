@@ -68,7 +68,7 @@
 									<c:if test="${member.memSort == 2}">
 			    					<td>
 			    						<div class="width-70">
-			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="다앙한 건강식품 위탁판매 합니다">
+			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="직접 입력가능">
 			    						</div>
 			    						<div class="width-30">
 				    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
@@ -227,7 +227,8 @@
 		    						<div>
 		    							<c:if test="${member.memSort == 1}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
-		    								placeholder="공급자 작성팁! 내용을 상세히 작성해주세요. 더 많은 거래지원을 받을 수 있습니다.
+		    								placeholder="공급자 작성팁! 내용을 상세히 작성해주세요.
+더 많은 거래지원을 받을 수 있습니다.
 
 예시) 주방용품, 그릇류 위탁공급하고 있습니다.
 SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
@@ -235,7 +236,8 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 		    							</c:if>
 		    							<c:if test="${member.memSort == 2}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
-		    								placeholder="판매자 작성팁! 내용을 상세히 작성해주세요. 더 많은 거래지원을 받을 수 있습니다.
+		    								placeholder="판매자 작성팁! 내용을 상세히 작성해주세요.
+더 많은 거래지원을 받을 수 있습니다.
 
 예시) 주방용품 그릇 공급처 찾고있습니다. 
 라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
@@ -251,7 +253,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 				   					</td>
 				   					<td>
 				   						<div class="width-70">
-				   							<input type="text" class="inputForm" id="projRequire" name="projRequire">
+				   							<input type="text" class="inputForm" id="projRequire" name="projRequire" placeholder="직접 입력가능">
 				   						</div>
 										<c:if test="${member.memSort == 1}">
 				   						<div class="width-30">
@@ -305,7 +307,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 			                           </div>
 				                        <ul id="tag-list">
 										</ul>
-			                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기">
+			                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기 ( 엔터 또는 스페이스바로 입력가능 )">
 			                        	<input type="hidden" value="" name="tag" id="rdTag" />
 				   					</td>
 				   				</tr>

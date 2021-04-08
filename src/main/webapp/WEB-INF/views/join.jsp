@@ -480,7 +480,7 @@ $(document).ready(function() {
 	            // 닉네임 필수, 길이제한, 중복검사
 	            memNick: { 
 	            	required: true, 
-	            	maxlength: 6,
+	            	maxlength: 9,
 	            	remote : {
 	                    url : ROOT_URL + '/member/nickCheck',
 	                    type : 'post',
@@ -528,7 +528,7 @@ $(document).ready(function() {
 	                maxlength: '연락처는 최대 {0}글자까지 가능합니다.',
 	            },
 	            memNick: {
-	            	maxlength: '닉네임은 최대 {6}글자까지 가능합니다.',
+	            	maxlength: '닉네임은 최대 {9}글자까지 가능합니다.',
 	            	remote: '이미 사용중인 닉네임입니다.'
 	            },
 	            postcode: '우편번호를 입력해 주세요.',

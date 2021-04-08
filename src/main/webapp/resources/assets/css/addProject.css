@@ -461,6 +461,10 @@ input[type="checkbox"].findCheck:checked + label span {
 }
 #tag{
 	border: 1px solid #aaa;
+	margin-bottom: 10px;
+}
+#tag-list ul{
+	padding: 0;
 }
 /* 모바일 */
 @media screen and (max-width: 767px){

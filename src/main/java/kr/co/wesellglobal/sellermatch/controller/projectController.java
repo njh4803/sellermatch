@@ -128,9 +128,6 @@ public class projectController {
 		IndusDto input2 = new IndusDto();
 		if (keyword != null && keyword != "") {
 			input.setProjDetail(keyword);
-			input.setProjIndusName(keyword);
-			input.setProjKeyword(keyword);
-			input.setProjMemId(keyword);
 			input.setProjTitle(keyword);
 		}
 
@@ -220,9 +217,6 @@ public class projectController {
 		IndusDto input2 = new IndusDto();
 		if (keyword != null && keyword != "") {
 			input.setProjDetail(keyword);
-			input.setProjIndusName(keyword);
-			input.setProjKeyword(keyword);
-			input.setProjMemId(keyword);
 			input.setProjTitle(keyword);
 		}
 

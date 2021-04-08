@@ -135,6 +135,10 @@
 				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
 				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
 			)
+			<if test="projMemId != '' and projMemId != null">
+				AND proj_mem_id = #{projMemId}
+			</if>
+			
         	
         	<if test="projSortArr != '' and projSortArr != null">
         		AND proj_sort IN
@@ -292,7 +296,7 @@
     <!-- 프로젝트조회 데이터 수 조회 -->
 	<select id="selectCountAll"
 		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
-		resultType="int">
+		resultType="int"> 
 		SELECT COUNT(proj_idx)
     	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
         <where>
@@ -303,6 +307,9 @@
 				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
 				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
 			)
+        	<if test="projMemId != '' and projMemId != null">
+				AND proj_mem_id = #{projMemId}
+			</if>
         	
         	<if test="projSortArr != '' and projSortArr != null">
         		AND proj_sort IN

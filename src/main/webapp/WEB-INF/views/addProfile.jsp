@@ -248,7 +248,7 @@ label.error {
 	    				<tr>
 	    					<td>매출 규모</td>
 	    					<td>
-	    						<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출" min="0" step="1000000">
+	    						<input type="number" class="inputForm" id="profileVolume" name="profileVolume" value="0" placeholder="연 매출" min="0" step="1000000">
 	    					</td>
 	    				</tr>
 	    				<tr>
