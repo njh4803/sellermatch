@@ -38,7 +38,7 @@
 									<div>
 										<div style="margin-top: 20px;">
 											<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
-												<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/images/user.png"/>
+												<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/upload/${output.profilePhoto}"/>
 											</div>
 										</div>
 										<div style="">
@@ -68,13 +68,13 @@
 									</div>
 									<div class="inputGroup">
 				    					<label>판매경력</label>
-				    					<select id="profileCareer" name="profileCareer" class="inputForm" value="${output.profileCareer}">
-		                                    <option value="0">경력없음</option>
-		                                    <option value="1">1개월 이상 ~ 3개월 미만</option>
-		                                    <option value="3">3개월 이상 ~ 6개월 미만</option>
-		                                    <option value="6">6개월 이상 ~ 1년 미만</option>
-		                                    <option value="9">1년 이상 ~ 3년 미만</option>
-		                                    <option value="8">3년 이상</option>
+				    					<select id="profileCareer" name="profileCareer" class="inputForm">
+		                                    <option value="0" <c:if test="${output.profileCareer eq '0'}">selected</c:if>>경력없음</option>
+		                                    <option value="1" <c:if test="${output.profileCareer eq '1'}">selected</c:if>>1개월 이상 ~ 3개월 미만</option>
+		                                    <option value="3" <c:if test="${output.profileCareer eq '3'}">selected</c:if>>3개월 이상 ~ 6개월 미만</option>
+		                                    <option value="6" <c:if test="${output.profileCareer eq '6'}">selected</c:if>>6개월 이상 ~ 1년 미만</option>
+		                                    <option value="9" <c:if test="${output.profileCareer eq '9'}">selected</c:if>>1년 이상 ~ 3년 미만</option>
+		                                    <option value="8" <c:if test="${output.profileCareer eq '8'}">selected</c:if>>3년 이상</option>
 		                                </select>
 									</div>
 									<div class="inputGroup">
@@ -117,7 +117,7 @@
 		                                    <option value="062" <c:if test="${output.profileNation eq '062'}">selected</c:if>>광주</option>
 		                                    <option value="063" <c:if test="${output.profileNation eq '063'}">selected</c:if>>전북</option>
 		                                    <option value="044" <c:if test="${output.profileNation eq '044'}">selected</c:if>>세종특별자치시</option>
-		                                    <option value="064" <c:if test="${output.profileNation eq '064'}">selected</c:if>>세종특별자치도</option>
+		                                    <option value="064" <c:if test="${output.profileNation eq '064'}">selected</c:if>>제주특별자치도</option>
 		                                </select>
 									</div>
 									<div class="inputGroup">
