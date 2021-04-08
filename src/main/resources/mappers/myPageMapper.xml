@@ -61,6 +61,11 @@
         <result property="memSort" column="mem_sort" />
         <result property="projAddCount" column="proj_add_count" />
         <result property="appliedCount" column="applied_count" />
+        <result property="memIdx" column="mem_idx" />
+        <result property="memId" column="mem_id" />
+        <result property="scrapNo" column="SCRAP_NO" />
+        <result property="scrapCount" column="scrap_count" />
+        
     </resultMap>
 
     <select id="selectList"
@@ -129,13 +134,62 @@
 		SELECT 
 			profile_mem_id,
 			mem_sort,
+			mem_idx,
 			(SELECT COUNT(1) FROM ProjectList WHERE Proj_mem_id=Profile_mem_id)  AS proj_add_count,
 			(SELECT COUNT(1) FROM ApplyList WHERE Apply_mem_id =Profile_mem_id) AS applied_count,
-			(SELECT COUNT(1) FROM ApplyList A, ProjectList B WHERE 1=1 AND A.Apply_type = Mem_sort AND A.Apply_proj_id =B.Proj_id AND B.Proj_mem_id =Profile_mem_id) AS recommend_count
+			(SELECT COUNT(1) FROM ApplyList A, ProjectList B WHERE 1=1 AND A.Apply_type = Mem_sort AND A.Apply_proj_id =B.Proj_id AND B.Proj_mem_id =Profile_mem_id) AS recommend_count,
+			(SELECT COUNT(1) FROM TB_SCRAP WHERE MEM_IDX = mem_idx) AS scrap_count
 		FROM ProfileList A, MemList B
 		WHERE 1=1
 		AND A.Profile_mem_id =B.Mem_id 
 		AND A.Profile_mem_id = #{projMemId}
+	</select>
+	
+	<insert id="addScrap"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	useGeneratedKeys="true"
+    	keyProperty="scrapNo">
+    	INSERT INTO TB_SCRAP
+    		(`MEM_IDX`, `PROJ_IDX`, `FRST_REGIST_MNGR`, `FRST_REGIST_DT`, `LAST_REGIST_MNGR`, `LAST_REGIST_DT`)
+    	 VALUES 
+    	 	(#{memIdx}, #{projIdx}, #{memId}, now(), #{memId}, now());
+    </insert>
+    
+    <select id="scrapDupCheck"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultType="int">
+    	SELECT 
+    		COUNT(1) 
+    	FROM TB_SCRAP 
+    	WHERE 1=1
+    	AND MEM_IDX = #{memIdx} 
+    	AND PROJ_IDX = #{projIdx}
+    </select>
+    
+    	<select id="selectpScrapList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultMap="myPageMap">
+    	SELECT distinct
+    		p.proj_idx as proj_idx, 
+    		proj_id, 
+    		date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, 
+    		proj_title, 
+    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
+    		proj_recruit_num, 
+    		proj_state,
+    		proj_sort,
+    		proj_nation,
+    		proj_supply_type,
+    		proj_hit,
+    		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
+    		proj_channel,
+    		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count
+    	FROM ProjectList p, MemList m, ProfileList pf, TB_SCRAP S
+		WHERE 1=1
+		AND S.PROJ_IDX = p.proj_idx
+		AND p.proj_mem_id = pf.profile_mem_id
+		AND S.MEM_IDX = m.Mem_idx
+		AND m.mem_id = #{memId}
 	</select>
 	
 </mapper>

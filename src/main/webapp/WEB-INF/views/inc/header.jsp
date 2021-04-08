@@ -185,7 +185,7 @@ header #m-search_frm{
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}">
+                <a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
                 	거래처 찾기 무료등록
                 </a>
             </div>
@@ -382,13 +382,13 @@ $(function(){
 			</div>
 		</div>
 		<div class="SNSinnerbox">
-			<div>
+<!--			<div>
 			<a href="" onclick="" return false;">
 			<img src="${pageContext.request.contextPath}/assets/img/sns-share-instagram.png" title="인스타그램으로 공유하기" class="sharebtn_custom" style="width: 48px;"></a>
 			</div>
 			<div class="SNSinnerTextbox">
 			<span style="display: inline-block">Instagram</span>
-			</div>
+			</div>-->
 		</div>
 		<input id="swal-input1" class="swal2-input" read-only>
 		<input type="submit" value="복사" class="SNScopyBtn btn btn-default">

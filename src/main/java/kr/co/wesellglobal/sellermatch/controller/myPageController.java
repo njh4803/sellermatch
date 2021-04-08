@@ -198,5 +198,84 @@ public class myPageController {
 		return webHelper.getJsonData(data);
 	}
 	
+	@RequestMapping(value = "/myPage/scrap", method = RequestMethod.POST)
+	public Map<String, Object> scrap(
+			@RequestParam(value = "projIdx", required = false)int projIdx,
+			@SessionAttribute(value = "member", required = false) MemberDto member){
+		
+		myPageDto input = new myPageDto();
+		input.setProjIdx(projIdx);
+		input.setMemIdx(member.getMemIdx());
+		input.setMemId(member.getMemId());
+		
+		try {
+			myPageService.addScrap(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
+	}
+	
+	@RequestMapping(value = "/myPage/scrapDupCheck", method = RequestMethod.GET)
+	public Map<String, Object> scrapDupCheck(
+			@RequestParam(value = "projIdx", required = false)int projIdx,
+			@SessionAttribute(value = "member", required = false) MemberDto member){
+		
+		myPageDto input = new myPageDto();
+		input.setProjIdx(projIdx);
+		input.setMemIdx(member.getMemIdx());
+		input.setMemId(member.getMemId());
+		
+		int result;
+		try {
+			result = myPageService.scrapDupCheck(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("result", result);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@result>>>>>>>>>>>>"+result);
+		
+		return webHelper.getJsonData(data);
+	}
+	
+	@RequestMapping(value = "/myPage/delngManage/scrapList", method = RequestMethod.GET)
+	public ModelAndView scrapList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "applyType", required = false)String applyType,
+			@RequestParam(value = "applyProjState", required = false)String applyProjState,			
+			@RequestParam(value = "keyword", required = false) String keyword,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		// 페이지 구현에 필요한 변수값 생성 
+		int totalCount = 0;		// 전체 게시글 수
+		int listCount = 8;		// 한 페이지당 표시할 목록 수
+		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
+		
+		// 페이지 번호를 계산한 결과가 저장될 객체
+		PageData pageData = null;
+		
+		myPageDto input = new myPageDto();
+		input.setMemId(member.getMemId());
+		input.setProjMemId(member.getMemId());
+		
+		List<myPageDto> scrapList = null;
+		myPageDto myProjectCount = null;
+		
+		try {
+			scrapList = myPageService.selectScrapList(input);
+			myProjectCount = myPageService.selectpMyProjectCount(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("scrapList", scrapList);
+		model.addAttribute("myProjectCount", myProjectCount);
+		model.addAttribute("memSort", member.getMemSort());
+		
+		return new ModelAndView("scrapList");
+	}
 	
 }

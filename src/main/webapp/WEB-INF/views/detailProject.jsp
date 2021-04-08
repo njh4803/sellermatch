@@ -12,6 +12,7 @@
 		<hr>
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">
+				<input type="hidden" id="projIdx" value="${output.projIdx}">
 				<input type="hidden" id="projId" value="${output.projId}">
 				<input type="hidden" id="projSort" value="${output.projSort}">
 				<c:choose>
@@ -152,11 +153,6 @@
 			</div> 
 		</div>
 		<div class="container3">
-<%--           	<div>
-       			<button class="Btn">
-       				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/assets/img/starNone.png">관심등록
-       			</button>
-       		</div> --%>
        		<div class="btn-container">
           		<div class="btnBox">스크랩
           			<img alt="" src="${pageContext.request.contextPath}/assets/img/scrap.png">
@@ -389,20 +385,16 @@
 			</div>
 		</div>
 		<div class="container3">
-<%--           	<div>
-       			<button class="Btn">
-       				<img class="star scrapBtn" alt="" src="${pageContext.request.contextPath}/assets/img/starNone.png">관심등록
-       			</button>
-       		</div> --%>
        		<div class="text-center"> 
        			<button class="matchBtn" id="applyBtn">
        				<img class="applyImg" alt="" src="${pageContext.request.contextPath}/assets/img/applying.png">지원하기
        			</button>
        		</div>
        		<div class="btn-container">
-<%--           		<div class="btnBox">스크랩
-          			<img alt="" src="${pageContext.request.contextPath}/assets/img/scrap.png">
+           		<div class="btnBox scrapBtn" id="scrapBtn" style="cursor: pointer;">
+          			<img alt="" src="${pageContext.request.contextPath}/assets/img/scrap.png"> 스크랩
 	       		</div>
+	       		<%--
 	       		<div class="btnBox">좋아요
 	       			<img alt="" src="${pageContext.request.contextPath}/assets/img/like.png">
 	       		</div> --%>
@@ -584,6 +576,88 @@ $(document).ready(function() {
 		  			  		    }).then(function(result) {	
 		  			  		    	if (result.value) {
 		  			  		    		window.location.href = ROOT_URL+"/member/myPage";
+		  			  		    	}
+		  			  		    });
+	  		                }
+	  			      	});
+	  		      	}
+				});	
+			}
+		});
+	})
+	
+		$(document).on("click", "#scrapBtn", function(){
+		var login_id = $('#projectInsert').data('member');
+		var mem_sort = $('#projectInsert').data('memsort');
+		var mem_Idx  = $('#projectInsert').data('memIdx');
+		var proj_sort = $('#projSort').val();
+		console.log(mem_Idx);
+		
+		if (login_id == '') {
+			swal({
+                title: '알림',
+                text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
+		
+		if (mem_sort == proj_sort) {
+			var text='';
+			if (proj_sort == 1) {
+				text = '판매자만 이용가능합니다.'
+			}
+			if (proj_sort == 2) {
+				text = '공급자만 이용가능합니다.'
+			}
+			swal({
+                title: '알림',
+                text: text,
+               	type: 'warning',
+            });
+			return;
+		}
+		
+		
+		//여기부터 스크랩
+		$.ajax({
+			type: "GET",
+		    url: ROOT_URL+"/myPage/scrapDupCheck",
+		    data: {
+		    	projIdx: $("#projIdx").val()
+		    },
+            success: function(json) {
+            	console.log(json.result); 
+          		if (json.result >= 1) {
+          			swal('알림', '이미 스크랩한 거래입니다.', 'success');
+          			return;
+				}
+				swal({
+	  		          title: '확인',
+	  		          text: '스크랩 하시겠습니까?', 
+	  		          type: "question",
+	  		          width: '400px',
+	  		          showCancelButton: true
+	  		    }).then(function(result) {			
+	  		        if (result.value) {
+	  		        	var data = {
+	  		        		projIdx: $("#projIdx").val()
+	  		        	};
+	  		        	  
+	  		        	$.ajax({
+	  			   			type: "POST",
+	  			   	        url: ROOT_URL+"/myPage/scrap",
+	  			   	        data: data,
+	  		                success: function() {
+	  		                	swal({
+				  		          title: '완료',
+				  		          text: '스크랩을 확인하시겠습니까?', 
+				  		          type: "success",
+				  		          width: '400px',
+				  		          showCancelButton: true
+		  			  		    }).then(function(result) {	
+		  			  		    	if (result.value) {
+		  			  		    		window.location.href = ROOT_URL+"/myPage/delngManage/registDelng";
 		  			  		    	}
 		  			  		    });
 	  		                }
