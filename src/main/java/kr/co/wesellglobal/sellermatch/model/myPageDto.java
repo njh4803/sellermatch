@@ -113,6 +113,8 @@ public class myPageDto {
 	
 	// 지원자 수
 	private int applyCount;
+
+	private int scrapCount;
 	
 	// 상세사진 리스트
 	private String[] projDetailImgList;

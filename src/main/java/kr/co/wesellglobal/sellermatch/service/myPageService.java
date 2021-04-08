@@ -16,4 +16,6 @@ public interface myPageService {
 	
 	public int scrapDupCheck(myPageDto input) throws Exception;
 	
+	public List<myPageDto> selectScrapList(myPageDto input) throws Exception;
+	
 }
