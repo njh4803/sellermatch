@@ -16,5 +16,7 @@ public interface HashTagListService {
 	public void editHashTagList(HashTagListDto input) throws Exception;
 	
 	public int reduplicationCheck(HashTagListDto input) throws Exception;
+
+	public int getSeq() throws Exception;;
 	
 }

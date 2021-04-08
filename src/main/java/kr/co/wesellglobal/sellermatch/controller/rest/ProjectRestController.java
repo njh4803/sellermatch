@@ -170,8 +170,8 @@ public class ProjectRestController {
 						break;
 					}
 				} else {
-					int hashId = hashTagListService.addHashTagList(hashTagList);
-					
+					hashTagListService.addHashTagList(hashTagList);
+					int hashId = hashTagListService.getSeq();
 					switch (i+1) {
 					case 1:
 						hashTag.setHashTag1(hashId);
