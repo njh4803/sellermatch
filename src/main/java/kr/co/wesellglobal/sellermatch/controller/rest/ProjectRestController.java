@@ -7,13 +7,16 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
+import clojure.repl__init;
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
@@ -22,12 +25,15 @@ import kr.co.wesellglobal.sellermatch.model.HashTagDto;
 import kr.co.wesellglobal.sellermatch.model.HashTagListDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.model.ReplyDto;
 import kr.co.wesellglobal.sellermatch.service.FileService;
 import kr.co.wesellglobal.sellermatch.service.HashTagListService;
 import kr.co.wesellglobal.sellermatch.service.HashTagService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
+import kr.co.wesellglobal.sellermatch.service.ReplyService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -51,6 +57,9 @@ public class ProjectRestController {
 	HashTagListService hashTagListService;
 	@Autowired
 	HashTagService hashTagService;
+	@Autowired
+	ReplyService replyService;
+	
 	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -366,5 +375,30 @@ public class ProjectRestController {
 		data.put("projectList", projectList);
 		
 		return webHelper.getJsonData(data);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/project/reply", method = RequestMethod.POST)
+	public Map<String, Object> addReply(
+			@SessionAttribute(value = "member", required = false) MemberDto member,
+			@ModelAttribute("replyDto") ReplyDto replyDto){
+		
+		ReplyDto input = new ReplyDto();
+		
+		input.setReplyWriter(member.getMemNick());
+		input.setReplyContents(replyDto.getReplyContents());
+		input.setReplyProjId(replyDto.getReplyProjId());
+		input.setReplySecret(replyDto.getReplySecret());
+		input.setReplyPw(replyDto.getReplyPw());
+		
+		try {
+			input.setReplyParent(replyService.getSeq()+1);
+			replyService.addReply(input);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return webHelper.getJsonData();
 	}
 }

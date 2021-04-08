@@ -72,5 +72,23 @@ public class ReplyServiceImpl implements ReplyService{
 		return result;
 	}
 
+	@Override
+	public int getSeq() throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("ReplyMapper.selectSeq");
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			return result;
+		} catch(Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
 
 }

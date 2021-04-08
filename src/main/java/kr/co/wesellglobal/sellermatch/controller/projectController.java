@@ -23,9 +23,11 @@ import kr.co.wesellglobal.sellermatch.model.ApplyDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
+import kr.co.wesellglobal.sellermatch.model.ReplyDto;
 import kr.co.wesellglobal.sellermatch.service.ApplyService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
+import kr.co.wesellglobal.sellermatch.service.ReplyService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -41,6 +43,8 @@ public class projectController {
 	ApplyService applyService;
 	@Autowired
 	IndusService indusService;
+	@Autowired
+	ReplyService replyService;
 	@Autowired
 	RegexHelper regexHelper;
 	@Autowired
@@ -261,21 +265,26 @@ public class projectController {
 			@RequestParam(value = "projId", required = false) String projId) {
 		ProjectDto input = new ProjectDto();
 		ApplyDto input2 = new ApplyDto();
+		ReplyDto input3 = new ReplyDto();
 		input.setProjId(projId);
 		input2.setApplyProjId(projId);
+		input3.setReplyProjId(projId);
 		
 		ProjectDto output = null;
 		List<ApplyDto> applyDto = null;
+		List<ReplyDto> replyDto = null;
 		
 		try {
 			output = projectService.getProject(input);
 			applyDto = applyService.getApplyList(input2);
+			replyDto = replyService.getReplyList(input3);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
 		model.addAttribute("applyDto", applyDto);
+		model.addAttribute("replyDto", replyDto);
 
 		return new ModelAndView("detailProject");
 	}
