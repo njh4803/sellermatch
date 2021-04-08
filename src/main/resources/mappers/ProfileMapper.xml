@@ -81,6 +81,9 @@
 		    <if test="profilePhoto !='' and profilePhoto != null">
 		    	 profile_photo = #{profilePhoto},
 		    </if>
+		    <if test="profileVolume !='' and profileVolume != null">
+		    	 profile_volume = #{profileVolume},
+		    </if>
 		    <if test="profileHashtag !='' and profileHashtag != null">
 		    	 Profile_hashtag = #{profileHashtag}, 
 		    </if>

@@ -666,7 +666,7 @@ $(document).ready(function() {
 				  		          showCancelButton: true
 		  			  		    }).then(function(result) {	
 		  			  		    	if (result.value) {
-		  			  		    		window.location.href = ROOT_URL+"/myPage/delngManage/registDelng";
+		  			  		    		window.location.href = ROOT_URL+"/myPage/delngManage/scrapList";
 		  			  		    	}
 		  			  		    });
 	  		                }

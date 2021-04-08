@@ -9,6 +9,8 @@ public class myPageDto {
 	// 자동번호 
 	private int projIdx;
 	
+	private int scrapNo;
+	
 	private int memIdx;
 	private String memId;
 	
