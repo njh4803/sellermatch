@@ -151,6 +151,7 @@
 		                                       <option value="2" <c:if test="${output.profileBizSort eq '2'}">selected</c:if>>개인사업자</option>
 		                                       <option value="3" <c:if test="${output.profileBizSort eq '3'}">selected</c:if>>간이과세자</option>
 		                                       <option value="4" <c:if test="${output.profileBizSort eq '4'}">selected</c:if>>개인</option>
+		                                       <option value="5" <c:if test="${output.profileBizSort eq '5'}">selected</c:if>>기타</option>
 		                                </select>
 									</div>
 									<c:if test="${member.memSort == '2'}">

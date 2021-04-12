@@ -346,9 +346,10 @@ public class MemberRestController {
 	}
 	/** 로그아웃 */
 	
-	@RequestMapping(value = "/member/logout", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public Map<String, Object> logout(HttpSession session,HttpServletRequest request, 
 			HttpServletResponse response) {
+		
 		Object obj = session.getAttribute("member");
 		
 		if (obj != null) {
@@ -389,8 +390,7 @@ public class MemberRestController {
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("referer", referer);
-
-		return null;
+		return webHelper.getJsonData(data);
 	}
 	
 	/** id 찾기 */

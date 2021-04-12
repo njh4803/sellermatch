@@ -130,6 +130,7 @@ public class projectController {
 			input.setProjDetail(keyword);
 			input.setProjTitle(keyword);
 		}
+
 		// 목록조회
 		List<ProjectDto> output = null;
 		List<IndusDto> indusList = null;
@@ -224,7 +225,6 @@ public class projectController {
 		List<IndusDto> indusList = null;
 		int projCount = 0;
 		int minusCount = ((nowPage - 1) * listCount);
-		
 		try {
 			// 전체 게시글 수 조회
 			totalCount = projectService.getProjectCount(input);

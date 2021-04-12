@@ -51,8 +51,6 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		log.debug("AppInterceptor.preHandle 실행됨");
-		
 		webHelper.init(request, response);
 		
 		// login처리를 담당하는 사용자 정보를 담고 있는 객체를 가져옴
@@ -66,8 +64,7 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 				 // 쿠키가 존재하는 경우(이전에 로그인떄 생성된 쿠키가 존재한다는 것) 
 				 String sessionId = loginCookie;
 			 
-			 MemberDto input = new MemberDto(); 
-			 input.setSessionKey(sessionId);
+			 MemberDto input = new MemberDto(); input.setSessionKey(sessionId);
 			 
 			 // 세션Id를 checkUserWithSessionKey에 전달해 이전에 로그인한적이 있는지 체크하는 메서드를 거쳐서
 			 // 유효시간이 > now() 인 즉 아직 유효시간이 지나지 않으면서 해당 sessionId 정보를 가지고 있는 사용자 정보를 반환한다. 
@@ -81,6 +78,8 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 		 
 		 }
         
+		log.debug("AppInterceptor.preHandle 실행됨");
+		
 		//컨트롤러 실행 직전에 현재 시각을 저장한다.
 		startTime = System.currentTimeMillis();
 		/** 1) 클라이언트의 요청 정보 확인하기 */
@@ -131,8 +130,6 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		log.debug("AppInterceptor.postHandle 실행됨");
-		
 		/* 로그인 인증 URL 생성하여 뿌려줌*/
     	SNSLogin snsLoginNaver = new SNSLogin(naverSns);
     	SNSLogin snsLoginKakao = new SNSLogin(kakaoSns);
@@ -143,6 +140,7 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
         request.getSession().setAttribute("kakao_url", snsLoginKakao.getAuthURL());
         request.getSession().setAttribute("google_url", googleUrl);
 		
+		log.debug("AppInterceptor.postHandle 실행됨");
 		//컨트롤러 종료시의 시각을 지운다.
 		endTime = System.currentTimeMillis();
 		
@@ -157,7 +155,7 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		log.debug("AppInterceptor.afterCompletion 실행됨");
+		//log.debug("AppInterceptor.afterCompletion 실행됨");
 		super.afterCompletion(request, response, handler, ex);
 	}
 
@@ -169,7 +167,7 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.debug("AppInterceptor.afterConcurrentHandlingStarted 실행됨");
+		//log.debug("AppInterceptor.afterConcurrentHandlingStarted 실행됨");
 		super.afterConcurrentHandlingStarted(request, response, handler);
 	}
 	
