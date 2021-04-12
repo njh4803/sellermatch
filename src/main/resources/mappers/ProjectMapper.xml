@@ -58,6 +58,7 @@
         <result property="hashTag3" column="hash_tag3" />
         <result property="hashTag4" column="hash_tag4" />
         <result property="hashTag5" column="hash_tag5" />
+        <result property="orginName" column="orgin_name" />
     </resultMap>
     
     <insert id="insertItem"

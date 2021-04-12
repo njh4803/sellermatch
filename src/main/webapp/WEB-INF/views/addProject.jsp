@@ -53,7 +53,7 @@
 									<c:if test="${member.memSort == 1}">
 			    					<td>
 			    						<div class="width-70">
-			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="[다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집]">
+			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="직접 입력가능">
 			    						</div>
 			    						<div class="width-30">
 				    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">

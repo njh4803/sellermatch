@@ -50,4 +50,11 @@
     	WHERE hash_nm = #{hashNm}
     </select>
 
+	<!-- 시퀀스 조회 -->
+	<select id="selectSeq"
+		parameterType="kr.co.wesellglobal.sellermatch.model.HashTagListDto"
+		resultType="int">
+		SELECT max(hash_id)
+		FROM HashTagList;
+	</select>
 </mapper>

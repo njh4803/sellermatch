@@ -363,7 +363,7 @@
 					    		<label for="secret">
 					    			<span>비밀글</span>
 					    		</label>
-					    		<input type="password" class="secretPw" id="replyPw" name="replyPw" placeholder="비밀번호" readonly>
+					    		<!-- <input type="password" class="secretPw" id="replyPw" name="replyPw" placeholder="비밀번호" readonly> -->
 					    		<input type="hidden" id="projId" name="replyProjId" value="${output.projId}">
 					    		<input type="hidden" id="replySecret" name="replySecret" value="N">
 						    	<input type="button" class="question-btn" value="작성하기">
@@ -378,12 +378,14 @@
 							<div class="reviewNick">${replyDto.replyWriter}</div>
 							<div class="reviewDate">${replyDto.replyRegDate}</div>						
 						</div>
-						<c:if test="${replyDto.replySecret == 'N'}">
-							<div class="reviewContents">${replyDto.replyContents}</div>
-						</c:if>
-						<c:if test="${replyDto.replySecret == 'Y'}">
-							<div class="reviewContents">비밀글입니다.</div>
-						</c:if>
+						<c:choose>
+							<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projId}">
+								<div class="reviewContents">비밀글입니다.</div>
+							</c:when>
+							<c:otherwise>
+								<div class="reviewContents">${replyDto.replyContents}</div>
+							</c:otherwise>						
+						</c:choose>
 					</div>					
 					</c:forEach>
 				</div>
@@ -476,6 +478,29 @@
 $(document).ready(function() {
 	
 	$(document).on("click", ".question-btn", function(){
+		var login_id = $('#projectInsert').data('member');
+		var projId = $("#projId").val();
+		var secretChk = $("input[name=secret]:checkbox").attr('checked');
+		var replyContents =  $('#replyContents').val()
+		$('input[name=replySecret]').attr('value', secretChk);
+		
+		if (login_id == '') {
+			swal({
+                title: '알림',
+                text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
+		
+		if (replyContents.trim() == '') {
+			swal({
+                title: '알림',
+                text: '내용을 입력하세요.',
+               	type: 'warning',
+            });
+			return;			
+		}
 		
 		var projId = $("#projId").val();
 		var secretChk = $("input[name=secret]:checkbox").attr('checked');
@@ -484,7 +509,7 @@ $(document).ready(function() {
 		var data = {
 	        		replyProjId: $("#projId").val(),
 	        		replySecret: $('#replySecret').val(),
-					replyPw: $('#replyPw').val(),
+					/* replyPw: $('#replyPw').val(), */
 					replyContents: $('#replyContents').val()
 	    		};
 		
@@ -501,12 +526,13 @@ $(document).ready(function() {
 	
 	// 비밀댓글
 	$(document).on("click", "#secret", function(){
+		
 		if (this.checked) {
-			$('input[type=password]').attr('readonly', true);
-			$('input[name=replySecret]').attr('value', 'N');
+			/* $('input[type=password]').attr('readonly', true); */
+			$('input[name=replySecret]').prop('value', 'Y');
 		} else {
-			$('input[type=password]').attr('readonly', false);	
-			$('input[name=replySecret]').attr('value', 'Y');
+			/* $('input[type=password]').attr('readonly', false); */	
+			$('input[name=replySecret]').prop('value', 'N');
 		}
 	});
 	
