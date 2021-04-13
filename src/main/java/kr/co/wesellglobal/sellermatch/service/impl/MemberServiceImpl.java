@@ -222,23 +222,12 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDto loginSNS(MemberDto input) throws Exception {
 		MemberDto result = null;
 		
-		try {
-			result = sqlSession.selectOne("MemberMapper.loginSNS", input);
+		result = sqlSession.selectOne("MemberMapper.loginSNS", input);
 
-			if (result == null) {
-				throw new NullPointerException("result=null");
-			}
-
+		if (result != null) {
 			// 로그인 시간을 갱신
 			sqlSession.update("MemberMapper.updateLoginDate", result);
-		} catch (NullPointerException e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("아이디나 비밀번호가 잘못되었습니다.");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 조회에 실패했습니다.");
 		}
-
 		return result;
 	}
 
