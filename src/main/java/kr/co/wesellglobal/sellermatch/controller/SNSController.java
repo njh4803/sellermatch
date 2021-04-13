@@ -1,9 +1,11 @@
 package kr.co.wesellglobal.sellermatch.controller;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -51,7 +53,10 @@ public class SNSController {
 	private SnsValue kakaoSns;
 
 	@RequestMapping(value = "/auth/{snsService}/callback", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView snsLoginCallback(HttpSession session, HttpServletResponse response, @PathVariable String snsService, Model model, @RequestParam String code)
+	public ModelAndView snsLoginCallback(HttpSession session, HttpServletResponse response, 
+			@PathVariable String snsService, Model model, 
+			@RequestParam String code,
+			@RequestParam(value = "continueLogin", defaultValue = "on") String continueLogin)
 			throws Exception {
 
 		logger.info("snsLoginCallback: service={}", snsService);
@@ -98,15 +103,44 @@ public class SNSController {
 	        	model.addAttribute("failLogin", "가입했던 SNS를 확인해주세요.");
 	        	
 	        } else {
+	        	
 		        ProfileDto input2 = new ProfileDto();
 				ProfileDto profile = null;
 				input2.setProfileSort(input.getMemSort());
 				input2.setProfileMemId(member.getMemId());
 				profile = profileService.getProfile(input2);
 				
-		    	// 세션 저장
+				// 세션 저장
 		    	webHelper.setSession("member", result);
 		    	webHelper.setSession("profile", profile);
+		    	
+				log.debug("member 세션 생성 완료 = " + webHelper.getSession("member"));
+				// 로그인 유지를 체크했다면
+				if (continueLogin.equals("on")) {
+					int amount =60 *60 *24 *7;
+		            // 쿠키를 생성하고 현재 로그인되어 있을 때 생성되었던 세션의 id를 쿠키에 저장한다.
+					Cookie cookie =new Cookie("loginCookie", session.getId());
+		            // 쿠키를 찾을 경로를 컨텍스트 경로로 변경해 주고...
+		            cookie.setPath("/");
+		            cookie.setMaxAge(amount);// 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+		            // 쿠키를 적용해 준다.
+		            response.addCookie(cookie);
+		            //webHelper.setCookie("loginCookie", session.getId(), amount);// 단위는 (초)임으로 7일정도로 유효시간을 설정
+		            log.debug("loginCookie 쿠키 생성 완료 = " + cookie.getName());
+		            
+		            
+		            // currentTimeMills()가 1/1000초 단위임으로 1000곱해서 더해야함
+		            Date sessionLimit =new Date(System.currentTimeMillis() + (1000*amount));
+					
+		            System.out.println("~~~~~~~~~~~~~~");
+					input.setSessionLimit(sessionLimit);
+					input.setSessionKey(session.getId());
+					try {
+						memberService.keepLogin(input);
+					} catch (Exception e) {
+						return new ModelAndView ("main");
+					}
+				}
 	        }
 	    	
 	        return new ModelAndView ("main");

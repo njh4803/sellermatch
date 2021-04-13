@@ -45,9 +45,6 @@ public class SNSLogin {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode rootNode = mapper.readTree(body);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println(rootNode);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
 		if (this.sns.isGoogle()) {
 			
 			String email = rootNode.get("email").asText();
