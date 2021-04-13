@@ -390,7 +390,7 @@ public class MemberRestController {
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("referer", referer);
-		return webHelper.getJsonData(data);
+		return null;
 	}
 	
 	/** id 찾기 */

@@ -604,8 +604,8 @@
 							</div>
 						</div>
 						<div class="rightBox">
-							<div class="infoBox2"><span>등록한 거래</span><span>${output.contractCount}건</span></div>
-							<div class="infoBox2"><span>완료한 거래</span><span>${output.projAddCount}건</span></div>
+							<div class="infoBox2"><span>등록한 거래</span><span>${output.projAddCount}건</span></div>
+							<div class="infoBox2"><span>완료한 거래</span><span>${output.contractCount}건</span></div>
 							<div class="infoBox2"><span>요청 받은 수</span><span>${output.recommendCount}건</span></div>
 							<div class="infoBox2">
 								<span>판매채널</span>
