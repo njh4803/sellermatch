@@ -157,7 +157,7 @@ public class MemberRestController {
 		input.setMemPost(memPost);
 		input.setMemAddr(memAddr);
 		input.setMemAddr2(memAddr2);
-		input.setMemRname("0");
+		input.setMemRname("1");
 		//input.setMemPhoto(item.getFilePath());
 		input.setMemState("0");
 		input.setMemIp(clientIp);

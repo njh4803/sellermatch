@@ -381,7 +381,7 @@ textarea::placeholder {
 }
 .reviewBox2{
 	display: inline-block;
-	width: 12%;
+	width: 22%;
 	height:fit-content;
 	float: left;
 }
@@ -408,7 +408,7 @@ textarea::placeholder {
 }
 .reviewContents{
 	display: inline-block;
-	width: 86%;
+	width: 78%;
 	font-size: 15px;
 	font-weight: normal;
 	font-stretch: normal;
