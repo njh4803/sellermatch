@@ -24,9 +24,9 @@
 	            	<ul>
 	            		<li><input type="checkbox" class="checkAll" id="m-sellermemRname"><label for="m-sellermemRname"><span>전체</span></label></li>
 	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="m-sp1"><label for="m-sp1"><span>신원인증</span></label></li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="m-sp2"><label for="m-sp2"><span>사업자인증</span></label></li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="m-sp3"><label for="m-sp3"><span>채널검증</span></label></li>
-	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="m-sp4"><label for="m-sp4"><span>매출검증</span></label></li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileBizCerti" value="1" id="m-sp2"><label for="m-sp2"><span>사업자인증</span></label></li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileChChk" value="1" id="m-sp3"><label for="m-sp3"><span>채널검증</span></label></li>
+	            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileSaleChk" value="1" id="m-sp4"><label for="m-sp4"><span>매출검증</span></label></li>
 	            	</ul>
 			  	</div>
 				<div class="m-check_list_box">
@@ -381,9 +381,9 @@
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="sellermemRname"><label for="sellermemRname"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellermemRname" value="1" id="sp1"><label for="sp1"><span>신원인증</span></label></li>
-		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
-		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
-		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="sellerSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
+		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
@@ -422,7 +422,7 @@
 		            		<li><input type="checkbox" class="check" name="profileVolume" value="29999999" id="p2"><label for="p2"><span>1000만원~2999만원</span></label></li>
 		            		<li><input type="checkbox" class="check" name="profileVolume" value="49999999" id="p3"><label for="p3"><span>3000만원~4999만원</span></label></li>
 		            		<li><input type="checkbox" class="check" name="profileVolume" value="100000000" id="p4"><label for="p4"><span> 5000만원~1억원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileVolume" value="100000000" id="p5"><label for="p5"><span>1억 초과</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileVolume" value="100000001" id="p5"><label for="p5"><span>1억 초과</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
@@ -430,11 +430,12 @@
             		<span class="check_list downImg">판매경력</span>
             		<div class="check_list_box">
 		            	<ul>
-		            		<li><input type="checkbox" class="checkAll"  id="profileCareer"><label for="profileCareer"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="checkAll" name="profileCareer" value="0" id="profileCareer"><label for="profileCareer"><span>전체</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="profileCareer" value="1" id="m1"><label for="m1"><span> 1개월 이상~3개월 미만</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="profileCareer" value="3" id="m2"><label for="m2"><span>3개월 이상~6개월 미만</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="profileCareer" value="6" id="m3"><label for="m3"><span>6개월 이상~1년 미만</span></label></li>
-		            		<li><input type="checkbox" class="check"  name="profileCareer" value="9" id="m4"><label for="m4"><span>1년 이상</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="profileCareer" value="9" id="m4"><label for="m4"><span>1년 이상 ~ 3년 미만</span></label></li>
+		            		<li><input type="checkbox" class="check"  name="profileCareer" value="8" id="m5"><label for="m5"><span>3년 이상</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
@@ -806,11 +807,11 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						<input type="hidden" id="profileMemId{{@key}}" name="profileMemId" value="{{profileMemId}}">
 						<div class="leftBox">
 							<div class="photo-container">
-								{{#ifCond profilePhoto '==' ''}}
-									<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
-								{{else}}	
+								{{#if profilePhoto}}
 									<img class="photoBox" alt="" src="/upload/{{profilePhoto}}">
-								{{/ifCond}}
+								{{else}}	
+									<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
+								{{/if}}
 								<div class="star-score">
 									<div>
 										<c:forEach begin="1" end="5">
@@ -992,24 +993,28 @@ $(document).ready(function() {
 		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
+		var sellermemRname;
 		var profileBizSort;
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
 		var profileCareer;
 		var profileVolume;	
+		var profileChChk;
+		var profileSaleChk;
+		var profileBizCerti;
 		
-		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel', 'profileCareer', 'profileVolume'];
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 'sellermemRname', 
+			'profileChannel', 'profileCareer', 'profileVolume','profileBizCerti',  'profileChChk', 'profileSaleChk'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
-				};
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume,
+				profileBizCerti, profileChChk, profileSaleChk, sellermemRname};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
 			param_list[param_list_name[i]]= [];
-			
+		
 			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 				var name = this.name
 				var value = this.value
@@ -1064,19 +1069,23 @@ $(document).ready(function() {
 		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
+		var sellermemRname;
 		var profileBizSort;
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
 		var profileCareer;
 		var profileVolume;	
+		var profileChChk;
+		var profileSaleChk;
+		var profileBizCerti;
 		
-		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel', 'profileCareer', 'profileVolume'];
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 'sellermemRname', 
+			'profileChannel', 'profileCareer', 'profileVolume','profileBizCerti',  'profileChChk', 'profileSaleChk'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
-				};
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume,
+				profileBizCerti, profileChChk, profileSaleChk, sellermemRname};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
@@ -1138,19 +1147,23 @@ $(document).ready(function() {
 		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
+		var sellermemRname;
 		var profileBizSort;
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
 		var profileCareer;
 		var profileVolume;	
+		var profileChChk;
+		var profileSaleChk;
+		var profileBizCerti;
 		
-		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel', 'profileCareer', 'profileVolume'];
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 'sellermemRname', 
+			'profileChannel', 'profileCareer', 'profileVolume','profileBizCerti',  'profileChChk', 'profileSaleChk'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
-				};
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume,
+				profileBizCerti, profileChChk, profileSaleChk, sellermemRname};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
@@ -1159,20 +1172,13 @@ $(document).ready(function() {
 			$("input[id="+param_list_name[i] +"]").each(function(){
 				var checked = this.checked;
 				
-				
-				if (this.id == 'ppmemRname') {
-					$("input[name=ppmemRname]").prop('checked', checked);
-					$("input[name=ppBizCerti]").prop('checked', checked);
-					$("input[name=projProdCerti]").prop('checked', checked);
-					$("input[name=projProfit]").prop('checked', checked);
-				}
 				if (this.id == 'sellermemRname') {
 					$("input[name=sellermemRname]").prop('checked', checked);
-					$("input[name=sellerBizCerti]").prop('checked', checked);
-					$("input[name=sellerChChk]").prop('checked', checked);
-					$("input[name=sellerSaleChk]").prop('checked', checked);
+					$("input[name=profileBizCerti]").prop('checked', checked);
+					$("input[name=profileChChk]").prop('checked', checked);
+					$("input[name=profileSaleChk]").prop('checked', checked);
 				}
-				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
+				if (this.id != 'sellermemRname') {
 					$("input[name="+param_list_name[i] +"]").each(function(){
 						this.checked = checked;
 					});
@@ -1241,37 +1247,29 @@ $(document).ready(function() {
 		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
+		var sellermemRname;
 		var profileBizSort;
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
 		var profileCareer;
-		var profileVolume;		
+		var profileVolume;	
+		var profileChChk;
+		var profileSaleChk;
+		var profileBizCerti;
 		
-		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel', 'profileCareer', 'profileVolume'];
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 'sellermemRname',
+			'profileChannel', 'profileCareer', 'profileVolume','profileBizCerti',  'profileChChk', 'profileSaleChk'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
-				};
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume,
+				profileBizCerti, profileChChk, profileSaleChk, sellermemRname};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
 			param_list[param_list_name[i]]= [];
 			var data_name = $("input[name="+param_list_name[i] +"]").data('name');
-			
-			if (data_name == 'ppmemRname') {
-				var total_len = $("input[data-name=ppmemRname]").length;
-				console.log(total_len)
-				//선택된 갯수
-				var len = $("input[data-name=ppmemRname]:checked").length;
-				console.log(len)
-				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
-					$("#ppmemRname").prop('checked', true);
-				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
-					$("#ppmemRname").prop('checked', false);	
-				}
-			}
+
 			if (data_name == 'sellermemRname') {
 				var total_len = $("input[data-name=sellermemRname]").length;
 				console.log(total_len)
@@ -1284,7 +1282,7 @@ $(document).ready(function() {
 					$("#sellermemRname").prop('checked', false);	
 				}
 			}
-			if (data_name != 'ppmemRname' && data_name != 'sellermemRname') {
+			if (data_name != 'sellermemRname') {
 				//체크박스 총 개수
 				var total_len = $("input[name="+param_list_name[i] +"]").length;
 				//선택된 갯수
@@ -1356,19 +1354,23 @@ $(document).ready(function() {
 		$(".emptyResult").remove();
 		
 		var formData = $("#search_frm");
+		var sellermemRname;
 		var profileBizSort;
 		var profileNation;
 		var profileIndus;
 		var profileChannel;
 		var profileCareer;
 		var profileVolume;
+		var profileChChk;
+		var profileSaleChk;
+		var profileBizCerti;
 		
-		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 
-			'profileChannel', 'profileCareer', 'profileVolume'];
+		var param_list_name = ['profileBizSort', 'profileNation', 'profileIndus', 'sellermemRname',
+			'profileChannel', 'profileCareer', 'profileVolume','profileBizCerti', 'profileChChk', 'profileSaleChk'];
 		
 		var param_list = {
-				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume
-				};
+				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume,
+				profileBizCerti, profileChChk, profileSaleChk, sellermemRname};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화

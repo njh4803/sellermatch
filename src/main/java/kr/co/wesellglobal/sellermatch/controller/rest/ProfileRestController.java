@@ -60,6 +60,9 @@ public class ProfileRestController {
 			@RequestParam(value = "profileChannel[]", required = false) int[] profileChannel,
 			@RequestParam(value = "profileCareer[]", required = false) String[] profileCareer,
 			@RequestParam(value = "profileVolume[]", required = false) String[] profileVolume,
+			@RequestParam(value = "profileChChk[]", required = false) String profileChChk,
+			@RequestParam(value = "profileSaleChk[]", required = false) String profileSaleChk,
+			@RequestParam(value = "profileBizCerti[]", required = false) String profileBizCerti,
 			// 정렬 기준
 			@RequestParam(value = "sort", defaultValue = "regSort") String sort,
 			// 검색어
@@ -76,6 +79,10 @@ public class ProfileRestController {
 
 		ProfileDto input = new ProfileDto();
 		input.setProfileBizSortArr(profileBizSort);
+		input.setProfileBizCerti(profileBizCerti);
+		input.setProfileSaleChk(profileSaleChk);
+		input.setProfileChChk(profileChChk);
+		log.debug("profileChChkprofileChChkprofileChChkprofileChChkprofileChChkprofileChChk"+profileChChk);
 		input.setProfileChannelArr(profileChannel);
 		input.setProfileIndusArr(profileIndus);
 		input.setProfileNationArr(profileNation);

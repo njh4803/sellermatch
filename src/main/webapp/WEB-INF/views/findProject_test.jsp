@@ -574,7 +574,7 @@
 								${output.projDetail}
 							</div>	
 							<div class="left-infoBox">
-								<c:if test="${output.hashTag1 != null}">
+								<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">
 									<div class="tagBox">${output.hashTag1}</div>
 								</c:if>
 					           	<c:if test="${output.hashTag2 != null}">
@@ -1024,21 +1024,21 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								{{projDetail}}
 							</div>	
 							<div class="left-infoBox">
-								{{#ifCond hashTag1 '!=' 'null'}}
+								{{#if hashTag1}}
 									<div class="tagBox">{{hashTag1}}</div>
-								{{/ifCond}}
-					           	{{#ifCond hashTag2 '!=' 'null'}}
+								{{/if}}
+					           	{{#if hashTag2}}
 									<div class="tagBox">{{hashTag2}}</div>
-								{{/ifCond}}	
-					           	{{#ifCond hashTag3 '!=' 'null'}}
+								{{/if}}	
+					           	{{#if hashTag3}}
 									<div class="tagBox">{{hashTag3}}</div>
-								{{/ifCond}}	
-					           	{{#ifCond hashTag4 '!=' 'null'}}
+								{{/if}}	
+					           	{{#if hashTag4}}
 									<div class="tagBox">{{hashTag4}}</div>
-								{{/ifCond}}	
-					           	{{#ifCond hashTag5 '!=' 'null'}}
+								{{/if}}	
+					           	{{#if hashTag5}}
 									<div class="tagBox">{{hashTag5}}</div>
-								{{/ifCond}}	
+								{{/if}}	
 							</div>
 						</div>								
 						<div class="rightBox">

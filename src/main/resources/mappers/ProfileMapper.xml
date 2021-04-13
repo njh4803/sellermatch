@@ -139,7 +139,23 @@
 	            	#{item}
 	            </foreach>
         	</if>
-        	
+        	<choose>
+        		<when test="profileBizCerti != '' and profileBizCerti != null and profileChChk != '' and profileChChk != null and profileSaleChk != '' and profileSaleChk != null">
+        		</when>
+        		<otherwise>
+		         	<if test="profileBizCerti != '' and profileBizCerti != null">
+		        		AND profile_biz_certi = #{profileBizCerti}
+		        	</if>
+		        	
+		        	<if test="profileChChk != '' and profileChChk != null">
+		        		AND profile_ch_chk = #{profileChChk}
+		        	</if>
+		        	
+		        	<if test="profileSaleChk != '' and profileSaleChk != null">
+		        		AND profile_sale_chk = #{profileSaleChk}
+		        	</if>       		
+        		</otherwise>
+        	</choose>
         	<if test="profileNationArr != '' and profileNationArr != null">
         		AND profile_nation IN
 	            <foreach collection="profileNationArr" item="item" index="index" open="(" close=")" separator=",">
@@ -169,23 +185,25 @@
         	</if>
         	
         	<if test="profileVolumeArr != '' and profileVolumeArr != null">
-	            <foreach collection="profileVolumeArr" item="item" index="index">
-	           		<if test="item == '9999'">
-	            		OR profile_volume <![CDATA[ < ]]> #{item}
+        		AND(
+	            <foreach collection="profileVolumeArr" item="item" index="index" separator="OR">
+	           		<if test="item == '10000000'">
+	            		profile_volume <![CDATA[ >= ]]> 0 AND profile_volume <![CDATA[ < ]]> #{item}
 	            	</if>
-	            	<if test="item == '29999'">
-	            		OR profile_volume <![CDATA[ >= ]]> 10000000 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	<if test="item == '29999999'">
+	            		profile_volume <![CDATA[ >= ]]> 10000000 AND profile_volume <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '99999'">
-	            		OR profile_volume <![CDATA[ > ]]> 29999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	<if test="item == '49999999'">
+	            		profile_volume <![CDATA[ > ]]> 29999999 AND profile_volume <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '499999'">
-	            		OR profile_volume <![CDATA[ > ]]> 49999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	<if test="item == '100000000'">
+	            		profile_volume <![CDATA[ > ]]> 49999999 AND profile_volume <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '500000'">
-	            		OR profile_volume <![CDATA[ > ]]> #{item}
+	            	<if test="item == '100000001'">
+	            		profile_volume <![CDATA[ > ]]> #{item}
 	            	</if>
 	            </foreach>
+	            )
         	</if>
 		</where>
 		
@@ -274,7 +292,24 @@
 	            	#{item}
 	            </foreach>
         	</if>
-        	
+        	<choose>
+        		<when test="profileBizCerti != '' and profileBizCerti != null and profileChChk != '' and profileChChk != null and profileSaleChk != '' and profileSaleChk != null">
+        		</when>
+        		<otherwise>
+		         	<if test="profileBizCerti != '' and profileBizCerti != null">
+		        		AND profile_biz_certi = #{profileBizCerti}
+		        	</if>
+		        	
+		        	<if test="profileChChk != '' and profileChChk != null">
+		        		AND profile_ch_chk = #{profileChChk}
+		        	</if>
+		        	
+		        	<if test="profileSaleChk != '' and profileSaleChk != null">
+		        		AND profile_sale_chk = #{profileSaleChk}
+		        	</if>
+        		</otherwise>
+        	</choose>
+       	
         	<if test="profileNationArr != '' and profileNationArr != null">
         		AND profile_nation IN
 	            <foreach collection="profileNationArr" item="item" index="index" open="(" close=")" separator=",">
@@ -303,23 +338,25 @@
         	</if>
         	
         	<if test="profileVolumeArr != '' and profileVolumeArr != null">
-	            <foreach collection="profileVolumeArr" item="item" index="index">
-	           		<if test="item == '9999'">
-	            		OR profile_volume <![CDATA[ < ]]> #{item}
+        		AND(
+	            <foreach collection="profileVolumeArr" item="item" index="index" separator="OR">
+	           		<if test="item == '10000000'">
+	            		profile_volume <![CDATA[ >= ]]> 0 AND profile_volume <![CDATA[ < ]]> #{item}
 	            	</if>
-	            	<if test="item == '29999'">
-	            		OR profile_volume <![CDATA[ >= ]]> 10000000 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	<if test="item == '29999999'">
+	            		profile_volume <![CDATA[ >= ]]> 10000000 AND profile_volume <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '99999'">
-	            		OR profile_volume <![CDATA[ > ]]> 29999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	<if test="item == '49999999'">
+	            		profile_volume <![CDATA[ > ]]> 29999999 AND profile_volume <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '499999'">
-	            		OR profile_volume <![CDATA[ > ]]> 49999999 AND profile_volume <![CDATA[ <= ]]> #{item}
+	            	<if test="item == '100000000'">
+	            		profile_volume <![CDATA[ > ]]> 49999999 AND profile_volume <![CDATA[ <= ]]> #{item}
 	            	</if>
-	            	<if test="item == '500000'">
-	            		OR profile_volume <![CDATA[ > ]]> #{item}
+	            	<if test="item == '100000001'">
+	            		profile_volume <![CDATA[ > ]]> #{item}
 	            	</if>
 	            </foreach>
+	            )
         	</if>
 		</where>
 	</select>

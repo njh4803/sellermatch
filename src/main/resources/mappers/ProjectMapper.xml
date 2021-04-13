@@ -127,15 +127,20 @@
 	        <if test="sellerSaleChk != '' and sellerSaleChk != null">
 	        	, profile_sale_chk as seller_sale_chk
 	        </if>
-    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf, HashTag t
+    	FROM ProjectList p
+		INNER JOIN IndusList i
+		ON p.proj_indus = i.indus_id
+		INNER JOIN MemList m
+		ON p.proj_mem_id = m.mem_id
+		INNER JOIN ProfileList pf
+		ON p.proj_mem_id = pf.profile_mem_id
         <where>
-	        AND p.proj_indus = i.indus_id
-			AND p.proj_mem_id = m.mem_id
-			AND p.proj_mem_id = pf.profile_mem_id
-			AND (
-				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
-				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
-			)
+        	<if test="projDetail != '' and projDetail != null">
+        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
+        	</if>
+        	<if test="projTitle != '' and projTitle != null">
+        		OR proj_title LIKE concat('%', #{projTitle}, '%')
+        	</if>
 			<if test="projMemId != '' and projMemId != null">
 				AND proj_mem_id = #{projMemId}
 			</if>
@@ -165,7 +170,7 @@
         	<if test="projPriceArr != '' and projPriceArr != null">
 	            <foreach collection="projPriceArr" item="item" index="index">
 	           		<if test="item == '9999'">
-	            		OR proj_price <![CDATA[ <= ]]> #{item}
+	            		OR proj_price <![CDATA[ > ]]> 0 AND proj_price <![CDATA[ <= ]]> #{item}
 	            	</if>
 	            	<if test="item == '29999'">
 	            		OR proj_price <![CDATA[ > ]]> 9999 AND proj_price <![CDATA[ <= ]]> #{item}
@@ -222,7 +227,7 @@
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
 	            <foreach collection="projChannelArr" item="item" index="index">
-	            	 OR proj_channel Like concat('%', #{item}, '%')
+	            	OR proj_channel Like concat('%', #{item}, '%')
 	            </foreach>
         	</if>
         	
@@ -299,15 +304,20 @@
 		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
 		resultType="int"> 
 		SELECT COUNT(proj_idx)
-    	FROM ProjectList p, IndusList i, MemList m, ProfileList pf
+    	FROM ProjectList p
+		INNER JOIN IndusList i
+		ON p.proj_indus = i.indus_id
+		INNER JOIN MemList m
+		ON p.proj_mem_id = m.mem_id
+		INNER JOIN ProfileList pf
+		ON p.proj_mem_id = pf.profile_mem_id
         <where>
-	        AND p.proj_indus = i.indus_id
-			AND p.proj_mem_id = m.mem_id
-			AND p.proj_mem_id = pf.profile_mem_id
-			AND (
-				proj_detail REGEXP IFNULL(#{projDetail}, proj_detail)
-				OR proj_title REGEXP IFNULL(#{projTitle}, proj_title)
-			)
+        	<if test="projDetail != '' and projDetail != null">
+        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
+        	</if>
+        	<if test="projTitle != '' and projTitle != null">
+        		OR proj_title LIKE concat('%', #{projTitle}, '%')
+        	</if>
         	<if test="projMemId != '' and projMemId != null">
 				AND proj_mem_id = #{projMemId}
 			</if>
@@ -336,7 +346,7 @@
         	<if test="projPriceArr != '' and projPriceArr != null">
 	            <foreach collection="projPriceArr" item="item" index="index">
 	           		<if test="item == '9999'">
-	            		OR proj_price <![CDATA[ <= ]]> #{item}
+	            		OR proj_price <![CDATA[ > ]]> 0 AND proj_price <![CDATA[ <= ]]> #{item}
 	            	</if>
 	            	<if test="item == '29999'">
 	            		OR proj_price <![CDATA[ > ]]> 9999 AND proj_price <![CDATA[ <= ]]> #{item}
@@ -393,7 +403,7 @@
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
 	            <foreach collection="projChannelArr" item="item" index="index">
-	            	 OR proj_channel Like concat('%', #{item}, '%')
+            		OR proj_channel Like concat('%', #{item}, '%')
 	            </foreach>
         	</if>
         	
