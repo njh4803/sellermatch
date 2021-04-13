@@ -111,8 +111,7 @@ public class SNSController {
 				profile = profileService.getProfile(input2);
 				
 				// 세션 저장
-		    	webHelper.setSession("member", result);
-		    	webHelper.setSession("profile", profile);
+		    	session.setAttribute("member", result);
 		    	
 				log.debug("member 세션 생성 완료 = " + webHelper.getSession("member"));
 				// 로그인 유지를 체크했다면
