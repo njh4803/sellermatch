@@ -355,7 +355,7 @@ public class MemberRestController {
 		if (obj != null) {
 			MemberDto memDto = (MemberDto)obj;
 			// null이 아닐 경우 제거
-			session.removeAttribute("login");
+			session.removeAttribute("member");
             session.invalidate();// 세션 전체를 날려버림
             //쿠키를 가져와보고
             Cookie loginCookie = WebUtils.getCookie(request,"loginCookie");
