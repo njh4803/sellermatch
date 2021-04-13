@@ -160,7 +160,7 @@ a:focus, a:hover{
   vertical-align: top;
 }
 .detailBox3 .textBox1{
-  display: inline-block;
+  display: inline-flex;
   width: 670px;
   font-size: 15px;
   font-weight: normal;
@@ -171,7 +171,7 @@ a:focus, a:hover{
   /* 줄바꿈 */
   overflow: hidden;
   word-break: break-all;
-  white-space: normal;
+  white-space: pre-line;
 }
 .detailBox3 .textBox1 p{
 	margin: 0;

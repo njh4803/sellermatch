@@ -305,6 +305,7 @@
   border: solid 1px #cccccc;
 }
 .ContentsBox1{
+  display: inline-flex;	
   width: 1160px;
   margin-bottom: 80px;
   font-size: 15px;
@@ -313,6 +314,10 @@
   font-style: normal;
   text-align: left;
   color: #484848;
+    /* 줄바꿈 */
+  overflow: hidden;
+  word-break: break-all;
+  white-space: pre-line;
 }
 .ContentsBox2{
   margin-bottom: 80px;
@@ -324,12 +329,17 @@
   color: #484848;
 }
 .ContentsBox3{
+  display: inline-flex;
   font-size: 15px;
   font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   text-align: left;
   color: #484848;
+    /* 줄바꿈 */
+  overflow: hidden;
+  word-break: break-all;
+  white-space: pre-line;
 }
 .ContentsBox2 .projectDate{
 	display: inline-block;

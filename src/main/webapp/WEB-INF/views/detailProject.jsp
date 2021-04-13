@@ -321,11 +321,11 @@
 				</div>
 				<div class="detailBox3"><span>필수요건</span>
 					<div class="textBox1">
-						${output.projRequire}
+						<p>${output.projRequire}</p>
 					</div>
 				</div>
 				<div class="detailBox3"><span>해시태그</span>
-					<c:if test="${output.hashTag1 != null}">
+					<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">
 						<div class="tagBox">${output.hashTag1}</div>
 					</c:if>
 		           	<c:if test="${output.hashTag2 != null}">
@@ -379,7 +379,7 @@
 							<div class="reviewDate">${replyDto.replyRegDate}</div>						
 						</div>
 						<c:choose>
-							<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projId}">
+							<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projMemId}">
 								<div class="reviewContents">비밀글입니다.</div>
 							</c:when>
 							<c:otherwise>

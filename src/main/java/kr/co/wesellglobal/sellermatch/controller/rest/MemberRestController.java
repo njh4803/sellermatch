@@ -278,9 +278,9 @@ public class MemberRestController {
 		}
 		
 		
-        if ( webHelper.getSession("member") !=null ){
+        if ( session.getAttribute("member") !=null ){
             // 기존에 member 세션 값이 존재한다면
-        	webHelper.removeSession("member");// 기존값을 제거해 준다.
+        	session.removeAttribute("member");// 기존값을 제거해 준다.
         }
 		
 		// 이전페이지 주소 가져오기
@@ -307,7 +307,7 @@ public class MemberRestController {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		// 세션 저장
-		webHelper.setSession("member", output);
+		session.setAttribute("member", output);
 		
 		log.debug("member 세션 생성 완료 = " + webHelper.getSession("member"));
 		// 로그인 유지를 체크했다면

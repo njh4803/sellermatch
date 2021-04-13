@@ -101,7 +101,7 @@
 			<div class="detailBox3">상세정보</div>
 			<hr class="profile-hr">
 			<div class="ContentsBox1">
-				${output.profileIntro}
+				<p>${output.profileIntro}</p>
 			</div>			
 			<div class="detailBox3">프로젝트</div>
 			<hr class="profile-hr">
@@ -116,12 +116,12 @@
 			<div class="detailBox3">공급자평가</div>
 			<hr class="profile-hr">
 			<div class="ContentsBox3">
+				<p>계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
-				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
-				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다</p>
 			</div>
 		</div>
 	</div>
@@ -280,7 +280,7 @@
 			<div class="detailBox3">상세내용</div>
 			<hr class="profile-hr">
 			<div class="ContentsBox1">
-				${output.profileIntro}
+				<p>${output.profileIntro}</p>
 			</div>			
 			<div class="detailBox3">판매이력</div>
 			<hr class="profile-hr">
@@ -293,12 +293,13 @@
 			<div class="detailBox3">공급자 평가</div>
 			<hr class="profile-hr">
 			<div class="ContentsBox3">
+			<p>계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
-				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
+			</p>
 			</div>
 		</div>
 	</div>
