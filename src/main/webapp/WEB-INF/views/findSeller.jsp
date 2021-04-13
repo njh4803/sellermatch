@@ -806,7 +806,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						<input type="hidden" id="profileMemId{{@key}}" name="profileMemId" value="{{profileMemId}}">
 						<div class="leftBox">
 							<div class="photo-container">
-								{{#ifCond profilePhoto '!=' '{{profilePhoto}}'}}
+								{{#ifCond profilePhoto '==' ''}}
 									<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
 								{{else}}	
 									<img class="photoBox" alt="" src="/upload/{{profilePhoto}}">

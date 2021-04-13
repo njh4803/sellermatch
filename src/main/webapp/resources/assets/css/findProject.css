@@ -329,6 +329,9 @@ a.sort.select{
   background-color: #fff9ec;
   color: #ff9900;
 }
+.proj-link:hover .project-titleBox{
+  color: #ff540f;	
+}
 .D-day{
 	display: inline-block;
 	min-width: 75px;
