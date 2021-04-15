@@ -91,8 +91,8 @@ header #m-search_frm{
        <h1><a href="${pageContext.request.contextPath}/temp"><img src="${pageContext.request.contextPath}/assets/img/sellermatch_logo.png" alt="sellermatch"></a></h1>
        <nav>
            <ul>
-               <li><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></li>
-               <li><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></li>
+               <li><a href="${pageContext.request.contextPath}/project/find">공급자 · 판매자 찾기</a></li>
+               <li><a href="${pageContext.request.contextPath}/seller/find">판매자 리스트</a></li>
                <!-- <li><a href="javascipt:void(0);">커뮤니티</a></li> -->
                <li class="operation">
                    <a href="${pageContext.request.contextPath}/board?boardType=1" class="operation_guide">이용안내</a>
@@ -184,6 +184,12 @@ header #m-search_frm{
 	                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
             		</c:when>
             		<c:otherwise>
+	           			<c:if test="${member.memSort == 1}">
+	           				<span class="memSort producer">공급자</span>
+	           			</c:if>
+	           			<c:if test="${member.memSort == 2}">
+	           				<span class="memSort">판매자</span>
+	           			</c:if>            		
 	            		<a href="${pageContext.request.contextPath}/myPage/myHome">${member.memNick}님</a>
 	            		<span class="bar">|</span>
             			<a id="logout2" href="javascript:void(0);">로그아웃</a>
@@ -191,9 +197,21 @@ header #m-search_frm{
             	</c:choose>
             </div>
             <div class="gnb_project">
-                <a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
-                	거래처 찾기 무료등록
-                </a>
+         		<c:if test="${member.memSort == 1}">
+         		<a class="projectInsert producer" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
+         			 판매자 찾기 무료등록
+         		</a>
+         		</c:if>
+         		<c:if test="${member.memSort == 2}">
+         		<a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
+         			공급자 찾기 무료등록
+         		</a>
+         		</c:if>
+         		<c:if test="${member.memSort == null}">
+         		<a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
+         			공급자 · 판매자 찾기 무료등록
+         		</a>
+         		</c:if>            
             </div>
        </div>
    </div>

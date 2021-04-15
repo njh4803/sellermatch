@@ -18,7 +18,7 @@
         <result property="frstRegistMngr"   column="frst_regist_mngr" />
         <result property="frstRegistDt"   column="frst_regist_dt" />
         <result property="lastRegistMngr"   column="last_regist_mngr" />
-        <result property="lastRegistDt"   column="last-regist_dt" />
+        <result property="lastRegistDt"   column="last_regist_dt" />
     </resultMap>
     
     <insert id="insertItem"
@@ -44,7 +44,24 @@
     
     <update id="updateItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.HashTagDto">
+		UPDATE HashTag
+		SET
+			hash_tag1 = #{hashTag1}, 
+			hash_tag2 = #{hashTag2}, 
+			hash_tag3 = #{hashTag3}, 
+			hash_tag4 = #{hashTag4}, 
+			hash_tag5 = #{hashTag5},
+			last_regist_mngr = #{lastRegistMngr},
+			last_regist_dt = now()
+		WHERE id = #{id}    	
     </update>
-    
+    	<!-- 존재 유무 -->
+	<select id="isExist"
+		parameterType="kr.co.wesellglobal.sellermatch.model.HashTagDto"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM HashTag
+		WHERE id = #{id}
+	</select>
 
 </mapper>

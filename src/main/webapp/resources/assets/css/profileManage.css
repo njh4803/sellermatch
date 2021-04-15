@@ -347,10 +347,17 @@ label.error {
 	height: 30px;
 	border: solid 1px #cccccc;
 	background-color: #ffffff;
-	margin: 6px 0 4px 15px;
+	margin: 6px 0 4px 0;
 	display: inline-block;
 }
 
+.inputForm.hashtag {
+	margin-top: 15px;
+}	
+
+label.hashtag {
+	vertical-align: top;
+}
 .inputGroup button {
 	width: 100px;
 	height: 30px;
@@ -425,4 +432,41 @@ input[type=number]:hover::-webkit-inner-spin-button {
 	padding-right: 3px;
     width: 30px;
     height: 30px;
+}
+/* hashtag */
+#profile_form ul {
+    padding: 16px 0;
+    list-style: none;
+}
+
+#profile_form ul li {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 14px;
+    letter-spacing: -.5px;
+}
+#profile_form ul li.tag-item {
+    padding: 4px 8px;
+    background-color: #ececec;
+    color: #858585;
+}
+
+#profile_form .tag-item:hover {
+	background-color: #fff9ec;
+	color: #ff9900;
+}
+
+.del-btn {
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 8px;
+    vertical-align: top;
+}
+#tag{
+	border: 1px solid #aaa;
+	margin-bottom: 10px;
+}
+#tag-list ul{
+	padding: 0;
 }

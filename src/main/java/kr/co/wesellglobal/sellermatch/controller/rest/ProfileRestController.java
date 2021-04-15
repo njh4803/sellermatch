@@ -24,11 +24,15 @@ import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.FileDto;
+import kr.co.wesellglobal.sellermatch.model.HashTagDto;
+import kr.co.wesellglobal.sellermatch.model.HashTagListDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.service.FileService;
+import kr.co.wesellglobal.sellermatch.service.HashTagListService;
+import kr.co.wesellglobal.sellermatch.service.HashTagService;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
@@ -51,6 +55,11 @@ public class ProfileRestController {
 	MailHelper mailHelper;
 	@Autowired
 	FileService fileService;
+	@Autowired
+	HashTagListService hashTagListService;
+	@Autowired
+	HashTagService hashTagService;
+	
 	
 	@RequestMapping(value = "/seller/find2", method = RequestMethod.GET)
 	public Map<String, Object> findSeller2(
@@ -134,11 +143,21 @@ public class ProfileRestController {
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public Map<String, Object> addProfile(
 			@RequestParam(value="profilePhotoFile", required = false) MultipartFile photo,
-			@ModelAttribute("profileDto") ProfileDto profileDto) {
+			@ModelAttribute("profileDto") ProfileDto profileDto,
+			@RequestParam(value = "tag", required = false) String tag) throws Exception {
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
+		String profilehashtag = tag;
+		
+		// tag 합치기
+		/*
+		 * if (profileDto.getProfileHashtag() != null && tag != null) { profilehashtag =
+		 * tag + "," + profileDto.getProfileHashtag(); } else if
+		 * (profileDto.getProfileHashtag() == null) { profilehashtag = tag; } else if
+		 * (tag == null){ profilehashtag = profileDto.getProfileHashtag(); }
+		 */
 		try {
 			if (photo != null && photo.getSize() != 0) {
 				item = webHelper.saveMultipartFile(photo);
@@ -195,6 +214,78 @@ public class ProfileRestController {
 		input.setProfileBizSort(profileDto.getProfileBizSort());
 		input.setProfileHashtag(profileDto.getProfileHashtag());
 		input.setProfileHit(profileDto.getProfileHit());
+
+		// 해시태그리스트
+		HashTagListDto hashTagList = new HashTagListDto();
+		hashTagList.setFrstRegistMngr(input.getProfileMemId());
+		// 프로필 해시태그
+		HashTagDto hashTag = new HashTagDto();
+		hashTag.setId(input.getProfileId());
+		hashTag.setHashType('2');
+		hashTag.setFrstRegistMngr(input.getProfileMemId());
+		hashTag.setLastRegistMngr(input.getProfileMemId());
+		
+		
+		if (profilehashtag != null) {
+			String profilehashtagList[] = profilehashtag.split(",");
+			
+			for (int i = 0; i < profilehashtagList.length; i++) {
+				
+				hashTagList.setHashNm(profilehashtagList[i]);
+				
+				// 기존에 존재하는지 검사
+				int result = hashTagListService.reduplicationCheck(hashTagList);
+				// 기존에 똑같은 해시태그가 존재한다면
+				if (result != 0) {
+					
+					switch (i+1) {
+					case 1:
+						hashTag.setHashTag1(result);
+						break;
+					case 2:
+						hashTag.setHashTag2(result);
+						break;
+					case 3:
+						hashTag.setHashTag3(result);
+						break;
+					case 4:
+						hashTag.setHashTag4(result);
+						break;
+					case 5:
+						hashTag.setHashTag5(result);
+						break;
+					}
+				} else {
+					hashTagListService.addHashTagList(hashTagList);
+					int hashId = hashTagListService.getSeq();
+					switch (i+1) {
+					case 1:
+						hashTag.setHashTag1(hashId);
+						break;
+					case 2:
+						hashTag.setHashTag2(hashId);
+						break;
+					case 3:
+						hashTag.setHashTag3(hashId);
+						break;
+					case 4:
+						hashTag.setHashTag4(hashId);
+						break;
+					case 5:
+						hashTag.setHashTag5(hashId);
+						break;
+					}
+				}
+			}
+			int isExist = hashTagService.isHashTag(hashTag);
+			if (isExist == 0) {
+				// 새로 생성
+				hashTagService.addHashTag(hashTag);	
+			} else {
+				// 업데이트
+				hashTagService.editHashTag(hashTag);
+			}
+		}		
 		
 		try {
 			profileService.editProfile(input);

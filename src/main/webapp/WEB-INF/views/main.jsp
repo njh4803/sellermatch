@@ -21,7 +21,15 @@
 				        오픈마켓, 종합몰, SNS, 공동구매, 폐쇄몰, 수출 등 판매자를 <br>
 				        찾고 직거래하세요.<br>
 	    		</div>
-	    		<button class="findBtn projectInsert" href="javascript:void(0);">거래처 찾기 무료등록</button>
+         		<c:if test="${member.memSort == 1}">
+         			<button class="findBtn projectInsert producer" href="javascript:void(0);">판매자찾기 무료등록</button>
+         		</c:if>
+         		<c:if test="${member.memSort == 2}">
+         			<button class="findBtn projectInsert" href="javascript:void(0);">공급자 찾기 무료등록</button>
+         		</c:if>
+         		<c:if test="${member.memSort == null}">
+         			<button class="findBtn projectInsert" href="javascript:void(0);">공급자 · 판매자 찾기 무료등록</button>
+         		</c:if>
     			<button class="shareBtn" id="shareBtn">친구들과 공유하기</button>
 			</div>
 	 		<div class="main-imgBox">

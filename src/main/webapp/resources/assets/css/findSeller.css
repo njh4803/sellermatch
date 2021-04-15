@@ -37,8 +37,7 @@
 }
 .search-letfBox{
 	float: left;
-    height: 30px;
-    padding-top: 21px;
+    padding-top: 10px;
 	font-size: 15px;
 	font-weight: normal;
 	font-stretch: normal;
@@ -51,7 +50,7 @@
 }
 .search-btn{
   width: 65px;
-  height: 40px;
+  height: 30px;
   margin-left: 10px;
   border-radius: 4px;
   box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
@@ -72,7 +71,7 @@
 .input_group{
 	display: inline-block;
 	width: 320px;
-	height: 40px;
+	height: 30px;
 	border-radius: 5px;
 	box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
 	border: solid 1px #cccccc;
@@ -88,13 +87,7 @@
 	letter-spacing: normal;
 	text-align: left;
 	color: #484848;
-	margin: 7px 0;
-}
-.partner_bnr3 hr{
-  width: 100%;
-  height: 0;
-  margin: 15px 0;
-  border: solid 2px #343434;
+	border-radius: 5px;
 }
 .left-container.fix{
 	position: absolute;
@@ -170,7 +163,7 @@ a.sort.select{
   width: 1275px;
   height: 0;
   margin: 15px 0;
-  border: solid 2px #484848;
+  border: solid 2px #ff540f;
 }
 .contents{
   width: 100%;
@@ -525,12 +518,6 @@ a.sort:last-child{
   font-style: normal;
   text-align: left;
   color: #484848;
-}
-.partner_bnr3 hr{
-  width: 100%;
-  height: 0;
-  margin: 15px 0;
-  border: solid 2px #343434;
 }
 .filter-box{
 	display: none;

@@ -39,6 +39,11 @@
         <result property="projAddCount" column="proj_add_count" />
         <result property="recommendCount" column="recommend_count" />
         <result property="contractCount" column="contract_count" />
+        <result property="hashTag1" column="hash_tag1" />
+        <result property="hashTag2" column="hash_tag2" />
+        <result property="hashTag3" column="hash_tag3" />
+        <result property="hashTag4" column="hash_tag4" />
+        <result property="hashTag5" column="hash_tag5" />        
     </resultMap>
     
     <insert id="insertItem"
@@ -108,7 +113,12 @@
     		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
-    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag1 from HashTag where id = profile_id)) as hash_tag1, 
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag2 from HashTag where id = profile_id)) as hash_tag2,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag3 from HashTag where id = profile_id)) as hash_tag3,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag4 from HashTag where id = profile_id)) as hash_tag4,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag5 from HashTag where id = profile_id)) as hash_tag5
 		FROM ProfileList s
 		<if test="needIndus != '' and needIndus != null">
 			INNER JOIN IndusList i
@@ -241,7 +251,12 @@
     		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
-    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag1 from HashTag where id = profile_id)) as hash_tag1, 
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag2 from HashTag where id = profile_id)) as hash_tag2,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag3 from HashTag where id = profile_id)) as hash_tag3,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag4 from HashTag where id = profile_id)) as hash_tag4,
+    		(select hash_nm from HashTagList where Hash_id = (select hash_tag5 from HashTag where id = profile_id)) as hash_tag5    		
 		FROM ProfileList s
 		<if test="needIndus != '' and needIndus != null">
 			INNER JOIN IndusList i

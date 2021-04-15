@@ -106,6 +106,13 @@ public class ProfileDto {
     // IndusList가 필요한지 여부
     private String needIndus;
     
+	// 해시태그
+	private String hashTag1;
+	private String hashTag2;
+	private String hashTag3;
+	private String hashTag4;
+	private String hashTag5;
+    
     /**페이지 구현을 위한 static변수*/
 	private static int offset;
 	private static int listCount;

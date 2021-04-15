@@ -309,7 +309,6 @@ public class MemberRestController {
 		// 세션 저장
 		session.setAttribute("member", output);
 		
-		log.debug("member 세션 생성 완료 = " + webHelper.getSession("member"));
 		// 로그인 유지를 체크했다면
 		if (continueLogin.equals("on")) {
 			int amount =60 *60 *24 *7;

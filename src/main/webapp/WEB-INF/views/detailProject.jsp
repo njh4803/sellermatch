@@ -219,6 +219,9 @@
 			<div class="top-Box2">
 				조건에 맞는 공급자와 판매자를 찾고 거래 조율할 수 있습니다.
 			</div>
+			<c:if test="${output.projMemId == member.memId}">
+				<button id="editBtn">수정하기</button>
+			</c:if>
 			<hr>
 		</div>
 		<div class="container1 content clearfix">

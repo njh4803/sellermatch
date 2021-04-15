@@ -11,13 +11,17 @@
   margin-bottom: 10px;
 }
 .top-Box2{
-	width: 100%;
+	display: inline-block;
+	width: 1225px;
 	font-size: 15px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
 	text-align: left;
 	color: #858585;
+}
+#editBtn{
+	float: right;
 }
 .partner_bnr3 hr{
   height: 0;
@@ -433,7 +437,7 @@ textarea::placeholder {
   border-radius: 5px;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
   background-color: #479dff;
-  font-size: 20px;
+  font-size: 17px; 
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -473,7 +477,7 @@ textarea::placeholder {
 	box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
 	border: solid 1px #cccccc;
 	background-color: #ffffff;
-	font-size: 20px;
+	font-size: 17px;
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: normal;

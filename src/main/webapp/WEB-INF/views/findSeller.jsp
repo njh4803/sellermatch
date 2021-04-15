@@ -597,11 +597,21 @@
 								</div>							
 							</div>
 							<div class="left-infoBox">
-								<c:forEach var="hashtag" items="${output.profileHashtagList}">
-									<c:if test="${hashtag != ''}">
-										<div class="tagBox">${hashtag}</div>
-									</c:if>
-					           	</c:forEach>
+								<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">
+									<div class="tagBox">${output.hashTag1}</div>
+								</c:if>
+					           	<c:if test="${output.hashTag2 != null}">
+									<div class="tagBox">${output.hashTag2}</div>
+								</c:if>
+								<c:if test="${output.hashTag3 != null}">
+									<div class="tagBox">${output.hashTag3}</div>
+								</c:if>
+								<c:if test="${output.hashTag4 != null}">
+									<div class="tagBox">${output.hashTag4}</div>
+								</c:if>
+								<c:if test="${output.hashTag5 != null}">
+									<div class="tagBox">${output.hashTag5}</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="rightBox">
@@ -875,11 +885,21 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								</div>							
 							</div>
 							<div class="left-infoBox">
-								{{#ifCond profileHashtagList "!=" ""}}
-									{{#each profileHashtagList as |value key|}}
-										<div class="tagBox">{{value}}</div>
-		        					{{/each}}
-								{{/ifCond}}
+								{{#if hashTag1}}
+									<div class="tagBox">{{hashTag1}}</div>
+								{{/if}}
+					           	{{#if hashTag2}}
+									<div class="tagBox">{{hashTag2}}</div>
+								{{/if}}	
+					           	{{#if hashTag3}}
+									<div class="tagBox">{{hashTag3}}</div>
+								{{/if}}	
+					           	{{#if hashTag4}}
+									<div class="tagBox">{{hashTag4}}</div>
+								{{/if}}	
+					           	{{#if hashTag5}}
+									<div class="tagBox">{{hashTag5}}</div>
+								{{/if}}
 							</div>
 						</div>
 						<div class="rightBox">

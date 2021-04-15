@@ -155,18 +155,55 @@
 									</div>
 									<c:if test="${member.memSort == '2'}">
 									<div class="inputGroup">
-				    					<label>해시태그</label>
-				    					<div class="inputForm inputGroup2">
-		                                	<input id="ht1" type="checkbox" name="profileHashtag" value="다양한 채널운영" <c:if test="${fn:contains(output.profileHashtag,'다양한 채널운영')}"> checked </c:if> />
-		                                	<label for="ht1"><span>다양한 채널운영</span></label>
-		                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은 매출 셀러" <c:if test="${fn:contains(output.profileHashtag,'높은 매출 셀러')}"> checked </c:if> />
-		                                	<label for="ht2"><span>높은 매출 셀러</span></label>
+				    					<label class="hashtag">해시태그</label>
+				    					<div class="inputForm inputGroup2 hashtag">
+		                                	<%-- <input id="ht1" type="checkbox" name="profileHashtag" value="다양한채널운영" <c:if test="${fn:contains(output.profileHashtag,'다양한채널운영')}"> checked </c:if> />
+		                                	<label for="ht1"><span>다양한채널운영</span></label>
+		                                	<input id="ht2" type="checkbox" name="profileHashtag" value="높은매출셀러" <c:if test="${fn:contains(output.profileHashtag,'높은매출셀러')}"> checked </c:if> />
+		                                	<label for="ht2"><span>높은매출셀러</span></label>
 		                                	<input id="ht3" type="checkbox" name="profileHashtag" value="장기판매경력" <c:if test="${fn:contains(output.profileHashtag,'장기판매경력')}"> checked </c:if> />
 		                                	<label for="ht3"><span>장기판매경력</span></label>
-		                                	<input id="ht4" type="checkbox" name="profileHashtag" value="탁월한 판매능력" <c:if test="${fn:contains(output.profileHashtag,'탁월한 판매능력')}"> checked </c:if> />
-		                                	<label for="ht4"><span>탁월한 판매능력</span></label>
-		                                	<input id="ht5" type="checkbox" name="profileHashtag" value="다양한 판매분야" <c:if test="${fn:contains(output.profileHashtag,'다양한 판매분야')}"> checked </c:if> />
-		                                	<label for="ht5"><span>다양한 판매분야</span></label>
+		                                	<input id="ht4" type="checkbox" name="profileHashtag" value="탁월한판매능력" <c:if test="${fn:contains(output.profileHashtag,'탁월한판매능력')}"> checked </c:if> />
+		                                	<label for="ht4"><span>탁월한판매능력</span></label>
+		                                	<input id="ht5" type="checkbox" name="profileHashtag" value="다양한판매분야" <c:if test="${fn:contains(output.profileHashtag,'다양한판매분야')}"> checked </c:if> />
+		                                	<label for="ht5"><span>다양한판매분야</span></label> --%>
+			                                <div>
+						                        <ul id="tag-list">
+												<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">
+													<li class="tag-item">
+						                        		${output.hashTag1}<span class="del-btn" id="del-btn0" idx="0" data-value="${output.hashTag1}">x</span>
+						                        	</li>
+												</c:if>
+									           	<c:if test="${output.hashTag2 != null}"> 
+													<li class="tag-item">
+						                        		${output.hashTag2}<span class="del-btn" id="del-btn1" idx="1" data-value="${output.hashTag2}">x</span>		                        		
+						                        	</li>
+												</c:if>
+												<c:if test="${output.hashTag3 != null}">
+													<li class="tag-item">
+						                        		${output.hashTag3}<span class="del-btn" id="del-btn2" idx="2" data-value="${output.hashTag3}">x</span>
+						                        	</li>
+												</c:if>
+												<c:if test="${output.hashTag4 != null}">
+													<li class="tag-item">
+						                        		${output.hashTag4}<span class="del-btn" id="del-btn3" idx="3" data-value="${output.hashTag4}">x</span>
+						                        	</li>
+												</c:if>
+												<c:if test="${output.hashTag5 != null}">
+													<li class="tag-item">
+						                        		${output.hashTag5}<span class="del-btn" id="del-btn4" idx="4" data-value="${output.hashTag5}">x</span>
+						                        	</li>
+												</c:if>
+												</ul>
+					                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기 ( 엔터 또는 스페이스바로 입력가능 )">
+					                        	<input type="hidden"
+					                        	value="<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">${output.hashTag1}</c:if>
+					                        	<c:if test="${output.hashTag2 != null}">, ${output.hashTag2}</c:if>
+					                        	<c:if test="${output.hashTag3 != null}">, ${output.hashTag3}</c:if>
+					                        	<c:if test="${output.hashTag4 != null}">, ${output.hashTag4}</c:if>
+					                        	<c:if test="${output.hashTag5 != null}">, ${output.hashTag5}</c:if>"
+					                        	 name="tag" id="rdTag" />
+					                        </div>
 				                        </div>
 									</div>
 									</c:if>
@@ -187,45 +224,134 @@
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
-		function handleImgfileSelect1(e) {
-			var files = e.target.files;
-			var filesArr = Array.prototype.slice.call(files);
+    var tag = {};
+    var tag_count = $('.del-btn').length;
+    var counter = tag_count+0;
+    
+    for (var i = 0; i < tag_count; i++) {
+    	tag[i] = $('#del-btn'+i).data('value');
+	}
+    var value = marginTag(); // return array
+    console.log(value);
+    $("#rdTag").val(value);
+
+    // 태그를 추가한다.
+    function addTag (value) {
+        tag[counter] = value; // 태그를 Object 안에 추가
+        counter++; // counter 증가 삭제를 위한 del-btn 의 고유 id 가 된다.
+    }
+	
+	// 해시태그
+    $("#tag").on("keypress", function (e) {
+        var self = $(this);
+        var checkTag_count = $('input[name=profileHashtag]:checked').length;
+        var tag_count = $('.tag-item').length;
+        var count = checkTag_count + tag_count + 1;
+
+        // input 에 focus 되있을 때 엔터 및 스페이스바 입력시 구동
+        if (e.key === "Enter" || e.keyCode == 32) {
+
+            var tagValue = self.val(); // 값 가져오기
+
+            // 값이 없으면 동작 ㄴㄴ
+            if (tagValue !== "") {          	
+
+                // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+                var result = Object.values(tag).filter(function (word) {
+                    return word === tagValue;
+                })
+                
+                // 태그 중복 검사
+                if (result.length == 0) { 
+                	
+                	// 태그값 20글자 제한
+                	if (tagValue.length > 20) {
+                		swal('알림', '20글자까지 입력가능합니다.', 'info');
+    				} else if(count > 5){
+    					swal('알림', '5개까지 등록가능합니다.', 'info');
+    				} else {
+                        $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
+                        addTag(tagValue);
+                        self.val("");    					
+    				}
+                } else {
+                	swal('알림', '이미 입력한 태그입니다.', 'info');
+                }
+            }
+            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+        }
+        var value = marginTag(); // return array
+        console.log(value);
+        $("#rdTag").val(value); 
+    });
+
+    // 삭제 버튼 
+    // 삭제 버튼은 비동기적 생성이므로 document 최초 생성시가 아닌 검색을 통해 이벤트를 구현시킨다.
+    $(document).on("click", ".del-btn", function (e) {
+        var index = $(this).attr("idx");
+        tag[index] = "";
+        $(this).parent().remove();
+        var value = marginTag(); // return array
+        $("#rdTag").val(value);
+    });	
+
+    // 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+    function marginTag () {
+        return Object.values(tag).filter(function (word) {
+            return word !== "";
+        });
+    }
+    
+    // 해시태그 체크박스 + 직접입력 5개이상 막기
+    $(document).on("click", "input[name=profileHashtag]", function(){
+        var checkTag_count = $('input[name=profileHashtag]:checked').length;
+        var tag_count = $('.tag-item').length;
+        var count = checkTag_count + tag_count;
+    	if (count > 5) {
+    		$(this).prop('checked', false);
+    		swal('알림', '5개까지 등록가능합니다.', 'info');
+		}
+    });
+    
+	function handleImgfileSelect1(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
 			
 			
-			filesArr.forEach(function(f) {
-				if(!f.type.match("image.*")) {
-					return;
-				}
-				sel_file = f;
-				
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$("#img").attr("src", e.target.result);
-				}
-				reader.readAsDataURL(f);
-			});
-		};
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				return;
+			}
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	};
 		
-		function handleImgfileSelect2(e) {
-			var files = e.target.files;
-			var filesArr = Array.prototype.slice.call(files);
+	function handleImgfileSelect2(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				return;
+			}
+			sel_file = f;
 			
-			
-			filesArr.forEach(function(f) {
-				if(!f.type.match("image.*")) {
-					return;
-				}
-				sel_file = f;
-				
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$("#profile-img").attr("src", e.target.result);
-				}
-				reader.readAsDataURL(f);
-			});
-		};
-		$(document).on("change", "#profile-image" ,handleImgfileSelect2);
-		$(document).on("change", "#image" ,handleImgfileSelect1);
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#profile-img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	};
+	$(document).on("change", "#profile-image" ,handleImgfileSelect2);
+	$(document).on("change", "#image" ,handleImgfileSelect1);
 		
 	$(document).on("click", "ul.my-tabs li", function(e){
 		var tab_id = $(this).attr('data-tab');

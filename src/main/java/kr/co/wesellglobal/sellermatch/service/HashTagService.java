@@ -14,4 +14,5 @@ public interface HashTagService {
 	
 	public void editHashTag(HashTagDto input) throws Exception;
 	
+	public int isHashTag(HashTagDto input) throws Exception;
 }

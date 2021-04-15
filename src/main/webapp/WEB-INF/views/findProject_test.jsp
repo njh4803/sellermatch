@@ -356,7 +356,7 @@
 <div class="partner_bnr w-find">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
-			<div class="titleBox">거래처 찾기</div>
+			<div class="titleBox">공급자 · 판매자 찾기</div>
 			<div class="searchBox clearfix">
 				<div class="search-letfBox">
 					조건에 맞는 공급자와 판매자를 찾고 거래 신청할 수 있습니다.
@@ -376,11 +376,11 @@
 			<div class="left-container">
 				<div class="partner_list">
 					<div>
-						<input type="checkbox" class="check" name="projSort" id="projSort-pp" value="1">
+						<input type="radio" class="check" name="projSort" id="projSort-pp" value="1">
 						<label for="projSort-pp">
-							<span>공급자 찾기</span>
+							<span class="projSort-pp">공급자 찾기</span>
 						</label>
-						<input type="checkbox" class="check" name="projSort" id="projSort-sp" value="2">
+						<input type="radio" class="check" name="projSort" id="projSort-sp" value="2">
 						<label for="projSort-sp">
 							<span>판매자 찾기</span>
 						</label>
@@ -1161,7 +1161,9 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
- 	
+	/* $(document).on("click", "input[name='projSort']", function(){
+		ifthis.checked
+	}); */
  	$(document).on("click", ".check_list", function(){
 		var check_list_box = $(this).closest(".partner_list").children('.check_list_box');
 		var checkList = $(this).closest(".partner_list").children('.check_list');

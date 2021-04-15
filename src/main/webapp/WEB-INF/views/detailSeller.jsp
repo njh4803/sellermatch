@@ -218,9 +218,21 @@
 	           		</div>	    
 					<div class="textBox2">해시태그
 						<div class="tagBox">
-						<c:forEach var="profileHashtag" items="${output.profileHashtag}" varStatus="status">
-	        				<div class="hashtag"> ${profileHashtag}</div>
-	        			</c:forEach>
+						<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">
+							<div class="hashtag">${output.hashTag1}</div>
+						</c:if>
+			           	<c:if test="${output.hashTag2 != null}"> 
+							<div class="hashtag">${output.hashTag2}</div>
+						</c:if>
+						<c:if test="${output.hashTag3 != null}">
+							<div class="hashtag">${output.hashTag3}</div>
+						</c:if>
+						<c:if test="${output.hashTag4 != null}">
+							<div class="hashtag">${output.hashTag4}</div>
+						</c:if>
+						<c:if test="${output.hashTag5 != null}">
+							<div class="hashtag">${output.hashTag5}</div>
+						</c:if>	        			
 	        			</div>
         			</div>           		
 				</div>
