@@ -18,4 +18,6 @@ public interface myPageService {
 	
 	public List<myPageDto> selectScrapList(myPageDto input) throws Exception;
 	
+	public List<myPageDto> selectMyApplyList(myPageDto input) throws Exception;
+	
 }

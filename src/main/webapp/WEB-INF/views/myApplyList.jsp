@@ -6,14 +6,14 @@
 <%-- <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css"> --%>
-<link href="${pageContext.request.contextPath}/assets/css/registDelng.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/myApplyList.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
     <div class="partner_wrap">
     	<div class="partner_bnr3">
     		<div class="clearfix">
 	    		<div class="mypage-top-left">
-	    			<div class="mypage-title">등록한 거래</div>
-		    		<div class="mypage-text">내가 등록한 거래 목록입니다.</div>
+	    			<div class="mypage-title">지원한 거래</div>
+		    		<div class="mypage-text">내가 지원한 거래 목록입니다.</div>
 	    		</div>
 		    	<div class="mypage-top-right">
 		    		<img class="mypage-img" alt="" src="${pageContext.request.contextPath}/assets/img/mypage-img.png">
@@ -37,7 +37,7 @@
 					</div>
 					<div class="proj-type">
 						<div class="myProjBox2">
-							<div class="p-type contractCountText">지원한 거래</div>
+							<div class="p-type myApplyCountText">지원한 거래</div>
 							<div class="textBox1"><button id="myApplyCount" value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</button></div>
 						</div>
 					</div>
@@ -75,28 +75,47 @@
 							<div class="th">마감일</div>
 							<div class="th">모집인원</div>
 							<div class="th">지원자인원</div>
-							<div class="th">지원자 관리</div>
+							<div class="th">지원현황</div>
 						</div>
 					</div>
 					<div>
-						<c:forEach var="registedProjectList" items="${registedProjectList}" varStatus="status">
-						<div class="show-apply" data-projId="${registedProjectList.projId}" data-index="${status.count}">
-							<div class="td cursor">${registedProjectList.projRegDate}</div>
-							<div class="td project-title cursor" data-projId="${registedProjectList.projId}">
+ 						<c:forEach var="myApplyList" items="${myApplyList}" varStatus="status">
+						<div class="show-apply" data-projId="${myApplyList.projId}" data-index="${status.count}">
+							<div class="td cursor">${myApplyList.projRegDate}</div>
+							<div class="td project-title cursor" data-projId="${myApplyList.projId}">
 					         <c:choose>
-					           <c:when test="${fn:length(registedProjectList.projTitle) > 30}">
-					            <c:out value="${fn:substring(registedProjectList.projTitle,0,29)}"/>...
+					           <c:when test="${fn:length(myApplyList.projTitle) > 30}">
+					            <c:out value="${fn:substring(myApplyList.projTitle,0,29)}"/>...
 					           </c:when>
 					           <c:otherwise>
-					            <c:out value="${registedProjectList.projTitle}"/>
+					            <c:out value="${myApplyList.projTitle}"/>
 					           </c:otherwise> 
 					          </c:choose>
 							</div>
-							<div class="td cursor">${registedProjectList.projEndDate}</div>
-							<div class="td cursor">${registedProjectList.projRecruitNum}명</div>
-							<div class="td cursor">${registedProjectList.applyCount}명</div>
-							<div class="td">
-								<button class="show-applicant">관리하기</button>
+							<div class="td cursor">${myApplyList.projEndDate}</div>
+							<div class="td cursor">${myApplyList.projRecruitNum}명</div>
+							<div class="td cursor">${myApplyList.applyCount}명</div>
+							<div class="td cursor">
+							<c:choose>
+								<c:when test="${myApplyList.applyProjState == 0}">
+									거절
+								</c:when>
+								<c:when test="${myApplyList.applyProjState == 1}">
+									취소
+								</c:when>
+								<c:when test="${myApplyList.applyProjState == 2}">
+									지원
+								</c:when>
+								<c:when test="${myApplyList.applyProjState == 3}">
+									제안
+								</c:when>
+								<c:when test="${myApplyList.applyProjState == 4}">
+									대기
+								</c:when>
+								<c:when test="${myApplyList.applyProjState == 5}">
+									승인
+								</c:when>
+							</c:choose>
 							</div>
 						</div>
 						<div class="apply-table" id="apply-table${status.count}">
@@ -174,63 +193,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	function handleImgfileSelect1(e) {
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		
-		
-		filesArr.forEach(function(f) {
-			if(!f.type.match("image.*")) {
-				return;
-			}
-			sel_file = f;
-			
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$("#img").attr("src", e.target.result);
-			}
-			reader.readAsDataURL(f);
-		});
-	};
-	
-	function handleImgfileSelect2(e) {
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		
-		
-		filesArr.forEach(function(f) {
-			if(!f.type.match("image.*")) {
-				return;
-			}
-			sel_file = f;
-			
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$("#profile-img").attr("src", e.target.result);
-			}
-			reader.readAsDataURL(f);
-		});
-	};
-	
-	$(document).on("change", "#profile-image" ,handleImgfileSelect2);
-	$(document).on("change", "#image" ,handleImgfileSelect1);
-	
-	$(document).on("click", "ul.my-tabs li", function(e){
-		
-		var tab_id = $(this).attr('data-tab');
-		var tabNum = $(this).data('num');
-
-		$('ul.my-tabs li').removeClass('current');
-		$('.tab-content2').removeClass('current');
-
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-		
-		if (tab_id == 'my-tab-4') {
-			$("#myProject").remove();
-		}
-	});
-	
     $(document).on("click", "#contractCount", function(e){
     	var contractCount = $('#contractCount').val();
 		if (contractCount == 0) {
@@ -274,7 +236,6 @@ $(document).ready(function(){
 			location.href=ROOT_URL+ "/myPage/delngManage/scrapList";
 		}
     });
-    
     $(document).on("click", "#myApplyCount", function(e){
     	var scrapCount = $('#myApplyCount').attr('data-value');
     	var mem_sort = $('#myMemSort').val();
@@ -286,30 +247,12 @@ $(document).ready(function(){
 		}
     });
     
-    $(document).on("click", ".show-apply", function(e){
-    	$("#applyList").remove();
-    	
-    	var applyProjId = $(this).attr('data-projId');
-    	var idx = $(this).attr('data-index');
-    	
-		$.ajax({
-			type: "GET",
-	        url: ROOT_URL + '/myPage/delngManage/applyList',
-	        data:{
-	        	'applyProjId':applyProjId
-	        },
-			success : function(json) {
-				var content = {
-					output : json.output
-				} 
-	       		var template = Handlebars.compile($("#apply-tmpl").html());
-	       		var html = template(content);
-	       		
-	       		$("#apply-table"+idx).append(html);
-			}
-		});
-    });
-    	
+    //거래처 찾기 상세페이지로 이동
+	$(document).on("click", ".project-title", function(e) {
+			var projId = $(this).attr('data-projId');
+			var options = 'width=1500, height=1000, status=yes, menubar=no, toolbar=no, resizable=yes';
+			window.open(ROOT_URL + "/project/detail?projId=" + projId,"전세계 검증된 판매자를 만나는 곳, 셀러매치",options);
+	});
 });
 </script>
 <script type="text/javascript">
@@ -342,40 +285,4 @@ $(document).ready(function() {
 	    }
 	});	
 });
-</script>
-<script type="text/x-handlebars-template" id="apply-tmpl">
-							<div id="applyList">
-								{{#ifCond output '!=' 0}}
-									<div class="tr">
-										<div class="th" style="width: 140px;">지원일</div>
-										<div class="th" style="width: 180px;">지원자</div>						
-										<div class="th" style="width: 500px;">판매채널</div>
-										<div class="th" style="width: 165px;">매출규모</div>
-										<div class="th" style="width: 165px;">판매경력</div>
-										<!-- <div class="th" style="width: 130px;">승인/거절</div> -->
-										<div class="th" style="width: 130px;">연락처</div>
-									</div>
-									{{#output}}
-										<div class="tr">
-											<div class="td" style="width: 140px;">{{applyRegDate}}</div>
-											<div class="td" style="width: 180px;">{{applyMemNick}}</div>
-											<div class="td" style="width: 500px;">{{profileCh}}</div>
-										{{#ifCond profileVolume '==' null}}
-											<div class="td" style="width: 165px;">미등록</div>
-										{{else}}
-											<div class="td" style="width: 165px;">{{profileVolume}}</div>
-										{{/ifCond}}
-											<div class="td" style="width: 165px;">{{profileCareer}}</div>
-											<div class="td" style="width: 130px;">
-												<!-- <button>지원거절</button> -->
-												{{memTel}}
-											</div>
-										</div>
-									{{/output}}
-								{{else}}
-									<div class="tr">
-										<div class="th" style="width: 1280px;">지원자 없음</div>
-									</div>
-								{{/ifCond}}
-							</div>
 </script>

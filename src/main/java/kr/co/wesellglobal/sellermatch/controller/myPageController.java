@@ -98,10 +98,6 @@ public class myPageController {
 		model.addAttribute("output", output);
 		model.addAttribute("member", member);
 		
-		System.out.println("@@@@@@@@@@@@@@@@@@@");
-		System.out.println(member);
-		System.out.println("@@@@@@@@@@@@@@@@@@@");
-		
 		return new ModelAndView("profileManage");
 	}	
 	@RequestMapping(value = "/myPage/delngManage/registDelng", method = RequestMethod.GET)
@@ -158,9 +154,6 @@ public class myPageController {
 		}
 		
 		data.put("output", output);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("output>>>>>>>>>>>>"+output);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		
 		return webHelper.getJsonData(data);
 	}
@@ -236,7 +229,6 @@ public class myPageController {
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("result", result);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@result>>>>>>>>>>>>"+result);
 		
 		return webHelper.getJsonData(data);
 	}
@@ -278,4 +270,40 @@ public class myPageController {
 		return new ModelAndView("scrapList");
 	}
 	
+	@RequestMapping(value = "/myPage/delngManage/myApplyList", method = RequestMethod.GET)
+	public ModelAndView myApplyList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "applyType", required = false)String applyType,
+			@RequestParam(value = "applyProjState", required = false)String applyProjState,			
+			@RequestParam(value = "keyword", required = false) String keyword,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		// 페이지 구현에 필요한 변수값 생성 
+		int totalCount = 0;		// 전체 게시글 수
+		int listCount = 8;		// 한 페이지당 표시할 목록 수
+		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
+		
+		// 페이지 번호를 계산한 결과가 저장될 객체
+		PageData pageData = null;
+		
+		myPageDto input = new myPageDto();
+		input.setMemId(member.getMemId());
+		input.setProjMemId(member.getMemId());
+		
+		List<myPageDto> myApplyList = null;
+		myPageDto myProjectCount = null;
+		
+		try {
+			myApplyList = myPageService.selectMyApplyList(input);
+			myProjectCount = myPageService.selectpMyProjectCount(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("myApplyList", myApplyList);
+		model.addAttribute("myProjectCount", myProjectCount);
+		model.addAttribute("memSort", member.getMemSort());
+		
+		return new ModelAndView("myApplyList");
+	}
 }

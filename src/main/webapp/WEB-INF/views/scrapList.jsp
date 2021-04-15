@@ -81,8 +81,8 @@
 					<div>
  						<c:forEach var="scrapList" items="${scrapList}" varStatus="status">
 						<div class="show-apply" data-projId="${scrapList.projId}" data-index="${status.count}">
-							<div class="td">${scrapList.projRegDate}</div>
-							<div class="td project-title" data-projId="${scrapList.projId}">
+							<div class="td cursor">${scrapList.projRegDate}</div>
+							<div class="td project-title cursor" data-projId="${scrapList.projId}">
 					         <c:choose>
 					           <c:when test="${fn:length(scrapList.projTitle) > 30}">
 					            <c:out value="${fn:substring(scrapList.projTitle,0,29)}"/>...
@@ -92,10 +92,10 @@
 					           </c:otherwise> 
 					          </c:choose>
 							</div>
-							<div class="td">${scrapList.projEndDate}</div>
-							<div class="td">${scrapList.projRecruitNum}명</div>
-							<div class="td">${scrapList.applyCount}명</div>
-							<div class="td">
+							<div class="td cursor">${scrapList.projEndDate}</div>
+							<div class="td cursor">${scrapList.projRecruitNum}명</div>
+							<div class="td cursor">${scrapList.applyCount}명</div>
+							<div class="td cursor">
 								<button class="show-applicant">관리하기</button>
 							</div>
 						</div>
@@ -256,12 +256,23 @@ $(document).ready(function(){
 		}
     });
     
-    //거래처 찾기 상세페이지로 이동
-/*     $(document).on("click", ".project-title", function(e){
-    	var projId = $(this).attr('data-projId');
-    	window.location = ROOT_URL + "/project/detail?projId="+projId;
-    }); */
+    $(document).on("click", "#myApplyCount", function(e){
+    	var scrapCount = $('#myApplyCount').attr('data-value');
+    	var mem_sort = $('#myMemSort').val();
+		if (scrapCount == 0) {
+			var text = '지원한 거래가 없습니다.';
+			swal('알림', text, 'warning')
+		} else {
+			location.href=ROOT_URL+ "/myPage/delngManage/myApplyList";
+		}
+    });
     
+    //거래처 찾기 상세페이지로 이동
+	$(document).on("click", ".project-title", function(e) {
+			var projId = $(this).attr('data-projId');
+			var options = 'width=1500, height=1000, status=yes, menubar=no, toolbar=no, resizable=yes';
+			window.open(ROOT_URL + "/project/detail?projId=" + projId,"전세계 검증된 판매자를 만나는 곳, 셀러매치",options);
+	});
 });
 </script>
 <script type="text/javascript">
