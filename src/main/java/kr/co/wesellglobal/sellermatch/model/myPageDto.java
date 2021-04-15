@@ -133,6 +133,10 @@ public class myPageDto {
 	// 모집마감일을 D-Day로 변환
 	private String projDday;
 	
+	// 계약진행상태 0-거절, 1-취소  2- 지원  3- 제안 4 - 승인 5- 계약
+	// 지원상태
+	private String applyProjState;
+	
 	/**페이지 구현을 위한 static변수*/
 	private static int offset;
 	private static int listCount;

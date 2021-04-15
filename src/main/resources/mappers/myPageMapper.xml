@@ -66,6 +66,8 @@
         <result property="scrapNo" column="SCRAP_NO" />
         <result property="scrapCount" column="scrap_count" />
         
+        <result property="applyProjState" column="apply_proj_state" />
+        
     </resultMap>
 
     <select id="selectList"
@@ -166,7 +168,7 @@
     	AND PROJ_IDX = #{projIdx}
     </select>
     
-    	<select id="selectpScrapList"
+    <select id="selectpScrapList"
     	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
     	resultMap="myPageMap">
     	SELECT distinct
@@ -192,4 +194,28 @@
 		AND m.mem_id = #{memId}
 	</select>
 	
+	<select id="selectMyApplyList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultMap="myPageMap">
+    	SELECT distinct
+    		p.proj_idx as proj_idx, 
+    		proj_id, 
+    		date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, 
+    		proj_title, 
+    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
+    		proj_recruit_num, 
+    		proj_state,
+    		proj_sort,
+    		proj_nation,
+    		proj_supply_type,
+    		proj_hit,
+    		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
+    		proj_channel,
+    		apply_proj_state,
+    		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count
+    	FROM ProjectList p, ApplyList al
+		WHERE 1=1
+		AND p.Proj_id = al.Apply_proj_id 
+		AND al.Apply_mem_id = #{memId}
+	</select>
 </mapper>

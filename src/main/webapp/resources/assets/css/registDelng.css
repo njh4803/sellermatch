@@ -313,3 +313,6 @@ background-color: #ffffff;
   text-align: center;
   color: #484848;
 }
+.cursor {
+	cursor: pointer;
+}
