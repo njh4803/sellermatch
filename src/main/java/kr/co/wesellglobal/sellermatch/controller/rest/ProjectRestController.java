@@ -391,7 +391,13 @@ public class ProjectRestController {
 		input.setReplySecret(replyDto.getReplySecret());
 		input.setReplyPw(replyDto.getReplyPw());
 		input.setReplyBoardId("1");
-
+		if (replyDto.getReplyParentMemId() != null && replyDto.getReplyParentMemId() != "") {
+			input.setReplyParentMemId(replyDto.getReplyParentMemId());
+		} else {
+			input.setReplyParentMemId(member.getMemId());
+		}
+		
+		
 		
 		try {
 			if (replyDto.getReplyParent() != 0) {

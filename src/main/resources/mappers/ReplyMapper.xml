@@ -17,6 +17,8 @@
         <result property="replySecret" column="reply_secret" />
         <result property="replyRegDate" column="reply_reg_date" />
         <result property="replyDepth" column="reply_depth" />
+        <result property="replyParentMemId"   column="reply_parent_mem_id" />
+        <result property="replyParentNick"   column="reply_parent_nick" />
     </resultMap>
     
     <insert id="insertItem"
@@ -24,9 +26,11 @@
     	useGeneratedKeys="true"
     	keyProperty="replyId">
     	INSERT INTO ReplyList
-    		(`reply_parent`, `reply_writer`, `reply_contents`, `reply_proj_id`, `reply_board_id`, `reply_pw`, `reply_reg_date`, reply_secret, reply_depth)
+    		(`reply_parent`, `reply_writer`, `reply_contents`, `reply_proj_id`, `reply_board_id`, 
+    		`reply_pw`, `reply_reg_date`, reply_secret, reply_depth, reply_parent_mem_id)
     	 VALUES 
-    	 	(#{replyParent}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, #{replyPw}, now(), #{replySecret}, #{replyDepth});
+    	 	(#{replyParent}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, 
+    	 	#{replyPw}, now(), #{replySecret}, #{replyDepth}, #{replyParentMemId});
     </insert>
     
     <select id="selectList"
@@ -34,7 +38,8 @@
     	resultMap="replyMap">
     	SELECT 
 	   		reply_id, reply_parent, reply_writer, reply_contents, reply_proj_id, reply_board_id, reply_secret, reply_pw,
-	   		date_format(reply_reg_date, '%Y-%m-%d %H:%i') as reply_reg_date, reply_depth
+	   		date_format(reply_reg_date, '%Y-%m-%d %H:%i') as reply_reg_date, reply_depth, reply_parent_mem_id,
+	   		(select mem_nick from MemList where mem_id = reply_parent_mem_id) as reply_parent_nick
     	FROM ReplyList
     	WHERE reply_proj_id = #{replyProjId}
     	ORDER BY reply_parent

@@ -369,7 +369,8 @@
 					    		</label>
 					    		<!-- <input type="password" class="secretPw" id="replyPw" name="replyPw" placeholder="비밀번호" readonly> -->
 					    		<input type="hidden" id="projId" name="replyProjId" value="${output.projId}">
-					    		<input type="hidden" id="replyParent" name="replyParent" value="">
+					    		<input type="hidden" id="replyParentMemId" name="replyParentMemId" value="">
+					    		<input type="hidden" id="replyParent" name="replyParent" value="0">
 					    		<input type="hidden" id="replySecret" name="replySecret" value="N">
 						    	<input type="button" class="question-btn" value="작성하기">
 						    </div>						
@@ -387,7 +388,7 @@
 								<div class="reviewDate">${replyDto.replyRegDate}</div>						
 							</div>
 							<c:choose>
-								<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projMemId}">
+								<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projMemId and member.memNick != replyDto.ReplyParentNick}">
 									<div class="reviewContents">비밀글입니다.</div>
 								</c:when>
 								<c:otherwise>
@@ -395,7 +396,7 @@
 								</c:otherwise>						
 							</c:choose>
 							<c:if test="${replyDto.replyDepth == 0}">
-								<button id="comment${status.index}" class="comment" data-value="${replyDto.replyParent}" data-idx="${status.index}">답글작성</button>
+								<button id="comment${status.index}" class="comment" data-value="${replyDto.replyParent}" data-idx="${status.index}" data-id="${replyDto.replyParentMemId}">답글작성</button>
 							</c:if>
 							<c:if test="${replyDto.replyDepth == 1}">
 								<button id="comment${status.index}" class="comment" data-value="${replyDto.replyParent}" data-idx="${status.index}" style="display: none;" disabled></button>
@@ -495,6 +496,7 @@ $(document).ready(function() {
 		var idx = $(this).data('idx');
 		var nickName = $(this).parent().children().children('.reviewNick').text();
 		var replyParent = $(this).data('value');
+		var replyParentMemId = $(this).data('id');
 		
 		$('.comment').each(function (index, item) {
 			console.log('idx='+idx);
@@ -503,13 +505,15 @@ $(document).ready(function() {
 				$(this).removeClass("del");
 				$(this).text("답글작성");
 				$('#commentNick').text("");
-				$('#replyParent').val("");
+				$('#replyParent').val("0");
+				$('#replyParentMemId').val("");
 			}
 		});
 		
 		$('#replyParent').val(replyParent);
 		$('#commentNick').text(nickName);
 		$('#replyContents').val(" ");
+		$('#replyParentMemId').val(replyParentMemId);
 		$('#replyContents').focus();
 		$(this).text("답글취소");
 		$(this).addClass("del");
@@ -520,7 +524,8 @@ $(document).ready(function() {
 		$(this).removeClass("del");
 		$(this).text("답글작성");
 		$('#commentNick').text("");
-		$('#replyParent').val("");
+		$('#replyParent').val("0");
+		$('#replyParentMemId').val("");
 	});
 	
 	$(document).on("click", "#editBtn", function(){

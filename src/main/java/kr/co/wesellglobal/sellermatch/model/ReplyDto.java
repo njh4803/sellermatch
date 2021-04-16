@@ -34,4 +34,10 @@ public class ReplyDto {
     
     // 댓글,답글 들여쓰기 0-댓글, 1-답글
     private String replyDepth;    
+    
+    // 댓글(부모)작성자 아이디
+    private String replyParentMemId;
+    
+    // 댓글(부모)작성자 닉네임
+    private String replyParentNick;
 }
