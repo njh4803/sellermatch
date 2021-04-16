@@ -217,11 +217,11 @@
 		<div class="partner_bnr3">
 			<div class="top-Box">거래처 상세페이지</div>
 			<div class="top-Box2">
-				조건에 맞는 공급자와 판매자를 찾고 거래 조율할 수 있습니다.
+				<span style="float: left;">조건에 맞는 공급자와 판매자를 찾고 거래 조율할 수 있습니다.</span>
+				<c:if test="${output.projMemId == member.memId}">
+					<button id="editBtn">수정하기</button>
+				</c:if>
 			</div>
-			<c:if test="${output.projMemId == member.memId}">
-				<button id="editBtn">수정하기</button>
-			</c:if>
 			<hr>
 		</div>
 		<div class="container1 content clearfix">
@@ -359,6 +359,7 @@
 				<div class="detailBox3"><span>문의</span>
 					<form action="${pageContext.request.contextPath}/project/reply" method="post" id="question-form" class="text-right">
 						<div class="textBox2">
+							<div id="commentNick"></div>
 						    <textarea name="replyContents" id="replyContents" class="question" placeholder="- 작성한 내용은 수정 및 삭제가 불가합니다&#13;&#10;- 이메일. 전화번호 등을 게시하여 직거래를 유도할 경우 서비스 이용에 제재를 받을 수 있습니다"></textarea>
 						    <hr>
 						    <div class="clearfix">
@@ -368,6 +369,7 @@
 					    		</label>
 					    		<!-- <input type="password" class="secretPw" id="replyPw" name="replyPw" placeholder="비밀번호" readonly> -->
 					    		<input type="hidden" id="projId" name="replyProjId" value="${output.projId}">
+					    		<input type="hidden" id="replyParent" name="replyParent" value="">
 					    		<input type="hidden" id="replySecret" name="replySecret" value="N">
 						    	<input type="button" class="question-btn" value="작성하기">
 						    </div>						
@@ -375,21 +377,30 @@
 					</form>
 				</div>
 				<div class="detailBox4">
-					<c:forEach var="replyDto" items="${replyDto}">
-					<div class="reviewBox clearfix">
-						<div class="reviewBox2">
-							<div class="reviewNick">${replyDto.replyWriter}</div>
-							<div class="reviewDate">${replyDto.replyRegDate}</div>						
-						</div>
-						<c:choose>
-							<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projMemId}">
-								<div class="reviewContents">비밀글입니다.</div>
-							</c:when>
-							<c:otherwise>
-								<div class="reviewContents">${replyDto.replyContents}</div>
-							</c:otherwise>						
-						</c:choose>
-					</div>					
+					<c:forEach var="replyDto" items="${replyDto}" varStatus="status">
+						<div class="reviewBox clearfix">
+							<c:if test="${replyDto.replyDepth == 1}">
+								<img class="curve-arrow" alt="" src="${pageContext.request.contextPath}/assets/img/curve-arrow.png">
+							</c:if>						
+							<div class="reviewBox2">
+								<div class="reviewNick">${replyDto.replyWriter}</div>
+								<div class="reviewDate">${replyDto.replyRegDate}</div>						
+							</div>
+							<c:choose>
+								<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projMemId}">
+									<div class="reviewContents">비밀글입니다.</div>
+								</c:when>
+								<c:otherwise>
+									<div class="reviewContents">${replyDto.replyContents}</div>
+								</c:otherwise>						
+							</c:choose>
+							<c:if test="${replyDto.replyDepth == 0}">
+								<button id="comment${status.index}" class="comment" data-value="${replyDto.replyParent}" data-idx="${status.index}">답글작성</button>
+							</c:if>
+							<c:if test="${replyDto.replyDepth == 1}">
+								<button id="comment${status.index}" class="comment" data-value="${replyDto.replyParent}" data-idx="${status.index}" style="display: none;" disabled></button>
+							</c:if>
+						</div>		
 					</c:forEach>
 				</div>
 			</div>
@@ -480,11 +491,49 @@
 <script>
 $(document).ready(function() {
 	
+	$(document).on("click", ".comment", function(){
+		var idx = $(this).data('idx');
+		var nickName = $(this).parent().children().children('.reviewNick').text();
+		var replyParent = $(this).data('value');
+		
+		$('.comment').each(function (index, item) {
+			console.log('idx='+idx);
+			console.log('index='+index)
+			if (idx != index) {
+				$(this).removeClass("del");
+				$(this).text("답글작성");
+				$('#commentNick').text("");
+				$('#replyParent').val("");
+			}
+		});
+		
+		$('#replyParent').val(replyParent);
+		$('#commentNick').text(nickName);
+		$('#replyContents').val(" ");
+		$('#replyContents').focus();
+		$(this).text("답글취소");
+		$(this).addClass("del");
+	});
+	
+	// 답글취소
+	$(document).on("click", ".del", function(){
+		$(this).removeClass("del");
+		$(this).text("답글작성");
+		$('#commentNick').text("");
+		$('#replyParent').val("");
+	});
+	
+	$(document).on("click", "#editBtn", function(){
+		var projId = $("#projId").val();
+		location.href = ROOT_URL+"/project/edit?projId="+projId;
+	});
+	
 	$(document).on("click", ".question-btn", function(){
 		var login_id = $('#projectInsert').data('member');
 		var projId = $("#projId").val();
 		var secretChk = $("input[name=secret]:checkbox").attr('checked');
-		var replyContents =  $('#replyContents').val()
+		var replyContents =  $('#replyContents').val();
+		var replyParent = $('#replyParent').val();
 		$('input[name=replySecret]').attr('value', secretChk);
 		
 		if (login_id == '') {
@@ -513,7 +562,8 @@ $(document).ready(function() {
 	        		replyProjId: $("#projId").val(),
 	        		replySecret: $('#replySecret').val(),
 					/* replyPw: $('#replyPw').val(), */
-					replyContents: $('#replyContents').val()
+					replyContents: $('#replyContents').val(),
+					replyParent: $('#replyParent').val()
 	    		};
 		
       	$.ajax({

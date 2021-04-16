@@ -390,9 +390,17 @@ public class ProjectRestController {
 		input.setReplyProjId(replyDto.getReplyProjId());
 		input.setReplySecret(replyDto.getReplySecret());
 		input.setReplyPw(replyDto.getReplyPw());
+		input.setReplyBoardId("1");
+
 		
 		try {
-			input.setReplyParent(replyService.getSeq()+1);
+			if (replyDto.getReplyParent() != 0) {
+				input.setReplyParent(replyDto.getReplyParent());
+				input.setReplyDepth("1");
+			} else {
+				input.setReplyParent(replyService.getSeq()+1);
+				input.setReplyDepth("0");
+			}
 			replyService.addReply(input);
 			
 		} catch (Exception e) {

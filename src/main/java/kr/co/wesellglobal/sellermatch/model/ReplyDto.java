@@ -31,4 +31,7 @@ public class ReplyDto {
     
     // 비밀글 사용여부 Y, N
     private String replySecret;
+    
+    // 댓글,답글 들여쓰기 0-댓글, 1-답글
+    private String replyDepth;    
 }

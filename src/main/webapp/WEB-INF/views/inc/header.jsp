@@ -91,7 +91,7 @@ header #m-search_frm{
        <h1><a href="${pageContext.request.contextPath}/temp"><img src="${pageContext.request.contextPath}/assets/img/sellermatch_logo.png" alt="sellermatch"></a></h1>
        <nav>
            <ul>
-               <li><a href="${pageContext.request.contextPath}/project/find">공급자 · 판매자 찾기</a></li>
+               <li><a href="${pageContext.request.contextPath}/project/find">거래처 매칭</a></li>
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 리스트</a></li>
                <!-- <li><a href="javascipt:void(0);">커뮤니티</a></li> -->
                <li class="operation">
@@ -199,19 +199,14 @@ header #m-search_frm{
             <div class="gnb_project">
          		<c:if test="${member.memSort == 1}">
          		<a class="projectInsert producer" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
-         			 판매자 찾기 무료등록
+         			 매칭 등록하기
          		</a>
          		</c:if>
-         		<c:if test="${member.memSort == 2}">
+         		<c:if test="${member.memSort == 2 or member.memSort == null}">
          		<a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
-         			공급자 찾기 무료등록
+         			매칭 등록하기
          		</a>
-         		</c:if>
-         		<c:if test="${member.memSort == null}">
-         		<a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
-         			공급자 · 판매자 찾기 무료등록
-         		</a>
-         		</c:if>            
+         		</c:if>         
             </div>
        </div>
    </div>

@@ -22,13 +22,10 @@
 				        찾고 직거래하세요.<br>
 	    		</div>
          		<c:if test="${member.memSort == 1}">
-         			<button class="findBtn projectInsert producer" href="javascript:void(0);">판매자찾기 무료등록</button>
+         			<button class="findBtn projectInsert producer" href="javascript:void(0);">매칭 무료등록</button>
          		</c:if>
-         		<c:if test="${member.memSort == 2}">
-         			<button class="findBtn projectInsert" href="javascript:void(0);">공급자 찾기 무료등록</button>
-         		</c:if>
-         		<c:if test="${member.memSort == null}">
-         			<button class="findBtn projectInsert" href="javascript:void(0);">공급자 · 판매자 찾기 무료등록</button>
+         		<c:if test="${member.memSort == 2 or member.memSort == null}">
+         			<button class="findBtn projectInsert" href="javascript:void(0);">매칭 무료등록</button>
          		</c:if>
     			<button class="shareBtn" id="shareBtn">친구들과 공유하기</button>
 			</div>
@@ -41,7 +38,7 @@
     <div class="bnr">
     	<div class="main-0002 clearfix">
     		<div class="main-003">
-    			거래처 찾기를 1회만 등록하세요.<br>
+    			"매칭 무료등록"을 1회만 등록하세요.<br>
 				쉽게 빠르게 효율적인 직거래하세요.<br>
     		</div>
     	</div>
@@ -246,8 +243,8 @@
 							<br><br>
 							<div class="main-img3"></div>
 							<br><br>
-							<span>거래처 찾기 등록</span><br>
-							판매 상품 정보를 담은 거래처 찾기 등록하기<br>
+							<span>매칭 무료등록</span><br>
+							판매자의 정보를 등록해 주세요<br>
 							<br><br>
 							<div class="main-img3"></div>
 							<br><br>
@@ -277,8 +274,8 @@
 							<br><br>
 							<div class="main-img3"></div>
 							<br><br>
-							<span>거래처 찾기 등록</span><br>
-							공급 상품 정보를 담은 거래처 찾기 등록하기<br>
+							<span>매칭 무료등록</span><br>
+							공급 상품 정보를 입력해 주세요<br>
 							<br><br>
 							<div class="main-img3"></div>
 							<br><br>

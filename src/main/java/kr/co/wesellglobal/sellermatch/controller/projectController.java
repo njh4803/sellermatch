@@ -284,4 +284,27 @@ public class projectController {
 
 		return new ModelAndView("detailProject");
 	}
+	
+	@RequestMapping(value = "/project/edit", method = RequestMethod.GET)
+	public ModelAndView editProject(Model model,
+			@RequestParam(value = "projId", required = false) String projId) {
+		ProjectDto input = new ProjectDto();
+		IndusDto input2 = new IndusDto();
+		input.setProjId(projId);
+		
+		ProjectDto output = null;
+		List<IndusDto> indusList = null;
+		
+		try {
+			output = projectService.getProject(input);
+			indusList = indusService.getIndusList(input2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+		model.addAttribute("indusList", indusList);
+
+		return new ModelAndView("editProject");
+	}	
 }

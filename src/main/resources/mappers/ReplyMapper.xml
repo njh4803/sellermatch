@@ -16,6 +16,7 @@
         <result property="replyPw" column="reply_pw" />
         <result property="replySecret" column="reply_secret" />
         <result property="replyRegDate" column="reply_reg_date" />
+        <result property="replyDepth" column="reply_depth" />
     </resultMap>
     
     <insert id="insertItem"
@@ -23,9 +24,9 @@
     	useGeneratedKeys="true"
     	keyProperty="replyId">
     	INSERT INTO ReplyList
-    		(`reply_parent`, `reply_writer`, `reply_contents`, `reply_proj_id`, `reply_board_id`, `reply_pw`, `reply_reg_date`, reply_secret)
+    		(`reply_parent`, `reply_writer`, `reply_contents`, `reply_proj_id`, `reply_board_id`, `reply_pw`, `reply_reg_date`, reply_secret, reply_depth)
     	 VALUES 
-    	 	(#{replyParent}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, #{replyPw}, now(), #{replySecret});
+    	 	(#{replyParent}, #{replyWriter}, #{replyContents}, #{replyProjId}, #{replyBoardId}, #{replyPw}, now(), #{replySecret}, #{replyDepth});
     </insert>
     
     <select id="selectList"
@@ -33,10 +34,10 @@
     	resultMap="replyMap">
     	SELECT 
 	   		reply_id, reply_parent, reply_writer, reply_contents, reply_proj_id, reply_board_id, reply_secret, reply_pw,
-	   		date_format(reply_reg_date, '%Y-%m-%d %H:%i') as reply_reg_date
+	   		date_format(reply_reg_date, '%Y-%m-%d %H:%i') as reply_reg_date, reply_depth
     	FROM ReplyList
     	WHERE reply_proj_id = #{replyProjId}
-    	ORDER BY reply_reg_date
+    	ORDER BY reply_parent
     	
     	<!-- <if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}

@@ -356,7 +356,7 @@
 <div class="partner_bnr w-find">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
-			<div class="titleBox">공급자 · 판매자 찾기</div>
+			<div class="titleBox">거래처 매칭</div>
 			<div class="searchBox clearfix">
 				<div class="search-letfBox">
 					조건에 맞는 공급자와 판매자를 찾고 거래 신청할 수 있습니다.

@@ -344,7 +344,7 @@
 <div class="partner_bnr w-find">
 	<div class="partner_wrap">
 		<div class="partner_bnr3">
-			<div class="titleBox">판매자 찾기</div>
+			<div class="titleBox">판매자 리스트</div>
 			<div class="searchBox clearfix">
 				<div class="search-letfBox">
 					원하는 판매자를 찾아 지원하기 요청을 할 수 있습니다.
