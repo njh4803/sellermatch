@@ -48,13 +48,19 @@ public class AdminBoardRestController {
 		input.setBoardEmail(dto.getBoardEmail());
 		input.setBoardQaType(dto.getBoardQaType());
 		input.setBoardType(dto.getBoardType());
+		if(dto.getBoardType().equals("1")) {
+			input.setBoardNoticeTop(dto.getBoardNoticeTop());
+		} else {
+			input.setBoardNoticeTop("N"); 	//공지글이 아니면 모두 상단공지 여부 N으로 세팅
+		}
+
 		input.setBoardWriter("관리자");
 		
 		log.debug("dto : "+ dto);
 		
 		try {
 			boardServiceImpl.addBoard(input);
-			int count = boardServiceImpl.getBoardCount(input);
+			int count = boardServiceImpl.getBoardAdminCount(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
@@ -64,32 +70,11 @@ public class AdminBoardRestController {
 		
 	}
 	
-	/*
-	 * @RequestMapping(value = "/admin/board", method = RequestMethod.POST) public
-	 * Map<String, Object> getBoard(
-	 * 
-	 * @ModelAttribute("BoardDto") BoardDto dto) {
-	 * 
-	 * BoardDto input = new BoardDto(); input.setBoardId(webHelper.getUniqueId("B-",
-	 * Integer.parseInt(dto.getBoardType())));
-	 * input.setBoardTitle(dto.getBoardTitle());
-	 * input.setBoardContents(dto.getBoardContents());
-	 * input.setBoardEmail(dto.getBoardEmail());
-	 * input.setBoardQaType(dto.getBoardQaType());
-	 * input.setBoardType(dto.getBoardType()); input.setBoardWriter("관리자");
-	 * 
-	 * log.debug("dto : "+ dto);
-	 * 
-	 * try { boardServiceImpl.addBoard(input); } catch (Exception e) { return
-	 * webHelper.getJsonError(e.getLocalizedMessage()); } return
-	 * webHelper.getJsonData();
-	 * 
-	 * }
-	 */
-	
-	@RequestMapping(value = "/admin/board", method = RequestMethod.PUT)
+	@RequestMapping(value = "/admin/boardEdit", method = RequestMethod.POST)
 	public Map<String, Object> editOk(
 			@ModelAttribute("BoardDto") BoardDto dto){
+		
+		log.debug("dto : "+ dto);
 		
 		BoardDto input = new BoardDto();
 		input.setBoardId(dto.getBoardId());
@@ -97,8 +82,6 @@ public class AdminBoardRestController {
 		input.setBoardContents(dto.getBoardContents());
 		input.setBoardEmail(dto.getBoardEmail());
 		input.setBoardEditDate(dto.getBoardEditDate());
-		input.setBoardHit(dto.getBoardHit());
-		input.setBoardQaType(dto.getBoardQaType());
 		input.setBoardType(dto.getBoardType());
 		input.setBoardWriter(dto.getBoardWriter());
 		
@@ -111,14 +94,12 @@ public class AdminBoardRestController {
 		
 	}
 	
-	@RequestMapping(value = "/admin/board", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/admin/boardDelete", method = RequestMethod.POST)
 	public Map<String, Object> deleteOk(
 			@RequestParam(value = "boardId[]", required = false) String[] boardId){
 		
 		BoardDto input = new BoardDto();
 		input.setIdArr(boardId);
-		log.debug("boardId = " + boardId);
-		log.debug("boardId = " + input.getIdArr());
 		
 		try {
 			boardServiceImpl.deleteBoard(input);

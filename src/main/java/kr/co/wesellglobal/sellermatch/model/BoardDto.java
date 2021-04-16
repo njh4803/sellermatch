@@ -47,6 +47,9 @@ public class BoardDto {
 	// 댓글 수
 	private int replyCount;
 	
+	//상단공지 여부 N: 일반공지, Y: 상단공지
+	private String boardNoticeTop;
+	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;
 	private static int listCount;
