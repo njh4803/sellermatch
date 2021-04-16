@@ -38,7 +38,7 @@
     <div class="bnr">
     	<div class="main-0002 clearfix">
     		<div class="main-003">
-    			"매칭 무료등록"을 1회만 등록하세요.<br>
+    			매칭 무료등록을 1회만 등록하세요.<br>
 				쉽게 빠르게 효율적인 직거래하세요.<br>
     		</div>
     	</div>
