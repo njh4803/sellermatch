@@ -185,7 +185,7 @@ label.error {
     border: 2px solid #ccc;
     border-radius: 10px;
     width: 645px;
-    height: 800px;
+    height: 880px;
     text-align: left;
     display: inline-block;
     padding: 50px;
@@ -206,7 +206,7 @@ label.error {
 .join-btn{
   width: 280px;
   height: 40px;
-  margin: 50px 132.5px 0 7px;
+  margin: 20px 132.5px 0 7px;
   padding: 8px 0 11px;
   border-radius: 4px;
   box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
@@ -369,4 +369,7 @@ input[type="checkbox"].findCheck:checked + label span {
   letter-spacing: normal;
   text-align: left;
   color: #848484 !important;
+}
+input[type="radio"] {
+    display: inline;
 }
