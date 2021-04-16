@@ -88,8 +88,8 @@ public class AdminBoardController {
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			BoardDto.setOffset(pageData.getOffset());
 			BoardDto.setListCount(pageData.getListCount());
-			output = boardService.getBoardList(input);
-			boardCount = boardService.getBoardCount(input);
+			output = boardService.getBoardAdminList(input);
+			boardCount = boardService.getBoardAdminCount(input);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

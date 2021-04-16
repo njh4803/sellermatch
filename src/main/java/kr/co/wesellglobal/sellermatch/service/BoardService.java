@@ -21,4 +21,7 @@ public interface BoardService {
 	
 	public int getBoardCount(BoardDto input) throws Exception;
 	
+	public List<BoardDto> getBoardAdminList(BoardDto input) throws Exception;
+	
+	public int getBoardAdminCount(BoardDto input) throws Exception;
 }

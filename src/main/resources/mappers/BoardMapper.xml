@@ -20,6 +20,7 @@
          <result property="boardRegDate" column="board_reg_date" />
          <result property="boardEditDate" column="board_edit_date" />
          <result property="replyCount" column="reply_count" />
+         <result property="boardNoticeTop" column="board_notice_top" />
     </resultMap>
     
     <insert id="insertItem"
@@ -28,10 +29,10 @@
     	keyProperty="boardIdx">
     	INSERT INTO BoardList
     		(`board_id`, `board_title`, `board_contents`, `board_writer`, `board_type`, `board_qa_type`, 
-    		`board_email`, `board_file`, `board_hit`, `board_reg_date`)
+    		`board_email`, `board_file`, `board_hit`, `board_reg_date`, `board_notice_top`)
     	 VALUES 
     	 	(#{boardId}, #{boardTitle}, #{boardContents}, #{boardWriter}, #{boardType}, 
-    	 	#{boardQaType}, #{boardEmail}, #{boardFile}, 0, now());
+    	 	#{boardQaType}, #{boardEmail}, #{boardFile}, 0, now(), #{boardNoticeTop});
     </insert>
     
     <select id="selectList"
@@ -52,7 +53,8 @@
 	   		b.board_edit_date, 
 	   		(SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
 	   		FROM BoardList b
-	   	WHERE b.board_Notice_Top IS NULL
+	   	WHERE 1=1
+	   	AND b.board_Notice_Top = 'N'
 			<if test="boardType != null and boardType != ''">
 				<if test="boardType == 1 ">
 					AND board_type IN ('1','2')
@@ -68,7 +70,7 @@
 			LIMIT #{offset}, #{listCount}
     </select>
     
-        <select id="selectListNoticeTop"
+    <select id="selectListNoticeTop"
     	parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
     	resultMap="boardMap">
     	SELECT 
@@ -76,7 +78,7 @@
 	   		b.board_file, date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, b.board_edit_date, (SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
 	   		FROM BoardList b
 	   	WHERE 1=1
-	   	AND  b.board_Notice_Top = '1'
+	   	AND  b.board_Notice_Top = 'Y'
 	   	</select>
     
     <select id="selectItem"
@@ -110,7 +112,8 @@
 		resultType="int">
 		SELECT COUNT(*)
 		FROM BoardList
-		WHERE board_Notice_Top IS NULL
+		WHERE 1=1 
+		AND board_Notice_Top = 'N'
 			<if test="boardType != null and boardType != ''">
     			<if test ="boardType == 1 ">
 					AND board_type in ('1','2')
@@ -134,4 +137,35 @@
             </foreach>
         </where>		
 	</delete>
+	
+	<select id="selectAdminList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
+    	resultMap="boardMap">
+    	SELECT 
+	   		b.board_idx, 
+	   		b.board_id, 
+	   		b.board_title, 
+	   		b.board_contents, 
+	   		b.board_writer, 
+	   		b.board_type, 
+	   		b.board_qa_type, 
+	   		b.board_email, 
+	   		b.board_hit, 
+	   		b.board_file, 
+	   		date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, 
+	   		b.board_edit_date, 
+	   		(SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		FROM BoardList b
+	   	WHERE 1=1
+    	ORDER BY board_reg_date DESC
+		LIMIT #{offset}, #{listCount}
+    </select>
+	
+	<select id="selectAdminCountAll"
+		parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM BoardList
+		WHERE 1=1
+	</select>
 </mapper>

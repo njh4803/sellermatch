@@ -62,6 +62,16 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">상단공지 여부
+                                                                </label>
+                                                                <div class="col-sm-10">
+                                                                	<select id="boardNoticeTop" name="boardNoticeTop" class="form-control">
+						                                                <option value="N">일반공지</option>
+						                                                <option value="Y">상단공지</option>
+						                                            </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
                                                                 <label for="boardTitle" class="col-sm-2 col-form-label">게시판 제목
                                                                 	<span class="identify">*</span>
                                                                 </label>
@@ -131,15 +141,12 @@ $(function(){
 		var boardContents = CKEDITOR.instances.addBoardContents.getData();
 		var comunityTitle2 = $("#boardTitle2").val();
 		var type = $("#boardType2").val();
-		
-		console.log("boardContents : " + boardContents);
-		console.log("comunityTitle2 : " + comunityTitle2);
-		console.log("type : " + type);
+		var boardNoticeTop =  $("#boardNoticeTop").val();
 		
 		$.ajax({
 			type: "POST",
 			url: url,
-			data: {boardContents : boardContents, boardTitle : comunityTitle2, boardType : type},
+			data: {boardContents : boardContents, boardTitle : comunityTitle2, boardType : type, boardNoticeTop : boardNoticeTop},
 			dataType: "json",
 			success: function(data){
 					console.log(data);

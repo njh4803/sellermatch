@@ -349,9 +349,9 @@ $(function(){
                 		boardId.push($('#boardId'+i).text());
 					}
                 });
-                console.log("boardId = " + boardId);
-                $.delete(ROOT_URL + "/admin/board", {
-                	boardId: boardId,
+                
+                $.post(ROOT_URL + "/admin/boardDelete", {
+                	'boardId': boardId,
                 }, function(json) {
                     swal({
                         title: '확인',
