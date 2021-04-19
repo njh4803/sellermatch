@@ -115,7 +115,7 @@
                                                                         <th>조회수</th>
                                                                         <th>등록일시</th>
                                                                         <th>수정일시</th>
-                                                                        <th></th>
+                                                                        <th>상단공지여부</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -148,6 +148,7 @@
 	                                                                        <td>${output.boardHit}</td>
 	                                                                        <td>${output.boardRegDate}</td>
 	                                                                        <td>${output.boardEditDate}</td>
+	                                                                        <td>${output.boardNoticeTop}</td>
 	                                                                        <td>
 	                                                                        	<c:if test="${output.replyCount != 0}">
 	                                                                        		<button type="button" class="btn btn-primary btn-sm replyBtn" data-toggle="modal" data-target="#replyModal">댓글 보기</button>
@@ -255,8 +256,9 @@ $(document).on("click",".b-modal",function(event){
 	var boardHit = tr.children[9].innerText;
 	var boardRegDate = tr.children[10].innerText;
 	var boardEditDate = tr.children[11].innerText;
+	var boardNoticeTop = tr.children[12].innerText;
 	
-	console.log("ddd :" + boardContents);
+	console.log(boardNoticeTop);
 	
 	$("#boardModal .modal-body #boardIdx").val(boardIdx);
 	$("#boardModal .modal-body #boardId").val(boardId);
@@ -271,6 +273,7 @@ $(document).on("click",".b-modal",function(event){
 	$("#boardModal .modal-body #boardHit").val(boardHit);
 	$("#boardModal .modal-body #boardRegDate").val(boardRegDate);
 	$("#boardModal .modal-body #boardEditDate").val(boardEditDate);
+	$("#boardModal .modal-body #boardNoticeTop").val(boardNoticeTop);
 	
 });
 

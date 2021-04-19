@@ -51,7 +51,8 @@
 	   		b.board_file, 
 	   		date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, 
 	   		b.board_edit_date, 
-	   		(SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		(SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count,
+	   		b.board_Notice_Top
 	   		FROM BoardList b
 	   	WHERE 1=1
 	   	AND b.board_Notice_Top = 'N'
@@ -102,7 +103,8 @@
 			board_qa_type = #{boardQaType}, 
 			board_email = #{boardEmail}, 
 			board_hit = #{boardHit}, 
-			board_edit_date = now()
+			board_edit_date = now(),
+			board_notice_top = #{boardNoticeTop}
 		WHERE board_id = #{boardId}
 	</update>
 	
@@ -154,7 +156,8 @@
 	   		b.board_file, 
 	   		date_format(b.board_reg_date, '%Y-%m-%d') as board_reg_date, 
 	   		b.board_edit_date, 
-	   		(SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count
+	   		(SELECT COUNT(*) FROM ReplyList where Reply_board_id = b.Board_id) as reply_count,
+	   		b.board_Notice_Top
 	   		FROM BoardList b
 	   	WHERE 1=1
     	ORDER BY board_reg_date DESC
