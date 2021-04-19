@@ -223,7 +223,7 @@
 										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">거래 상대방에게 전달할 내용을 입력하는 곳입니다. 회사명이나 연락처 정보를 남기시면 이용에 제재를 받을 수 있습니다.</div>				    					
 			    					</td>
-			    					<td>
+			    					<td class="editor">
 		    						<div>
 		    							<c:if test="${member.memSort == 1}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
@@ -243,6 +243,13 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
 함께 오래갈 공급처 사장님 연락기다리고 있습니다."></textarea>
 		    							</c:if>
+			    						<script type="text/javascript">
+											CKEDITOR.replace('projDetail', {
+												height : 200,
+												enterMode:'2',
+											    shiftEnterMode:'3'
+											});
+										</script>
 			                        </div>
 				   					</td>
 				   				</tr>
@@ -750,10 +757,20 @@ $(document).ready(function() {
 	        projNation: '등록지역을 선택해주세요.',
 	    }
 	});
+	
+	// CKEDITOR 값 저장
+	CKEDITOR.instances.projDetail.on('blur', function(e) {
+		var projDetail = CKEDITOR.instances.projDetail.getData();
+		$('#projDetail').text(projDetail);
+		console.log(projDetail);
+		console.log($('#projDetail').text(projDetail));
+	});
 
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
+        	CKupdate();
+        	
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
             return $(form).valid();
@@ -850,6 +867,15 @@ $(function() {
 	});	
 });
 
+/* CKEDITOR */
+//AJAX 로 폼의 데이터를 전송할 때 CKEDITOR로 변환 된 textarea값을 다시 변경해줘야 데이터가 전달된다.
+function CKupdate(){
+  for ( instance in CKEDITOR.instances )
+      CKEDITOR.instances[instance].updateElement();
+}
+
+//리사이징 제한
+CKEDITOR.config.resize_enabled = false;
 </script>
 <script type="text/x-handlebars-template" id="project-add-tmpl">
 <div class="partner_wrap addbox2 projectAdd">
