@@ -190,6 +190,7 @@ label.error {
     display: inline-block;
     padding: 50px;
     padding-top: 0;
+    background-color: #fff;
 }
 .join-btn:disabled{
 	background-color: #D9D9D9;

@@ -135,7 +135,7 @@
 					</c:if>				
 				</div>
 				<div class="detailBox3">문의하기
-					<form action="javascript:void(0);" method="post" id="question-form" class="text-right">
+					<form action="javascript:void(0);" method="post" id="m-question-form" class="text-right">
 					    <textarea name="question" class="textBox2 question" placeholder="-작성한 내용은 수정 및 삭제가 불가합니다&#13;&#10;-이메일. 전화번호 등을 게시하여 직거래를 유도할 경우 서비스 이용에 제재를 받을 수 있습니다"></textarea>
 					    <input type="submit" class="question-btn" value="문의하기">
 					</form>
@@ -370,7 +370,7 @@
 					    		</label>
 					    		<!-- <input type="password" class="secretPw" id="replyPw" name="replyPw" placeholder="비밀번호" readonly> -->
 					    		<input type="hidden" id="projId" name="replyProjId" value="${output.projId}">
-					    		<input type="hidden" id="replyParentMemId" name="replyParentMemId" value="">
+					    		<input type="hidden" id="replyParentMemId" name="replyParentMemId">
 					    		<input type="hidden" id="replyParent" name="replyParent" value="0">
 					    		<input type="hidden" id="replySecret" name="replySecret" value="N">
 						    	<input type="button" class="question-btn" value="작성하기">
@@ -492,12 +492,14 @@
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {
+
 	
 	$(document).on("click", ".comment", function(){
 		var idx = $(this).data('idx');
 		var nickName = $(this).parent().children().children('.reviewNick').text();
 		var replyParent = $(this).data('value');
 		var replyParentMemId = $(this).data('id');
+		console.log('replyParentMemId = ' + replyParentMemId);
 		
 		$('.comment').each(function (index, item) {
 			console.log('idx='+idx);
@@ -540,6 +542,7 @@ $(document).ready(function() {
 		var secretChk = $("input[name=secret]:checkbox").attr('checked');
 		var replyContents =  $('#replyContents').val();
 		var replyParent = $('#replyParent').val();
+		var replyParentMemId = $('#replyParentMemId').val();
 		$('input[name=replySecret]').attr('value', secretChk);
 		
 		if (login_id == '') {
@@ -569,7 +572,8 @@ $(document).ready(function() {
 	        		replySecret: $('#replySecret').val(),
 					/* replyPw: $('#replyPw').val(), */
 					replyContents: $('#replyContents').val(),
-					replyParent: $('#replyParent').val()
+					replyParent: $('#replyParent').val(),
+					replyParentMemId :$('#replyParentMemId').val()
 	    		};
 		
       	$.ajax({

@@ -65,7 +65,7 @@ a:focus, a:hover{
 	display: inline-block;
 	height: 30px;
 	margin-left: 5px;
-	padding: 5px 6px;
+	padding: 4px 6px;
 	border-radius: 5px;
 	background-color: #d098f1;
 	font-size: 14px;
@@ -82,7 +82,7 @@ a:focus, a:hover{
 	max-width: 540px;
 	height: 53px;
 	font-size: 22px;
-	font-weight: bold;
+	font-weight: 800;
 	font-stretch: normal;
 	font-style: normal;
 	text-align: left;
@@ -109,7 +109,7 @@ a:focus, a:hover{
 }
 .pFindBox{
   display: inline-block;
-  padding: 5px 0;
+  padding: 6px 0;
   width: 85px;
   height: 30px;
   margin-left: 50px;
@@ -145,7 +145,7 @@ a:focus, a:hover{
 	border-bottom: none;
 } 
 .detailBox3{
-  margin-top: 45px;
+  margin-top: 60px;
   padding-bottom: 60px;
   width: 100%;
   border-bottom: solid 1px #dddddd;
@@ -165,7 +165,6 @@ a:focus, a:hover{
     text-align: left;
     color: #ff560f;
     margin-right: 45px;
-    margin-top: 20px;
     float: left;
 }
 .detailBox3 .textBox1{
@@ -178,8 +177,8 @@ a:focus, a:hover{
   color: #484848;
   /* 줄바꿈 */
   overflow: hidden;
-  word-break: break-all;
-  white-space: pre-line;
+/*   word-break: break-all;
+  white-space: pre-line; */
 }
 .detailBox3 .textBox1 p{
 	margin: 0;

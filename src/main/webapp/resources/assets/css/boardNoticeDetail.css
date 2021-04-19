@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .partner_bnr .partner_wrap{
-	width: 1120px !important;
+	width: 1280px !important;
 	padding-bottom: 228px;
 }
 .partner_bnr .partner_wrap2{
@@ -49,7 +49,6 @@
 }
 
 .detailContentsTitle{
-  height: 117px;
    width: 100%;
   background-color: #fff6f2;
 }
@@ -104,7 +103,7 @@
 	border-bottom: solid 1px #cccccc;	
 }
 .detailContentsTitle1 {
-	padding: 30px 0 0 30px;
+	padding: 30px 0 10px 30px;
 }
 .detailContentsTitle1 span{
   height: 22px;
@@ -120,6 +119,7 @@
 }
 .detailContentsTitleRegDate {
 	padding: 0 0 0 30px;
+	margin-bottom: 15px;
 }
 .detailContentsTitleRegDate span{
   height: 14px;
@@ -135,4 +135,7 @@
 }
 .regdateDate {
 	margin-left:20px;
+}
+.contents p{
+	margin: 0;
 }

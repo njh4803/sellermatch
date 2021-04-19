@@ -171,7 +171,7 @@ a.sort.select{
   width: 500px;
   object-fit: contain;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   text-align: left;
@@ -191,7 +191,7 @@ a.sort.select{
   font-style: normal;
   text-align: left;
   color: #484848;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   /* 말줄임 표시 */
   overflow: hidden;
   display: -webkit-box;
@@ -419,7 +419,7 @@ a.sort.select{
 }
 .partner_list span{
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 600;
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;

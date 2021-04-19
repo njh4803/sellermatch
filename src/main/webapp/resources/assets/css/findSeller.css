@@ -428,7 +428,7 @@ a.sort.select{
 }
 .partner_list span{
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 600;
     font-stretch: normal;
     font-style: normal;
     letter-spacing: normal;
@@ -513,7 +513,7 @@ a.sort:last-child{
 }
 .nick{
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   text-align: left;

@@ -516,7 +516,7 @@ public class ProjectRestController {
 	public Map<String, Object> addReply(
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			@ModelAttribute("replyDto") ReplyDto replyDto){
-		
+		log.debug("getReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemId="+replyDto.getReplyParentMemId());
 		ReplyDto input = new ReplyDto();
 		
 		input.setReplyWriter(member.getMemNick());
