@@ -10,7 +10,7 @@
 }
 
 .mypage-title {
-	font-family: NanumGothic !important;
+	
 	font-size: 25px;
 	font-weight: bold;
 	font-stretch: normal;
@@ -22,7 +22,7 @@
 
 .mypage-text {
 	margin-top: 15px;
-	font-family: NanumGothic !important;
+	
 	font-size: 15px;
 	font-weight: normal;
 	font-stretch: normal;
@@ -88,7 +88,7 @@
 }
 .sortText {
 	    vertical-align: text-top;
-	font-family: NanumGothic !important;
+	
   font-size: 12px;
   font-weight: bold;
   font-stretch: normal;
@@ -125,7 +125,7 @@
 }
 
 .sortNickName {
-	font-family: NanumGothic !important;
+	
 	  font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
@@ -154,7 +154,7 @@ div.my-tabs div.tab-link {
 	width: 218px;
 	height: 40px;
 	padding: 12px 0;
-  font-family: NanumGothic !important;
+  
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -173,7 +173,7 @@ div.my-tabs div.tab-link2 {
 	width: 218px;
 	height: 40px;
 	padding: 11px 0;
-  font-family: NanumGothic !important;
+  
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -188,7 +188,7 @@ div.my-tabs div.tab-link2 {
 div.my-tabs div.current {
 	background-image: linear-gradient(to right, #ff9901, #ff560e);
 	color: #ffffff;
-	font-family: NanumGothic !important;
+	
 	font-size: 15px;
 	font-weight: bold !important;
 	font-stretch: normal!important;
@@ -252,7 +252,7 @@ div.my-tabs div.current {
 	height: 130px;
 }
 .authExplainBox {
-	font-family: NanumGothic !important;
+	
 	font-size: 15px;
 	font-weight: normal;
 	font-stretch: normal;
@@ -274,7 +274,7 @@ div.my-tabs div.current {
   margin: 32px 0px 0 58px;
 }
 .authBoxText {
-	  font-family: NanumGothic !important;
+	  
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;

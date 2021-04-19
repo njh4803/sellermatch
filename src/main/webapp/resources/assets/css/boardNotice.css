@@ -36,7 +36,7 @@
   color: #484848;
   margin-bottom: 15px;
   letter-spacing: normal;
-  font-family: NanumGothic !important;
+  
 }
 .use-text{
   font-size: 15px;
@@ -44,7 +44,7 @@
   font-stretch: normal;
   font-style: normal;
   text-align: left;
-  font-family: NanumGothic !important;
+  
   color: #858585;	
 }
 /* 공지사항 */
@@ -60,7 +60,7 @@
 	padding-top: 60px;
 }
 #noticeTable thead tr{
-	font-family: NanumGothic !important;
+	
 }
 
 .tab-title {
@@ -94,7 +94,7 @@
 	text-align: center;
 	color: #000000;
 	background-color: #fff6f2;
-	font-family: NanumGothic !important;
+	
 }
 
 #noticeTable tbody td {
@@ -107,7 +107,7 @@
 	font-style: normal;
 	text-align: center;
 	color: #484848;
-	font-family: NanumGothic !important;
+	
 }
 
 #noticeTable tbody td:nth-child(2) {
@@ -116,7 +116,7 @@
 .notice-title {
 	width: 770px;
 	height: 40px;
-	font-family: NanumGothic !important;
+	
 	font-size: 15px;
 	font-weight: bold;
 	font-stretch: normal;
@@ -128,7 +128,7 @@
 .notice-regdate {
 	width: 250px;
 	height: 40px;
-	font-family: NanumGothic !important;
+	
 	font-size: 15px;
 	font-weight: bold;
 	font-stretch: normal;
@@ -140,7 +140,7 @@
 .notice-sort  {
 	width: 260px;
 	height: 40px;
-	font-family: NanumGothic !important;
+	
 	font-size: 15px;
 	font-weight: bold;
 	font-stretch: normal;
@@ -162,12 +162,12 @@ input::placeholder {
 
 .useTopNotice {
 	color: #ea551f !important;
-	font-family: NanumGothic !important;
+	
 	font-weight: bold !important;
 }
 .noticeTopDetail {
 	font-weight: bold !important;
-	font-family: NanumGothic !important;
+	
 }
 .pageBox {
 	padding-bottom: 147px;

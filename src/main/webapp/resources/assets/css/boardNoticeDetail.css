@@ -36,7 +36,7 @@
   text-align: left;
   color: #484848;
   letter-spacing: normal;
-  font-family: NanumGothic !important;
+  
 }
 .use-text{
   font-size: 15px;
@@ -44,7 +44,7 @@
   font-stretch: normal;
   font-style: normal;
   text-align: left;
-  font-family: NanumGothic !important;
+  
   color: #858585;	
 }
 
@@ -64,7 +64,7 @@
   margin-top: 15px;
 }
 .contents a{
-  font-family: NanumGothic !important;
+  
   font-size: 15px;
   font-weight: normal;
   font-stretch: normal;
@@ -89,7 +89,7 @@
 	text-align: center;
 }
 .detailContentsButton a {
-  font-family: NanumGothic !important;
+  
   font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
@@ -108,7 +108,7 @@
 }
 .detailContentsTitle1 span{
   height: 22px;
-  font-family: NanumGothic !important;
+  
   font-size: 20px;
   font-weight: bold;
   font-stretch: normal;
@@ -123,7 +123,7 @@
 }
 .detailContentsTitleRegDate span{
   height: 14px;
-  font-family: NanumGothic !important;
+  
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
