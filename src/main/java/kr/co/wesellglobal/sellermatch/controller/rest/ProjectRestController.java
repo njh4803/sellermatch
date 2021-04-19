@@ -279,7 +279,7 @@ public class ProjectRestController {
 			@RequestParam(value = "projTitle", required = false) String projTitle,
 			@RequestParam(value = "projSort", required = false) String projSort,
 			@RequestParam(value = "projIndus", required = false) String projIndus,
-			@RequestParam(value = "projPrice", required = false) int projPrice,
+			@RequestParam(value = "projPrice", required = false) Integer projPrice,
 			@RequestParam(value = "projMargin", required = false) int projMargin,
 			@RequestParam(value = "projNation", required = false) String projNation,
 			@RequestParam(value = "projSupplyType", required = false) String projSupplyType,
@@ -287,24 +287,19 @@ public class ProjectRestController {
 			@RequestParam(value = "projRecruitNum", required = false) int projRecruitNum,
 			@RequestParam(value = "projDetail", required = false) String projDetail,
 			@RequestParam(value = "projRequire", required = false) String projRequire,
-			@RequestParam(value = "projKeyword", required = false) String projKeyword,
+			@RequestParam(value = "tag", required = false) String tag,
 			@RequestParam(value = "detailImgList", required = false) String projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
+			@RequestParam(value = "projThumbnailImg", required = false) MultipartFile projThumbnailImg,
 			@RequestParam(value = "projState", required = false) String projState,
-			@RequestParam(value = "projProdCerti", required = false) String projProdCerti) {
+			@RequestParam(value = "projChannel", required = false) String projChannel,
+			@RequestParam(value = "projProdCerti", required = false) String projProdCerti) throws Exception {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
-		
-		try {
-			if (projFile != null) {
-				item = webHelper.saveMultipartFile(projFile);
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		FileDto item2 = null;
+		String projhashtag = tag;
+			
 		
 		ProjectDto input = new ProjectDto();
 		input.setProjId(projId);
@@ -312,7 +307,6 @@ public class ProjectRestController {
 		input.setProjTitle(projTitle);
 		input.setProjSort(projSort);
 		input.setProjIndus(projIndus);
-		input.setProjPrice(projPrice);
 		input.setProjMargin(projMargin);
 		input.setProjNation(projNation);
 		input.setProjSupplyType(projSupplyType);
@@ -320,18 +314,158 @@ public class ProjectRestController {
 		input.setProjRecruitNum(projRecruitNum);
 		input.setProjDetail(projDetail);
 		input.setProjRequire(projRequire);
-		input.setProjKeyword(projKeyword);
-		input.setProjProdCerti(projProdCerti);
-		if (projDetailImg != "" && projDetailImg != null) {
+		input.setProjProdCerti("0");
+		input.setProjProfit("0");
+		input.setProjState(projState);
+		input.setProjChannel(projChannel);
+		if (projPrice == null) {
+			input.setProjPrice(0);
+		} else {
+			input.setProjPrice(projPrice);
+		}
+		
+		// 해시태그리스트
+		HashTagListDto hashTagList = new HashTagListDto();
+		hashTagList.setFrstRegistMngr(projMemId);
+		// 프로젝트 해시태그
+		HashTagDto hashTag = new HashTagDto();
+		hashTag.setId(input.getProjId());
+		hashTag.setHashType('1');
+		hashTag.setFrstRegistMngr(projMemId);
+		
+		
+		if (projhashtag != null) {
+			String projhashtagList[] = projhashtag.split(",");
+			
+			for (int i = 0; i < projhashtagList.length; i++) {
+				
+				hashTagList.setHashNm(projhashtagList[i]);
+				
+				// 기존에 존재하는지 검사
+				int result = hashTagListService.reduplicationCheck(hashTagList);
+				// 기존에 똑같은 해시태그가 존재한다면
+				if (result != 0) {
+					
+					switch (i+1) {
+					case 1:
+						hashTag.setHashTag1(result);
+						break;
+					case 2:
+						hashTag.setHashTag2(result);
+						break;
+					case 3:
+						hashTag.setHashTag3(result);
+						break;
+					case 4:
+						hashTag.setHashTag4(result);
+						break;
+					case 5:
+						hashTag.setHashTag5(result);
+						break;
+					}
+				} else {
+					hashTagListService.addHashTagList(hashTagList);
+					int hashId = hashTagListService.getSeq();
+					switch (i+1) {
+					case 1:
+						hashTag.setHashTag1(hashId);
+						break;
+					case 2:
+						hashTag.setHashTag2(hashId);
+						break;
+					case 3:
+						hashTag.setHashTag3(hashId);
+						break;
+					case 4:
+						hashTag.setHashTag4(hashId);
+						break;
+					case 5:
+						hashTag.setHashTag5(hashId);
+						break;
+					}
+				}
+			}
+			int isExist = hashTagService.isHashTag(hashTag);
+			if (isExist == 0) {
+				// 새로 생성
+				hashTagService.addHashTag(hashTag);	
+			} else {
+				// 업데이트
+				hashTagService.editHashTag(hashTag);
+			}		
+		}
+
+
+		
+		try {
+			if (projFile != null) {
+				item = webHelper.saveMultipartFile(projFile);
+				
+				item.setThumbnailPath("none");
+				item.setProjId(input.getProjId());
+				item.setProjThumbnail("0");
+				
+				// 파일 정보를 DB에 저장
+				fileService.editFile(item);
+			}
+			
+			if (projThumbnailImg != null) {
+				item2 = webHelper.saveMultipartFile(projThumbnailImg);
+				// 썸네일 이미지 생성하기
+				if (item2 != null && item2.getContentType().indexOf("image") > -1) {
+					//필요한 이미지 사이즈로 썸네일 생성
+					String thumbnailPath = null;
+					
+					try {
+						thumbnailPath = webHelper.createThumbnail(item2.getFilePath(), 240, 240, true);
+					} catch (Exception e) {
+						e.printStackTrace();
+						return webHelper.getJsonError("썸네일 이미지 생성에 실패했습니다");
+					}
+					// 썸네일 경로를 URL로 변환
+					//String thumbnailUrl = webHelper.getUploadUrl(thumbnailPath);
+					// 리턴할 객체에 썸네일 정보 추가
+					item2.setThumbnailPath(thumbnailPath);
+					item2.setProjId(input.getProjId());
+					item2.setProjThumbnail("1");
+					
+					
+				}
+				// 파일 정보를 수정
+				fileService.editFile(item2);
+			}
+			
+		if (projDetailImg != null && projDetailImg.length() != 0) {
 			input.setProjDetailImg(projDetailImg);
 		}
-		if (projFile != null) {
+		if (projFile != null && projFile.getSize() != 0) {
 			input.setProjFile(item.getFilePath());
 		}
-		input.setProjState(projState);
+		if (projThumbnailImg != null && projThumbnailImg.getSize() != 0) {
+			input.setProjThumbnailImg(item2.getFilePath());
+		}
+			
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		try {
 			projectService.editProject(input);
+			if (projDetailImg != null && projDetailImg.length() != 0) {
+				
+				FileDto fileDto = new FileDto();
+				fileDto.setProjId(input.getProjId());
+				
+				String projDetailImgList[] = projDetailImg.split("\\|");
+				for (int i = 0; i < projDetailImgList.length; i++) {
+					fileDto.setFilePath(projDetailImgList[i]);
+					fileService.editFile(fileDto);
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());

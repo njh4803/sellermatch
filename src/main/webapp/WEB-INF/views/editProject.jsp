@@ -18,9 +18,10 @@
 	    </div>
 		<div class="addbox2 projectAdd">
 		    	<div class="text-center projectBox">
-					<form action="${pageContext.request.contextPath}/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
+					<form action="${pageContext.request.contextPath}/project/edit" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="projSort" value="${member.memSort}">
 						<input type="hidden" name="projMemId" value="${member.memId}">
+						<input type="hidden" id="projId" name="projId" value="${output.projId}">
 						<input type="hidden" name="projState" value="1">
 			    		<table class="projTable">
 			    			<tbody>
@@ -33,7 +34,7 @@
 		    							<div>
 											<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
 												<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-											    	src="${pageContext.request.contextPath}/assets/img/profile.png"/>
+											    	src="/upload/${output.projThumbnailImg}"/>
 											</div>	
 		    								<div>
 		                   		            	<input id = "file_route" type="text" name="file_route" class="formControl" readonly="readonly"/>
@@ -230,7 +231,7 @@
 										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">거래 상대방에게 전달할 내용을 입력하는 곳입니다. 회사명이나 연락처 정보를 남기시면 이용에 제재를 받을 수 있습니다.</div>				    					
 			    					</td>
-			    					<td>
+			    					<td class="editor">
 		    						<div>
 		    							<c:if test="${member.memSort == 1}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
@@ -250,6 +251,13 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
 함께 오래갈 공급처 사장님 연락기다리고 있습니다.">${output.projDetail}</textarea>
 		    							</c:if>
+									<script type="text/javascript">
+										CKEDITOR.replace('projDetail', {
+											height : 200,
+											enterMode:'2',
+										    shiftEnterMode:'3'
+										});
+									</script>		    							
 			                        </div>
 				   					</td>
 				   				</tr>
@@ -290,32 +298,41 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 					    				<div class="questionBox">태그는 거래처 찾기를 등록하는 이가 강조하고 싶은 것을 자유롭게 작성하는 곳입니다. 판매자/공급자가 선호하는 태그를 선택해서 입력할수도 있습니다.</div>				   					
 				   					</td>
 				   					<td>
-				    					<div class="inputForm width-100">
-				    						<div class="row1">
-			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash1" value="고경력선호">
-			                                   	<label for="hash1"><span>고경력선호</span></label>
-			                              	</div>
-			                              	<div class="row1">
-			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash2" value="고마진상품">
-			                                   	<label for="hash2"><span>고마진상품</span></label>
-			                              	</div>
-			                              	<div class="row1">
-			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash3" value="수익보장공급자">
-			                                   	<label for="hash3"><span>수익보장공급자</span></label></span>
-			                              	</div>
-			                              	<div class="row1">
-			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash4" value="수출가능상품">
-			                                   	<label for="hash4"><span>수출가능상품</span></label>
-			                              	</div>
-			                              	<div class="row1">
-			                                   	<input type="checkbox" class="projKeyword" name="projKeyword" id="hash5" value="요즘뜨는제품">
-			                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
-			                              	</div>
-			                           </div>
 				                        <ul id="tag-list">
+										<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">
+											<li class="tag-item">
+				                        		${output.hashTag1}<span class="del-btn" id="del-btn0" idx="0" data-value="${output.hashTag1}">x</span>
+				                        	</li>
+										</c:if>
+							           	<c:if test="${output.hashTag2 != null}"> 
+											<li class="tag-item">
+				                        		${output.hashTag2}<span class="del-btn" id="del-btn1" idx="1" data-value="${output.hashTag2}">x</span>		                        		
+				                        	</li>
+										</c:if>
+										<c:if test="${output.hashTag3 != null}">
+											<li class="tag-item">
+				                        		${output.hashTag3}<span class="del-btn" id="del-btn2" idx="2" data-value="${output.hashTag3}">x</span>
+				                        	</li>
+										</c:if>
+										<c:if test="${output.hashTag4 != null}">
+											<li class="tag-item">
+				                        		${output.hashTag4}<span class="del-btn" id="del-btn3" idx="3" data-value="${output.hashTag4}">x</span>
+				                        	</li>
+										</c:if>
+										<c:if test="${output.hashTag5 != null}">
+											<li class="tag-item">
+				                        		${output.hashTag5}<span class="del-btn" id="del-btn4" idx="4" data-value="${output.hashTag5}">x</span>
+				                        	</li>
+										</c:if>
 										</ul>
 			                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기 ( 엔터 또는 스페이스바로 입력가능 )">
-			                        	<input type="hidden" value="" name="tag" id="rdTag" />
+			                        	<input type="hidden"
+			                        	value="<c:if test="${output.hashTag1 != null and output.hashTag1 != ''}">${output.hashTag1}</c:if>
+			                        	<c:if test="${output.hashTag2 != null}">, ${output.hashTag2}</c:if>
+			                        	<c:if test="${output.hashTag3 != null}">, ${output.hashTag3}</c:if>
+			                        	<c:if test="${output.hashTag4 != null}">, ${output.hashTag4}</c:if>
+			                        	<c:if test="${output.hashTag5 != null}">, ${output.hashTag5}</c:if>"
+			                        	 name="tag" id="rdTag" />
 				   					</td>
 				   				</tr>
 					   				<!-- <tr>
@@ -338,7 +355,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 				   					<td>
 				    					<div>
 			    							<div style="display: flex;">
-			                              	 	<input id = "file_route2" type="text" class="formControl" readonly="readonly"/>
+			                              	 	<input id = "file_route2" type="text" class="formControl" readonly="readonly" value="${output.projFile}"/>
 			                             		<label class="fileLable">
 			                             			파일 선택
 			                             			<input id = "projFile" name="projFile" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route2').value=this.value"/>
@@ -376,7 +393,15 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 $(document).ready(function() {
 	
     var tag = {};
-    var counter = 0;
+    var tag_count = $('.del-btn').length;
+    var counter = tag_count+0;
+    
+    for (var i = 0; i < tag_count; i++) {
+    	tag[i] = $('#del-btn'+i).data('value');
+	}
+    var value = marginTag(); // return array
+    console.log(value);
+    $("#rdTag").val(value);
 
     // 태그를 추가한다.
     function addTag (value) {
@@ -694,8 +719,6 @@ $(document).ready(function() {
 		*/
 		
 	    rules: {
-	    	// 썸네일 이미지 필수
-	    	file_route: 'required',
 	        // [프로젝트 제목] 필수
 	        projTitle: {
 	            required: true, minlength: 5, maxlength: 100, 
@@ -720,9 +743,6 @@ $(document).ready(function() {
 	        projNation: 'required',
 	    },
 	    messages: {
-	    	file_route: {
-	    		required: '썸네일 이미지를 첨부해주세요.',
-	    	},
 	    	projMemId: {
 	            required: '아이디를 입력하세요.',
 	            email: '아이디는 이메일만 입력 가능합니다.',
@@ -758,16 +778,27 @@ $(document).ready(function() {
 	    }
 	});
 
+	// CKEDITOR 값 저장
+	CKEDITOR.instances.projDetail.on('blur', function(e) {
+		var projDetail = CKEDITOR.instances.projDetail.getData();
+		$('#projDetail').text(projDetail);
+		console.log(projDetail);
+		console.log($('#projDetail').text(projDetail));
+	});
+
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
+        	CKupdate();
+        	
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
             return $(form).valid();
         },
         success: function(json) {
-        	swal('알림', '거래처가 등록되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/temp';
+        	swal('알림', '거래처 정보가 수정되었습니다.', 'success').then(function(result) {
+        		var projId = $('#projId').val();
+                window.location = ROOT_URL + '/project/detail?projId='+projId;
             });
         },
     });	
@@ -856,7 +887,15 @@ $(function() {
 	    }
 	});	
 });
+/* CKEDITOR */
+//AJAX 로 폼의 데이터를 전송할 때 CKEDITOR로 변환 된 textarea값을 다시 변경해줘야 데이터가 전달된다.
+function CKupdate(){
+    for ( instance in CKEDITOR.instances )
+        CKEDITOR.instances[instance].updateElement();
+}
 
+// 리사이징 제한
+CKEDITOR.config.resize_enabled = false;
 </script>
 <script type="text/x-handlebars-template" id="project-add-tmpl">
 <div class="partner_wrap addbox2 projectAdd">

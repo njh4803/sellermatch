@@ -35,8 +35,9 @@
 		parameterType="kr.co.wesellglobal.sellermatch.model.FileDto">
 		UPDATE fileList
 		SET
-			proj_id = #{projId}
-		WHERE file_path = #{filePath}
+			thumbnail_path = #{thumbnailPath},
+			file_path = #{filePath}
+		WHERE proj_id = #{projId}
 	</update>
 	
 </mapper>

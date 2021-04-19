@@ -81,12 +81,15 @@
 		    proj_mem_id = #{projMemId}, proj_title = #{projTitle}, proj_sort = #{projSort}, proj_indus = #{projIndus}, 
 		    proj_price = #{projPrice}, proj_margin = #{projMargin}, proj_nation = #{projNation}, proj_supply_type = #{projSupplyType}, 
 		    proj_recruit_num = #{projRecruitNum}, proj_detail = #{projDetail}, proj_require = #{projRequire}, 
-		    proj_hit = #{projHit}, proj_channel = #{projChannel}, proj_profit = #{projProfit}, proj_profit_chk_date = #{projProfitChkDate}
+		    proj_hit = #{projHit}, proj_channel = #{projChannel}, proj_profit = #{projProfit}, proj_profit_chk_date = #{projProfitChkDate},
 		    <if test="projEndDate !='' and projEndDate != null">
 		    	proj_end_date = #{projEndDate}, 
 		    </if>
 		    <if test="projDetailImg !='' and projDetailImg != null">
 		    	 proj_detail_img = #{projDetailImg},
+		    </if> 
+		    <if test="projThumbnailImg !='' and projThumbnailImg != null">
+		    	 proj_thumbnail_img = #{projThumbnailImg},
 		    </if> 
 		    <if test="projFile != '' and projFile != null">
 		    	proj_file = #{projFile}, 
