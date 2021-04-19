@@ -388,7 +388,7 @@
 								<div class="reviewDate">${replyDto.replyRegDate}</div>						
 							</div>
 							<c:choose>
-								<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projMemId and member.memNick != replyDto.ReplyParentNick}">
+								<c:when test="${replyDto.replySecret == 'Y' and member.memNick != replyDto.replyWriter and member.memId != output.projMemId and replyDto.replyWriter != replyDto.replyParentNick}">
 									<div class="reviewContents">비밀글입니다.</div>
 								</c:when>
 								<c:otherwise>
