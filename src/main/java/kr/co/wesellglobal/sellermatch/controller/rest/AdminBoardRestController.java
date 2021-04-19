@@ -84,6 +84,7 @@ public class AdminBoardRestController {
 		input.setBoardEditDate(dto.getBoardEditDate());
 		input.setBoardType(dto.getBoardType());
 		input.setBoardWriter(dto.getBoardWriter());
+		input.setBoardNoticeTop(dto.getBoardNoticeTop());
 		
 		try {
 			boardServiceImpl.editBoard(input);

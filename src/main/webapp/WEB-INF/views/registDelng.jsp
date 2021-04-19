@@ -174,47 +174,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	function handleImgfileSelect1(e) {
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		
-		
-		filesArr.forEach(function(f) {
-			if(!f.type.match("image.*")) {
-				return;
-			}
-			sel_file = f;
-			
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$("#img").attr("src", e.target.result);
-			}
-			reader.readAsDataURL(f);
-		});
-	};
-	
-	function handleImgfileSelect2(e) {
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		
-		
-		filesArr.forEach(function(f) {
-			if(!f.type.match("image.*")) {
-				return;
-			}
-			sel_file = f;
-			
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$("#profile-img").attr("src", e.target.result);
-			}
-			reader.readAsDataURL(f);
-		});
-	};
-	
-	$(document).on("change", "#profile-image" ,handleImgfileSelect2);
-	$(document).on("change", "#image" ,handleImgfileSelect1);
-	
 	$(document).on("click", "ul.my-tabs li", function(e){
 		
 		var tab_id = $(this).attr('data-tab');
@@ -309,7 +268,17 @@ $(document).ready(function(){
 			}
 		});
     });
-    	
+    
+    $(document).on("click", ".accept_btn", function(e){
+    	 var applyProjId= $(this).attr("data-applyProjId");
+    	 var memIdx = $(this).attr("data-memIdx");
+    	 alert(applyProjId);
+    	 alert(memIdx);
+    });
+
+    $(document).on("click", ".reject_btn", function(e){
+    	alert('111');
+    });
 });
 </script>
 <script type="text/javascript">
@@ -353,6 +322,7 @@ $(document).ready(function() {
 										<div class="th" style="width: 165px;">매출규모</div>
 										<div class="th" style="width: 165px;">판매경력</div>
 										<!-- <div class="th" style="width: 130px;">승인/거절</div> -->
+
 										<div class="th" style="width: 130px;">연락처</div>
 									</div>
 									{{#output}}
@@ -368,7 +338,18 @@ $(document).ready(function() {
 											<div class="td" style="width: 165px;">{{profileCareer}}</div>
 											<div class="td" style="width: 130px;">
 												<!-- <button>지원거절</button> -->
-												{{memTel}}
+												<!-- {{memTel}} -->
+<div class="btn-group">
+        <button type="button" class="btn btn_toggle" data-toggle="dropdown">관리하기</button>
+        <div class="dropdown-menu">
+		<div class="dropdownTextDiv">
+        	<a class="dropdown-item accept_btn" data-applyPojId="{{applyProjId}}" data-memIdx="{{memIdx}}" href="#">승인</a>
+		</div>
+		<div class="dropdownTextDiv">        
+  			<a class="dropdown-item reject_btn" data-value="{{applyProjId}}" href="#">거절</a>
+        </div>
+		</div>
+</div>
 											</div>
 										</div>
 									{{/output}}
