@@ -306,4 +306,35 @@ public class myPageController {
 		
 		return new ModelAndView("myApplyList");
 	}
+	
+	
+	@RequestMapping(value = "/myPage/myHome2", method = RequestMethod.GET)
+	public ModelAndView myHome2(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		
+		MemberDto output = null;
+		IndusDto input = new IndusDto();
+		List<IndusDto> indusList = null;
+		
+		ProfileDto input2 = new ProfileDto();
+		input2.setProfileMemId(member.getMemId());
+		ProfileDto profile = null;
+		
+		if (member.getMemSort() == "1" | member.getMemSort() == "2") {
+			input2.setProfileSort(member.getMemSort());
+		}
+		
+		try {
+			output = memberService.getMember(member);
+			indusList = indusService.getIndusList(input);
+			profile = profileService.getProfile(input2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("profile", profile);
+		model.addAttribute("output", output);
+		model.addAttribute("indusList", indusList);
+		
+		return new ModelAndView("myHome2");
+	}
 }

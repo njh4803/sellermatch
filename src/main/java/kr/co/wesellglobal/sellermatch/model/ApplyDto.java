@@ -46,6 +46,7 @@ public class ApplyDto {
 	private String profileCareer;
 	
 	private String memTel;
+	private int memIdx;
 	
 	// 해시태그 해시태그(검색 키워드) 구분자(,)
     private String profileHashtag;

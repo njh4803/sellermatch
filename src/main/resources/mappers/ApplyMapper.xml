@@ -23,6 +23,8 @@
         <result property="profileVolume" column="Profile_volume" />
         <result property="profileCareer" column="Profile_career" />
         <result property="memTel" column="Mem_tel" />
+        <result property="memIdx" column="mem_idx" />
+        
         <!--  -->
         <result property="projId"   column="proj_id" />
         <result property="projTitle"   column="proj_title" />
@@ -58,6 +60,7 @@
 	   		apply_id, 
 	   		apply_proj_id, 
 	   		apply_mem_id,
+	   		mem_idx,
 	   		date_format(apply_reg_date, '%Y-%m-%d') AS apply_reg_date,
 	   		apply_Profile, 
 	   		apply_type, 
