@@ -415,7 +415,11 @@ form div .input-group input.form-control {
 									return $('#find-pw-form').valid();
 								},
 								success : function(json) {
-
+									swal({
+										title : '임시비밀번호가 발급되었습니다.',
+										text : '이메일을 확인해주세요.',
+										type : 'success',
+									});
 								}
 							});
 						});

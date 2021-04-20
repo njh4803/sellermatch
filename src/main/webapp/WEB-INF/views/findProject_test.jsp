@@ -765,7 +765,9 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 	}
 	return new Handlebars.SafeString(tag);
 });
-
+Handlebars.registerHelper('projDetail', function (projDetail) {
+	return new Handlebars.SafeString(projDetail);
+});
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
     switch (operator) {
@@ -1021,7 +1023,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								{{projTitle}}
 							</div>
 							<div class="project-detailBox">
-								{{projDetail}}
+								{{projDetail projDetail}}
 							</div>	
 							<div class="left-infoBox">
 								{{#if hashTag1}}
