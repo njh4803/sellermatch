@@ -222,6 +222,7 @@ public class MemberRestController {
 			
 			String subject = "셀러매치 가입을 환영합니다.";
 			mailHelper.sendMail(memId, subject, content);*/			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
