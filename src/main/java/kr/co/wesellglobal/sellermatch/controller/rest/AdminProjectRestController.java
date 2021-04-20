@@ -1,38 +1,28 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
-import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.UploadFileUtils;
-import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
-import kr.co.wesellglobal.sellermatch.model.IndusDto;
+import kr.co.wesellglobal.sellermatch.model.FileDto;
+import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
-import kr.co.wesellglobal.sellermatch.model.SearchFind;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
+import kr.co.wesellglobal.sellermatch.service.ProfileService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,6 +41,8 @@ public class AdminProjectRestController {
 	WebHelper webHelper;
 	@Autowired
 	MailHelper mailHelper;
+	@Autowired
+	ProfileService profileService;
 	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -219,4 +211,44 @@ public class AdminProjectRestController {
 		}
 		return webHelper.getJsonData();
 	}
+	
+	// 삭제 - 프로젝트 상태값을 정상에서 중지로 변경
+	@RequestMapping(value = "/admin/projDelete", method = RequestMethod.POST)
+	public Map<String, Object> deleteOk(
+			@RequestParam(value = "projId[]", required = false) String[] projId){
+		
+		ProjectDto input = new ProjectDto();
+		input.setIdArr(projId);
+		input.setProjState("0");
+		
+		try {
+			projectService.deleteProject(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		return webHelper.getJsonData();
+		
+	}
+	
+	// 삭제 - 프로젝트 상태값을 정상에서 중지로 변경
+	@RequestMapping(value = "/admin/registrant", method = RequestMethod.GET)
+	public Map<String, Object> registrantDetail(
+			@RequestParam(value = "projMemId", required = false) String projMemId){
+		
+		ProfileDto input = new ProfileDto();
+		input.setProfileMemId(projMemId);
+		
+		ProfileDto ProfileDto = null;
+		
+		try {
+			ProfileDto = profileService.getProfile(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("ProfileDto", ProfileDto);
+		
+		return webHelper.getJsonData(data);
+	}	
 }

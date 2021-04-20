@@ -68,7 +68,7 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                	<select id="projSort" name="projSort" class="form-control">
+                                                                	<select id="projSort" name="projSort" class="form-control" disabled="disabled">
 						                                                <option value="1">공급자</option>
 						                                                <option value="2">판매자</option>
 						                                        	</select>
@@ -80,7 +80,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <input id="projTitle" type="text" name="projTitle" class="form-control">
+	                                                                    <input id="projTitle" type="text" name="projTitle" class="form-control" readonly="readonly">
 																	</div>
                                                                 </div>
                                                             </div>
@@ -90,7 +90,7 @@ label.error {
                                                                 </label>
                                                                 <div class="col-sm-9">
                                                                 	<div class="form-group">
-	                                                                    <select id="projState" name="projState" class="form-control">
+	                                                                    <select id="projState" name="projState" class="form-control" disabled="disabled">
 							                                                <option value="0">중지</option>
 							                                                <option value="1">정상</option>
 							                                            </select>
@@ -128,7 +128,7 @@ label.error {
                                                                 </div>
                                                             </div>
                                                             <!-- File upload card start -->
-                                                            <div class="form-group row">
+                                                            <!-- <div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">상품 상세 사진</label>
                                                                 <div class="col-sm-9">
 	                                                                <div class="form-group">
@@ -142,14 +142,14 @@ label.error {
 													                    </div>
 												                    </div>
 											                    </div>
-											                </div>
+											                </div> -->
 											                <!-- File upload card end -->
                                                             <div class="form-group row">
                                                                 <label for="projPrice" class="col-sm-3 col-form-label">상품가격
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="number" id="projPrice" name="projPrice" class="form-control" min="0" value="0">
+                                                                    <input type="number" id="projPrice" name="projPrice" class="form-control" min="0" value="0" readonly="readonly">
                                                                 </div>
                                                             </div>
 															<div class="form-group row">
@@ -157,7 +157,7 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                    <select id="projMargin" name="projMargin" class="form-control">
+                                                                    <select id="projMargin" name="projMargin" class="form-control" disabled="disabled">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="10">10%이하</option>
 						                                                <option value="20">11%~20%</option>
@@ -171,11 +171,25 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                    <select id="projNation" name="projNation" class="form-control">
-						                                                <option value="">선택하세요.</option>
-						                                                <option value="02">서울</option>
-						                                                <option value="031">경기</option>
-						                                                <option value="032">인천</option>
+                                                                    <select id="projNation" name="projNation" class="form-control" disabled="disabled">
+									                                    <option value="">선택하세요.</option>
+									                                    <option value="02">서울</option>
+									                                    <option value="031">경기</option>
+									                                    <option value="032">인천</option>
+									                                    <option value="033">강원</option>
+									                                    <option value="041">충남</option>
+									                                    <option value="042">대전</option>
+									                                    <option value="043">충북</option>
+									                                    <option value="051">부산</option>
+									                                    <option value="052">울산</option>
+									                                    <option value="053">대구</option>
+									                                    <option value="054">경북</option>
+									                                    <option value="055">경남</option>
+									                                    <option value="061">전남</option>
+									                                    <option value="062">광주</option>
+									                                    <option value="063">전북</option>
+									                                    <option value="044">세종특별자치시</option>
+									                                    <option value="064">제주특별자치도</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
@@ -184,7 +198,7 @@ label.error {
                                                                 	<span class="identify">*</span>
                                                                 </label>
                                                                 <div class="col-sm-9">
-                                                                    <select id="projSupplyType" name="projSupplyType" class="form-control">
+                                                                    <select id="projSupplyType" name="projSupplyType" class="form-control" disabled="disabled">
 						                                                <option value="">선택하세요.</option>
 						                                                <option value="1">OEM</option>
 						                                                <option value="2">위탁판매</option>
@@ -197,16 +211,26 @@ label.error {
                                                             <div class="form-group row">
                                                                 <label for="projEndDate" class="col-sm-3 col-form-label">모집마감일</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="date" class="form-control" name="projEndDate" id="projEndDate">
+                                                                    <input type="date" class="form-control" name="projEndDate" id="projEndDate" readonly="readonly">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">상품분류</label>
                                                                 <div class="col-sm-9">
-                                                                    <select id="projIndus" name="projIndus" class="form-control">
+                                                                    <select id="projIndus" name="projIndus" class="form-control" disabled="disabled">
 						                                                <option value="">선택하세요.</option>
-						                                                <option value="01">도서</option>
-						                                                <option value="02">의류</option>
+						                                                <option value="01">가구/인테리어</option>
+						                                                <option value="02">도서</option>
+						                                                <option value="03">디지털/가전</option>
+						                                                <option value="04">생활/건강</option>
+						                                                <option value="05">스포츠/레저</option>
+						                                                <option value="06">식품</option>
+						                                                <option value="07">여가/생활편의</option>
+						                                                <option value="08">출산/육아</option>
+						                                                <option value="09">패션의류</option>
+						                                                <option value="10">패션잡화</option>
+						                                                <option value="11">화장품/미용</option>
+						                                                <option value="12">기타</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
@@ -216,70 +240,98 @@ label.error {
 																</label>
 																<div class="col-sm-9">
 																	<input type="number" name="projRecruitNum" class="form-control"
-																		id="projRecruitNum" min="1"/>
+																		id="projRecruitNum" min="1" readonly="readonly"/>
 																</div>
 															</div>
+															<div class="form-group row">
+                                                                <label class="col-sm-3 col-form-label">채널</label>
+                                                                <div class="col-sm-9">
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projChannel" type="checkbox" name="projChannel" value="1"disabled="disabled">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>오픈마켓</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projChannel" type="checkbox" name="projChannel" value="2"disabled="disabled">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>종합몰</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projChannel" type="checkbox" name="projChannel" value="3"disabled="disabled">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>폐쇄몰</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projChannel" type="checkbox" name="projChannel" value="4"disabled="disabled">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>커뮤니티</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projChannel" type="checkbox" name="projChannel" value="5"disabled="disabled">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>SNS</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projChannel" type="checkbox" name="projChannel" value="6"disabled="disabled">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>오프라인</span>
+	                                                                    </label>
+                                                                	</div>
+                                                                	<div class="checkbox-fade fade-in-primary">
+	                                                                    <label>
+	                                                                    	<input id="projChannel" type="checkbox" name="projChannel" value="7" disabled="disabled">
+	                                                                    	<span class="cr">
+	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+	                                                                    	</span>
+	                                                                    	<span>해외</span>
+	                                                                    </label>
+                                                                	</div>
+                                                         		</div>
+                                                            </div>
                                                             <div class="form-group row">
 																<label for="projKeyword" class="col-sm-3 col-form-label">상품 키워드
 																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-9">
-                                                                	<div class="checkbox-fade fade-in-primary">
-	                                                                    <label>
-	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="고경력선호">
-	                                                                    	<span class="cr">
-	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                                                    	</span>
-	                                                                    	<span>고경력선호</span>
-	                                                                    </label>
-                                                                	</div>
-                                                                	<div class="checkbox-fade fade-in-primary">
-	                                                                    <label>
-	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="고마진상품">
-	                                                                    	<span class="cr">
-	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                                                    	</span>
-	                                                                    	<span>고마진상품</span>
-	                                                                    </label>
-                                                                	</div>
-                                                                	<div class="checkbox-fade fade-in-primary">
-	                                                                    <label>
-	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="매출보장판매자">
-	                                                                    	<span class="cr">
-	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                                                    	</span>
-	                                                                    	<span>매출보장 판매자</span>
-	                                                                    </label>
-                                                                	</div>
-                                                                	<div class="checkbox-fade fade-in-primary">
-	                                                                    <label>
-	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="수출가능상품">
-	                                                                    	<span class="cr">
-	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                                                    	</span>
-	                                                                    	<span>수출가능상품</span>
-	                                                                    </label>
-                                                                	</div>
-                                                                	<div class="checkbox-fade fade-in-primary">
-	                                                                    <label>
-	                                                                    	<input id="projKeyword" type="checkbox" name="projKeyword" value="요즘뜨는제품">
-	                                                                    	<span class="cr">
-	                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
-	                                                                    	</span>
-	                                                                    	<span>요즘 뜨는 제품</span>
-	                                                                    </label>
-                                                                	</div>
+                                                                	<span id="hashTag1"></span>
+                                                                   	<span id="hashTag2"></span>
+                                                                   	<span id="hashTag3"></span>
+                                                                   	<span id="hashTag4"></span>
+                                                                   	<span id="hashTag5"></span>
                                                          		</div>
 															</div>
-															<div class="form-group row">
+															<!-- <div class="form-group row">
                                                                 <label class="col-sm-3 col-form-label">첨부파일</label>
                                                                 <div class="col-sm-9 file_input">
-                                                                	<div class="input-group">
+                                                                	<div class="input-group"> -->
                                                                 		<%-- <div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
 									                                    	<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
 									                                    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
 									                                    </div> --%>
-									                                    <div style="display: flow-root;">
+									                                    <!-- <div style="display: flow-root;">
 									                                    	<input id = "file_route" type="text" class="form-control" style="margin-left: 10px; border: none;" readonly="readonly"/>
 										                                	<label>
 										                                		파일 선택
@@ -288,30 +340,40 @@ label.error {
 									                                    </div>
 																	</div>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                             <div class="form-group row">
 																<label for="projProdCerti" class="col-sm-3 col-form-label">상품 검증</label>
 																<div class="col-sm-9">
-																	<select id="projProdCerti" name="projProdCerti" class="form-control">
+																	<select id="projProdCerti" name="projProdCerti" class="form-control" disabled="disabled">
 						                                                <option value="0">미검증</option>
 						                                                <option value="1">검증</option>
 						                                            </select>
 																</div>
 															</div>
 															<div class="form-group row">
+                                                                <label for="projRequire" class="col-sm-3 col-form-label">필수조건
+                                                                	<span class="identify">*</span>
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                	<div class="form-group">
+	                                                                    <input id="projRequire" type="text" name="projRequire" class="form-control" readonly="readonly">
+																	</div>
+                                                                </div>
+                                                            </div> 
+															<div class="form-group row">
 																<label for="projDetail" class="col-sm-3 col-form-label">상품 상세내용
 																	<span class="identify">*</span>
 																</label>
 																<div class="col-sm-9">
-																	<textarea class="form-control" style="width: 100%; height: 300px" name="projDetail" id="projDetail"></textarea>
+																	<textarea class="form-control" style="width: 100%; height: 300px" name="projDetail" id="projDetail" readonly="readonly"></textarea>
 																</div>
 															</div>
-															<div class="modal-footer">
+															<!-- <div class="modal-footer">
 																<div style="text-align-last: center;">
 																	<input class="btn form-bg-primary" type="submit" value="수정">
 																	<input class="btn form-bg-submit" type="button" value="취소" data-dismiss="modal">
 																</div>
-															</div>
+															</div> -->
                                                                 </form>
                                                                 <!-- 회원가입 form end -->
           </div>

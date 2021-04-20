@@ -159,6 +159,9 @@ public class ProjectDto {
 	private String ppMemRname;
 	private String sellerMemRname;
 	
+	/** 대량 삭제를 위한 일련번호 배열 */
+    private String[] idArr;
+	
 	public static int getOffset() {
 		return offset;
 	}

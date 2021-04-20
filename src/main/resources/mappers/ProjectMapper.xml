@@ -138,6 +138,7 @@
 		INNER JOIN ProfileList pf
 		ON p.proj_mem_id = pf.profile_mem_id
         <where>
+        	proj_state = 1
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
         	</if>
@@ -315,6 +316,7 @@
 		INNER JOIN ProfileList pf
 		ON p.proj_mem_id = pf.profile_mem_id
         <where>
+        	proj_state = 1
         	<if test="projDetail != '' and projDetail != null">
         		OR proj_detail LIKE concat('%', #{projDetail}, '%')
         	</if>

@@ -134,7 +134,7 @@ public class BoardServiceImpl implements BoardService{
 		int result = 0;
 
 		try {
-			result = sqlSession.update("BoardMapper.deleteItem", input);
+			result = sqlSession.delete("BoardMapper.deleteItem", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}

@@ -4,8 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="inc/header.jsp"%>
-<%@ include file="modal/projectAdd.jsp"%>
+<%-- <%@ include file="modal/projectAdd.jsp"%> --%>
 <%@ include file="modal/projectEdit.jsp"%>
+<%@ include file="modal/registrantDetail.jsp"%>
 
 
 <!-- bootstrap css -->
@@ -66,7 +67,8 @@
                                                     	<form name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/projectList">
 	                                                    	<div class="form-group row">
 	                                                    		<div class="col-sm-8">
-		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button>
+		                                                    		<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button> -->
+		                                                    		<button id="P-delBtn" type="button" class="btn btn-primary">선택 삭제</button>
 		                                                    	</div>
 		                                                        <div class="col-sm-4" style="float: right;">
 		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어">
@@ -81,37 +83,61 @@
                                                             <table id="simpletable" class="table table-bordered table-hover table-condensed table-striped text-center">
                                                             	<thead>
                                                                     <tr>
+																		<th>
+                                                                    		<div class="checkbox-fade fade-in-primary">
+			                                                                    <label>
+			                                                                    	<input id="checkAll" type="checkbox" name="sellerCh" value="1">
+			                                                                    	<span class="cr">
+			                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+			                                                                    	</span>
+			                                                                    </label>
+		                                                                	</div>
+                                                                    	</th>                                                                    
                                                                         <th>번호</th>
-                                                                        <th>프로젝트번호</th>
+                                                                        <th>거래번호</th>
                                                                         <th>아이디</th>
                                                                         <th>제목</th>
-                                                                        <th>회원분류</th>
-                                                                        <th>산업분류</th>
-                                                                        <th style="display: none;">상품가격</th>
-                                                                        <th style="display: none;">판매마진</th>
-                                                                        <th>등록지역</th>
-                                                                        <th>공급방법</th>
-                                                                        <th>모집마감일</th>
-                                                                        <th style="display: none;">모집인원</th>
-                                                                        <th style="display: none;">상세설명</th>
-                                                                        <th style="display: none;">필수요건</th>
-                                                                        <th>키워드</th>
+                                                                        <th>회원 유형</th>
+                                                                        <th>산업 분류</th>
+                                                                        <th style="display: none;">상품 가격</th>
+                                                                        <th style="display: none;">판매 마진</th>
+                                                                        <th>등록 지역</th>
+                                                                        <th>공급 방법</th>
+                                                                        <th>모집 마감일</th>
+                                                                        <th style="display: none;">모집 인원</th>
+                                                                        <th style="display: none;">상세 설명</th>
+                                                                        <th style="display: none;">필수 요건</th>
+                                                                        <th style="display: none;">키워드</th>
                                                                         <!-- <th>상세사진</th> -->
-                                                                        <th style="display: none;">첨부파일</th>
-                                                                        <th>상품검증</th>
-                                                                        <th>프로젝트 상태</th>
+                                                                        <th style="display: none;">첨부 파일</th>
+                                                                        <th>상품 검증</th>
+                                                                        <th style="display: none;">상태</th>
                                                                         <th>등록일</th>
                                                                         <th style="display: none;">수정일</th>
+                                                                        <th style="display: none;">해시태그</th>
+                                                                        <th style="display: none;">채널</th>
+                                                                        <th style="display: none;">필수조건</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 <c:forEach var="output" items="${output}" varStatus="status">
 	                                                                    <tr>
+	                                                                    	<td>
+	                                                                    		<div class="checkbox-fade fade-in-primary">
+				                                                                    <label>
+				                                                                    	<input class="check" type="checkbox" data-index="${status.index}">
+				                                                                    	<span class="cr">
+				                                                                    		<i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+				                                                                    	</span>
+				                                                                    </label>
+			                                                                	</div>
+	                                                                    	</td>	                                                                    
 	                                                                    	<td>${projCount - minusCount - status.count +1}</td>
 	                                                                        <td>
-	                                                                        	<a href="javascript:void(0)" data-hidden="${output.projIndus}" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
+	                                                                        	<a href="javascript:void(0)" id="projId${status.index}" data-hidden="${output.projIndus}" class="p-modal" data-toggle="modal" data-target="#editModal">${output.projId}</a>		
 	                                                                        </td>
-	                                                                        <td>${output.projMemId}</td>
+	                                                                        <td>																																							
+	                                                                        	<a href="javascript:void(0)" data-value="${output.projMemId}" class="r-modal" data-toggle="modal" data-target="#registrantModal">${output.projMemId}</a></td>
 	                                                                        <td>${output.projTitle}</td>
 	                                                                        <td data-value="${output.projSort}">${output.projSortName}</td>
 	                                                                        <td data-value="${output.projIndus}">${output.projIndusName}</td>
@@ -123,12 +149,16 @@
 	                                                                        <td style="display: none;">${output.projRecruitNum}</td>
 	                                                                        <td style="display: none;">${output.projDetail}</td>
 	                                                                        <td style="display: none;">${output.projRequire}</td>
-	                                                                        <td>${output.projKeyword}</td>
+	                                                                        <td style="display: none;">${output.projKeyword}</td>
 	                                                                        <td style="display: none;">${output.projFile}</td>
 	                                                                        <td data-value="${output.projProdCerti}">${output.projProdCertiName}</td>
-	                                                                        <td data-value="${output.projState}">${output.projStateName}</td>
+	                                                                        <td style="display: none;" data-value="${output.projState}">${output.projStateName}</td>
 	                                                                        <td>${output.projRegDate}</td>
 	                                                                        <td style="display: none;">${output.projEditDate}</td>
+	                                                                        <td style="display: none;" data-hash1="${output.hashTag1}" data-hash2="${output.hashTag2}"
+	                                                                         data-hash3="${output.hashTag3}" data-hash4="${output.hashTag4}" data-hash5="${output.hashTag5}"></td>
+	                                                                        <td style="display: none;">${output.projChannel}</td>
+	                                                                        <td style="display: none;">${output.projRequire}</td>
 	                                                                    </tr>
 	                                                                    <input id="projDetailImg" type="hidden" value="${output.projDetailImg}">
                                                                 </c:forEach>
@@ -218,30 +248,147 @@
         </div>
     </div>
 <script type="text/javascript">
+$(function(){
+	//체크박스 전체선택
+	$("#checkAll").on("click",function(){
+		var checked = this.checked;
+		console.log("checkAll = " + checked);
+		console.log("check = " + $('.check').val());
+		$('.check').each(function(){
+			this.checked = checked;
+		});
+	});
+	//체크박스 단일선택
+	$(".check").click(function(){
+		//체크박스 총 갯수
+		total_len = $(".check").length;
+		//선택된 갯수
+		var len = $(".check:checked").length;
+		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
+			$("#checkAll").prop('checked', true);
+		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+			$("#checkAll").prop('checked', false);	
+		}
+	});
+	//선택 상품 삭제
+	$("#P-delBtn").click(function(){
+		const projId = [];
+		const obj = $(".check:checked");
+		console.log("obj = " + obj);
+		
+		if (obj.length < 1) {
+            swal('알림', '삭제하실 거래처를 선택해 주세요.');
+            return false;
+        }
+		
+        swal({
+            title: '확인',
+            text: '정말 삭제하시겠습니까?', 
+            type: "question",
+            showCancelButton: true
+        }).then(function(result) {
+            if (result.value) {
+            	$(".check").each(function(i, v) {
+                	if (this.checked) {
+                		projId.push($('#projId'+i).text());
+					}
+                });
+                
+                $.post(ROOT_URL + "/admin/projDelete", {
+                	'projId': projId,
+                }, function(json) {
+                    swal({
+                        title: '확인',
+                        text: '삭제되었습니다.'
+                    }).then(function(result) {
+                        window.location.href = ROOT_URL+"/admin/projectList";
+                    });
+                });
+            }
+        });		
+	});	
+});
+$(document).on("click",".r-modal",function(event){
+	var projMemId = $(this).data("value");
+	
+	$.ajax({
+        type: "GET",
+        url: ROOT_URL+"/admin/registrant",
+        data: {
+        	projMemId : projMemId
+        },
+        success: function(json) {profileMemId
+        	$("#profileSort").val(json.ProfileDto.profileSort);
+        	$("#profileMemId").val(json.ProfileDto.profileMemId);
+        	$("#profileMemNick").val(json.ProfileDto.memNick);
+        	$("#profileRegDate").val(json.ProfileDto.profileRegDate);
+        	$("#profileCareer").val(json.ProfileDto.profileCareer);
+        	$("#profileNation").val(json.ProfileDto.profileNation);
+        	$("#profileIndus").val(json.ProfileDto.profileIndus);
+        	if (json.ProfileDto.profileCh != null) {
+				var profileCh = json.ProfileDto.profileCh.split(',');
+				// 초기화
+				$("#registrantModal .modal-body input[name=profileCh]").attr('checked', false);
+				for (var i = 0; i < profileCh.length; i++) {
+					$("#registrantModal .modal-body input[name=profileCh]").eq(profileCh[i]-1).attr('checked', true);
+				}
+			}
+        	$("#hashTag1").text(json.ProfileDto.hashTag1);
+        	$("#hashTag2").text(json.ProfileDto.hashTag2);
+        	$("#hashTag3").text(json.ProfileDto.hashTag3);
+        	$("#hashTag4").text(json.ProfileDto.hashTag4);
+        	$("#hashTag5").text(json.ProfileDto.hashTag5);
+        	$("#hashTag5").text(json.ProfileDto.hashTag5);
+        	$("#profileChChk").val(json.ProfileDto.profileChChk);
+        	$("#profileChChkDate").val(json.ProfileDto.profileChChkDate);
+        	$("#profileBizNum").val(json.ProfileDto.profileBizNum);
+        	$("#profileBizSort").val(json.ProfileDto.profileBizSort);
+        	$("#profileBizCerti").val(json.ProfileDto.profileBizCerti);
+        	$("#profileSaleChk").val(json.ProfileDto.profileSaleChk);
+        	$("#profileRname").val(json.ProfileDto.memRname);
+        	if (json.ProfileDto.profilePhoto == null) {
+        		$("#profilePhoto").attr("src", ROOT_URL+"/assets/img/profile.png");
+			} else {
+				$("#profilePhoto").attr("src", "/upload/"+json.ProfileDto.profilePhoto);
+			}
+        	
+        	
+        	$("#profileIntro").text(json.ProfileDto.profileIntro);
+        }
+	});
+});
 $(document).on("click",".p-modal",function(event){
 	var parent = event.target.parentNode;
 	var tr = parent.parentNode;
-	var projIdx = tr.children[0].innerText;
-	var projId = tr.children[1].innerText;
-	var projMemId = tr.children[2].innerText;
-	var projTitle = tr.children[3].innerText;
-	var projSort = tr.children[4].getAttribute("data-value");
-	var projIndus = tr.children[5].getAttribute("data-value");
-	var projPrice = tr.children[6].innerText;
-	var projMargin = tr.children[7].getAttribute("data-value");
-	var projNation = tr.children[8].getAttribute("data-value");
-	var projSupplyType = tr.children[9].getAttribute("data-value");
-	var projEndDate = tr.children[10].innerText;
-	var projRecruitNum = tr.children[11].innerText;
-	var projDetail = tr.children[12].innerText;
-	var projRequire = tr.children[13].innerText;
-	var projKeyword = tr.children[14].innerText;
+	var projIdx = tr.children[1].innerText;
+	var projId = tr.children[2].innerText;
+	var projMemId = tr.children[3].innerText;
+	var projTitle = tr.children[4].innerText;
+	var projSort = tr.children[5].getAttribute("data-value");
+	var projIndus = tr.children[6].getAttribute("data-value");
+	var projPrice = tr.children[7].innerText;
+	var projMargin = tr.children[8].getAttribute("data-value");
+	var projNation = tr.children[9].getAttribute("data-value");
+	var projSupplyType = tr.children[10].getAttribute("data-value");
+	var projEndDate = tr.children[11].innerText;
+	var projRecruitNum = tr.children[12].innerText;
+	var projDetail = tr.children[13].innerText;
+	var projRequire = tr.children[14].innerText;
+	var projKeyword = tr.children[15].innerText;
 	var projDetailImg = $('#projDetailImg').val();
-	var projFile = tr.children[15].innerText;
-	var projProdCerti = tr.children[16].getAttribute("data-value");
-	var projState = tr.children[17].getAttribute("data-value");
-	var projRegDate = tr.children[18].innerText;
-	var projEditDate = tr.children[19].innerText;
+	var projFile = tr.children[16].innerText;
+	var projProdCerti = tr.children[17].getAttribute("data-value");
+	var projState = tr.children[18].getAttribute("data-value");
+	var projRegDate = tr.children[19].innerText;
+	var projEditDate = tr.children[20].innerText;
+	var hashTag1 = tr.children[21].getAttribute("data-hash1");
+	var hashTag2 = tr.children[21].getAttribute("data-hash2");
+	var hashTag3 = tr.children[21].getAttribute("data-hash3");
+	var hashTag4 = tr.children[21].getAttribute("data-hash4");
+	var hashTag5 = tr.children[21].getAttribute("data-hash5");
+	var projChannel = tr.children[22].innerText;
+	var projRequire = tr.children[23].innerText;
+	
 	
 	
 	
@@ -260,20 +407,29 @@ $(document).on("click",".p-modal",function(event){
 	$("#editModal .modal-body #projDetail").text(projDetail);
 	$("#editModal .modal-body #projRequire").val(projRequire);
 	
-	// 초기화
-	$("#editModal .modal-body input[name=projKeyword]").attr('checked', false);
-	var projKeywordValue = projKeyword.split(',');
-	console.log(projKeywordValue);
-	for (var i = 0; i < projKeywordValue.length; i++) {
-		
-		$("#editModal .modal-body input[name=projKeyword][value="+projKeywordValue[i]+"]").attr('checked', true);
+	if (projChannel != '') {
+		var projChannelList = projChannel.split(',');
+		// 초기화
+		$("#editModal .modal-body input[name=projChannel]").attr('checked', false);
+		for (var i = 0; i < projChannelList.length; i++) {
+			$("#editModal .modal-body input[name=projChannel]").eq(projChannelList[i]-1).attr('checked', true);
+		}
 	}
+	
 	$("#editModal .modal-body #detailImgList").val(projDetailImg);
 	$("#editModal .modal-body #projFile").val(projFile);
 	$("#editModal .modal-body #projProdCerti").val(projProdCerti);
 	$("#editModal .modal-body #projState").val(projState);
 	$("#editModal .modal-body #projRegDate").val(projRegDate);
 	$("#editModal .modal-body #projEditDate").val(projEditDate);
+	$("#editModal .modal-body #hashTag1").text(hashTag1);
+	$("#editModal .modal-body #hashTag2").text(hashTag2);
+	$("#editModal .modal-body #hashTag3").text(hashTag3);
+	$("#editModal .modal-body #hashTag4").text(hashTag4);
+	$("#editModal .modal-body #hashTag5").text(hashTag5);
+	$("#editModal .modal-body #hashTag5").text(hashTag5);
+	$("#editModal .modal-body #projRequire").val(projRequire);
+	
 	
 	var imgBox = $("#editModal .modal-body #imgBox");
 	var imgSrcList = []; 
