@@ -37,9 +37,10 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto"
     	resultMap="replyMap">
     	SELECT 
-	   		reply_id, reply_parent, reply_writer, reply_contents, reply_proj_id, reply_board_id, reply_secret, reply_pw,
+	   		reply_id, reply_parent, reply_contents, reply_proj_id, reply_board_id, reply_secret, reply_pw,
 	   		date_format(reply_reg_date, '%Y-%m-%d %H:%i') as reply_reg_date, reply_depth, reply_parent_mem_id,
-	   		(select mem_nick from MemList where mem_id = reply_parent_mem_id) as reply_parent_nick
+	   		(select mem_nick from MemList where mem_id = reply_parent_mem_id) as reply_parent_nick,
+	   		(select mem_nick from MemList where mem_id = reply_writer) as reply_writer
     	FROM ReplyList
     	WHERE reply_proj_id = #{replyProjId}
     	ORDER BY reply_parent
