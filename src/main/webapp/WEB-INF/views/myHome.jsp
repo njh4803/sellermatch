@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
-<link href="${pageContext.request.contextPath}/assets/css/myHome2.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/myPageCommon.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/myHome.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
     <div class="partner_wrap">
     	<div class="partner_bnr3">
@@ -45,7 +46,7 @@
 		    		</div>
 		    		<div class="myPage_l_menuBox">
 				    	<div class="my-tabs">
-							<div class="tab-link current" data-tab="my-tab-1" id="select-my-tab1">MY 홈
+							<div class="tab-link tab-link3 current" data-tab="my-tab-1" id="select-my-tab1">MY 홈
 							<img class="arrow_img" alt="" src="${pageContext.request.contextPath}/assets/img/right_arrow_white.png">
 							</div>
 							<div class="tab-link" data-tab="my-tab-2" id="select-my-tab2">회원정보 관리
@@ -99,7 +100,7 @@
 									<span class="myContractBoxText registText">등록한 거래</span>
 								</div>
 		    					<div class="myContractCntBox">								
-									<span class="myContractCount registCount">12건</span>
+									<span class="myContractCount registCount" data-value="${myProjectCount.projAddCount}">${myProjectCount.projAddCount}건</span>
 		    					</div>
 		    				</div>
 		    				<div class="myContractBox applyBox">
@@ -107,23 +108,33 @@
 		    						<span class="myContractBoxText applyText">지원한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount applyCount">12건</span>
+									<span class="myContractCount applyCount" value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</span>
 								</div>
 		    				</div>
 		    				<div class="myContractBox recommandBox">
+							<c:if test="${myProjectCount.memSort == 1}">
 		    					<div>
+		    						<span class="myContractBoxText recommandText">제안 한 거래</span>
+		    					</div>
+		    					<div class="myContractCntBox">		    					
+									<span class="myContractCount recommandConut" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
+								</div>
+							</c:if>
+							<c:if test="${myProjectCount.memSort == 2}">
+								<div>
 		    						<span class="myContractBoxText recommandText">제안 받은 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount recommandConut">12건</span>
+									<span class="myContractCount recommandConut" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
 								</div>
+							</c:if>
 		    				</div>
 		    				<div class="myContractBox closeBox">
 		    					<div>
 		    						<span class="myContractBoxText closeText">마감한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount closeCount">12건</span>
+									<span class="myContractCount closeCount">0건</span>
 								</div>
 		    				</div>
 		    			</div>
@@ -213,7 +224,7 @@ $(document).ready(function(){
 			location.href="/myPage/profileManage";
 		}
 		if (tab_id == 'my-tab-4') {
-			location.href="/myPage/delngManage/registDelng";
+			location.href="/myPage/registDelng";
 		}
 		if (tab_id == 'my-tab-5') {
 			alert('탈퇴페이지로');
@@ -224,12 +235,24 @@ $(document).ready(function(){
 	$('.scrapBtn').on('click', function(){
 		location.href="/myPage/delngManage/scrapList";
 	});
+	//프로필 수정
+	$('.myPage_r_profileBox').on('click', function(){
+		location.href="/myPage/profileManage";
+	});
+	//이용안내
+	$('.myPage_r_usingMethodBox').on('click', function(){
+		location.href="/board?boardType=1";
+	});
 	//이용약관, 개인정보처리방침 모달창 불러옴
 	$('.useOfTermBtn').on('click', function(){
 		$('#infoModal').modal();
 	});
 	$('.privateBtn').on('click', function(){
 		$('#termsOfServiceModal').modal();
+	});
+	//인증하기-준비중
+	$('.myPage_r_authBox').on('click', function(){
+		alert('인증하기 기능 준비중입니다.');
 	});
 });	
 </script>

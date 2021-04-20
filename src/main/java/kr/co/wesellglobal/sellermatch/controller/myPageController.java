@@ -270,9 +270,6 @@ public class myPageController {
 	
 	@RequestMapping(value = "/myPage/delngManage/myApplyList", method = RequestMethod.GET)
 	public ModelAndView myApplyList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
-			@RequestParam(value = "applyType", required = false)String applyType,
-			@RequestParam(value = "applyProjState", required = false)String applyProjState,			
-			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		
@@ -305,7 +302,6 @@ public class myPageController {
 		return new ModelAndView("myApplyList");
 	}
 	
-	
 	@RequestMapping(value = "/myPage/myHome", method = RequestMethod.GET)
 	public ModelAndView myHome2(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
 		
@@ -313,27 +309,69 @@ public class myPageController {
 		IndusDto input = new IndusDto();
 		List<IndusDto> indusList = null;
 		
-		/*
-		 * ProfileDto input2 = new ProfileDto();
-		 * input2.setProfileMemId(member.getMemId()); ProfileDto output2 = null;
-		 * 
-		 * if (member.getMemSort() == "1" | member.getMemSort() == "2") {
-		 * input2.setProfileSort(member.getMemSort()); }
-		 */
+		
+		ProfileDto input2 = new ProfileDto();
+		input2.setProfileMemId(member.getMemId()); ProfileDto output2 = null;
+		
+		if (member.getMemSort() == "1" | member.getMemSort() == "2") {
+		input2.setProfileSort(member.getMemSort()); }
+		
+		myPageDto input3 = new myPageDto();
+		input3.setProjMemId(member.getMemId());
+		
+		List<myPageDto> registedProjectList = null;
+		myPageDto myProjectCount = null;
 		
 		try {
-			//output = memberService.getMember(member);
+			output = memberService.getMember(member);
 			indusList = indusService.getIndusList(input);
-			//output2 = profileService.getProfile(input2);
+			output2 = profileService.getProfile(input2);
+			registedProjectList = myPageService.selectpRegistedProjectList(input3);
+			myProjectCount = myPageService.selectpMyProjectCount(input3);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		/*
-		 * model.addAttribute("output2", output2); model.addAttribute("output", output);
-		 */
+		
+		model.addAttribute("output2", output2); 
+		model.addAttribute("output", output);
 		model.addAttribute("indusList", indusList);
+		model.addAttribute("registedProjectList", registedProjectList);
+		model.addAttribute("myProjectCount", myProjectCount);
 		
 		return new ModelAndView("myHome");
+	}
+	
+	@RequestMapping(value = "/myPage/registDelng", method = RequestMethod.GET)
+	public ModelAndView delngManage2(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+		
+		// 페이지 구현에 필요한 변수값 생성 
+		int totalCount = 0;		// 전체 게시글 수
+		int listCount = 8;		// 한 페이지당 표시할 목록 수
+		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
+		
+		// 페이지 번호를 계산한 결과가 저장될 객체
+		PageData pageData = null;
+		
+		myPageDto input = new myPageDto();
+		input.setProjMemId(member.getMemId());
+		
+		List<myPageDto> registedProjectList = null;
+		myPageDto myProjectCount = null;
+		
+		try {
+			registedProjectList = myPageService.selectpRegistedProjectList(input);
+			myProjectCount = myPageService.selectpMyProjectCount(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("registedProjectList", registedProjectList);
+		model.addAttribute("myProjectCount", myProjectCount);
+		model.addAttribute("memSort", member.getMemSort());
+		
+		return new ModelAndView("registDelng2");
 	}
 }
