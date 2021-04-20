@@ -519,7 +519,7 @@ public class ProjectRestController {
 		log.debug("getReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemId="+replyDto.getReplyParentMemId());
 		ReplyDto input = new ReplyDto();
 		
-		input.setReplyWriter(member.getMemNick());
+		input.setReplyWriter(member.getMemId());
 		input.setReplyContents(replyDto.getReplyContents());
 		input.setReplyProjId(replyDto.getReplyProjId());
 		input.setReplySecret(replyDto.getReplySecret());
