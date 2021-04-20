@@ -46,6 +46,8 @@
         <result property="projXxx" column="proj_XXX" />
         <!--  -->
         <result property="memNick" column="mem_nick" />
+        <result property="memTel" column="mem_tel" />
+        
         <result property="applyMemNick" column="apply_mem_nick" />
         <result property="memName" column="mem_name" />
         <result property="profileIntro" column="profile_intro" />
@@ -212,10 +214,14 @@
     		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
     		proj_channel,
     		apply_proj_state,
-    		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count
-    	FROM ProjectList p, ApplyList al
+    		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count,
+    		mem_nick,
+    		mem_tel
+    	FROM ProjectList p, ApplyList al, MemList ml
 		WHERE 1=1
-		AND p.Proj_id = al.Apply_proj_id 
+		AND p.Proj_id = al.Apply_proj_id
+		AND p.Proj_mem_id  = ml.Mem_id
+		AND al.Apply_type = '1'
 		AND al.Apply_mem_id = #{memId}
 	</select>
 </mapper>

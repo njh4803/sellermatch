@@ -207,7 +207,7 @@ $(document).ready(function(){
             // [연락처]
             memTel: { phone: true, minlength: 9, maxlength: 11 },
          	// [닉네임] 필수
-            memNick: {required: true, noSpace: true},
+            memNick: {required: true, noSpace: true, maxlength: 9 },
             
         },
         messages: {
@@ -233,7 +233,8 @@ $(document).ready(function(){
             },
             memNick: {
             	required: '닉네임을 입력해주세요.',
-            	noSpace: '공백은 사용이 불가능 합니다.'
+            	noSpace: '공백은 사용이 불가능 합니다.',
+            	maxlength: '닉네임은 최대 {9}글자까지 가능합니다.',
             },
         }
     });

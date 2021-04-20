@@ -98,6 +98,7 @@ public class myPageDto {
 	private String memName;
 	private String memNick;
 	private String memSort;
+	private String memTel;
 	private String profileMemId;
 	private String profileIntro;
 	private String profilePhoto;

@@ -245,10 +245,10 @@ $(document).ready(function(){
 	});
 	//이용약관, 개인정보처리방침 모달창 불러옴
 	$('.useOfTermBtn').on('click', function(){
-		$('#infoModal').modal();
+		$('#termsOfServiceModal').modal();
 	});
 	$('.privateBtn').on('click', function(){
-		$('#termsOfServiceModal').modal();
+		$('#infoModal').modal();
 	});
 	//인증하기-준비중
 	$('.myPage_r_authBox').on('click', function(){

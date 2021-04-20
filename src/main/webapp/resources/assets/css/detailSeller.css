@@ -372,6 +372,9 @@
     display: inline-block;
     margin-left: 20px;	
 }
+input[type="radio"] {
+	display: initial !important;
+}
 /* 모바일 */
 @media screen and (max-width: 767px){
 	.partner_wrap hr{

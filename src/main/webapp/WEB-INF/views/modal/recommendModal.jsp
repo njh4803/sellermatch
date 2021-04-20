@@ -130,7 +130,7 @@ $(document).ready(function() {
 	  		        	var data = {
 	  		        		applyProjId: recommendProj,
 	  		        		applyMemId: $("#profileMemId").val(),
-	  		        		applyProjState:3,
+	  		        		applyProjState:2,
 	  		        		applyType:2
 	  		        	};
 	  		        	  

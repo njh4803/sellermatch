@@ -268,7 +268,7 @@ public class myPageController {
 		return new ModelAndView("scrapList");
 	}
 	
-	@RequestMapping(value = "/myPage/delngManage/myApplyList", method = RequestMethod.GET)
+	@RequestMapping(value = "/myPage/myApplyList", method = RequestMethod.GET)
 	public ModelAndView myApplyList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
@@ -299,7 +299,7 @@ public class myPageController {
 		model.addAttribute("myProjectCount", myProjectCount);
 		model.addAttribute("memSort", member.getMemSort());
 		
-		return new ModelAndView("myApplyList");
+		return new ModelAndView("myApplyList2");
 	}
 	
 	@RequestMapping(value = "/myPage/myHome", method = RequestMethod.GET)

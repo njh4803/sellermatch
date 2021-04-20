@@ -197,16 +197,9 @@ header #m-search_frm{
             	</c:choose>
             </div>
             <div class="gnb_project">
-         		<c:if test="${member.memSort == 1}">
-         		<a class="projectInsert producer" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
-         			 매칭 등록하기
-         		</a>
-         		</c:if>
-         		<c:if test="${member.memSort == 2 or member.memSort == null}">
          		<a class="projectInsert" id="projectInsert" href="javascript:void(0);" data-member="${member.memId}" data-memsort="${member.memSort}" data-profile="${member.existProfile}" data-memIdx="${member.memIdx}">
-         			매칭 등록하기
+         			매칭 무료등록
          		</a>
-         		</c:if>         
             </div>
        </div>
    </div>
