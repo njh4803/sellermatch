@@ -56,6 +56,9 @@ label.error {
     color: #4a6076;
     font-size: 14px;
 }
+.btn-group-toggle {
+	display: -webkit-inline-box;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -91,18 +94,26 @@ label.error {
                                                 <!-- Zero config.table start -->
                                                 <div class="card">
                                                     <div class="card-header">
-	                                                    <form name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/memberList">
+	                                                    <form id="search-form" name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/memberList">
 	                                                        <div class="form-group row">
 	                                                    		<div class="col-sm-8">
 		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberAddModal">회원 등록</button>
+		                                                    		<div class="btn-group btn-group-toggle" data-toggle="buttons" style="float: right;">
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '0'}">active</c:if>" data-value="0">
+																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter0" value="0">전체</label> 
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '2'}">active</c:if>" data-value="2"> 
+																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter2" value="2">판매자</label> 
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '1'}">active</c:if>" data-value="1"> 
+																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter1" value="1">공급자</label>
+																</div>
 		                                                    	</div>
 		                                                        <div class="col-sm-4" style="float: right;">
 		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어">
 		                                							<div class="col-sm-2" style="padding: 0;">
-			                                                        	<button type="submit" class="btn btn-primary">검색</button>
+			                                                        	<button type="submit" class="btn btn-primary">조회</button>
 			                                                        </div>
 		                                                        </div>
-	                                                    	</div>
+															</div>
 	                                                    </form>
                                                     </div>
                                                     <div class="card-block">
@@ -131,6 +142,7 @@ label.error {
                                                                     	<th style="display: none;">회원탈퇴일</th>
                                                                     	<th>회원등록일</th>
                                                                     	<th style="display: none;">회원정보수정일</th>
+                                                                    	<th>회원가입SNS채널</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -141,7 +153,23 @@ label.error {
 	                                                                        	<a href="#" onclick="return false;" class="m-modal" data-toggle="modal" data-target="#memberModal">${output.memId}</a>		
 	                                                                        </td>
 	                                                                        <td style="display: none;">${output.memPw}</td>
-	                                                                        <td data-value="${output.memState}">${output.memStateName}</td>
+	                                                                        <td data-value="${output.memState}">
+	                                                                        <c:if test="${output.memState == '0'}">
+	                                                                        	정상
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memState == '1'}">
+	                                                                        	정상
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memState == '2'}">
+	                                                                        	탈퇴
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memState == '3'}">
+	                                                                        	휴면
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memState == null}">
+	                                                                        	기타
+	                                                                        </c:if>
+	                                                                        </td>
 	                                                                        <td data-value="${output.memClass}">${output.memClassName}</td>
 	                                                                        <td style="display: none;">${output.memClassSdate}</td>
 	                                                                        <td style="display: none;">${output.memClassEdate}</td>
@@ -169,6 +197,26 @@ label.error {
 	                                                                        <td style="display: none;">${output.memOutDate}</td>
 	                                                                        <td>${output.memDate}</td>
 	                                                                        <td style="display: none;">${output.memEditDate}</td>
+	                                                                        <td data-value="${output.memSnsCh}">
+	                                                                        <c:if test="${output.memSnsCh == '01'}">
+	                                                                        	이메일
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memSnsCh == '02'}">
+	                                                                        	카카오
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memSnsCh == '03'}">
+	                                                                        	구글
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memSnsCh == '04'}">
+	                                                                        	네이버
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memSnsCh == null}">
+	                                                                        	기타
+	                                                                        </c:if>
+	                                                                        <c:if test="${output.memSnsCh == ''}">
+	                                                                        	기타
+	                                                                        </c:if>
+	                                                                        </td>
 	                                                                    </tr>
                                                                 </c:forEach>
                                                                 </tbody>
@@ -373,6 +421,17 @@ $(document).on("click",".profile-modal",function(event){
 	}
 
 });
+
+$(document).ready(function(){
+    // 라디오버튼 클릭시 이벤트 발생
+    $(".btn-secondary").click(function(){
+    	var memSortFilter =  $(this).attr("data-value"); 
+    	location.href="/admin/memberList?memSortFilter="+memSortFilter;
+    }) 
+    
+});
+
+
 </script>
 <!-- bootstrap js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

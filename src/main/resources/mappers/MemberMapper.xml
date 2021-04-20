@@ -67,7 +67,7 @@
     		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
     		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
     		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
-    		mem_date, mem_edit_date
+    		mem_date, mem_edit_date, mem_sns_ch
     	FROM MemList
 		<where>
 			<if test="memId != null and memId != ''">
@@ -87,6 +87,9 @@
 			</if>
 			<if test="memAddr2 != null and memAddr2 != ''">
 				OR mem_addr2 LIKE concat('%', #{memAddr2}, '%')
+			</if>
+			<if test="memSort != null and memSort != ''">
+				AND mem_Sort = #{memSort}
 			</if>
 		</where>
 		ORDER BY mem_date DESC
@@ -207,6 +210,9 @@
 			</if>
 			<if test="memAddr2 != null and memAddr2 != ''">
 				OR mem_addr2 LIKE concat('%', #{memAddr2}, '%')
+			</if>
+			<if test="memSort != null and memSort != ''">
+				AND mem_Sort = #{memSort}
 			</if>
 		</where>
 	</select>

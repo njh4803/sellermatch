@@ -38,7 +38,10 @@ public class AdminMemberController {
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage,
+			//0: 전체, 1:공급자, 2:판매자
+			@RequestParam(value = "memSortFilter", defaultValue = "0") String memSortFilter) {
+		
 		if (member == null) {
 			return new ModelAndView("admin/admin_login");
 		}
@@ -64,6 +67,9 @@ public class AdminMemberController {
 			input.setMemName(keyword);
 			input.setMemNick(keyword);
 		}
+		if (!memSortFilter.equals("0")) {
+			input.setMemSort(memSortFilter);
+		}
 		
 		//목록조회
 		
@@ -86,6 +92,7 @@ public class AdminMemberController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("memSortFilter",memSortFilter);
 		
 		return new ModelAndView("admin/member_list");
 	}
