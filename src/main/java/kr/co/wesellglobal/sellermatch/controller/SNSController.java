@@ -112,6 +112,7 @@ public class SNSController {
 				
 				// 세션 저장
 		    	session.setAttribute("member", result);
+		    	session.setAttribute("profile", profile);
 		    	
 				log.debug("member 세션 생성 완료 = " + webHelper.getSession("member"));
 				// 로그인 유지를 체크했다면

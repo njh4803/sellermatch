@@ -308,6 +308,7 @@ public class MemberRestController {
 		}
 		// 세션 저장
 		session.setAttribute("member", output);
+		session.setAttribute("profile", profile);
 		
 		// 로그인 유지를 체크했다면
 		if (continueLogin.equals("on")) {

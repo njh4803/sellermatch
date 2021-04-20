@@ -42,25 +42,23 @@ public class myPageController {
 	@Autowired
 	WebHelper webHelper;
 	
-	@RequestMapping(value = "/myPage/myHome", method = RequestMethod.GET)
-	public ModelAndView myHome(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
-		
-		MemberDto output = null;
-		IndusDto input = new IndusDto();
-		List<IndusDto> indusList = null;
-		
-		try {
-			output = memberService.getMember(member);
-			indusList = indusService.getIndusList(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("output", output);
-		model.addAttribute("indusList", indusList);
-		
-		return new ModelAndView("myHome");
-	}
+	/*
+	 * @RequestMapping(value = "/myPage/myHome", method = RequestMethod.GET) public
+	 * ModelAndView myHome(Model model, @SessionAttribute(value = "member", required
+	 * = false) MemberDto member) {
+	 * 
+	 * MemberDto output = null; IndusDto input = new IndusDto(); List<IndusDto>
+	 * indusList = null;
+	 * 
+	 * try { output = memberService.getMember(member); indusList =
+	 * indusService.getIndusList(input); } catch (Exception e) {
+	 * e.printStackTrace(); }
+	 * 
+	 * model.addAttribute("output", output); model.addAttribute("indusList",
+	 * indusList);
+	 * 
+	 * return new ModelAndView("myHome"); }
+	 */
 	
 	@RequestMapping(value = "/myPage/joinManage", method = RequestMethod.GET)
 	public ModelAndView joinManage(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
@@ -308,33 +306,34 @@ public class myPageController {
 	}
 	
 	
-	@RequestMapping(value = "/myPage/myHome2", method = RequestMethod.GET)
+	@RequestMapping(value = "/myPage/myHome", method = RequestMethod.GET)
 	public ModelAndView myHome2(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
 		
 		MemberDto output = null;
 		IndusDto input = new IndusDto();
 		List<IndusDto> indusList = null;
 		
-		ProfileDto input2 = new ProfileDto();
-		input2.setProfileMemId(member.getMemId());
-		ProfileDto profile = null;
-		
-		if (member.getMemSort() == "1" | member.getMemSort() == "2") {
-			input2.setProfileSort(member.getMemSort());
-		}
+		/*
+		 * ProfileDto input2 = new ProfileDto();
+		 * input2.setProfileMemId(member.getMemId()); ProfileDto output2 = null;
+		 * 
+		 * if (member.getMemSort() == "1" | member.getMemSort() == "2") {
+		 * input2.setProfileSort(member.getMemSort()); }
+		 */
 		
 		try {
-			output = memberService.getMember(member);
+			//output = memberService.getMember(member);
 			indusList = indusService.getIndusList(input);
-			profile = profileService.getProfile(input2);
+			//output2 = profileService.getProfile(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("profile", profile);
-		model.addAttribute("output", output);
+		/*
+		 * model.addAttribute("output2", output2); model.addAttribute("output", output);
+		 */
 		model.addAttribute("indusList", indusList);
 		
-		return new ModelAndView("myHome2");
+		return new ModelAndView("myHome");
 	}
 }
