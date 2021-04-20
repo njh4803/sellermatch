@@ -39,7 +39,7 @@
     	<div class="main-0002 clearfix">
     		<div class="main-003">
     			'매칭 무료등록'을 1분만에 해보세요.<br>
-				쉽게 빠르게 판매자/공급자와 직거래 할 수 있어요.<br>
+				쉽고 빠르게 판매자/공급자와 직거래 할 수 있어요.<br>
     		</div>
     	</div>
     	<div class="main-0003 clearfix">
@@ -405,7 +405,7 @@
    		</div>
     </div>
 </div>
-<input type="text" value="http://sellermatch.co.kr/temp" id="urlAddress" style="display:none;">
+<input type="text" value="http://sellermatch.co.kr/" id="urlAddress" style="display:none;">
 <%@ include file="inc/footer.jsp"%>
 <script>
 $(document).ready(function() {

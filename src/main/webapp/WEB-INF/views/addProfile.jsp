@@ -456,7 +456,7 @@ $(document).ready(function() {
                },
                success: function() {
                	swal('알림', '프로필이 등록되었습니다.', 'success').then(function(result) {
-                       window.location = ROOT_URL + '/temp';
+                       window.location = ROOT_URL + '/';
                    });
                }
         });

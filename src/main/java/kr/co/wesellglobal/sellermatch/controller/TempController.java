@@ -37,12 +37,6 @@ public class TempController {
 	@Autowired
 	WebHelper webHelper;
 	
-	@RequestMapping(value = "/temp", method = RequestMethod.GET)
-	public ModelAndView home(Model model) {
-		
-		return new ModelAndView("main");
-	}
-	
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
 	public ModelAndView board(Model model,
 			@RequestParam(value = "boardType", required = false) String boardType,

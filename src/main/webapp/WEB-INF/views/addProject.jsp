@@ -777,7 +777,7 @@ $(document).ready(function() {
         },
         success: function(json) {
         	swal('알림', '거래처가 등록되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/temp';
+                window.location = ROOT_URL + '/';
             });
         },
     });	
@@ -798,7 +798,7 @@ $(document).ready(function() {
                },
                success: function() {
                	swal('알림', '프로젝트가 등록되었습니다.', 'success').then(function(result) {
-                       window.location = ROOT_URL + '/temp';
+                       window.location = ROOT_URL + '/';
                    });
                }
         });

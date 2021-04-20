@@ -32,7 +32,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Model model) {
 		
-		return new ModelAndView("home");
+		return new ModelAndView("main");
 	}
 	
 }

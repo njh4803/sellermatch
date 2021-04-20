@@ -37,7 +37,7 @@
         			셀러매치
         		</div>
         		<div class="f_btm">
-	        		<div><a href="${pageContext.request.contextPath}/temp">메인</a></div>
+	        		<div><a href="${pageContext.request.contextPath}/">메인</a></div>
 	        		<div><a href="${pageContext.request.contextPath}/project/find">거래처 찾기</a></div>
 	        		<div><a href="${pageContext.request.contextPath}/seller/find">판매자 찾기</a></div>
 	        		<div><a href="${pageContext.request.contextPath}/board?boardType=1">이용안내</a></div>

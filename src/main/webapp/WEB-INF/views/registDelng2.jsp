@@ -373,9 +373,9 @@ $(document).ready(function(){
 										<div class="th" style="width: 170px;">지원자</div>						
 										<div class="th" style="width: 454px;">판매채널</div>
 										<div class="th" style="width: 170px;">매출규모</div>
-										<div class="th" style="width: 130px;">승인/거절</div>
+										<!--<div class="th" style="width: 130px;">승인/거절</div>-->
 
-										<!-- <div class="th" style="width: 130px;">연락처</div> -->
+										<div class="th" style="width: 130px;">연락처</div>
 									</div>
 									{{#output}}
 										<div class="tr">
@@ -388,7 +388,8 @@ $(document).ready(function(){
 											<div class="td" style="width: 170px;">{{profileVolume}}</div>
 										{{/ifCond}}
 											<div class="td" style="width: 130px;">
-												<div class="btn-group">
+												{{memTel}}
+												<!--<div class="btn-group">
         											<button type="button" class="btn btn_toggle" data-toggle="dropdown">관리하기</button>
         											<div class="dropdown-menu">
 														<div class="dropdownTextDiv ddtd_accept">
@@ -398,7 +399,7 @@ $(document).ready(function(){
 															<button type="button" class="dropdown-item reject_btn" data-applyprojid="{{applyProjId}}" data-memidx="{{memIdx}}">지원거절</button> 
         												</div>
 													</div>
-												</div>
+												</div>-->
 											</div>
 										</div>
 									{{/output}}

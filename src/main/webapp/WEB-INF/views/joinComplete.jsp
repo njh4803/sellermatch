@@ -20,8 +20,8 @@
 <%-- 		  		<div class="goProfile" OnClick="location.href ='${pageContext.request.contextPath}/profile'" style="cursor:pointer;">
 			      	<a href="${pageContext.request.contextPath}/profile">프로필 등록하기</a>
 			    </div> --%>
-			    <div class="goBack" OnClick="location.href ='${pageContext.request.contextPath}/temp'" style="cursor:pointer;">
-			      	<a href="${pageContext.request.contextPath}/temp">원래 페이지로 돌아가기</a>
+			    <div class="goBack" OnClick="location.href ='${pageContext.request.contextPath}/'" style="cursor:pointer;">
+			      	<a href="${pageContext.request.contextPath}/">원래 페이지로 돌아가기</a>
 			    </div>
 		    </div>
 	    </div>
