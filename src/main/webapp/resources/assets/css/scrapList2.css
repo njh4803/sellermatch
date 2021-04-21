@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+.myProjBox2 {
+	display: inline-block;
+	height: 50px;
+	width: 100%;
+}
+
+.proj-type {
+	vertical-align: middle;
+	display: table-cell;
+	width: 256px;
+	height: 50px;
+	background-color: #ffffff;
+	border-right: solid 1px #cccccc;
+}
+
+.proj-type .textBox1 {
+	font-size: 20px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
+	background-color: #ffffff;
+	/* color: #ff570e; */
+}
+
+.proj-type .textBox1 button {
+	font-size: 20px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	background-color: #ffffff;
+}
+
+.p-type {
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
+	/* color: #ff550e; */
+}
+#myProject-table {
+	margin-left: 15px;
+}
+.myProject-table .th {
+	display: table-cell;
+	padding: 9px 0;
+	background-color: #fff6f2;
+	margin-top: 15px;
+	border-top: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+	height: 38px;
+	font-size: 15px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
+}
+
+.myProject-table .td {
+	display: table-cell;
+	padding: 5px 0;
+	background-color: #ffffff;
+	height: 38px;
+	border-bottom: solid 1px #cccccc;
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
+}
+
+.myProject-table .td button {
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+}
+
+.apply-table .th {
+	border-top: none !important;
+	border-bottom: none !important;
+}
+
+.apply-table .td {
+	border-bottom: none !important;
+	background-color: #fff6f2;
+}
+
+.myProject-table div .tr:last-child {
+	border-bottom: solid 1px #cccccc !important;
+}
+
+.myProject-table .th:nth-child(1), .myProject-table .td:nth-child(1) {
+	width: 120px;
+}
+
+.myProject-table .th:nth-child(2), .myProject-table .td:nth-child(2) {
+	width: 515px;
+}
+
+.myProject-table .th:nth-child(3), .myProject-table .td:nth-child(3) {
+	width: 170px;
+}
+
+.myProject-table .th:nth-child(4), .myProject-table .td:nth-child(4) {
+	width: 120px;
+}
+
+.myProject-table .th:nth-child(5), .myProject-table .td:nth-child(5) {
+	width: 120px;
+}
+
+.cursor {
+	cursor: pointer;
+}
+
+.applyStateBox {
+	width: 100px;
+	height: 30px;
+	margin-left: 10px;
+	padding-top: 4px;
+	border-radius: 3px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+}
+
+.applyWait {
+	color: #858585;
+	cursor: pointer;
+}
+
+.applyAccept {
+	color: #4658ce;
+}

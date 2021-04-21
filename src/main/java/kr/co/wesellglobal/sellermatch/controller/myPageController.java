@@ -231,11 +231,8 @@ public class myPageController {
 		return webHelper.getJsonData(data);
 	}
 	
-	@RequestMapping(value = "/myPage/delngManage/scrapList", method = RequestMethod.GET)
-	public ModelAndView scrapList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
-			@RequestParam(value = "applyType", required = false)String applyType,
-			@RequestParam(value = "applyProjState", required = false)String applyProjState,			
-			@RequestParam(value = "keyword", required = false) String keyword,
+	@RequestMapping(value = "/myPage/scrapList", method = RequestMethod.GET)
+	public ModelAndView scrapList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,	
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		
@@ -265,7 +262,7 @@ public class myPageController {
 		model.addAttribute("myProjectCount", myProjectCount);
 		model.addAttribute("memSort", member.getMemSort());
 		
-		return new ModelAndView("scrapList");
+		return new ModelAndView("scrapList2");
 	}
 	
 	@RequestMapping(value = "/myPage/myApplyList", method = RequestMethod.GET)
