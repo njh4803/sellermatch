@@ -233,7 +233,7 @@ $(document).ready(function(){
 	});
 	//스크랩 리스트
 	$('.scrapBtn').on('click', function(){
-		location.href="/myPage/delngManage/scrapList";
+		location.href="/myPage/scrapList";
 	});
 	//프로필 수정
 	$('.myPage_r_profileBox').on('click', function(){

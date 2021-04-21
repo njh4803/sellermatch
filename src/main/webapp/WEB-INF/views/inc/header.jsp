@@ -11,7 +11,7 @@
 		<meta name="description" content="Phoenixcoded">
 		<meta name="keywords" content=", Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
 		<meta name="author" content="Phoenixcoded">
-    
+    	<meta name="naver-site-verification" content="64fa4a3b7f81e009df252e28da48ddee060424c3" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
         <link href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" rel="stylesheet" type="text/css">
