@@ -342,6 +342,8 @@ public class MemberRestController {
 		session.setAttribute("member", output);
 		session.setAttribute("profile", profile);
 		
+		session.setAttribute("profileId", profile.getProfileId());
+		
 		// 로그인 유지를 체크했다면
 		if (continueLogin.equals("on")) {
 			int amount =60 *60 *24 *7;

@@ -8,14 +8,66 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/template/assets/css/file.css">
  <!-- ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
-<link href="${pageContext.request.contextPath}/assets/css/addProject.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/addProject.css" rel="stylesheet" type="text/css"> 
 <div class="partner_bnr">
     <div class="partner_wrap">
-	    <div class="img-container">
-	     	<img class="p-img" alt="" src="${pageContext.request.contextPath}/assets/img/addProjImg.png">
-	        <h2>거래 상대를 찾는 간편하고 확실한 방법</h2>
-	        <h3>찾고 있는 거래 상대의 조건을 입력해보세요.</h3>
-	    </div>
+    	<c:if test="${profile.profileIndus != null }">
+	    	<div class="img-container">
+		     	<img class="p-img" alt="" src="${pageContext.request.contextPath}/assets/img/addProjImg.png">
+		        <h2>거래 상대를 찾는 간편하고 확실한 방법</h2>
+		        <h3>찾고 있는 거래 상대의 조건을 입력해보세요.</h3>
+		    </div>    	
+    	</c:if>
+		<c:if test="${profile.profileIndus == null }">
+		    <div class="profile-container">
+		     	<div class="profile-box">
+		     		<div>${member.memNick}님,</div>
+		     			<div class="textBox1"><strong>거래처 등록</strong>과 <strong>프로필 등록</strong>을 함께 해보세요!</div>
+		     			<div class="textBox2">거래처 등록 이전에 <strong>프로필 등록</strong>을 해주시면</div>
+		     		<div>원하는 거래처와 더 빨리 협상할 수 있습니다.</div>
+		     	</div>
+			    <div class="profile-box2">
+			    	<c:if test="${member.memSort == 2}">
+		     			<div>
+		     				<img alt="" src="${pageContext.request.contextPath}/assets/img/accept.png">
+		     				판매자 리스트에 바로 노출됩니다.
+		     			</div>
+	     			</c:if>		     			
+		     			<div>
+		     				<img alt="" src="${pageContext.request.contextPath}/assets/img/accept.png">
+		     				상대방에게 신뢰도를 줍니다.
+		     			</div>
+		     			<div>
+		     				<img alt="" src="${pageContext.request.contextPath}/assets/img/accept.png">
+		     				당신의 매력을 바로 전달합니다.
+		     			</div>
+		     			<div>
+		     				<img alt="" src="${pageContext.request.contextPath}/assets/img/accept.png">
+		     				당신의 프로필을 보고 지원승인을 결정합니다.
+		     			</div>
+
+	     		</div>
+	     		<div class="profile-box3">
+	     			
+		     			더 확실한 거래를 위해<br>
+		     		<div class="textBox">
+		     			프로필도 함께 등록하시겠습니까?	     			
+	     			</div>
+	     			<c:if test="${member.memSort == 1}">
+	     				<button id="addProfile" class="findSeller">판매자 찾기 + 프로필 등록하기</button>
+	     			</c:if>
+	     			<c:if test="${member.memSort == 2}">
+	     				<button id="addProfile">공급자 찾기 + 프로필 등록하기</button>
+	     			</c:if>
+	     			<button id="laterProfile">나중에 프로필 등록하기</button>
+	     			<span>*프로필은 마이페이지 > 프로필관리에서 언제나 등록 및 수정 가능합니다.</span>
+	     		</div>
+	     		
+	     		<div class="img-container2">
+			     	<img class="p-img" alt="" src="${pageContext.request.contextPath}/assets/img/addProjImg.png">
+			    </div> 
+		    </div>
+	    </c:if>
 		<div class="addbox2 projectAdd">
 		    	<div class="text-center projectBox">
 					<form action="${pageContext.request.contextPath}/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
@@ -312,10 +364,10 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 			                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
 			                              	</div>
 			                           </div>
-				                        <ul id="tag-list">
+				                        <ul id="projTag-list">
 										</ul>
-			                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기 ( 엔터 또는 스페이스바로 입력가능 )">
-			                        	<input type="hidden" value="" name="tag" id="rdTag" />
+			                        	<input type="text" class="inputForm" id="projTag" placeholder="태그 입력하기 ( 엔터 또는 스페이스바로 입력가능 )">
+			                        	<input type="hidden" value="" name="projTag" id="proj-rdTag" />
 				   					</td>
 				   				</tr>
 					   				<!-- <tr>
@@ -354,7 +406,159 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 								거래처 등록
 							</button>
 					    </div>
-		   			</form>    	
+						<div id="profile_form">
+							<input type="hidden" name="profileId" id="profileId" value="${profile.profileId}">
+							<input type="hidden" name="profileSort" id="profileSort" value="${profile.profileSort}">
+							<input type="hidden" name="profileMemId" id="profileMemId" value="${profile.profileMemId}">
+							<div class="infoContainer">
+								<div>
+									<div>
+										<div style="margin-top: 20px;">
+											<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
+												<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/img/profile.png"/>
+											</div>
+										</div>
+										<div style="">
+											<input id = "file_route3" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
+												<label class="fileLable">사진 선택
+													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" 
+													onchange="javascript:document.getElementById('file_route3').value=this.value" accept=".jpg,.jpeg,.png,.gif,.bmp"/>
+												</label>
+										</div>
+									</div>
+								</div>
+								<div class="infoBox">
+									<div class="inputGroup">
+									<c:if test="${member.memSort == '1'}">
+										<label>공급자 소개</label>
+										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다">
+									</c:if>
+				    				<c:if test="${member.memSort == '2'}">
+										<label>판매자 소개</label>
+										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
+									</c:if>	
+				    					
+									</div>
+									<c:if test="${member.memSort == '2'}">
+									<div class="inputGroup">
+				    					<label>매출 규모</label>
+				    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출" step="1000000" min="0">
+									</div>
+									<div class="inputGroup">
+				    					<label>판매경력</label>
+				    					<select id="profileCareer" name="profileCareer" class="inputForm">
+		                                    <option value="0">경력없음</option>
+		                                    <option value="1">1개월 이상 ~ 3개월 미만</option>
+		                                    <option value="3">3개월 이상 ~ 6개월 미만</option>
+		                                    <option value="6">6개월 이상 ~ 1년 미만</option>
+		                                    <option value="9">1년 이상 ~ 3년 미만</option>
+		                                    <option value="8">3년 이상</option>
+		                                </select>
+									</div>
+									<div class="inputGroup">
+				    					<label>채널</label>
+				    					<div class="inputForm inputGroup2">
+				    						<input id="ch1" type="checkbox" name="profileCh" value="1"/>
+		                                	<label for="ch1"><span>오픈마켓</span></label>
+		                                	<input id="ch2" type="checkbox" name="profileCh" value="2"/>
+		                                	<label for="ch2"><span>종합몰</span></label>
+		                                	<input id="ch3" type="checkbox" name="profileCh" value="3"/>
+		                                	<label for="ch3"><span>폐쇄몰</span></label>
+		                                	<input id="ch4" type="checkbox" name="profileCh" value="4"/>
+		                                	<label for="ch4"><span>커뮤니티</span></label>
+		                                	<input id="ch5" type="checkbox" name="profileCh" value="5"/>
+		                                	<label for="ch5"><span>SNS</span></label>
+		                                	<input id="ch6" type="checkbox" name="profileCh" value="6"/>
+		                                	<label for="ch6"><span>오프라인</span></label>
+		                                	<input id="ch7" type="checkbox" name="profileCh" value="7"/>
+		                                	<label for="ch7"><span>해외</span></label>
+		                                </div>
+									</div>
+									</c:if>
+									<div class="inputGroup">
+				    					<label>등록자 지역</label>
+			    						<select id="profileNation" name="profileNation" class="inputForm">
+		                                    <option value="">선택하세요.</option>
+		                                    <option value="02">서울</option>
+		                                    <option value="031">경기</option>
+		                                    <option value="032">인천</option>
+		                                    <option value="033">강원</option>
+		                                    <option value="041">충남</option>
+		                                    <option value="042">대전</option>
+		                                    <option value="043">충북</option>
+		                                    <option value="051">부산</option>
+		                                    <option value="052">울산</option>
+		                                    <option value="053">대구</option>
+		                                    <option value="054">경북</option>
+		                                    <option value="055">경남</option>
+		                                    <option value="061">전남</option>
+		                                    <option value="062">광주</option>
+		                                    <option value="063">전북</option>
+		                                    <option value="044">세종특별자치시</option>
+		                                    <option value="064">제주특별자치도</option>
+		                                </select>
+									</div>
+									<div class="inputGroup">
+				    					<label>상품분야</label>
+			    						<select id="profileIndus" name="profileIndus" class="inputForm">
+		                                    <option value="">선택하세요.</option>
+		                                    <option value="01">가구/인테리어</option>
+		                                    <option value="02">도서</option> 
+		                                    <option value="03">디지털/가전</option>
+		                                    <option value="04">생활/건강</option>
+		                                    <option value="05">스포츠/레저</option>
+		                                    <option value="06">식품</option>
+		                                    <option value="07">여가/생활편의</option>
+		                                    <option value="08">출산/육아</option>
+		                                    <option value="09">패션의류</option>
+		                                    <option value="10">패션잡화</option>
+		                                    <option value="11">화장품/미용</option>
+		                                    <option value="12">기타</option>
+		                                </select>
+									</div>
+									<div class="inputGroup">
+				    					<label>사업자 번호</label>
+			    						<input type="text" name="profileBizNum" id="profileBizNum" class="inputForm"/>
+									</div>
+									<div class="inputGroup">
+				    					<label>사업자 유형</label>
+		   								<select id="profileBizSort" name="profileBizSort" class="inputForm">
+		                                       <option value="">선택하세요.</option>
+		                                       <option value="1">법인사업자</option>
+		                                       <option value="2">개인사업자</option>
+		                                       <option value="3">간이과세자</option>
+		                                       <option value="4">개인</option>
+		                                </select>
+									</div>
+									<c:if test="${member.memSort == '2'}">
+									<div class="inputGroup">
+				    					<label class="hashtag">해시태그</label>
+				    					<div class="inputForm inputGroup2 hashtag">
+			                                <div>
+						                        <ul id="tag-list">
+												</ul>
+					                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기 ( 엔터 또는 스페이스바로 입력가능 )">
+					                        	<input type="hidden" value="" name="tag" id="rdTag" />
+					                        </div>
+				                        </div>
+									</div>
+									</c:if>
+								</div>							
+							</div>
+					   		<div>
+					   			<c:if test="${member.memSort == '1'}">
+			    					<button type="submit" class="proBtn findSeller">
+			    						판매자 찾기 + 프로필 등록하기
+			    					</button>
+			    				</c:if>
+			    				<c:if test="${member.memSort == '2'}">
+			    					<button type="submit" class="proBtn">
+			    						공급자 찾기 + 프로필 등록하기
+			    					</button>
+			    				</c:if>
+		    				</div>	
+					   	</div>	   
+					</form>	   				
 			  	</div>
 			</div>	    
 	    </div>
@@ -375,20 +579,40 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 <script>
 $(document).ready(function() {
 	
-    var tag = {};
-    var counter = 0;
+	
+	$(document).on("click", "#addProfile", function () {
+		var text = "프로필도 함께 등록해보세요!";
+		$('.textBox').text(text);
+		$('.textBox1').hide();
+		$('.textBox2').show();
+		$('#laterProfile').remove();
+		$('#addProfile').remove();
+		$('.addBtn').remove();
+		$('#profile_form').show();
+		$('.img-container2').show();
+	});
+	$(document).on("click", "#laterProfile", function () {
+		var text = "프로필을 꼭 등록해주세요!";
+		$('.textBox').text(text);
+		$('#laterProfile').remove();
+		$('#addProfile').remove();
+		$('#profile_form').remove();
+	});
+	
+    var projTag = {};
+    var p_counter = 0;
 
     // 태그를 추가한다.
     function addTag (value) {
-        tag[counter] = value; // 태그를 Object 안에 추가
-        counter++; // counter 증가 삭제를 위한 del-btn 의 고유 id 가 된다.
+    	projTag[p_counter] = value; // 태그를 Object 안에 추가
+        p_counter++; // p_counter 증가 삭제를 위한 p-del-btn 의 고유 id 가 된다.
     }
 	
 	// 해시태그
-    $("#tag").on("keypress", function (e) {
+    $("#projTag").on("keypress", function (e) {
         var self = $(this);
         var checkTag_count = $('input[name=projKeyword]:checked').length;
-        var tag_count = $('.tag-item').length;
+        var tag_count = $('.projTag-item').length;
         var count = checkTag_count + tag_count + 1;
 
         // input 에 focus 되있을 때 엔터 및 스페이스바 입력시 구동
@@ -400,7 +624,7 @@ $(document).ready(function() {
             if (tagValue !== "") {          	
 
                 // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
-                var result = Object.values(tag).filter(function (word) {
+                var result = Object.values(projTag).filter(function (word) {
                     return word === tagValue;
                 })
                 
@@ -413,7 +637,7 @@ $(document).ready(function() {
     				} else if(count > 5){
     					swal('알림', '5개까지 등록가능합니다.', 'info');
     				} else {
-                        $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
+                        $("#projTag-list").append("<li class='projTag-item'>"+tagValue+"<span class='p-del-btn' idx='"+p_counter+"'>x</span></li>");
                         addTag(tagValue);
                         self.val("");    					
     				}
@@ -423,24 +647,24 @@ $(document).ready(function() {
             }
             e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
         }
-        var value = marginTag(); // return array
+        var value = projMarginTag(); // return array
         console.log(value);
-        $("#rdTag").val(value); 
+        $("#proj-rdTag").val(value); 
     });
 
     // 삭제 버튼 
     // 삭제 버튼은 비동기적 생성이므로 document 최초 생성시가 아닌 검색을 통해 이벤트를 구현시킨다.
-    $(document).on("click", ".del-btn", function (e) {
+    $(document).on("click", ".p-del-btn", function (e) {
         var index = $(this).attr("idx");
-        tag[index] = "";
+        projTag[index] = "";
         $(this).parent().remove();
-        var value = marginTag(); // return array
-        $("#rdTag").val(value);
+        var value = projMarginTag(); // return array 
+        $("#proj-rdTag").val(value);
     });	
 
     // 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
-    function marginTag () {
-        return Object.values(tag).filter(function (word) {
+    function projMarginTag () {
+        return Object.values(projTag).filter(function (word) {
             return word !== "";
         });
     }
@@ -448,7 +672,7 @@ $(document).ready(function() {
     // 해시태그 체크박스 + 직접입력 5개이상 막기
     $(document).on("click", ".projKeyword", function(){
         var checkTag_count = $('input[name=projKeyword]:checked').length;
-        var tag_count = $('.tag-item').length;
+        var tag_count = $('.projTag-item').length;
         var count = checkTag_count + tag_count;
     	if (count > 5) {
     		$(this).prop('checked', false);
@@ -626,7 +850,7 @@ $(document).ready(function() {
         $.ajax({
             url: uploadURL,
             type: "POST",
-            contentType:false,
+            contentType:false, 
             processData: false,
             cache: false,
             data: formData,
@@ -718,6 +942,16 @@ $(document).ready(function() {
 	        },
 	        projChannel: 'required',
 	        projNation: 'required',
+	        // [자기소개] 필수
+	        profileIntro: {
+	            required: true, minlength: 5, maxlength: 100, 
+	        },
+	        // [상품분류] 필수
+	        profileIndus: 'required',
+	     	// [채널] 필수
+	        profileCh: 'required',
+	     	// [등록자 지역] 필수
+	        profileNation: 'required',
 	    },
 	    messages: {
 	    	file_route: {
@@ -755,6 +989,14 @@ $(document).ready(function() {
 	        },
 	        projChannel: '채널을 선택해주세요.',
 	        projNation: '등록지역을 선택해주세요.',
+	        profileIntro: {
+	            required: '소개를 입력해주세요.',
+	            minlength: '제목은 최소 5 글자 이상 입력하셔야 합니다.',
+	            maxlength: '제목은 최대 100 글자까지 가능합니다.',
+	        },
+	        profileIndus: '상품분류를 선택해주세요.',
+	        profileCh: '채널을 선택해주세요.',
+	        profileNation: '등록자 지역을 선택해주세요.',
 	    }
 	});
 	
@@ -831,6 +1073,119 @@ $(document).ready(function() {
     };
 });
 </script>
+<script>
+$(document).ready(function() {
+    var tag = {};
+    var tag_count = $('.del-btn').length;
+    var counter = tag_count+0;
+    
+    for (var i = 0; i < tag_count; i++) {
+    	tag[i] = $('#del-btn'+i).data('value');
+	}
+    var value = marginTag(); // return array
+    console.log(value);
+    $("#rdTag").val(value);
+
+    // 태그를 추가한다.
+    function addTag (value) {
+        tag[counter] = value; // 태그를 Object 안에 추가
+        counter++; // counter 증가 삭제를 위한 del-btn 의 고유 id 가 된다.
+    }
+	
+	// 해시태그
+    $("#tag").on("keypress", function (e) {
+        var self = $(this);
+        var checkTag_count = $('input[name=profileHashtag]:checked').length;
+        var tag_count = $('.tag-item').length;
+        var count = checkTag_count + tag_count + 1;
+
+        // input 에 focus 되있을 때 엔터 및 스페이스바 입력시 구동
+        if (e.key === "Enter" || e.keyCode == 32) {
+
+            var tagValue = self.val(); // 값 가져오기
+
+            // 값이 없으면 동작 ㄴㄴ
+            if (tagValue !== "") {          	
+
+                // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+                var result = Object.values(tag).filter(function (word) {
+                    return word === tagValue;
+                })
+                
+                // 태그 중복 검사
+                if (result.length == 0) { 
+                	
+                	// 태그값 20글자 제한
+                	if (tagValue.length > 20) {
+                		swal('알림', '20글자까지 입력가능합니다.', 'info');
+    				} else if(count > 5){
+    					swal('알림', '5개까지 등록가능합니다.', 'info');
+    				} else {
+                        $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
+                        addTag(tagValue);
+                        self.val("");    					
+    				}
+                } else {
+                	swal('알림', '이미 입력한 태그입니다.', 'info');
+                }
+            }
+            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+        }
+        var value = marginTag(); // return array
+        console.log(value);
+        $("#rdTag").val(value); 
+    });
+
+    // 삭제 버튼 
+    // 삭제 버튼은 비동기적 생성이므로 document 최초 생성시가 아닌 검색을 통해 이벤트를 구현시킨다.
+    $(document).on("click", ".del-btn", function (e) {
+        var index = $(this).attr("idx");
+        tag[index] = "";
+        $(this).parent().remove();
+        var value = marginTag(); // return array
+        $("#rdTag").val(value);
+    });	
+
+    // 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+    function marginTag () {
+        return Object.values(tag).filter(function (word) {
+            return word !== "";
+        });
+    }
+    
+    // 해시태그 체크박스 + 직접입력 5개이상 막기
+    $(document).on("click", "input[name=profileHashtag]", function(){
+        var checkTag_count = $('input[name=profileHashtag]:checked').length;
+        var tag_count = $('.tag-item').length;
+        var count = checkTag_count + tag_count;
+    	if (count > 5) {
+    		$(this).prop('checked', false);
+    		swal('알림', '5개까지 등록가능합니다.', 'info');
+		}
+    });	
+    
+	function handleImgfileSelect2(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				return;
+			}
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#profile-img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	};
+	// 프로필사진
+	$(document).on("change", "#profile-image" ,handleImgfileSelect2);    
+});
+</script>
 <script type="text/javascript">
 $(function() {
 	Handlebars.registerHelper('ckEditor', function () {
@@ -876,290 +1231,6 @@ function CKupdate(){
 
 //리사이징 제한
 CKEDITOR.config.resize_enabled = false;
-</script>
-<script type="text/x-handlebars-template" id="project-add-tmpl">
-<div class="partner_wrap addbox2 projectAdd">
-    	<div class="text-center projectBox">
-			<form action="${pageContext.request.contextPath}/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="projSort" value="{{memSort}}">
-				<input type="hidden" name="projMemId" value="{{memId}}">
-				<input type="hidden" name="projState" value="1">
-	    		<table class="projTable">
-	    			<tbody>
-	    				<tr>
-	    					<td>썸네일 사진</td>
-   							<td>
-    							<div>
-									<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-										<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-									    	src="${pageContext.request.contextPath}/assets/images/user.png"/>
-									</div>	
-    								<div style="display: flex;">
-                   		            	<input id = "file_route" type="text" class="formControl" readonly="readonly"/>
-                  		           		<label class="fileLable">
-                   		          			파일 선택
-                  		           		<input id = "image" name="projThumbnailImg" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-                     		        	</label>
-                    		        </div>
-               		            </div>
-   							</td>
-	    				</tr>
-	    				<tr>
-	    					<td>프로젝트 제목</td>
-							{{#ifCond memSort '==' 1}}
-	    					<td>
-	    						<div class="width-70">
-	    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="[다양한 건강식품 위탁판매 오픈마켓 판매자 10명 모집]">
-	    						</div>
-	    						<div class="width-30">
-		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
-		    							<option value="" selected="selected">[기본문구선택]</option>
-	                               		<option value="고매출 판매자를 찾습니다">고매출 판매자를 찾습니다</option>
-	                                	<option value="위탁전문 공급업체입니다">위탁전문 공급업체입니다</option>
-	                                	<option value="위탁판매자 찾습니다">위탁판매자 찾습니다</option>
-	                              	</select>
-	    						</div>
-	    					</td>
-							{{else}}
-	    					<td>
-	    						<div class="width-70">
-	    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="다앙한 건강식품 위탁판매 합니다">
-	    						</div>
-	    						<div class="width-30">
-		    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
-		    							<option value="" selected="selected">[기본문구선택]</option>
-	                               		<option value="고마진 공급자를 찾습니다">고마진 공급자를 찾습니다</option>
-	                                	<option value="위탁판매 전문셀러입니다">위탁판매 전문셀러입니다</option>
-	                                	<option value="위탁업체 찾습니다">위탁업체 찾습니다 </option>
-	                              	</select>
-	    						</div>
-	    					</td>
-							{{/ifCond}}
-	    				</tr>
-	    				<tr>
-	    					<td>상품분류</td>
-	    					<td>
-	    						<select id="projIndus" name="projIndus" class="inputForm width-100">
-                                    <option value="">선택하세요.</option>
-									{{#indusList}}
-										<option value="{{indusId}}">{{indusName}}</option>
-									{{/indusList}}
-                                </select>
-	    					</td>
-	    				</tr>
-						{{#ifCond memSort '==' 1}}
-	    				<tr>
-	    					<td>상품가격</td>
-	    					<td>
-	    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="100000000" value="0">
-	    					</td>
-	    				</tr>
-						{{/ifCond}}
-	    				<tr>
-	    					<td>판매마진</td>
-	    					<td>
-	    						<select id="projMargin" name="projMargin" class="inputForm width-100">
-                                    <option value="">선택하세요.</option>
-                                    <option value="10">10%이하</option>
-                                    <option value="20">11%~20%</option>
-                                    <option value="30">21%~30%</option>
-                                    <option value="31">30%초과</option>
-                                </select>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>등록지역</td>
-	    					<td>
-	    						<select id="projNation" name="projNation" class="inputForm width-100">
-                                    <option value="">선택하세요.</option>
-                                    <option value="02">서울</option>
-                                    <option value="031">경기</option>
-                                    <option value="032">인천</option>
-                                    <option value="033">강원</option>
-                                    <option value="041">충남</option>
-                                    <option value="042">대전</option>
-                                    <option value="043">충북</option>
-                                    <option value="051">부산</option>
-                                    <option value="052">울산</option>
-                                    <option value="053">대구</option>
-                                    <option value="054">경북</option>
-                                    <option value="055">경남</option>
-                                    <option value="061">전남</option>
-                                    <option value="062">광주</option>
-                                    <option value="063">전북</option>
-                                    <option value="044">세종특별자치시</option>
-                                    <option value="064">세종특별자치도</option>
-                                </select>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>공급방법</td>
-	    					<td>
-		    					<select id="projSupplyType" name="projSupplyType" class="inputForm width-100">
-	                                <option value="">선택하세요.</option>
-	                                <option value="1">OEM</option>
-	                                <option value="2">위탁판매</option>
-	                                <option value="3">도매공급</option>
-	                                <option value="4">운영대행</option>
-	                                <option value="5">경매공급</option>
-	                            </select>
-	    					</td>
-	    				</tr>
-	    				<tr>
-							{{#ifCond memSort '==' 1}}
-	    						<td>채널</td>
-							{{else}}
-								<td>판매 채널</td>
-							{{/ifCond}}
-	    					<td>
-		    					<div class="inputForm width-100">
-		    						<div class="row1">
-	                                	<input id="chk1" type="checkbox" name="projChannel" value="1">
-	                                	<label for="chk1"><span>오픈마켓</span></label>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input id="chk2" type="checkbox" name="projChannel" value="2">
-	                                	<label for="chk2"><span>종합몰</span></label>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input id="chk3" type="checkbox" name="projChannel" value="3">
-	                                	<label for="chk3"><span>폐쇄몰</span></label>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input id="chk4" type="checkbox" name="projChannel" value="4">
-	                                	<label for="chk4"><span>커뮤니티</span></label>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input id="chk5" type="checkbox" name="projChannel" value="5">
-	                                	<label for="chk5"><span>SNS</span></label>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input id="chk6" type="checkbox" name="projChannel" value="6">
-	                                	<label for="chk6"><span>오프라인</span></label>
-		                           	</div>
-		                           	<div class="row1">
-	                                	<input id="chk7" type="checkbox" name="projChannel" value="7">
-	                                	<label for="chk7"><span>해외</span></label>
-		                           	</div>
-		                        </div>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>모집마감일</td>
-	    					<td>
-	    						<input type="date" name="projEndDate" id="projEndDate" class="inputForm width-100">
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>모집인원</td>
-	    					<td>
-	    						<input type="number" name="projRecruitNum" id="projRecruitNum" class="inputForm width-100" min="1" max="100" value="1"/>
-	    					</td>
-	    				</tr>
-	    				<tr>
-	    					<td>상세설명</td>
-	    					<td>
-	    						<div>
-			                       	<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"></textarea>
-									
-	                        </div>
-   					</td>
-   				</tr>
-   				<tr>
-   					<td>필수요건</td>
-   					<td>
-   						<div class="width-70">
-   							<input type="text" class="inputForm" id="projRequire" name="projRequire">
-   						</div>
-						{{#ifCond memSort '==' 1}}
-   						<div class="width-30">
-    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
-    							<option value="" selected="selected">[기본문구선택]</option>
-                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
-                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
-                               	<option value="마진협상가능">마진협상가능</option>
-                            </select>
-   						</div>
-						{{else}}
-   						<div class="width-30">
-    						<select id="projRequireSelect" name="projRequireSelect" class="inputForm">
-    							<option value="" selected="selected">[기본문구선택]</option>
-                              	<option value="경력자 필수입니다">경력자 필수입니다</option>
-                               	<option value="메일, 문자만 가능">메일, 문자만 가능</option>
-                               	<option value="마진협상가능">마진협상가능</option>
-                            </select>
-   						</div>
-						{{/ifCond}}
-   					</td>
-   				</tr>
-   				<tr>
-   					<td>해시태그</td>
-   					<td>
-    					<div class="inputForm width-100">
-    						<div class="row1">
-                                   	<input type="checkbox" name="projKeyword" id="hash1" value="고경력선호">
-                                   	<label for="hash1"><span>고경력선호</span></label>
-                              	</div>
-                              	<div class="row1">
-                                   	<input type="checkbox" name="projKeyword" id="hash2" value="고마진상품">
-                                   	<label for="hash2"><span>고마진상품</span></label>
-                              	</div>
-                              	<div class="row1">
-                                   	<input type="checkbox" name="projKeyword" id="hash3" value="수익보장공급자">
-                                   	<label for="hash3"><span>수익보장공급자</span></label></span>
-                              	</div>
-                              	<div class="row1">
-                                   	<input type="checkbox" name="projKeyword" id="hash4" value="수출가능상품">
-                                   	<label for="hash4"><span>수출가능상품</span></label>
-                              	</div>
-                              	<div class="row1">
-                                   	<input type="checkbox" name="projKeyword" id="hash5" value="요즘뜨는제품">
-                                   	<label for="hash5"><span>요즘뜨는제품</span></label>
-                              	</div>
-                           </div>
-   					</td>
-   				</tr>
-   				<tr>
-   					<td>상세사진</td>
-   					<td>
-   						<!-- File upload card start -->
-						<div class="row1">
-							<div class="card-block">
-								<input type="hidden" id=detailImgList name="detailImgList">
-								<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
-								<input type="file" name="projDetailImg" id="fileUpload" style="display:none;" multiple/>
-  									<div id="imgBox" class="jFiler-items jFiler-row">
-															
-								</div>
-		                    </div>
-		                </div>
-						<!-- File upload card end -->                                                            
-   					</td>
-   				</tr>
-   				<tr>
-   					<td>첨부파일</td>
-   					<td>
-    					<div>
-    						<div style="display: flex;">
-                               	<input id = "file_route" type="text" class="formControl" readonly="readonly"/>
-                             	<label class="fileLable">
-                             		파일 선택
-                             		<input id = "image" name="projFile" value="" class="jFiler-input-button" type="file" style="display: none;" onchange="javascript:document.getElementById('file_route').value=this.value"/>
-                             	</label>
-                               </div>
-                           </div>
-   					</td>
-   				</tr>
-   			</tbody>
-   		</table>
-   		<div>
-	    	<button class="addBtn" type="submit">
-				프로젝트 등록
-			</button>
-	    </div>
-   	</form>    	
-  	</div>
-  </div>
 </script>
 <!-- jquery file upload js -->
 <script src="${pageContext.request.contextPath}/assets/pages/jquery.filer/js/jquery.filer.min.js" type="text/javascript"></script>

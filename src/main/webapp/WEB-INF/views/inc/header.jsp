@@ -132,7 +132,7 @@ header #m-search_frm{
 			                	<a href="${pageContext.request.contextPath}/member/joinMain">회원가입</a>
 		            		</c:when>
 		            		<c:otherwise>
-			            		<a href="${pageContext.request.contextPath}/myPage/myHome">${member.memNick}님</a>
+			            		<a href="${pageContext.request.contextPath}/myPage/myHome">${member.memNick}님</a> 
 			            		<span class="bar">|</span>
 		            			<a id="logout" href="javascript:void(0);">로그아웃</a>
 		            		</c:otherwise>

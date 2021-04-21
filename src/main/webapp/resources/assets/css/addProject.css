@@ -2,7 +2,7 @@
 
 .partner_bnr {
     width: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
     margin-top: 77px;
 }
 .partner_bnr2 {
@@ -87,7 +87,7 @@ a {
 }
 .partner_bnr .partner_wrap {
     width: 1280px;
-    margin: 77px auto;
+    margin: 0 auto;
     padding-top: 60px;
     text-align: center;
 }
@@ -166,6 +166,20 @@ label.error {
 	padding: 5px 10px;
 	margin: 0;
 	float: left;
+}
+#profile_form .inputGroup label.error{
+    background-color: inherit;
+    font-size: 10px;
+    color: red;
+    display: inline-block;
+    text-align: left;
+    padding: 5px 10px;
+    margin: 0;
+    margin-left: 300px;
+    height: auto !important;
+    position: absolute;
+    left: 47%;
+    margin-top: 37px;	
 }
 .jFiler-input-dragDrop {
     width: 100%;
@@ -411,6 +425,100 @@ input[type="checkbox"].findCheck:checked + label span {
 	margin-right: 125px;
 	vertical-align: top;
 }
+.img-container2{
+	display: none;
+	text-align: left;
+}
+.img-container2 .p-img{
+  width: 343.8px;
+  height: 278.6px;
+  margin: 40px 0 0 13.6px;
+  object-fit: contain;
+}
+.profile-container{
+    display: inline-block;
+    width: 473px;
+    margin-right: 103px;
+    vertical-align: top;
+    margin-top: 90px;
+}
+.profile-box{
+  font-size: 25px;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #484848;
+  margin-bottom: 60px;
+}
+.profile-box2{
+	font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: left;
+    color: #484848;
+}
+.profile-box2 div{
+	margin-bottom: 20px;
+}
+.profile-box2 img{
+    width: 20px;
+    height: 20px;
+    margin-top: -3px;
+}
+.profile-box3{
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #484848;
+  margin-top: 60px;
+}
+.profile-box3 span{
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #a4a4a4;	
+}
+#addProfile{
+  width: 480px;
+  height: 60px;
+  margin-top: 15px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(97deg, #ff8000, #ff540f);	
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #ffffff;  
+}
+
+#addProfile.findSeller{
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #7585e8;	
+  color: #ffffff;
+  background-image: none;
+}
+
+#laterProfile{
+  width: 480px;
+  height: 60px;
+  margin: 15px 0 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #e9e9e9;	
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #484848;  
+}
 .projectAdd{
 	display: inline-block;
 }
@@ -446,19 +554,248 @@ input[type="checkbox"].findCheck:checked + label span {
     font-size: 14px;
     letter-spacing: -.5px;
 }
-#proj_form ul li.tag-item {
+#proj_form ul li.projTag-item {
     padding: 4px 8px;
     background-color: #ececec;
     color: #858585;
     margin: 5px 0;
 }
 
-#proj_form .tag-item:hover {
+#proj_form .projTag-item:hover {
 	background-color: #fff9ec;
 	color: #ff9900;
 }
 
-.del-btn {
+.p-del-btn {
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 8px;
+    vertical-align: top;
+}
+#projTag{
+	border: 1px solid #aaa;
+	margin-bottom: 10px;
+}
+#projTag-list ul{
+	padding: 0;
+}
+.textBox2{
+	display: none;
+}
+
+/* 프로필 등록폼 CSS */
+#profile_form{
+	display: none;
+}
+#profile_form .check {
+	background-color: #E52867;
+	color: white;
+	border-radius: 10px;
+	width: 300px;
+	height: 100px;
+	font-size: 20px;
+}
+
+#profile_form a {
+	text-decoration: none;
+	color: black;
+}
+
+#profile_form .row1 {
+	display: inline-block;
+}
+
+#profile_form .fileLable {
+	width: 80px;
+	height: 30px;
+	padding: 6.5px 0;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	border-radius: 4px;
+	border: solid 1px #cccccc;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.42;
+	letter-spacing: normal;
+	text-align: center;
+	color: #707070;
+	background-image: none;
+}
+
+#profile_form .addBtn {
+	background-color: #E52867;
+	color: white;
+	border-radius: 10px;
+	width: 150px;
+	height: 50px;
+	font-size: 20px;
+	margin: 30px 0;
+}
+
+#profile_form .infoContainer {
+	display: inline-block;
+	text-align: center;
+	width: 700px;
+}
+
+.infoBox {
+	display: inline-block;
+	text-align: center;
+	width: 700px;
+	border: solid 1px #cccccc;
+	background-color: #fff;
+	border-radius: 5px;
+}
+
+.inputGroup {
+	text-align: left;
+}
+
+#profile_form .inputGroup label {
+	width: 300px;
+	height: 50px;
+	padding: 15px 0 14px;
+	background-color: #fff6f2;
+	font-family: NotoSansKR;
+	font-size: 15px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
+	line-height: 1.4;
+	margin-bottom: 0;
+}
+#profile_form .inputGroup:first-child label {
+	border-top-left-radius: 5px;	
+}
+#profile_form .inputGroup:last-child label {
+	border-bottom-left-radius: 5px;	
+}
+.inputGroup2 {
+	height: auto !important;
+	border: none !important;
+	margin: 0 !important;
+    padding: 0;
+    vertical-align: top;
+}
+
+.inputGroup2 label {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	background-color: #ffffff;
+	padding: 0;
+}
+
+#profile_form .inputForm {
+	width: 350px;
+	height: 30px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	margin: 6px 0 4px 0;
+	display: inline-block;
+}
+
+#profile_form .inputForm.hashtag {
+	margin-top: 15px;
+}	
+
+#profile_form label.hashtag {
+	vertical-align: top;
+    height: 88px;
+}
+#profile_form .inputGroup button {
+	width: 100px;
+	height: 30px;
+	margin: 0 0 0 15px;
+	padding: 6.5px 0;
+	border-radius: 4px;
+	border: solid 1px #cccccc;
+	font-family: NotoSansKRMedium;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.42;
+	letter-spacing: normal;
+	text-align: center;
+	color: #707070;
+	background-color: #ffffff;
+}
+
+#profile_form .proBtn {
+  width: 260px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-image: linear-gradient(99deg, #ff8000, #ff540f);
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+}
+#profile_form .proBtn.findSeller{
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+  background-color: #7585e8;	
+  color: #ffffff;
+  background-image: none;	
+}
+
+#profile_form .editPass {
+	width: 10px;
+	height: 16.6px;
+	object-fit: contain;
+	margin-top: -3px;
+}
+
+#profile_form input[type="checkbox"] + label {
+    background-color: #fff;
+    width: auto;
+    height: auto;
+    padding: 0;	
+    margin-left: 5px;
+}
+
+#profileVolume, #profileIntro, #profileBizNum {
+	padding-left: 4px;
+}
+#profile_form input[type=number]:hover::-webkit-inner-spin-button {
+	padding-right: 3px;
+    width: 30px;
+    height: 30px;
+}
+/* hashtag */
+#profile_form ul {
+    padding: 16px 0;
+    list-style: none;
+}
+
+#profile_form ul li {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 14px;
+    letter-spacing: -.5px;
+}
+#profile_form ul li.tag-item {
+    padding: 4px 8px;
+    background-color: #ececec;
+    color: #858585;
+}
+
+#profile_form .tag-item:hover {
+	background-color: #fff9ec;
+	color: #ff9900;
+}
+
+#profile_form .del-btn {
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
@@ -468,10 +805,12 @@ input[type="checkbox"].findCheck:checked + label span {
 #tag{
 	border: 1px solid #aaa;
 	margin-bottom: 10px;
+	width: -webkit-fill-available !important;
 }
 #tag-list ul{
 	padding: 0;
 }
+
 /* 모바일 */
 @media screen and (max-width: 767px){
 	.partner_bnr{
