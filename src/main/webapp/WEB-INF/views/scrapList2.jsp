@@ -9,7 +9,7 @@
     	<div class="partner_bnr3">
     		<div class="clearfix">
 	    		<div class="mypage-top-left">
-	    			<div class="mypage-title">마이페이지</div>
+	    			<div class="mypage-title">스크랩 리스트</div>
 	    		</div>
 		    	<div class="mypage-top-right">
 		    		<img class="mypage-img" alt="" src="${pageContext.request.contextPath}/assets/img/mypage-img.png">
@@ -71,10 +71,9 @@
 							<div>
 								<div class="th">등록일</div>
 								<div class="th">거래명</div>						
+								<div class="th">등록자</div>
 								<div class="th">마감일</div>
-								<div class="th">모집인원</div>
-								<div class="th">지원자인원</div>
-								<div class="th">지원상태</div>
+								<div class="th">지원현황</div>
 							</div>
 						</div>
 						<div>
@@ -91,11 +90,15 @@
 						           </c:otherwise> 
 						          </c:choose>
 								</div>
-								<div class="td cursor">${scrapList.projEndDate}</div>
-								<div class="td cursor">${scrapList.projRecruitNum}명</div>
-								<div class="td cursor">${scrapList.applyCount}명</div>
-								<div class="td cursor">
-									<button class="show-applicant">관리하기</button>
+								<div class="td">${scrapList.memNick}</div>
+								<div class="td">${scrapList.projEndDate}</div>
+								<div class="td">
+									<c:if test="${scrapList.applyProjState != null}">
+										<div class="applyStateBox applyAccept">지원완료</div>
+									</c:if>
+									<c:if test="${scrapList.applyProjState == null}">
+										<div class="applyStateBox applyWait" data-projId="${scrapList.projId}">지원하기</div>
+									</c:if>
 								</div>
 							</div>
 							<div class="apply-table" id="apply-table${status.count}">
@@ -286,5 +289,62 @@ $(document).ready(function(){
 			var options = 'width=1500, height=1000, status=yes, menubar=no, toolbar=no, resizable=yes';
 			window.open(ROOT_URL + "/project/detail?projId=" + projId,"전세계 검증된 판매자를 만나는 곳, 셀러매치",options);
 	});
+    
+    
+	$(document).on("click", ".applyWait", function(){
+		var login_id = $('#projectInsert').data('member');
+		var mem_sort = $('#projectInsert').data('memsort');
+		var applyProjId = $(this).attr('data-projId');
+
+		$.ajax({
+			type: "GET",
+		    url: ROOT_URL+"/apply/project",
+		    data: {
+		    	applyProjId: applyProjId,
+		    	applyMemId: login_id,
+		    	applyType:1
+		    },
+            success: function(json) {
+          		if (json.result == 1) {
+          			swal('알림', '이미 지원한 거래입니다.', 'success');
+          			return;
+				}
+				swal({
+	  		          title: '확인',
+	  		          text: '지원 하시겠습니까?', 
+	  		          type: "question",
+	  		          width: '400px',
+	  		          showCancelButton: true
+	  		    }).then(function(result) {			
+	  		        if (result.value) {
+	  		        	var data = {
+	  		        		applyProjId: applyProjId,
+	  		        		applyProjState:2,
+	  		        		applyType:1
+	  		        	};
+	  		        	  
+	  		        	$.ajax({
+	  			   			type: "POST",
+	  			   	        url: ROOT_URL+"/apply/project",
+	  			   	        data: data,
+	  		                success: function() {
+	  		                	swal({
+				  		          title: '완료',
+				  		          text: '지원 확인하시겠습니까?', 
+				  		          type: "success",
+				  		          width: '400px',
+				  		          showCancelButton: true
+		  			  		    }).then(function(result) {	
+		  			  		    	if (result.value) {
+		  			  		    		window.location.href = ROOT_URL+"/myPage/myApplyList";
+		  			  		    	}
+		  			  		    });
+	  		                }
+	  			      	});
+	  		      	}
+				});	
+			}
+		}); 
+	});		
 });
 </script>
