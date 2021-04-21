@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
-        <title>전세계 검증된 판매자를 만나는 곳, 셀러매치</title>
+        <title>셀러매치, 전 세계 상품공급자와 판매대행자 직거래 사이트</title>
         <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
