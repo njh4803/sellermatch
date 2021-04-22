@@ -192,7 +192,7 @@ public class MemberRestController {
 			memberService.addMember(input);
 			profileService.addProfile(input2);
 
-/*			String content = 
+			String content = 
 				"<div style='margin:auto;padding:0;width:700px;'>"
 				+ "<table width='700' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;border:1px solid #bcbcbc;text-align:centen;'>"
 			    + "<tbody><tr><td style='padding:0;margin:0;'>"
@@ -221,7 +221,7 @@ public class MemberRestController {
 			    + "</td></tr></tbody></table></div>";
 			
 			String subject = "셀러매치 가입을 환영합니다.";
-			mailHelper.sendMail(memId, subject, content);*/			
+			mailHelper.sendMail(memId, subject, content);	
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -473,7 +473,7 @@ public class MemberRestController {
 		
 		try {
 			memberService.pwChangeService(input);
-/*			String content = 
+			String content = 
 					"<div style='margin:auto;padding:0;width:700px;'>"
 					+"<table width='700' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;border:1px solid #bcbcbc;text-align:centen;'>"
 					+"<tbody><tr><td style='padding:0;margin:0;'>"
@@ -506,7 +506,7 @@ public class MemberRestController {
 			        +"</span></p><p style='text-align: left; margin-top: 10px; color: rgb(152, 158, 163); font-size: 11px; font-family: Malgun Gothic; letter-spacing: -0.5px; margin-left: 40px;'><span style='color: rgb(154, 154, 154);'>Copyright WeSellGlobal All Rights Reserved.</span></p>"
 			        +"</td></tr></tbody></table></div>";
 			String subject = "SellerMatch 비밀번호 찾기 메일";
-			mailHelper.sendMail(email, subject, content);*/
+			mailHelper.sendMail(email, subject, content);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}

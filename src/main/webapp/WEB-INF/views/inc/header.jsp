@@ -99,13 +99,10 @@ header #m-search_frm{
                <!-- <li><a href="javascipt:void(0);">커뮤니티</a></li> -->
                <li class="operation">
                    <a href="${pageContext.request.contextPath}/board?boardType=1" class="operation_guide">이용안내</a>
-<%-- 	               <div class="operation_guide_list" style="display: none;">
-	                    <a href="javascript:void(0);">이용방법</a>
-	                    <a href="${pageContext.request.contextPath}/usageFee">이용요금</a>
-	                    <a href="${pageContext.request.contextPath}/board?boardType=1">공지사항</a>
-	                    <a href="${pageContext.request.contextPath}/board?boardType=2">자주하는 질문</a>
-	                    <a href="${pageContext.request.contextPath}/board?boardType=4">1:1 문의하기</a>
-	               </div> --%>
+ 	               <div class="operation_guide_list" style="display: none;">
+	                    <a href="${pageContext.request.contextPath}/board?boardType=1">이용안내</a>
+	                    <a href="${pageContext.request.contextPath}/board?boardType=3">커뮤니티</a>
+	               </div>
                </li>
            </ul>
        </nav>
@@ -141,41 +138,6 @@ header #m-search_frm{
 		            		</c:otherwise>
 		            	</c:choose>
 		            </div>
-         	        <!-- menu-wrapper -->
-		            <ul>
-		                <li id="nav1" class="toggle accordion-toggle">
-		                    <a class="menu-link" href="${pageContext.request.contextPath}/project/find">거래처 찾기
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
-		                    </a>
-		                </li>
-		                <ul class="menu-submenu accordion-content">
-	                    </ul>           
-		                <li id="nav2" class="toggle accordion-toggle">
-		                    <a class="menu-link" href="${pageContext.request.contextPath}/seller/find">판매자 찾기
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
-		                    </a>
-		                </li>
-		                <ul class="menu-submenu accordion-content">
-	                    </ul>		                
-		                <li id="nav3" class="toggle accordion-toggle">
-		                    <a class="menu-link" href="#">커뮤니티
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
-		                    </a>
-		                </li>
-		                <ul class="menu-submenu accordion-content">
-	                    </ul>
-		                <li id="nav4" class="toggle accordion-toggle">
-		                    <a class="menu-link" href="#">이용안내
-		                    	<img class="sidebar-img" alt="" src="${pageContext.request.contextPath}/assets/img/sidebar.png">
-		                    </a>
-		                </li>
-	                    <ul class="menu-submenu accordion-content">
-							<li><a class="head" href="${pageContext.request.contextPath}/usageFee">Submenu1</a></li>
-	                        <li><a class="head" href="#">Submenu2</a></li>
-	                        <li><a class="head" href="#">Submenu3</a></li>
-	                        <li><a class="head" href="#">Submenu4</a></li>
-	                    </ul>
-		            <!-- menu-list accordion-->
 	            </div>
 	        </div>
 	        <!---------------------------- 모바일  끝------------------------------->

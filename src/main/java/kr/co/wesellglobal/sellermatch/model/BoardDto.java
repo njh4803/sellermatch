@@ -23,7 +23,7 @@ public class BoardDto {
 	// 작성자 
 	private String boardWriter;
 	
-	// 게시판 유형 1 - Notice(공지), 2 - FAQ(자주하는 질문), 3 - QA(문의하기), 4 - OneToOne(1대1 문의)
+	// 게시판 유형 1 - Notice(공지), 2 - FAQ(자주하는 질문), 3 - 커뮤니티(자유게시판), 4 - QA(문의하기), 5 - OneToOne(1대1 문의)
 	private String boardType;
 	
 	// 1 - 일반 문의, 2 - 주문결제문의, 3 - 환불문의, 4 - 반품문의, 5 - 기타 문의 등등

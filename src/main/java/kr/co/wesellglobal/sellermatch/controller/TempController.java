@@ -82,7 +82,9 @@ public class TempController {
 			BoardDto.setOffset(pageData.getOffset());
 			BoardDto.setListCount(pageData.getListCount());
 			output = boardService.getBoardList(input);
-			outputTopNotice = boardService.getBoardListNoticeTop(input);
+			if (boardType.equals("1")) {
+				outputTopNotice = boardService.getBoardListNoticeTop(input);
+			}
 			boardCount = boardService.getBoardCount(input);
 			
 		} catch (Exception e) {
@@ -99,9 +101,10 @@ public class TempController {
 		if (boardType.equals("1")) {
 			return new ModelAndView("/boardNotice");
 		}
-		/*
-		 * if (boardType.equals("2")) { return new ModelAndView("/boardFaq"); }
-		 */
+		
+		if (boardType.equals("3")) {
+			return new ModelAndView("/boardFree");
+		}
 		
 		return new ModelAndView("/usageFee");
 	}
@@ -130,5 +133,11 @@ public class TempController {
 		model.addAttribute("output", output);
 		
 		return new ModelAndView("boardNoticeDetail");
+	}
+	
+	@RequestMapping(value = "/board/write", method = RequestMethod.GET)
+	public ModelAndView boardWrite(Model model) {
+		
+		return new ModelAndView("boardWrite");
 	}
 }
