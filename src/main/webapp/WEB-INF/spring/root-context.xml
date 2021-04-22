@@ -27,13 +27,13 @@
 	<!-- gmail helper -->
 	<util:properties id="config">
 	   <prop key="encType">UTF-8</prop>
-	   <prop key="smtpHost">smtp.gmail.com</prop>
-	   <prop key="smtpPort">465</prop>
+	   <!-- <prop key="smtpHost">smtps.gmail.com</prop> -->
+	   <prop key="smtpPort">587</prop>
 	   <prop key="smtpUsername">njh4803@gmail.com</prop>
-	   <prop key="smtpPassword">nomuqsathmjosxyc</prop>
+	   <prop key="smtpPassword">xxnkjmrnnnjczrjm</prop>
 	   <!-- 업로드 디렉토리 -->
-	   <prop key="uploadDir">C:/wesell/workspace/upload</prop>
-	   <!-- <prop key="uploadDir">/usr/local/img</prop> -->
+	   <!-- <prop key="uploadDir">C:/wesell/workspace/upload</prop> -->
+	   <prop key="uploadDir">/usr/local/img</prop>
 	   <!-- 업로드 디렉토리에 대한 WebPath (server.xml에 명시한 Path값과 일치해야한다. -->
 	   <prop key="uploadPath">/upload</prop>
 	</util:properties>
@@ -41,18 +41,19 @@
     
 	<!-- 메일 발송에 필요한 정보를 저장하는 객체 정의 -->
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host" value="#{config['smtpHost']}" />
+        <!-- <property name="host" value="#{config['smtpHost']}" /> -->
         <property name="port" value="#{config['smtpPort']}" />
         <property name="username" value="#{config['smtpUsername']}" />
         <property name="password" value="#{config['smtpPassword']}" />
         <property name="defaultEncoding" value="#{config['encType']}" />
         <property name="javaMailProperties">
             <props>
+            	<prop key="mail.smtp.host">smtp.gmail.com</prop>
                 <prop key="mail.smtp.starttls.enable">true</prop>
                 <prop key="mail.smtp.auth">true</prop>
                 <prop key="mail.smtp.debug">true</prop>
                 <prop key="mail.smtp.socketFactory.port">#{config['smtpPort']}</prop>
-                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <!-- <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> -->
                 <prop key="mail.smtp.socketFactory.fallback">false</prop>
             </props>
         </property>
