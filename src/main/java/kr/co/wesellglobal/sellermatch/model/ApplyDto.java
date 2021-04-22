@@ -6,36 +6,38 @@ import lombok.Data;
 @Data
 public class ApplyDto {
 
-    // 자동번호 
-    private int applyIdx;
+	// 자동번호 
+	private int applyIdx;
 
-    // 지원고유번호 
-    private String applyId;
+	// 지원고유번호 
+	private String applyId;
 
-    // 프로젝트고유번호 
-    private String applyProjId;
+	// 프로젝트고유번호 
+	private String applyProjId;
 
-    // 회원고유번호 
-    private String applyMemId;
+	// 회원고유번호 
+	private String applyMemId;
 
-    // 등록일시 
-    private String applyRegDate;
+	// 등록일시 
+	private String applyRegDate;
 
-    // 프로필고유번호 공급자냐 셀러냐 로그인에 따라 변동: Seller_id or Pp_id
-    private String applyProfile;
-    
-    // 지원유형 1-지원, 2-제안
+	// 프로필고유번호 공급자냐 셀러냐 로그인에 따라 변동: Seller_id or Pp_id
+	private String applyProfile;
+
+	// 지원유형 1-지원, 2-제안
 	private String applyType;
-	
+
 	// 계약진행상태 0-거절, 1-취소  2- 지원  3- 제안 4 - 승인 5- 계약
 	private String applyProjState;
-	
+
 	// 거래처 등록자 닉네임
 	private String memNick;
-	
+
 	// 지원자 닉네임
 	private String applyMemNick;
-	
+	//판매자,공급자 구분
+	private String memSort;
+
 	// 지원자 프로필사진
 	private String profilePhoto;
 	//판매자 판매채널
@@ -44,19 +46,22 @@ public class ApplyDto {
 	private Integer profileVolume;
 	//판매경력
 	private String profileCareer;
-	
+	//프로필 소개말
+	private String profileIntro;
+	//프로필 사업자 유형
+	private String profileBizSort;
 	private String memTel;
 	private int memIdx;
-	
+
 	// 해시태그 해시태그(검색 키워드) 구분자(,)
-    private String profileHashtag;
-    
-    // 해시태그 리스트
- 	private String[] profileHashtagList;
- 	
+	private String profileHashtag;
+
+	// 해시태그 리스트
+	private String[] profileHashtagList;
+
 	// 프로젝트 계약된 수
-    private int contractCount;
-    // 프로젝트 등록 수
+	private int contractCount;
+	// 프로젝트 등록 수
 	private int projAddCount;
 	// 프로젝트 제안 수 (제안받거나 제안한 수)
 	private int recommendCount;
@@ -76,12 +81,12 @@ public class ApplyDto {
 	private String projTitle;
 	// 모집마감일을 D-Day로 변환
 	private String projDday;
- 	
- 	public String[] getProfileHashtagList() {
- 		if (this.profileHashtag == null) {
+
+	public String[] getProfileHashtagList() {
+		if (this.profileHashtag == null) {
 			return this.profileHashtagList;
 		}
-		 this.profileHashtagList = this.profileHashtag.split(",");
+		this.profileHashtagList = this.profileHashtag.split(",");
 		for (int i = 0; i < this.profileHashtagList.length; i++) {
 			if (this.profileHashtagList[i].equals("1")) {
 				this.profileHashtagList[i] = "채널검증셀러";
@@ -99,7 +104,7 @@ public class ApplyDto {
 				this.profileHashtagList[i] = "신원인증셀러";
 			}
 		}
-		
+
 		return this.profileHashtagList;
 	}
 }

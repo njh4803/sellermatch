@@ -30,7 +30,7 @@
 	   <!-- <prop key="smtpHost">smtps.gmail.com</prop> -->
 	   <prop key="smtpPort">587</prop>
 	   <prop key="smtpUsername">njh4803@gmail.com</prop>
-	   <prop key="smtpPassword">nomuqsathmjosxyc</prop>
+	   <prop key="smtpPassword">xxnkjmrnnnjczrjm</prop>
 	   <!-- 업로드 디렉토리 -->
 	   <!-- <prop key="uploadDir">C:/wesell/workspace/upload</prop> -->
 	   <prop key="uploadDir">/usr/local/img</prop>
@@ -53,7 +53,7 @@
                 <prop key="mail.smtp.auth">true</prop>
                 <prop key="mail.smtp.debug">true</prop>
                 <prop key="mail.smtp.socketFactory.port">#{config['smtpPort']}</prop>
-                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <!-- <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> -->
                 <prop key="mail.smtp.socketFactory.fallback">false</prop>
             </props>
         </property>
