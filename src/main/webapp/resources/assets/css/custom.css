@@ -84,7 +84,7 @@ input:-webkit-autofill,
 }
 
 /*header*/
-header {width:100%; background-color:#fff; height: 77px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee; margin-top: -77px;}
+header {width:1903px; background-color:#fff; height: 77px; position:fixed; z-index:10; border-bottom: 0.5px solid #eeeeee; margin-top: -77px;}
 header .header_wrap {width:1280px; height:100%; margin: 0 auto;}
 header .header_wrap h1 {
 	float:left;
@@ -152,7 +152,7 @@ header .header_wrap .gnb .gnb_project a {
 
 /*bnr*/
 
-.bnr {width:1920px; height:100%; background-color: #ffffff;}
+.bnr {width:1903px; height:100%; background-color: #ffffff;}
 .bnr .bnr_wrap {width:1280px; margin: 0 auto; padding-top:200px; height: 567px;}
 .bnr .bnr_wrap2 {
 	height: 370px;
@@ -177,7 +177,7 @@ header .header_wrap .gnb .gnb_project a {
     letter-spacing: -4px;
     text-align: left;
     color: #000000;
-    width: 1920px;
+    width: 1903px;
     height: 727px;
     margin: 77px 0 0;
     object-fit: contain;
@@ -352,7 +352,7 @@ header .header_wrap .gnb .gnb_project a {
 /*partner_bnr*/
 
 .partner_bnr {
-    width: 100%;
+    width: 1903px;
     padding: 0;
     background-color: #f8f8f8;
 }
@@ -370,7 +370,7 @@ header .header_wrap .gnb .gnb_project a {
 /*footer*/
 
 footer {
-  width: 1920px;
+  width: 1903px;
   background-color: #d9d9d9;
 }
 .footer-box{
