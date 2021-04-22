@@ -7,9 +7,9 @@
         <title>셀러매치, 전 세계 상품공급자와 판매대행자 직거래 사이트</title>
         <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 		<meta name="description" content="Phoenixcoded">
-		<meta name="keywords" content=", Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+		<meta name="keywords" content=", Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app"> 
 		<meta name="author" content="Phoenixcoded">
     	<meta name="naver-site-verification" content="64fa4a3b7f81e009df252e28da48ddee060424c3" />
     	<meta property="og:type" content="website"> 
