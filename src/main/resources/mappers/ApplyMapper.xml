@@ -15,15 +15,22 @@
         <result property="applyProfile"     column="apply_Profile" />
         <result property="applyType"   column="apply_type" />
         <result property="applyProjState" column="apply_proj_state" />
-        <result property="memNick" column="mem_nick" />
         <result property="applyMemNick" column="apply_mem_nick" />
+        
         <result property="profilePhoto" column="profile_photo" />
         <result property="profileHashtag" column="Profile_hashtag" />
         <result property="profileCh" column="Profile_ch" />
         <result property="profileVolume" column="Profile_volume" />
         <result property="profileCareer" column="Profile_career" />
+        <result property="profileIntro" column="Profile_intro" />
+        <result property="profileBizSort" column="Profile_biz_sort" />
+        
+        
+        <result property="memNick" column="mem_nick" />
         <result property="memTel" column="Mem_tel" />
         <result property="memIdx" column="mem_idx" />
+        <result property="memSort" column="mem_sort" />
+        
         
         <!--  -->
         <result property="projId"   column="proj_id" />
@@ -61,12 +68,15 @@
 	   		apply_proj_id, 
 	   		apply_mem_id,
 	   		mem_idx,
+	   		mem_Sort,
 	   		date_format(apply_reg_date, '%Y-%m-%d') AS apply_reg_date,
 	   		apply_Profile, 
 	   		apply_type, 
 	   		apply_proj_state, 
 	   		profile_photo, 
-	   		Profile_hashtag, 
+	   		Profile_hashtag,
+	   		Profile_intro,
+	   		Profile_biz_sort,
 	   		(SELECT mem_nick FROM MemList where mem_id = (SELECT proj_mem_id FROM ProjectList where proj_id = apply_proj_id)) as mem_nick,
 	   		(SELECT mem_nick FROM MemList where mem_id = apply_mem_id) as apply_mem_nick,    
 	   		proj_id, 
@@ -74,15 +84,22 @@
 	   		proj_state,
 	   		date_format(proj_reg_date, '%Y-%m-%d') AS proj_reg_date,
 	   		proj_hit,
-	   		Profile_ch,
+	   		(SELECT GROUP_CONCAT(CMMN_CODE_VALUE_KO_NM)
+			FROM TB_CMMN_CODE 
+			WHERE CMMN_CODE_TY= 'A11' 
+			 AND CMMN_CODE_VALUE IN (
+			 	IF(INSTR(Profile_ch,'1')=0,0,1),
+			   	IF(INSTR(Profile_ch,'2')=0,0,2),
+			   	IF(INSTR(Profile_ch,'3')=0,0,3),
+			   	IF(INSTR(Profile_ch,'4')=0,0,4),
+			   	IF(INSTR(Profile_ch,'5')=0,0,5),
+			   	IF(INSTR(Profile_ch,'6')=0,0,6),
+			   	IF(INSTR(Profile_ch,'7')=0,0,7)
+	   		)) AS Profile_ch,
 	   		Profile_volume,
 	   		Mem_tel,
 	   		(SELECT CMMN_CODE_VALUE_KO_NM FROM TB_CMMN_CODE WHERE CMMN_CODE_TY='A10' AND CMMN_CODE_VALUE=pf.Profile_career) AS Profile_career,
-	   		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
-	   		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, 
-	   		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
-    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
-    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
+	   		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, date_format(proj_end_date, '%Y-%m-%d') as proj_end_date
     	FROM ApplyList a, ProjectList p, MemList m, ProfileList pf
 		WHERE 1=1
 		AND apply_mem_id = IFNULL(#{applyMemId},apply_mem_id)
@@ -113,6 +130,16 @@
     
     <update id="updateItem"
     	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto">
+    </update>
+    
+    <update id="updateApply"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto">
+    	UPDATE ApplyList
+		SET
+			Apply_proj_state = #{applyProjState},
+			Apply_update_date = now()
+		WHERE Apply_id = #{applyId}
+		AND Apply_proj_id = #{applyProjId}
     </update>
     
     <!-- 지원자 중복지원 확인 -->

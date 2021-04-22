@@ -95,12 +95,13 @@
 		    				<div class="myContractTextBox">
 		    					<span class="myContractText">내 거래 현황</span>
 		    				</div>
+		    				<input type="hidden" id="myMemSort" value="${myProjectCount.memSort}">
 		    				<div class="myContractBox registBox">
 		    					<div>
 									<span class="myContractBoxText registText">등록한 거래</span>
 								</div>
 		    					<div class="myContractCntBox">								
-									<span class="myContractCount registCount" data-value="${myProjectCount.projAddCount}">${myProjectCount.projAddCount}건</span>
+									<span class="myContractCount registCount cursor" data-value="${myProjectCount.projAddCount}">${myProjectCount.projAddCount}건</span>
 		    					</div>
 		    				</div>
 		    				<div class="myContractBox applyBox">
@@ -108,7 +109,7 @@
 		    						<span class="myContractBoxText applyText">지원한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount applyCount" value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</span>
+									<span class="myContractCount applyCount cursor" value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</span>
 								</div>
 		    				</div>
 		    				<div class="myContractBox recommandBox">
@@ -117,7 +118,7 @@
 		    						<span class="myContractBoxText recommandText">제안 한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount recommandConut" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
+									<span class="myContractCount recommandConut cursor" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
 								</div>
 							</c:if>
 							<c:if test="${myProjectCount.memSort == 2}">
@@ -125,7 +126,7 @@
 		    						<span class="myContractBoxText recommandText">제안 받은 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount recommandConut" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
+									<span class="myContractCount recommandConut cursor" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
 								</div>
 							</c:if>
 		    				</div>
@@ -134,7 +135,7 @@
 		    						<span class="myContractBoxText closeText">마감한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount closeCount">0건</span>
+									<span class="myContractCount closeCount cursor">0건</span>
 								</div>
 		    				</div>
 		    			</div>
@@ -254,5 +255,51 @@ $(document).ready(function(){
 	$('.myPage_r_authBox').on('click', function(){
 		alert('인증하기 기능 준비중입니다.');
 	});
+	
+    $(document).on("click", ".registCount", function(e){
+    	var projAddCount = $('.registCount').attr('data-value');
+		if (projAddCount == 0) {
+			swal('알림', '등록된 거래가 없습니다.', 'warning')
+		} else {
+			location.href=ROOT_URL+ "/myPage/registDelng";
+		}
+    })
+    
+    $(document).on("click", ".applyCount", function(e){
+    	var scrapCount = $('.applyCount').attr('data-value');
+    	var mem_sort = $('#myMemSort').val();
+		if (scrapCount == 0) {
+			var text = '지원한 거래가 없습니다.';
+			swal('알림', text, 'warning')
+		} else {
+			location.href=ROOT_URL+ "/myPage/myApplyList";
+		}
+    });
+    
+    $(document).on("click", ".recommandConut", function(e){
+    	var recommendCount = $('.recommandConut').val();
+    	var mem_sort = $('#myMemSort').val();
+		if (recommendCount == 0) {
+			var text = '';
+			if (mem_sort == 1) {
+				text = '제안한 거래가 없습니다.';
+			}
+			if (mem_sort == 2) {
+				text = '제안 받은 거래가 없습니다.';
+			}
+			swal('알림', text, 'warning')
+		} else {
+			// 페이지 이동 하면 됨
+		}
+    });
+    
+    $(document).on("click", ".closeBox", function(e){
+    	var contractCount = $('.closeBox').val();
+		if (contractCount == 0) {
+			swal('알림', '마감된 거래가 없습니다.', 'warning')
+		} else {
+			//링크이동으로 가면됨
+		}
+    })
 });	
 </script>

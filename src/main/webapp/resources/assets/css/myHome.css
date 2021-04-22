@@ -289,3 +289,6 @@
 .auth_img_div {
 	margin-top: 8px;
 }
+.cursor {
+	cursor: pointer;
+}

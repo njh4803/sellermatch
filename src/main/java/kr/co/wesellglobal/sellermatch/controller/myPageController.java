@@ -42,24 +42,6 @@ public class myPageController {
 	@Autowired
 	WebHelper webHelper;
 	
-	/*
-	 * @RequestMapping(value = "/myPage/myHome", method = RequestMethod.GET) public
-	 * ModelAndView myHome(Model model, @SessionAttribute(value = "member", required
-	 * = false) MemberDto member) {
-	 * 
-	 * MemberDto output = null; IndusDto input = new IndusDto(); List<IndusDto>
-	 * indusList = null;
-	 * 
-	 * try { output = memberService.getMember(member); indusList =
-	 * indusService.getIndusList(input); } catch (Exception e) {
-	 * e.printStackTrace(); }
-	 * 
-	 * model.addAttribute("output", output); model.addAttribute("indusList",
-	 * indusList);
-	 * 
-	 * return new ModelAndView("myHome"); }
-	 */
-	
 	@RequestMapping(value = "/myPage/joinManage", method = RequestMethod.GET)
 	public ModelAndView joinManage(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
 		
@@ -98,41 +80,6 @@ public class myPageController {
 		
 		return new ModelAndView("profileManage");
 	}	
-	@RequestMapping(value = "/myPage/delngManage/registDelng", method = RequestMethod.GET)
-	public ModelAndView delngManage(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
-			@RequestParam(value = "applyType", required = false)String applyType,
-			@RequestParam(value = "applyProjState", required = false)String applyProjState,			
-			@RequestParam(value = "keyword", required = false) String keyword,
-			// 페이지 구현에서 사용할 현재 페이지 번호
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-		
-		// 페이지 구현에 필요한 변수값 생성 
-		int totalCount = 0;		// 전체 게시글 수
-		int listCount = 8;		// 한 페이지당 표시할 목록 수
-		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
-		
-		// 페이지 번호를 계산한 결과가 저장될 객체
-		PageData pageData = null;
-		
-		myPageDto input = new myPageDto();
-		input.setProjMemId(member.getMemId());
-		
-		List<myPageDto> registedProjectList = null;
-		myPageDto myProjectCount = null;
-		
-		try {
-			registedProjectList = myPageService.selectpRegistedProjectList(input);
-			myProjectCount = myPageService.selectpMyProjectCount(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		model.addAttribute("registedProjectList", registedProjectList);
-		model.addAttribute("myProjectCount", myProjectCount);
-		model.addAttribute("memSort", member.getMemSort());
-		
-		return new ModelAndView("registDelng");
-	}
 	
 	@RequestMapping(value = "/myPage/delngManage/applyList", method = RequestMethod.GET)
 	public Map<String, Object> applyList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
@@ -152,6 +99,7 @@ public class myPageController {
 		}
 		
 		data.put("output", output);
+		data.put("memSort", member.getMemSort());
 		
 		return webHelper.getJsonData(data);
 	}
@@ -370,5 +318,28 @@ public class myPageController {
 		model.addAttribute("memSort", member.getMemSort());
 		
 		return new ModelAndView("registDelng2");
+	}
+	
+	@RequestMapping(value = "/myPage/applyAccept", method = RequestMethod.POST)
+	public Map<String, Object> apply(
+			@RequestParam(value = "applyProjId", required = false)String applyProjId,
+			@RequestParam(value = "applyId", required = false)String applyId,
+			@RequestParam(value = "applyType", required = false)String applyType,
+			@RequestParam(value = "applyProjState", required = false)String applyProjState,
+			@SessionAttribute(value = "member", required = false) MemberDto member){
+		
+		ApplyDto input = new ApplyDto();
+		input.setApplyProjId(applyProjId);
+		input.setApplyId(applyId);
+		input.setApplyProjState(applyProjState);
+		
+		
+		try {
+			applyService.updateApply(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		return webHelper.getJsonData();
 	}
 }

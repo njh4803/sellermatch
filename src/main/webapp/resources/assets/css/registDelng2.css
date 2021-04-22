@@ -271,3 +271,27 @@
 	color: #484848;
 	border-radius: 2px;
 }
+
+.applyStateBox {
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	margin-left: 15px;
+	padding-top: 2px;
+}
+
+.applyAccept {
+	color: #5a70ff;
+}
+
+.applyReject {
+	color: #ff7272;
+}

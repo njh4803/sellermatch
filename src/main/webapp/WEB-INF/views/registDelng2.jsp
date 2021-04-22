@@ -111,8 +111,8 @@
 						</div>
 						<div>
 							<c:forEach var="registedProjectList" items="${registedProjectList}" varStatus="status">
-							<div class="show-apply" data-projId="${registedProjectList.projId}" data-index="${status.count}">
-								<div class="td cursor">${registedProjectList.projRegDate}</div>
+							<div class="show-apply">
+								<div class="td">${registedProjectList.projRegDate}</div>
 								<div class="td project-title cursor" data-projId="${registedProjectList.projId}">
 						         <c:choose>
 						           <c:when test="${fn:length(registedProjectList.projTitle) > 28}">
@@ -123,11 +123,11 @@
 						           </c:otherwise> 
 						          </c:choose>
 								</div>
-								<div class="td cursor">${registedProjectList.projEndDate}</div>
-								<div class="td cursor">${registedProjectList.projRecruitNum}명</div>
-								<div class="td cursor">${registedProjectList.applyCount}명</div>
+								<div class="td">${registedProjectList.projEndDate}</div>
+								<div class="td">${registedProjectList.projRecruitNum}명</div>
+								<div class="td">${registedProjectList.applyCount}명</div>
 								<div class="td">
-									<button class="show-applicant">관리하기</button>
+									<button class="show-applicant" data-projId="${registedProjectList.projId}" data-index="${status.count}">관리하기</button>
 								</div>
 							</div>
 							<div class="apply-table" id="apply-table${status.count}">
@@ -283,7 +283,7 @@ $(document).ready(function() {
 <script>
 //지원자리스트 노출
 $(document).ready(function(){
-	$(document).on("click", ".show-apply", function(e){
+	$(document).on("click", ".show-applicant", function(e){
 		$("#applyList").remove();
 		
 		var applyProjId = $(this).attr('data-projId');
@@ -297,7 +297,8 @@ $(document).ready(function(){
 	        },
 			success : function(json) {
 				var content = {
-					output : json.output
+					output : json.output,
+					memSortSe : json.memSort
 				} 
 	       		var template = Handlebars.compile($("#apply-tmpl").html());
 	       		var html = template(content);
@@ -309,15 +310,77 @@ $(document).ready(function(){
 	//승인버튼 관리
 	$(document).on("click", ".accept_btn", function(e){
 		 var applyProjId= $(this).attr("data-applyprojid");
+		 var applyId = $(this).attr("data-applyid");
 		 var memIdx = $(this).attr("data-memidx");
-		 alert(applyProjId);
-		 alert(memIdx);
+		 swal({
+			 title: '확인',
+			 text: '승인 하시겠습니까?', 
+			 type: "question",
+			 width: '400px',
+			 showCancelButton: true
+		  	}).then(function(result) {			
+		  		if (result.value) {
+		  			var data = {
+		  					applyProjId: applyProjId,
+		  					applyProjState:3,
+		  					applyId: applyId,
+		  					};
+		  			
+		  		        	$.ajax({
+		  			   			type: "POST",
+		  			   	        url: ROOT_URL+"/myPage/applyAccept",
+		  			   	        data: data,
+		  		                success: function() {
+		  		                	swal({
+					  		          title: '완료',
+					  		          text: '승인 완료되었습니다.', 
+			  			  		    }).then(function(result) {	
+			  			  		    	if (result.value) {
+			  			  		    		window.location.href = ROOT_URL+"/myPage/registDelng";
+			  			  		    	}
+			  			  		    });
+		  		                }
+		  			      	});
+		  		      	}
+					});	
 	});
 	//거절버튼 관리
 	$(document).on("click", ".reject_btn", function(e){
 		 var applyProjId= $(this).attr("data-applyprojid");
+		 var applyId = $(this).attr("data-applyid");
 		 var memIdx = $(this).attr("data-memidx");
-		 alert('aaaaaaaaaaa');
+		 
+		 swal({
+			 title: '확인',
+			 text: '거절 하시겠습니까?', 
+			 type: "question",
+			 width: '400px',
+			 showCancelButton: true
+		  	}).then(function(result) {			
+		  		if (result.value) {
+		  			var data = {
+		  					applyProjId: applyProjId,
+		  					applyProjState:0,
+		  					applyId: applyId,
+		  					};
+		  			
+		  		        	$.ajax({
+		  			   			type: "POST",
+		  			   	        url: ROOT_URL+"/myPage/applyAccept",
+		  			   	        data: data,
+		  		                success: function() {
+		  		                	swal({
+					  		          title: '완료',
+					  		          text: '거절 완료되었습니다.', 
+			  			  		    }).then(function(result) {	
+			  			  		    	if (result.value) {
+			  			  		    		window.location.href = ROOT_URL+"/myPage/registDelng";
+			  			  		    	}
+			  			  		    });
+		  		                }
+		  			      	});
+		  		      	}
+					});	
 	});
 	
     $(document).on("click", "#contractCount", function(e){
@@ -363,6 +426,13 @@ $(document).ready(function(){
 			location.href=ROOT_URL+ "/myPage/myApplyList";
 		}
     });
+    
+    //거래처 찾기 상세페이지로 이동
+	$(document).on("click", ".project-title", function(e) {
+			var projId = $(this).attr('data-projId');
+			var options = 'width=1500, height=1000, status=yes, menubar=no, toolbar=no, resizable=yes';
+			window.open(ROOT_URL + "/project/detail?projId=" + projId,"전세계 검증된 판매자를 만나는 곳, 셀러매치",options);
+	});
 });
 </script>
 <script type="text/x-handlebars-template" id="apply-tmpl">
@@ -370,35 +440,68 @@ $(document).ready(function(){
 								{{#ifCond output '!=' 0}}
 									<div class="tr">
 										<div class="th" style="width: 120px;">지원일</div>
-										<div class="th" style="width: 170px;">지원자</div>						
+										<div class="th" style="width: 170px;">지원자</div>			
+									{{#ifCond memSortSe '==' 1}}
 										<div class="th" style="width: 454px;">판매채널</div>
 										<div class="th" style="width: 170px;">매출규모</div>
+									{{else}}
+										<div class="th" style="width: 454px;">공급자 소개말</div>
+										<div class="th" style="width: 170px;">사업자유형</div>
+									{{/ifCond}}
 										<div class="th" style="width: 130px;">승인/거절</div>
-
-										<!--<div class="th" style="width: 130px;">연락처</div>-->
 									</div>
 									{{#output}}
 										<div class="tr">
 											<div class="td" style="width: 120px;">{{applyRegDate}}</div>
 											<div class="td" style="width: 170px;">{{applyMemNick}}</div>
+											
+											{{#ifCond memSort '==' 2}}
 											<div class="td" style="width: 454px;">{{profileCh}}</div>
-										{{#ifCond profileVolume '==' null}}
-											<div class="td" style="width: 170px;">미등록</div>
-										{{else}}
-											<div class="td" style="width: 170px;">{{profileVolume}}</div>
-										{{/ifCond}}
+												{{#ifCond profileVolume '==' null}}
+												<div class="td" style="width: 170px;">미등록</div>
+												{{else}}
+												<div class="td" style="width: 170px;">{{profileVolume}}원</div>
+												{{/ifCond}}
+											{{else}}
+											<div class="td" style="width: 454px;">{{profileIntro}}</div>
+											<div class="td" style="width: 170px;">
+												{{#ifCond profileBizSort '==' 1}}
+													법인사업자
+												{{/ifCond}}											
+												{{#ifCond profileBizSort '==' 2}}
+													개인사업자
+												{{/ifCond}}
+												{{#ifCond profileBizSort '==' 3}}
+													간이과세자
+												{{/ifCond}}
+												{{#ifCond profileBizSort '==' 4}}
+													개인
+												{{/ifCond}}
+												{{#ifCond profileBizSort '==' 5}}
+													기타
+												{{/ifCond}}
+												</div>
+											{{/ifCond}}																					
 											<div class="td" style="width: 130px;">
+												{{#ifCond applyProjState '==' 3}}
+												<div class="applyStateBox applyAccept">지원승인</div>
+												{{/ifCond}}
+												{{#ifCond applyProjState '==' 0}}
+												<div class="applyStateBox applyReject">지원거절</div>
+												{{/ifCond}}
+												{{#ifCond applyProjState '==' 2}}
 												<div class="btn-group">
         											<button type="button" class="btn btn_toggle" data-toggle="dropdown">관리하기</button>
         											<div class="dropdown-menu">
 														<div class="dropdownTextDiv ddtd_accept">
-															<button type="button" class="dropdown-item accept_btn" data-applyprojid="{{applyProjId}}" data-memidx="{{memIdx}}">지원승인</button>
+															<button type="button" class="dropdown-item accept_btn" data-applyid="{{applyId}}" data-applyprojid="{{applyProjId}}" data-memidx="{{memIdx}}">지원승인</button>
 														</div>
 														<div class="dropdownTextDiv ddtd_reject">
-															<button type="button" class="dropdown-item reject_btn" data-applyprojid="{{applyProjId}}" data-memidx="{{memIdx}}">지원거절</button> 
+															<button type="button" class="dropdown-item reject_btn" data-applyid="{{applyId}}" data-applyprojid="{{applyProjId}}" data-memidx="{{memIdx}}">지원거절</button> 
         												</div>
 													</div>
 												</div>
+												{{/ifCond}}
 											</div>
 										</div>
 									{{/output}}

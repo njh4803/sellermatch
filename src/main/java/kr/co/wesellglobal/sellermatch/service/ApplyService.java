@@ -17,4 +17,5 @@ public interface ApplyService {
 	
 	public int reduplicationCheck(ApplyDto input) throws Exception;
 	
+	public void updateApply(ApplyDto input) throws Exception;
 }
