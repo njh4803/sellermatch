@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+.partner_bnr .partner_wrap{
+	width: 1280px !important;
+}
+.partner_bnr .partner_wrap2{
+	width: 830px;
+	margin: 0 auto;
+}
+.partner_bnr3{
+	width: 1280px !important;
+	padding-top: 90px !important;
+}
+.use-top-left{
+	float: left;
+}
+.use-top-right{
+	float: right;
+}
+.use-img{
+  width: 210px;
+  height: 104px;
+  object-fit: contain;
+  margin-top: -33px;
+}
+.use-hr{
+  margin: 15px 0;
+  border: solid 2px #ff540f;	
+}
+.use-title{
+  font-size: 25px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  color: #484848;
+  margin-bottom: 15px;
+  letter-spacing: normal;
+  
+}
+.use-text{
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: left;
+  
+  color: #858585;	
+}
+
+.board-title::placeholder {
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	color: #818181;
+	text-align: left;
+}
+.board-title{
+	width: 1280px;
+    height: 62px;
+    padding: 20px 0 20px 30px;
+    border-radius: 10px;
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+}	
+.cancelBtn, .writeBtn{
+  width: 80px;
+  height: 31px;
+  margin-left: 10px;
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #cccccc;
+  background-color: #ffffff;	
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #858585;  
+}
+.btnBox{
+	float: right;
+	margin-top: 15px;
+	margin-bottom: 94px;
+}
