@@ -20,8 +20,8 @@ public class ErrorController {
     }
     
     @GetMapping("/error500")
-    public ModelAndView Error500() {
-        return  new ModelAndView("error/500");
+    public ModelAndView Error500(Model model) {
+        return  new ModelAndView("error/404");
     }
 	
 }

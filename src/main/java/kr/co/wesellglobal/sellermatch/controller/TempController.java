@@ -136,8 +136,29 @@ public class TempController {
 	}
 	
 	@RequestMapping(value = "/board/write", method = RequestMethod.GET)
-	public ModelAndView boardWrite(Model model) {
+	public ModelAndView getBoardWrite(Model model) {
 		
 		return new ModelAndView("boardWrite");
+	}	
+	
+	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
+	public ModelAndView postBoardWrite(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "boardTitle", required = false) String boardTitle,
+			@RequestParam(value = "boardContents", required = false) String boardContents) {
+		BoardDto input = new BoardDto();
+		input.setBoardId(webHelper.getUniqueId("B-", 3));
+		input.setBoardContents(boardContents);
+		input.setBoardTitle(boardTitle);
+		input.setBoardType("3");
+		input.setBoardWriter(member.getMemId());
+		
+		try {
+			boardService.addBoard(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return new ModelAndView("/boardFree");
 	}
 }

@@ -192,7 +192,7 @@ $(document).ready(function(){
 		window.location = ROOT_URL + '/board?boardId='+boardId;
 	});
 	$(document).on("click", ".board-write", function(){
-		window.location = ROOT_URL + '/board/write;
+		window.location = ROOT_URL + '/board/write';
 	});
 });
 </script>
