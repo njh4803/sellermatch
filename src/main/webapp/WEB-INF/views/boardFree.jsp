@@ -31,7 +31,7 @@
 					<tr>
 						<td>${boardCount - minusCount - status.count +1}</td>
 						<td class="boardDetail" data-id="${output.boardId}">${output.boardTitle}</td>
-						<td>${output.boardWriter}</td>
+						<td>${output.boardWriterNick}</td>
 						<td>${output.boardRegDate}</td>
 					</tr>
 				</c:forEach>
@@ -189,7 +189,7 @@ $(document).ready(function(){
 
 	$(document).on("click", ".boardDetail", function(){
 		var boardId = $(this).data('id');
-		window.location = ROOT_URL + '/board?boardId='+boardId;
+		window.location = ROOT_URL + '/board/detail?boardId='+boardId;
 	});
 	$(document).on("click", ".board-write", function(){
 		window.location = ROOT_URL + '/board/write';

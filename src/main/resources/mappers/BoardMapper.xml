@@ -21,6 +21,7 @@
          <result property="boardEditDate" column="board_edit_date" />
          <result property="replyCount" column="reply_count" />
          <result property="boardNoticeTop" column="board_notice_top" />
+         <result property="boardWriterNick" column="board_writer_nick" />
     </resultMap>
     
     <insert id="insertItem"
@@ -44,6 +45,7 @@
 	   		b.board_title, 
 	   		b.board_contents, 
 	   		b.board_writer, 
+	   		(SELECT mem_nick FROM MemList where mem_id = board_writer) as board_writer_nick, 
 	   		b.board_type, 
 	   		b.board_qa_type, 
 	   		b.board_email, 
@@ -87,9 +89,10 @@
     	resultMap="boardMap">
     	SELECT 
     		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
-	   		board_file, date_format(board_reg_date, '%Y-%m-%d') as board_reg_date, board_edit_date
+	   		board_file, date_format(board_reg_date, '%Y-%m-%d') as board_reg_date, board_edit_date,
+	   		(SELECT mem_nick FROM MemList where mem_id = board_writer) as board_writer_nick
     	FROM BoardList
-    	where board_id = #{boardId} AND board_type IN ('1','2')
+    	where board_id = #{boardId} AND board_type IN ('1','2','3')
     </select>
 
 	<update id="updateItem"

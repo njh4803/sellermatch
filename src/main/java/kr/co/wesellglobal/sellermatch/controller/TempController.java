@@ -151,6 +151,7 @@ public class TempController {
 		input.setBoardContents(boardContents);
 		input.setBoardTitle(boardTitle);
 		input.setBoardType("3");
+		input.setBoardNoticeTop("N");
 		input.setBoardWriter(member.getMemId());
 		
 		try {
@@ -161,4 +162,24 @@ public class TempController {
 		
 		return new ModelAndView("/boardFree");
 	}
+	
+	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
+	public ModelAndView boardDetail(Model model,
+			@RequestParam(value = "boardId", required = false) String boardId) {
+		BoardDto input = new BoardDto();
+		input.setBoardId(boardId);
+		input.setBoardType("3");
+		
+		BoardDto output = null;
+		
+		try {
+			output = boardService.getBoard(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("boardDetail");
+	}	
 }

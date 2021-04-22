@@ -21,7 +21,7 @@ public class BoardDto {
 	private String boardContents;
 	
 	// 작성자 
-	private String boardWriter;
+	private String boardWriter;	
 	
 	// 게시판 유형 1 - Notice(공지), 2 - FAQ(자주하는 질문), 3 - 커뮤니티(자유게시판), 4 - QA(문의하기), 5 - OneToOne(1대1 문의)
 	private String boardType;
@@ -49,6 +49,9 @@ public class BoardDto {
 	
 	//상단공지 여부 N: 일반공지, Y: 상단공지
 	private String boardNoticeTop;
+	
+	// 작성자 닉네임
+	private String boardWriterNick;
 	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;
