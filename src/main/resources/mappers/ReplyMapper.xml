@@ -42,7 +42,7 @@
 	   		(select mem_nick from MemList where mem_id = reply_parent_mem_id) as reply_parent_nick,
 	   		(select mem_nick from MemList where mem_id = reply_writer) as reply_writer
     	FROM ReplyList
-    	WHERE reply_proj_id = #{replyProjId}
+    	WHERE reply_proj_id = #{replyProjId} or reply_board_id = #{replyBoardId}
     	ORDER BY reply_parent
     	
     	<!-- <if test="listCount > 0">
@@ -58,7 +58,14 @@
 		FROM ReplyList
 		WHERE reply_proj_id = #{reply_proj_id}
 	</select>
-	
+
+	<delete id="deleteItem"
+		parameterType="kr.co.wesellglobal.sellermatch.model.ReplyDto">
+        DELETE FROM ReplyList
+        <where>
+            reply_board_id = #{replyBoardId}
+        </where>		
+	</delete>	
 	
 	<!-- 시퀀스 조회 -->
 	<select id="selectSeq"

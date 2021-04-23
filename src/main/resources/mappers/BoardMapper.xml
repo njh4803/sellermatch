@@ -132,7 +132,7 @@
     		</if>
 	</select>
 	
-	<delete id="deleteItem"
+	<delete id="deleteList"
 		parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto">
         DELETE FROM BoardList
         <where>
@@ -140,6 +140,14 @@
             <foreach collection="idArr" item="item" index="index" open="(" close=")" separator=",">
                 #{item}
             </foreach>
+        </where>		
+	</delete>
+
+	<delete id="deleteItem"
+		parameterType="kr.co.wesellglobal.sellermatch.model.BoardDto">
+        DELETE FROM BoardList
+        <where>
+            board_id = #{boardId}
         </where>		
 	</delete>
 	

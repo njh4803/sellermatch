@@ -671,7 +671,6 @@ public class ProjectRestController {
 	public Map<String, Object> addReply(
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			@ModelAttribute("replyDto") ReplyDto replyDto){
-		log.debug("getReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemIdgetReplyParentMemId="+replyDto.getReplyParentMemId());
 		ReplyDto input = new ReplyDto();
 		
 		input.setReplyWriter(member.getMemId());
@@ -679,7 +678,7 @@ public class ProjectRestController {
 		input.setReplyProjId(replyDto.getReplyProjId());
 		input.setReplySecret(replyDto.getReplySecret());
 		input.setReplyPw(replyDto.getReplyPw());
-		input.setReplyBoardId("1");
+		input.setReplyBoardId(replyDto.getReplyBoardId());
 		if (replyDto.getReplyParentMemId() != null && replyDto.getReplyParentMemId() != "") {
 			input.setReplyParentMemId(replyDto.getReplyParentMemId());
 		} else {

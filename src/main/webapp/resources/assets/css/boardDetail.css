@@ -78,7 +78,7 @@
 	margin: 15px 0 228px 0;
 }
 .detailContentsButton  {
-	width: 60px;
+	width: 80px;
 	height: 31px;
 	margin: 0 0 0 0px;
 	border-radius: 4px;
@@ -142,4 +142,115 @@
 .infoBox{
 	display: inline-block;
 	margin-right: 80px;
+}
+.board-comment{
+	width: 1280px;
+    height: 62px;
+    padding: 20px 0 20px 30px;
+    border-radius: 10px;
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}	
+.board-comment::placeholder {
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	color: #818181;
+	text-align: left;
+}
+.commentBtn{
+  width: 65px;
+  height: 31px;
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ff9b37;	
+  font-size: 13px;
+  font-weight: bold;
+  font-stretch: normal;
+  text-align: center;
+  color: #ffffff;  
+  position: absolute;
+  right: 340px;
+  margin-top: 30px;
+}
+.commentBox{
+  width: 1280px;
+  padding: 30px 28px 30px 30px;
+  border-radius: 10px;
+  border: solid 1px #cccccc;
+  background-color: #ffffff;
+}
+.reviewBox{
+	padding: 10px 0 20px;
+	width: 100%;
+	height:fit-content;
+	border-top: solid 1px #cccccc;
+}
+.reviewBox:last-child{
+	border-bottom: solid 1px #cccccc;
+}
+.reviewBox2{
+	display: inline-block;
+	width: 22%;
+	height:fit-content;
+	float: left;
+}
+.reviewNick{
+	display: inline-block;
+	margin: 0 20px 11px 0;
+	font-family: NanumGothic;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #484848;
+}
+.reviewDate{
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #484848;
+}
+.reviewContents{
+	display: inline-block;
+	width: 540px;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #484848;
+}
+#editBtn, #delBtn{
+  width: 80px;
+  height: 31px;
+  margin-left: 10px;
+  border-radius: 4px;
+  box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #858585;
+  background-color: #ffffff;	
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  color: #858585;  
+}
+#editBtn:hover, #delBtn:hover{
+	color: #ff540f;
+	border: solid 1px #ff540f;
+}
+.btnBox{
+  margin: 15px 0;
+  float: right;	
 }

@@ -134,7 +134,7 @@ public class BoardServiceImpl implements BoardService{
 		int result = 0;
 
 		try {
-			result = sqlSession.delete("BoardMapper.deleteItem", input);
+			result = sqlSession.delete("BoardMapper.deleteList", input);
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
@@ -146,6 +146,24 @@ public class BoardServiceImpl implements BoardService{
 			throw new Exception("데이터 삭제에 실패했습니다.");
 		}
 	}
+
+	@Override
+	public void deleteBoardItem(BoardDto input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.delete("BoardMapper.deleteItem", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("삭제된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+	}	
 	
 	@Override
 	public List<BoardDto> getBoardAdminList(BoardDto input) throws Exception {

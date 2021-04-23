@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -11,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +24,9 @@ import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.BoardDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.ReplyDto;
 import kr.co.wesellglobal.sellermatch.service.BoardService;
+import kr.co.wesellglobal.sellermatch.service.ReplyService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -36,6 +41,9 @@ public class TempController {
 	
 	@Autowired
 	WebHelper webHelper;
+	
+	@Autowired
+	ReplyService replyService;
 	
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
 	public ModelAndView board(Model model,
@@ -140,6 +148,15 @@ public class TempController {
 		
 		return new ModelAndView("boardWrite");
 	}	
+
+	@RequestMapping(value = "/board/edit", method = RequestMethod.GET)
+	public ModelAndView getBoardEdit(Model model,
+			@ModelAttribute(value = "boardDto") BoardDto boardDto) {
+		
+		model.addAttribute("boardDto", boardDto);
+		
+		return new ModelAndView("boardEdit");
+	}		
 	
 	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
 	public ModelAndView postBoardWrite(Model model,
@@ -160,8 +177,32 @@ public class TempController {
 			e.printStackTrace();
 		}
 		
-		return new ModelAndView("/boardFree");
+		return webHelper.redirect("/board/detail?boardId="+input.getBoardId(), null);
 	}
+	
+	@RequestMapping(value = "/board/edit", method = RequestMethod.POST)
+	public ModelAndView postBoardEdit(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "boardId", required = false) String boardId,
+			@RequestParam(value = "boardTitle", required = false) String boardTitle,
+			@RequestParam(value = "boardContents", required = false) String boardContents,
+			@RequestParam(value = "boardWriter", required = false) String boardWriter) {
+		BoardDto input = new BoardDto();
+		input.setBoardId(boardId);
+		input.setBoardWriter(boardWriter);
+		input.setBoardContents(boardContents);
+		input.setBoardTitle(boardTitle);
+		input.setBoardType("3");
+		input.setBoardNoticeTop("N");
+		
+		try {
+			boardService.editBoard(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return webHelper.redirect("/board/detail?boardId="+input.getBoardId(), null);
+	}	
 	
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
 	public ModelAndView boardDetail(Model model,
@@ -170,16 +211,44 @@ public class TempController {
 		input.setBoardId(boardId);
 		input.setBoardType("3");
 		
+		ReplyDto input2 = new ReplyDto();
+		input2.setReplyBoardId(boardId);
+		
 		BoardDto output = null;
+		List<ReplyDto> replyDto = null;
 		
 		try {
 			output = boardService.getBoard(input);
+			replyDto = replyService.getReplyList(input2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		model.addAttribute("output", output);
+		model.addAttribute("replyDto", replyDto);
 		
 		return new ModelAndView("boardDetail");
-	}	
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/board/delete", method = RequestMethod.POST)
+	public Map<String, Object> boardDelete(Model model,
+			@RequestParam(value = "boardId", required = false) String boardId) {
+		BoardDto input = new BoardDto();
+		input.setBoardId(boardId);
+		
+		ReplyDto input2 = new ReplyDto();
+		input2.setReplyBoardId(boardId);		
+		
+		try {
+			// 게시판삭제
+			boardService.deleteBoardItem(input);
+			// 답글 삭제
+			replyService.deleteReply(input2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return webHelper.getJsonData();
+	}
 }

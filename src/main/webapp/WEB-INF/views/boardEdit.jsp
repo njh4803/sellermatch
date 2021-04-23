@@ -19,23 +19,25 @@
 		    	</div>    		
     		</div>
 	    	<hr class="use-hr">
-	    	<form action="${pageContext.request.contextPath}/board/write" id="board-form" method="POST">
+	    	<form action="${pageContext.request.contextPath}/board/edit" id="board-form" method="POST">
+	    		<input type="hidden" id="boardId" name="boardId" value="${boardDto.boardId}">
+	    		<input type="hidden" id="boardWriter" name="boardWriter" value="${boardDto.boardWriter}">
 				<div>
-					<input class="board-title" name="boardTitle" type="text">
+					<input class="board-title" name="boardTitle" type="text" placeholder="제목" value="${boardDto.boardTitle}">
 				</div>
 				<div>
-					<textarea id="boardContents" name="boardContents" class="inputForm width-100" style="height: 150px;"></textarea>
+					<textarea id="boardContents" name="boardContents" class="inputForm width-100" style="height: 150px;">${boardDto.boardContents}</textarea>
 					<script type="text/javascript">
 						CKEDITOR.replace('boardContents', {
 							height : 200,
 							enterMode:'2',
 						    shiftEnterMode:'3'
 						});
-					</script>	
+					</script>			
 				</div>
 				<div class="btnBox">
 					<button class="cancelBtn">취소하기</button>
-					<button class="writeBtn">작성하기</button>
+					<button class="writeBtn">수정하기</button>
 				</div>
 			</form>
 	    </div>
@@ -45,13 +47,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$(document).on("click", ".cancelBtn", function(){
-		window.location = ROOT_URL+"/board?boardType=3";
+		var boardId = $("#boardId").val();
+		window.location = ROOT_URL+"/board/detail?boardId="+boardId;
 	});
+	
 	$(document).on("click", ".writeBtn", function(e){
 		e.preventdefault();
 	  	$.ajax({
 			type: "POST",
-	        url: ROOT_URL+"/board/write",
+	        url: ROOT_URL+"/board/edit",
 	        data: $('#board-form').serialize()
 	  	});
 	});

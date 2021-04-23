@@ -90,5 +90,15 @@ public class ReplyServiceImpl implements ReplyService{
 		return result;
 	}
 
+	@Override
+	public void deleteReply(ReplyDto input) throws Exception {
+		try {
+			sqlSession.delete("ReplyMapper.deleteItem", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 삭제에 실패했습니다.");
+		}
+	}
+
 
 }
