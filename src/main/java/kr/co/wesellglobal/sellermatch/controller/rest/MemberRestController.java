@@ -234,7 +234,7 @@ public class MemberRestController {
 
 	
 	@RequestMapping(value = "/member/editOk", method = RequestMethod.POST)
-	public Map<String, Object> editOk(@RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
+	public Map<String, Object> editOk(HttpSession session, @RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
 			@RequestParam(value = "memId", required = false) String memId,
 			@RequestParam(value = "memPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName", required = false) String memName,
@@ -285,12 +285,17 @@ public class MemberRestController {
 		input.setMemAddr2(memAddr2);
 		
 		try {
-			memberService.editMember(input);
+			 memberService.editMember(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
+        if ( session.getAttribute("member") !=null ){
+            // 기존에 profile 세션 값이 존재한다면
+        	session.removeAttribute("member");// 기존값을 제거해 준다.
+        }
+        session.setAttribute("member", input);
 		/** 4) 결과 표시 */
 		return webHelper.getJsonData();
 	}

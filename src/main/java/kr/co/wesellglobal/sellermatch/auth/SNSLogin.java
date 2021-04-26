@@ -53,11 +53,11 @@ public class SNSLogin {
 			
 		} else if (this.sns.isNaver()) {
 			JsonNode resNode = rootNode.get("response");
-			member.setMemNick(resNode.get("nickname").asText());
+			/* member.setMemNick(resNode.get("nickname").asText()); */
 			member.setMemId(resNode.get("email").asText());
 			member.setNaverId(member.getMemId());
 		} else if (this.sns.isKakao()) {
-			member.setMemNick((rootNode.get("properties").get("nickname")).asText());
+			/* member.setMemNick((rootNode.get("properties").get("nickname")).asText()); */
 			member.setMemId((rootNode.get("kakao_account").get("email")).asText());
 			member.setKakaoId(member.getMemId());
 		}

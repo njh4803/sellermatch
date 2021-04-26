@@ -23,7 +23,7 @@
 	    		<input type="hidden" id="boardId" name="boardId" value="${boardDto.boardId}">
 	    		<input type="hidden" id="boardWriter" name="boardWriter" value="${boardDto.boardWriter}">
 				<div>
-					<input class="board-title" name="boardTitle" type="text" placeholder="제목" value="${boardDto.boardTitle}">
+					<input class="board-title" name="boardTitle" type="text" placeholder="제목" value="${boardDto.boardTitle}" placeholder="제목을 입력해 주세요">
 				</div>
 				<div>
 					<textarea id="boardContents" name="boardContents" class="inputForm width-100" style="height: 150px;">${boardDto.boardContents}</textarea>
@@ -36,7 +36,7 @@
 					</script>			
 				</div>
 				<div class="btnBox">
-					<button class="cancelBtn">취소하기</button>
+					<button type="button" class="cancelBtn">취소하기</button>
 					<button class="writeBtn">수정하기</button>
 				</div>
 			</form>

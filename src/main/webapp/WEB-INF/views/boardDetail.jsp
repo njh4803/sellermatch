@@ -76,7 +76,7 @@
    </div>
 </div>
 <%@ include file="inc/footer.jsp"%>
-<<script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
 	
 	$(document).on("click", "#editBtn", function(){

@@ -70,7 +70,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2 colForm-label">닉네임 <span class="identify">*</span></label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="memNick" id="memNick" placeholder="별명을 입력하세요. (회사명 등 정보성 닉네임은 사용 불가)" value="${result.memNick}">
+							<input type="text" class="form-control" name="memNick" id="memNick" placeholder="별명을 입력하세요. (회사명 등 정보성 닉네임은 사용 불가)">
 						</div>
 					</div>
 					<div class="form-group row">
