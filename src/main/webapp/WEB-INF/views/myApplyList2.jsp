@@ -143,13 +143,17 @@
 								</div>
 								<div class="td">
 									<c:if test="${myApplyList.applyProjState == 0}">
-										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/cancel_icon.png">
+										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/cancel_icon.png"
+										data-toggle="tooltip" data-placement="top" title="상대방이 거절한 거래로 연락처가 표기되지 않습니다.">
 									</c:if>
 									<c:if test="${myApplyList.applyProjState == 3}">
 										${fn:substring(myApplyList.memTel,0,3)}-${fn:substring(myApplyList.memTel,3,7)}-${fn:substring(myApplyList.memTel,7,12)}
 									</c:if>
 									<c:if test="${myApplyList.applyProjState == 2}">
-										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/question_icon.png">
+										<div>
+											<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/question_icon.png" 
+											data-toggle="tooltip" data-placement="top" title="거래 등록자가 승인할경우 연락처가 표기됩니다.">
+										</div>
 									</c:if>
 								</div>
 							</div>
@@ -339,5 +343,6 @@ $(document).ready(function(){
 			var options = 'width=1500, height=1000, status=yes, menubar=no, toolbar=no, resizable=yes';
 			window.open(ROOT_URL + "/project/detail?projId=" + projId,"전세계 검증된 판매자를 만나는 곳, 셀러매치",options);
 	});
+    
 });
 </script>
