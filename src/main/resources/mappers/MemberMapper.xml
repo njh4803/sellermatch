@@ -42,6 +42,7 @@
         <result property="googleId"   column="googleId" />
         <result property="naverId"   column="naverId" />
         <result property="kakaoId"   column="kakaoId" />
+        <result property="withdrawAuthCode" column="WITHDRAW_AUTH_CODE" />
     </resultMap> 
     
     <insert id="insertItem"
@@ -221,9 +222,14 @@
 	<select id="findId" parameterType="String" resultType="String">
 		select mem_id from MemList where mem_tel = #{memTel}
 	</select>
+	
 	<!-- 비밀번호 변경 -->
 	<update id="changePw" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
 		UPDATE MemList SET mem_pw = MD5(#{memPw}) where mem_id = #{memId}
 	</update>
 	
+	<!-- 회원탈퇴 인증코드 업데이트 -->
+	<update id="withDrawAuthCodeUpdate" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
+		UPDATE MemList SET WITHDRAW_AUTH_CODE = #{withdrawAuthCode} where mem_id = #{memId}
+	</update>
 </mapper>

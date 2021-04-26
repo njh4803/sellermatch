@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.myPageDto;
 
 public interface MemberService {
 	
@@ -35,4 +36,6 @@ public interface MemberService {
     
     // 닉네임 중복검사
 	public void nickCheck(MemberDto input) throws Exception;
+	//회원탈퇴 인증코드저장,발송
+	public void withDrawAuthCodeUpdate(MemberDto input) throws Exception;
 }

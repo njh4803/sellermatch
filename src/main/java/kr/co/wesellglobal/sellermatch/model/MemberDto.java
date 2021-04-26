@@ -48,6 +48,7 @@ public class MemberDto {
 	
 	private String memSnsCh;	//가입 SNS채널
 	private String Mem_sns_ch_tkn;	//가입 SNS 토큰
+	private String withdrawAuthCode; //회원탈퇴 인증코드
 	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;
