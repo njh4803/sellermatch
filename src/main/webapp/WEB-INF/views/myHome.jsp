@@ -156,7 +156,7 @@
 		    						<span class="myContractBoxText applyText">사업자인증</span>
 		    					</div>
 		    					<div class="auth_img_div">
-		    						<img id="auth_img" src="${pageContext.request.contextPath}/assets/img/non_auth.png"/>		    					
+		    						<img id="auth_img" src="${pageContext.request.contextPath}/assets/img/xx-button.png"/>		    					
 								</div>
 		    				</div>
 		    				<div class="myContractBox recommandBox">
@@ -172,7 +172,7 @@
 		    						<span class="myContractBoxText closeText">수익성검증</span>
 		    					</div>
 		    					<div class="auth_img_div">
-		    						<img id="auth_img" src="${pageContext.request.contextPath}/assets/img/non_auth.png"/>
+		    						<img id="auth_img" src="${pageContext.request.contextPath}/assets/img/xx-button.png"/>
 		    					</div>
 		    				</div>
 		    				

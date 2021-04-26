@@ -139,17 +139,13 @@
 		ON p.proj_mem_id = pf.profile_mem_id
         <where>
         	proj_state = 1
-        	<if test="projDetail != '' and projDetail != null">
-        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
-        	</if>
-        	<if test="projTitle != '' and projTitle != null">
-        		OR proj_title LIKE concat('%', #{projTitle}, '%')
+        	<if test="projDetail != '' and projDetail != null or projTitle != '' and projTitle != null">
+        		AND (proj_detail LIKE concat('%', #{projDetail}, '%') OR proj_title LIKE concat('%', #{projTitle}, '%'))
         	</if>
 			<if test="projMemId != '' and projMemId != null">
 				AND proj_mem_id = #{projMemId}
 			</if>
 			
-        	
         	<if test="projSortArr != '' and projSortArr != null">
         		AND proj_sort IN
 	            <foreach collection="projSortArr" item="item" index="index" open="(" close=")" separator=",">
@@ -317,13 +313,10 @@
 		ON p.proj_mem_id = pf.profile_mem_id
         <where>
         	proj_state = 1
-        	<if test="projDetail != '' and projDetail != null">
-        		OR proj_detail LIKE concat('%', #{projDetail}, '%')
+        	<if test="projDetail != '' and projDetail != null or projTitle != '' and projTitle != null">
+        		AND (proj_detail LIKE concat('%', #{projDetail}, '%') OR proj_title LIKE concat('%', #{projTitle}, '%'))
         	</if>
-        	<if test="projTitle != '' and projTitle != null">
-        		OR proj_title LIKE concat('%', #{projTitle}, '%')
-        	</if>
-        	<if test="projMemId != '' and projMemId != null">
+			<if test="projMemId != '' and projMemId != null">
 				AND proj_mem_id = #{projMemId}
 			</if>
         	

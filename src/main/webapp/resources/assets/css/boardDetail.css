@@ -75,7 +75,7 @@
 }
 .detailContentsButtonBox {
 	float: left;
-	margin: 15px 0 228px 0;
+	margin: 15px 0 0 0;
 }
 .detailContentsButton  {
 	width: 80px;
@@ -185,7 +185,7 @@
   background-color: #ffffff;
 }
 .reviewBox{
-	padding: 10px 0 20px;
+	padding: 15px 0 15px;
 	width: 100%;
 	height:fit-content;
 	border-top: solid 1px #cccccc;
@@ -195,7 +195,7 @@
 }
 .reviewBox2{
 	display: inline-block;
-	width: 22%;
+	width: 15%;
 	height:fit-content;
 	float: left;
 }

@@ -114,8 +114,8 @@
 		            	</ul>
 	            	</div>
 	            </div>
-<!--  	            <div class="partner_list">	
-	            	<span class="check_list">공급방법</span>
+  	            <div class="partner_list">	
+	            	<span class="check_list downImg">공급방법</span>
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projSupplyType"><label for="projSupplyType"><span>전체</span></label></li>
@@ -126,7 +126,7 @@
 		            		<li><input type="checkbox" class="check" name="projSupplyType" value="5" id="s5"><label for="s5"><span>경매공급</span></label></li>
 		            	</ul>
 	            	</div>
-	            </div> -->
+	            </div>
 	            <div class="partner_list">	
 	            	<span class="check_list downImg">등록지역</span>
 					<div class="check_list_box">
@@ -275,7 +275,7 @@
 									</c:if>
 									<c:if test="${output.memRname == 0}">
 										<div class="authBox">신원인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									</c:if>
 									<c:if test="${output.profileBizCerti == 1}">
@@ -285,7 +285,7 @@
 									</c:if>
 									<c:if test="${output.profileBizCerti == 0}">
 										<div class="authBox">사업자인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 										</div>
 									</c:if>
 								</div>
@@ -297,7 +297,7 @@
 									</c:if>
 									<c:if test="${output.projProdCerti == 0}">
 										<div class="authBox">상품검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 										</div>
 									</c:if>
 									<c:if test="${output.projProfit == 1}">
@@ -307,7 +307,7 @@
 									</c:if>
 									<c:if test="${output.projProfit == 0}">
 										<div class="authBox">수익성검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 										</div>
 									</c:if>
 									<c:if test="${output.profileChChk == 1}">
@@ -317,7 +317,7 @@
 									</c:if>
 									<c:if test="${output.profileChChk == 0}">
 										<div class="authBox">채널검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 										</div>
 									</c:if>
 									<c:if test="${output.profileSaleChk == 1}">
@@ -327,7 +327,7 @@
 									</c:if>
 									<c:if test="${output.profileSaleChk == 0}">
 										<div class="authBox">매출검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 										</div>
 									</c:if>								
 								</div>
@@ -547,7 +547,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}
 							{{#ifCond memRname '==' '0'}}
 								<div class="authBox">신원인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileBizCerti '==' '1'}}
@@ -557,7 +557,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}
 							{{#ifCond profileBizCerti '==' '0'}}
 								<div class="authBox">사업자인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond projProdCerti '==' '1'}}
@@ -567,7 +567,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}
 							{{#ifCond projProdCerti '==' '0'}}
 								<div class="authBox">상품검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond projProfit '==' '1'}}
@@ -577,7 +577,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}
 							{{#ifCond projProfit '==' '0'}}
 								<div class="authBox">수익성검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileChChk '==' '1'}}
@@ -587,7 +587,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}
 							{{#ifCond profileChChk '==' '0'}}
 								<div class="authBox">채널검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond profileSaleChk '==' '1'}}
@@ -597,7 +597,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}
 							{{#ifCond profileSaleChk '==' '0'}}
 								<div class="authBox">매출검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							{{/ifCond}}						
 						</div>					
@@ -732,7 +732,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond memRname '==' '0'}}
 										<div class="authBox">신원인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileBizCerti '==' '1'}}
@@ -742,7 +742,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileBizCerti '==' '0'}}
 										<div class="authBox">사업자인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 										</div>
 									{{/ifCond}}
 								</div>
@@ -754,7 +754,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond projProdCerti '==' '0'}}
 										<div class="authBox">상품검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond projProfit '==' '1'}}
@@ -764,7 +764,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond projProfit '==' '0'}}
 										<div class="authBox">수익성검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileChChk '==' '1'}}
@@ -774,7 +774,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileChChk '==' '0'}}
 										<div class="authBox">채널검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileSaleChk '==' '1'}}
@@ -784,7 +784,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileSaleChk '==' '0'}}
 										<div class="authBox">매출검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}								
 								</div>

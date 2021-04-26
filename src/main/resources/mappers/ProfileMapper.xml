@@ -130,14 +130,8 @@
  			<if test="needIndus != '' and needIndus != null">
 				mem_rname = 1
 			</if> 
-			<if test="memNick != '' and memNick != null">
-        		OR mem_nick LIKE concat('%', #{memNick}, '%')
-        	</if>
-        	<if test="profileMemId != '' and profileMemId != null">
-        		OR profile_mem_id LIKE concat('%', #{profileMemId}, '%')
-        	</if>
-        	<if test="profileIntro != '' and profileIntro != null">
-        		OR profile_intro LIKE concat('%', #{profileIntro}, '%')
+			<if test="memNick != '' and memNick != null or profileMemId != '' and profileMemId != null or profileIntro != '' and profileIntro != null">
+        		AND (mem_nick LIKE concat('%', #{memNick}, '%') OR profile_mem_id LIKE concat('%', #{profileMemId}, '%') OR profile_intro LIKE concat('%', #{profileIntro}, '%'))
         	</if>
         	<if test="profileSort != '' and profileSort != null">
         		AND profile_sort = #{profileSort}
@@ -289,14 +283,8 @@
 			<if test="needIndus != '' and needIndus != null">
 				mem_rname = 1
 			</if>
-			<if test="memNick != '' and memNick != null">
-        		OR mem_nick LIKE concat('%', #{memNick}, '%')
-        	</if>
-        	<if test="profileMemId != '' and profileMemId != null">
-        		OR profile_mem_id LIKE concat('%', #{profileMemId}, '%')
-        	</if>
-        	<if test="profileIntro != '' and profileIntro != null">
-        		OR profile_intro LIKE concat('%', #{profileIntro}, '%')
+			<if test="memNick != '' and memNick != null or profileMemId != '' and profileMemId != null or profileIntro != '' and profileIntro != null">
+        		AND (mem_nick LIKE concat('%', #{memNick}, '%') OR profile_mem_id LIKE concat('%', #{profileMemId}, '%') OR profile_intro LIKE concat('%', #{profileIntro}, '%'))
         	</if>
         	<if test="profileSort != '' and profileSort != null">
         		AND profile_sort = #{profileSort}

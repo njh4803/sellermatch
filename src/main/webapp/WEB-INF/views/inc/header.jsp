@@ -91,7 +91,7 @@ header #m-search_frm{
 <%@ include file="../modal/loginModal.jsp"%>
 <header>
 	<div class="header_wrap">
-       <h1><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/assets/img/sellermatch_logo.png" alt="sellermatch"></a></h1>
+       <h1><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/assets/img/sellermatch_logo3.png" alt="sellermatch"></a></h1>
        <nav>
            <ul>
                <li><a href="${pageContext.request.contextPath}/project/find">거래처 매칭</a></li>

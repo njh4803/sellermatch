@@ -160,25 +160,25 @@
 								</c:otherwise>
 							</c:choose>
 							<c:choose>
-								<c:when test="${sort == 'endSort'}">
-									<a href="javascript:void(0)" class="sort select" id="endSort">
+								<c:when test="${sort == 'volumeSort'}">
+									<a href="javascript:void(0)" class="sort select" id="volumeSort">
 										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-check.png">매출 높은 순
 									</a>
 								</c:when>
 								<c:otherwise>
-									<a href="javascript:void(0)" class="sort" id="endSort">
+									<a href="javascript:void(0)" class="sort" id="volumeSort">
 										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">매출 높은 순
 									</a>
 								</c:otherwise>
 							</c:choose>
 							<c:choose>
-								<c:when test="${sort == 'applySort'}">
-									<a href="javascript:void(0)" class="sort select" id="applySort">
+								<c:when test="${sort == 'recommendSort'}">
+									<a href="javascript:void(0)" class="sort select" id="recommendSort">
 										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-check.png">요청 많은 순
 									</a>
 								</c:when>
 								<c:otherwise>
-									<a href="javascript:void(0)" class="sort" id="applySort">
+									<a href="javascript:void(0)" class="sort" id="recommendSort">
 										<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">요청 많은 순
 									</a>
 								</c:otherwise>
@@ -225,7 +225,7 @@
 								</c:if>
 								<c:if test="${output.memRname == 0}">
 									<div class="authBox">신원인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileBizCerti == 1}">
@@ -235,7 +235,7 @@
 								</c:if>
 								<c:if test="${output.profileBizCerti == 0}">
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 1}">
@@ -245,7 +245,7 @@
 								</c:if>
 								<c:if test="${output.profileChChk == 0}">
 									<div class="authBox">채널검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileSaleChk == 1}">
@@ -255,7 +255,7 @@
 								</c:if>
 								<c:if test="${output.profileSaleChk == 0}">
 									<div class="authBox">매출검증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 									</div>
 								</c:if>									
 								</div>							
@@ -458,21 +458,21 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">최신 등록순
 								</a>
 							{{/ifCond}}
-							{{#ifCond sort '==' 'endSort'}}
-								<a href="javascript:void(0)" class="sort select" id="endSort">
+							{{#ifCond sort '==' 'volumeSort'}}
+								<a href="javascript:void(0)" class="sort select" id="volumeSort">
 									<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-check.png">매출 높은 순
 								</a>
 							{{else}}
-								<a href="javascript:void(0)" class="sort" id="endSort">
+								<a href="javascript:void(0)" class="sort" id="volumeSort">
 									<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">매출 높은 순
 								</a>
 							{{/ifCond}}
-							{{#ifCond sort '==' 'applySort'}}
-								<a href="javascript:void(0)" class="sort select" id="applySort">
+							{{#ifCond sort '==' 'recommendSort'}}
+								<a href="javascript:void(0)" class="sort select" id="recommendSort">
 									<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-check.png">요청 많은 순
 								</a>
 							{{else}}
-								<a href="javascript:void(0)" class="sort" id="applySort">
+								<a href="javascript:void(0)" class="sort" id="recommendSort">
 									<img class="sort-check" alt="" src="${pageContext.request.contextPath}/assets/img/sort-checkNone.png">요청 많은 순
 								</a>
 							{{/ifCond}}						
@@ -517,7 +517,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond memRname '==' '0'}}
 										<div class="authBox">신원인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileBizCerti '==' '1'}}
@@ -527,7 +527,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileBizCerti '==' '0'}}
 										<div class="authBox">사업자인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileChChk '==' '1'}}
@@ -537,7 +537,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileChChk '==' '0'}}
 										<div class="authBox">채널검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileSaleChk '==' '1'}}
@@ -547,7 +547,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileSaleChk '==' '0'}}
 										<div class="authBox">매출검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}							
 								</div>							

@@ -292,3 +292,6 @@
 .cursor {
 	cursor: pointer;
 }
+#auth_img{
+	width: 24px;
+}
