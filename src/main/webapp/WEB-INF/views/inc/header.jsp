@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
     
 <style>
-.skip {display: none;}
+/* .skip {display: none;} */
 .modal-header {
 	display: block;
 }
@@ -98,7 +98,7 @@ header #m-search_frm{
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 리스트</a></li>
                <!-- <li><a href="javascipt:void(0);">커뮤니티</a></li> -->
                <li class="operation">
-                   <a href="${pageContext.request.contextPath}/board?boardType=1" class="operation_guide">이용안내</a>
+                   <a href="#" class="operation_guide">이용안내</a>
  	               <div class="operation_guide_list" style="display: none;">
 	                    <a href="${pageContext.request.contextPath}/board?boardType=1">이용안내</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=3">커뮤니티</a>
@@ -177,10 +177,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript">
 $(function(){
 	
-	$('#menuIcon').on('click', function(){
-		
-	});
-	
 	$('#login, #login2, #login3').on('click', function(){
 		$('#loginModal .modal-dialog').remove();
 		$(".modal-open").attr('style','');
@@ -247,11 +243,9 @@ $(function(){
 		
 	});
 	
-	$('.operation_guide_list').addClass('skip');
-    
     var $operation_guide_list = $('.operation_guide_list')
     
-    $('.operation').mouseenter(function(){
+    $('.operation').click(function(){
         $('.operation_guide_list').stop().slideDown();
     })
     
