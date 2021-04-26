@@ -78,6 +78,9 @@
 	color: #000000;
 	margin-left: 1px;
 }
+.recommend-close{
+	float: right;
+}
 </style>
 
   <!-- Modal -->
@@ -89,6 +92,7 @@
                		<div class="recommend">
                			거래 제안하기
                		</div>
+               		<img class="recommend-close" alt="" src="${pageContext.request.contextPath}/assets/img/close.png">
                		<div>
                			<button class="recommend-btn">제안하기</button>
                		</div>
@@ -101,6 +105,11 @@
 <script type="text/javascript">
 	
 $(document).ready(function() {
+	
+	$(document).on("click", ".recommend-close", function(){
+		$("#recommendModal").modal('toggle');
+	});
+	
 	$(document).on("click", ".recommend-btn", function(){
 		var recommendProj = $("input[name=recommendProj]:checked").val();
 		if (recommendProj == undefined) {

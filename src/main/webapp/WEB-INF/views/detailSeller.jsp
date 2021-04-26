@@ -133,7 +133,7 @@
 		<div class="partner_bnr3">
 			<div class="top-Box">판매자 상세페이지</div>
 			<div class="top-Box2">
-				조건에 맞는 공급자와 판매자를 찾고 거래 신청할 수 있습니다.
+				조건에 맞는 판매자를 찾고 제안 요청을 할 수 있습니다.
 			</div>
 			<hr>
 		</div>
@@ -376,12 +376,41 @@ $(document).ready(function() {
 	        	var content = json
            		var template = Handlebars.compile($("#recommend-tmpl").html());
            		var html = template(content);
-           		$(".recommend").after(html);
+           		$(".recommend-close").after(html);
 			}
 		});
 		
 		$("#recommendModal").modal();
 	})
+});
+</script>
+<script type="text/javascript">
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
 });
 </script>
 <script type="text/x-handlebars-template" id="recommend-tmpl">
@@ -391,6 +420,9 @@ $(document).ready(function() {
 	<div class="projectTitle">{{projTitle}}</div>
 </div>
 {{/projectList}}
+{{#ifCond projectList '==' ''}}
+	 <div class="emptyResult">등록된 거래처가 없습니다.</div>
+{{/ifCond}}
 </script>
 <script src="${pageContext.request.contextPath}/assets/js/share.js"></script>
     </body>

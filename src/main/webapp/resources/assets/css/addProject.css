@@ -436,9 +436,9 @@ input[type="checkbox"].findCheck:checked + label span {
   object-fit: contain;
 }
 .profile-container{
-    display: inline-block;
-    width: 473px;
-    margin-right: 103px;
+	display: inline-block;
+    width: 509px;
+    margin-right: 66px;
     vertical-align: top;
     margin-top: 90px;
 }
@@ -476,6 +476,7 @@ input[type="checkbox"].findCheck:checked + label span {
   margin-top: 60px;
 }
 .profile-box3 span{
+  display: block;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
@@ -558,7 +559,7 @@ input[type="checkbox"].findCheck:checked + label span {
     padding: 4px 8px;
     background-color: #ececec;
     color: #858585;
-    margin: 5px 0;
+    margin: 5px;
 }
 
 #proj_form .projTag-item:hover {

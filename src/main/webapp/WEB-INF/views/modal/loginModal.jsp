@@ -541,7 +541,7 @@ form div .input-group input.form-control {
                                     <div class="col-sm-6 col-xs-6">
                                         <div class="checkbox-fade fade-in-primary">
                                             <label>
-                                                <input type="checkbox" id="loginRemember" name="continueLogin" checked>
+                                                <input type="checkbox" id="loginRemember" name="continueLogin">
                                                 <label for="loginRemember" id="loginRemember" class="text-inverse"><span>로그인 유지하기</span></label>
                                             </label>
                                         </div>

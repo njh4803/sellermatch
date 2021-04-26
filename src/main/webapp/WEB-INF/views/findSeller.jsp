@@ -235,7 +235,7 @@
 								</c:if>
 								<c:if test="${output.profileBizCerti == 0}">
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 1}">
@@ -391,6 +391,10 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 	return new Handlebars.SafeString(tag);
 });
 
+Handlebars.registerHelper('numberWithCommas', function (x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+});
+
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
     switch (operator) {
@@ -523,7 +527,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileBizCerti '==' '0'}}
 										<div class="authBox">사업자인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileChChk '==' '1'}}
@@ -588,7 +592,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							<div class="infoBox2">
 								<span>매출규모</span>
 								<span>
-									{{profileVolume}}원
+									{{numberWithCommas profileVolume}}원
 								</span>
 							</div>
 							<div class="infoBox2"><span>판매경력</span><span>{{profileCareerName}}</span></div>

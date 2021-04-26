@@ -285,7 +285,7 @@
 									</c:if>
 									<c:if test="${output.profileBizCerti == 0}">
 										<div class="authBox">사업자인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									</c:if>
 								</div>
@@ -421,6 +421,11 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 Handlebars.registerHelper('projDetail', function (projDetail) {
 	return new Handlebars.SafeString(projDetail);
 });
+
+Handlebars.registerHelper('numberWithCommas', function (x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+});
+
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
     switch (operator) {
@@ -552,7 +557,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{/ifCond}}
 							{{#ifCond profileBizCerti '==' '0'}}
 								<div class="authBox">사업자인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							{{/ifCond}}
 							{{#ifCond projProdCerti '==' '1'}}
@@ -710,7 +715,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							</div>
 							<div class="clearfix">
 							{{#ifCond projPrice '!=' '0'}}
-								<div class="infoBox2">단가<span>{{projPrice}}원</span></div>
+								<div class="infoBox2">단가<span>{{numberWithCommas projPrice}}원</span></div>
 								<div class="infoBox2">마진<span>{{projMarginName}}</span></div>
 							{{/ifCond}}
 							{{#ifCond projPrice '==' '0'}}
@@ -737,7 +742,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileBizCerti '==' '0'}}
 										<div class="authBox">사업자인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 								</div>

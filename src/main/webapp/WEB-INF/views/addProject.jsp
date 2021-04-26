@@ -916,7 +916,6 @@ $(document).ready(function() {
 			required 필수 항목으로 설정한다. (true, false)
 			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
 		*/
-		
 	    rules: {
 	    	// 썸네일 이미지 필수
 	    	file_route: 'required',
@@ -1012,6 +1011,12 @@ $(document).ready(function() {
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
         	CKupdate();
+        	
+        	if (CKEDITOR.instances.projDetail.getData() == '') {
+        		swal('알림', '상세 설명을 입력해 주세요', 'warning');
+				CKEDITOR.instances.projDetail.focus();
+				return false;
+			}
         	
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
