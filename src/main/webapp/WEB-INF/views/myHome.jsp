@@ -228,8 +228,7 @@ $(document).ready(function(){
 			location.href="/myPage/registDelng";
 		}
 		if (tab_id == 'my-tab-5') {
-			alert('탈퇴페이지로');
-			location.href="/myPage/myHome";
+			location.href="/myPage/withdraw";
 		}
 	});
 	//스크랩 리스트

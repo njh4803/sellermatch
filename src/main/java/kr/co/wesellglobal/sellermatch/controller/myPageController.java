@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.PageData;
+import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.ApplyDto;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
@@ -40,7 +42,11 @@ public class myPageController {
 	@Autowired
 	ProfileService profileService;
 	@Autowired
+	RegexHelper regexHelper;
+	@Autowired
 	WebHelper webHelper;
+	@Autowired
+	MailHelper mailHelper;
 	
 	@RequestMapping(value = "/myPage/joinManage", method = RequestMethod.GET)
 	public ModelAndView joinManage(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
@@ -74,8 +80,7 @@ public class myPageController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		model.addAttribute("output", output);
+				model.addAttribute("output", output);
 		model.addAttribute("member", member);
 		
 		return new ModelAndView("profileManage");
@@ -340,6 +345,94 @@ public class myPageController {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
+		return webHelper.getJsonData();
+	}
+	
+	@RequestMapping(value = "/myPage/withdraw", method = RequestMethod.GET)
+	public ModelAndView withdraw(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		
+		ProfileDto input = new ProfileDto();
+		input.setProfileMemId(member.getMemId());
+		
+		ProfileDto output = null;
+		
+		if (member.getMemSort() == "1" | member.getMemSort() == "2") {
+			input.setProfileSort(member.getMemSort());
+		}
+		try {
+			output = profileService.getProfile(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("output", output);
+		model.addAttribute("member", member);
+		
+		return new ModelAndView("withdraw");
+	}
+	
+	/** 회원탈퇴 이메일 발송*/
+	@RequestMapping(value = "/sendWithdrawMail", method = RequestMethod.POST)
+	public Map<String, Object> sendWithdrawMail(@RequestParam(value = "memId", required = false) String email) {
+		if (!regexHelper.isEmail(email)) {
+			return webHelper.getJsonWarning("이메일이 잘못되었습니다.");
+		}
+		MemberDto input = new MemberDto();
+		input.setMemId(email);
+		
+		// 임시 비밀번호를 위한 난수 생성
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+		String str = "";
+
+		int idx = 0;
+		for (int i = 0; i < 10; i++) {
+			idx = (int) (charSet.length * Math.random());
+			str += charSet[idx];
+		}
+		
+		input.setWithdrawAuthCode(str);
+		try {
+			memberService.withDrawAuthCodeUpdate(input);
+			String content = 
+					"<div style='margin:auto;padding:0;width:700px;'>"
+					+"<table width='700' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;border:1px solid #bcbcbc;text-align:centen;'>"
+					+"<tbody><tr><td style='padding:0;margin:0;'>"
+					+"<table width='698' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;'>"
+					+"<tbody><tr><td width='37' style='padding:0;margin:0;'></td><td width='624' style='padding:0;margin:0;'>"
+			        +"<table width='624' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;'>"
+	                +"<tbody><tr><td style='padding:32px 0;margin:0;text-align:right;'>"
+	                +"<img style='padding:0;margin:0;vertical-align:top;' src='https://sellermatch.co.kr/assets/img/sellermatch_logo.png' alt='샐러매치' width='250px' loading='lazy'>"
+	                +"</td></tr><tr><td style='padding:35px 0 0;margin:0;border-top:1px solid #999ea3;'>"
+	                +"<p style='padding:0;margin:0 0 35px;text-align:center;font-size:34px;color:#333e48;line-height:45px;font-family:'Malgun Gothic';letter-spacing:-2px;font-weight: bold;'>회원탈퇴 인증코드</p>"
+                    +"<table width='624' border='0' cellspacing='0' cellpadding='0' style='margin:0;padding:0;'>"
+                    +"<tbody><tr><td style='padding: 40px 40px 40px 40px;margin:0;text-align:left;background:#f5f5f6;'>"
+			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>안녕하세요, 셀러매치입니다.</p>"
+			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>회원님의 탈퇴를 위한 인증코드를 발급해드리오니</p>"
+			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>인증코드를 복사하여 탈퇴절차를 완료해 주세요.</p>"
+			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><br></p>"
+			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><br></p>"
+			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>"
+			        +"<span style='font-size: 18pt;'><b>인증코드&nbsp; &nbsp;+str</b></span></p>"
+	                +"</td></tr></tbody></table>"
+			        +"</td></tr><tr><td style='padding:0 0 35px;margin:0;'> "
+	                +"<p style='margin:35px 0 0;padding:0;text-align:center;color:#989ea3;font-size:11px;line-height:16px;font-family:'Malgun Gothic';letter-spacing:-1px;'>본 메일은 발신 전용 메일입니다.<br></p>"
+			        +"</td></tr></tbody></table>"
+			        +"</td><td width='37' style='padding:0;margin:0;'></td></tr></tbody></table>"
+			        +"</td></tr><tr><td style='padding: 25px 0 25px;margin:0;background:#f5f5f6;text-align:center;'>"
+			        +"<p align='left' style='text-align: left; margin: 0px 0px 0px 40px; padding: 0px; color: rgb(51, 62, 72); font-size: 11px; line-height: 16px; font-family: Malgun Gothic; letter-spacing: -1px;'><span style='color: rgb(154, 154, 154);'>위셀글로벌(주)</span></p>"
+			        +"<p align='left' style='text-align: left; margin: 0px 0px 0px 40px; padding: 0px; color: rgb(51, 62, 72); font-size: 11px; line-height: 16px; font-family: Malgun Gothic; letter-spacing: -1px;'><span style='color: rgb(154, 154, 154);'>서울특별시 강남구 언주로 147길 43 (호성빌딩 1층)</span></p>"
+			        +"<p align='left' style='text-align: left; margin: 0px 0px 0px 40px; padding: 0px; color: rgb(51, 62, 72); font-size: 11px; line-height: 16px; font-family: Malgun Gothic; letter-spacing: -1px;'><span style='color: rgb(154, 154, 154);'>TEL. 02-515-0923&nbsp; &nbsp; FAX. 0303-3445-2236</span></p>"
+			        +"<p style='margin-left: 40px;'><span style='color: rgb(154, 154, 154);'>"
+			        +"</span></p><p style='text-align: left; margin-top: 10px; color: rgb(152, 158, 163); font-size: 11px; font-family: Malgun Gothic; letter-spacing: -0.5px; margin-left: 40px;'><span style='color: rgb(154, 154, 154);'>Copyright WeSellGlobal All Rights Reserved.</span></p>"
+			        +"</td></tr></tbody></table></div>";
+			String subject = "SellerMatch 회원탈퇴 인증코드 발송 메일";
+			mailHelper.sendMail(email, subject, content);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
 		return webHelper.getJsonData();
 	}
 }

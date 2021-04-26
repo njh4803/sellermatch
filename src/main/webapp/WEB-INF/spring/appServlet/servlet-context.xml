@@ -62,8 +62,8 @@
 		<beans:constructor-arg value="gh1BURAxGe" />
 	</beans:bean> 
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
-		<!-- <beans:constructor-arg value="http://localhost:8080/auth/naver/callback" />-->	<!-- 개발 -->
-		<beans:constructor-arg value="http://sellermatch.co.kr/auth/naver/callback"/> <!-- 운영 -->
+		<beans:constructor-arg value="http://localhost:8080/auth/naver/callback" />	<!-- 개발 -->
+		<!-- <beans:constructor-arg value="http://sellermatch.co.kr/auth/naver/callback"/>--> <!-- 운영 -->
 	</beans:bean>
 
 	<beans:bean id="naverSns" class="kr.co.wesellglobal.sellermatch.auth.SnsValue">
@@ -82,8 +82,8 @@
 		<beans:constructor-arg value="3AkrPO2Iad32qgEiQgqQUs620VWOuPMs" />
 	</beans:bean>
 	<beans:bean id="kakaoRedirectUrl" class="java.lang.String">
-		<!-- <beans:constructor-arg value="http://localhost:8080/auth/kakao/callback" />--> <!-- 개발 -->
-		<beans:constructor-arg value="http://sellermatch.co.kr/auth/kakao/callback" /> <!-- 운영 -->
+		<beans:constructor-arg value="http://localhost:8080/auth/kakao/callback" /> <!-- 개발 -->
+		<!-- <beans:constructor-arg value="http://sellermatch.co.kr/auth/kakao/callback" /> --> <!-- 운영 -->
 	</beans:bean>
 
 	<beans:bean id="kakaoSns" class="kr.co.wesellglobal.sellermatch.auth.SnsValue">
@@ -101,8 +101,8 @@
 		<beans:constructor-arg value="FP_2K3l_3Q1nIzpDY4bNYvSa" />
 	</beans:bean>
 	<beans:bean id="googleRedirectUrl" class="java.lang.String">
-		<!-- <beans:constructor-arg value="http://localhost:8080/auth/google/callback" />--> 	<!-- 개발 -->
-		<beans:constructor-arg value="http://sellermatch.co.kr/auth/google/callback" /> <!-- 운영  -->
+		<beans:constructor-arg value="http://localhost:8080/auth/google/callback" /> 	<!-- 개발 -->
+		<!-- <beans:constructor-arg value="http://sellermatch.co.kr/auth/google/callback" /> --> <!-- 운영  -->
 	</beans:bean>
 
 	<beans:bean id="googleSns" class="kr.co.wesellglobal.sellermatch.auth.SnsValue">

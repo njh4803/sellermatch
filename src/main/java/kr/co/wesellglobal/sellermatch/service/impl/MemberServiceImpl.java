@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.myPageDto;
 import kr.co.wesellglobal.sellermatch.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -246,6 +247,26 @@ public class MemberServiceImpl implements MemberService{
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("닉네임 중복검사에 실패했습니다.");
+		}
+	}
+	
+	@Override
+	public void withDrawAuthCodeUpdate(MemberDto input) throws Exception {
+		int result = 0;
+		
+		try {
+			// 존재하는 아이디(이메일)인지 체크
+			result = sqlSession.selectOne("MemberMapper.idCheck", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+			sqlSession.update("myPageMapper.withDrawAuthCodeUpdate", input);
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("등록된 이메일이 아닙니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
 		}
 	}
 

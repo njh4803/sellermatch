@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+div.tab-link2 {
+	border-radius: 0px !important;
+}
+
+.myPage_right_contents {
+	width: 1045px;
+	height: 100%;
+	margin: 0 320px 0 15px;
+	padding: 40px 220px 50px 220px;
+	border-radius: 5px;
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+}
+
+.myPage_r_withdraw_title {
+	font-size: 20px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #484848;
+}
+
+.myPage_r_withdraw_text {
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #484848;
+	margin-top: 8px;
+}
+
+.myPage_r_withdraw_contents {
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #858585;
+}
+
+.myPage_r_withdraw_s_contents {
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #a5a5a5;
+}
+
+#withdrawReason {
+	width: 100%;
+	height: 40px;
+	margin: 30px 0 15px;
+	padding: 10px 10px 10px 10px;
+	border-radius: 3px;
+	border: solid 1px #cccccc;
+}
+
+#withdrawReasonText {
+	width: 100%;
+	height: 140px;
+	margin: 0px 0 35px;
+	padding: 10px 10px 10px 10px;
+	border-radius: 3px;
+	border: solid 1px #cccccc;
+}
+
+.memId {
+	width: 84%;
+	height: 40px;
+	padding: 13px 240px 13px 20px;
+	border-radius: 3px;
+	border: solid 1px #cccccc;
+	margin-top: 23px;
+	margin-bottom: 5px;
+}
+
+#sendAuthEmail {
+	width: 15%;
+	height: 40px;
+	padding: 10px 0 13px;
+	border-radius: 4px;
+	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.16);
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	margin-top: -5px;
+}
+
+.withdraw_btn_group {
+	margin-top: 39px;
+	margin-bottom: 15px;
+}
+
+.withdraw_btn {
+	width: 100%;
+	height: 40px;
+	padding: 10px 0;
+	border-radius: 5px;
+	box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.16);
+	background-image: linear-gradient(94deg, #ff8000, #ff540f);
+	font-size: 17px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+}
+
+.authCodeText {
+	width: 84%;
+	height: 40px;
+	padding: 13px 240px 13px 20px;
+	border-radius: 3px;
+	border: solid 1px #cccccc;
+	margin-top: 23px;
+	margin-bottom: 50px;
+}
+
+#authCode {
+	width: 15%;
+	height: 40px;
+	padding: 10px 0 13px;
+	border-radius: 4px;
+	box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.16);
+	border: solid 1px #cccccc;
+	background-color: #ffffff;
+	margin-top: -5px;
+}
