@@ -235,7 +235,7 @@
 								</c:if>
 								<c:if test="${output.profileBizCerti == 0}">
 									<div class="authBox">사업자인증
-										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
+										<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 									</div>
 								</c:if>
 								<c:if test="${output.profileChChk == 1}">
@@ -527,7 +527,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 									{{#ifCond profileBizCerti '==' '0'}}
 										<div class="authBox">사업자인증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xxx-button.png">
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									{{/ifCond}}
 									{{#ifCond profileChChk '==' '1'}}

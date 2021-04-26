@@ -167,7 +167,7 @@
 							</c:if>
 							<c:if test="${output.memRname == 0}">
 								<div class="authBox">신원인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileBizCerti == 1}">
@@ -177,7 +177,7 @@
 							</c:if>
 							<c:if test="${output.profileBizCerti == 0}">
 								<div class="authBox">사업자인증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileChChk == 1}">
@@ -187,7 +187,7 @@
 							</c:if>
 							<c:if test="${output.profileChChk == 0}">
 								<div class="authBox">채널검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							</c:if>
 							<c:if test="${output.profileSaleChk == 1}">
@@ -197,7 +197,7 @@
 							</c:if>
 							<c:if test="${output.profileSaleChk == 0}">
 								<div class="authBox">매출검증
-									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/x-button.png">
+									<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 								</div>
 							</c:if>	        			
 	           			</div>
