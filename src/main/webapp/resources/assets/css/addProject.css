@@ -421,7 +421,7 @@ input[type="checkbox"].findCheck:checked + label span {
 }
 .img-container{
 	display: inline-block;
-	width: 436px;
+	width: 444px;
 	margin-right: 125px;
 	vertical-align: top;
 }
