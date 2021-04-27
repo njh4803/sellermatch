@@ -100,17 +100,23 @@
 		                                </select>
 			    					</td>
 			    				</tr>
-								<c:if test="${member.memSort == 1}">
 			    				<tr>
 			    					<td>상품 단가
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">제품의 최종 판매가격(소비자가격)을 말합니다.</div>				    					
 			    					</td>
 			    					<td>
-			    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="100000000" value="${output.projPrice}">
+			    						<select id="projPrice" name="projPrice" class="inputForm width-100">
+		                                    <option value="">선택하세요.</option>
+		                                    <option value="01"<c:if test="${output.projPrice == 01}"> selected </c:if>>1만원 미만</option>
+		                                    <option value="02"<c:if test="${output.projPrice == 02}"> selected </c:if>>1만원 ~ 3만원</option>
+		                                    <option value="03"<c:if test="${output.projPrice == 03}"> selected </c:if>>3만원 ~ 10만원</option>
+		                                    <option value="04"<c:if test="${output.projPrice == 04}"> selected </c:if>>10만원 ~ 50만원</option>
+		                                    <option value="05"<c:if test="${output.projPrice == 05}"> selected </c:if>>50만원 ~ 100만원</option>
+		                                    <option value="06"<c:if test="${output.projPrice == 06}"> selected </c:if>>100만원 초과</option>
+		                                </select>
 			    					</td>
 			    				</tr>
-								</c:if>
 			    				<tr>
 			    					<td>판매 마진
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
