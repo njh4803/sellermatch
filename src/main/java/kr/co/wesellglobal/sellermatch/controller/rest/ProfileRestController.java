@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -142,10 +143,10 @@ public class ProfileRestController {
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public Map<String, Object> addProfile(
+			HttpSession session, 
 			@RequestParam(value="profilePhotoFile", required = false) MultipartFile photo,
 			@ModelAttribute("profileDto") ProfileDto profileDto,
 			@RequestParam(value = "tag", required = false) String tag) throws Exception {
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
@@ -297,12 +298,11 @@ public class ProfileRestController {
 		data.put("profileIndus", input.getProfileIndus());
 		
 		// 프로필 등록 후 세션 재설정
-		/*
-		 * if (condition) { MemberDto member =
-		 * (MemberDto)webHelper.getSession("member");
-		 * member.setExistProfile(input.getProfileIndus());
-		 * webHelper.setSession("member", member); }
-		 */
+        if ( session.getAttribute("profile") !=null ){
+            // 기존에 profile 세션 값이 존재한다면
+        	session.removeAttribute("profile");// 기존값을 제거해 준다.
+        }
+        session.setAttribute("profile", input);
 		
 		return webHelper.getJsonData(data);
 	};
