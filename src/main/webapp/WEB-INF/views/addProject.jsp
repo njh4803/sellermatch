@@ -201,6 +201,7 @@
 		                                    <option value="063">전북</option>
 		                                    <option value="044">세종특별자치시</option>
 		                                    <option value="064">제주특별자치도</option>
+		                                    <option value="999">해외</option>
 		                                </select>
 			    					</td>
 			    				</tr>
@@ -502,6 +503,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 		                                    <option value="063">전북</option>
 		                                    <option value="044">세종특별자치시</option>
 		                                    <option value="064">제주특별자치도</option>
+		                                    <option value="999">해외</option>
 		                                </select>
 									</div>
 									<div class="inputGroup">

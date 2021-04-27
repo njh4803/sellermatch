@@ -301,7 +301,10 @@ public class ProjectDto {
 		if (this.projNation.equals("064")) {
 			return this.projNationName = "제주특별자치도";
 		}
-		return this.projNationName = "해외";
+		if (this.projNation.equals("999")) {
+			return this.projNationName = "해외";
+		}
+		return this.projNationName = "";
 	}
 	
 	public String getProjProdCertiName() {

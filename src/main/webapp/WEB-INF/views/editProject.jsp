@@ -157,6 +157,7 @@
 		                                    <option value="063"<c:if test="${output.projNation == 063}"> selected </c:if>>전북</option>
 		                                    <option value="044"<c:if test="${output.projNation == 044}"> selected </c:if>>세종특별자치시</option>
 		                                    <option value="064"<c:if test="${output.projNation == 064}"> selected </c:if>>제주특별자치도</option>
+		                                    <option value="999"<c:if test="${output.projNation == 999}"> selected </c:if>>해외</option>
 		                                </select>
 			    					</td>
 			    				</tr>

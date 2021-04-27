@@ -274,7 +274,10 @@ public class ProfileDto {
 		if (this.profileNation.equals("064")) {
 			return this.profileNationName = "제주특별자치도";
 		}
-		 return this.profileNationName = "해외";
+		if (this.profileNation.equals("999")) {
+			return this.profileNationName = "해외";
+		}
+		 return this.profileNationName = "";
 	 }
 	 
 	 public String getProfileBizSortName() {

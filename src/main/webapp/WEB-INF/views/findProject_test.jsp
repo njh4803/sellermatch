@@ -150,6 +150,7 @@
 		            		<li><input type="checkbox" class="check" name="projNation" value="063" id="n15"><label for="n15"><span>전북</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projNation" value="044" id="n16"><label for="n16"><span>세종특별자치시</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projNation" value="064" id="n17"><label for="n17"><span>제주특별자치도</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projNation" value="999" id="n18"><label for="n18"><span>해외</span></label></li>
 		            	</ul>
 					</div>
 	            </div>
