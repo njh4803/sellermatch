@@ -69,7 +69,14 @@
 	                                                    		<div class="col-sm-8">
 		                                                    		<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button> -->
 		                                                    		<button id="P-delBtn" type="button" class="btn btn-primary">선택 삭제</button>
+		                                                    		 <select id="countSort" class="col-2 form-control" style="float: right;">
+		                                                    			<option value="5"<c:if test="${countSort == 5}">selected</c:if>>5개씩 보기</option>
+		                                                    			<option value="10"<c:if test="${countSort == 10}">selected</c:if>>10개씩 보기</option>
+		                                                    			<option value="20"<c:if test="${countSort == 20}">selected</c:if>>20개씩 보기</option>
+		                                                    			<option value="30"<c:if test="${countSort == 30}">selected</c:if>>30개씩 보기</option>
+		                                                    		</select>
 		                                                    	</div>
+		                                                    	
 		                                                        <div class="col-sm-4" style="float: right;">
 		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어">
 		                                							<div class="col-sm-2" style="padding: 0;">
@@ -249,6 +256,12 @@
     </div>
 <script type="text/javascript">
 $(function(){
+	// 게시물 수 선택
+	$("#countSort").on("change",function(){
+		var countSort = $('#countSort').val();
+		window.location.href = ROOT_URL+"/admin/projectList?countSort="+countSort;
+	});
+	
 	//체크박스 전체선택
 	$("#checkAll").on("click",function(){
 		var checked = this.checked;
