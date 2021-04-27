@@ -22,8 +22,8 @@
 		    <div class="profile-container">
 		     	<div class="profile-box">
 		     		<div>${member.memNick}님,</div>
-		     			<div class="textBox1"><strong>거래처 등록</strong>과 <strong>프로필 등록</strong>을 함께 해보세요!</div>
-		     			<div class="textBox2">거래처 등록 이전에 <strong>프로필 등록</strong>을 해주시면</div>
+		     			<div class="textBox1"><strong>매칭 등록</strong>과 <strong>프로필 등록</strong>을 함께 해보세요!</div>
+		     			<div class="textBox2">매칭 등록 이전에 <strong>프로필 등록</strong>을 해주시면</div>
 		     		<div>원하는 거래처와 더 빨리 협상할 수 있습니다.</div>
 		     	</div>
 			    <div class="profile-box2">
@@ -79,7 +79,7 @@
 			    				<tr>
 			    					<td>대표 이미지
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
-			    						<div class="questionBox">'거래처 찾기' 리스트에 보여질 썸네일용 이미지입니다.</div>
+			    						<div class="questionBox">'거래처 매칭' 리스트에 보여질 썸네일용 이미지입니다.</div>
 			    					</td>
 		   							<td>
 		    							<div>
@@ -144,17 +144,23 @@
 		                                </select>
 			    					</td>
 			    				</tr>
-								<c:if test="${member.memSort == 1}">
 			    				<tr>
 			    					<td>상품 단가
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">제품의 최종 판매가격(소비자가격)을 말합니다.</div>				    					
 			    					</td>
 			    					<td>
-			    						<input type="number" class="inputForm width-100" id="projPrice" name="projPrice" min="0" max="100000000" value="0">
+			    						<select id="projPrice" name="projPrice" class="inputForm width-100">
+		                                    <option value="">선택하세요.</option>
+		                                    <option value="01">1만원 미만</option>
+		                                    <option value="02">1만원 ~ 3만원</option>
+		                                    <option value="03">3만원 ~ 10만원</option>
+		                                    <option value="04">10만원 ~ 50만원</option>
+		                                    <option value="05">50만원 ~ 100만원</option>
+		                                    <option value="06">100만원 초과</option>
+		                                </select>
 			    					</td>
 			    				</tr>
-								</c:if>
 			    				<tr>
 			    					<td>판매 마진
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
@@ -339,7 +345,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 				   				<tr>
 				   					<td>태그
 										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
-					    				<div class="questionBox">태그는 거래처 찾기를 등록하는 이가 강조하고 싶은 것을 자유롭게 작성하는 곳입니다. 판매자/공급자가 선호하는 태그를 선택해서 입력할수도 있습니다.</div>				   					
+					    				<div class="questionBox">태그는 매칭 등록을 하는 이가 강조하고 싶은 것을 자유롭게 작성하는 곳입니다. 판매자/공급자가 선호하는 태그를 선택해서 입력할수도 있습니다.</div>				   					
 				   					</td>
 				   					<td>
 				    					<div class="inputForm width-100">
@@ -403,7 +409,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 			   			</table>
 				   		<div>
 					    	<button class="addBtn" type="submit">
-								거래처 등록
+								매칭 등록
 							</button>
 					    </div>
 						<div id="profile_form">
@@ -1023,7 +1029,7 @@ $(document).ready(function() {
             return $(form).valid();
         },
         success: function(json) {
-        	swal('알림', '거래처가 등록되었습니다.', 'success').then(function(result) {
+        	swal('알림', '매칭이 등록되었습니다.', 'success').then(function(result) {
                 window.location = ROOT_URL + '/';
             });
         },

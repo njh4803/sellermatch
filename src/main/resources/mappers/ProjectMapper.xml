@@ -168,22 +168,9 @@
         	</if>
         	
         	<if test="projPriceArr != '' and projPriceArr != null">
-	            <foreach collection="projPriceArr" item="item" index="index">
-	           		<if test="item == '9999'">
-	            		OR proj_price <![CDATA[ > ]]> 0 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '29999'">
-	            		OR proj_price <![CDATA[ > ]]> 9999 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '99999'">
-	            		OR proj_price <![CDATA[ > ]]> 29999 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '499999'">
-	            		OR proj_price <![CDATA[ > ]]> 99999 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '500000'">
-	            		OR proj_price <![CDATA[ >= ]]> #{item}
-	            	</if>
+            	AND proj_price IN
+            	<foreach collection="projPriceArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
 	            </foreach>
         	</if>
         	
@@ -342,22 +329,9 @@
         	</if>
         	
         	<if test="projPriceArr != '' and projPriceArr != null">
-	            <foreach collection="projPriceArr" item="item" index="index">
-	           		<if test="item == '9999'">
-	            		OR proj_price <![CDATA[ > ]]> 0 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '29999'">
-	            		OR proj_price <![CDATA[ > ]]> 9999 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '99999'">
-	            		OR proj_price <![CDATA[ > ]]> 29999 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '499999'">
-	            		OR proj_price <![CDATA[ > ]]> 99999 AND proj_price <![CDATA[ <= ]]> #{item}
-	            	</if>
-	            	<if test="item == '500000'">
-	            		OR proj_price <![CDATA[ >= ]]> #{item}
-	            	</if>
+            	AND proj_price IN
+            	<foreach collection="projPriceArr" item="item" index="index" open="(" close=")" separator=",">
+	            	#{item}
 	            </foreach>
         	</if>
         	

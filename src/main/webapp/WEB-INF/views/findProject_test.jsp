@@ -83,11 +83,12 @@
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="9999" id="p1"><label for="p1"><span>~1만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="29999" id="p2"><label for="p2"><span>1만원 ~ 3만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="99999" id="p3"><label for="p3"><span>3만원 ~ 10만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="499999" id="p4"><label for="p4"><span>10만원 ~50만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="500000" id="p5"><label for="p5"><span>50만원 이상</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="01" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="02" id="p2"><label for="p2"><span>1만원 ~ 3만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="03" id="p3"><label for="p3"><span>3만원 ~ 10만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="04" id="p4"><label for="p4"><span>10만원 ~50만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="05" id="p5"><label for="p5"><span>50만원 ~100만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="06" id="p6"><label for="p6"><span>100만원 초과</span></label></li>
 		            	</ul>
 	            	</div>
 	            </div>
@@ -258,7 +259,14 @@
 							</div>
 							<div class="clearfix">
 							<c:if test="${output.projPrice != 0}">
-								<div class="infoBox2">단가<span><fmt:formatNumber value="${output.projPrice}" type="number"/>원</span></div>
+								<div class="infoBox2">단가<span>
+									<c:if test="${output.projPrice == 01}">1만원 미만</c:if>
+									<c:if test="${output.projPrice == 02}">1만원~3만원</c:if>
+									<c:if test="${output.projPrice == 03}">3만원~10만원</c:if>
+									<c:if test="${output.projPrice == 04}">10만원~50만원</c:if>
+									<c:if test="${output.projPrice == 05}">50만원~100만원</c:if>
+									<c:if test="${output.projPrice == 06}">100만원 초과</c:if>
+								</span></div>
 								<div class="infoBox2">마진<span>${output.projMarginName}</span></div>
 							</c:if>
 							<c:if test="${output.projPrice == 0}">
@@ -529,7 +537,13 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 						{{#ifCond projPrice '!=' '0'}}
 							<div class="infoBox2">
 								<div>
-									<span>단가</span> {{projPrice}}원 
+									<span>단가</span> 
+									{{#ifCond projPrice '==' '01'}}1만원 미만{{/ifCond}}
+									{{#ifCond projPrice '==' '02'}}1만원~3만원{{/ifCond}}
+									{{#ifCond projPrice '==' '03'}}3만원~10만원{{/ifCond}}
+									{{#ifCond projPrice '==' '04'}}10만원~50만원{{/ifCond}}
+									{{#ifCond projPrice '==' '05'}}50만원~100만원{{/ifCond}}
+									{{#ifCond projPrice '==' '06'}}100만원 초과{{/ifCond}}
 								</div> 
 								<div>
 									<span>마진</span> {{projMarginName}}
@@ -715,7 +729,14 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							</div>
 							<div class="clearfix">
 							{{#ifCond projPrice '!=' '0'}}
-								<div class="infoBox2">단가<span>{{numberWithCommas projPrice}}원</span></div>
+								<div class="infoBox2">단가<span>
+									{{#ifCond projPrice '==' '01'}}1만원 미만{{/ifCond}}
+									{{#ifCond projPrice '==' '02'}}1만원~3만원{{/ifCond}}
+									{{#ifCond projPrice '==' '03'}}3만원~10만원{{/ifCond}}
+									{{#ifCond projPrice '==' '04'}}10만원~50만원{{/ifCond}}
+									{{#ifCond projPrice '==' '05'}}50만원~100만원{{/ifCond}}
+									{{#ifCond projPrice '==' '06'}}100만원 초과{{/ifCond}}
+								</span></div>
 								<div class="infoBox2">마진<span>{{projMarginName}}</span></div>
 							{{/ifCond}}
 							{{#ifCond projPrice '==' '0'}}
