@@ -181,6 +181,7 @@ $(document).ready(function(){
 	    	$("#sendAuthEmail").prop('disabled', false);
 	    });
 	});
+    
     $(document).on("click", "#authConfirm", function(e){
 	    const auth_confirm = $("#auth_confirm").val();
 	

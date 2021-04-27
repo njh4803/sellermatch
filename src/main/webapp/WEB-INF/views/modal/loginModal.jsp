@@ -404,6 +404,8 @@ form div .input-group input.form-control {
 
 							e.preventDefault();
 
+							$('button[type=submit]').prop('disabled', true);
+							
 							var form = $(this);
 							var url = form.attr('action');
 
@@ -420,6 +422,8 @@ form div .input-group input.form-control {
 										text : '이메일을 확인해주세요.',
 										type : 'success',
 									});
+									
+									$('button[type=submit]').prop('disabled', false);
 								}
 							});
 						});
