@@ -373,10 +373,17 @@ public class myPageController {
 	
 	/** 회원탈퇴 이메일 발송*/
 	@RequestMapping(value = "/sendWithdrawMail", method = RequestMethod.POST)
-	public Map<String, Object> sendWithdrawMail(@RequestParam(value = "memId", required = false) String email) {
+	public Map<String, Object> sendWithdrawMail(@SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "memId", required = false) String email) {
+		
 		if (!regexHelper.isEmail(email)) {
 			return webHelper.getJsonWarning("이메일이 잘못되었습니다.");
 		}
+		
+		if(!member.getMemId().equals(email)) {
+			return webHelper.getJsonWarning("가입했던 이메일을 작성해주세요.");
+		}
+		
 		MemberDto input = new MemberDto();
 		input.setMemId(email);
 		
@@ -414,7 +421,7 @@ public class myPageController {
 			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><br></p>"
 			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><br></p>"
 			        +"<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>"
-			        +"<span style='font-size: 18pt;'><b>인증코드&nbsp; &nbsp;+str</b></span></p>"
+			        +"<span style='font-size: 18pt;'><b>인증코드&nbsp; &nbsp;"+str+"</b></span></p>"
 	                +"</td></tr></tbody></table>"
 			        +"</td></tr><tr><td style='padding:0 0 35px;margin:0;'> "
 	                +"<p style='margin:35px 0 0;padding:0;text-align:center;color:#989ea3;font-size:11px;line-height:16px;font-family:'Malgun Gothic';letter-spacing:-1px;'>본 메일은 발신 전용 메일입니다.<br></p>"

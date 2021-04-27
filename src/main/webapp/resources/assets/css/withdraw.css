@@ -135,3 +135,7 @@ div.tab-link2 {
 	background-color: #ffffff;
 	margin-top: -5px;
 }
+
+label.error {
+	float: left;
+}

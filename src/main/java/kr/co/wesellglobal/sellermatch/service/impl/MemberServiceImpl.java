@@ -260,7 +260,7 @@ public class MemberServiceImpl implements MemberService{
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
-			sqlSession.update("myPageMapper.withDrawAuthCodeUpdate", input);
+			sqlSession.update("MemberMapper.withDrawAuthCodeUpdate", input);
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("등록된 이메일이 아닙니다.");

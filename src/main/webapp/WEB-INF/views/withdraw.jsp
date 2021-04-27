@@ -66,7 +66,7 @@
 		    	</div>
 		    	<div class="myPage_right">
 		    		<div class="myPage_right_contents">
-		    		<form action="${pageContext.request.contextPath}/withdraw" id="withdraw_form" name="profile_form" method="post">
+		    		<form action="${pageContext.request.contextPath}/withdraw" id="withdraw_form" name="withdraw_form" method="post">
 		    			<div class="myPage_r_withdraw_title">
 		    				회원 탈퇴
 		    			</div>
@@ -86,16 +86,19 @@
 						<div class="inputGroup">
 							<textarea id="withdrawReasonText" name="withdrawReasonText" class="inputForm" style="resize: none;" placeholder="상세내용을 입력해주세요. (500자 이내)"></textarea>
 						</div>
+						</form>
 						<div class="myPage_r_withdraw_title">
 		    				회원 탈퇴 전 메일 본인인증
 		    			</div>
 		    			<div class="myPage_r_withdraw_text">
 		    				회원님의 정보보호를 위해 필수로 확인하는 절차입니다.
 		    			</div>
+		    			<form action="${pageContext.request.contextPath}/sendWithdrawMail" id="sendWithdrawMail" name="sendWithdrawMail" method="post">
 						<div class="inputGroup">
 							<input type="text" name="memId" class="memId" id="memId" placeholder="인증을 진행 할 아이디를 입력해주세요."/>
 							<button type="button" id="sendAuthEmail" class="btn form-bg-primary">코드전송</button>
 						</div>
+						</form>
 						<div class="inputGroup">
 							<input type="text" name="authCodeText" class="authCodeText" id="authCodeText" placeholder="이메일로 전달받은 코드를 써주세요."/>
 							<button type="button" id="authCode" class="btn form-bg-primary">인증하기</button>
@@ -114,9 +117,8 @@
 						</div>
 		    			<div class="myPage_r_withdraw_s_contents">
 		    			<img class="alert_img" alt="" src="${pageContext.request.contextPath}/assets/img/withdraw_caution.png">
-		    				회원 탈퇴 시 7일동안 재가입이 제한됩니다.
+		    				회원 탈퇴 시 90일동안 재가입이 제한됩니다.
 		    			</div>
-		    			</form>
 					</div>
 		    	</div>
 	    	</div>
@@ -143,9 +145,57 @@ $(document).ready(function(){
 			location.href="/myPage/registDelng";
 		}
 		if (tab_id == 'my-tab-5') {
-			alert('탈퇴페이지로');
 			location.href="/myPage/withdraw";
 		}
 	});
+	
+	
+	$(document).on("focus", "#sendWithdrawMail", function(e) {
+		$("#sendWithdrawMail").validate({
+			rules : {
+				memId : {
+					required : true,
+					email : true,
+				},
+			},
+			messages : {
+				memId : {
+					required : '이메일을 입력하세요.',
+					email : '이메일만 입력 가능합니다.',
+				},
+			},
+			errorPlacement : function(error, element) {
+				element.parent().after(error);
+
+			},
+		});
+	});
+	
+	$(document).on("click", "#sendAuthEmail", function(e) {
+
+		e.preventDefault();
+		$('#sendAuthEmail').prop("disabled", true);
+		$('#memId').attr('disabled', "disabled");
+		
+		var memId = $('#memId').val();
+		$.ajax({
+			type : "POST",
+			url : '/sendWithdrawMail',
+			data : {
+					memId :memId
+			},
+			beforeSend : function() {
+				return $('#sendWithdrawMail').valid();
+			},
+			success : function(json) {
+				swal({
+					title : '인증코드가 발급되었습니다.',
+					text : '이메일을 확인해주세요.',
+					type : 'success',
+				});
+			}
+		});
+	});
+
 });	
 </script>
