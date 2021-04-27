@@ -176,6 +176,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		$('#sendAuthEmail').prop("disabled", true);
 		$('#memId').attr('disabled', "disabled");
+		$('.ajax-loader').show();
 		
 		var memId = $('#memId').val();
 		$.ajax({
@@ -188,6 +189,7 @@ $(document).ready(function(){
 				return $('#sendWithdrawMail').valid();
 			},
 			success : function(json) {
+				$('.ajax-loader').hide();
 				swal({
 					title : '인증코드가 발급되었습니다.',
 					text : '이메일을 확인해주세요.',

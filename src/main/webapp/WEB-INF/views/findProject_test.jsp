@@ -539,10 +539,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								<div>
 									<span>단가</span> 
 									{{#ifCond projPrice '==' '01'}}1만원 미만{{/ifCond}}
-									{{#ifCond projPrice '==' '02'}}1만원~3만원{{/ifCond}}
-									{{#ifCond projPrice '==' '03'}}3만원~10만원{{/ifCond}}
-									{{#ifCond projPrice '==' '04'}}10만원~50만원{{/ifCond}}
-									{{#ifCond projPrice '==' '05'}}50만원~100만원{{/ifCond}}
+									{{#ifCond projPrice '==' '02'}}1~3만원{{/ifCond}}
+									{{#ifCond projPrice '==' '03'}}3~10만원{{/ifCond}}
+									{{#ifCond projPrice '==' '04'}}10~50만원{{/ifCond}}
+									{{#ifCond projPrice '==' '05'}}50~100만원{{/ifCond}}
 									{{#ifCond projPrice '==' '06'}}100만원 초과{{/ifCond}}
 								</div> 
 								<div>
@@ -731,10 +731,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							{{#ifCond projPrice '!=' '0'}}
 								<div class="infoBox2">단가<span>
 									{{#ifCond projPrice '==' '01'}}1만원 미만{{/ifCond}}
-									{{#ifCond projPrice '==' '02'}}1만원~3만원{{/ifCond}}
-									{{#ifCond projPrice '==' '03'}}3만원~10만원{{/ifCond}}
-									{{#ifCond projPrice '==' '04'}}10만원~50만원{{/ifCond}}
-									{{#ifCond projPrice '==' '05'}}50만원~100만원{{/ifCond}}
+									{{#ifCond projPrice '==' '02'}}1~3만원{{/ifCond}}
+									{{#ifCond projPrice '==' '03'}}3~10만원{{/ifCond}}
+									{{#ifCond projPrice '==' '04'}}10~50만원{{/ifCond}}
+									{{#ifCond projPrice '==' '05'}}50~100만원{{/ifCond}}
 									{{#ifCond projPrice '==' '06'}}100만원 초과{{/ifCond}}
 								</span></div>
 								<div class="infoBox2">마진<span>{{projMarginName}}</span></div>
