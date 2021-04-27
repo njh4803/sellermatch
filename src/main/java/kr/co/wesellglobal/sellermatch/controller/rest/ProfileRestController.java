@@ -66,7 +66,7 @@ public class ProfileRestController {
 			@RequestParam(value = "profileBizSort[]", required = false) String[] profileBizSort,
 			@RequestParam(value = "profileNation[]", required = false) String[] profileNation,
 			@RequestParam(value = "profileIndus[]", required = false) String[] profileIndus,
-			@RequestParam(value = "profileChannel[]", required = false) int[] profileChannel,
+			@RequestParam(value = "profileChannel[]", required = false) String[] profileChannel,
 			@RequestParam(value = "profileCareer[]", required = false) String[] profileCareer,
 			@RequestParam(value = "profileVolume[]", required = false) String[] profileVolume,
 			@RequestParam(value = "profileChChk[]", required = false) String profileChChk,

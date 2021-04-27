@@ -175,9 +175,9 @@
         	</if>
         	
         	<if test="profileChannelArr != '' and profileChannelArr != null">
-        		AND profile_ch IN
-	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator=",">
-	            	#{item}
+        		AND 
+	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator="OR">
+	            	 profile_ch LIKE concat('%', #{item}, '%')
 	            </foreach>
         	</if>
         	
@@ -329,11 +329,12 @@
         	</if>
         	
         	<if test="profileChannelArr != '' and profileChannelArr != null">
-        		AND profile_ch IN
-	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator=",">
-	            	#{item}
+        		AND 
+	            <foreach collection="profileChannelArr" item="item" index="index" open="(" close=")" separator="OR">
+	            	 profile_ch LIKE concat('%', #{item}, '%')
 	            </foreach>
         	</if>
+        	
         	<if test="profileCareerArr != '' and profileCareerArr != null">
         		AND profile_career IN
 	            <foreach collection="profileCareerArr" item="item" index="index" open="(" close=")" separator=",">

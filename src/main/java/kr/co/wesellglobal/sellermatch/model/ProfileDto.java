@@ -135,7 +135,7 @@ public class ProfileDto {
 	/** 검색을 위한 배열 */
 	private String[] profileNationArr;
 	private String[] profileIndusArr;
-	private int[] profileChannelArr;
+	private String[] profileChannelArr;
 	private String[] profileBizSortArr;
 	private String[] profileCareerArr;
 	private String[] profileVolumeArr;
