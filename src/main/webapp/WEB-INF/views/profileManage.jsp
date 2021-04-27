@@ -358,7 +358,7 @@ $(document).ready(function(){
 		var tabNum = $(this).data('num');
 
 		if (tab_id == 'my-tab-4') {
-			location.href="/myPage/delngManage/registDelng";
+			location.href="/myPage/registDelng";
 		}
 		if (tab_id == 'my-tab-1') {
 			location.href="/myPage/myHome";
