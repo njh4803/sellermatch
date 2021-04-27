@@ -276,7 +276,11 @@ $(document).ready(function() {
 	        default:
 	            return options.inverse(this);
 	    }
-	});	
+	});
+	
+	Handlebars.registerHelper('numberWithCommas', function (x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	});
 });
 </script>
 <script>
@@ -459,7 +463,7 @@ $(document).ready(function(){
 												{{#ifCond profileVolume '==' null}}
 												<div class="td" style="width: 170px;">미등록</div>
 												{{else}}
-												<div class="td" style="width: 170px;">{{profileVolume}}원</div>
+												<div class="td" style="width: 170px;">{{numberWithCommas profileVolume}}원</div>
 												{{/ifCond}}
 											{{else}}
 											<div class="td" style="width: 454px;">{{profileIntro}}</div>

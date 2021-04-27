@@ -261,10 +261,10 @@
 							<c:if test="${output.projPrice != 0}">
 								<div class="infoBox2">단가<span>
 									<c:if test="${output.projPrice == 01}">1만원 미만</c:if>
-									<c:if test="${output.projPrice == 02}">1만원~3만원</c:if>
-									<c:if test="${output.projPrice == 03}">3만원~10만원</c:if>
-									<c:if test="${output.projPrice == 04}">10만원~50만원</c:if>
-									<c:if test="${output.projPrice == 05}">50만원~100만원</c:if>
+									<c:if test="${output.projPrice == 02}">1~3만원</c:if>
+									<c:if test="${output.projPrice == 03}">3~10만원</c:if>
+									<c:if test="${output.projPrice == 04}">10~50만원</c:if>
+									<c:if test="${output.projPrice == 05}">50~100만원</c:if>
 									<c:if test="${output.projPrice == 06}">100만원 초과</c:if>
 								</span></div>
 								<div class="infoBox2">마진<span>${output.projMarginName}</span></div>

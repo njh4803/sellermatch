@@ -168,7 +168,9 @@
         	</if>
         	
         	<if test="projPriceArr != '' and projPriceArr != null">
-            	AND proj_price IN
+            	AND proj_price IS NULL
+            	OR proj_price = ''
+            	OR proj_price IN
             	<foreach collection="projPriceArr" item="item" index="index" open="(" close=")" separator=",">
 	            	#{item}
 	            </foreach>
@@ -213,6 +215,7 @@
         	</if>
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
+        		AND proj_channel IS NULL
 	            <foreach collection="projChannelArr" item="item" index="index">
 	            	OR proj_channel Like concat('%', #{item}, '%')
 	            </foreach>
@@ -329,7 +332,9 @@
         	</if>
         	
         	<if test="projPriceArr != '' and projPriceArr != null">
-            	AND proj_price IN
+            	AND proj_price IS NULL
+            	OR proj_price = ''
+            	OR proj_price IN
             	<foreach collection="projPriceArr" item="item" index="index" open="(" close=")" separator=",">
 	            	#{item}
 	            </foreach>
@@ -374,6 +379,7 @@
         	</if>
         	
         	<if test="projChannelArr != '' and projChannelArr != null">
+        		AND proj_channel IS NULL
 	            <foreach collection="projChannelArr" item="item" index="index">
             		OR proj_channel Like concat('%', #{item}, '%')
 	            </foreach>
