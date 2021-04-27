@@ -118,7 +118,7 @@
 									</div>
 									<div class="inputGroup">
 										<label>이메일 인증</label>
-			    						<input type="text" name="memEmail" class="inputForm" id="memEmail" "/>
+			    						<input type="text" name="memEmail" class="inputForm" id="memEmail"/>
 										<button type="button" id="sendAuthEmail" class="btn form-bg-primary">인증번호 발송</button>
 									</div>
 				    				<div class="inputGroup">
@@ -161,11 +161,12 @@ $(document).ready(function(){
 			location.href="/myPage/profileManage";
 		}
 		if (tab_id == 'my-tab-4') {
-			location.href="/myPage/delngManage/registDelng";
+			location.href="/myPage/registDelng";
 		}
 	});
 	
     $(document).on("click", "#sendAuthEmail", function(e){
+    	$("#sendAuthEmail").prop('disabled', true);
 	    const memEmail = $("#memEmail").val();
 	
 	    if (!memEmail) {
@@ -177,6 +178,7 @@ $(document).ready(function(){
 	    	memEmail: memEmail
 	    }, function(json) {
 	    	swal('확인', '인증번호가 발송되었습니다.', 'success');
+	    	$("#sendAuthEmail").prop('disabled', false);
 	    });
 	});
     $(document).on("click", "#authConfirm", function(e){
