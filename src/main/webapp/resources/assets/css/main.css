@@ -659,3 +659,23 @@
 .table-img{
 	display: none;
 }
+/* 팝업창 */
+.popup{
+	display: none;
+	position: absolute;
+    z-index: 5;
+    right: -100px;
+    top: 50px;
+}
+.popup img{
+	width: 450px;
+}
+.popup-close{
+	float: right;
+}
+.popup-btnBox{
+	margin-top: 5px;
+}
+.popup-btnBox button{
+	background-color: transparent;
+}

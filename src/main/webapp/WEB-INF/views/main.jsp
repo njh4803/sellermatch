@@ -5,11 +5,17 @@
 <link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/share.css" rel="stylesheet" type="text/css">
 <style>
-
 </style>
 <div class="bnr">
 	<div class="main-0000" style="background-image: url('${pageContext.request.contextPath}/assets/img/main0000.png');">
 	 	<div class="main-000">
+		 	<div class="popup" id="popup_1">
+				<img alt="" src="${pageContext.request.contextPath}/assets/img/event.png">
+				<div class="popup-btnBox">
+					<button id="today">오늘하루 보지않기</button>
+					<button class="popup-close">닫기</button>
+				</div>
+			</div>
 	 		<div style="display: inline-block;">
 	 			<div class="main-001">
 		   	        셀러매치는<br>
@@ -403,8 +409,38 @@
 <input type="text" value="http://sellermatch.co.kr/" id="urlAddress" style="display:none;">
 <%@ include file="inc/footer.jsp"%>
 <script>
+	// 24시간 기준 쿠키 설정하기
+	var setCookie = function(cname, cvalue, exdays){
+		var todayDate = new Date();
+		todayDate.setTime(todayDate.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires=" + todayDate.toUTCString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+</script>
+<script>
 $(document).ready(function() {
- 	
+	
+	/* 메인 이벤트팝업 노출 */
+	$('.popup').show();
+	/* 이벤트팝업 쿠키 설정 */
+	cookiedata = document.cookie;
+	if ( cookiedata.indexOf("popup_1=N") < 0 ){ //쿠키 변경 여부 불러오기
+		document.all['popup_1'].style.visibility = "visible";
+	} else {
+		document.all['popup_1'].style.display = "none";
+	}
+
+	// 오늘하루 보지않기 버튼
+	$('#today').on('click', function(){
+		setCookie("popup_1", "N", 1); //쿠키값 변경
+		$('#popup_1').hide();
+	});	
+	
+	// 팝업 닫기
+	$('.popup-close').on('click', function(){
+		$('.popup').hide();
+	});
+	
 	$('.FAQBox').hover(function() {
 
 	     //이부분은 마우스가 올라 요소 위에 올라왔을때 이벤트입니다.
