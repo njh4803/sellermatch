@@ -38,4 +38,8 @@ public interface MemberService {
 	public void nickCheck(MemberDto input) throws Exception;
 	//회원탈퇴 인증코드저장,발송
 	public void withDrawAuthCodeUpdate(MemberDto input) throws Exception;
+	
+	public int authConfirm(MemberDto input) throws Exception;
+	
+	public int withdraw(MemberDto input) throws Exception;
 }

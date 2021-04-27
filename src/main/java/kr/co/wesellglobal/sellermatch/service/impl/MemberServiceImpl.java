@@ -269,5 +269,46 @@ public class MemberServiceImpl implements MemberService{
 			throw new Exception("데이터 수정에 실패했습니다.");
 		}
 	}
-
+	
+	@Override
+	public int authConfirm(MemberDto input) throws Exception {
+		int result = 0;
+		try {
+			result = sqlSession.selectOne("MemberMapper.authConfirm", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public int withdraw(MemberDto input) throws Exception {
+		int result = 0;
+		
+		try {
+			// 존재하는 아이디(이메일)인지 체크
+			result = sqlSession.selectOne("MemberMapper.idCheck", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+			result = sqlSession.update("MemberMapper.withdraw", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+			result = sqlSession.insert("MemberMapper.insertWithdrawReason", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("등록된 이메일이 아닙니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+		
+		return result;
+	}
 }

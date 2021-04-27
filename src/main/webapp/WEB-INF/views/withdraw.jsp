@@ -99,11 +99,13 @@
 							<button type="button" id="sendAuthEmail" class="btn form-bg-primary">코드전송</button>
 						</div>
 						</form>
+						<form action="${pageContext.request.contextPath}/sendAuthConfirm" id="sendAuthConfirm" name="sendAuthConfirm" method="post">
 						<div class="inputGroup">
 							<input type="text" name="authCodeText" class="authCodeText" id="authCodeText" placeholder="이메일로 전달받은 코드를 써주세요."/>
 							<button type="button" id="authCode" class="btn form-bg-primary">인증하기</button>
 						</div>
-		    			<div class="myPage_r_withdraw_text">
+						</form>
+		    			<div class="myPage_r_withdraw_text cautionText">
 		    			<img class="alert_img" alt="" src="${pageContext.request.contextPath}/assets/img/withdraw_check.png">
 		    				탈퇴 후에도 등록한 게시물은 그대로 남아있습니다.
 		    			</div>
@@ -149,7 +151,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	
 	$(document).on("focus", "#sendWithdrawMail", function(e) {
 		$("#sendWithdrawMail").validate({
 			rules : {
@@ -166,7 +167,24 @@ $(document).ready(function(){
 			},
 			errorPlacement : function(error, element) {
 				element.parent().after(error);
-
+			},
+		});
+	});
+	
+	$(document).on("focus", "#sendAuthConfirm", function(e) {
+		$("#sendAuthConfirm").validate({
+			rules : {
+				authCodeText : {
+					required : true,
+				},
+			},
+			messages : {
+				authCodeText : {
+					required : '코드를 입력하세요.',
+				},
+			},
+			errorPlacement : function(error, element) {
+				element.parent().after(error);
 			},
 		});
 	});
@@ -174,19 +192,24 @@ $(document).ready(function(){
 	$(document).on("click", "#sendAuthEmail", function(e) {
 
 		e.preventDefault();
+		var memId = $('#memId').val();
 		$('#sendAuthEmail').prop("disabled", true);
 		$('#memId').attr('disabled', "disabled");
 		$('.ajax-loader').show();
 		
-		var memId = $('#memId').val();
+		if (memId == null ||memId == '') {
+			$('.ajax-loader').hide();
+			swal('알림', '이메일을 입력하세요.', 'warning');
+			$('#sendAuthEmail').attr("disabled", false);
+			$('#memId').attr('disabled', false);
+			return;
+		}
+		
 		$.ajax({
 			type : "POST",
 			url : '/sendWithdrawMail',
 			data : {
 					memId :memId
-			},
-			beforeSend : function() {
-				return $('#sendWithdrawMail').valid();
 			},
 			success : function(json) {
 				$('.ajax-loader').hide();
@@ -195,9 +218,124 @@ $(document).ready(function(){
 					text : '이메일을 확인해주세요.',
 					type : 'success',
 				});
+			},
+			error : function() {
+				$('.ajax-loader').hide();
+				$('#sendAuthEmail').attr("disabled", false);
+				$('#memId').attr('disabled', false);
+				
+				swal({
+					title : '오류가 발생하였습니다.',
+					text : '입력한 이메일을 확인해주세요.',
+					type : 'error',
+				});
 			}
 		});
 	});
+	
+	$(document).on("click", "#authCode", function(e) {
 
+		e.preventDefault();
+		
+		$('#authCode').prop("disabled", true);
+		$('#authCodeText').attr('disabled', true);
+		$('.ajax-loader').show();
+		
+		var authCodeText = $('#authCodeText').val();
+		
+		if (authCodeText == null ||authCodeText == '') {
+			$('.ajax-loader').hide();
+			swal('알림', '인증코드를 입력하세요.', 'warning');
+			$('#authCode').attr('disabled', false);
+			$('#authCodeText').attr('disabled', false);
+			return;
+		}
+		
+		$.ajax({
+			type : "POST",
+			url : '/sendAuthConfirm',
+			data : {
+				authCodeText :authCodeText
+			},
+			success : function(json) {
+				$('.ajax-loader').hide();
+				swal({
+					title : '인증이 완료되었습니다.',
+					type : 'success',
+				});
+				
+				$('.withdraw_btn').attr('disabled', false);
+				$('.withdraw_btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
+			},
+			error : function() {
+				$('.ajax-loader').hide();
+				$('#authCode').attr("disabled", false);
+				$('#authCodeText').attr('disabled', false);
+				
+				swal({
+					title : '오류가 발생하였습니다.',
+					text : '입력한 코드를 확인해주세요.',
+					type : 'error',
+				});
+			}
+		});
+	});
+	
+	//withdraw_form
+	
+	$(document).on("focus", "#withdraw_form", function(e) {
+		$("#withdraw_form").validate({
+			rules : {
+				withdrawReason : {
+					required : true,
+				},
+			},
+			messages : {
+				withdrawReason : {
+					required : '탈퇴 사유를 선택해 주세요.',
+				},
+			},
+			errorPlacement : function(error, element) {
+				element.parent().after(error);
+			},
+		});
+	});
+	
+	$(document).on("click", ".withdraw_btn", function(e) {
+		
+		var withdrawReason = $("#withdrawReason option:selected").val();
+		var withdrawReasonText = $('#withdrawReasonText').val();
+
+		$.ajax({
+			type : "POST",
+			url : '/withdraw',
+			data : {
+				withdrawReason :withdrawReason,
+				withdrawReasonText : withdrawReasonText
+			},
+			success : function() {
+				$('.ajax-loader').hide();
+				swal({
+					title : '탈퇴가 완료되었습니다.',
+					type : 'success',
+				});
+				window.location.href = ROOT_URL+"/";
+			},
+			error : function() {
+				swal({
+					title : '탈퇴가 완료되었습니다.',
+					type : 'success',
+				});
+				sleep(2000);
+				window.location.href = ROOT_URL+"/";
+			}
+		});
+	});
 });	
+
+
+function sleep(ms) {
+	  const wakeUpTime = Date.now() + ms
+	  while (Date.now() < wakeUpTime) {}
+	}
 </script>

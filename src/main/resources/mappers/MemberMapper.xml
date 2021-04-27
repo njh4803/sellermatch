@@ -43,6 +43,11 @@
         <result property="naverId"   column="naverId" />
         <result property="kakaoId"   column="kakaoId" />
         <result property="withdrawAuthCode" column="WITHDRAW_AUTH_CODE" />
+        <result property="withdrawAuthCode" column="WITHDRAW_IDX" />
+        <result property="withdrawReason" column="WITHDRAW_REASON" />
+        <result property="withdrawReasonText" column="WITHDRAW_REASON_TEXT" />
+        <result property="withdrawDate" column="WITHDRAW_DATE" />
+        
     </resultMap> 
     
     <insert id="insertItem"
@@ -121,8 +126,7 @@
     	SELECT COUNT(*) FROM MemList WHERE mem_id = #{memId}
     </select>
     
-    <!-- 닉네임 중복검사 -->
-    <select id="nickCheck"
+    <!-- 닉네임 중복검사 -->    <select id="nickCheck"
     	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
     	resultType="int">
     	SELECT COUNT(*) FROM MemList WHERE mem_nick = #{memNick}
@@ -230,6 +234,27 @@
 	
 	<!-- 회원탈퇴 인증코드 업데이트 -->
 	<update id="withDrawAuthCodeUpdate" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
-		UPDATE MemList SET WITHDRAW_AUTH_CODE = #{withdrawAuthCode} where mem_id = #{memId}
+		UPDATE MemList SET WITHDRAW_AUTH_CODE = #{withdrawAuthCode}, Mem_edit_date = now() where mem_id = #{memId}
 	</update>
+	
+	<select id="authConfirm"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	resultType="int">
+    	SELECT COUNT(*) FROM MemList WHERE mem_id = #{memId} AND WITHDRAW_AUTH_CODE = #{withdrawAuthCode}
+    </select>
+    
+    <!-- 회원탈퇴 업데이트 -->
+	<update id="withdraw" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
+		UPDATE MemList SET mem_State = #{memState}, Mem_out_date = now() where mem_id = #{memId}
+	</update>
+	<!-- 회원탈퇴 사유 insert -->
+        <insert id="insertWithdrawReason"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	useGeneratedKeys="true"
+    	keyProperty="withdrawIdx">
+    	INSERT INTO TB_WITHDRAW_REASON
+    		( `MEM_IDX`, `MEM_ID`, `WITHDRAW_REASON`, `WITHDRAW_REASON_TEXT`, `WITHDRAW_DATE` )
+    	 VALUES 
+    	 	(#{memIdx}, #{memId}, #{withdrawReason}, #{withdrawReasonText}, now());
+    </insert>
 </mapper>

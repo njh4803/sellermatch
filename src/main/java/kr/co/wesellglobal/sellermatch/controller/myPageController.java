@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -442,4 +444,68 @@ public class myPageController {
 
 		return webHelper.getJsonData();
 	}
+	
+	//탈퇴인증코드 확인
+	@RequestMapping(value = "/sendAuthConfirm", method = RequestMethod.POST)
+	public Map<String, Object> sendAuthConfirm(@SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "authCodeText", required = false) String authCodeText) {
+		int result = 0;
+		
+		MemberDto input = new MemberDto();
+		input.setWithdrawAuthCode(authCodeText);
+		input.setMemId(member.getMemId());
+		
+		try {
+			result = memberService.authConfirm(input);
+			
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		Map<String, Object> data = new HashMap<String, Object>();
+
+		if(result == 0) {
+			return webHelper.getJsonError("인증에 실패했습니다.");
+		} else {
+			return webHelper.getJsonData(data);
+		}
+		
+	}
+	
+	//탈퇴처리
+	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
+	public Map<String, Object> withdraw(HttpSession session, @SessionAttribute(value = "member", required = false) MemberDto member,
+			@RequestParam(value = "withdrawReason", required = false) String withdrawReason,
+			@RequestParam(value = "withdrawReasonText", required = false) String withdrawReasonText) {
+		int result = 0;
+		
+		MemberDto input = new MemberDto();
+		input.setWithdrawReason(withdrawReason);
+		input.setWithdrawReasonText(withdrawReasonText);
+		input.setMemIdx(member.getMemIdx());
+		input.setMemId(member.getMemId());
+		input.setMemState("1");
+		try {
+			result = memberService.withdraw(input);
+			
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+
+		if(result == 0) {
+			return webHelper.getJsonError("탈퇴에 실패했습니다.");
+		} else {
+			//탈퇴성공 시 세션 전부 날림
+			session.removeAttribute("member");
+			session.removeAttribute("profile");
+			session.invalidate(); 
+			
+			return webHelper.getJsonData(data);
+		}
+		
+	}
+	
+	
+	
 }
