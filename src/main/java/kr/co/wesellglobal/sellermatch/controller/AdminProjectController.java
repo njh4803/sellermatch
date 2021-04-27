@@ -41,7 +41,8 @@ public class AdminProjectController {
 			// 검색어
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
-			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+			@RequestParam(value = "page", defaultValue = "1") int nowPage,
+			@RequestParam(value = "countSort", defaultValue = "5") int countSort) {
 		if (member == null) {
 			return new ModelAndView("admin/admin_login");
 		}
@@ -50,7 +51,7 @@ public class AdminProjectController {
 		}
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
-		int listCount = 5;		// 한 페이지당 표시할 목록 수
+		int listCount = countSort;		// 한 페이지당 표시할 목록 수
 		int groupCount = 5;		// 한 그룹당 표시할 페이지 번호 수
 		
 		// 페이지 번호를 계산한 결과가 저장될 객체
@@ -90,6 +91,7 @@ public class AdminProjectController {
 		model.addAttribute("minusCount", minusCount);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("countSort", countSort);
 		
 		return new ModelAndView("admin/project_list");
 	}

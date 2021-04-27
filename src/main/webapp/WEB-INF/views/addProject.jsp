@@ -403,7 +403,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 			   			</table>
 				   		<div>
 					    	<button class="addBtn" type="submit">
-								거래처 등록
+								매칭 등록
 							</button>
 					    </div>
 						<div id="profile_form">

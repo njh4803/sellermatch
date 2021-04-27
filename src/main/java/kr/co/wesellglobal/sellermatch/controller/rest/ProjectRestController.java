@@ -86,7 +86,7 @@ public class ProjectRestController {
 			@RequestParam(value = "projDetail", required = false) String projDetail,
 			@RequestParam(value = "projRequire", required = false) String projRequire,
 			@RequestParam(value = "projKeyword", required = false) String projKeyword,
-			@RequestParam(value = "tag", required = false) String projTag,
+			@RequestParam(value = "projTag", required = false) String projTag,
 			@RequestParam(value = "detailImgList", required = false) String projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
 			@RequestParam(value = "projThumbnailImg", required = false) MultipartFile projThumbnailImg,
@@ -96,7 +96,6 @@ public class ProjectRestController {
 			@RequestParam(value="profilePhotoFile", required = false) MultipartFile photo,
 			@ModelAttribute("profileDto") ProfileDto profileDto,
 			@RequestParam(value = "tag", required = false) String tag) throws Exception {
-		log.debug(profile.getProfileId());
 		
 		
 		/** 1) 업로드 처리 */
@@ -106,11 +105,11 @@ public class ProjectRestController {
 		String projhashtag = null;
 		
 		// tag 합치기
-		if (projKeyword != null && projTag != null) {
+		if (projKeyword != null && regexHelper.isValue(projTag)) {
 			projhashtag = projTag + "," + projKeyword;
 		} else if (projKeyword == null) {
 			projhashtag = projTag;
-		} else if (projTag == null){
+		} else if (!regexHelper.isValue(projTag)){ 
 			projhashtag = projKeyword;
 		}
 			
