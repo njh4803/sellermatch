@@ -275,7 +275,7 @@
 								</textarea>
 							<div class="Agreement" style="float: left;">
 								<input type="checkbox" id="chk2" class="select-chk chk">
-								<label for="chk2"><span class="r-span">(선택) 개인정보 수집 및 이용동의</span></label>
+								<label for="chk2"><span class="r-span">(필수) 개인정보 수집 및 이용동의</span></label>
 							</div>
 								<textarea style="width: 100%; height: 100px; padding: 15px; resize: none;">
 위셀글로벌 주식회사(&#39;www.sellermatch.co.kr&#39;이하 &#39;셀러매치&#39;)는 개인정보보호법에 따라 이용자의 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을 원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다. 셀러매치는 개인정보처리방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다. 본 방침은 2021년 5월 1일부터 시행됩니다.
@@ -456,14 +456,17 @@ $(document).ready(function() {
 	$(document).on("click", ".select-chk", function(){
 		
 		var total_len = $(".chk").length;
-		console.log(total_len)
 		//선택된 갯수
 		var len = $(".chk:checked").length;
-		console.log(len)
 		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 			$(".agree-all").prop('checked', true);
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
+			$('.join-btn').attr('disabled', false);
 		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
 			$(".agree-all").prop('checked', false);	
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
+			$('.join-btn').attr('disabled', true);
+			$(".agree-all").prop("checked", false);
 		}
 		
 		if (this.checked == false) {
@@ -474,24 +477,27 @@ $(document).ready(function() {
 	$(document).on("click", ".agree-chk", function(){
 		
 		var total_len = $(".chk").length;
-		console.log(total_len)
 		//선택된 갯수
 		var len = $(".chk:checked").length;
-		console.log(len)
 		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 			$(".agree-all").prop('checked', true);
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
+			$('.join-btn').attr('disabled', false);
 		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
-			$(".agree-all").prop('checked', false);	
+			$(".agree-all").prop('checked', false);
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
+			$('.join-btn').attr('disabled', true);
+			$(".agree-all").prop("checked", false);
 		}
 		
-		if (this.checked) {
+/* 		if (this.checked) {
 			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
 			$('.join-btn').attr('disabled', false);
 		} else {
 			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
 			$('.join-btn').attr('disabled', true);
 			$(".agree-all").prop("checked", false);
-		}
+		} */
 		
 	});
 		
@@ -644,7 +650,8 @@ $(document).ready(function() {
 	    var form = $(this);
 		var url = form.attr('action');
 		
-		
+		$('.join-btn').prop("disabled", true);
+ 	    $('.ajax-loader').show();
        
         $.ajax({
 			   type: "POST",
@@ -654,7 +661,9 @@ $(document).ready(function() {
 	        	   return $('#join_form').valid();
                },
                success: function() {
+            	   $('.ajax-loader').hide();
             	   window.location.href = ROOT_URL+"/member/joinComplete";
+            	   
 /*             	   swal('알림', '회원가입이 완료되었습니다.', 'success').then(function(result) {
             		    var text = '';
 	   					if (profileSort == 1) {
