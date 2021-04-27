@@ -666,6 +666,7 @@
     z-index: 5;
     right: -100px;
     top: 50px;
+    border: 1px solid #f3f3f3;
 }
 .popup img{
 	width: 450px;
