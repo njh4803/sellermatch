@@ -1,5 +1,6 @@
 package kr.co.wesellglobal.sellermatch.controller;
 
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -89,6 +90,14 @@ public class SNSController {
 		MemberDto result;
 		result = memberService.loginSNS(input);
 		
+		if(result.getMemState().equals("1")) {
+			response.setContentType("text/html; charset=euc-kr");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('" + "탈퇴한 회원입니다." + "'); location.href='" + "/" + "';</script> ");
+	        out.flush();
+
+		return new ModelAndView("Main");
+		}
 		
 		// 4. 존재시 강제 로그인, 미존재시 가입페이지로
 		if(result!= null) {

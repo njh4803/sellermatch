@@ -339,6 +339,10 @@ public class MemberRestController {
 			input2.setProfileSort(input.getMemSort());
 			input2.setProfileMemId(memId);
 			profile = profileService.getProfile(input2);
+			
+			if(output.getMemState().equals("1")) {
+				return webHelper.getJsonError("탈퇴한 회원입니다.");
+			}
 
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
