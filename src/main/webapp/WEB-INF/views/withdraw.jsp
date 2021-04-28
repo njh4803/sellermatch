@@ -75,7 +75,7 @@
 		    			</div>
 						<div class="inputGroup">
 							<select id="withdrawReason" name="withdrawReason" class="inputForm">
-								<option>사유를 선택하세요</option>
+								<option value="">사유를 선택하세요</option>
 								<option value="0">서비스가 유용하지 않아서</option>
 								<option value="1">이용하기가 어려워서</option>
 								<option value="2">이용안내가 부족해서</option>
@@ -95,7 +95,7 @@
 		    			</div>
 		    			<form action="${pageContext.request.contextPath}/sendWithdrawMail" id="sendWithdrawMail" name="sendWithdrawMail" method="post">
 						<div class="inputGroup">
-							<input type="text" name="memId" class="memId" id="memId" placeholder="인증을 진행 할 아이디를 입력해주세요."/>
+							<input type="text" name="memId" class="memId" id="memId" placeholder="인증을 진행 할 이메일을 입력해주세요."/>
 							<button type="button" id="sendAuthEmail" class="btn form-bg-primary">코드전송</button>
 						</div>
 						</form>
@@ -130,6 +130,11 @@
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
+	function sleep(ms) {
+		  const wakeUpTime = Date.now() + ms
+		  while (Date.now() < wakeUpTime) {}
+		}
+	
 	$(document).on("click", "div.my-tabs div", function(e){
 		var tab_id = $(this).attr('data-tab');
 		var tabNum = $(this).data('num');
@@ -305,8 +310,13 @@ $(document).ready(function(){
 		
 		var withdrawReason = $("#withdrawReason option:selected").val();
 		var withdrawReasonText = $('#withdrawReasonText').val();
-
-		$.ajax({
+		
+		if(withdrawReason == null || withdrawReason=='') {
+			swal('알림', '탈퇴 사유를 선택하세요.', 'warning');
+			return;
+		}
+		
+ 		$.ajax({
 			type : "POST",
 			url : '/withdraw',
 			data : {
@@ -319,23 +329,17 @@ $(document).ready(function(){
 					title : '탈퇴가 완료되었습니다.',
 					type : 'success',
 				});
-				window.location.href = ROOT_URL+"/";
+				sleep(3000);
+				window.location.href = ROOT_URL+"/delSession";
 			},
 			error : function() {
 				swal({
-					title : '탈퇴가 완료되었습니다.',
-					type : 'success',
+					title : '탈퇴가 실패 하였습니다.',
+					type : 'error',
 				});
-				sleep(2000);
-				window.location.href = ROOT_URL+"/";
 			}
-		});
+		}); 
 	});
 });	
 
-
-function sleep(ms) {
-	  const wakeUpTime = Date.now() + ms
-	  while (Date.now() < wakeUpTime) {}
-	}
 </script>

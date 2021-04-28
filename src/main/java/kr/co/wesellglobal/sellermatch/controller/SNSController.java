@@ -90,17 +90,17 @@ public class SNSController {
 		MemberDto result;
 		result = memberService.loginSNS(input);
 		
-		if(result.getMemState().equals("1")) {
-			response.setContentType("text/html; charset=euc-kr");
-	        PrintWriter out = response.getWriter();
-	        out.println("<script>alert('" + "탈퇴한 회원입니다." + "'); location.href='" + "/" + "';</script> ");
-	        out.flush();
-
-		return new ModelAndView("Main");
-		}
-		
 		// 4. 존재시 강제 로그인, 미존재시 가입페이지로
 		if(result!= null) {
+			if(result.getMemState().equals("1")) {
+				response.setContentType("text/html; charset=euc-kr");
+		        PrintWriter out = response.getWriter();
+		        out.println("<script>alert('" + "탈퇴한 회원입니다. 90일동안 재가입이 불가합니다." + "'); location.href='" + "/" + "';</script> ");
+		        out.flush();
+
+			return new ModelAndView("main");
+			}
+			
 			//존재 시 강제 로그인
 	        if ( session.getAttribute("member") !=null ){
 	            // 기존에 member 세션 값이 존재한다면
@@ -141,7 +141,6 @@ public class SNSController {
 		            // currentTimeMills()가 1/1000초 단위임으로 1000곱해서 더해야함
 		            Date sessionLimit =new Date(System.currentTimeMillis() + (1000*amount));
 					
-		            System.out.println("~~~~~~~~~~~~~~");
 					input.setSessionLimit(sessionLimit);
 					input.setSessionKey(session.getId());
 					try {
