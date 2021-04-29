@@ -75,25 +75,25 @@
 						<div class="proj-type">
 							<div class="myProjBox2">
 								<div class="p-type contractCountText">지원한 거래</div>
-								<div class="textBox1"><button id="myApplyCount" value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</button></div>
+								<div class="textBox1"><button id="myApplyCount" data-value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</button></div>
 							</div>
 						</div>
 						<div class="proj-type">
 							<div class="myProjBox2">
 								<c:if test="${myProjectCount.memSort == 1}">
 	 							<div class="p-type recommendCountText">판매자에게 제안한 거래</div>
-							    <div class="textBox1"><button id="recommendCount" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</button></div>
+							    <div class="textBox1"><button id="recommendCount" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</button></div>
 							    </c:if>
 							    <c:if test="${myProjectCount.memSort == 2}">
 								<div class="p-type recommendCountText">공급자에게 제안 받은 거래</div>
-								<div class="textBox1"><button id="recommendCount" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</button></div>
+								<div class="textBox1"><button id="recommendCount" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</button></div>
 								</c:if>
 							</div>
 						</div>
 						<div class="proj-type" style="border-right:0;">
 							<div class="myProjBox2">
 								<div class="p-type closedCountText">마감한 거래/후기</div>
-								<div class="textBox1"><button id="closedCount" value="">0건</button></div>
+								<div class="textBox1"><button id="closedCount" data-value="">0건</button></div>
 							</div>
 						</div>
 					</div>
@@ -423,8 +423,7 @@ $(document).ready(function(){
     	var scrapCount = $('#myApplyCount').attr('data-value');
     	var mem_sort = $('#myMemSort').val();
 		if (scrapCount == 0) {
-			var text = '지원한 거래가 없습니다.';
-			swal('알림', text, 'warning')
+			swal('알림', '지원한 거래가 없습니다.', 'warning')
 		} else {
 			location.href=ROOT_URL+ "/myPage/myApplyList";
 		}

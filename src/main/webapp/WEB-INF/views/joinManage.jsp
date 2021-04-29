@@ -94,7 +94,8 @@
 		                                    <option value="062" <c:if test="${output.memNation eq '062'}">selected</c:if>>광주</option>
 		                                    <option value="063" <c:if test="${output.memNation eq '063'}">selected</c:if>>전북</option>
 		                                    <option value="044" <c:if test="${output.memNation eq '044'}">selected</c:if>>세종특별자치시</option>
-		                                    <option value="064" <c:if test="${output.memNation eq '064'}">selected</c:if>>세종특별자치도</option>
+		                                    <option value="064" <c:if test="${output.memNation eq '064'}">selected</c:if>>제주특별자치도</option>
+		                                    <option value="999" <c:if test="${output.memNation eq '999'}">selected</c:if>>해외</option>
 		                             	</select>
 									</div>
 									<div class="inputGroup">
