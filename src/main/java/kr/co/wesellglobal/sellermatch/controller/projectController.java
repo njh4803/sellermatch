@@ -76,7 +76,8 @@ public class projectController {
 
 	@RequestMapping(value = "/project/find", method = RequestMethod.GET)
 	public ModelAndView findProject(Model model,
-			@RequestParam(value = "projSort[]", required = false, defaultValue = "1") String[] projSort,
+			@RequestParam(value = "memSort", required = false) String[] memSort,
+			@RequestParam(value = "projSort[]", required = false) String[] projSort,
 			@RequestParam(value = "projNation[]", required = false) String[] projNation,
 			@RequestParam(value = "projIndus[]", required = false) String[] projIndus,
 			@RequestParam(value = "projPrice[]", required = false) String[] projPrice,
@@ -106,7 +107,12 @@ public class projectController {
 		PageData pageData = null;
 
 		ProjectDto input = new ProjectDto();
-		input.setProjSortArr(projSort);
+		if (memSort != null & memSort.length != 0) {
+			input.setProjSortArr(memSort);
+		} else {
+			input.setProjSortArr(projSort);
+		}
+		
 		input.setProjNationArr(projNation);
 		input.setProjIndusArr(projIndus);
 		input.setProjPriceArr(projPrice);
@@ -156,6 +162,7 @@ public class projectController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
 		model.addAttribute("projSort", projSort);
+		model.addAttribute("memSort", memSort);
 
 		return new ModelAndView("findProject_test");
 	}

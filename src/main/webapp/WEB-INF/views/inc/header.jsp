@@ -101,7 +101,8 @@ header #m-search_frm{
        <h1><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/assets/img/sellermatch_logo3.png" alt="sellermatch"></a></h1>
        <nav>
            <ul>
-               <li><a href="${pageContext.request.contextPath}/project/find">거래처 매칭</a></li>
+               <li><a href="${pageContext.request.contextPath}/project/find?memSort=
+               <c:if test="${member.memSort == 2}">1</c:if><c:if test="${member.memSort == 1}">2</c:if>">거래처 매칭</a></li>
                <li><a href="${pageContext.request.contextPath}/seller/find">판매자 리스트</a></li>
                <!-- <li><a href="javascipt:void(0);">커뮤니티</a></li> -->
                <li class="operation">
@@ -231,7 +232,7 @@ $(function(){
 			swal({
 				customClass: 'swalcustom',
                 title: '알림',
-                text: '로그인 후 이용가능합니다.',
+                text: '로그인 또는 회원가입 후 이용가능',
                	type: 'warning',
             });
 		} else {
