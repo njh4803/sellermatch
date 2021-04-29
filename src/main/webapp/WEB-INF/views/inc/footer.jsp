@@ -64,7 +64,10 @@
 	            </div>
         	</div>
         </div>
-    </div> 
+    </div>
+    <input type="hidden" id="mail" value="${member.memId}" />
+    <input type="hidden" id="tel" value="${member.memTel}" />
+    <input type="hidden" id="nick" value="${member.memNick}" />
 </footer>
 
 <script>
@@ -100,6 +103,22 @@ $(document).ready(function() {
 <!-- 채널톡 -->
 <!-- Channel Plugin Scripts -->
 <script>
+	var mail = $("#mail").val();
+	var tel = $("#tel").val();
+	var nick = $("#nick").val();
+	if(mail=='') {
+		mail = null;
+	}
+	if(tel=='') {
+		tel = null;
+	}
+	if(nick=='') {
+		nick = null;
+	}
+	console.log(mail);
+	console.log(tel);
+	console.log(nick);
+	
   (function() {
     var w = window;
     if (w.ChannelIO) {
@@ -136,7 +155,14 @@ $(document).ready(function() {
     }
   })();
   ChannelIO('boot', {
-    "pluginKey": "a3beb0c0-ce0f-4bf1-a220-f4364195f561" //please fill with your plugin key
+    "pluginKey": "a3beb0c0-ce0f-4bf1-a220-f4364195f561", //please fill with your plugin key
+        "memberId": mail, //fill with user id
+        "profile": {
+          "name": nick, //fill with user name
+          "mobileNumber": tel, //fill with user phone number,
+          "email": mail
+        }
+    
   });
 </script>
 <!-- End Channel Plugin -->

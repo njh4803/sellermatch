@@ -211,10 +211,10 @@ $(function(){
         			url: ROOT_URL+"/member/logout",
         			dataType: "json",
         			success: function(json){
-        				window.location.href = ROOT_URL+"/delSession";
+        				window.location.href = ROOT_URL+"/";
         			},
         			error: function(json){
-        				window.location.href = ROOT_URL+"/delSession";
+        				window.location.href = ROOT_URL+"/";
         			}
         		});
 			} else {

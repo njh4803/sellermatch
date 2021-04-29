@@ -74,7 +74,10 @@
 				    			<span class="profileExplainBoxText">프로필을 등록하면<br>거래 성사확률이 높아집니다!</span>
 							</div>
 				    		<div class="myPage_r_profileBox">
-				    			<span class="profileBoxText">프로필 등록하기</span>
+				    			<span class="profileBoxText">
+				    			<c:if test="${profileEditDate==null}">프로필 등록하기</c:if>
+				    			<c:if test="${profileEditDate!=null}">프로필 관리하기</c:if>
+				    			</span>
 				    		</div>
 		    			</div>
 		    			<div class="usingMethodBox">
