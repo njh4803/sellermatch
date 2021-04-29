@@ -393,6 +393,9 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 });
 
 Handlebars.registerHelper('numberWithCommas', function (x) {
+	if (x == null) {
+		return "0";
+	}
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 });
 
