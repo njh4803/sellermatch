@@ -1147,32 +1147,29 @@ $(document).ready(function() {
 				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
 				};
 		
+		var checked = this.checked;
+		
+		if (this.id == 'ppmemRname') {
+			$("input[name=ppmemRname]").prop('checked', checked);
+			$("input[name=ppBizCerti]").prop('checked', checked);
+			$("input[name=projProdCerti]").prop('checked', checked);
+			$("input[name=projProfit]").prop('checked', checked);
+		}
+		if (this.id == 'sellermemRname') {
+			$("input[name=sellermemRname]").prop('checked', checked);
+			$("input[name=sellerBizCerti]").prop('checked', checked);
+			$("input[name=sellerChChk]").prop('checked', checked);
+			$("input[name=sellerSaleChk]").prop('checked', checked);
+		}
+		if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
+			$("input[name="+this.id+"]").each(function(i,e){
+				this.checked = checked;
+			});
+			
+		}
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
 			param_list[param_list_name[i]]= [];
-			
-			$("input[id="+param_list_name[i] +"]").each(function(){
-				var checked = this.checked;
-				
-				if (this.id == 'ppmemRname') {
-					$("input[name=ppmemRname]").prop('checked', checked);
-					$("input[name=ppBizCerti]").prop('checked', checked);
-					$("input[name=projProdCerti]").prop('checked', checked);
-					$("input[name=projProfit]").prop('checked', checked);
-				}
-				if (this.id == 'sellermemRname') {
-					$("input[name=sellermemRname]").prop('checked', checked);
-					$("input[name=sellerBizCerti]").prop('checked', checked);
-					$("input[name=sellerChChk]").prop('checked', checked);
-					$("input[name=sellerSaleChk]").prop('checked', checked);
-				}
-				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
-					$("input[name="+param_list_name[i] +"]").each(function(){
-						this.checked = checked;
-					});
-				}
-			});
-			
 			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 				var name = this.name
 				var value = this.value
@@ -1186,6 +1183,7 @@ $(document).ready(function() {
 				
 			});
 		}
+	
 		var url = formData.attr('action');
 		param_list["sort"] = $("#sort").val();
 		$.ajax({

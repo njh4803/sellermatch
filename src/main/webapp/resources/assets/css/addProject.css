@@ -567,6 +567,18 @@ input[type="checkbox"].findCheck:checked + label span {
 	color: #ff9900;
 }
 
+#proj_form ul li.tag-item {
+    padding: 4px 8px;
+    background-color: #ececec;
+    color: #858585;
+    margin: 5px;
+}
+
+#proj_form .tag-item:hover {
+	background-color: #fff9ec;
+	color: #ff9900;
+}
+
 .p-del-btn {
     font-size: 12px;
     font-weight: bold;

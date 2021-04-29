@@ -862,51 +862,34 @@ $(document).ready(function() {
 				profileBizSort, profileNation, profileIndus, profileChannel, profileCareer, profileVolume,
 				profileBizCerti, profileChChk, profileSaleChk, sellermemRname};
 		
+		var checked = this.checked;
+		
+		if (this.id == 'sellermemRname') {
+			$("input[name=sellermemRname]").prop('checked', checked);
+			$("input[name=profileBizCerti]").prop('checked', checked);
+			$("input[name=profileChChk]").prop('checked', checked);
+			$("input[name=profileSaleChk]").prop('checked', checked);
+		}
+		if (this.id != 'sellermemRname') {
+			$("input[name="+this.id+"]").each(function(i,e){
+				this.checked = checked;
+			});
+		}
+			
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화
-			param_list[param_list_name[i]]= [];
-			
-			$("input[id="+param_list_name[i] +"]").each(function(){
-				var checked = this.checked;
-				
-				if (this.id == 'sellermemRname') {
-					$("input[name=sellermemRname]").prop('checked', checked);
-					$("input[name=profileBizCerti]").prop('checked', checked);
-					$("input[name=profileChChk]").prop('checked', checked);
-					$("input[name=profileSaleChk]").prop('checked', checked);
-				}
-				if (this.id != 'sellermemRname') {
-					$("input[name="+param_list_name[i] +"]").each(function(){
-						this.checked = checked;
-					});
-				}
-			});
-			
-			
+			param_list[param_list_name[i]]= [];			
 			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 				var name = this.name
 				var value = this.value
-				
-				var textVal = $(this).next().children().text();
 				
 				for (var i = 0; i < param_list_name.length; i++){
 					if (String(param_list_name[i]) == name) {
 						param_list[name].push(value)
 					}
 				}
-				str = str + textVal + ', ';
 				
 			});
-
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
-		}
-		
-		str = str.substring(0, str.length-2);
-		$('.resultText').text(str)
-		if (str == '') {
-			$('.resultText').text('선택이 없을시에는 전체를 기준으로 리스트가 보여집니다')
 		}
 		
 		var url = formData.attr('action');
