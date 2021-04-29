@@ -19,11 +19,16 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
 		{ name: 'others' },
 		'/',*/
-		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-		{ name: 'styles' },
-		{ name: 'colors' },
+		/*{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },*/
+		/*{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },*/
+		/*{ name: 'styles' },*/
+		/*{ name: 'colors' },*/
 /*		{ name: 'about' }*/
+	];
+	
+	config.toolbar = [
+
+        ['Bold', 'Strike', 'Superscript', 'Subscript', 'Underline', 'RemoveFormat'],   
 	];
 
 	// Remove some buttons provided by the standard plugins, which are

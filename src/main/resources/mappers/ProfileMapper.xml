@@ -244,7 +244,7 @@
     		<if test="needIndus != '' and needIndus != null">
     			i.indus_name as profile_indus_name, 
     		</if>
-    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname, mem_state
+    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname, mem_state,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
