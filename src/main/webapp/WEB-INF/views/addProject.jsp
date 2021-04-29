@@ -1029,6 +1029,9 @@ $(document).ready(function() {
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
+        	
+        	$('button[type=submit]').prop('disabled', true);
+        	
         	CKupdate();
         	
         	if (CKEDITOR.instances.projDetail.getData() == '') {
@@ -1045,7 +1048,9 @@ $(document).ready(function() {
         	swal('알림', '매칭이 등록되었습니다.', 'success').then(function(result) {
                 window.location = ROOT_URL + '/';
             });
-        },
+        },complete: function () {
+        	$('button[type=submit]').prop('disabled', false);
+        }
     });	
 
 
