@@ -208,7 +208,12 @@
 								</div>
 							</div>
 							<div class="left-infoBox">
-								<div class="seller-status">활동중</div>
+								<c:if test="${output.memState == 1}">
+									<div class="seller-status">탈퇴</div>
+								</c:if>
+								<c:if test="${output.memState == 0}">
+									<div class="seller-status">활동중</div>
+								</c:if>
 								<div class="profileBizSort">${output.profileBizSortName}</div>
 							</div>
 							<div class="nick">

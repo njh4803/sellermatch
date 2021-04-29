@@ -36,6 +36,7 @@
         <result property="profilePhotoList" column="profile_photo_list" />
         <result property="memNick" column="mem_nick" />
         <result property="memRname" column="mem_rname" />
+        <result property="memState" column="mem_state" />
         <result property="projAddCount" column="proj_add_count" />
         <result property="recommendCount" column="recommend_count" />
         <result property="contractCount" column="contract_count" />
@@ -110,7 +111,7 @@
     		<if test="needIndus != '' and needIndus != null">
     			i.indus_name as profile_indus_name, 
     		</if>
-    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
+    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname, mem_state,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
@@ -243,7 +244,7 @@
     		<if test="needIndus != '' and needIndus != null">
     			i.indus_name as profile_indus_name, 
     		</if>
-    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname,
+    		profile_hashtag, profile_rname, profile_sort, profile_hit, profile_volume, mem_nick, mem_rname, mem_state
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
