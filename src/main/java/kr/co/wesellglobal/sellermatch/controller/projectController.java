@@ -76,7 +76,7 @@ public class projectController {
 
 	@RequestMapping(value = "/project/find", method = RequestMethod.GET)
 	public ModelAndView findProject(Model model,
-			@RequestParam(value = "projSort[]", required = false) String projSort,
+			@RequestParam(value = "projSort[]", required = false, defaultValue = "1") String[] projSort,
 			@RequestParam(value = "projNation[]", required = false) String[] projNation,
 			@RequestParam(value = "projIndus[]", required = false) String[] projIndus,
 			@RequestParam(value = "projPrice[]", required = false) String[] projPrice,
@@ -101,12 +101,12 @@ public class projectController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int groupCount = 5; // 한 그룹당 표시할 페이지 번호 수
-
+		
 		// 페이지 번호를 계산한 결과가 저장될 객체
 		PageData pageData = null;
 
 		ProjectDto input = new ProjectDto();
-		//input.setProjSortArr(projSort);
+		input.setProjSortArr(projSort);
 		input.setProjNationArr(projNation);
 		input.setProjIndusArr(projIndus);
 		input.setProjPriceArr(projPrice);
@@ -122,8 +122,6 @@ public class projectController {
 		input.setSellerChChk(sellerChChk);
 		input.setSellerSaleChk(sellerSaleChk);
 		input.setSort(sort);
-		
-		
 		
 		IndusDto input2 = new IndusDto();
 		if (keyword != null && keyword != "") {
@@ -157,6 +155,7 @@ public class projectController {
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
+		model.addAttribute("projSort", projSort);
 
 		return new ModelAndView("findProject_test");
 	}
@@ -170,14 +169,14 @@ public class projectController {
 			@RequestParam(value = "projPrice[]", required = false) String[] projPrice,
 			@RequestParam(value = "projMargin[]", required = false) String[] projMargin,
 			@RequestParam(value = "projSupplyType[]", required = false) String[] projSupplyType,
-			@RequestParam(value = "ppmemRname[]", required = false) String ppMemRname,
-			@RequestParam(value = "ppBizCerti[]", required = false) String ppBizCerti,
-			@RequestParam(value = "projProdCerti[]", required = false) String projProdCerti,
-			@RequestParam(value = "projProfit[]", required = false) String projProfit,
-			@RequestParam(value = "sellermemRname[]", required = false) String sellerMemRname,
-			@RequestParam(value = "sellerBizCerti[]", required = false) String sellerBizCerti,
-			@RequestParam(value = "sellerChChk[]", required = false) String sellerChChk,
-			@RequestParam(value = "sellerSaleChk[]", required = false) String sellerSaleChk,
+			@RequestParam(value = "ppmemRname[]", required = false, defaultValue = "") String ppMemRname,
+			@RequestParam(value = "ppBizCerti[]", required = false, defaultValue = "") String ppBizCerti,
+			@RequestParam(value = "projProdCerti[]", required = false, defaultValue = "") String projProdCerti,
+			@RequestParam(value = "projProfit[]", required = false, defaultValue = "") String projProfit,
+			@RequestParam(value = "sellermemRname[]", required = false, defaultValue = "") String sellerMemRname,
+			@RequestParam(value = "sellerBizCerti[]", required = false, defaultValue = "") String sellerBizCerti,
+			@RequestParam(value = "sellerChChk[]", required = false, defaultValue = "") String sellerChChk,
+			@RequestParam(value = "sellerSaleChk[]", required = false, defaultValue = "") String sellerSaleChk,
 			@RequestParam(value = "projChannel[]", required = false) String[] projChannel,
 			// 정렬 기준
 			@RequestParam(value = "sort", defaultValue = "regSort") String sort,
@@ -189,6 +188,21 @@ public class projectController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int groupCount = 5; // 한 그룹당 표시할 페이지 번호 수
+		
+		//공급자 인증필터 "전체" 선택 시 모두 값 공백으로 하여 모두 출력할 수 있도록(임시)
+		if (ppMemRname.equals("1")&&ppBizCerti.equals("1")&&projProdCerti.equals("1")&&projProfit.equals("1")) {
+			ppMemRname = "";
+			ppBizCerti = "";
+			projProdCerti = "";
+			projProfit = "";
+		}
+		//판매자 인증필터 "전체" 선택 시 모두 값 공백으로 하여 모두 출력할 수 있도록(임시)
+		if (sellerMemRname.equals("1")&&sellerBizCerti.equals("1")&&sellerChChk.equals("1")&&sellerSaleChk.equals("1")) {
+			sellerMemRname = "";
+			sellerBizCerti = "";
+			sellerChChk = "";
+			sellerSaleChk = "";
+		}
 
 		// 페이지 번호를 계산한 결과가 저장될 객체
 		PageData pageData = null;
@@ -250,6 +264,7 @@ public class projectController {
 		data.put("pageData", pageData);
 		data.put("keyword", keyword);
 		data.put("sort", sort);
+		data.put("projSort", projSort);
 
 		return webHelper.getJsonData(data);
 	}
@@ -275,8 +290,6 @@ public class projectController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		log.debug("========================================================="+ output.getOrginName());
 		
 		model.addAttribute("output", output);
 		model.addAttribute("applyDto", applyDto);

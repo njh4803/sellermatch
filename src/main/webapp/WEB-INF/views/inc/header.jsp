@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%
+response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+response.setHeader("Cache-Control", "no-cache"); //HTTP 1.1
+response.setHeader("Cache-Control", "no-store"); //HTTP 1.1
+response.setDateHeader("Expires", 0L); // Do not cache in proxy server
+%> 
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -205,10 +211,10 @@ $(function(){
         			url: ROOT_URL+"/member/logout",
         			dataType: "json",
         			success: function(json){
-        				window.location.href = ROOT_URL+"/";
+        				window.location.href = ROOT_URL+"/delSession";
         			},
         			error: function(json){
-        				window.location.href = ROOT_URL+"/";
+        				window.location.href = ROOT_URL+"/delSession";
         			}
         		});
 			} else {
