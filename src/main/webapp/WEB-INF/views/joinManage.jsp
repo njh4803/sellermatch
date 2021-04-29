@@ -101,7 +101,7 @@
 										<label>연락처</label>
 					    				<input type="text" name="memTel" class="inputForm" id="memTel" placeholder="`-`없이 숫자만 입력"  value="${output.memTel}"/>
 									</div>
-									<div class="inputGroup">
+<%-- 									<div class="inputGroup">
 										<label>우편번호</label>
 			    						<input type="text" name="memPost" class="inputForm" id="postcode" maxlength="5" readonly  value="${output.memPost}"/>
 										<button type="button" class="btn form-bg-primary postcode-finder"
@@ -115,7 +115,10 @@
 									<div class="inputGroup">
 										<label>상세주소</label>
 										<input type="text" name="memAddr2" class="inputForm" id="memAddr2" value="${output.memAddr2}"/>
-									</div>
+									</div> --%>
+			    					<input type="hidden" name="memPost" class="inputForm" id="postcode" maxlength="5" readonly  value="${output.memPost}"/>
+				    				<input type="hidden" name="memAddr" class="inputForm" id="memAddr" readonly  value="${output.memAddr}"/>
+									<input type="hidden" name="memAddr2" class="inputForm" id="memAddr2" value="${output.memAddr2}"/>
 									<div class="inputGroup">
 										<label>이메일 인증</label>
 			    						<input type="text" name="memEmail" class="inputForm" id="memEmail"/>

@@ -113,7 +113,7 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div class="detailBox3">공급자평가</div>
+<!-- 			<div class="detailBox3">공급자평가</div>
 			<hr class="profile-hr">
 			<div class="ContentsBox3">
 				<p>계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
@@ -122,7 +122,7 @@
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다</p>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>
@@ -302,7 +302,7 @@
 						<div class="project">${project.projTitle}</div>
 				</c:forEach>
 			</div>
-			<div class="detailBox3">공급자 평가</div>
+<!-- 			<div class="detailBox3">공급자 평가</div>
 			<hr class="profile-hr">
 			<div class="ContentsBox3">
 			<p>계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
@@ -312,7 +312,7 @@
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 				계약했던 공급자들이 판매자에 대해 평가를 남기는 부분입니다
 			</p>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>	

@@ -306,7 +306,6 @@
 }
 .ContentsBox1{
   display: inline-flex;	
-  width: 1160px;
   margin-bottom: 80px;
   font-size: 15px;
   font-weight: normal;
@@ -367,7 +366,7 @@
   border-left: solid 0.5px #cccccc;
 }
 .tagBox{
-	width: 520px;
+	width: 519px;
     vertical-align: top;
     display: inline-block;
     margin-left: 20px;	

@@ -83,12 +83,12 @@
 	            	<div class="check_list_box">
 		            	<ul>
 		            		<li><input type="checkbox" class="checkAll" id="projPrice"><label for="projPrice"><span>전체</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="01" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="02" id="p2"><label for="p2"><span>1만원 ~ 3만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="03" id="p3"><label for="p3"><span>3만원 ~ 10만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="04" id="p4"><label for="p4"><span>10만원 ~50만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="05" id="p5"><label for="p5"><span>50만원 ~100만원</span></label></li>
-		            		<li><input type="checkbox" class="check" name="projPrice" value="06" id="p6"><label for="p6"><span>100만원 초과</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="1" id="p1"><label for="p1"><span>1만원 미만</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="2" id="p2"><label for="p2"><span>1만원 ~ 3만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="3" id="p3"><label for="p3"><span>3만원 ~ 10만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="4" id="p4"><label for="p4"><span>10만원 ~50만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="5" id="p5"><label for="p5"><span>50만원 ~100만원</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projPrice" value="6" id="p6"><label for="p6"><span>100만원 초과</span></label></li>
 		            	</ul>
 	            	</div>
 	            </div>
@@ -207,10 +207,10 @@
 							<img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}">
 							<div class="left-infoBox">
 								<c:if test="${output.projSort == 1}">
-					        		<div class="sFindBox">판매자 찾음</div>
+					        		<div class="sFindBox">공급자</div>
 					        	</c:if>
 					        	<c:if test="${output.projSort == 2}">
-					        		<div class="pFindBox">공급자 찾음</div>
+					        		<div class="pFindBox">판매자</div>
 					        	</c:if>						
 								<c:choose>
 									<c:when test="${output.projDday < 0}">
@@ -261,12 +261,12 @@
 							<div class="clearfix">
 							<c:if test="${output.projPrice != 0}">
 								<div class="infoBox2">단가<span>
-									<c:if test="${output.projPrice == 01}">1만원 미만</c:if>
-									<c:if test="${output.projPrice == 02}">1~3만원</c:if>
-									<c:if test="${output.projPrice == 03}">3~10만원</c:if>
-									<c:if test="${output.projPrice == 04}">10~50만원</c:if>
-									<c:if test="${output.projPrice == 05}">50~100만원</c:if>
-									<c:if test="${output.projPrice == 06}">100만원 초과</c:if>
+									<c:if test="${output.projPrice == 1}">1만원 미만</c:if>
+									<c:if test="${output.projPrice == 2}">1~3만원</c:if>
+									<c:if test="${output.projPrice == 3}">3~10만원</c:if>
+									<c:if test="${output.projPrice == 4}">10~50만원</c:if>
+									<c:if test="${output.projPrice == 5}">50~100만원</c:if>
+									<c:if test="${output.projPrice == 6}">100만원 초과</c:if>
 								</span></div>
 								<div class="infoBox2">마진<span>${output.projMarginName}</span></div>
 							</c:if>
@@ -517,10 +517,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								<div class="D-day">마감 {{projDday}}일전</div>
 							{{/ifCond}}
 							{{#ifCond projSort '==' '1'}}
-								<div class="sFindBox">판매자 찾음</div>
+								<div class="sFindBox">공급자</div>
 							{{/ifCond}}
 							{{#ifCond projSort '==' '2'}}
-								<div class="pFindBox">공급자 찾음</div>
+								<div class="pFindBox">판매자</div>
 							{{/ifCond}}
 				        	<div class="regDate">
 								<span>등록일</span>{{projRegDate}}
@@ -539,12 +539,12 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							<div class="infoBox2">
 								<div>
 									<span>단가</span> 
-									{{#ifCond projPrice '==' '01'}}1만원 미만{{/ifCond}}
-									{{#ifCond projPrice '==' '02'}}1~3만원{{/ifCond}}
-									{{#ifCond projPrice '==' '03'}}3~10만원{{/ifCond}}
-									{{#ifCond projPrice '==' '04'}}10~50만원{{/ifCond}}
-									{{#ifCond projPrice '==' '05'}}50~100만원{{/ifCond}}
-									{{#ifCond projPrice '==' '06'}}100만원 초과{{/ifCond}}
+									{{#ifCond projPrice '==' '1'}}1만원 미만{{/ifCond}}
+									{{#ifCond projPrice '==' '2'}}1~3만원{{/ifCond}}
+									{{#ifCond projPrice '==' '3'}}3~10만원{{/ifCond}}
+									{{#ifCond projPrice '==' '4'}}10~50만원{{/ifCond}}
+									{{#ifCond projPrice '==' '5'}}50~100만원{{/ifCond}}
+									{{#ifCond projPrice '==' '6'}}100만원 초과{{/ifCond}}
 								</div> 
 								<div>
 									<span>마진</span> {{projMarginName}}
@@ -681,10 +681,10 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							<img class="photoBox" alt="" src="/upload/{{projThumbnailImg}}">
 							<div class="left-infoBox">
 								{{#ifCond projSort '==' '1'}}
-					        		<div class="sFindBox">판매자 찾음</div>
+					        		<div class="sFindBox">공급자</div>
 					        	{{/ifCond}}
 								{{#ifCond projSort '==' '2'}}
-					        		<div class="pFindBox">공급자 찾음</div>
+					        		<div class="pFindBox">판매자</div>
 					        	{{/ifCond}}					
 								{{#ifCond projDday '<' '0'}}
 									<div class="D-day">마감완료</div>
@@ -731,12 +731,12 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							<div class="clearfix">
 							{{#ifCond projPrice '!=' '0'}}
 								<div class="infoBox2">단가<span>
-									{{#ifCond projPrice '==' '01'}}1만원 미만{{/ifCond}}
-									{{#ifCond projPrice '==' '02'}}1~3만원{{/ifCond}}
-									{{#ifCond projPrice '==' '03'}}3~10만원{{/ifCond}}
-									{{#ifCond projPrice '==' '04'}}10~50만원{{/ifCond}}
-									{{#ifCond projPrice '==' '05'}}50~100만원{{/ifCond}}
-									{{#ifCond projPrice '==' '06'}}100만원 초과{{/ifCond}}
+									{{#ifCond projPrice '==' '1'}}1만원 미만{{/ifCond}}
+									{{#ifCond projPrice '==' '2'}}1~3만원{{/ifCond}}
+									{{#ifCond projPrice '==' '3'}}3~10만원{{/ifCond}}
+									{{#ifCond projPrice '==' '4'}}10~50만원{{/ifCond}}
+									{{#ifCond projPrice '==' '5'}}50~100만원{{/ifCond}}
+									{{#ifCond projPrice '==' '6'}}100만원 초과{{/ifCond}}
 								</span></div>
 								<div class="infoBox2">마진<span>{{projMarginName}}</span></div>
 							{{/ifCond}}

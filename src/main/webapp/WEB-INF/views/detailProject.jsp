@@ -41,12 +41,12 @@
 					<div class="infoBox">
 						<div class="textBox2"><span>상품단가</span></div>
 						<div class="textRow"><span>
-							<c:if test="${output.projPrice == 01}">1만원 미만</c:if>
-							<c:if test="${output.projPrice == 02}">1만원~3만원</c:if>
-							<c:if test="${output.projPrice == 03}">3만원~10만원</c:if>
-							<c:if test="${output.projPrice == 04}">10만원~50만원</c:if>
-							<c:if test="${output.projPrice == 05}">50만원~100만원</c:if>
-							<c:if test="${output.projPrice == 06}">100만원 초과</c:if>
+							<c:if test="${output.projPrice == 1}">1만원 미만</c:if>
+							<c:if test="${output.projPrice == 2}">1만원~3만원</c:if>
+							<c:if test="${output.projPrice == 3}">3만원~10만원</c:if>
+							<c:if test="${output.projPrice == 4}">10만원~50만원</c:if>
+							<c:if test="${output.projPrice == 5}">50만원~100만원</c:if>
+							<c:if test="${output.projPrice == 6}">100만원 초과</c:if>
 							<c:if test="${output.projPrice == 0}">협상</c:if>
 							<c:if test="${output.projPrice == ''}">협상</c:if>
 						</span></div>
@@ -264,12 +264,12 @@
 						<div class="infoBox">
 							<div class="textBox2"><span>상품단가</span></div>
 							<div class="textRow"><span>
-							<c:if test="${output.projPrice == 01}">1만원 미만</c:if>
-							<c:if test="${output.projPrice == 02}">1만원~3만원</c:if>
-							<c:if test="${output.projPrice == 03}">3만원~10만원</c:if>
-							<c:if test="${output.projPrice == 04}">10만원~50만원</c:if>
-							<c:if test="${output.projPrice == 05}">50만원~100만원</c:if>
-							<c:if test="${output.projPrice == 06}">100만원 초과</c:if>
+							<c:if test="${output.projPrice == 1}">1만원 미만</c:if>
+							<c:if test="${output.projPrice == 2}">1만원~3만원</c:if>
+							<c:if test="${output.projPrice == 3}">3만원~10만원</c:if>
+							<c:if test="${output.projPrice == 4}">10만원~50만원</c:if>
+							<c:if test="${output.projPrice == 5}">50만원~100만원</c:if>
+							<c:if test="${output.projPrice == 6}">100만원 초과</c:if>
 							<c:if test="${output.projPrice == 0}">협상</c:if>
 							</span></div>
 						</div>

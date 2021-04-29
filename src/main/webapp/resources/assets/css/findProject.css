@@ -284,7 +284,7 @@ a.sort.select{
 	min-width: 75px;
 	padding: 2px 0;
 	border-radius: 5px;
-	background-color: #988dfe;
+	background-color: #6f5aff;
 	font-size: 12px;
 	font-weight: normal;
 	font-stretch: normal;
@@ -297,7 +297,7 @@ a.sort.select{
 	min-width: 75px;
 	padding: 2px 0;
 	border-radius: 5px;
-	background-color: #90c28c;
+	background-color: #ff540f;
 	font-size: 12px;
 	font-weight: normal;
 	font-stretch: normal;
@@ -388,24 +388,24 @@ a.sort.select{
   font-stretch: normal;
   font-style: normal;
   text-align: center;
-  color: #ff540f;
+  color: #ffffff;
   margin: 0 3px;
-  background-image: none; 
+  background-color: #ff540f; 
 }
-.partner_list input[name="projSort"]#projSort-pp:checked + label span{
-  width: 90px;
-  height: 26px;
-  padding: 2px 0 5px;
-  border-radius: 5px;
-  border: solid 1px #6f5aff;
-  font-size: 14px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  text-align: center;
-  color: #6f5aff;
-  margin: 0 3px;
-  background-image: none; 
+.partner_list input[name="projSort"]#projSort-pp:checked+label span {
+	width: 90px;
+	height: 26px;
+	padding: 2px 0 5px;
+	border-radius: 5px;
+	border: solid 1px #6f5aff;
+	font-size: 14px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	text-align: center;
+	color: #ffffff;
+	margin: 0 3px;
+	background-color: #6f5aff;
 }
 .partner_list{
 	display: inline-block;
