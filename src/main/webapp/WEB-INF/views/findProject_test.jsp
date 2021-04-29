@@ -27,13 +27,13 @@
 		</div>
 		<div id="list-container">
 			<div class="left-container">
-				<div class="partner_list">
+				<div class="partner_list ppssFilterBox">
 					<div>
-						<input type="radio" class="check" name="projSort" id="projSort-pp" value="1">
+						<input type="checkbox" class="check" name="projSort" id="projSort-pp" value="1" <c:if test="${projSort[0] == 1}">checked </c:if>>
 						<label for="projSort-pp">
 							<span class="projSort-pp">공급자 찾기</span>
 						</label>
-						<input type="radio" class="check" name="projSort" id="projSort-sp" value="2">
+						<input type="checkbox" class="check" name="projSort" id="projSort-sp" value="2">
 						<label for="projSort-sp">
 							<span>판매자 찾기</span>
 						</label>
@@ -843,9 +843,6 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
-	/* $(document).on("click", "input[name='projSort']", function(){
-		ifthis.checked
-	}); */
  	$(document).on("click", ".check_list", function(){
 		var check_list_box = $(this).closest(".partner_list").children('.check_list_box');
 		var checkList = $(this).closest(".partner_list").children('.check_list');
@@ -866,30 +863,6 @@ $(document).ready(function() {
 		m_checkList.toggle();
 	});
 
- 		
-
-/*   	$(window).on('scroll', function() {
-  		var footerHei = $('footer').outerHeight()
-		var sT = $(window).scrollTop();
-	    var val = $(document).height() - $(window).height() - footerHei;
-	    
-	    console.log(sT+'st');
-	    console.log(val+'val');
-
-	    if (sT >= val){
-	    	$('.left-container').addClass('fix');
-	    	$('.b-172').css({"bottom": -1*parseInt(sT- footerHei)});
-	    }  else if(window.pageYOffset >= $('.partner_bnr3 > hr').offset().top){
-	    	$('.left-container').addClass('b-172');
-	    	$('.left-container').removeClass('fix'); 
-	    	$('.left-container').removeAttr('style');
-	    }
-	    else{
-	    	$('.left-container').removeClass('fix');
-	    	$('.left-container').addClass('b-172');
-	    	$('.left-container').removeAttr('style');
-    	}
-  	}); */
 	
 	$(document).on("click", ".proj-link", function(){
 		
@@ -922,8 +895,6 @@ $(document).ready(function() {
 		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
-		// 모바일 초기화
-		$('.m-contents-container').remove();		
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -1007,9 +978,6 @@ $(document).ready(function() {
 				}
 				
 			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
 		}
 		param_list["sort"] = $("#sort").val();
 		param_list["keyword"] = keyword;
@@ -1031,23 +999,7 @@ $(document).ready(function() {
            		
            		$("#list-container").append(html);
            		$(".contents-container").append(page_html);
-           		
-           		/* 모바일 */
-           		
-        	   	var m_contents = json
-           		var m_template = Handlebars.compile($("#m-project-list-tmpl").html());
-           		var m_html = m_template(m_contents);
-           		
-           		var m_sort = {
-           			'sort' : json.sort, 
-           			'projCount' : json.projCount
-           		};
-           		var m_sort_template = Handlebars.compile($("#m-sort-tmpl").html());
-           		var m_sort_html = m_sort_template(m_sort);
-           		
-           		$('.m-contentsBox').append(m_sort_html);
-           		$(".m-find").append(m_html);
-           		$(".m-contents-container").append(page_html);	
+
            }
     	});
 	});	
@@ -1063,8 +1015,6 @@ $(document).ready(function() {
 		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
-		// 모바일 초기화
-		$('.m-contents-container').remove();		
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -1133,9 +1083,6 @@ $(document).ready(function() {
 				}
 				
 			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
 		}
 		var url = formData.attr('action');
 		param_list["sort"] = $("#sort").val();
@@ -1157,22 +1104,6 @@ $(document).ready(function() {
            		$("#list-container").append(html);
            		$(".contents-container").append(page_html);
            		
-           		/* 모바일 */
-           		
-        	   	var m_contents = json
-           		var m_template = Handlebars.compile($("#m-project-list-tmpl").html());
-           		var m_html = m_template(m_contents);
-           		
-           		var m_sort = {
-           			'sort' : json.sort, 
-           			'projCount' : json.projCount
-           		};
-           		var m_sort_template = Handlebars.compile($("#m-sort-tmpl").html());
-           		var m_sort_html = m_sort_template(m_sort);
-           		
-           		$('.m-contentsBox').append(m_sort_html);
-           		$(".m-find").append(m_html);
-           		$(".m-contents-container").append(page_html);           		
            }
     	});
 	});
@@ -1186,8 +1117,6 @@ $(document).ready(function() {
 		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
-		// 모바일 초기화
-		$('.m-contents-container').remove();		
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -1256,9 +1185,6 @@ $(document).ready(function() {
 				}
 				
 			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
 		}
 		var url = formData.attr('action');
 		param_list["sort"] = $("#sort").val();
@@ -1278,23 +1204,7 @@ $(document).ready(function() {
            		
            		$("#list-container").append(html);
            		$(".contents-container").append(page_html);
-
-           		/* 모바일 */
-           		
-        	   	var m_contents = json
-           		var m_template = Handlebars.compile($("#m-project-list-tmpl").html());
-           		var m_html = m_template(m_contents);
-           		
-           		var m_sort = {
-           			'sort' : json.sort, 
-           			'projCount' : json.projCount
-           		};
-           		var m_sort_template = Handlebars.compile($("#m-sort-tmpl").html());
-           		var m_sort_html = m_sort_template(m_sort);
-           		
-           		$('.m-contentsBox').append(m_sort_html);
-           		$(".m-find").append(m_html);
-           		$(".m-contents-container").append(page_html);           		
+		
            }
     	});
 	});
@@ -1308,8 +1218,6 @@ $(document).ready(function() {
 		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
-		// 모바일 초기화
-		$('.m-contents-container').remove();
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -1327,6 +1235,8 @@ $(document).ready(function() {
 		var sellerChChk;
 		var sellerSaleChk;
 		var projChannel;
+		
+		console.log(projSort);
 		
 		
 		var param_list_name = ['projSort', 'projNation', 'projIndus', 
@@ -1393,9 +1303,6 @@ $(document).ready(function() {
 				}
 				
 			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
 		}
 		param_list["sort"] = $("#sort").val();
 		var url = formData.attr('action');
@@ -1418,24 +1325,6 @@ $(document).ready(function() {
            		$("#list-container").append(html);
            		$(".contents-container").append(page_html);
            		
-           		
-           		/* 모바일 */
-           		
-        	   	var m_contents = json
-           		var m_template = Handlebars.compile($("#m-project-list-tmpl").html());
-           		var m_html = m_template(m_contents);
-           		
-           		var m_sort = {
-           			'sort' : json.sort, 
-           			'projCount' : json.projCount
-           		};
-           		var m_sort_template = Handlebars.compile($("#m-sort-tmpl").html());
-           		var m_sort_html = m_sort_template(m_sort);
-           		
-           		$('.m-contentsBox').append(m_sort_html);
-           		$(".m-find").append(m_html);
-           		$(".m-contents-container").append(page_html);
-
            }
     	});
 	});
@@ -1450,8 +1339,6 @@ $(document).ready(function() {
 		$(".contents-container").remove();
 		$(".pageBox").remove();
 		$(".emptyResult").remove();
-		// 모바일 초기화
-		$('.m-contents-container').remove();		
 		
 		var formData = $("#search_frm");
 		var projSort;
@@ -1493,9 +1380,6 @@ $(document).ready(function() {
 				for (var i = 0; i < param_list_name.length; i++){
 					if (String(param_list_name[i]) == name) {
 						param_list[name].push(value)
-						console.log("----------------")
-						console.log(param_list[name])
-						console.log("----------------")
 					}
 					
 				}
@@ -1522,25 +1406,10 @@ $(document).ready(function() {
            		$("#list-container").append(html);
            		$(".contents-container").append(page_html);
 
-           		/* 모바일 */
-           		
-        	   	var m_contents = json
-           		var m_template = Handlebars.compile($("#m-project-list-tmpl").html());
-           		var m_html = m_template(m_contents);
-           		
-           		var m_sort = {
-           			'sort' : json.sort, 
-           			'projCount' : json.projCount
-           		};
-           		var m_sort_template = Handlebars.compile($("#m-sort-tmpl").html());
-           		var m_sort_html = m_sort_template(m_sort);
-           		
-           		$('.m-contentsBox').append(m_sort_html);
-           		$(".m-find").append(m_html);
-           		$(".m-contents-container").append(page_html);
            }
     	});
 	});
+	
 });
 </script>    
     </body>
