@@ -449,7 +449,7 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 									<c:if test="${member.memSort == '2'}">
 									<div class="inputGroup">
 				    					<label>매출 규모</label>
-				    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출" step="1000000" min="0">
+				    					<input type="text" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
 									</div>
 									<div class="inputGroup">
 				    					<label>판매경력</label>
@@ -585,8 +585,19 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
+//숫자를  #,###으로 치환
+function numberWithCommas(x) {
+	  x = x.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
+	  x = x.replace(/,/g,'');          // ,값 공백처리
+	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 정규식을 이용해서 3자리 마다 , 추가 
+}
 $(document).ready(function() {
-	
+	 /* 매출규모 천단위 표시 */
+	 $(document).on("keyup", "#profileVolume", function () {
+		 var value = $(this).val();
+		 console.log(value);
+		 $(this).val(numberWithCommas(value));
+	 });
 	
 	$(document).on("click", "#addProfile", function () {
 		var text = "프로필도 함께 등록해보세요!";

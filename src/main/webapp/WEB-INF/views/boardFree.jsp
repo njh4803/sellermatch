@@ -192,7 +192,17 @@ $(document).ready(function(){
 		window.location = ROOT_URL + '/board/detail?boardId='+boardId;
 	});
 	$(document).on("click", ".board-write", function(){
-		window.location = ROOT_URL + '/board/write';
+		var login_id = $('.projectInsert').data('member');
+		if (login_id == '') {
+			swal({
+				customClass: 'swalcustom',
+                title: '알림',
+                text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+		} else {
+			window.location = ROOT_URL + '/board/write';	
+		}
 	});
 });
 </script>

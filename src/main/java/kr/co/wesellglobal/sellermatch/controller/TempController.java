@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.PageData;
+import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.BoardDto;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
@@ -44,6 +45,9 @@ public class TempController {
 	
 	@Autowired
 	ReplyService replyService;
+	
+	@Autowired
+	RegexHelper regexHelper;
 	
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
 	public ModelAndView board(Model model,
@@ -157,28 +161,6 @@ public class TempController {
 		
 		return new ModelAndView("boardEdit");
 	}		
-	
-	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
-	public ModelAndView postBoardWrite(Model model,
-			@SessionAttribute(value = "member", required = false) MemberDto member,
-			@RequestParam(value = "boardTitle", required = false) String boardTitle,
-			@RequestParam(value = "boardContents", required = false) String boardContents) {
-		BoardDto input = new BoardDto();
-		input.setBoardId(webHelper.getUniqueId("B-", 3));
-		input.setBoardContents(boardContents);
-		input.setBoardTitle(boardTitle);
-		input.setBoardType("3");
-		input.setBoardNoticeTop("N");
-		input.setBoardWriter(member.getMemId());
-		
-		try {
-			boardService.addBoard(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return webHelper.redirect("/board/detail?boardId="+input.getBoardId(), null);
-	}
 	
 	@RequestMapping(value = "/board/edit", method = RequestMethod.POST)
 	public ModelAndView postBoardEdit(Model model,

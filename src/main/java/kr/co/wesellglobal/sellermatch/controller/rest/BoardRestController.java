@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
@@ -19,6 +21,7 @@ import kr.co.wesellglobal.sellermatch.helper.UploadItem;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.BoardDto;
 import kr.co.wesellglobal.sellermatch.model.FileDto;
+import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -131,46 +134,35 @@ public class BoardRestController {
 		return webHelper.getJsonData();
 	}
 	
-	@RequestMapping(value = "/OneToOne", method = RequestMethod.POST)
-	public Map<String, Object> getQaBoard(
-			@RequestParam(value = "boardFile", required = false) MultipartFile boardFile,
-			@RequestParam(value = "boardWriter", defaultValue = "비회원") String boardWriter,
+	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
+	public Map<String, Object> postBoardWrite(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member,
 			@RequestParam(value = "boardTitle", required = false) String boardTitle,
-			@RequestParam(value = "boardQaType", required = false) String boardQaType,
-			@RequestParam(value = "boardEmail1", required = false) String boardEmail1,
-			@RequestParam(value = "boardEmail2", required = false) String boardEmail2,
-			@RequestParam(value = "boardContents", required = false) String boardContents){
+			@RequestParam(value = "boardContents", required = false) String boardContents) {
 		
-		String boardEmail = boardEmail1 + "@" + boardEmail2;
-		if (!regexHelper.isEmail(boardEmail)) {
-			return webHelper.getJsonWarning("이메일형식이 아닙니다.");
+		if (!regexHelper.isValue(boardContents)) {
+			return webHelper.getJsonError("상세내용을 입력해 주세요.");
 		}
 		
-		/** 1) 업로드 처리 */
-		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		FileDto item = null;
 		
 		BoardDto input = new BoardDto();
-		input.setBoardId(webHelper.getUniqueId("B-", 4));
-		input.setBoardType("4");
-		input.setBoardTitle(boardTitle);
-		input.setBoardQaType(boardQaType);
-		input.setBoardEmail(boardEmail);
+		input.setBoardId(webHelper.getUniqueId("B-", 3));
 		input.setBoardContents(boardContents);
-		input.setBoardWriter(boardWriter);
+		input.setBoardTitle(boardTitle);
+		input.setBoardType("3");
+		input.setBoardNoticeTop("N");
+		input.setBoardWriter(member.getMemId());
+		
 		try {
-			if (boardFile != null && boardFile.getSize() != 0) {
-				item = webHelper.saveMultipartFile(boardFile);
-				input.setBoardFile(item.getFilePath());
-			}
-			
 			boardService.addBoard(input);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
-		return webHelper.getJsonData();
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("boardId", input.getBoardId());
+		
+		return webHelper.getJsonData(data);
 	}
 	
 }

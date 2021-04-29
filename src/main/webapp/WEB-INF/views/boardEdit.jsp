@@ -52,12 +52,22 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click", ".writeBtn", function(e){
-		e.preventdefault();
-	  	$.ajax({
-			type: "POST",
-	        url: ROOT_URL+"/board/edit",
-	        data: $('#board-form').serialize()
-	  	});
+		e.preventDefault();
+		var boardContents = $('#boardContents').text();
+		var boardTitle = $('.board-title').val();
+
+		if (boardTitle.trim() == '') {
+			swal('알림', '제목을 입력해 주세요', 'warning');
+			return false;
+		}
+		
+		if (boardContents.trim() == '') {
+    		swal('알림', '상세 설명을 입력해 주세요', 'warning');
+			CKEDITOR.instances.boardContents.focus();
+			return false;
+		} 
+		
+		$('#board-form').submit();
 	});
 		
 	// CKEDITOR 값 저장

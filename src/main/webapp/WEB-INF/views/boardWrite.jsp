@@ -24,18 +24,11 @@
 					<input class="board-title" name="boardTitle" type="text" placeholder="제목을 입력해 주세요">
 				</div>
 				<div>
-					<textarea id="boardContents" name="boardContents" class="inputForm width-100" style="height: 150px;"></textarea>
-					<script type="text/javascript">
-						CKEDITOR.replace('boardContents', {
-							height : 200,
-							enterMode:'2',
-						    shiftEnterMode:'3'
-						});
-					</script>	
+					<textarea id="boardContents" name="boardContents" class="inputForm width-100 cj" style="height: 150px;"></textarea>
 				</div>
 				<div class="btnBox">
 					<button type="button" class="cancelBtn">취소하기</button>
-					<button class="writeBtn">작성하기</button>
+					<button type="button" class="writeBtn">작성하기</button>
 				</div>
 			</form>
 	    </div>
@@ -44,15 +37,68 @@
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
+	CKEDITOR.replace('boardContents', {
+		height : 200,
+		enterMode:'2',
+	    shiftEnterMode:'3'
+	});
 	$(document).on("click", ".cancelBtn", function(){
 		window.location = ROOT_URL+"/board?boardType=3";
 	});
+
+	/** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
+	$('#board-form').validate({
+		/* 
+			required 필수 항목으로 설정한다. (true, false)
+			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
+		*/
+	    rules: {
+	    	boardTitle: 'required',
+	    	boardContents: 'required',
+	    },
+	    messages: {
+	    	boardTitle: '제목을 입력해 주세요.',
+	    	boardContents: '내용을 입력해 주세요.',
+	    }
+	});	
+	
 	$(document).on("click", ".writeBtn", function(e){
-		e.preventdefault();
+		e.preventDefault();
+		
+		var boardContents = CKEDITOR.instances.boardContents.getData();
+		$('#boardContents').text(boardContents);
+		var aa = $('#boardContents').text();
+		aa.replace('&nbsp; ','');
+		aa.replace('<br />','');
+		aa.replace(/^\s+|\s+$/g, "");
+		aa.trim();
+		if (aa != "" && aa != "" && jQuery.trim(aa).length != 0){
+			alert("@@@@@@@@@@@@@@@@@@@@@@@@");
+		}
+		console.log(boardContents);
+		console.log(aa);
+		
+		var boardTitle = $('.board-title').val();
+
 	  	$.ajax({
 			type: "POST",
 	        url: ROOT_URL+"/board/write",
-	        data: $('#board-form').serialize()
+	        data: $('#board-form').serialize(),
+	        beforeSend: function() {
+	        	CKupdate();
+	        	
+	        	if (CKEDITOR.instances.boardContents.getData() == '') {
+	        		swal('알림', '상세 설명을 입력해 주세요', 'warning');
+					CKEDITOR.instances.boardContents.focus();
+					return false;
+				}
+	        	
+	    		return $('#board-form').valid();
+            },success: function(json) {
+            	swal('알림', '게시물이 등록되었습니다.', 'success').then(function(result) {
+                    window.location = ROOT_URL + '/board/detail?boardId='+json.boardId;
+                });
+            },
 	  	});
 	});
 		

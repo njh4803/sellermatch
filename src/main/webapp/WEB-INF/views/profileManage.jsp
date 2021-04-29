@@ -65,7 +65,7 @@
 									<c:if test="${member.memSort == '2'}">
 									<div class="inputGroup">
 				    					<label>매출 규모</label>
-				    					<input type="number" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출" step="1000000" min="0" value="${output.profileVolume}">
+				    					<input type="text" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출" value="<fmt:formatNumber value="${output.profileVolume}" type="number"/>">
 									</div>
 									<div class="inputGroup">
 				    					<label>판매경력</label>
@@ -224,7 +224,21 @@
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script type="text/javascript">
+//숫자를  #,###으로 치환
+function numberWithCommas(x) {
+	  x = x.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
+	  x = x.replace(/,/g,'');          // ,값 공백처리
+	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 정규식을 이용해서 3자리 마다 , 추가 
+}
+
 $(document).ready(function(){
+	 /* 매출규모 천단위 표시 */
+	 $(document).on("keyup", "#profileVolume", function () {
+		 var value = $(this).val();
+		 console.log(value);
+		 $(this).val(numberWithCommas(value));
+	 });	
+	
     var tag = {};
     var tag_count = $('.del-btn').length;
     var counter = tag_count+0;

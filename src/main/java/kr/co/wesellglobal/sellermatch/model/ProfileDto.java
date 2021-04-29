@@ -40,7 +40,7 @@ public class ProfileDto {
     private String profileSaleChk;
 
     // 판매자 매출규모 매출규모 금액만
-    private Integer profileVolume;
+    private String profileVolume;
 
     // 등록지역 국번
     private String profileNation;
@@ -140,6 +140,10 @@ public class ProfileDto {
 	private String[] profileCareerArr;
 	private String[] profileVolumeArr;
 	 
+	public String setProfileVolume(String profileVolume) {
+		return this.profileVolume = profileVolume.replace(",", ""); 
+	}
+	
 	 public static int getOffset() {
 			return offset;
 		}
