@@ -54,23 +54,23 @@
 										<label>국가</label>
 				    					<select id="memCountry" name="memCountry" class="inputForm" value="${output.memCountry}">
 	                                           	<option value="">선택하세요.</option>
-	                                           	<option value="1"	<c:if test="${output.memNation eq '01'}" >selected</c:if>>대한민국</option>
-	                                           	<option value="19"	<c:if test="${output.memNation eq '19'}" >selected</c:if>>남아프리카 공화국</option>
-	                                           	<option value="26"	<c:if test="${output.memNation eq '26'}" >selected</c:if>>뉴질랜드</option>
-	                                           	<option value="246"	<c:if test="${output.memNation eq '246'}">selected</c:if>>대만</option>
-												<option value="70"	<c:if test="${output.memNation eq '70'}" >selected</c:if>>미국</option>
-												<option value="80"	<c:if test="${output.memNation eq '80'}" >selected</c:if>>방글라데시</option>
-												<option value="84"	<c:if test="${output.memNation eq '02'}" >selected</c:if>>베트남</option>
-												<option value="155"	<c:if test="${output.memNation eq '155'}">selected</c:if>>오스트레일리아</option>
-												<option value="168"	<c:if test="${output.memNation eq '168'}">selected</c:if>>이집트</option>
-												<option value="170"	<c:if test="${output.memNation eq '170'}">selected</c:if>>인도</option>
-												<option value="171"	<c:if test="${output.memNation eq '171'}">selected</c:if>>인도네시아</option>
-												<option value="172"	<c:if test="${output.memNation eq '172'}">selected</c:if>>일본</option>
-												<option value="179"	<c:if test="${output.memNation eq '179'}">selected</c:if>>중국</option>
-												<option value="192"	<c:if test="${output.memNation eq '192'}">selected</c:if>>캐나다</option>
-												<option value="213"	<c:if test="${output.memNation eq '213'}">selected</c:if>>태국</option>
-												<option value="241"	<c:if test="${output.memNation eq '241'}">selected</c:if>>필리핀</option>
-												<option value="245"	<c:if test="${output.memNation eq '245'}">selected</c:if>>홍콩</option>
+	                                           	<option value="1"	<c:if test="${output.memCountry eq '01'}" >selected</c:if>>대한민국</option>
+	                                           	<option value="19"	<c:if test="${output.memCountry eq '19'}" >selected</c:if>>남아프리카 공화국</option>
+	                                           	<option value="26"	<c:if test="${output.memCountry eq '26'}" >selected</c:if>>뉴질랜드</option>
+	                                           	<option value="246"	<c:if test="${output.memCountry eq '246'}">selected</c:if>>대만</option>
+												<option value="70"	<c:if test="${output.memCountry eq '70'}" >selected</c:if>>미국</option>
+												<option value="80"	<c:if test="${output.memCountry eq '80'}" >selected</c:if>>방글라데시</option>
+												<option value="84"	<c:if test="${output.memCountry eq '02'}" >selected</c:if>>베트남</option>
+												<option value="155"	<c:if test="${output.memCountry eq '155'}">selected</c:if>>오스트레일리아</option>
+												<option value="168"	<c:if test="${output.memCountry eq '168'}">selected</c:if>>이집트</option>
+												<option value="170"	<c:if test="${output.memCountry eq '170'}">selected</c:if>>인도</option>
+												<option value="171"	<c:if test="${output.memCountry eq '171'}">selected</c:if>>인도네시아</option>
+												<option value="172"	<c:if test="${output.memCountry eq '172'}">selected</c:if>>일본</option>
+												<option value="179"	<c:if test="${output.memCountry eq '179'}">selected</c:if>>중국</option>
+												<option value="192"	<c:if test="${output.memCountry eq '192'}">selected</c:if>>캐나다</option>
+												<option value="213"	<c:if test="${output.memCountry eq '213'}">selected</c:if>>태국</option>
+												<option value="241"	<c:if test="${output.memCountry eq '241'}">selected</c:if>>필리핀</option>
+												<option value="245"	<c:if test="${output.memCountry eq '245'}">selected</c:if>>홍콩</option>
 												
 	                                    </select>
 									</div>
@@ -181,6 +181,8 @@ $(document).ready(function(){
 	    	memEmail: memEmail
 	    }, function(json) {
 	    	swal('확인', '인증번호가 발송되었습니다.', 'success');
+	    	$("#sendAuthEmail").prop('disabled', false);
+	    }).fail(function(response) {
 	    	$("#sendAuthEmail").prop('disabled', false);
 	    });
 	});
