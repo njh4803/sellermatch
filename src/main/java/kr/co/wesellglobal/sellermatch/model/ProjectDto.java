@@ -65,7 +65,7 @@ public class ProjectDto {
 	// 상품 검증 미검증(0), 검증(1)
 	private String projProdCerti;
 	
-	// 프로젝트 상태 정상(1), 중지(0)
+	// 프로젝트 상태 정상(1), 중지(0), 마감(2)
 	private String projState;
 	
 	// 프로젝트 등록일 
@@ -228,7 +228,7 @@ public class ProjectDto {
 			return "정상";
 		}
 		if (this.projState.equals("2")) {
-			return "대기";
+			return "마감";
 		}
 		return "";
 	}

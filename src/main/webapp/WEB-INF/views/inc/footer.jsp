@@ -115,9 +115,6 @@ $(document).ready(function() {
 	if(nick=='') {
 		nick = null;
 	}
-	console.log(mail);
-	console.log(tel);
-	console.log(nick);
 	
   (function() {
     var w = window;
