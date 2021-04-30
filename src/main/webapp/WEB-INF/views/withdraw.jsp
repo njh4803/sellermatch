@@ -325,13 +325,11 @@ $(document).ready(function(){
 			},
 			success : function() {
 				$('.ajax-loader').hide();
-				swal({
-					title : '탈퇴가 완료되었습니다.',
-					type : 'success',
-				});
-				sleep(3000);
-				window.location.href = ROOT_URL+"/delSession";
-			},
+				
+         	   swal('알림', '탈퇴가 완료되었습니다.', 'success').then(function(result) {
+                   window.location = ROOT_URL + '/';
+               });
+           },
 			error : function() {
 				swal({
 					title : '탈퇴가 실패 하였습니다.',

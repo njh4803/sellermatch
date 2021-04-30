@@ -53,6 +53,16 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 		
 		webHelper.init(request, response);
 		
+		/* 로그인 인증 URL 생성하여 뿌려줌*/
+    	SNSLogin snsLoginNaver = new SNSLogin(naverSns);
+    	SNSLogin snsLoginKakao = new SNSLogin(kakaoSns);
+    	OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+    	String googleUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+    	
+        request.getSession().setAttribute("naver_url", snsLoginNaver.getAuthURL());
+        request.getSession().setAttribute("kakao_url", snsLoginKakao.getAuthURL());
+        request.getSession().setAttribute("google_url", googleUrl);
+        
 		// login처리를 담당하는 사용자 정보를 담고 있는 객체를 가져옴
         Object loginSession = webHelper.getSession("member");
         
@@ -129,17 +139,6 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		
-		/* 로그인 인증 URL 생성하여 뿌려줌*/
-    	SNSLogin snsLoginNaver = new SNSLogin(naverSns);
-    	SNSLogin snsLoginKakao = new SNSLogin(kakaoSns);
-    	OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-    	String googleUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-    	
-        request.getSession().setAttribute("naver_url", snsLoginNaver.getAuthURL());
-        request.getSession().setAttribute("kakao_url", snsLoginKakao.getAuthURL());
-        request.getSession().setAttribute("google_url", googleUrl);
-		
 		log.debug("AppInterceptor.postHandle 실행됨");
 		//컨트롤러 종료시의 시각을 지운다.
 		endTime = System.currentTimeMillis();
@@ -155,7 +154,8 @@ public class AppInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		//log.debug("AppInterceptor.afterCompletion 실행됨");
+		
+		log.debug("AppInterceptor.afterCompletion 실행됨");
 		super.afterCompletion(request, response, handler, ex);
 	}
 

@@ -1,9 +1,13 @@
 package kr.co.wesellglobal.sellermatch.controller;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.PageData;
@@ -473,7 +478,10 @@ public class myPageController {
 	// 탈퇴처리
 	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
 	public Map<String, Object> withdraw(HttpSession session,
+			HttpServletRequest request,
+			HttpServletResponse response,
 			@SessionAttribute(value = "member", required = false) MemberDto member,
+			@SessionAttribute(value = "profile", required = false) ProfileDto profile,
 			@RequestParam(value = "withdrawReason", required = false) String withdrawReason,
 			@RequestParam(value = "withdrawReasonText", required = false) String withdrawReasonText) throws Exception {
 		int result = 0;
@@ -484,12 +492,41 @@ public class myPageController {
 		input.setMemIdx(member.getMemIdx());
 		input.setMemId(member.getMemId());
 		input.setMemState("1");
-
+	
 		result = memberService.withdraw(input);
 
-		Map<String, Object> data = new HashMap<String, Object>();
-
 		if (result != 0) {
+			// 탈퇴 시 세션 전부 날림
+			session.removeAttribute("member"); 
+			session.removeAttribute("profile");
+			session.invalidate();
+
+            //쿠키를 가져와보고
+            Cookie loginCookie = WebUtils.getCookie(request,"loginCookie");
+			
+			
+			 if (loginCookie != null) { // 쿠키가 존재하면 
+				// null이 아니면 존재하면
+				loginCookie.setPath("/");
+				// 쿠키는 없앨 때 유효시간을 0으로 설정 invalidate같은거 없음.
+				loginCookie.setMaxAge(0);
+				// 쿠키 설정을 적용한다.
+				response.addCookie(loginCookie);
+				 
+				// 회원 테이블에서도 유효기간을 현재시간으로 다시 세팅 
+				Date date =new Date(System.currentTimeMillis());
+			 
+				input.setMemId(input.getMemId());
+				input.setSessionKey(session.getId());
+				input.setSessionLimit(date);
+				 
+				try {
+					memberService.keepLogin(input);
+				} catch (Exception e) {
+					e.printStackTrace(); 
+				} 
+			}
+
 			return webHelper.getJsonData();
 		} else {
 			return webHelper.getJsonError("탈퇴에 실패했습니다.");
