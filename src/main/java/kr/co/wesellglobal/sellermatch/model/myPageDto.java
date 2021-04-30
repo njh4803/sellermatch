@@ -113,6 +113,8 @@ public class myPageDto {
 	private int appliedCount;
 	// 승인 수
 	private int okeyCount;
+	// 마감한 거래 수
+	private int projectEndCount;
 	
 	// 지원자 수
 	private int applyCount;

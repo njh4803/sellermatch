@@ -414,7 +414,7 @@
     	keyProperty="scrapNo">
 		UPDATE ProjectList 
 		SET
-		proj_state = #{projState}, proj_edit_date = now()
+		proj_state = #{projState}, proj_edit_date = now(), proj_end_date = curdate()
 		WHERE 1=1
 		AND PROJ_MEM_ID =  #{projMemId}
 		AND PROJ_ID = #{projId}

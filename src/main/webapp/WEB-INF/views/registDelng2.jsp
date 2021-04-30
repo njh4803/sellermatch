@@ -92,8 +92,8 @@
 						</div>
 						<div class="proj-type" style="border-right:0;">
 							<div class="myProjBox2">
-								<div class="p-type closedCountText">마감한 거래/후기</div>
-								<div class="textBox1"><button id="closedCount" data-value="">0건</button></div>
+								<div class="p-type projectEndCountText">마감한 거래/후기</div>
+								<div class="textBox1"><button id="projectEndCount" data-value="${myProjectCount.projectEndCount}">${myProjectCount.projectEndCount}건</button></div>
 							</div>
 						</div>
 					</div>
@@ -426,6 +426,16 @@ $(document).ready(function(){
 			swal('알림', '지원한 거래가 없습니다.', 'warning')
 		} else {
 			location.href=ROOT_URL+ "/myPage/myApplyList";
+		}
+    });
+    
+    $(document).on("click", "#projectEndCount", function(e){
+    	var scrapCount = $('#projectEndCount').attr('data-value');
+    	var mem_sort = $('#myMemSort').val();
+		if (scrapCount == 0) {
+			swal('알림', '마감한 거래가 없습니다.', 'warning')
+		} else {
+			location.href=ROOT_URL+ "/myPage/projectEndList";
 		}
     });
     

@@ -15,6 +15,7 @@
 				<input type="hidden" id="projIdx" value="${output.projIdx}">
 				<input type="hidden" id="projId" value="${output.projId}">
 				<input type="hidden" id="projSort" value="${output.projSort}">
+				<input type="hidden" id="projState" value="${output.projState}">
 				<c:choose>
 					<c:when test="${output.projDday < 0}">
 						<div class="D-day">마감</div>
@@ -674,12 +675,21 @@ $(document).ready(function() {
 		var login_id = $('#projectInsert').data('member');
 		var mem_sort = $('#projectInsert').data('memsort');
 		var proj_sort = $('#projSort').val();
-		console.log(mem_sort);
+		var proj_state = $('#projState').val();
 		
 		if (login_id == '') {
 			swal({
                 title: '알림',
                 text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
+		
+		if (proj_state == '2') {
+			swal({
+                title: '알림',
+                text: '마감된 거래입니다.',
                	type: 'warning',
             });
 			return;

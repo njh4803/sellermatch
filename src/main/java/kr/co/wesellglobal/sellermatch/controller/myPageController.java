@@ -507,7 +507,7 @@ public class myPageController {
 		return new ModelAndView("main");
 	}
 	
-	@RequestMapping(value = "myPage/projectEndList", method = RequestMethod.GET)
+	@RequestMapping(value = "/myPage/projectEndList", method = RequestMethod.GET)
 	public ModelAndView projectEndList(Model model,
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			// 페이지 구현에서 사용할 현재 페이지 번호
@@ -524,21 +524,21 @@ public class myPageController {
 		myPageDto input = new myPageDto();
 		input.setProjMemId(member.getMemId());
 
-		List<myPageDto> registedProjectList = null;
+		List<myPageDto> projectEndList = null;
 		myPageDto myProjectCount = null;
 
 		try {
-			registedProjectList = myPageService.selectpRegistedProjectList(input);	//바꿔야댐
+			projectEndList = myPageService.projectEndList(input);	//바꿔야댐
 			myProjectCount = myPageService.selectpMyProjectCount(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("registedProjectList", registedProjectList);				//바꿔야댐
+		model.addAttribute("projectEndList", projectEndList);				//바꿔야댐
 		model.addAttribute("myProjectCount", myProjectCount);
 		model.addAttribute("memSort", member.getMemSort());
 
-		return new ModelAndView("registDelng2");
+		return new ModelAndView("projectEndList");
 	}
 	
 }

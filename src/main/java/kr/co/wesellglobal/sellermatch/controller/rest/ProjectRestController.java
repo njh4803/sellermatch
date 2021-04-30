@@ -744,9 +744,4 @@ public class ProjectRestController {
 
 		return webHelper.getJsonData(data);
 	}
-	
-	
-	
-	
-	
 }
