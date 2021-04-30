@@ -291,7 +291,6 @@ public class myPageController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		model.addAttribute("output2", output2);
 		model.addAttribute("output", output);
 		model.addAttribute("indusList", indusList);
@@ -578,4 +577,41 @@ public class myPageController {
 		return new ModelAndView("projectEndList");
 	}
 	
+	@RequestMapping(value = "/myPage/recommandList", method = RequestMethod.GET)
+	public ModelAndView recommandList(Model model, @SessionAttribute(value = "member", required = false) MemberDto member,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+
+		// 페이지 구현에 필요한 변수값 생성
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 8; // 한 페이지당 표시할 목록 수
+		int groupCount = 5; // 한 그룹당 표시할 페이지 번호 수
+
+		// 페이지 번호를 계산한 결과가 저장될 객체
+		PageData pageData = null;
+
+		myPageDto input = new myPageDto();
+		input.setMemId(member.getMemId());
+		input.setProjMemId(member.getMemId());
+
+		List<myPageDto> recommandList = null;
+		myPageDto myProjectCount = null;
+
+		try {
+			if(member.getMemSort().equals("1")) {
+				recommandList = myPageService.selectRecommandListForPro(input);	//공급자 제안한 거래
+			} else {
+				recommandList = myPageService.selectRecommandListForSell(input); //판매자 제안받은 거래
+			}
+			myProjectCount = myPageService.selectpMyProjectCount(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("recommandList", recommandList);
+		model.addAttribute("myProjectCount", myProjectCount);
+		model.addAttribute("memSort", member.getMemSort());
+
+		return new ModelAndView("recommandList");
+	}
 }

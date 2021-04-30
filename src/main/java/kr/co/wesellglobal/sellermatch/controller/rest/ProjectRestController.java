@@ -649,8 +649,12 @@ public class ProjectRestController {
 	public Map<String, Object> getProjectList(
 			@SessionAttribute(value = "member", required = false) MemberDto member){
 		
+		//프로젝트 제안하기 마감거래는 조회되지 않도록 하기위한 플래그 "Y"면 마감거래 조회 안하기
+		String recommandProjectFlag = "Y";
+		
 		ProjectDto input = new ProjectDto();
 		input.setProjMemId(member.getMemId());
+		input.setRecommandProjectFlag(recommandProjectFlag);
 		List<ProjectDto> projectList = null;
 		
 		try {

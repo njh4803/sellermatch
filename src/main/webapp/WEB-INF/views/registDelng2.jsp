@@ -82,11 +82,11 @@
 							<div class="myProjBox2">
 								<c:if test="${myProjectCount.memSort == 1}">
 	 							<div class="p-type recommendCountText">판매자에게 제안한 거래</div>
-							    <div class="textBox1"><button id="recommendCount" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</button></div>
+							    <div class="textBox1"><button id="recommendCount" data-value="${myProjectCount.precommandCount}">${myProjectCount.precommandCount}건</button></div>
 							    </c:if>
 							    <c:if test="${myProjectCount.memSort == 2}">
 								<div class="p-type recommendCountText">공급자에게 제안 받은 거래</div>
-								<div class="textBox1"><button id="recommendCount" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</button></div>
+								<div class="textBox1"><button id="recommendCount" data-value="${myProjectCount.srecommandCount}">${myProjectCount.srecommandCount}건</button></div>
 								</c:if>
 							</div>
 						</div>
@@ -415,7 +415,7 @@ $(document).ready(function(){
 			}
 			swal('알림', text, 'warning')
 		} else {
-			// 페이지 이동 하면 됨
+			location.href=ROOT_URL+ "/myPage/recommandList";
 		}
     });
     

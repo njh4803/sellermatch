@@ -21,4 +21,9 @@ public interface myPageService {
 	public List<myPageDto> selectMyApplyList(myPageDto input) throws Exception;
 
 	public List<myPageDto> projectEndList(myPageDto input) throws Exception;
+	
+	public List<myPageDto> selectRecommandListForPro(myPageDto input) throws Exception;
+	
+	public List<myPageDto> selectRecommandListForSell(myPageDto input) throws Exception;
+	
 }

@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/myPageCommon.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/myApplyList2.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/recommandList.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
     <div class="partner_wrap">
     	<div class="partner_bnr3">
@@ -103,59 +103,65 @@
 							<div>
 								<div class="th">등록일</div>
 								<div class="th">거래명</div>						
-								<div class="th">등록자</div>
-								<div class="th">지원현황</div>
-								<div class="th">
-								<c:if test="${myProjectCount.memSort == 1}">
-									판매자 연락처
-								</c:if>
-								<c:if test="${myProjectCount.memSort == 2}">
-									공급자 연락처
-								</c:if>								
-								</div>
+							<c:if test="${myProjectCount.memSort == 1}">
+								<div class="th">판매자</div>
+								<div class="th">제안현황</div>
+								<div class="th">판매자 연락처</div>
+							</c:if>
+							<c:if test="${myProjectCount.memSort == 2}">
+								<div class="th">공급자</div>
+								<div class="th">제안관리</div>
+							</c:if>
 							</div>
 						</div>
 						<div>
-							<c:forEach var="myApplyList" items="${myApplyList}" varStatus="status">
-							<div class="show-apply" data-projId="${myApplyList.projId}" data-index="${status.count}">
-								<div class="td cursor">${myApplyList.projRegDate}</div>
-								<div class="td project-title cursor" data-projId="${myApplyList.projId}">
+							<c:forEach var="recommandList" items="${recommandList}" varStatus="status">
+							<div class="show-apply" data-projId="${recommandList.projId}" data-index="${status.count}">
+								<div class="td cursor">${recommandList.projRegDate}</div>
+								<div class="td project-title cursor" data-projId="${recommandList.projId}">
 						         <c:choose>
-						           <c:when test="${fn:length(myApplyList.projTitle) > 28}">
-						            <c:out value="${fn:substring(myApplyList.projTitle,0,27)}"/>...
+						           <c:when test="${fn:length(recommandList.projTitle) > 28}">
+						            <c:out value="${fn:substring(recommandList.projTitle,0,27)}"/>...
 						           </c:when>
 						           <c:otherwise>
-						            <c:out value="${myApplyList.projTitle}"/>
+						            <c:out value="${recommandList.projTitle}"/>
 						           </c:otherwise> 
 						          </c:choose>
 								</div>
-								<div class="td">${myApplyList.memNick}</div>
+								<div class="td">${recommandList.memNick}</div>
+							<c:if test="${myProjectCount.memSort == 1}">
 								<div class="td">
-									<c:if test="${myApplyList.applyProjState == 0}">
-										<div class="applyStateBox applyReject">지원거절</div>
+									<c:if test="${recommandList.applyProjState == 0}">
+										<div class="applyStateBox applyReject">제안거절</div>
 									</c:if>
-									<c:if test="${myApplyList.applyProjState == 2}">
-										<div class="applyStateBox applyWait">승인요청중</div>
+									<c:if test="${recommandList.applyProjState == 2}">
+										<div class="applyStateBox applyWait">제안요청중</div>
 									</c:if>
-									<c:if test="${myApplyList.applyProjState == 3}">
-										<div class="applyStateBox applyAccept">지원승인</div>
+									<c:if test="${recommandList.applyProjState == 3}">
+										<div class="applyStateBox applyAccept">제안승인</div>
 									</c:if>
 								</div>
 								<div class="td">
-									<c:if test="${myApplyList.applyProjState == 0}">
+									<c:if test="${recommandList.applyProjState == 0}">
 										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/cancel_icon.png"
 										data-toggle="tooltip" data-placement="top" title="상대방이 거절한 거래로 연락처가 표기되지 않습니다.">
 									</c:if>
-									<c:if test="${myApplyList.applyProjState == 3}">
-										${fn:substring(myApplyList.memTel,0,3)}-${fn:substring(myApplyList.memTel,3,7)}-${fn:substring(myApplyList.memTel,7,12)}
+									<c:if test="${recommandList.applyProjState == 3}">
+										${fn:substring(recommandList.memTel,0,3)}-${fn:substring(recommandList.memTel,3,7)}-${fn:substring(recommandList.memTel,7,12)}
 									</c:if>
-									<c:if test="${myApplyList.applyProjState == 2}">
+									<c:if test="${recommandList.applyProjState == 2}">
 										<div>
 											<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/question_icon.png" 
-											data-toggle="tooltip" data-placement="top" title="거래 등록자가 승인할경우 연락처가 표기됩니다.">
+											data-toggle="tooltip" data-placement="top" title="판매자가 승인할경우 연락처가 표기됩니다.">
 										</div>
 									</c:if>
 								</div>
+							</c:if>
+							<c:if test="${myProjectCount.memSort == 2}">
+								<div class="td">
+									
+								</div>
+							</c:if>
 							</div>
 							<div class="apply-table" id="apply-table${status.count}">
 							</div>

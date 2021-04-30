@@ -107,14 +107,14 @@ public class myPageDto {
     private int contractCount;
     // 프로젝트 등록 수
 	private int projAddCount;
-	// 프로젝트 제안 수 (제안받거나 제안한 수)
-	private int recommendCount;
 	//지원 수
 	private int appliedCount;
 	// 승인 수
 	private int okeyCount;
 	// 마감한 거래 수
 	private int projectEndCount;
+	private int precommandCount;	//공급자가 제안한 수
+	private int srecommandCount;	//판매자가 제안받은 수
 	
 	// 지원자 수
 	private int applyCount;

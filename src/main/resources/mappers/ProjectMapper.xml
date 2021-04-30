@@ -59,6 +59,8 @@
         <result property="hashTag4" column="hash_tag4" />
         <result property="hashTag5" column="hash_tag5" />
         <result property="orginName" column="orgin_name" />
+        <result property="recommandProjectFlag" column="recommandProjectFlag" />
+        
     </resultMap>
     
     <insert id="insertItem"
@@ -228,8 +230,8 @@
 		    	AND mem_rname = #{sellerMemRname} AND proj_sort = "2"
         	</if>
         	
-        	<if test="sort == 'endSort'">
-        		AND proj_end_date > now() 
+        	<if test='recommandProjectFlag == "Y"'>
+        		AND proj_state = "1" 
         	</if>
         	
         </where>
@@ -238,7 +240,7 @@
        		ORDER BY proj_reg_date DESC, proj_idx DESC
        	</if>
        	<if test="sort == 'endSort'">
-       		ORDER BY proj_end_date , proj_idx DESC
+       		ORDER BY proj_state asc, proj_Day > 0 desc, proj_Day asc, proj_idx DESC;
        	</if>
        	<if test="sort == 'regSort'">
        		ORDER BY proj_reg_date DESC, proj_idx DESC
@@ -395,10 +397,6 @@
         	
         	<if test="sellerMemRname != '' and sellerMemRname != null and ppMemRname == null">
 		    	AND mem_rname = #{sellerMemRname} AND proj_sort = "2"
-        	</if>
-        	
-        	<if test="sort == 'endSort'">
-        		AND proj_end_date > now() 
         	</if>
         </where>
 	</select>

@@ -92,7 +92,6 @@
 				    		</div>
 		    			</div>
 		    		</div>
-		    		
 		    		<div class="myPage_r_second">
 		    			<div class="myContract">
 		    				<div class="myContractTextBox">
@@ -112,7 +111,7 @@
 		    						<span class="myContractBoxText applyText">지원한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount applyCount cursor" value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</span>
+									<span class="myContractCount applyCount cursor" data-value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</span>
 								</div>
 		    				</div>
 		    				<div class="myContractBox recommandBox">
@@ -120,8 +119,8 @@
 		    					<div>
 		    						<span class="myContractBoxText recommandText">제안 한 거래</span>
 		    					</div>
-		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount recommandConut cursor" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
+		    					<div class="myContractCntBox">
+									<span class="myContractCount recommandConut cursor" data-value="${myProjectCount.precommandCount}">${myProjectCount.precommandCount}건</span>
 								</div>
 							</c:if>
 							<c:if test="${myProjectCount.memSort == 2}">
@@ -129,7 +128,7 @@
 		    						<span class="myContractBoxText recommandText">제안 받은 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount recommandConut cursor" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
+									<span class="myContractCount recommandConut cursor" data-value="${myProjectCount.srecommandCount}">${myProjectCount.srecommandCount}건</span>
 								</div>
 							</c:if>
 		    				</div>
@@ -279,7 +278,7 @@ $(document).ready(function(){
     });
     
     $(document).on("click", ".recommandConut", function(e){
-    	var recommendCount = $('.recommandConut').val();
+    	var recommendCount = $('.recommandConut').attr('data-value');
     	var mem_sort = $('#myMemSort').val();
 		if (recommendCount == 0) {
 			var text = '';
@@ -291,7 +290,7 @@ $(document).ready(function(){
 			}
 			swal('알림', text, 'warning')
 		} else {
-			// 페이지 이동 하면 됨
+			location.href=ROOT_URL+ "/myPage/recommandList";
 		}
     });
     

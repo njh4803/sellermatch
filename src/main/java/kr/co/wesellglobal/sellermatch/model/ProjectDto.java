@@ -89,6 +89,9 @@ public class ProjectDto {
 	// 썸네일 이미지
 	private String projThumbnailImg;
 	
+	//마감거래 제안하기 막기위한 변수 추가
+	private String recommandProjectFlag;	//Y: 이면 마감거래 조회 안하기
+	
 	// 해시태그
 	private String hashTag1;
 	private String hashTag2;
