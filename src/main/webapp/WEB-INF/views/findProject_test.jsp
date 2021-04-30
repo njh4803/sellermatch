@@ -366,7 +366,6 @@
 						            <c:url value="/project/find" var="prevPageUrl">
 						                <c:param name="page" value="${pageData.prevPage}" />
 						                <c:param name="keyword" value="${keyword}" />
-						                <c:param name="memSort" value="${memSort[0]}" />
 						            </c:url>
 						            <li><a href="${prevPageUrl}">&laquo;</a></li>
 						        </c:when>
@@ -381,7 +380,6 @@
 						        <c:url value="/project/find" var="pageUrl">
 						            <c:param name="page" value="${i}"/>
 						            <c:param name="keyword" value="${keyword}"/>
-						            <c:param name="memSort" value="${memSort[0]}" />
 						        </c:url>
 						        
 						        <%-- 페이지 번호 출력 --%>
@@ -405,7 +403,6 @@
 						            <c:url value="/project/find" var="nextPageUrl">
 						                <c:param name="page" value="${pageData.nextPage}" />
 						                <c:param name="keyword" value="${keyword}" />
-						                <c:param name="memSort" value="${memSort[0]}" />
 						            </c:url>
 						            <li><a href="${nextPageUrl}">&raquo;</a></li>
 						        </c:when>

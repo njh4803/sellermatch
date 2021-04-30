@@ -128,6 +128,9 @@
 		ON p.proj_mem_id = pf.profile_mem_id
         <where>
         	proj_state != 0
+        	<if test="projSort != '' and projSort != null">
+        		AND proj_sort = #{projSort}
+        	</if>
         	<if test="projDetail != '' and projDetail != null or projTitle != '' and projTitle != null">
         		AND (proj_detail LIKE concat('%', #{projDetail}, '%') OR proj_title LIKE concat('%', #{projTitle}, '%'))
         	</if>
@@ -294,6 +297,9 @@
 		ON p.proj_mem_id = pf.profile_mem_id
         <where>
         	proj_state != 0
+        	<if test="projSort != '' and projSort != null">
+        		AND proj_sort = #{projSort}
+        	</if>        	
         	<if test="projDetail != '' and projDetail != null or projTitle != '' and projTitle != null">
         		AND (proj_detail LIKE concat('%', #{projDetail}, '%') OR proj_title LIKE concat('%', #{projTitle}, '%'))
         	</if>
