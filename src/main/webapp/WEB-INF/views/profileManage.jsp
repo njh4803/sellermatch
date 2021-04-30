@@ -29,7 +29,7 @@
 			<div id="my-tab-3" class="tab-content2">
 			    <div class="partner_wrap addbox2">
 			    	<div class="text-center profileBox">
-						<form action="${pageContext.request.contextPath}/profile" id="profile_form" name="profile_form" method="post" enctype="multipart/form-data">
+						<form action="${pageContext.request.contextPath}/profile" id="profile_form" name="profile_form" method="POST" enctype="multipart/form-data">
 							<input type="hidden" name="profileId" id="profileId" value="${output.profileId}">
 							<input type="hidden" name="profileSort" id="profileSort" value="${output.profileSort}">
 							<input type="hidden" name="profileMemId" id="profileMemId" value="${output.profileMemId}">
