@@ -149,6 +149,10 @@
 	cursor: pointer;
 }
 
+.projectEnd{
+	color: #858585;
+}
+
 .applyAccept {
 	color: #4658ce;
 }
