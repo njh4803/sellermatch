@@ -331,12 +331,10 @@ public class ProjectRestController {
 			if (photo != null && photo.getSize() != 0) {
 				input2.setProfilePhoto(item.getFilePath());
 			}
-			if (profile.getProfileSort() == "2") {
-				input2.setProfileVolume(profileDto.getProfileVolume());
-				input2.setProfileCareer(profileDto.getProfileCareer());
-				input2.setProfileCh(profileDto.getProfileCh());
-				input2.setProfileHashtag(profileDto.getProfileHashtag());
-			}
+			input2.setProfileVolume(profileDto.getProfileVolume());
+			input2.setProfileCareer(profileDto.getProfileCareer());
+			input2.setProfileCh(profileDto.getProfileCh());
+			input2.setProfileHashtag(profileDto.getProfileHashtag());
 			input2.setProfileIntro(profileDto.getProfileIntro());
 			input2.setProfileNation(profileDto.getProfileNation());
 			input2.setProfileIndus(profileDto.getProfileIndus());
