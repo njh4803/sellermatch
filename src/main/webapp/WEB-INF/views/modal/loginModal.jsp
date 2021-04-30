@@ -391,9 +391,17 @@ form div .input-group input.form-control {
 									return $('#find-id-form').valid();
 								},
 								success : function(json) {
+									var resultText = "";
+									
+									for (var i = 0; i < json.result.length; i++) {
+										resultText = resultText + json.result[i].mem_id  +"<br>";
+									}
+									
+									console.log(resultText)
+									
 									swal({
 										title : '알림',
-										text : '아이디는' + json.result + '입니다.',
+										html : '아이디는<br>' + resultText + '입니다.',
 										type : 'success',
 									});
 								}

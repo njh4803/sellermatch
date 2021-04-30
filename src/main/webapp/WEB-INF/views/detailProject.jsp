@@ -29,7 +29,7 @@
 	        	<c:if test="${output.projSort == 2}">
 	        		<div class="pFindBox">공급자 찾음</div>
 	        	</c:if>				
-	           	<div class="projDetail"  data-index="${status.index}">
+	           	<div class="projDetail clearfix"  data-index="${status.index}">
 					<div class="titleBox">${output.projTitle}</div>
 				</div>
 				<div class="clearfix"></div>
@@ -237,7 +237,7 @@
 		<div class="container1 content clearfix">
 			<div class="container2 clearfix">
 				<input type="hidden" id="projSort" value="${output.projSort}">
-	           	<div class="projDetail"  data-index="${status.index}">
+	           	<div class="projDetail clearfix"  data-index="${status.index}">
 					<div class="titleBox">${output.projTitle}</div>
 					<c:choose>
 						<c:when test="${output.projDday < 0}">
@@ -426,7 +426,7 @@
 		</div>
 		<div class="container3">
        		<div class="text-center"> 
-       			<button class="matchBtn" id="applyBtn">
+       			<button class="matchBtn" id="applyBtn" <c:if test="${output.projDday < 0}">disabled</c:if>>
        				<img class="applyImg" alt="" src="${pageContext.request.contextPath}/assets/img/applying.png">지원하기
        			</button>
        		</div>

@@ -223,7 +223,7 @@
 	</select>
 	
 	<!-- 아이디 찾기 -->
-	<select id="findId" parameterType="String" resultType="String">
+	<select id="findId" parameterType="String" resultType="java.util.HashMap">
 		select mem_id from MemList where mem_tel = #{memTel}
 	</select>
 	

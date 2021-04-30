@@ -444,7 +444,7 @@ public class MemberRestController {
 		MemberDto input = new MemberDto();
 		input.setMemTel(memTel);
 		
-		String result = null;
+		List<String> result = null;
 		
 		try {
 			result = memberService.idFindService(input);

@@ -144,7 +144,10 @@ public class ProfileDto {
 	private String[] profileVolumeArr;
 	 
 	public String setProfileVolume(String profileVolume) {
-		return this.profileVolume = profileVolume.replace(",", ""); 
+		if (profileVolume != null) {
+			return this.profileVolume = profileVolume.replace(",", ""); 
+		}
+		return this.profileVolume = profileVolume;
 	}
 	
 	 public static int getOffset() {

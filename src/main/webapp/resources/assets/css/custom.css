@@ -11,6 +11,9 @@ body  a a:focus a:hover{
 button:focus button:active button:hover{
     outline:none !important;
 }
+button[disabled], html input[disabled] {
+    cursor: not-allowed !important;
+}
 
 body.modal-open[style] {
 

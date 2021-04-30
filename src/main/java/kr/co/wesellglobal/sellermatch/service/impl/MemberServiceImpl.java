@@ -152,11 +152,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public String idFindService(MemberDto input) throws Exception {
-		String result = null;
+	public List<String> idFindService(MemberDto input) throws Exception {
+		List<String> result = null;
 		
 		try {
-			result = sqlSession.selectOne("MemberMapper.findId", input);
+			result = sqlSession.selectList("MemberMapper.findId", input);
 			if (result == null) {
 				throw new NullPointerException("result=null");
 			}
