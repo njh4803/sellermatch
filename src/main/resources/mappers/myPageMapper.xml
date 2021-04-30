@@ -250,13 +250,11 @@
     		proj_hit,
     		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
     		proj_channel,
-    		apply_proj_state,
     		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count,
     		mem_nick,
     		mem_tel
-    	FROM ProjectList p, ApplyList al, MemList ml
+    	FROM ProjectList p, MemList ml
 		WHERE 1=1
-		AND p.Proj_id = al.Apply_proj_id
 		AND p.Proj_mem_id  = ml.Mem_id
 		AND p.proj_state = '2'
 		AND p.proj_mem_id = #{projMemId}
