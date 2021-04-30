@@ -224,12 +224,12 @@
 	
 	<!-- 아이디 찾기 -->
 	<select id="findId" parameterType="String" resultType="java.util.HashMap">
-		select mem_id from MemList where mem_tel = #{memTel}
+		select mem_id from MemList where mem_tel = #{memTel} and mem_state != 1
 	</select>
 	
 	<!-- 비밀번호 변경 -->
 	<update id="changePw" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
-		UPDATE MemList SET mem_pw = MD5(#{memPw}) where mem_id = #{memId}
+		UPDATE MemList SET mem_pw = MD5(#{memPw}) where mem_id = #{memId} and mem_state != 1
 	</update>
 	
 	<!-- 회원탈퇴 인증코드 업데이트 -->

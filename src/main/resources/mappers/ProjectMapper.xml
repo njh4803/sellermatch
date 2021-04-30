@@ -107,7 +107,7 @@
     		proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now())+1 as proj_Day, proj_edit_date, 
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
-    		mem_rname, proj_channel, profile_biz_certi, mem_nick, mem_name, profile_intro, profile_photo,
+    		mem_rname, proj_channel, profile_biz_certi, mem_nick, mem_name, profile_intro, profile_photo, profile_ch_chk, profile_sale_chk,
     		(select Orgin_name FROM fileList where File_path = proj_file) as orgin_name,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
@@ -118,18 +118,7 @@
     		(select hash_nm from HashTagList where Hash_id = (select hash_tag3 from HashTag where id = Proj_id)) as hash_tag3,
     		(select hash_nm from HashTagList where Hash_id = (select hash_tag4 from HashTag where id = Proj_id)) as hash_tag4,
     		(select hash_nm from HashTagList where Hash_id = (select hash_tag5 from HashTag where id = Proj_id)) as hash_tag5
-    		<if test="ppBizCerti != '' and ppBizCerti != null">
-	        	, profile_biz_certi
-	        </if>
-	        <if test="sellerBizCerti != '' and sellerBizCerti != null">
-	        	, profile_biz_certi
-	        </if>
-	        <if test="sellerChChk != '' and sellerChChk != null">
-	        	, profile_ch_chk as seller_ch_chk
-	        </if>
-	        <if test="sellerSaleChk != '' and sellerSaleChk != null">
-	        	, profile_sale_chk as seller_sale_chk
-	        </if>
+
     	FROM ProjectList p
 		INNER JOIN IndusList i
 		ON p.proj_indus = i.indus_id

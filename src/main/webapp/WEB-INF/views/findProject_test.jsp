@@ -304,42 +304,42 @@
 									</c:if>
 								</div>
 								<div class="authContainer">
-									<c:if test="${output.projProdCerti == 1}">
+									<c:if test="${output.projSort == 1 and output.projProdCerti == 1}">
 										<div class="authBox">상품검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
 										</div>
 									</c:if>
-									<c:if test="${output.projProdCerti == 0}">
+									<c:if test="${output.projSort == 1 and output.projProdCerti == 0}">
 										<div class="authBox">상품검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									</c:if>
-									<c:if test="${output.projProfit == 1}">
+									<c:if test="${output.projSort == 1 and output.projProfit == 1}">
 										<div class="authBox">수익성검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
 										</div>
 									</c:if>
-									<c:if test="${output.projProfit == 0}">
+									<c:if test="${output.projSort == 1 and output.projProfit == 0}">
 										<div class="authBox">수익성검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									</c:if>
-									<c:if test="${output.profileChChk == 1}">
+									<c:if test="${output.projSort == 2 and output.sellerChChk == 1}">
 										<div class="authBox">채널검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
 										</div>
 									</c:if>
-									<c:if test="${output.profileChChk == 0}">
+									<c:if test="${output.projSort == 2 and output.sellerChChk == 0}">
 										<div class="authBox">채널검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
 									</c:if>
-									<c:if test="${output.profileSaleChk == 1}">
+									<c:if test="${output.projSort == 2 and output.sellerSaleChk == 1}">
 										<div class="authBox">매출검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
 										</div>
 									</c:if>
-									<c:if test="${output.profileSaleChk == 0}">
+									<c:if test="${output.projSort == 2 and output.sellerSaleChk == 0}">
 										<div class="authBox">매출검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
@@ -784,46 +784,50 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 									{{/ifCond}}
 								</div>
 								<div class="authContainer">
-									{{#ifCond projProdCerti '==' '1'}}
-										<div class="authBox">상품검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
-										</div>
+									{{#ifCond projSort '==' '1'}}
+										{{#ifCond projProdCerti '==' '1'}} 
+											<div class="authBox">상품검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+											</div>
+										{{/ifCond}}
+										{{#ifCond projProdCerti '==' '0'}}
+											<div class="authBox">상품검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+											</div>
+										{{/ifCond}}
+										{{#ifCond projProfit '==' '1'}}
+											<div class="authBox">수익성검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+											</div>
+										{{/ifCond}}
+										{{#ifCond projProfit '==' '0'}}
+											<div class="authBox">수익성검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+											</div>
+										{{/ifCond}}
 									{{/ifCond}}
-									{{#ifCond projProdCerti '==' '0'}}
-										<div class="authBox">상품검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
-										</div>
-									{{/ifCond}}
-									{{#ifCond projProfit '==' '1'}}
-										<div class="authBox">수익성검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
-										</div>
-									{{/ifCond}}
-									{{#ifCond projProfit '==' '0'}}
-										<div class="authBox">수익성검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
-										</div>
-									{{/ifCond}}
-									{{#ifCond profileChChk '==' '1'}}
-										<div class="authBox">채널검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
-										</div>
-									{{/ifCond}}
-									{{#ifCond profileChChk '==' '0'}}
-										<div class="authBox">채널검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
-										</div>
-									{{/ifCond}}
-									{{#ifCond profileSaleChk '==' '1'}}
-										<div class="authBox">매출검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
-										</div>
-									{{/ifCond}}
-									{{#ifCond profileSaleChk '==' '0'}}
-										<div class="authBox">매출검증
-											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
-										</div>
-									{{/ifCond}}								
+									{{#ifCond projSort '==' '2'}}
+										{{#ifCond sellerChChk '==' '1'}}
+											<div class="authBox">채널검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+											</div>
+										{{/ifCond}}
+										{{#ifCond sellerChChk '==' '0'}}
+											<div class="authBox">채널검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+											</div>
+										{{/ifCond}}
+										{{#ifCond sellerSaleChk '==' '1'}}
+											<div class="authBox">매출검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+											</div>
+										{{/ifCond}}
+										{{#ifCond sellerSaleChk '==' '0'}}
+											<div class="authBox">매출검증
+												<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+											</div>
+										{{/ifCond}}		
+									{{/ifCond}}							
 								</div>
 							</div>
 						</div>

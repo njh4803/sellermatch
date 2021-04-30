@@ -157,12 +157,15 @@ public class MemberServiceImpl implements MemberService{
 		
 		try {
 			result = sqlSession.selectList("MemberMapper.findId", input);
-			if (result == null) {
+			if (result.size() == 0) {
 				throw new NullPointerException("result=null");
 			}
-		}catch(Exception e) {
+		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("입력하신 연락처로 등록된 아이디가 없습니다.");
+		} catch(Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
 		}
 		return result;
 	}
