@@ -213,11 +213,16 @@
 					        		<div class="pFindBox">판매자</div>
 					        	</c:if>						
 								<c:choose>
-									<c:when test="${output.projDday < 0}">
+									<c:when test="${output.projState == 2}">
 										<div class="D-day">마감완료</div>
 									</c:when>
 									<c:otherwise>
+										<c:if test="${output.projDday <= 0}">
+										<div class="D-day">마감완료</div>
+										</c:if>
+										<c:if test="${output.projDday >0}">
 										<div class="D-day">마감 ${output.projDday}일전</div>
+										</c:if>
 									</c:otherwise>
 								</c:choose>
 					        	<%-- <div class="areaBox">${output.projNationName}지역</div> --%>
@@ -513,11 +518,14 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 					<input type="hidden" id="projId{{@key}}" value="{{projId}}">
 					<div class="leftBox">
 						<div class="left-infoBox">
-							{{#ifCond projDday '<' '0'}}
+							{{#ifCond projState '==' '2'}}
 								<div class="D-day">마감완료</div>
-							{{/ifCond}}
-							{{#ifCond projDday '>=' '0'}}
-								<div class="D-day">마감 {{projDday}}일전</div>
+							{{else}}
+								{{#ifCond projDday '<=' '0'}}
+									<div class="D-day">마감완료</div>
+								{{else}}
+									<div class="D-day">마감 {{projDday}}일전</div>
+								{{/ifCond}}
 							{{/ifCond}}
 							{{#ifCond projSort '==' '1'}}
 								<div class="sFindBox">공급자</div>
@@ -689,10 +697,14 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								{{#ifCond projSort '==' '2'}}
 					        		<div class="pFindBox">판매자</div>
 					        	{{/ifCond}}					
-								{{#ifCond projDday '<' '0'}}
+								{{#ifCond projState '==' '2'}}
 									<div class="D-day">마감완료</div>
 								{{else}}
-									<div class="D-day">마감 {{projDday}}일전</div>
+									{{#ifCond projDday '<=' '0'}}
+										<div class="D-day">마감완료</div>
+									{{else}}
+										<div class="D-day">마감 {{projDday}}일전</div>
+									{{/ifCond}}
 								{{/ifCond}}
 							</div>
 							<div class="project-titleBox">

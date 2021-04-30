@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/myPageCommon.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/myApplyList2.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/projectEndList.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
     <div class="partner_wrap">
     	<div class="partner_bnr3">
@@ -74,7 +74,7 @@
 						</div>
 						<div class="proj-type">
 							<div class="myProjBox2">
-								<div class="p-type myApplyCountText">지원한 거래</div>
+								<div class="p-type contractCountText">지원한 거래</div>
 								<div class="textBox1"><button id="myApplyCount" data-value="${myProjectCount.appliedCount}">${myProjectCount.appliedCount}건</button></div>
 							</div>
 						</div>
@@ -103,58 +103,31 @@
 							<div>
 								<div class="th">등록일</div>
 								<div class="th">거래명</div>						
-								<div class="th">등록자</div>
-								<div class="th">지원현황</div>
-								<div class="th">
-								<c:if test="${myProjectCount.memSort == 1}">
-									판매자 연락처
-								</c:if>
-								<c:if test="${myProjectCount.memSort == 2}">
-									공급자 연락처
-								</c:if>								
-								</div>
+								<div class="th">마감일</div>
+								<div class="th">모집인원</div>
+								<div class="th">지원인원</div>
+								<div class="th">지원내역</div>
 							</div>
 						</div>
 						<div>
-							<c:forEach var="myApplyList" items="${myApplyList}" varStatus="status">
-							<div class="show-apply" data-projId="${myApplyList.projId}" data-index="${status.count}">
-								<div class="td cursor">${myApplyList.projRegDate}</div>
-								<div class="td project-title cursor" data-projId="${myApplyList.projId}">
+							<c:forEach var="projectEndList" items="${projectEndList}" varStatus="status">
+							<div class="show-apply">
+								<div class="td">${projectEndList.projRegDate}</div>
+								<div class="td project-title cursor" data-projId="${projectEndList.projId}">
 						         <c:choose>
-						           <c:when test="${fn:length(myApplyList.projTitle) > 28}">
-						            <c:out value="${fn:substring(myApplyList.projTitle,0,27)}"/>...
+						           <c:when test="${fn:length(projectEndList.projTitle) > 28}">
+						            <c:out value="${fn:substring(projectEndList.projTitle,0,27)}"/>...
 						           </c:when>
 						           <c:otherwise>
-						            <c:out value="${myApplyList.projTitle}"/>
+						            <c:out value="${projectEndList.projTitle}"/>
 						           </c:otherwise> 
 						          </c:choose>
 								</div>
-								<div class="td">${myApplyList.memNick}</div>
+								<div class="td">${projectEndList.projEndDate}</div>
+								<div class="td">${projectEndList.projRecruitNum}명</div>
+								<div class="td">${projectEndList.applyCount}명</div>
 								<div class="td">
-									<c:if test="${myApplyList.applyProjState == 0}">
-										<div class="applyStateBox applyReject">지원거절</div>
-									</c:if>
-									<c:if test="${myApplyList.applyProjState == 2}">
-										<div class="applyStateBox applyWait">승인요청중</div>
-									</c:if>
-									<c:if test="${myApplyList.applyProjState == 3}">
-										<div class="applyStateBox applyAccept">지원승인</div>
-									</c:if>
-								</div>
-								<div class="td">
-									<c:if test="${myApplyList.applyProjState == 0}">
-										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/cancel_icon.png"
-										data-toggle="tooltip" data-placement="top" title="상대방이 거절한 거래로 연락처가 표기되지 않습니다.">
-									</c:if>
-									<c:if test="${myApplyList.applyProjState == 3}">
-										${fn:substring(myApplyList.memTel,0,3)}-${fn:substring(myApplyList.memTel,3,7)}-${fn:substring(myApplyList.memTel,7,12)}
-									</c:if>
-									<c:if test="${myApplyList.applyProjState == 2}">
-										<div>
-											<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/question_icon.png" 
-											data-toggle="tooltip" data-placement="top" title="거래 등록자가 승인할경우 연락처가 표기됩니다.">
-										</div>
-									</c:if>
+									<button class="show-applicant" data-projId="${projectEndList.projId}" data-index="${status.count}">관리하기</button>
 								</div>
 							</div>
 							<div class="apply-table" id="apply-table${status.count}">
@@ -276,21 +249,141 @@ $(document).ready(function(){
 	});
 });	
 </script>
+<script type="text/javascript">
+$(document).ready(function() {
+	Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+	    switch (operator) {
+	        case '==':
+	            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+	        case '===':
+	            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+	        case '!=':
+	            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+	        case '!==':
+	            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+	        case '<':
+	            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+	        case '<=':
+	            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+	        case '>':
+	            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+	        case '>=':
+	            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+	        case '&&':
+	            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+	        case '||':
+	            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+	        default:
+	            return options.inverse(this);
+	    }
+	});
+	
+	Handlebars.registerHelper('numberWithCommas', function (x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	});
+});
+</script>
 <script>
 //지원자리스트 노출
 $(document).ready(function(){
+	$(document).on("click", ".show-applicant", function(e){
+		$("#applyList").remove();
+		
+		var applyProjId = $(this).attr('data-projId');
+		var idx = $(this).attr('data-index');
+		
+		$.ajax({
+			type: "GET",
+	        url: ROOT_URL + '/myPage/delngManage/applyList',
+	        data:{
+	        	'applyProjId':applyProjId
+	        },
+			success : function(json) {
+				var content = {
+					output : json.output,
+					memSortSe : json.memSort
+				} 
+	       		var template = Handlebars.compile($("#apply-tmpl").html());
+	       		var html = template(content);
+	       		
+	       		$("#apply-table"+idx).append(html);
+			}
+		});
+	});
 	//승인버튼 관리
 	$(document).on("click", ".accept_btn", function(e){
 		 var applyProjId= $(this).attr("data-applyprojid");
+		 var applyId = $(this).attr("data-applyid");
 		 var memIdx = $(this).attr("data-memidx");
-		 alert(applyProjId);
-		 alert(memIdx);
+		 swal({
+			 title: '확인',
+			 text: '승인 하시겠습니까?', 
+			 type: "question",
+			 width: '400px',
+			 showCancelButton: true
+		  	}).then(function(result) {			
+		  		if (result.value) {
+		  			var data = {
+		  					applyProjId: applyProjId,
+		  					applyProjState:3,
+		  					applyId: applyId,
+		  					};
+		  			
+		  		        	$.ajax({
+		  			   			type: "POST",
+		  			   	        url: ROOT_URL+"/myPage/applyAccept",
+		  			   	        data: data,
+		  		                success: function() {
+		  		                	swal({
+					  		          title: '완료',
+					  		          text: '승인 완료되었습니다.', 
+			  			  		    }).then(function(result) {	
+			  			  		    	if (result.value) {
+			  			  		    		window.location.href = ROOT_URL+"/myPage/registDelng";
+			  			  		    	}
+			  			  		    });
+		  		                }
+		  			      	});
+		  		      	}
+					});	
 	});
 	//거절버튼 관리
 	$(document).on("click", ".reject_btn", function(e){
 		 var applyProjId= $(this).attr("data-applyprojid");
+		 var applyId = $(this).attr("data-applyid");
 		 var memIdx = $(this).attr("data-memidx");
-		 alert('aaaaaaaaaaa');
+		 
+		 swal({
+			 title: '확인',
+			 text: '거절 하시겠습니까?', 
+			 type: "question",
+			 width: '400px',
+			 showCancelButton: true
+		  	}).then(function(result) {			
+		  		if (result.value) {
+		  			var data = {
+		  					applyProjId: applyProjId,
+		  					applyProjState:0,
+		  					applyId: applyId,
+		  					};
+		  			
+		  		        	$.ajax({
+		  			   			type: "POST",
+		  			   	        url: ROOT_URL+"/myPage/applyAccept",
+		  			   	        data: data,
+		  		                success: function() {
+		  		                	swal({
+					  		          title: '완료',
+					  		          text: '거절 완료되었습니다.', 
+			  			  		    }).then(function(result) {	
+			  			  		    	if (result.value) {
+			  			  		    		window.location.href = ROOT_URL+"/myPage/registDelng";
+			  			  		    	}
+			  			  		    });
+		  		                }
+		  			      	});
+		  		      	}
+					});	
 	});
 	
     $(document).on("click", "#contractCount", function(e){
@@ -330,8 +423,7 @@ $(document).ready(function(){
     	var scrapCount = $('#myApplyCount').attr('data-value');
     	var mem_sort = $('#myMemSort').val();
 		if (scrapCount == 0) {
-			var text = '지원한 거래가 없습니다.';
-			swal('알림', text, 'warning')
+			swal('알림', '지원한 거래가 없습니다.', 'warning')
 		} else {
 			location.href=ROOT_URL+ "/myPage/myApplyList";
 		}
@@ -353,6 +445,70 @@ $(document).ready(function(){
 			var options = 'width=1500, height=1000, status=yes, menubar=no, toolbar=no, resizable=yes';
 			window.open(ROOT_URL + "/project/detail?projId=" + projId,"전세계 검증된 판매자를 만나는 곳, 셀러매치",options);
 	});
-    
 });
+</script>
+<script type="text/x-handlebars-template" id="apply-tmpl">
+							<div id="applyList">
+								{{#ifCond output '!=' 0}}
+									<div class="tr">
+										<div class="th" style="width: 120px;">지원일</div>
+										<div class="th" style="width: 170px;">지원자</div>			
+									{{#ifCond memSortSe '==' 1}}
+										<div class="th" style="width: 454px;">판매채널</div>
+										<div class="th" style="width: 170px;">매출규모</div>
+									{{else}}
+										<div class="th" style="width: 454px;">공급자 소개말</div>
+										<div class="th" style="width: 170px;">사업자유형</div>
+									{{/ifCond}}
+										<div class="th" style="width: 130px;">승인내역</div>
+									</div>
+									{{#output}}
+										<div class="tr">
+											<div class="td" style="width: 120px;">{{applyRegDate}}</div>
+											<div class="td" style="width: 170px;">{{applyMemNick}}</div>
+											
+											{{#ifCond memSort '==' 2}}
+											<div class="td" style="width: 454px;">{{profileCh}}</div>
+												{{#ifCond profileVolume '==' null}}
+												<div class="td" style="width: 170px;">미등록</div>
+												{{else}}
+												<div class="td" style="width: 170px;">{{numberWithCommas profileVolume}}원</div>
+												{{/ifCond}}
+											{{else}}
+											<div class="td" style="width: 454px;">{{profileIntro}}</div>
+											<div class="td" style="width: 170px;">
+												{{#ifCond profileBizSort '==' 1}}
+													법인사업자
+												{{/ifCond}}											
+												{{#ifCond profileBizSort '==' 2}}
+													개인사업자
+												{{/ifCond}}
+												{{#ifCond profileBizSort '==' 3}}
+													간이과세자
+												{{/ifCond}}
+												{{#ifCond profileBizSort '==' 4}}
+													개인
+												{{/ifCond}}
+												{{#ifCond profileBizSort '==' 5}}
+													기타
+												{{/ifCond}}
+												</div>
+											{{/ifCond}}																					
+											<div class="td" style="width: 130px;">
+												{{#ifCond applyProjState '==' 3}}
+												<div class="applyStateBox applyAccept">지원승인</div>
+												{{else ifCond applyProjState '==' 0}}
+												<div class="applyStateBox applyReject">지원거절</div>
+												{{else}}
+												<div class="applyStateBox">모집유예</div>
+												{{/ifCond}}
+											</div>
+										</div>
+									{{/output}}
+								{{else}}
+									<div class="tr">
+										<div class="th" style="width: 1280px;">지원자 없음</div>
+									</div>
+								{{/ifCond}}
+							</div>
 </script>

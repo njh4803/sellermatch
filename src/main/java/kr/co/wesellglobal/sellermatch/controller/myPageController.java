@@ -507,4 +507,38 @@ public class myPageController {
 		return new ModelAndView("main");
 	}
 	
+	@RequestMapping(value = "/myPage/projectEndList", method = RequestMethod.GET)
+	public ModelAndView projectEndList(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
+
+		// 페이지 구현에 필요한 변수값 생성
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 8; // 한 페이지당 표시할 목록 수
+		int groupCount = 5; // 한 그룹당 표시할 페이지 번호 수
+
+		// 페이지 번호를 계산한 결과가 저장될 객체
+		PageData pageData = null;
+
+		myPageDto input = new myPageDto();
+		input.setProjMemId(member.getMemId());
+
+		List<myPageDto> projectEndList = null;
+		myPageDto myProjectCount = null;
+
+		try {
+			projectEndList = myPageService.projectEndList(input);	//바꿔야댐
+			myProjectCount = myPageService.selectpMyProjectCount(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("projectEndList", projectEndList);				//바꿔야댐
+		model.addAttribute("myProjectCount", myProjectCount);
+		model.addAttribute("memSort", member.getMemSort());
+
+		return new ModelAndView("projectEndList");
+	}
+	
 }

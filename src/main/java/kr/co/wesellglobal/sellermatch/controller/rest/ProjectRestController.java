@@ -29,6 +29,7 @@ import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.model.ReplyDto;
+import kr.co.wesellglobal.sellermatch.model.myPageDto;
 import kr.co.wesellglobal.sellermatch.service.FileService;
 import kr.co.wesellglobal.sellermatch.service.HashTagListService;
 import kr.co.wesellglobal.sellermatch.service.HashTagService;
@@ -115,7 +116,6 @@ public class ProjectRestController {
 			
 		
 		
-		log.debug("profileId ====================================== " + profile.getProfileId());
 		
 		ProjectDto input = new ProjectDto();
 		input.setProjId(webHelper.getUniqueId("P-", Integer.parseInt(projSort)));
@@ -283,7 +283,7 @@ public class ProjectRestController {
 		// 프로필
 		item = null;
 		String profilehashtag = tag;
-		if (profileDto.getProfileIndus() != null) {
+		if (profile.getProfileIndus() == null) {
 			try {
 				if (photo != null && photo.getSize() != 0) {
 					item = webHelper.saveMultipartFile(photo);
@@ -703,5 +703,45 @@ public class ProjectRestController {
 		}
 		
 		return webHelper.getJsonData();
+	}
+	
+	
+	@RequestMapping(value = "/project/peojectEnd", method = RequestMethod.POST)
+	public Map<String, Object> scrap(@RequestParam(value = "projId", required = false) String projId,
+			@SessionAttribute(value = "member", required = false) MemberDto member) {
+
+		ProjectDto input = new ProjectDto();
+		input.setProjId(projId);
+		input.setProjMemId(member.getMemId());
+		input.setProjState("2");
+
+		try {
+			projectService.peojectEnd(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		return webHelper.getJsonData();
+	}
+
+	@RequestMapping(value = "/project/peojectEndDupCheck", method = RequestMethod.GET)
+	public Map<String, Object> scrapDupCheck(@RequestParam(value = "projId", required = false) String projId,
+			@SessionAttribute(value = "member", required = false) MemberDto member) {
+
+		ProjectDto input = new ProjectDto();
+		input.setProjId(projId);
+		input.setProjMemId(member.getMemId());
+
+		int result;
+		try {
+			result = projectService.peojectEndDupCheck(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("result", result);
+
+		return webHelper.getJsonData(data);
 	}
 }

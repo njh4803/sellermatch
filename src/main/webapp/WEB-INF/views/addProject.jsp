@@ -268,7 +268,7 @@
 			    				<tr>
 			    					<td>모집 마감일</td>
 			    					<td>
-			    						<input type="date" name="projEndDate" id="projEndDate" class="inputForm width-100">
+										<input type='text' class="datepicker-here inputForm width-100" data-position="top left" data-language="ko" name="projEndDate" id="projEndDate"/>
 			    					</td>
 			    				</tr>
 			    				<tr>
@@ -585,6 +585,13 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 </div>
 <%@ include file="inc/footer.jsp"%>
 <script>
+var myDataPicker = $('#projEndDate').datepicker({
+    minDate: new Date(),
+    firstDay: 0,
+    autoClose : true
+});
+</script>
+<script>
 //숫자를  #,###으로 치환
 function numberWithCommas(x) {
 	  x = x.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
@@ -882,7 +889,6 @@ $(document).ready(function() {
 				} else {
 					result = $('#detailImgList').val() + json.fName + '|';
 				}
-            	console.log(result);
             	$('#detailImgList').val(result);
             	src_tag.attr('data-src', json.fName + '|');
             }
@@ -902,16 +908,11 @@ $(document).ready(function() {
     	imgList = imgListStr.split("|");
     	img_src = img_src.replace("|","");
     	for (var i = 0; i < imgList.length-1; i++) {
-    		console.log(imgList[i]);
-    		console.log(img_src);
-    		console.log('------------------------------------------------------------------------------------------');
 			if (imgList[i] == img_src) {
-				console.log('건너뜀');
 				continue;
 			}
 			result += imgList[i]+"|";
 		}
-    	console.log(result);
     	$('#detailImgList').val(result);
     });
     
@@ -982,8 +983,8 @@ $(document).ready(function() {
 	        },
 	    	projTitle: {
 	            required: '프로젝트 제목을 입력해주세요.',
-	            minlength: '제목은 최소 {4}글자 이상 입력하셔야 합니다.',
-	            maxlength: '제목은 최대 {100}글자까지 가능합니다.',
+	            minlength: '제목은 최소 4글자 이상 입력하셔야 합니다.',
+	            maxlength: '제목은 최대 100글자까지 가능합니다.',
 	        },
 	        projState: {
 	            required: '프로젝트 상태를 선택해주세요.',
@@ -1002,8 +1003,8 @@ $(document).ready(function() {
 	        projEndDate: '모집마감일을 선택해주세요.',
 	        projRecruitNum: {
 	            required: '모집인원을 입력해주세요.',
-	            min: '모집인원은 최소 {1} 명 이상 입력하셔야 합니다.',
-	            max: '모집인원은 최소 {100} 명까지 가능합니다.',
+	            min: '모집인원은 최소 1 명 이상 입력하셔야 합니다.',
+	            max: '모집인원은 최대 100 명까지 가능합니다.',
 	        },
 	        projChannel: '채널을 선택해주세요.',
 	        projNation: '등록지역을 선택해주세요.',
@@ -1022,8 +1023,6 @@ $(document).ready(function() {
 	CKEDITOR.instances.projDetail.on('blur', function(e) {
 		var projDetail = CKEDITOR.instances.projDetail.getData();
 		$('#projDetail').text(projDetail);
-		console.log(projDetail);
-		console.log($('#projDetail').text(projDetail));
 	});
 
     $('#proj_form').ajaxForm({
@@ -1045,6 +1044,7 @@ $(document).ready(function() {
             return $(form).valid();
         },
         success: function(json) {
+            $(".ajax-loader").hide();
         	swal('알림', '매칭이 등록되었습니다.', 'success').then(function(result) {
                 window.location = ROOT_URL + '/';
             });

@@ -9,13 +9,13 @@
 <div class="bnr">
 	<div class="main-0000" style="background-image: url('${pageContext.request.contextPath}/assets/img/main0000.png');">
 	 	<div class="main-000">
-		 	<div class="popup" id="popup_1">
+<%-- 		 	<div class="popup" id="popup_1">
 				<img alt="" src="${pageContext.request.contextPath}/assets/img/event.png">
 				<div class="popup-btnBox">
 					<button id="today">오늘하루 보지않기</button>
 					<button class="popup-close">닫기</button>
 				</div>
-			</div>
+			</div> --%>
 	 		<div style="display: inline-block;">
 	 			<div class="main-001">
 		   	        셀러매치는<br>

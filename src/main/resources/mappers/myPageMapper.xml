@@ -56,6 +56,7 @@
         <result property="contractCount" column="contract_count" />
         <result property="recommendCount" column="recommend_count" />
         <result property="myApplyCount" column="my_apply_count" />
+        <result property="projectEndCount" column="project_end_count" />
         <result property="okeyCount" column="okey_count" />
         <result property="orginName" column="orgin_name" />
         
@@ -98,7 +99,7 @@
     		profile_biz_certi, 
     		mem_nick, 
     		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count, 
-    		(SELECT COUNT(*) FROM ProjectList WHERE Proj_mem_id = Profile_mem_id) as proj_add_count, 
+    		(SELECT COUNT(*) FROM ProjectList WHERE Proj_mem_id = Profile_mem_id and proj_state = 1) as proj_add_count, 
     		(SELECT COUNT(*) FROM ApplyList WHERE Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(SELECT COUNT(*) FROM ApplyList WHERE Apply_mem_id = Profile_mem_id and apply_proj_state = 4) as okey_count,
     		(SELECT COUNT(*) FROM ApplyList WHERE Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count,
@@ -132,6 +133,7 @@
 		WHERE 1=1
 		AND p.proj_mem_id = m.mem_id
 		AND p.proj_mem_id = pf.profile_mem_id
+		AND p.proj_state = '1'
 		AND p.proj_mem_id = #{projMemId}
 	</select>
 	<select id="selectpMyProjectCount"
@@ -141,10 +143,11 @@
 			profile_mem_id,
 			mem_sort,
 			mem_idx,
-			(SELECT COUNT(1) FROM ProjectList WHERE Proj_mem_id=Profile_mem_id)  AS proj_add_count,
+			(SELECT COUNT(1) FROM ProjectList WHERE Proj_mem_id=Profile_mem_id AND proj_state = '1')  AS proj_add_count,
 			(SELECT COUNT(1) FROM ApplyList WHERE Apply_mem_id =Profile_mem_id) AS applied_count,
 			(SELECT COUNT(1) FROM ApplyList A, ProjectList B WHERE 1=1 AND A.Apply_type = Mem_sort AND A.Apply_proj_id =B.Proj_id AND B.Proj_mem_id =Profile_mem_id) AS recommend_count,
-			(SELECT COUNT(1) FROM TB_SCRAP WHERE MEM_IDX = B.mem_idx) AS scrap_count
+			(SELECT COUNT(1) FROM TB_SCRAP WHERE MEM_IDX = B.mem_idx) AS scrap_count,
+			(SELECT COUNT(1) FROM ProjectList WHERE Proj_mem_id=Profile_mem_id AND proj_state = '2') AS project_end_count
 		FROM ProfileList A, MemList B
 		WHERE 1=1
 		AND A.Profile_mem_id =B.Mem_id 
@@ -229,4 +232,34 @@
 		AND al.Apply_type = '1'
 		AND al.Apply_mem_id = #{memId}
 	</select>
+
+	<select id="projectEndList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
+    	resultMap="myPageMap">
+    	SELECT distinct
+    		p.proj_idx as proj_idx, 
+    		proj_id, 
+    		date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, 
+    		proj_title, 
+    		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, 
+    		proj_recruit_num, 
+    		proj_state,
+    		proj_sort,
+    		proj_nation,
+    		proj_supply_type,
+    		proj_hit,
+    		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
+    		proj_channel,
+    		apply_proj_state,
+    		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count,
+    		mem_nick,
+    		mem_tel
+    	FROM ProjectList p, ApplyList al, MemList ml
+		WHERE 1=1
+		AND p.Proj_id = al.Apply_proj_id
+		AND p.Proj_mem_id  = ml.Mem_id
+		AND p.proj_state = '2'
+		AND p.proj_mem_id = #{projMemId}
+	</select>
+
 </mapper>

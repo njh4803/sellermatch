@@ -15,6 +15,7 @@
 				<input type="hidden" id="projIdx" value="${output.projIdx}">
 				<input type="hidden" id="projId" value="${output.projId}">
 				<input type="hidden" id="projSort" value="${output.projSort}">
+				<input type="hidden" id="projState" value="${output.projState}">
 				<c:choose>
 					<c:when test="${output.projDday < 0}">
 						<div class="D-day">마감</div>
@@ -553,6 +554,59 @@ $(document).ready(function() {
 		location.href = ROOT_URL+"/project/edit?projId="+projId;
 	});
 	
+	$(document).on("click", "#endBtn", function(){
+		var projId = $("#projId").val();
+		
+		//여기부터 스크랩
+		$.ajax({
+			type: "GET",
+		    url: ROOT_URL+"/project/peojectEndDupCheck",
+		    data: {
+		    	projId: projId
+		    },
+            success: function(json) {
+            	console.log(json.result); 
+          		if (json.result >= 1) {
+          			swal('알림', '이미 마감한 거래입니다.', 'success');
+          			return;
+				}
+				swal({
+	  		          title: '확인',
+	  		          text: '매칭을 마감 하시겠습니까?', 
+	  		          type: "question",
+	  		          width: '400px',
+	  		          showCancelButton: true
+	  		    }).then(function(result) {			
+	  		        if (result.value) {
+	  		        	var data = {
+	  		        		projId: $("#projId").val()
+	  		        	};
+	  		        	  
+	  		        	$.ajax({
+	  			   			type: "POST",
+	  			   	        url: ROOT_URL+"/project/peojectEnd",
+	  			   	        data: data,
+	  		                success: function() {
+	  		                	swal({
+				  		          title: '완료',
+				  		          text: '마감한 매칭을 확인하시겠습니까?', 
+				  		          type: "success",
+				  		          width: '400px',
+				  		          showCancelButton: true
+		  			  		    }).then(function(result) {	
+		  			  		    	if (result.value) {
+		  			  		    		window.location.href = ROOT_URL+"/myPage/projectEndList";
+		  			  		    	}
+		  			  		    });
+	  		                }
+	  			      	});
+	  		      	}
+				});	
+			}
+		});
+		
+	});
+	
 	$(document).on("click", ".question-btn", function(){
 		var login_id = $('#projectInsert').data('member');
 		var projId = $("#projId").val();
@@ -621,12 +675,21 @@ $(document).ready(function() {
 		var login_id = $('#projectInsert').data('member');
 		var mem_sort = $('#projectInsert').data('memsort');
 		var proj_sort = $('#projSort').val();
-		console.log(mem_sort);
+		var proj_state = $('#projState').val();
 		
 		if (login_id == '') {
 			swal({
                 title: '알림',
                 text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
+		
+		if (proj_state == '2') {
+			swal({
+                title: '알림',
+                text: '마감된 거래입니다.',
                	type: 'warning',
             });
 			return;

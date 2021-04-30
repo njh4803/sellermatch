@@ -120,7 +120,7 @@
 }
 
 .myProject-table .th:nth-child(2), .myProject-table .td:nth-child(2) {
-	width: 495px;
+	width: 434px;
 }
 
 .myProject-table .th:nth-child(2) {
@@ -128,7 +128,7 @@
 }
 
 .myProject-table .th:nth-child(3), .myProject-table .td:nth-child(3) {
-	width: 170px;
+	width: 120px;
 }
 
 .myProject-table .th:nth-child(4), .myProject-table .td:nth-child(4) {
@@ -140,7 +140,15 @@
 }
 
 .myProject-table .th:nth-child(5), .myProject-table .td:nth-child(5) {
-	width: 150px;
+	width: 120px;
+}
+
+.myProject-table .th:nth-child(6), .myProject-table .td:nth-child(6) {
+	width: 130px;
+}
+
+.myProject-table .th:nth-child(6) {
+	background-color: #ffede5;
 }
 
 .apply-table .th:nth-child(1), .apply-table .td:nth-child(1) {
@@ -163,13 +171,18 @@
 	display: table-cell;
 }
 
-#myApplyCount {
+.apply-table .th:nth-child(6), .apply-table .td:nth-child(6) {
+	display: table-cell;
+}
+
+#projAddCount {
 	color: #ff570e;
 }
 
-.myApplyCountText {
+.projAddCountText {
 	color: #ff570e;
 }
+
 #applyList .th:nth-child(1), #applyList .td:nth-child(1) {
 	background-color: #fff6f2;
 }
@@ -218,12 +231,51 @@
 	cursor: pointer;
 }
 
+.btn-group:hover .dropdown-menu {
+	display: block;
+}
+
+.btn_toggle {
+	width: 100px;
+	height: 30px;
+	border-radius: 2px;
+	background-color: #ffffff;
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	padding: 0px;
+}
+
+.dropdown-menu {
+	height: 59px;
+	width: 100px;
+	min-width: 100px;
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+	border:0px;
+}
+
+.dropdownTextDiv {
+	height: 29px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #484848;
+	border-radius: 2px;
+}
+
 .applyStateBox {
 	width: 100px;
 	height: 30px;
-	margin-left: 10px;
-	padding-top: 4px;
-	border-radius: 3px;
+	border-radius: 5px;
 	border: solid 1px #cccccc;
 	background-color: #ffffff;
 	font-size: 15px;
@@ -232,16 +284,21 @@
 	font-style: normal;
 	letter-spacing: normal;
 	text-align: center;
-}
-
-.applyWait {
-	color: #858585;
+	margin-left: 15px;
+	padding-top: 2px;
 }
 
 .applyAccept {
-	color: #4658ce;
+	color: #5a70ff;
 }
 
 .applyReject {
 	color: #ff7272;
+}
+#projectEndCount {
+	color: #ff570e;
+}
+
+.projectEndCountText {
+	color: #ff570e;
 }

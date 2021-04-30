@@ -121,7 +121,7 @@
 		    						<span class="myContractBoxText recommandText">제안 한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount recommandConut cursor" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
+									<span class="myContractCount recommandConut cursor" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
 								</div>
 							</c:if>
 							<c:if test="${myProjectCount.memSort == 2}">
@@ -129,16 +129,16 @@
 		    						<span class="myContractBoxText recommandText">제안 받은 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount recommandConut cursor" value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
+									<span class="myContractCount recommandConut cursor" data-value="${myProjectCount.recommendCount}">${myProjectCount.recommendCount}건</span>
 								</div>
 							</c:if>
 		    				</div>
 		    				<div class="myContractBox closeBox">
 		    					<div>
-		    						<span class="myContractBoxText closeText">마감한 거래</span>
+		    						<span class="myContractBoxText projectEndCountText">마감한 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
-									<span class="myContractCount closeCount cursor">0건</span>
+									<span class="myContractCount projectEndCount cursor" data-value="${myProjectCount.projectEndCount}">${myProjectCount.projectEndCount}건</span>
 								</div>
 		    				</div>
 		    			</div>
@@ -295,13 +295,14 @@ $(document).ready(function(){
 		}
     });
     
-    $(document).on("click", ".closeBox", function(e){
-    	var contractCount = $('.closeBox').val();
-		if (contractCount == 0) {
-			swal('알림', '마감된 거래가 없습니다.', 'warning')
+    $(document).on("click", ".projectEndCount", function(e){
+    	var projectEndCount = $('.projectEndCount').attr('data-value');
+    	var mem_sort = $('#myMemSort').val();
+		if (projectEndCount == 0) {
+			swal('알림', '마감한 거래가 없습니다.', 'warning')
 		} else {
-			//링크이동으로 가면됨
+			location.href=ROOT_URL+ "/myPage/projectEndList";
 		}
-    })
+    });
 });	
 </script>

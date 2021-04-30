@@ -224,7 +224,8 @@
 			    				<tr>
 			    					<td>모집 마감일</td>
 			    					<td>
-			    						<input type="date" name="projEndDate" id="projEndDate" class="inputForm width-100" value="${output.projEndDate}">
+			    					<input type="hidden" name="date" id="date" value="${output.projEndDate}" /> 
+			    					<input type='text' class="datepicker-here inputForm width-100" data-position="bottom left" data-language="ko" name="projEndDate" id="projEndDate" />
 			    					</td>
 			    				</tr>
 			    				<tr>
@@ -396,6 +397,15 @@ SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
 
 </div>
 <%@ include file="inc/footer.jsp"%>
+<script>
+var myDataPicker = $('#projEndDate').datepicker({
+    minDate: new Date(),
+    firstDay: 0,
+    autoClose : true
+}).data('datepicker');
+myDataPicker.selectDate(new Date($('#date').val()));
+</script>
+
 <script>
 $(document).ready(function() {
 	
