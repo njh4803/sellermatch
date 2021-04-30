@@ -283,7 +283,7 @@ public class ProjectRestController {
 		// 프로필
 		item = null;
 		String profilehashtag = tag;
-		if (profileDto.getProfileIndus() != null) {
+		if (profile.getProfileIndus() == null) {
 			try {
 				if (photo != null && photo.getSize() != 0) {
 					item = webHelper.saveMultipartFile(photo);

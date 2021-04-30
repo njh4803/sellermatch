@@ -100,6 +100,8 @@ $(document).ready(function() {
 <!-- sweetalert js -->
 <script src="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.all.min.js"></script>
 
+<link href="${pageContext.request.contextPath}/plugins/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/plugins/air-datepicker/dist/js/datepicker.js"></script>
 <!-- 채널톡 -->
 <!-- Channel Plugin Scripts -->
 <script>

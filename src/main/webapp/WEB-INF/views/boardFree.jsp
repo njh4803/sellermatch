@@ -50,7 +50,7 @@
 					        <%-- 이전 그룹으로 이동 가능하다면? --%>
 					        <c:when test="${pageData.prevPage > 0}">
 					            <%-- 이동할 URL 생성 --%>
-					            <c:url value="/board?boardType=1" var="prevPageUrl">
+					            <c:url value="/board?boardType=3" var="prevPageUrl">
 					                <c:param name="page" value="${pageData.prevPage}" />
 					                <c:param name="keyword" value="${keyword}" />
 					            </c:url>
@@ -64,7 +64,7 @@
 					    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
 					    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 					        <%-- 이동할 URL 생성 --%>
-					        <c:url value="/board?boardType=1" var="pageUrl">
+					        <c:url value="/board?boardType=3" var="pageUrl">
 					            <c:param name="page" value="${i}"/>
 					            <c:param name="keyword" value="${keyword}"/>
 					        </c:url>
@@ -87,7 +87,7 @@
 					        <%-- 다음 그룹으로 이동 가능하다면? --%>
 					        <c:when test="${pageData.nextPage > 0}">
 					            <%-- 이동할 URL 생성 --%>
-					            <c:url value="/board?boardType=1" var="nextPageUrl">
+					            <c:url value="/board?boardType=3" var="nextPageUrl">
 					                <c:param name="page" value="${pageData.nextPage}" />
 					                <c:param name="keyword" value="${keyword}" />
 					            </c:url>
