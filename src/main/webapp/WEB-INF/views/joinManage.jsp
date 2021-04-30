@@ -54,7 +54,7 @@
 										<label>국가</label>
 				    					<select id="memCountry" name="memCountry" class="inputForm" value="${output.memCountry}">
 	                                           	<option value="">선택하세요.</option>
-	                                           	<option value="1"	<c:if test="${output.memCountry eq '01'}" >selected</c:if>>대한민국</option>
+	                                           	<option value="1"	<c:if test="${output.memCountry eq '1'}" >selected</c:if>>대한민국</option>
 	                                           	<option value="19"	<c:if test="${output.memCountry eq '19'}" >selected</c:if>>남아프리카 공화국</option>
 	                                           	<option value="26"	<c:if test="${output.memCountry eq '26'}" >selected</c:if>>뉴질랜드</option>
 	                                           	<option value="246"	<c:if test="${output.memCountry eq '246'}">selected</c:if>>대만</option>
