@@ -327,6 +327,7 @@ public class ProjectRestController {
 			input2.setProfileChChk("0");
 			input2.setProfileSaleChk("0");
 			input2.setProfileBizCerti("0");
+			input2.setProfileCareer("0");
 			input2.setProfileState("1");
 			if (photo != null && photo.getSize() != 0) {
 				input2.setProfilePhoto(item.getFilePath());
