@@ -550,6 +550,11 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", "#editBtn", function(){
+		var proj_state = $('#projState').val();
+		if(proj_state == 2) {
+			swal('알림', '이미 마감한 거래입니다.', 'success');
+			return;
+		}
 		var projId = $("#projId").val();
 		location.href = ROOT_URL+"/project/edit?projId="+projId;
 	});
