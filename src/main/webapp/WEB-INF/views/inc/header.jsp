@@ -15,7 +15,7 @@ response.setDateHeader("Expires", 0L); // Do not cache in proxy server
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 		<meta name="description" content="Phoenixcoded">
-		<meta name="keywords" content="공급자, 판매자">
+		<meta name="keywords" content="셀러매치,투잡,부업,1인창업,이커머스,스마트스토어,상품소싱,도매위탁,사입,위탁판매,구매대행,오픈마켓,도매공급,판매대행,상품공급,스토어팜,부업,N잡,온라인판매,운영대행">
 		<meta name="author" content="Phoenixcoded">
     	<meta name="naver-site-verification" content="64fa4a3b7f81e009df252e28da48ddee060424c3" />
     	<meta property="og:type" content="website"> 
