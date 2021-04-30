@@ -122,7 +122,7 @@
 									<input type="hidden" name="memAddr2" class="inputForm" id="memAddr2" value="${output.memAddr2}"/>
 									<div class="inputGroup">
 										<label>이메일 인증</label>
-			    						<input type="text" name="memEmail" class="inputForm" id="memEmail"/>
+			    						<input type="text" name="memEmail" class="inputForm" id="memEmail" value="${output.memId}" readonly="readonly"/>
 										<button type="button" id="sendAuthEmail" class="btn form-bg-primary">인증번호 발송</button>
 									</div>
 				    				<div class="inputGroup">
