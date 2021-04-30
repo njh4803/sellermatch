@@ -97,7 +97,12 @@
 										<div class="applyStateBox applyAccept">지원완료</div>
 									</c:if>
 									<c:if test="${scrapList.applyProjState == null}">
+										<c:if test="${scrapList.projState == 2}">
+										<div class="applyStateBox projectEnd">마감</div>
+										</c:if>
+										<c:if test="${scrapList.projState == 1}">
 										<div class="applyStateBox applyWait" data-projId="${scrapList.projId}">지원하기</div>
+										</c:if>
 									</c:if>
 								</div>
 							</div>

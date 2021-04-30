@@ -9,7 +9,7 @@
 <div class="bnr">
 	<div class="main-0000" style="background-image: url('${pageContext.request.contextPath}/assets/img/main0000.png');">
 	 	<div class="main-000">
-<%-- 		 	<div class="popup" id="popup_1">
+<%--  		 	<div class="popup" id="popup_1">
 				<img alt="" src="${pageContext.request.contextPath}/assets/img/event.png">
 				<div class="popup-btnBox">
 					<button id="today">오늘하루 보지않기</button>
@@ -420,15 +420,15 @@
 <script>
 $(document).ready(function() {
 	
-	/* 메인 이벤트팝업 노출 */
-	$('.popup').show();
-	/* 이벤트팝업 쿠키 설정 */
+	/* 메인 이벤트팝업 노출 *//* 이벤트팝업 쿠키 설정 */
+/* 	$('.popup').show();
+	
 	cookiedata = document.cookie;
 	if ( cookiedata.indexOf("popup_1=N") < 0 ){ //쿠키 변경 여부 불러오기
 		document.all['popup_1'].style.visibility = "visible";
 	} else {
 		document.all['popup_1'].style.display = "none";
-	}
+	} */
 
 	// 오늘하루 보지않기 버튼
 	$('#today').on('click', function(){
