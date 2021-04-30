@@ -495,6 +495,9 @@ $(document).ready(function(){
 												</div>
 											{{/ifCond}}																					
 											<div class="td" style="width: 130px;">
+											{{#ifCond applyType '==' 2}}
+												<div class="applyStateBox">제안거래</div>
+											{{else}}
 												{{#ifCond applyProjState '==' 3}}
 												<div class="applyStateBox applyAccept">지원승인</div>
 												{{/ifCond}}
@@ -514,6 +517,7 @@ $(document).ready(function(){
 													</div>
 												</div>
 												{{/ifCond}}
+											{{/ifCond}}
 											</div>
 										</div>
 									{{/output}}

@@ -372,7 +372,7 @@ $(document).ready(function() {
 			type: "GET",
 		    url: ROOT_URL+"/project",
 	        success: function(json) {
-	        	console.log(json.projectList)
+	        	$(".emptyResult").remove();
 	        	var content = json
            		var template = Handlebars.compile($("#recommend-tmpl").html());
            		var html = template(content);
