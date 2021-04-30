@@ -15,7 +15,7 @@ response.setDateHeader("Expires", 0L); // Do not cache in proxy server
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 		<meta name="description" content="Phoenixcoded">
-		<meta name="keywords" content=", Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app"> 
+		<meta name="keywords" content="공급자, 판매자">
 		<meta name="author" content="Phoenixcoded">
     	<meta name="naver-site-verification" content="64fa4a3b7f81e009df252e28da48ddee060424c3" />
     	<meta property="og:type" content="website"> 

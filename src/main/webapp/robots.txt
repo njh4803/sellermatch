@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 Disallow:/myPage/
 Disallow:/admin
+Sitemap: https://sellermatch.co.kr/sitemap.xml
