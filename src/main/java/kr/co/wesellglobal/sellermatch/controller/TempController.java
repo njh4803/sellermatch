@@ -148,15 +148,22 @@ public class TempController {
 	}
 	
 	@RequestMapping(value = "/board/write", method = RequestMethod.GET)
-	public ModelAndView getBoardWrite(Model model) {
+	public ModelAndView getBoardWrite(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 		
 		return new ModelAndView("boardWrite");
 	}	
 
 	@RequestMapping(value = "/board/edit", method = RequestMethod.GET)
 	public ModelAndView getBoardEdit(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member,
 			@ModelAttribute(value = "boardDto") BoardDto boardDto) {
-		
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 		model.addAttribute("boardDto", boardDto);
 		
 		return new ModelAndView("boardEdit");
@@ -169,6 +176,7 @@ public class TempController {
 			@RequestParam(value = "boardTitle", required = false) String boardTitle,
 			@RequestParam(value = "boardContents", required = false) String boardContents,
 			@RequestParam(value = "boardWriter", required = false) String boardWriter) {
+		
 		BoardDto input = new BoardDto();
 		input.setBoardId(boardId);
 		input.setBoardWriter(boardWriter);
@@ -189,6 +197,7 @@ public class TempController {
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
 	public ModelAndView boardDetail(Model model,
 			@RequestParam(value = "boardId", required = false) String boardId) {
+		
 		BoardDto input = new BoardDto();
 		input.setBoardId(boardId);
 		input.setBoardType("3");

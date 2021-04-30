@@ -48,8 +48,11 @@ public class memberController {
 	ApplyService applyService;
 	
 	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
-	public ModelAndView join(Model model) {
-		
+	public ModelAndView join(Model model
+			, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member != null) {
+			return webHelper.redirect("/", "로그아웃 후 이용해 주세요.");
+		}		
 		return new ModelAndView("join");
 	}
 	
@@ -76,8 +79,11 @@ public class memberController {
 
 
 	@RequestMapping(value = "/member/joinMain", method = RequestMethod.GET)
-	public ModelAndView joinMain(Model model) {
-
+	public ModelAndView joinMain(Model model
+			, @SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member != null) {
+			return webHelper.redirect("/", "로그아웃 후 이용해 주세요.");
+		}
 		return new ModelAndView("joinMain"); 
 	}
 

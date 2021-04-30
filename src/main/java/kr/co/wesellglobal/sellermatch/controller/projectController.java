@@ -57,6 +57,10 @@ public class projectController {
 	public ModelAndView AddProject(Model model,
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			HttpServletRequest request) {
+
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 		
 		IndusDto input = new IndusDto();
 		List<IndusDto> indusList = null;
@@ -310,7 +314,13 @@ public class projectController {
 	
 	@RequestMapping(value = "/project/edit", method = RequestMethod.GET)
 	public ModelAndView editProject(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member,
 			@RequestParam(value = "projId", required = false) String projId) {
+
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}		
+		
 		ProjectDto input = new ProjectDto();
 		IndusDto input2 = new IndusDto();
 		input.setProjId(projId);

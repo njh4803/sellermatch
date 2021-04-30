@@ -58,6 +58,9 @@ public class myPageController {
 	@RequestMapping(value = "/myPage/joinManage", method = RequestMethod.GET)
 	public ModelAndView joinManage(Model model,
 			@SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 
 		MemberDto output = null;
 
@@ -75,7 +78,9 @@ public class myPageController {
 	@RequestMapping(value = "/myPage/profileManage", method = RequestMethod.GET)
 	public ModelAndView profileManage(Model model,
 			@SessionAttribute(value = "member", required = false) MemberDto member) {
-
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 		ProfileDto input = new ProfileDto();
 		input.setProfileMemId(member.getMemId());
 
@@ -198,6 +203,9 @@ public class myPageController {
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 		// 페이지 구현에 필요한 변수값 생성
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 8; // 한 페이지당 표시할 목록 수
@@ -232,6 +240,9 @@ public class myPageController {
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 		// 페이지 구현에 필요한 변수값 생성
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 8; // 한 페이지당 표시할 목록 수
@@ -264,6 +275,10 @@ public class myPageController {
 	@RequestMapping(value = "/myPage/myHome", method = RequestMethod.GET)
 	public ModelAndView myHome2(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
 
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
+		
 		MemberDto output = null;
 		IndusDto input = new IndusDto();
 		List<IndusDto> indusList = null;
@@ -305,7 +320,10 @@ public class myPageController {
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-
+		
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 		// 페이지 구현에 필요한 변수값 생성
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 8; // 한 페이지당 표시할 목록 수
@@ -358,6 +376,10 @@ public class myPageController {
 	@RequestMapping(value = "/myPage/withdraw", method = RequestMethod.GET)
 	public ModelAndView withdraw(Model model, @SessionAttribute(value = "member", required = false) MemberDto member) {
 
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
+		
 		ProfileDto input = new ProfileDto();
 		input.setProfileMemId(member.getMemId());
 
@@ -549,6 +571,10 @@ public class myPageController {
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
+		
 		// 페이지 구현에 필요한 변수값 생성
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 8; // 한 페이지당 표시할 목록 수
@@ -582,6 +608,10 @@ public class myPageController {
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
+		
 		// 페이지 구현에 필요한 변수값 생성
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 8; // 한 페이지당 표시할 목록 수
