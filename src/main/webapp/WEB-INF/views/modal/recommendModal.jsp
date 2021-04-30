@@ -148,8 +148,11 @@ $(document).ready(function() {
 	  			   	        url: ROOT_URL+"/recommend/project",
 	  			   	        data: data,
 	  		                success: function() {
-	  		                	swal('알림', '거래제안 완료.', 'success');
-	  		                	window.location.href = ROOT_URL+"/seller/detail?profileMemId="+$("#profileMemId").val();
+	  		                	swal('알림', '거래제안 완료.', 'success').then(function(result) {			
+		  		  	  		        if (result.value) {
+		  		  	  		      		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+$("#profileMemId").val();	
+		  		  	  		        }
+	  		               		});
 	  		                }
 	  			      	});
 	  		      	}

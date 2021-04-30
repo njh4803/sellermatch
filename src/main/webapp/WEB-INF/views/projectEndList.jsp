@@ -495,6 +495,15 @@ $(document).ready(function(){
 												</div>
 											{{/ifCond}}																					
 											<div class="td" style="width: 130px;">
+											{{#ifCond applyType '==' 2}}
+												{{#ifCond applyProjState '==' 3}}
+												<div class="applyStateBox applyAccept">제안승인</div>
+												{{else ifCond applyProjState '==' 0}}
+												<div class="applyStateBox applyReject">제안거절</div>
+												{{else}}
+												<div class="applyStateBox">모집유예</div>
+												{{/ifCond}}
+											{{else}}
 												{{#ifCond applyProjState '==' 3}}
 												<div class="applyStateBox applyAccept">지원승인</div>
 												{{else ifCond applyProjState '==' 0}}
@@ -502,6 +511,7 @@ $(document).ready(function(){
 												{{else}}
 												<div class="applyStateBox">모집유예</div>
 												{{/ifCond}}
+											{{/ifCond}}
 											</div>
 										</div>
 									{{/output}}

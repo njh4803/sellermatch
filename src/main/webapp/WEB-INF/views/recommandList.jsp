@@ -182,10 +182,10 @@
         							<button type="button" class="btn btn_toggle" data-toggle="dropdown">관리하기</button>
         								<div class="dropdown-menu">
 											<div class="dropdownTextDiv ddtd_accept">
-												<button type="button" class="dropdown-item accept_btn" data-applyid="${recommandList.applyId}" data-applyprojid="${recommandList.applyProjId}" data-memidx="">지원승인</button>
+												<button type="button" class="dropdown-item accept_btn" data-applyid="${recommandList.applyId}" data-applyprojid="${recommandList.applyProjId}" data-memidx="">제안승인</button>
 											</div>
 											<div class="dropdownTextDiv ddtd_reject">
-												<button type="button" class="dropdown-item reject_btn" data-applyid="${recommandList.applyId}" data-applyprojid="${recommandList.applyProjId}" data-memidx="">지원거절</button> 
+												<button type="button" class="dropdown-item reject_btn" data-applyid="${recommandList.applyId}" data-applyprojid="${recommandList.applyProjId}" data-memidx="">제안거절</button> 
         									</div>
 										</div>
 									</div>
