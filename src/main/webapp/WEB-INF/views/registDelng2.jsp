@@ -92,7 +92,7 @@
 						</div>
 						<div class="proj-type" style="border-right:0;">
 							<div class="myProjBox2">
-								<div class="p-type projectEndCountText">마감한 거래/후기</div>
+								<div class="p-type projectEndCountText">마감 거래</div>
 								<div class="textBox1"><button id="projectEndCount" data-value="${myProjectCount.projectEndCount}">${myProjectCount.projectEndCount}건</button></div>
 							</div>
 						</div>

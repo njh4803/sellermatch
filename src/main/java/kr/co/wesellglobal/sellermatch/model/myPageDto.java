@@ -143,6 +143,9 @@ public class myPageDto {
 	//지원타입 1:지원 , 2: 제안
 	private String applyType;
 	
+	private String applyId;
+	private String applyProjId;
+	
 	/**페이지 구현을 위한 static변수*/
 	private static int offset;
 	private static int listCount;

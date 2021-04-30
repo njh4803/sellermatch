@@ -129,4 +129,22 @@ public class ApplyServiceImpl implements ApplyService{
 			throw new Exception("데이터 수정에 실패했습니다.");
 		}
 	}
+	
+	@Override
+	public void updateRecommand(ApplyDto input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.update("ApplyMapper.updateRecommand", input);
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("수정된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+	}
 }

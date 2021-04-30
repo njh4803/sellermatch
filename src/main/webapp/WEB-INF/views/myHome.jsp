@@ -134,7 +134,7 @@
 		    				</div>
 		    				<div class="myContractBox closeBox">
 		    					<div>
-		    						<span class="myContractBoxText projectEndCountText">마감한 거래</span>
+		    						<span class="myContractBoxText projectEndCountText">마감 거래</span>
 		    					</div>
 		    					<div class="myContractCntBox">		    					
 									<span class="myContractCount projectEndCount cursor" data-value="${myProjectCount.projectEndCount}">${myProjectCount.projectEndCount}건</span>

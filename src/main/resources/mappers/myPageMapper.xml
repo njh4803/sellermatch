@@ -72,8 +72,8 @@
        
         <result property="applyProjState" column="apply_proj_state" />
         <result property="applyType" column="Apply_type" />
-        
-        
+        <result property="applyId" column="apply_id" />
+        <result property="applyProjId" column="apply_proj_id" />
     </resultMap>
 
     <select id="selectList"
@@ -308,6 +308,8 @@
     		TO_DAYS(proj_end_date)-TO_DAYS(now()) as proj_Day, 
     		proj_channel,
     		apply_proj_state,
+    		apply_id,
+    		apply_proj_id,
     		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count,
     		mem_nick,
     		mem_tel

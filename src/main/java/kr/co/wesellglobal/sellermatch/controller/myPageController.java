@@ -644,4 +644,25 @@ public class myPageController {
 
 		return new ModelAndView("recommandList");
 	}
+	
+	@RequestMapping(value = "/myPage/recommandAccept", method = RequestMethod.POST)
+	public Map<String, Object> recommand(@RequestParam(value = "applyProjId", required = false) String applyProjId,
+			@RequestParam(value = "applyId", required = false) String applyId,
+			@RequestParam(value = "applyType", required = false) String applyType,
+			@RequestParam(value = "applyProjState", required = false) String applyProjState,
+			@SessionAttribute(value = "member", required = false) MemberDto member) {
+
+		ApplyDto input = new ApplyDto();
+		input.setApplyProjId(applyProjId);
+		input.setApplyId(applyId);
+		input.setApplyProjState(applyProjState);
+
+		try {
+			applyService.updateRecommand(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		return webHelper.getJsonData();
+	}
 }

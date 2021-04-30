@@ -153,5 +153,16 @@
     	AND apply_proj_id = #{applyProjId} 
     	AND apply_type = #{applyType}
     </select>
+    
+    <update id="updateRecommand"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto">
+    	UPDATE ApplyList
+		SET
+			Apply_proj_state = #{applyProjState},
+			Apply_update_date = now()
+		WHERE Apply_id = #{applyId}
+		AND Apply_proj_id = #{applyProjId}
+		AND Apply_type = '2'
+    </update>
 
 </mapper>

@@ -92,7 +92,7 @@
 						</div>
 						<div class="proj-type" style="border-right:0;">
 							<div class="myProjBox2">
-								<div class="p-type projectEndCountText">마감한 거래/후기</div>
+								<div class="p-type projectEndCountText">마감 거래</div>
 								<div class="textBox1"><button id="projectEndCount" data-value="${myProjectCount.projectEndCount}">${myProjectCount.projectEndCount}건</button></div>
 							</div>
 						</div>
@@ -102,13 +102,14 @@
 						<div>
 							<div>
 								<div class="th">등록일</div>
-								<div class="th">거래명</div>						
 							<c:if test="${myProjectCount.memSort == 1}">
+								<div class="th">거래명</div>						
 								<div class="th">판매자</div>
 								<div class="th">제안현황</div>
 								<div class="th">판매자 연락처</div>
 							</c:if>
 							<c:if test="${myProjectCount.memSort == 2}">
+								<div class="th"style="width:635px;">거래명</div>	
 								<div class="th">공급자</div>
 								<div class="th">제안관리</div>
 							</c:if>
@@ -118,6 +119,7 @@
 							<c:forEach var="recommandList" items="${recommandList}" varStatus="status">
 							<div class="show-apply" data-projId="${recommandList.projId}" data-index="${status.count}">
 								<div class="td cursor">${recommandList.projRegDate}</div>
+								<c:if test="${myProjectCount.memSort == 1}">	
 								<div class="td project-title cursor" data-projId="${recommandList.projId}">
 						         <c:choose>
 						           <c:when test="${fn:length(recommandList.projTitle) > 28}">
@@ -129,7 +131,6 @@
 						          </c:choose>
 								</div>
 								<div class="td">${recommandList.memNick}</div>
-							<c:if test="${myProjectCount.memSort == 1}">
 								<div class="td">
 									<c:if test="${recommandList.applyProjState == 0}">
 										<div class="applyStateBox applyReject">제안거절</div>
@@ -158,8 +159,37 @@
 								</div>
 							</c:if>
 							<c:if test="${myProjectCount.memSort == 2}">
+								<div class="td project-title cursor" data-projId="${recommandList.projId}" style="width:635px;">
+						         <c:choose>
+						           <c:when test="${fn:length(recommandList.projTitle) > 28}">
+						            <c:out value="${fn:substring(recommandList.projTitle,0,27)}"/>...
+						           </c:when>
+						           <c:otherwise>
+						            <c:out value="${recommandList.projTitle}"/>
+						           </c:otherwise> 
+						          </c:choose>
+								</div>
+								<div class="td">${recommandList.memNick}</div>
 								<div class="td">
-									
+									<c:if test="${recommandList.applyProjState == 3}">
+									<div class="applyStateBox applyAccept">제안승인</div>
+									</c:if>
+									<c:if test="${recommandList.applyProjState == 0}">
+									<div class="applyStateBox applyReject">제안거절</div>
+									</c:if>
+									<c:if test="${recommandList.applyProjState == 2}">
+									<div class="btn-group">
+        							<button type="button" class="btn btn_toggle" data-toggle="dropdown">관리하기</button>
+        								<div class="dropdown-menu">
+											<div class="dropdownTextDiv ddtd_accept">
+												<button type="button" class="dropdown-item accept_btn" data-applyid="${recommandList.applyId}" data-applyprojid="${recommandList.applyProjId}" data-memidx="">지원승인</button>
+											</div>
+											<div class="dropdownTextDiv ddtd_reject">
+												<button type="button" class="dropdown-item reject_btn" data-applyid="${recommandList.applyId}" data-applyprojid="${recommandList.applyProjId}" data-memidx="">지원거절</button> 
+        									</div>
+										</div>
+									</div>
+									</c:if>
 								</div>
 							</c:if>
 							</div>
@@ -288,14 +318,74 @@ $(document).ready(function(){
 	//승인버튼 관리
 	$(document).on("click", ".accept_btn", function(e){
 		 var applyProjId= $(this).attr("data-applyprojid");
-		 var memIdx = $(this).attr("data-memidx");
-		 alert(applyProjId);
-		 alert(memIdx);
+		 var applyId = $(this).attr("data-applyid");
+		 swal({
+			 title: '확인',
+			 text: '승인 하시겠습니까?', 
+			 type: "question",
+			 width: '400px',
+			 showCancelButton: true
+		  	}).then(function(result) {			
+		  		if (result.value) {
+		  			var data = {
+		  					applyProjId: applyProjId,
+		  					applyProjState:3,
+		  					applyId: applyId,
+		  					};
+		  			
+		  		        	$.ajax({
+		  			   			type: "POST",
+		  			   	        url: ROOT_URL+"/myPage/recommandAccept",
+		  			   	        data: data,
+		  		                success: function() {
+		  		                	swal({
+					  		          title: '완료',
+					  		          text: '승인 완료되었습니다.', 
+			  			  		    }).then(function(result) {	
+			  			  		    	if (result.value) {
+			  			  		    		window.location.href = ROOT_URL+"/myPage/recommandList";
+			  			  		    	}
+			  			  		    });
+		  		                }
+		  			      	});
+		  		      	}
+					});	
 	});
 	//거절버튼 관리
 	$(document).on("click", ".reject_btn", function(e){
 		 var applyProjId= $(this).attr("data-applyprojid");
-		 var memIdx = $(this).attr("data-memidx");
+		 var applyId = $(this).attr("data-applyid");
+		 swal({
+			 title: '확인',
+			 text: '거절 하시겠습니까?', 
+			 type: "question",
+			 width: '400px',
+			 showCancelButton: true
+		  	}).then(function(result) {			
+		  		if (result.value) {
+		  			var data = {
+		  					applyProjId: applyProjId,
+		  					applyProjState:0,
+		  					applyId: applyId,
+		  					};
+		  			
+		  		        	$.ajax({
+		  			   			type: "POST",
+		  			   	        url: ROOT_URL+"/myPage/recommandAccept",
+		  			   	        data: data,
+		  		                success: function() {
+		  		                	swal({
+					  		          title: '완료',
+					  		          text: '거절 완료되었습니다.', 
+			  			  		    }).then(function(result) {	
+			  			  		    	if (result.value) {
+			  			  		    		window.location.href = ROOT_URL+"/myPage/recommandList";
+			  			  		    	}
+			  			  		    });
+		  		                }
+		  			      	});
+		  		      	}
+					});	
 	});
 	
     $(document).on("click", "#contractCount", function(e){
