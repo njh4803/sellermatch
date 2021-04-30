@@ -75,8 +75,8 @@
 							</div>
 				    		<div class="myPage_r_profileBox">
 				    			<span class="profileBoxText">
-				    			<c:if test="${profileEditDate==null}">프로필 등록하기</c:if>
-				    			<c:if test="${profileEditDate!=null}">프로필 관리하기</c:if>
+				    			<c:if test="${profileEditDate==''}">프로필 등록하기</c:if>
+				    			<c:if test="${profileEditDate!=''}">프로필 관리하기</c:if>
 				    			</span>
 				    		</div>
 		    			</div>
@@ -166,7 +166,7 @@
 		    						<span class="myContractBoxText recommandText">상품검증</span>
 								</div>
 		    					<div class="auth_img_div">
-		    						<img id="auth_img" src="${pageContext.request.contextPath}/assets/img/auth_ok.png"/>		    					
+		    						<img id="auth_img" src="${pageContext.request.contextPath}/assets/img/xx-button.png"/>		    					
 		    					</div>
 		    				</div>
 		    				<div class="myContractBox closeBox">
