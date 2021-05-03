@@ -314,4 +314,18 @@ public class MemberServiceImpl implements MemberService{
 		
 		return result;
 	}
+	
+	@Override
+	public MemberDto getMemId(MemberDto input) throws Exception {
+		MemberDto result = null;
+		
+		try {
+			result = sqlSession.selectOne("MemberMapper.getMemId", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
 }

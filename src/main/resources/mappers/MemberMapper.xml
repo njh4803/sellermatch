@@ -257,4 +257,11 @@
     	 VALUES 
     	 	(#{memIdx}, #{memId}, #{withdrawReason}, #{withdrawReasonText}, now());
     </insert>
+    
+    <select id="getMemId"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+		resultMap="MemberMap">
+        select mem_Id from MemList where mem_idx = #{memIdx}     
+    </select>
+    
 </mapper>
