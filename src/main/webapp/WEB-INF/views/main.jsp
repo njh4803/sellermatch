@@ -324,7 +324,7 @@
    					</div>
    					<div class="answerBox">
 	   					유료화가 되면 일부 서비스는 결제를 해야 이용할 수 있게 될 예정입니다.<br>
-      					그러나, '거래처 찾기 등록' 등의 일부 서비스는 계속 무료로 이용이 가능하며,
+      					그러나, '매칭 무료등록' 등의 일부 서비스는 계속 무료로 이용이 가능하며,
       					유료화가 되어도 무료 서비스 기간동안 등록한 내용은 그대로 유지가 됩니다.
 	   				</div>
    				</div>
@@ -352,7 +352,7 @@
    				<div class="FAQBox">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/assets/img/rightArrow.png');"></div>
    					<div class="Qa">
-   						<span>아무 상품이나 거래처 찾기에 등록해도 되나요?</span>
+   						<span>아무 상품이나 매칭 무료등록해도 되나요?</span>
    					</div>
    					<div class="answerBox">
 	   					일반적으로 판매 또는 공급이 이뤄지는 상품의 카테고리를 선택할 수 있게 되어 있습니다.<br>
@@ -364,7 +364,7 @@
    				<div class="FAQBox nowBtnShow">
    					<div class="img5" style="background-image: url('${pageContext.request.contextPath}/assets/img/rightArrow.png');"></div>
    					<div class="Qa">
-   						<span>거래처 찾기 등록은 몇 번까지 등록 할 수 있나요?</span>
+   						<span>매칭 무료등록은 몇 번까지 등록 할 수 있나요?</span>
    					</div>
    					<div class="answerBox">
 	   					현재는 무료 베타 서비스 기간으로, 베타서비스 기간 중에는 제한없이 등록할 수 있습니다.
@@ -390,7 +390,7 @@
 					        검증 표시를 하게 됩니다. 그래서 신뢰하셔도 좋다고 말씀드릴 수 있습니다.<br>
 					        다만, 검증을 요청한 이용자가 의도적으로 거짓 정보를 전달하거나, 검증 후 정보가 변경이 되어
 					        검증된 내용과 실제 내용이 다를 수 있습니다.<br>
-					        검증된 내용과 다른 사실을 발견하였을 경우, 셀러매치 고객센터(help@sellermatch.co.kr 또는 032-435-2236)으로
+					        검증된 내용과 다른 사실을 발견하였을 경우, 셀러매치 고객센터(help@sellermatch.co.kr)으로
 					        연락주시면 적절한 조치를 취하도록 하겠습니다.
 	   				</div>
    				</div>

@@ -219,7 +219,7 @@
        		ORDER BY profile_volume DESC
        	</if>
        	<if test="sort == 'regSort'">
-       		ORDER BY profile_reg_date DESC
+       		ORDER BY profile_edit_date DESC
        	</if>
        	<if test="sort == 'recommendSort'">
        		ORDER BY recommend_count DESC
