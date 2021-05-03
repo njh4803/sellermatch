@@ -101,7 +101,7 @@
 					<div id="myProject-table" class="myProject-table">
 						<div>
 							<div>
-								<div class="th">등록일</div>
+<!-- 								<div class="th">등록일</div> -->
 								<div class="th">거래명</div>						
 								<div class="th">등록자</div>
 								<div class="th">지원현황</div>
@@ -111,6 +111,14 @@
 								</c:if>
 								<c:if test="${myProjectCount.memSort == 2}">
 									공급자 연락처
+								</c:if>			
+								</div>
+								<div class="th">
+								<c:if test="${myProjectCount.memSort == 1}">
+									판매자 이메일
+								</c:if>
+								<c:if test="${myProjectCount.memSort == 2}">
+									공급자 이메일
 								</c:if>								
 								</div>
 							</div>
@@ -118,7 +126,7 @@
 						<div>
 							<c:forEach var="myApplyList" items="${myApplyList}" varStatus="status">
 							<div class="show-apply" data-projId="${myApplyList.projId}" data-index="${status.count}">
-								<div class="td cursor">${myApplyList.projRegDate}</div>
+<%-- 								<div class="td cursor">${myApplyList.projRegDate}</div> --%>
 								<div class="td project-title cursor" data-projId="${myApplyList.projId}">
 						         <c:choose>
 						           <c:when test="${fn:length(myApplyList.projTitle) > 28}">
@@ -147,12 +155,27 @@
 										data-toggle="tooltip" data-placement="top" title="상대방이 거절한 거래로 연락처가 표기되지 않습니다.">
 									</c:if>
 									<c:if test="${myApplyList.applyProjState == 3}">
-										${fn:substring(myApplyList.memTel,0,3)}-${fn:substring(myApplyList.memTel,3,7)}-${fn:substring(myApplyList.memTel,7,12)}
+										${fn:substring(myApplyList.memTel,0,3)}-${fn:substring(myApplyList.memTel,3,7)}-${fn:substring(myApplyList.memTel,7,12)}										
 									</c:if>
 									<c:if test="${myApplyList.applyProjState == 2}">
 										<div>
 											<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/question_icon.png" 
 											data-toggle="tooltip" data-placement="top" title="거래 등록자가 승인할경우 연락처가 표기됩니다.">
+										</div>
+									</c:if>
+								</div>
+								<div class="td">
+									<c:if test="${myApplyList.applyProjState == 0}">
+										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/cancel_icon.png"
+										data-toggle="tooltip" data-placement="top" title="상대방이 거절한 거래로 이메일이 표기되지 않습니다.">
+									</c:if>
+									<c:if test="${myApplyList.applyProjState == 3}">
+										${myApplyList.memId}
+									</c:if>
+									<c:if test="${myApplyList.applyProjState == 2}">
+										<div>
+											<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/question_icon.png" 
+											data-toggle="tooltip" data-placement="top" title="거래 등록자가 승인할경우 이메일이 표기됩니다.">
 										</div>
 									</c:if>
 								</div>

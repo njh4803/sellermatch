@@ -116,11 +116,11 @@
 }
 
 .myProject-table .th:nth-child(1), .myProject-table .td:nth-child(1) {
-	width: 120px;
+	width: 400px;
 }
 
 .myProject-table .th:nth-child(2), .myProject-table .td:nth-child(2) {
-	width: 495px;
+	width: 170px;
 }
 
 .myProject-table .th:nth-child(2) {
@@ -128,11 +128,11 @@
 }
 
 .myProject-table .th:nth-child(3), .myProject-table .td:nth-child(3) {
-	width: 170px;
+	width: 120px;
 }
 
 .myProject-table .th:nth-child(4), .myProject-table .td:nth-child(4) {
-	width: 120px;
+	width: 130px;
 }
 
 .myProject-table .th:nth-child(4) {
@@ -140,7 +140,7 @@
 }
 
 .myProject-table .th:nth-child(5), .myProject-table .td:nth-child(5) {
-	width: 150px;
+	width: 230px;
 }
 
 .apply-table .th:nth-child(1), .apply-table .td:nth-child(1) {
@@ -188,10 +188,6 @@
 
 #applyList .th:nth-child(5), #applyList .td:nth-child(5) {
 	background-color: #fff6f2;
-}
-
-#applyList .th:nth-child(6), #applyList .td:nth-child(6) {
-	background-color: #ffede5;
 }
 
 #applyList .tr .th {
