@@ -13,7 +13,7 @@ response.setDateHeader("Expires", 0L); // Do not cache in proxy server
         <title>셀러매치, 전 세계 상품공급자와 판매대행자 직거래 사이트</title>
         <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1.0">
+		<meta name="viewport" content="user-scalable=yes, initial-scale=0.1, maximum-scale=1.0">
 		<meta name="description" content="Phoenixcoded">
 		<meta name="keywords" content="셀러매치,투잡,부업,1인창업,이커머스,스마트스토어,상품소싱,도매위탁,사입,위탁판매,구매대행,오픈마켓,도매공급,판매대행,상품공급,스토어팜,부업,N잡,온라인판매,운영대행">
 		<meta name="author" content="Phoenixcoded">
