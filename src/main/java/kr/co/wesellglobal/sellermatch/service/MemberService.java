@@ -42,4 +42,6 @@ public interface MemberService {
 	public int authConfirm(MemberDto input) throws Exception;
 	
 	public int withdraw(MemberDto input) throws Exception;
+	
+	public MemberDto getMemId(MemberDto input) throws Exception;
 }

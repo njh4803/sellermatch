@@ -20,9 +20,11 @@ import kr.co.wesellglobal.sellermatch.helper.PageData;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.IndusDto;
+import kr.co.wesellglobal.sellermatch.model.MemberDto;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.model.ProjectDto;
 import kr.co.wesellglobal.sellermatch.service.IndusService;
+import kr.co.wesellglobal.sellermatch.service.MemberService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
 import kr.co.wesellglobal.sellermatch.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,8 @@ public class profileController {
 	ProfileService profileService;
 	@Autowired
 	ProjectService projectService;
+	@Autowired
+	MemberService memberService;
 	@Autowired
 	IndusService indusService;
 	@Autowired
@@ -109,15 +113,26 @@ public class profileController {
 	
 	@RequestMapping(value = "/seller/detail", method = RequestMethod.GET)
 	public ModelAndView DetailSeller(Model model, 
-			@RequestParam(value = "profileMemId", required = false)String profileMemId) {
+			@RequestParam(value = "profileMemIdx", required = false)int profileMemIdx) {
+		
+		MemberDto mem = new MemberDto();
+		mem.setMemIdx(profileMemIdx);
+		MemberDto memOutput = new MemberDto();
+
+		try {
+			memOutput = memberService.getMemId(mem);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		ProfileDto input = new ProfileDto();
-		input.setProfileMemId(profileMemId);
+		input.setProfileMemId(memOutput.getMemId());
 		input.setProfileSort("2");
 		input.setNeedIndus("Y");
 		
 		ProjectDto input2 = new ProjectDto();
-		input2.setProjMemId(profileMemId);
+		input2.setProjMemId(memOutput.getMemId());
 		
 		ProfileDto output = null;
 		List<ProjectDto> project = null;

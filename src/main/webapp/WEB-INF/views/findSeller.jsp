@@ -190,7 +190,7 @@
         		<c:forEach var="output" items="${output}" varStatus="status">
         		<div class="contents s-link clearfix" data-index="${status.index}">
 					<div class="clearfix">
-						<input type="hidden" id="profileMemId${status.index}" name="profileMemId" value="${output.profileMemId}">
+						<input type="hidden" id="profileMemIdx${status.index}" name="profileMemIdx" value="${output.profileIdx}">
 						<div class="leftBox">
 							<div class="photo-container">
 								<c:if test="${output.profilePhoto == null}">
@@ -619,8 +619,8 @@ $(document).ready(function() {
 	$(document).on("click", ".s-link", function(){
 		
 		var idx = $(this).attr('data-index');
-		var profileMemId = $("#profileMemId"+idx).val();
-		window.location.href = ROOT_URL+"/seller/detail?profileMemId="+profileMemId;
+		var profileMemIdx = $("#profileMemIdx"+idx).val();
+		window.location.href = ROOT_URL+"/seller/detail?profileMemIdx="+profileMemIdx;
 	});
 	
  	$(document).on("click", ".check_list", function(){

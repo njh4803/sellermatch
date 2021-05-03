@@ -9,9 +9,9 @@ var url_default_band = "https://band.us/plugin/share?body=";
 var url_this_page = location.href;
 var path = location.pathname + location.search;
 var title_this_page = document.title; 
-var url_combine_ks = url_default_ks + url_this_page; 
-var url_combine_fb = url_default_fb + url_this_page; 
-var url_combine_tw = url_default_tw_txt + document.title + url_default_tw_url + url_this_page; 
+var url_combine_ks = url_default_ks + encodeURI(url_this_page); 
+var url_combine_fb = url_default_fb + encodeURI(url_this_page); 
+var url_combine_tw = url_default_tw_txt + document.title + url_default_tw_url + encodeURI(url_this_page); 
 var url_combine_naver = url_default_naver + encodeURI(url_this_page) + "&title=" + encodeURI(title_this_page); 
 var url_combine_line = url_default_line + encodeURI(url_this_page);
 var url_combine_band = url_default_band + encodeURI(title_this_page) + "\n" + encodeURI(url_this_page) + "&route=" + encodeURI(url_this_page);
@@ -24,11 +24,9 @@ $(function(){
                 title: '친구들과 공유하기 <div id="snsShareCloseBtn"><a href="" return false;"><img src="'+ROOT_URL+'/assets/img/close.png"></a></div>',
                 html: text,
                 showConfirmButton: false,
-/*                 input:'text',
-                inputValue: url_this_page, */
                 allowOutsideClick: false
             });
-			$("#swal-input1").val(url_this_page);
+			$("#swal-input1").val(encodeURI(url_this_page));
 			$(".SNScopyBtn").on("click",function(){
 				$("#swal-input1").select();
                 document.execCommand('copy');
