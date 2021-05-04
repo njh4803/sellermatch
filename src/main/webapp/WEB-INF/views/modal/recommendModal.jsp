@@ -150,7 +150,7 @@ $(document).ready(function() {
 	  		                success: function() {
 	  		                	swal('알림', '거래제안 완료.', 'success').then(function(result) {			
 		  		  	  		        if (result.value) {
-		  		  	  		      		window.location.href = ROOT_URL+"/seller/detail?profileIdx="+$("#profileIdx").val();	
+		  		  	  		      		window.location.href = ROOT_URL+"/seller/detail?profileMemIdx="+$("#profileIdx").val();	
 		  		  	  		        }
 	  		               		});
 	  		                }

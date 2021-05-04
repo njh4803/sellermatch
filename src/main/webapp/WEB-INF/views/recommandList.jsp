@@ -101,14 +101,16 @@
 					<div id="myProject-table" class="myProject-table">
 						<div>
 							<div>
-								<div class="th">등록일</div>
+								
 							<c:if test="${myProjectCount.memSort == 1}">
-								<div class="th">거래명</div>						
-								<div class="th">판매자</div>
-								<div class="th">제안현황</div>
-								<div class="th">판매자 연락처</div>
+								<div class="th" style="width:400px !important;">거래명</div>						
+								<div class="th" style="width:170px !important;">판매자</div>
+								<div class="th" style="width:120px !important;">제안현황</div>
+								<div class="th" style="width:130px !important;">판매자 연락처</div>
+								<div class="th" style="width:230px !important;">판매자 이메일</div>
 							</c:if>
 							<c:if test="${myProjectCount.memSort == 2}">
+								<div class="th">등록일</div>
 								<div class="th"style="width:635px;">거래명</div>	
 								<div class="th">공급자</div>
 								<div class="th">제안관리</div>
@@ -118,9 +120,8 @@
 						<div>
 							<c:forEach var="recommandList" items="${recommandList}" varStatus="status">
 							<div class="show-apply" data-projId="${recommandList.projId}" data-index="${status.count}">
-								<div class="td cursor">${recommandList.projRegDate}</div>
 								<c:if test="${myProjectCount.memSort == 1}">	
-								<div class="td project-title cursor" data-projId="${recommandList.projId}">
+								<div class="td project-title cursor" data-projId="${recommandList.projId}"  style="width:400px !important;">
 						         <c:choose>
 						           <c:when test="${fn:length(recommandList.projTitle) > 28}">
 						            <c:out value="${fn:substring(recommandList.projTitle,0,27)}"/>...
@@ -130,8 +131,8 @@
 						           </c:otherwise> 
 						          </c:choose>
 								</div>
-								<div class="td">${recommandList.memNick}</div>
-								<div class="td">
+								<div class="td"  style="width:170px !important;">${recommandList.memNick}</div>
+								<div class="td"  style="width:120px !important;">
 									<c:if test="${recommandList.applyProjState == 0}">
 										<div class="applyStateBox applyReject">제안거절</div>
 									</c:if>
@@ -142,7 +143,7 @@
 										<div class="applyStateBox applyAccept">제안승인</div>
 									</c:if>
 								</div>
-								<div class="td">
+								<div class="td" style="width:130px !important;">
 									<c:if test="${recommandList.applyProjState == 0}">
 										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/cancel_icon.png"
 										data-toggle="tooltip" data-placement="top" title="상대방이 거절한 거래로 연락처가 표기되지 않습니다.">
@@ -157,8 +158,24 @@
 										</div>
 									</c:if>
 								</div>
+								<div class="td" style="width:230px !important;">
+									<c:if test="${recommandList.applyProjState == 0}">
+										<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/cancel_icon.png"
+										data-toggle="tooltip" data-placement="top" title="상대방이 거절한 거래로 이메일이 표기되지 않습니다.">
+									</c:if>
+									<c:if test="${recommandList.applyProjState == 3}">
+										${recommandList.memId}
+									</c:if>
+									<c:if test="${recommandList.applyProjState == 2}">
+										<div>
+											<img class="pojTelIcon" alt="" src="${pageContext.request.contextPath}/assets/img/question_icon.png" 
+											data-toggle="tooltip" data-placement="top" title="판매자가 승인할경우 이메일이 표기됩니다.">
+										</div>
+									</c:if>
+								</div>
 							</c:if>
 							<c:if test="${myProjectCount.memSort == 2}">
+								<div class="td cursor">${recommandList.projRegDate}</div>
 								<div class="td project-title cursor" data-projId="${recommandList.projId}" style="width:635px;">
 						         <c:choose>
 						           <c:when test="${fn:length(recommandList.projTitle) > 28}">
@@ -332,7 +349,7 @@ $(document).ready(function(){
 		  					applyProjState:3,
 		  					applyId: applyId,
 		  					};
-		  			
+		  			$(".accept_btn").prop("disabled", true);
 		  		        	$.ajax({
 		  			   			type: "POST",
 		  			   	        url: ROOT_URL+"/myPage/recommandAccept",
@@ -368,7 +385,7 @@ $(document).ready(function(){
 		  					applyProjState:0,
 		  					applyId: applyId,
 		  					};
-		  			
+		  			$(".reject_btn").prop("disabled", true);
 		  		        	$.ajax({
 		  			   			type: "POST",
 		  			   	        url: ROOT_URL+"/myPage/recommandAccept",

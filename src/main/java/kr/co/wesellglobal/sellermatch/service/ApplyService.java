@@ -21,4 +21,8 @@ public interface ApplyService {
 	
 	public void updateRecommand(ApplyDto input) throws Exception;
 	
+	public ApplyDto getAcceptedProjectOwner(ApplyDto input) throws Exception;
+	
+	public ApplyDto getAcceptedRecommandOwner(ApplyDto input) throws Exception;
+	
 }
