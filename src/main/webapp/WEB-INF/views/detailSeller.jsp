@@ -13,6 +13,7 @@
 		<hr>
 		<div class="container1 content clearfix">
 			<input type="hidden" id="profileMemIdx" value="${output.profileIdx}">
+			<input type="hidden" id="profileIdx" value="${output.profileIdx}">
 			<div class="container2">
 				<div class="btnBox">
 					<button class="scrap">

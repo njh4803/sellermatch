@@ -144,7 +144,7 @@
 			mem_sort,
 			mem_idx,
 			(SELECT COUNT(1) FROM ProjectList WHERE Proj_mem_id=Profile_mem_id AND proj_state = '1')  AS proj_add_count,
-			(SELECT COUNT(1) FROM ApplyList WHERE Apply_mem_id =Profile_mem_id) AS applied_count,
+			(SELECT COUNT(1) FROM ApplyList WHERE Apply_mem_id =Profile_mem_id AND Apply_type = 1) AS applied_count,
 			(SELECT COUNT(1) FROM TB_SCRAP WHERE MEM_IDX = B.mem_idx) AS scrap_count,
 			(SELECT count(1) FROM ApplyList A, ProjectList B WHERE A.Apply_proj_id =B.PROJ_ID AND B.PROJ_MEM_ID = B.Mem_id AND Apply_type = 2)	AS p_Recommand_Count, -- 공급자 제안한 거래
 			(SELECT COUNT(1) FROM ApplyList WHERE Apply_mem_id = B.Mem_id AND Apply_type = 2) AS s_Recommand_Count, -- 판매자 제안받은 거래
@@ -225,7 +225,8 @@
     		apply_proj_state,
     		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count,
     		mem_nick,
-    		mem_tel
+    		mem_tel,
+    		mem_id
     	FROM ProjectList p, ApplyList al, MemList ml
 		WHERE 1=1
 		AND p.Proj_id = al.Apply_proj_id
