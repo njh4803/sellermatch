@@ -639,6 +639,8 @@ $(document).ready(function() {
 			return;			
 		}
 		
+		$('.question-btn').prop('disabled', true);
+		
 		var projId = $("#projId").val();
 		var secretChk = $("input[name=secret]:checkbox").attr('checked');
 		$('input[name=replySecret]').attr('value', secretChk);
@@ -657,6 +659,7 @@ $(document).ready(function() {
    	        url: ROOT_URL+"/project/reply",
    	        data: data,
             success: function() {
+            	$('.question-btn').prop('disabled', false);
             	window.location.href = ROOT_URL+"/project/detail?projId="+projId;
            }
       	});		
@@ -737,9 +740,11 @@ $(document).ready(function() {
 	  		          type: "question",
 	  		          width: '400px',
 	  		          showCancelButton: true
-	  		    }).then(function(result) {			
+	  		    }).then(function(result) {		
+	  		    	$('#applyBtn').prop('disabled', true);
 	  		        if (result.value) {
 	  		        	var data = {
+	  		        		projIdx: $("#projIdx").val(),
 	  		        		applyProjId: $("#projId").val(),
 	  		        		applyProjState:2,
 	  		        		applyType:1
@@ -756,7 +761,9 @@ $(document).ready(function() {
 				  		          type: "success",
 				  		          width: '400px',
 				  		          showCancelButton: true
-		  			  		    }).then(function(result) {	
+		  			  		    }).then(function(result) {
+		  			  		    	$('#applyBtn').prop('disabled', false);
+		  			  		    	
 		  			  		    	if (result.value) {
 		  			  		    		window.location.href = ROOT_URL+"/myPage/myApplyList";
 		  			  		    	}

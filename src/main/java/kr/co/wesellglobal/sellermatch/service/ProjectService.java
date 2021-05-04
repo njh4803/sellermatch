@@ -23,4 +23,6 @@ public interface ProjectService {
 	
 	public int peojectEndDupCheck(ProjectDto input) throws Exception;
 	
+	public String getProjMemId(int projIdx) throws Exception;
+	
 }

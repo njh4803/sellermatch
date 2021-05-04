@@ -134,9 +134,11 @@ $(document).ready(function() {
 	  		          text: '거래제안 하시겠습니까?', 
 	  		          type: "question",
 	  		          showCancelButton: true
-	  		    }).then(function(result) {			
+	  		    }).then(function(result) {		
+	  		    	$('#applyBtn').prop('disabled', true);
 	  		        if (result.value) {
 	  		        	var data = {
+	  		        		profileIdx: $("#profileIdx").val(),
 	  		        		applyProjId: recommendProj,
 	  		        		applyMemId: $("#profileMemId").val(),
 	  		        		applyProjState:2,
@@ -149,6 +151,7 @@ $(document).ready(function() {
 	  			   	        data: data,
 	  		                success: function() {
 	  		                	swal('알림', '거래제안 완료.', 'success').then(function(result) {			
+	  		                		$('#applyBtn').prop('disabled', false);
 		  		  	  		        if (result.value) {
 		  		  	  		      		window.location.href = ROOT_URL+"/seller/detail?profileIdx="+$("#profileIdx").val();	
 		  		  	  		        }

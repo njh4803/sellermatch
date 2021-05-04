@@ -423,5 +423,14 @@
 		AND PROJ_ID = #{projId}
 		AND PROJ_STATE = '2'
     </select>
+    
+    <select id="getProjMemId"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
+    	resultType="String">
+		SELECT proj_mem_id 
+		FROM ProjectList
+		WHERE 1=1
+		AND proj_idx = #{projIdx}
+    </select>
 
 </mapper>

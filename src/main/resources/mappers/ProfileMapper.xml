@@ -267,6 +267,17 @@
         	</if>
 		</where>
     </select>
+
+    <select id="getProfile"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ProfileDto"
+    	resultMap="ProfileMap">
+    	SELECT 
+	   		profile_mem_id, mem_nick
+		FROM ProfileList s
+		INNER JOIN MemList m
+		ON s.profile_mem_id = m.mem_id
+			WHERE profile_idx = #{profileIdx}
+    </select>
     
 	<!-- 데이터 수 조회 -->
 	<select id="selectCountAll"
