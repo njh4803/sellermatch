@@ -7,6 +7,8 @@
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/file.css"> --%>
 <link href="${pageContext.request.contextPath}/assets/css/profileManage.css" rel="stylesheet" type="text/css">
+ <!-- ckeditor js -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
 <div class="partner_bnr">
     <div class="partner_wrap">
     	<div class="partner_bnr3">
@@ -53,14 +55,20 @@
 								<div class="infoBox">
 									<div class="inputGroup">
 									<c:if test="${member.memSort == '1'}">
-										<label>공급자 소개</label>
+										<label style="height: 290px">공급자 소개</label>
 										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다" value="${output.profileIntro}">
 									</c:if>
 				    				<c:if test="${member.memSort == '2'}">
-										<label>판매자 소개</label>
+										<label style="height: 290px">판매자 소개</label>
 										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다" value="${output.profileIntro}">
 									</c:if>	
-				    					
+		    						<script type="text/javascript">
+										CKEDITOR.replace('profileIntro', {
+											height : 200,
+											enterMode:'2',
+										    shiftEnterMode:'3'
+										});
+									</script>				    					
 									</div>
 									<c:if test="${member.memSort == '2'}">
 									<div class="inputGroup">
@@ -211,7 +219,7 @@
 								</div>							
 							</div>
 					   		<div>
-		    					<button type="submit" class="editBtn">
+		    					<button type="button" class="editBtn">
 		    						수정하기
 		    					</button>
 		    				</div>	
@@ -231,7 +239,10 @@ function numberWithCommas(x) {
 	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 정규식을 이용해서 3자리 마다 , 추가 
 }
 
-$(document).ready(function(){
+$(document).ready(function(){	
+	
+	CKEDITOR.instances.profileIntro.setData($('#profileIntro').val());
+	
 	 /* 매출규모 천단위 표시 */
 	 $(document).on("keyup", "#profileVolume", function () {
 		 var value = $(this).val();
@@ -394,7 +405,7 @@ $(document).ready(function(){
 		    rules: {
 		        // [자기소개] 필수
 		        profileIntro: {
-		            required: true, minlength: 5, maxlength: 100, 
+		            required: true, minlength: 5, maxlength: 1001, 
 		        },
 		        // [상품분류] 필수
 		        profileIndus: 'required',
@@ -407,7 +418,7 @@ $(document).ready(function(){
 		        profileIntro: {
 		            required: '소개를 입력해주세요.',
 		            minlength: '제목은 최소 5 글자 이상 입력하셔야 합니다.',
-		            maxlength: '제목은 최대 100 글자까지 가능합니다.',
+		            maxlength: '제목은 최대 1000 글자까지 가능합니다.',
 		        },
 		        profileIndus: '상품분류를 선택해주세요.',
 		        profileCh: '채널을 선택해주세요.',
@@ -415,119 +426,52 @@ $(document).ready(function(){
 		    }
 		});
 	});
-
-    $('#profile_form').ajaxForm({
-        // submit 전에 호출된다.
-        beforeSubmit: function(arr, form, options) {
-            // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
-            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            return $(form).valid();
-        },
-        success: function(json) {
-            swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/myPage/profileManage';
-            });
-        },
-    });
-    
-    $(document).on("click", "#sendAuthEmail", function(e){
-	    const memEmail = $("#memEmail").val();
 	
-	    if (!memEmail) {
-	    	swal('알림', '이메일을 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/sendAuthEmail', {
-	    	memEmail: memEmail
-	    }, function(json) {
-	    	swal('확인', '인증번호가 발송되었습니다.', 'success');
-	    });
-	});
-    $(document).on("click", "#authConfirm", function(e){
-	    const auth_confirm = $("#auth_confirm").val();
-	
-	    if (!auth_confirm) {
-	    	swal('알림', '인증번호를 입력하세요.', 'warning');
-	        return;
-	    }
-	    
-	    $.post(ROOT_URL + '/admin/member/authConfirm', {
-	    	auth_confirm: auth_confirm
-	    }, function(json) {
-	    	if (json.result == "0") {
-	    		swal('알림', '인증실패', 'warning');
-			} else {
-		    	swal('확인', '인증이 확인되었습니다.', 'success');
-		    	$("#memRname").val(json.result);
-			}
-	    });
-	});
-    
-	$.validator.addMethod("phone", function(value, element) {
-		return this.optional(element)
-				|| /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value)
-				|| /^\d{2, 3}\d{3, 4}\d{4}$/i.test(value);
+	// CKEDITOR 값 저장
+	CKEDITOR.instances.profileIntro.on('blur keypress', function(e) {
+		var profileIntro = CKEDITOR.instances.profileIntro.getData();
+		$('#profileIntro').val(profileIntro);
 	});
 	
-	$.validator.addMethod("passwordCk",  function( value, element ) {
-
-		return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
-
-	}); 
-	
-    $('#memEdit_form').validate({
+	$(document).on("click", ".editBtn", function(e){
+		e.preventDefault();
 		
-        rules: {
-            // [비밀번호] 필수 + 글자수 길이 제한
-            memPw: { passwordCk:true, minlength: 6, maxlength: 30 },
-            // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
-            memPw_confirm: { equalTo: '#memPw' },
-            // [연락처]
-            memTel: { phone: true, minlength: 9, maxlength: 11 },
-         	// [닉네임] 필수
-            memNick: 'required',
-            
-        },
-        messages: {
-        	memPw: {
-                passwordCk: '비밀번호는 문자 + 숫자 + 특수문자를 포함하셔야 합니다.',
-                minlength: '비밀번호는 최소 {6}글자 이상 입력하셔야 합니다.',
-                maxlength: '비밀번호는 최대 {30}글자까지 가능합니다.',
+		var profileIntro = CKEDITOR.instances.profileIntro.getData();
+		$('#profileIntro').val(profileIntro);
+		
+	  	$.ajax({
+			type: "POST",
+	        url: ROOT_URL+"/profile",
+	        data: $('#profile_form').serialize(),
+	        beforeSend: function() {
+	    		CKupdate();
+	    		
+	        	if ($('#profileIntro').val() == '' || $('#profileIntro').val().trim().length < 1) {
+	        		swal('알림', '자기소개를 입력해 주세요', 'warning');
+					CKEDITOR.instances.profileIntro.focus();
+					return false;
+				}
+	        	
+	    		return $('#profile_form').valid();
+            },success: function(json) {
+            	swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
+                    window.location = ROOT_URL + '/myPage/profileManage'; 
+                });
             },
-            memPw_confirm: {
-                equalTo: '비밀번호 확인이 잘못되었습니다.',
-            },
-            email: {
-                required: '이메일을 입력하세요.',
-                email: '이메일 형식이 잘못되었습니다.',
-                maxlength: '이메일은 최대 {0}글자까지 가능합니다.',
-                remote: '이미 사용중인 이메일 입니다.'
-            },
-            memTel: {
-                required: '연락처를 입력하세요.',
-                phone: '연락처 형식이 잘못되었습니다.',
-                minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
-                maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
-            },
-            memNick: '닉네임을 입력해주세요.',
-        }
-    });
-    
-    $('#memEdit_form').ajaxForm({
-        // submit 전에 호출된다.
-        beforeSubmit: function(arr, form, options) {
-            // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
-            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            return $(form).valid();
-        },
-        success: function(json) {
-            swal('알림', '회원정보가 수정되었습니다.', 'success').then(function(result) {
-                window.location = ROOT_URL + '/myPage/profileManage';
-            });
-        },
-    });
+	  	});
+	});	
+	
 });
+
+/* CKEDITOR */
+//AJAX 로 폼의 데이터를 전송할 때 CKEDITOR로 변환 된 textarea값을 다시 변경해줘야 데이터가 전달된다.
+function CKupdate(){
+for ( instance in CKEDITOR.instances )
+    CKEDITOR.instances[instance].updateElement();
+}
+
+//리사이징 제한
+CKEDITOR.config.resize_enabled = false;
 </script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/daum/exeDaumPostcode.js"></script>

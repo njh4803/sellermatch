@@ -71,7 +71,7 @@ $(document).ready(function(){
 	});
 		
 	// CKEDITOR 값 저장
-	CKEDITOR.instances.boardContents.on('blur', function(e) {
+	CKEDITOR.instances.boardContents.on('blur keypress', function(e) {
 		var boardContents = CKEDITOR.instances.boardContents.getData();
 		$('#boardContents').text(boardContents);
 		console.log(boardContents);

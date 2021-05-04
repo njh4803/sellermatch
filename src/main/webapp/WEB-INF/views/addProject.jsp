@@ -1020,7 +1020,7 @@ $(document).ready(function() {
 	});
 	
 	// CKEDITOR 값 저장
-	CKEDITOR.instances.projDetail.on('blur', function(e) {
+	CKEDITOR.instances.projDetail.on('blur keypress', function(e) {
 		var projDetail = CKEDITOR.instances.projDetail.getData();
 		$('#projDetail').text(projDetail);
 	});
@@ -1028,12 +1028,14 @@ $(document).ready(function() {
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
-        	
         	$('button[type=submit]').prop('disabled', true);
+        	
+    		var projDetail = CKEDITOR.instances.projDetail.getData();
+    		$('#projDetail').text(projDetail);
         	
         	CKupdate();
         	
-        	if (CKEDITOR.instances.projDetail.getData() == '') {
+        	if ($('#projDetail').text() == '' || $('#projDetail').text().length < 1) {
         		swal('알림', '상세 설명을 입력해 주세요', 'warning');
 				CKEDITOR.instances.projDetail.focus();
 				return false;

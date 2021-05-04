@@ -492,13 +492,15 @@ footer .footer_wrap .f_btm a{
   background-color: #6f5aff;
   background-image: none !important;
 }
-
 /* 모바일 */
-@media screen and (max-width: 767px){
-	.bnr{
-		width: 100% !important;
+@media screen and (max-width: 1300px){
+	footer {
+	  width: fit-content !important;
 	}
-	footer{
-		width: 100% !important;
+	.bnr{
+	  width: fit-content !important;
+	}
+	.partner_bnr {
+      width: fit-content;
 	}
 }	

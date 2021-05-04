@@ -470,3 +470,10 @@ input[type=number]:hover::-webkit-inner-spin-button {
 #tag-list ul{
 	padding: 0;
 }
+
+.infoContainer .infoBox .cke_chrome {
+    visibility: inherit;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 348px;
+}

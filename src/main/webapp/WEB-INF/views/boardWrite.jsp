@@ -62,32 +62,26 @@ $(document).ready(function(){
 	    }
 	});	
 	
-	$(document).on("click", ".writeBtn", function(e){
-		e.preventDefault();
-		
+	// CKEDITOR 값 저장
+	CKEDITOR.instances.boardContents.on('blur keypress', function(e) {
 		var boardContents = CKEDITOR.instances.boardContents.getData();
 		$('#boardContents').text(boardContents);
-		var aa = $('#boardContents').text();
-		aa.replace('&nbsp; ','');
-		aa.replace('<br />','');
-		aa.replace(/^\s+|\s+$/g, "");
-		aa.trim();
-		if (aa != "" && aa != "" && jQuery.trim(aa).length != 0){
-			alert("@@@@@@@@@@@@@@@@@@@@@@@@");
-		}
-		console.log(boardContents);
-		console.log(aa);
-		
-		var boardTitle = $('.board-title').val();
+	});
+	
+	$(document).on("click", ".writeBtn", function(e){
+		e.preventDefault();
 
 	  	$.ajax({
 			type: "POST",
 	        url: ROOT_URL+"/board/write",
 	        data: $('#board-form').serialize(),
 	        beforeSend: function() {
-	        	CKupdate();
-	        	
-	        	if (CKEDITOR.instances.boardContents.getData() == '') {
+	    		var boardContents = CKEDITOR.instances.boardContents.getData();
+	    		$('#boardContents').text(boardContents);
+	    		
+	    		CKupdate();
+	    		
+	        	if ($('#boardContents').text() == '' || $('#boardContents').text().trim().length < 1) {
 	        		swal('알림', '상세 설명을 입력해 주세요', 'warning');
 					CKEDITOR.instances.boardContents.focus();
 					return false;
@@ -101,14 +95,6 @@ $(document).ready(function(){
             },
 	  	});
 	});
-		
-	// CKEDITOR 값 저장
-	CKEDITOR.instances.boardContents.on('blur', function(e) {
-		var boardContents = CKEDITOR.instances.boardContents.getData();
-		$('#boardContents').text(boardContents);
-		console.log(boardContents);
-		console.log($('#boardContents').text(boardContents));
-	});	
 	
 });
 
