@@ -796,17 +796,26 @@ $(document).ready(function() {
 	});
 
 	// CKEDITOR 값 저장
-	CKEDITOR.instances.projDetail.on('blur', function(e) {
+	CKEDITOR.instances.projDetail.on('blur keypress', function(e) {
 		var projDetail = CKEDITOR.instances.projDetail.getData();
 		$('#projDetail').text(projDetail);
-		console.log(projDetail);
-		console.log($('#projDetail').text(projDetail));
 	});
 
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
+        	$('button[type=submit]').prop('disabled', true);
+        	
+    		var projDetail = CKEDITOR.instances.projDetail.getData();
+    		$('#projDetail').text(projDetail);
+        	
         	CKupdate();
+        	
+        	if ($('#projDetail').text() == '' || $('#projDetail').text().length < 1) {
+        		swal('알림', '상세 설명을 입력해 주세요', 'warning');
+				CKEDITOR.instances.projDetail.focus();
+				return false;
+			}
         	
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
