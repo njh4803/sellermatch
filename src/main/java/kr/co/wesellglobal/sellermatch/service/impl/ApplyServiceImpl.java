@@ -147,4 +147,43 @@ public class ApplyServiceImpl implements ApplyService{
 			throw new Exception("데이터 수정에 실패했습니다.");
 		}
 	}
+	
+	@Override
+	public ApplyDto getAcceptedProjectOwner(ApplyDto input) throws Exception {
+		ApplyDto result = null;
+
+		try {
+			result = sqlSession.selectOne("ApplyMapper.selectAcceptedProjectOwner", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	@Override
+	public ApplyDto getAcceptedRecommandOwner(ApplyDto input) throws Exception {
+		ApplyDto result = null;
+
+		try {
+			result = sqlSession.selectOne("ApplyMapper.getAcceptedRecommandOwner", input);
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+	}
+	
 }

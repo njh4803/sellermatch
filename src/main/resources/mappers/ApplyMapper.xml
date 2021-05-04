@@ -30,7 +30,7 @@
         <result property="memTel" column="Mem_tel" />
         <result property="memIdx" column="mem_idx" />
         <result property="memSort" column="mem_sort" />
-        
+        <result property="memId" column="mem_id" />
         
         <!--  -->
         <result property="projId"   column="proj_id" />
@@ -165,4 +165,35 @@
 		AND Apply_type = '2'
     </update>
 
+    <select id="selectAcceptedProjectOwner"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
+    	resultMap="applyMap">
+    	SELECT 
+    		ml.mem_id
+    		,ml.mem_tel
+    		,ml.mem_sort
+    		,ml.mem_nick
+    		,pl.Proj_title
+    		,pl.Proj_id 
+    	FROM ProjectList pl, MemList ml, ApplyList al
+    	WHERE ml.mem_id  = al.apply_mem_id
+    	AND pl.Proj_id = al.apply_proj_id
+    	AND al.apply_id = #{applyId}
+    </select>
+    
+    <select id="getAcceptedRecommandOwner"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.ApplyDto"
+    	resultMap="applyMap">
+    	SELECT 
+    		ml.mem_id
+    		,ml.mem_tel
+    		,ml.mem_sort
+    		,ml.mem_nick
+    		,pl.Proj_title
+    		,pl.Proj_id 
+    	FROM ProjectList pl, MemList ml, ApplyList al
+    	WHERE ml.mem_id  = pl.Proj_mem_id
+    	AND pl.Proj_id = #{applyProjId}	
+    	AND al.apply_id = #{applyId}
+    </select>
 </mapper>

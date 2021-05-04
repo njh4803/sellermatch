@@ -315,6 +315,7 @@ $(document).ready(function(){
 		 var applyProjId= $(this).attr("data-applyprojid");
 		 var applyId = $(this).attr("data-applyid");
 		 var memIdx = $(this).attr("data-memidx");
+		 
 		 swal({
 			 title: '확인',
 			 text: '승인 하시겠습니까?', 
@@ -328,7 +329,7 @@ $(document).ready(function(){
 		  					applyProjState:3,
 		  					applyId: applyId,
 		  					};
-		  			
+		  			$(".accept_btn").prop("disabled", true);
 		  		        	$.ajax({
 		  			   			type: "POST",
 		  			   	        url: ROOT_URL+"/myPage/applyAccept",
@@ -366,7 +367,7 @@ $(document).ready(function(){
 		  					applyProjState:0,
 		  					applyId: applyId,
 		  					};
-		  			
+		  			$(".reject_btn").prop("disabled", true);
 		  		        	$.ajax({
 		  			   			type: "POST",
 		  			   	        url: ROOT_URL+"/myPage/applyAccept",

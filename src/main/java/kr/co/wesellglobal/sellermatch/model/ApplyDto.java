@@ -52,6 +52,7 @@ public class ApplyDto {
 	private String profileBizSort;
 	private String memTel;
 	private int memIdx;
+	private String memId;
 
 	// 해시태그 해시태그(검색 키워드) 구분자(,)
 	private String profileHashtag;

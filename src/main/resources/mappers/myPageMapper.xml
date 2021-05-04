@@ -195,8 +195,8 @@
     		proj_channel,
     		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count,
     		(SELECT Mem_Nick FROM MemList WHERE Mem_id = proj_mem_id) as Mem_Nick,
-    		(SELECT Apply_proj_state FROM ApplyList WHERE Apply_mem_id = m.mem_id AND Apply_proj_id = p.proj_id) AS Apply_proj_state,
-    		(SELECT Apply_type FROM ApplyList WHERE Apply_mem_id = m.mem_id AND Apply_proj_id = p.proj_id) AS Apply_type
+            (SELECT Apply_proj_state FROM ApplyList WHERE Apply_mem_id = m.mem_id AND Apply_proj_id = p.proj_id AND Apply_type = 1) AS Apply_proj_state,
+            (SELECT Apply_type FROM ApplyList WHERE Apply_mem_id = m.mem_id AND Apply_proj_id = p.proj_id AND Apply_type = 1) AS Apply_type
     	FROM ProjectList p, MemList m, ProfileList pf, TB_SCRAP S
 		WHERE 1=1
 		AND S.PROJ_IDX = p.proj_idx
@@ -282,7 +282,8 @@
     		apply_proj_state,
     		(SELECT COUNT(*) FROM ApplyList WHERE apply_proj_id = p.Proj_id) as apply_count,
     		mem_nick,
-    		mem_tel
+    		mem_tel,
+    		mem_id
     	FROM ProjectList p, ApplyList al, MemList ml
 		WHERE 1=1
 		AND p.Proj_id = al.Apply_proj_id
