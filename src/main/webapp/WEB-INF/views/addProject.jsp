@@ -11,14 +11,14 @@
 <link href="${pageContext.request.contextPath}/assets/css/addProject.css" rel="stylesheet" type="text/css"> 
 <div class="partner_bnr">
     <div class="partner_wrap">
-    	<c:if test="${profile.profileIndus != null }">
+    	<c:if test="${profile.profileIndus != null && profile.profileSort == '1'}">
 	    	<div class="img-container">
 		     	<img class="p-img" alt="" src="${pageContext.request.contextPath}/assets/img/addProjImg.png">
 		        <h2>거래 상대를 찾는 간편하고 확실한 방법</h2>
 		        <h3>찾고 있는 거래 상대의 조건을 입력해보세요.</h3>
 		    </div>    	
     	</c:if>
-		<c:if test="${profile.profileIndus == null }">
+		<c:if test="${profile.profileIndus == null && profile.profileSort == '2'}">
 		    <div class="profile-container">
 		     	<div class="profile-box">
 		     		<div>${member.memNick}님,</div>

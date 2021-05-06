@@ -230,7 +230,7 @@ $(document).ready(function(){
             // [비밀번호 확인] 필수 + 특정 항목과 일치 (id로 연결)
             memPw_confirm: { equalTo: '#memPw' },
             // [연락처]
-            memTel: { phone: true, minlength: 9, maxlength: 11 },
+            memTel: {  minlength: 9, maxlength: 11 },
          	// [닉네임] 필수
             memNick: {required: true, noSpace: true, maxlength: 9 },
             
@@ -252,7 +252,7 @@ $(document).ready(function(){
             },
             memTel: {
                 required: '연락처를 입력하세요.',
-                phone: '연락처 형식이 잘못되었습니다.',
+               
                 minlength: '연락처는 최소 {9}글자 이상 입력하셔야 합니다.',
                 maxlength: '연락처는 최대 {11}글자까지 가능합니다.',
             },
