@@ -56,17 +56,18 @@
 									<div class="inputGroup">
 									<c:if test="${member.memSort == '1'}">
 										<label style="height: 290px">공급자 소개</label>
-										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다" value="${output.profileIntro}">
+										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" contenteditable="true" placeholder="공급하셨던 이력 혹은 상세 내용을 적어주세요. <br>1000자 까지 등록이 가능하시며, <br>내용이 상세할 수록 공급자분들에게 <br>전달 되는 정보가 다양해 집니다." value="${output.profileIntro}">
 									</c:if>
 				    				<c:if test="${member.memSort == '2'}">
 										<label style="height: 290px">판매자 소개</label>
-										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다" value="${output.profileIntro}">
+										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" contenteditable="true" placeholder="판매하셨던 이력 혹은 상세 내용을 적어주세요. <br>1000자 까지 등록이 가능하시며, <br>내용이 상세할 수록 판매자분들에게 <br>전달 되는 정보가 다양해 집니다." value="${output.profileIntro}">
 									</c:if>	
 		    						<script type="text/javascript">
 										CKEDITOR.replace('profileIntro', {
 											height : 200,
 											enterMode:'2',
-										    shiftEnterMode:'3'
+										    shiftEnterMode:'3',
+										    extraPlugins : 'confighelper'
 										});
 									</script>				    					
 									</div>
