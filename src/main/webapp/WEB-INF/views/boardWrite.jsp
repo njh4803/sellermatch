@@ -40,7 +40,8 @@ $(document).ready(function(){
 	CKEDITOR.replace('boardContents', {
 		height : 200,
 		enterMode:'2',
-	    shiftEnterMode:'3'
+	    shiftEnterMode:'3',
+	    extraPlugins : 'confighelper'
 	});
 	$(document).on("click", ".cancelBtn", function(){
 		window.location = ROOT_URL+"/board?boardType=3";

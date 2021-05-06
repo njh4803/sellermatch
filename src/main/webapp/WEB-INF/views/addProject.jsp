@@ -286,27 +286,26 @@
 		    						<div>
 		    							<c:if test="${member.memSort == 1}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
-		    								placeholder="공급자 작성팁! 내용을 상세히 작성해주세요.
-더 많은 거래지원을 받을 수 있습니다.
-
-예시) 주방용품, 그릇류 위탁공급하고 있습니다.
-SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
-함께 오래갈 판매 사장님 연락기다리고 있습니다."></textarea>
+		    								 contenteditable="true" placeholder="공급자 작성팁! 내용을 상세히 작성해주세요.
+<br>더 많은 거래지원을 받을 수 있습니다.
+<br>예시) 주방용품, 그릇류 위탁공급하고 있습니다.
+<br>SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
+<br>함께 오래갈 판매 사장님 연락기다리고 있습니다."></textarea>
 		    							</c:if>
 		    							<c:if test="${member.memSort == 2}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
-		    								placeholder="판매자 작성팁! 내용을 상세히 작성해주세요.
-더 많은 거래지원을 받을 수 있습니다.
-
-예시) 주방용품 그릇 공급처 찾고있습니다. 
-라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
-함께 오래갈 공급처 사장님 연락기다리고 있습니다."></textarea>
+		    								contenteditable="true" placeholder="판매자 작성팁! 내용을 상세히 작성해주세요.
+<br>더 많은 거래지원을 받을 수 있습니다.
+<br>예시) 주방용품 그릇 공급처 찾고있습니다. 
+<br>라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
+<br>함께 오래갈 공급처 사장님 연락기다리고 있습니다."></textarea>
 		    							</c:if>
 			    						<script type="text/javascript">
 											CKEDITOR.replace('projDetail', {
 												height : 200,
 												enterMode:'2',
-											    shiftEnterMode:'3'
+											    shiftEnterMode:'3',
+											    extraPlugins : 'confighelper'
 											});
 										</script>
 			                        </div>
@@ -1020,24 +1019,24 @@ $(document).ready(function() {
 	});
 	
 	// CKEDITOR 값 저장
-	CKEDITOR.instances.projDetail.on('blur keypress', function(e) {
+	CKEDITOR.instances.projDetail.on('change', function(e) {
 		var projDetail = CKEDITOR.instances.projDetail.getData();
 		$('#projDetail').text(projDetail);
-	});
+	}); 
 
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
         	$('button[type=submit]').prop('disabled', true);
         	
+         	CKupdate();
     		var projDetail = CKEDITOR.instances.projDetail.getData();
     		$('#projDetail').text(projDetail);
-        	
-        	CKupdate();
         	
         	if ($('#projDetail').text() == '' || $('#projDetail').text().length < 1) {
         		swal('알림', '상세 설명을 입력해 주세요', 'warning');
 				CKEDITOR.instances.projDetail.focus();
+				$('button[type=submit]').prop('disabled', false);
 				return false;
 			}
         	

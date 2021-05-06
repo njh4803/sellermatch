@@ -191,31 +191,31 @@
 			    					<td>
 				    					<div class="inputForm width-100">
 				    						<div class="row1">
-			                                	<input id="chk1" type="checkbox" name="projChannel" value="1" required="required"<c:if test="${fn:contains(output.projChannel,'1')}"> checked </c:if>>
+			                                	<input id="chk1" type="checkbox" name="projChannel" value="1" <c:if test="${fn:contains(output.projChannel,'1')}"> checked </c:if>>
 			                                	<label for="chk1"><span>오픈마켓</span></label>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input id="chk2" type="checkbox" name="projChannel" value="2" required="required"<c:if test="${fn:contains(output.projChannel,'2')}"> checked </c:if>>
+			                                	<input id="chk2" type="checkbox" name="projChannel" value="2" <c:if test="${fn:contains(output.projChannel,'2')}"> checked </c:if>>
 			                                	<label for="chk2"><span>종합몰</span></label>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input id="chk3" type="checkbox" name="projChannel" value="3" required="required"<c:if test="${fn:contains(output.projChannel,'3')}"> checked </c:if>>
+			                                	<input id="chk3" type="checkbox" name="projChannel" value="3" <c:if test="${fn:contains(output.projChannel,'3')}"> checked </c:if>>
 			                                	<label for="chk3"><span>폐쇄몰</span></label>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input id="chk4" type="checkbox" name="projChannel" value="4" required="required"<c:if test="${fn:contains(output.projChannel,'4')}"> checked </c:if>>
+			                                	<input id="chk4" type="checkbox" name="projChannel" value="4" <c:if test="${fn:contains(output.projChannel,'4')}"> checked </c:if>>
 			                                	<label for="chk4"><span>커뮤니티</span></label>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input id="chk5" type="checkbox" name="projChannel" value="5" required="required"<c:if test="${fn:contains(output.projChannel,'5')}"> checked </c:if>>
+			                                	<input id="chk5" type="checkbox" name="projChannel" value="5" <c:if test="${fn:contains(output.projChannel,'5')}"> checked </c:if>>
 			                                	<label for="chk5"><span>SNS</span></label>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input id="chk6" type="checkbox" name="projChannel" value="6" required="required"<c:if test="${fn:contains(output.projChannel,'6')}"> checked </c:if>>
+			                                	<input id="chk6" type="checkbox" name="projChannel" value="6" <c:if test="${fn:contains(output.projChannel,'6')}"> checked </c:if>>
 			                                	<label for="chk6"><span>오프라인</span></label>
 				                           	</div>
 				                           	<div class="row1">
-			                                	<input id="chk7" type="checkbox" name="projChannel" value="7" required="required"<c:if test="${fn:contains(output.projChannel,'7')}"> checked </c:if>>
+			                                	<input id="chk7" type="checkbox" name="projChannel" value="7" <c:if test="${fn:contains(output.projChannel,'7')}"> checked </c:if>>
 			                                	<label for="chk7"><span>해외</span></label>
 				                           	</div>
 				                        </div>
@@ -243,29 +243,28 @@
 		    						<div>
 		    							<c:if test="${member.memSort == 1}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
-		    								placeholder="공급자 작성팁! 내용을 상세히 작성해주세요.
-더 많은 거래지원을 받을 수 있습니다.
-
-예시) 주방용품, 그릇류 위탁공급하고 있습니다.
-SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
-함께 오래갈 판매 사장님 연락기다리고 있습니다.">${output.projDetail}</textarea>
+		    								 contenteditable="true" placeholder="공급자 작성팁! 내용을 상세히 작성해주세요.
+<br>더 많은 거래지원을 받을 수 있습니다.
+<br>예시) 주방용품, 그릇류 위탁공급하고 있습니다.
+<br>SNS채널, 라이브방송 동시 운영하는 판매자 선호합니다.
+<br>함께 오래갈 판매 사장님 연락기다리고 있습니다.">${output.projDetail}</textarea>
 		    							</c:if>
 		    							<c:if test="${member.memSort == 2}">
 		    								<textarea id="projDetail" name="projDetail" class="inputForm width-100" style="height: 150px;"
-		    								placeholder="판매자 작성팁! 내용을 상세히 작성해주세요.
-더 많은 거래지원을 받을 수 있습니다.
-
-예시) 주방용품 그릇 공급처 찾고있습니다. 
-라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
-함께 오래갈 공급처 사장님 연락기다리고 있습니다.">${output.projDetail}</textarea>
+		    								 contenteditable="true" placeholder="판매자 작성팁! 내용을 상세히 작성해주세요.
+<br>더 많은 거래지원을 받을 수 있습니다.
+<br>예시) 주방용품 그릇 공급처 찾고있습니다. 
+<br>라이브쇼핑, SNS채널 동시 운영중이며 판매센스가 있다고 자신합니다
+<br>함께 오래갈 공급처 사장님 연락기다리고 있습니다.">${output.projDetail}</textarea>
 		    							</c:if>
-										<script type="text/javascript">
+			    						<script type="text/javascript">
 											CKEDITOR.replace('projDetail', {
 												height : 200,
 												enterMode:'2',
-											    shiftEnterMode:'3'
+											    shiftEnterMode:'3',
+											    extraPlugins : 'confighelper'
 											});
-										</script>		    							
+										</script>	    							
 			                        </div>
 				   					</td>
 				   				</tr>
@@ -520,8 +519,6 @@ $(document).ready(function() {
 			$(".projectAdd").remove();
 			return;
 		}
-		console.log($("#spBtn").val());
-		console.log(value);
 		var tag;
 		if (this.checked) {
 			if ('판매자' == value) {
@@ -701,11 +698,7 @@ $(document).ready(function() {
     	imgList = imgListStr.split("|");
     	img_src = img_src.replace("|","");
     	for (var i = 0; i < imgList.length-1; i++) {
-    		console.log(imgList[i]);
-    		console.log(img_src);
-    		console.log('------------------------------------------------------------------------------------------');
 			if (imgList[i] == img_src) {
-				console.log('건너뜀');
 				continue;
 			}
 			result += imgList[i]+"|";
@@ -751,7 +744,7 @@ $(document).ready(function() {
 	        // [등록지역] 필수
 	        projIndus: 'required',
 	     	// [상품 상세내용] 필수
-	        projDetail: 'required',
+	        /* projDetail: 'required', */
 	        projEndDate: 'required',
 	        projRecruitNum: {
 	            required: true, min: 1, max: 100,
@@ -782,7 +775,7 @@ $(document).ready(function() {
 	        projSupplyType: {
 	            required: '공급방법을 선택해주세요.',
 	        },
-	        projDetail: '상품 상세내용를 입력해주세요.',
+	        /* projDetail: '상품 상세내용를 입력해주세요.', */
 	        projIndus: '상품분류를 선택해주세요.',
 	        projEndDate: '모집마감일을 선택해주세요.',
 	        projRecruitNum: {
@@ -796,30 +789,29 @@ $(document).ready(function() {
 	});
 
 	// CKEDITOR 값 저장
-	CKEDITOR.instances.projDetail.on('blur keypress', function(e) {
+	CKEDITOR.instances.projDetail.on('change', function(e) {
 		var projDetail = CKEDITOR.instances.projDetail.getData();
 		$('#projDetail').text(projDetail);
-	});
-
-    $('#proj_form').ajaxForm({
+	}); 
+	
+     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.
         beforeSubmit: function(arr, form, options) {
+        	
         	$('button[type=submit]').prop('disabled', true);
-        	
-    		var projDetail = CKEDITOR.instances.projDetail.getData();
-    		$('#projDetail').text(projDetail);
-        	
         	CKupdate();
-        	
-        	if ($('#projDetail').text() == '' || $('#projDetail').text().length < 1) {
+    		var projDetail = CKEDITOR.instances.projDetail.getData();
+    		$('#projDetail').val(projDetail);
+    		
+         	if ($('#projDetail').text() == '' || $('#projDetail').text().length < 1) {
         		swal('알림', '상세 설명을 입력해 주세요', 'warning');
 				CKEDITOR.instances.projDetail.focus();
+				$('button[type=submit]').prop('disabled', false);
 				return false;
-			}
-        	
+			} 
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
-            return $(form).valid();
+            
         },
         success: function(json) {
         	swal('알림', '거래처 정보가 수정되었습니다.', 'success').then(function(result) {
@@ -828,29 +820,6 @@ $(document).ready(function() {
             });
         },
     });	
-
-
-/*     $(document).on("submit", "#proj_form", function(e){
-		e.preventDefault();
-		
-		var form = $(this);
-		var url = form.attr('action');
-       
-        $.ajax({
-			   type: "POST",
-	           url: url,
-	           data: form.serialize(),
-	           beforeSend: function() {
-	        	   return $('#proj_form').valid();
-               },
-               success: function() {
-               	swal('알림', '프로젝트가 등록되었습니다.', 'success').then(function(result) {
-                       window.location = ROOT_URL + '/';
-                   });
-               }
-        });
-        
-    }); */
     
     /* 썸네일 이미지 업로드 */
     $(document).ready(function() {

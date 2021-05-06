@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<%@ include file="modal/newsLetterModal.jsp"%>
 <link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/share.css" rel="stylesheet" type="text/css">
 <style>
@@ -29,6 +30,7 @@
 	    		</div>
          		<button class="findBtn projectInsert" href="javascript:void(0);">매칭 무료등록</button>
     			<button class="shareBtn" id="shareBtn">친구들과 공유하기</button>
+    			<button class="newsLetterBtn" id="newsLetterBtn">뉴스레터 신청하기</button>
 			</div>
 	 		<div class="main-imgBox">
 	 			<div class="main-img1" style="background-image: url('${pageContext.request.contextPath}/assets/img/main_img1.png');">
@@ -502,6 +504,9 @@ $(document).ready(function() {
 		  prevArrow:$('.prev'),
 	});
 	
+	$('#newsLetterBtn').on('click', function(){
+		$('#newsLetterModal').modal();
+	});
 	
 });
 </script>

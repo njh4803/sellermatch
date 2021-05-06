@@ -31,7 +31,8 @@
 						CKEDITOR.replace('boardContents', {
 							height : 200,
 							enterMode:'2',
-						    shiftEnterMode:'3'
+						    shiftEnterMode:'3',
+						    extraPlugins : 'confighelper'
 						});
 					</script>			
 				</div>

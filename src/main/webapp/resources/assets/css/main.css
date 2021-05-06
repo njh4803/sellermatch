@@ -95,6 +95,26 @@
   text-align: center;
   color: #ff540f;
 }
+.newsLetterBtn {
+	width: 413px;
+	height: 60px;
+	padding: 18px 0 20px;
+	border-radius: 4px;
+	box-shadow: 10px 10px 20px 0 rgba(0, 0, 0, 0.16);
+	border: solid 0.5px #fe5413;
+	background-color: #ffffff;
+	width: 413px;
+	font-size: 20px;
+	font-weight: 800;
+	font-stretch: normal;
+	font-style: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ff540f;
+	display: block;
+	margin-top: 20px;
+}
+
 .main-003{
     display: inline-block;
     font-size: 50px;

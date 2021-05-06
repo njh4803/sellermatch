@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="newsLetterMapper">
+    <resultMap id="NewsLetterMap"
+        type="kr.co.wesellglobal.sellermatch.model.NewsLetterDto">
+        <result property="newsLetterIdx"   column="newsletter_idx" />
+        <result property="newsLetterEmail"   column="newsletter_email" />
+        <result property="newsLetterAgreeYN"   column="newsletter_agreeyn" />
+        <result property="newsLetterRegDate"   column="newsletter_reg_date" />
+        <result property="newsLetterEditDate"   column="newsletter_edit_date" />
+    </resultMap>
+
+	<insert id="insertItem"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.NewsLetterDto"
+    	useGeneratedKeys="true"
+    	keyProperty="newsLetterIdx">
+    	INSERT INTO NewsLetterList 
+    		(`NewsLetter_email`, `NewsLetter_agreeYN`, `NewsLetter_reg_date`, `NewsLetter_edit_date`) 
+    	VALUES 
+    		(#{newsLetterEmail}, #{newsLetterAgreeYN}, now(), now())
+    </insert>
+	
+</mapper>
