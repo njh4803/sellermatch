@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css"
+  />
 <link href="${pageContext.request.contextPath}/assets/css/myPageCommon.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/registDelng2.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr">
@@ -446,6 +450,28 @@ $(document).ready(function(){
 			var options = 'width=1500, height=1000, status=yes, menubar=no, toolbar=no, resizable=yes';
 			window.open(ROOT_URL + "/project/detail?projId=" + projId,"전세계 검증된 판매자를 만나는 곳, 셀러매치",options);
 	});
+    
+	$(document).on("click", ".applyAccept", function(e) {
+		var memTel = $(this).attr('data-memTel');
+		var memMail = $(this).attr('data-memMail');
+		var memSort = $(this).attr('data-memSort');
+		
+		memTel = memTel.substring(0,3)+'-'+memTel.substring(3,7)+'-'+memTel.substring(7,12);
+		
+		if (memSort == '1') {
+			memSort = '공급자';
+		} else {
+			memSort = '판매자';
+		}
+		
+		swal({
+			  title: memSort+' 연락처',
+			  html:'<br><b>이메일</b> : '+ memMail+ '<br><br><b>연락처</b> : '+ memTel,
+			  animation: false,
+			  customClass: 'animated tada'
+			});
+		
+	});
 });
 </script>
 <script type="text/x-handlebars-template" id="apply-tmpl">
@@ -500,7 +526,7 @@ $(document).ready(function(){
 												<div class="applyStateBox">제안거래</div>
 											{{else}}
 												{{#ifCond applyProjState '==' 3}}
-												<div class="applyStateBox applyAccept">지원승인</div>
+												<div class="applyStateBox applyAccept cursor" data-memTel="{{memTel}}" data-memMail="{{applyMemId}}" data-memSort="{{memSort}}">연락처확인</div>
 												{{/ifCond}}
 												{{#ifCond applyProjState '==' 0}}
 												<div class="applyStateBox applyReject">지원거절</div>
