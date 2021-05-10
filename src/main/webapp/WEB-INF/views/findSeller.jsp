@@ -491,7 +491,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
         		{{#output}}
         		<div class="contents s-link clearfix" data-index="{{@key}}">
 					<div class="clearfix">
-						<input type="hidden" id="profileMemId{{@key}}" name="profileMemId" value="{{profileMemId}}">
+						<input type="hidden" id="profileMemIdx{{@key}}" name="profileMemIdx" value="{{profileIdx}}">
 						<div class="leftBox">
 							<div class="photo-container">
 								{{#if profilePhoto}}
@@ -724,9 +724,6 @@ $(document).ready(function() {
 				}
 				
 			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
 		}
 		param_list["sort"] = $("#sort").val();
 		param_list["keyword"] = trim_keyword;
@@ -737,13 +734,11 @@ $(document).ready(function() {
 	       url: ROOT_URL+"/seller/find2",
 	       data: param_list,
 	       success: function(json) {
-	    	   console.log(json);
 	    	   	var content = json
 	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
 	       		var html = template(content);
 	       		
 	       		var page_content = json.pageData
-	       		console.log(page_content)
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
@@ -805,9 +800,6 @@ $(document).ready(function() {
 				}
 				
 			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
 		}
 		var url = formData.attr('action');
 		param_list["sort"] = $("#sort").val();
@@ -816,13 +808,11 @@ $(document).ready(function() {
 	       url: ROOT_URL+"/seller/find2",
 	       data: param_list,
 	       success: function(json) {
-	    	   console.log(json);
 	    	   	var content = json
 	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
 	       		var html = template(content);
 	       		
 	       		var page_content = json.pageData
-	       		console.log(page_content)
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
@@ -899,13 +889,11 @@ $(document).ready(function() {
 	       url: ROOT_URL+"/seller/find2",
 	       data: param_list,
 	       success: function(json) {
-	    	   console.log(json);
 	    	   	var content = json
 	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
 	       		var html = template(content);
 	       		
 	       		var page_content = json.pageData
-	       		console.log(page_content)
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		
@@ -987,9 +975,6 @@ $(document).ready(function() {
 				}
 				str = str + textVal + ', ';
 			});
-			console.log("----------------")
-			console.log(param_list)
-			console.log("----------------")
 		}
 		str = str.substring(0, str.length-2);
 		$('.resultText').text(str)
@@ -1063,9 +1048,6 @@ $(document).ready(function() {
 				for (var i = 0; i < param_list_name.length; i++){
 					if (String(param_list_name[i]) == name) {
 						param_list[name].push(value)
-						console.log("----------------")
-						console.log(param_list[name])
-						console.log("----------------")
 					}
 					
 				}
@@ -1082,13 +1064,11 @@ $(document).ready(function() {
 	       url: ROOT_URL+"/seller/find2",
 	       data: param_list,
 	       success: function(json) {
-	    	   console.log(json);
 	    	   	var content = json
 	       		var template = Handlebars.compile($("#seller-list-tmpl").html());
 	       		var html = template(content);
 	       		
 	       		var page_content = json.pageData
-	       		console.log(page_content)
 	       		var page_template = Handlebars.compile($("#page-tmpl").html());
 	       		var page_html = page_template(page_content);
 	       		

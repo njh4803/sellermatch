@@ -21,5 +21,18 @@
     	VALUES 
     		(#{newsLetterEmail}, #{newsLetterAgreeYN}, now(), now())
     </insert>
+    
+        <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.NewsLetterDto"
+    	resultMap="NewsLetterMap">
+		SELECT 
+			NEWSLETTER_IDX
+			,NEWSLETTER_EMAIL
+			,NEWSLETTER_AGREEYN
+			,NEWSLETTER_REG_DATE
+			,NEWSLETTER_EDIT_DATE
+		FROM NewsLetterList
+		WHERE 1=1
+    </select>
 	
 </mapper>
