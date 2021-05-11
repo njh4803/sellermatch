@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.wesellglobal.sellermatch.model.BoardDto;
 import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.service.FileService;
 import lombok.extern.slf4j.Slf4j;
@@ -53,5 +54,19 @@ public class FileServiceImpl implements FileService{
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 수정에 실패했습니다.");
 		}
+	}
+
+	@Override
+	public FileDto getExist(FileDto input) throws Exception {
+		FileDto result = null;
+
+		try {
+			result = sqlSession.selectOne("FileMapper.getExist", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		return result;
+		
 	}
 }

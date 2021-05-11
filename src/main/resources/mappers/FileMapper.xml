@@ -35,9 +35,17 @@
 		parameterType="kr.co.wesellglobal.sellermatch.model.FileDto">
 		UPDATE fileList
 		SET
+			orgin_name = #{orginName},
 			thumbnail_path = #{thumbnailPath},
 			file_path = #{filePath}
-		WHERE proj_id = #{projId}
+		WHERE proj_id = #{projId} AND  proj_thumbnail = #{projThumbnail} 
 	</update>
 	
+	<select id="getExist"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.FileDto"
+    	resultMap="FileMap">
+		SELECT file_idx 
+		FROM fileList
+		WHERE proj_id = #{projId} AND  proj_thumbnail = #{projThumbnail}
+	</select>
 </mapper>

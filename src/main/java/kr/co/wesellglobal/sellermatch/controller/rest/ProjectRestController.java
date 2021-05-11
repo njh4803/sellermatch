@@ -444,6 +444,7 @@ public class ProjectRestController {
 			@RequestParam(value = "tag", required = false) String tag,
 			@RequestParam(value = "detailImgList", required = false) String projDetailImg,
 			@RequestParam(value = "projFile", required = false) MultipartFile projFile,
+			@RequestParam(value = "projFileIdx", required = false) MultipartFile projFileIdx,
 			@RequestParam(value = "projThumbnailImg", required = false) MultipartFile projThumbnailImg,
 			@RequestParam(value = "projState", required = false) String projState,
 			@RequestParam(value = "projChannel", required = false) String projChannel,
@@ -559,8 +560,15 @@ public class ProjectRestController {
 				item.setProjId(input.getProjId());
 				item.setProjThumbnail("0");
 				
-				// 파일 정보를 DB에 저장
-				fileService.editFile(item);
+				// 기존에 존재하는지 확인
+				if (fileService.getExist(item) != null) {
+					// 파일 정보를 수정
+					fileService.editFile(item);					
+				} else {
+					// 파일 정보를 저장
+					fileService.addFile(item);
+				}
+
 			}
 			
 			if (projThumbnailImg != null) {
