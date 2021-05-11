@@ -73,34 +73,97 @@ public class MemberDto {
 		MemberDto.listCount = listCount;
 	}
 
-	
-	/*
-	 * public String getMemStateName() { if (this.memState.equals("1")) { return
-	 * "정상"; } if (this.memState.equals("2")) { return "휴면"; } if
-	 * (this.memState.equals("3")) { return "휴면"; } return ""; }
-	 * 
-	 * public String getMemClassName() { if (this.memClass.equals("0")) { return
-	 * "기본"; } if (this.memClass.equals("1m")) { return "1개월"; } if
-	 * (this.memClass.equals("3m")) { return "3개월"; } if
-	 * (this.memClass.equals("6m")) { return "6개월"; } if
-	 * (this.memClass.equals("1y")) { return "1년"; } return ""; }
-	 * 
-	 * public String getMemSortName() { if (this.memSort.equals("0")) { return "일반";
-	 * } if (this.memSort.equals("1")) { return "공급자"; } if
-	 * (this.memSort.equals("2")) { return "판매자"; } if (this.memSort.equals("3")) {
-	 * return "관리자"; } return ""; }
-	 * 
-	 * public String getMemNationName() { if (this.memNation == null) { return ""; }
-	 * if (this.memNation.equals("02")) { return "서울"; } if
-	 * (this.memNation.equals("031")) { return "경기"; } if
-	 * (this.memNation.equals("032")) { return "인천"; } return "해외"; }
-	 * 
-	 * public String getMemCountryName() { if (this.memCountry == null) { return "";
-	 * } if (this.memCountry.equals("01")) { return "대한민국"; } if
-	 * (this.memCountry.equals("02")) { return "베트남"; } return ""; }
-	 * 
-	 * public String getMemRnameName() { if (this.memRname == null) { return "미인증";
-	 * } if (this.memRname.equals("0")) { return "미인증"; } if
-	 * (this.memRname.equals("1")) { return "인증"; } return ""; }
-	 */
+
+/*
+	public String getMemStateName() { 
+		if (this.memState.equals("1")) { 
+			return "정상"; 
+			} 
+		if (this.memState.equals("2")) { 
+			return "휴면"; 
+			} 
+		if (this.memState.equals("3")) { 
+			return "휴면"; 
+			} 
+		return ""; 
+	}
+
+	public String getMemClassName() { 
+		if (this.memClass.equals("0")) { 
+			return "기본"; 
+			} 
+		if (this.memClass.equals("1m")) { 
+			return "1개월"; 
+			} 
+		if(this.memClass.equals("3m")) { 
+			return "3개월"; 
+			} 
+		if(this.memClass.equals("6m")) { 
+			return "6개월"; 
+			} 
+		if(this.memClass.equals("1y")) { 
+			return "1년"; 
+			} 
+		return ""; 
+		}
+
+	public String getMemSortName() { 
+		if (this.memSort.equals("0")) { 
+			return "일반";
+			} 
+		if (this.memSort.equals("1")) { 
+			return "공급자"; 
+			} 
+		if (this.memSort.equals("2")) { 
+			return "판매자"; 
+			} 
+		if (this.memSort.equals("3")) {
+			return "관리자"; 
+			} 
+		return ""; 
+		}
+*/
+/*
+	public String getMemNationName() { 
+		if (this.memNation == null) { 
+			return ""; 
+			}
+		if (this.memNation.equals("02")) { 
+			return "서울"; 
+			} 
+		if (this.memNation.equals("031")) { 
+			return "경기"; 
+			} 
+		if (this.memNation.equals("032")) {
+			return "인천"; 
+			} 
+		return "해외"; 
+		}
+*/
+	public String getMemCountryName() { 
+		if (this.memCountry == null) { 
+			return "";
+			} 
+		if (this.memCountry.equals("01")) { 
+			return "대한민국"; 
+			} 
+		if (this.memCountry.equals("02")) { 
+			return "베트남"; 
+			} 
+		return ""; 
+		}
+
+	public String getMemRnameName() { 
+		if (this.memRname == null) { 
+			return "미인증";
+			} 
+		if (this.memRname.equals("0")) { 
+			return "미인증"; 
+			} 
+		if (this.memRname.equals("1")) { 
+			return "인증"; 
+			} 
+		return ""; 
+		}
+
 }

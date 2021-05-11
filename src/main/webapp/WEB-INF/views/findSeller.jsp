@@ -209,7 +209,7 @@
 							</div>
 							<div class="left-infoBox">
 								<c:if test="${output.memState == 1}">
-									<div class="seller-status">탈퇴</div>
+									<div class="seller-status withdraw-status">탈퇴</div>
 								</c:if>
 								<c:if test="${output.memState == 0}">
 									<div class="seller-status">활동중</div>
@@ -508,7 +508,11 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								</div>
 							</div>
 							<div class="left-infoBox">
+							{{#ifCond memState '==' '1'}}
+								<div class="seller-status withdraw-status">탈퇴</div>
+							{{else}}
 								<div class="seller-status">활동중</div>
+							{{/ifCond}}
 								<div class="profileBizSort">{{profileBizSortName}}</div>
 							</div>
 							<div class="nick">
