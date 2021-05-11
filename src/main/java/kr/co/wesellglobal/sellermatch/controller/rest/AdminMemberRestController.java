@@ -2,6 +2,7 @@ package kr.co.wesellglobal.sellermatch.controller.rest;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
 import kr.co.wesellglobal.sellermatch.model.FileDto;
 import kr.co.wesellglobal.sellermatch.helper.WebHelper;
 import kr.co.wesellglobal.sellermatch.model.MemberDto;
+import kr.co.wesellglobal.sellermatch.model.NewsLetterDto;
 import kr.co.wesellglobal.sellermatch.model.ProfileDto;
 import kr.co.wesellglobal.sellermatch.service.MemberService;
 import kr.co.wesellglobal.sellermatch.service.ProfileService;
@@ -360,5 +362,30 @@ public class AdminMemberRestController {
 		webHelper.removeAllSession();
 		return webHelper.getJsonData();
 	}
+	
+	
+	@RequestMapping(value = "/admin/withdrawList", method = RequestMethod.GET)
+	public ModelAndView getWithdrawList() {
+		
+		return new ModelAndView("/admin/withdrawList");
+	}
+	
+	@RequestMapping(value = "/admin/withdrawList2", method = RequestMethod.POST)
+	public Map<String, Object> getWithdrawList2() {
+		List<MemberDto> result = null;
+		MemberDto input = new MemberDto();
+		
+		try {
+		result = memberService.getWithdrawList(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("data", result);
+		
+		return webHelper.getJsonData(data);
+	}
+	
+	
 
 }

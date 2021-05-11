@@ -158,7 +158,7 @@ label.error {
 	                                                                        	정상
 	                                                                        </c:if>
 	                                                                        <c:if test="${output.memState == '1'}">
-	                                                                        	정상
+	                                                                        	탈퇴
 	                                                                        </c:if>
 	                                                                        <c:if test="${output.memState == '2'}">
 	                                                                        	탈퇴
@@ -170,22 +170,30 @@ label.error {
 	                                                                        	기타
 	                                                                        </c:if>
 	                                                                        </td>
-	                                                                        <td data-value="${output.memClass}">${output.memClassName}</td>
+	                                                                        <td data-value="${output.memClass}"></td>
 	                                                                        <td style="display: none;">${output.memClassSdate}</td>
 	                                                                        <td style="display: none;">${output.memClassEdate}</td>
 	                                                                        <c:choose>
 		                                                                        <c:when test="${output.memSort != '1' && output.memSort != '2'}">
-			                                                                        <td data-value="${output.memSort}">${output.memSortName}</td>
+			                                                                        <td data-value="${output.memSort}">관리자</td>
 		                                                                        </c:when>
 		                                                                        <c:otherwise>
-		                                                                        	<td data-value="${output.memSort}">
-			                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
-			                                                                       			data-target="#profileModal">${output.memSortName}</a>
-			                                                                       	</td>
+		                                                                        	<c:if test="${output.memSort == '1'}">
+		                                                                        		<td data-value="${output.memSort}">
+				                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
+				                                                                       			data-target="#profileModal">공급자</a>
+				                                                                       	</td>
+	                                                                        		</c:if>
+		                                                                        	<c:if test="${output.memSort == '2'}">
+		                                                                        		<td data-value="${output.memSort}">
+				                                                                       		<a href="#" onclick="return false;" class="profile-modal" data-toggle="modal" 
+				                                                                       			data-target="#profileModal">판매자</a>
+				                                                                       	</td>
+	                                                                        		</c:if>
 		                                                                        </c:otherwise>
 	                                                                        </c:choose>
 	                                                                        <td style="display: none;" data-value="${output.memCountry}">${output.memCountryName}</td>
-	                                                                        <td style="display: none;" data-value="${output.memNation}">${output.memNationName}</td>
+	                                                                        <td style="display: none;" data-value="${output.memNation}"><%-- ${output.memNationName} --%></td>
 	                                                                        <td style="display: none;" data-value="${output.memAddr}">${output.memPost} ${output.memAddr} ${output.memAddr2}</td>
 	                                                                        <td style="display: none;" data-value="${output.memAddr2}">${output.memTel}</td>
 	                                                                        <td data-value="${output.memPost}">${output.memName}</td>

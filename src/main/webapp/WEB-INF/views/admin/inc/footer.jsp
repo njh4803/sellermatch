@@ -65,6 +65,12 @@
 <!-- sweetalert js -->
 <script src="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.all.min.js"></script>
 
+<!-- bootstrap js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/plugins/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/datatables/dataTables.bootstrap.js"></script> --%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/template/assets/js/jquery-ui.custom.min.js"></script>
 </body>
 
 </html>

@@ -47,7 +47,8 @@
         <result property="withdrawReason" column="WITHDRAW_REASON" />
         <result property="withdrawReasonText" column="WITHDRAW_REASON_TEXT" />
         <result property="withdrawDate" column="WITHDRAW_DATE" />
-        
+        <result property="withdrawIdx" column="WITHDRAW_IDX" />
+       
     </resultMap> 
     
     <insert id="insertItem"
@@ -262,6 +263,16 @@
     	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
 		resultMap="MemberMap">
         select mem_Id from MemList where mem_idx = #{memIdx}     
+    </select>
+    
+    
+    <select id="withdrawList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	resultMap="MemberMap">
+    	SELECT 
+			WITHDRAW_IDX, MEM_IDX, MEM_ID, WITHDRAW_REASON, WITHDRAW_REASON_TEXT, WITHDRAW_DATE
+    	FROM TB_WITHDRAW_REASON
+		ORDER BY WITHDRAW_IDX
     </select>
     
 </mapper>

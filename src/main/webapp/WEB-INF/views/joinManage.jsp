@@ -215,7 +215,7 @@ $(document).ready(function(){
 	});
 	
 	$.validator.addMethod("passwordCk",  function( value, element ) {
-		return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/.test(value);
+		return this.optional(element) ||  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=*]).*$/.test(value);
 	}); 
 	
 	$.validator.addMethod("noSpace", function(value, element) { 
