@@ -44,4 +44,6 @@ public interface MemberService {
 	public int withdraw(MemberDto input) throws Exception;
 	
 	public MemberDto getMemId(MemberDto input) throws Exception;
+	
+	public List<MemberDto> getWithdrawList(MemberDto input) throws Exception;
 }

@@ -158,7 +158,7 @@ label.error {
 	                                                                        	정상
 	                                                                        </c:if>
 	                                                                        <c:if test="${output.memState == '1'}">
-	                                                                        	정상
+	                                                                        	탈퇴
 	                                                                        </c:if>
 	                                                                        <c:if test="${output.memState == '2'}">
 	                                                                        	탈퇴
