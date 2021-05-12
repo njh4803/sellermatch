@@ -61,7 +61,8 @@
 				    				<c:if test="${member.memSort == '2'}">
 										<label style="height: 290px">판매자 소개</label>
 										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" contenteditable="true" placeholder="판매하셨던 이력 혹은 상세 내용을 적어주세요. <br>1000자 까지 등록이 가능하시며, <br>내용이 상세할 수록 판매자분들에게 <br>전달 되는 정보가 다양해 집니다." value="${output.profileIntro}">
-									</c:if>	
+									</c:if>
+									<input type="hidden" id="profileIntro2" name="profileIntro2">
 		    						<script type="text/javascript">
 										CKEDITOR.replace('profileIntro', {
 											height : 200,
@@ -220,7 +221,7 @@
 								</div>							
 							</div>
 					   		<div>
-		    					<button type="button" class="editBtn">
+		    					<button type="submit" class="editBtn">
 		    						수정하기
 		    					</button>
 		    				</div>	
@@ -434,32 +435,29 @@ $(document).ready(function(){
 		$('#profileIntro').val(profileIntro);
 	});
 	
-	$(document).on("click", ".editBtn", function(e){
-		e.preventDefault();
-		
-		var profileIntro = CKEDITOR.instances.profileIntro.getData();
-		$('#profileIntro').val(profileIntro);
-		
-	  	$.ajax({
-			type: "POST",
-	        url: ROOT_URL+"/profile",
-	        data: $('#profile_form').serialize(),
-	        beforeSend: function() {
-	    		CKupdate();
-	    		
-	        	if ($('#profileIntro').val() == '' || $('#profileIntro').val().trim().length < 1) {
-	        		swal('알림', '자기소개를 입력해 주세요', 'warning');
-					CKEDITOR.instances.profileIntro.focus();
-					return false;
-				}
-	        	
-	    		return $('#profile_form').valid();
-            },success: function(json) {
-            	swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
-                    window.location = ROOT_URL + '/myPage/profileManage'; 
-                });
-            },
-	  	});
+	$('#profile_form').ajaxForm({
+		beforeSubmit: function(arr, form, options) {
+			var profileIntro = CKEDITOR.instances.profileIntro.getData();
+			$('#profileIntro').val(profileIntro);
+			
+			CKupdate();
+    		
+        	if ($('#profileIntro').val() == '' || $('#profileIntro').val().trim().length < 1) {
+        		swal('알림', '자기소개를 입력해 주세요', 'warning');
+				CKEDITOR.instances.profileIntro.focus();
+				return false;
+			}
+        	
+        	$('#profileIntro2').val(CKEDITOR.instances.profileIntro.getData());
+        	
+        	// validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
+            // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
+            return $(form).valid();
+        },success: function(json) {
+        	swal('알림', '프로필이 수정되었습니다.', 'success').then(function(result) {
+                window.location = ROOT_URL + '/myPage/profileManage'; 
+            });
+        }
 	});	
 	
 });

@@ -475,7 +475,7 @@
 			</div>
 			<c:choose>
 				<c:when test="${output.applyCount > 0}">
-					<c:forEach var="applyDto" items="${applyDto}">
+					<c:forEach var="applyDto" items="${applyDto}" begin="0" end="12">
 					<div class="applyBox">
 						<c:choose>
 							<c:when test="${applyDto.profilePhoto != null}">
