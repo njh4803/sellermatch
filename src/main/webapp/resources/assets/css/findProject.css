@@ -577,3 +577,7 @@ a.sort:last-child{
 .ppssFilterBox {
 	padding: 10px;
 }
+
+.partner_list:nth-child(2) .check_list_box{
+	display: block;
+}

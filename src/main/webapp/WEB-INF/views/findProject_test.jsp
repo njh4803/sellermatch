@@ -39,6 +39,17 @@
 						</label>
 					</div>
 				</div>
+	            <div class="partner_list">
+	            	<span class="check_list upImg">상품분류</span>
+	            	<div class="check_list_box check_list_product">
+		            	<ul>
+		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
+		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
+		            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
+		            		</c:forEach>
+		            	</ul>
+	            	</div>
+	            </div>
 				<div class="partner_list">
 					<span class="check_list downImg">공급자검증</span>
 					<div class="check_list_box">
@@ -101,17 +112,6 @@
 		            		<li><input type="checkbox" class="check"  name="projMargin" value="20" id="m2"><label for="m2"><span>11~20%</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="projMargin" value="30" id="m3"><label for="m3"><span>21~30%</span></label></li>
 		            		<li><input type="checkbox" class="check"  name="projMargin" value="31" id="m4"><label for="m4"><span>30%초과</span></label></li>
-		            	</ul>
-	            	</div>
-	            </div>
-	            <div class="partner_list">
-	            	<span class="check_list downImg">상품분류</span>
-	            	<div class="check_list_box">
-		            	<ul>
-		            		<li><input id="projIndus" class="checkAll" type="checkbox"><label for="projIndus"><span>전체</span></label></li>
-		            		<c:forEach var="indusList" items="${indusList}" varStatus="status">
-		            			<li><input type="checkbox" class="check" name="projIndus" value="${indusList.indusId}" id="i${status.count}"><label for="i${status.count}"><span>${indusList.indusName}</span></label></li>
-		            		</c:forEach>
 		            	</ul>
 	            	</div>
 	            </div>
@@ -862,7 +862,6 @@ $(document).ready(function() {
  	$(document).on("click", ".check_list", function(){
 		var check_list_box = $(this).closest(".partner_list").children('.check_list_box');
 		var checkList = $(this).closest(".partner_list").children('.check_list');
-		console.log(check_list_box);
 		check_list_box.toggle();
 		
 		if (checkList.hasClass("upImg")) {
