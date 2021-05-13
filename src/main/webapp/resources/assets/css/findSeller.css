@@ -10,9 +10,6 @@
   border-radius: 3.5px; 
   background-color: #D9D9D9;
 }
-  .left-container:hover {
-    background-color: #adb5bd;
-}
 .left-container::-webkit-scrollbar-track {
   background: #ffffff;
 }

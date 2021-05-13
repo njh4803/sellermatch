@@ -56,13 +56,16 @@
 									<div class="inputGroup">
 									<c:if test="${member.memSort == '1'}">
 										<label style="height: 290px">공급자 소개</label>
-										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" contenteditable="true" placeholder="공급하셨던 이력 혹은 상세 내용을 적어주세요. <br>1000자 까지 등록이 가능하시며, <br>내용이 상세할 수록 공급자분들에게 <br>전달 되는 정보가 다양해 집니다." value="${output.profileIntro}">
+										<textarea class="inputForm" id="profileIntro" name="profileIntro" contenteditable="true" placeholder="공급하셨던 이력 혹은 상세 내용을 적어주세요. <br>1000자 까지 등록이 가능하시며, <br>내용이 상세할 수록 공급자분들에게 <br>전달 되는 정보가 다양해 집니다.">
+											${output.profileIntro}
+										</textarea>
 									</c:if>
 				    				<c:if test="${member.memSort == '2'}">
 										<label style="height: 290px">판매자 소개</label>
-										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" contenteditable="true" placeholder="판매하셨던 이력 혹은 상세 내용을 적어주세요. <br>1000자 까지 등록이 가능하시며, <br>내용이 상세할 수록 판매자분들에게 <br>전달 되는 정보가 다양해 집니다." value="${output.profileIntro}">
+										<textarea class="inputForm" id="profileIntro" name="profileIntro" contenteditable="true" placeholder="판매하셨던 이력 혹은 상세 내용을 적어주세요. <br>1000자 까지 등록이 가능하시며, <br>내용이 상세할 수록 판매자분들에게 <br>전달 되는 정보가 다양해 집니다.">
+											${output.profileIntro}
+										</textarea>
 									</c:if>
-									<input type="hidden" id="profileIntro2" name="profileIntro2">
 		    						<script type="text/javascript">
 										CKEDITOR.replace('profileIntro', {
 											height : 200,
@@ -430,25 +433,23 @@ $(document).ready(function(){
 	});
 	
 	// CKEDITOR 값 저장
-	CKEDITOR.instances.profileIntro.on('blur keypress', function(e) {
+	CKEDITOR.instances.profileIntro.on('change', function(e) {
 		var profileIntro = CKEDITOR.instances.profileIntro.getData();
-		$('#profileIntro').val(profileIntro);
-	});
+		$('#profileIntro').text(profileIntro);
+	}); 
 	
 	$('#profile_form').ajaxForm({
 		beforeSubmit: function(arr, form, options) {
-			var profileIntro = CKEDITOR.instances.profileIntro.getData();
-			$('#profileIntro').val(profileIntro);
-			
 			CKupdate();
-    		
-        	if ($('#profileIntro').val() == '' || $('#profileIntro').val().trim().length < 1) {
+			
+			var profileIntro = CKEDITOR.instances.profileIntro.getData();
+			$('#profileIntro').text(profileIntro);
+			
+        	if ($('#profileIntro').text() == '' || $('#profileIntro').text().trim().length < 1) {
         		swal('알림', '자기소개를 입력해 주세요', 'warning');
 				CKEDITOR.instances.profileIntro.focus();
 				return false;
 			}
-        	
-        	$('#profileIntro2').val(CKEDITOR.instances.profileIntro.getData());
         	
         	// validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.

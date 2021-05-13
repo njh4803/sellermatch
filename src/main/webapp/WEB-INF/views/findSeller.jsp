@@ -396,7 +396,9 @@ Handlebars.registerHelper('creatPage', function (startPage, endPage, nowPage) {
 	}
 	return new Handlebars.SafeString(tag);
 });
-
+Handlebars.registerHelper('profileIntro', function (profileIntro) {
+	return new Handlebars.SafeString(profileIntro);
+});
 Handlebars.registerHelper('numberWithCommas', function (x) {
 	if (x == null) {
 		return "0";
@@ -519,7 +521,7 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 								{{memNick}}
 							</div>							
 							<div class="seller-intro">
-								<span>{{profileIntro}}</span>
+								<span>{{profileIntro profileIntro}}</span>
 							</div>
 							<div class="left-infoBox">
 								<div class="auth-container">
@@ -619,6 +621,11 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
+	window.onpageshow = function(event) {
+	    if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+	    	$(".select").trigger("click");
+	    }
+	}
 	
 	$(document).on("click", ".s-link", function(){
 		

@@ -112,9 +112,9 @@ public class projectController {
 
 		ProjectDto input = new ProjectDto();
 		if (member != null) {
-			if (member.getMemSort() == "1") {
+			if (member.getMemSort().equals("1")) {
 				input.setProjSort("2");
-			} else {
+			} else if (member.getMemSort().equals("2")) {
 				input.setProjSort("1");
 			}
 		} else {
@@ -285,7 +285,28 @@ public class projectController {
 	
 	@RequestMapping(value = "/project/detail", method = RequestMethod.GET)
 	public ModelAndView detailProject(Model model,
-			@RequestParam(value = "projId", required = false) String projId) {
+			@RequestParam(value = "projId", required = false) String projId,
+			@RequestParam(value = "projSort[]", required = false) String[] projSort,
+			@RequestParam(value = "projNation[]", required = false) String[] projNation,
+			@RequestParam(value = "projIndus[]", required = false) String[] projIndus,
+			@RequestParam(value = "projPrice[]", required = false) String[] projPrice,
+			@RequestParam(value = "projMargin[]", required = false) String[] projMargin,
+			@RequestParam(value = "projSupplyType[]", required = false) String[] projSupplyType,
+			@RequestParam(value = "ppmemRname[]", required = false, defaultValue = "") String ppMemRname,
+			@RequestParam(value = "ppBizCerti[]", required = false, defaultValue = "") String ppBizCerti,
+			@RequestParam(value = "projProdCerti[]", required = false, defaultValue = "") String projProdCerti,
+			@RequestParam(value = "projProfit[]", required = false, defaultValue = "") String projProfit,
+			@RequestParam(value = "sellermemRname[]", required = false, defaultValue = "") String sellerMemRname,
+			@RequestParam(value = "sellerBizCerti[]", required = false, defaultValue = "") String sellerBizCerti,
+			@RequestParam(value = "sellerChChk[]", required = false, defaultValue = "") String sellerChChk,
+			@RequestParam(value = "sellerSaleChk[]", required = false, defaultValue = "") String sellerSaleChk,
+			@RequestParam(value = "projChannel[]", required = false) String[] projChannel,
+			// 정렬 기준
+			@RequestParam(value = "sort", defaultValue = "regSort") String sort,
+			// 검색어
+			@RequestParam(value = "keyword", required = false) String keyword,
+			// 페이지 구현에서 사용할 현재 페이지 번호
+			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
 		ProjectDto input = new ProjectDto();
 		ApplyDto input2 = new ApplyDto();
 		ReplyDto input3 = new ReplyDto();

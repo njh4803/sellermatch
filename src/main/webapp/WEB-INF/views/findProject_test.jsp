@@ -859,6 +859,12 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 </script>
 <script>
 $(document).ready(function() {
+	window.onpageshow = function(event) {
+	    if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+	    	$(".select").trigger("click");
+	    }
+	}
+	
  	$(document).on("click", ".check_list", function(){
 		var check_list_box = $(this).closest(".partner_list").children('.check_list_box');
 		var checkList = $(this).closest(".partner_list").children('.check_list');
@@ -883,9 +889,64 @@ $(document).ready(function() {
 		
 		var idx = $(this).data('index');
 		var projId = $("#projId"+idx).val();
-		console.log(projId);
-		console.log(idx);
-		window.location.href = ROOT_URL+"/project/detail?projId="+projId;
+/* 		var keyword = $("input[name=keyword]").val();
+		
+		var projSort;
+		var projNation = [];
+		var projIndus = [];
+		var projPrice = [];
+		var projMargin = [];
+		var projSupplyType = [];
+		var ppmemRname;
+		var ppBizCerti;
+		var projProdCerti;
+		var projProfit;
+		var sellermemRname;
+		var sellerBizCerti;
+		var sellerChChk;
+		var sellerSaleChk;
+		var projChannel;		
+		
+		var param_list_name = ['projSort', 'projNation', 'projIndus', 
+			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
+			'ppBizCerti', 'projProdCerti', 'projProfit', 'sellermemRname', 
+			'sellerBizCerti', 'sellerChChk', 'sellerSaleChk', 'projChannel'];
+		
+		var param_list = {
+				projSort, projNation, projIndus, 
+				projPrice, projMargin, projSupplyType, ppmemRname, 
+				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
+				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
+		};		
+		for (var i = 0; i < param_list_name.length; i++) {
+			//초기화
+			param_list[param_list_name[i]]= [];		
+			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
+				var name = this.name
+				var value = this.value
+				
+				for (var i = 0; i < param_list_name.length; i++){
+					if (String(param_list_name[i]) == name) {
+						param_list[name].push(value)
+					}
+					
+				}
+				
+			});
+		}
+		param_list["sort"] = $("#sort").val();
+		param_list["keyword"] = keyword;
+		param_list["projId"] = projId;
+		//var param = JSON.stringify(param_list);
+		
+        var param_str = "";
+        for (var i = 0; i < param_list_name.length; i++) {
+        	console.log(param_list_name[i])
+        	console.log(param_list[param_list_name[i]])
+        	var str = param_list_name[i] + "=" + param_list[param_list_name[i]] + "&";
+        	param_str += str;
+		} */
+      	window.location.href = ROOT_URL+"/project/detail?projId="+projId; 
 	});
 	
 	// 검색
@@ -1064,28 +1125,6 @@ $(document).ready(function() {
 			//초기화
 			param_list[param_list_name[i]]= [];
 			
-			$("input[id="+param_list_name[i] +"]").each(function(){
-				var checked = this.checked;
-				
-				if (this.id == 'ppmemRname') {
-					$("input[name=ppmemRname]").prop('checked', checked);
-					$("input[name=ppBizCerti]").prop('checked', checked);
-					$("input[name=projProdCerti]").prop('checked', checked);
-					$("input[name=projProfit]").prop('checked', checked);
-				}
-				if (this.id == 'sellermemRname') {
-					$("input[name=sellermemRname]").prop('checked', checked);
-					$("input[name=sellerBizCerti]").prop('checked', checked);
-					$("input[name=sellerChChk]").prop('checked', checked);
-					$("input[name=sellerSaleChk]").prop('checked', checked);
-				}
-				if (this.id != 'sellermemRname' && this.id != 'ppmemRname') {
-					$("input[name="+param_list_name[i] +"]").each(function(){
-						this.checked = checked;
-					});
-				}
-			});
-			
 			$("input[name="+param_list_name[i] +"]:checked").each(function(i,e){
 				var name = this.name
 				var value = this.value
@@ -1099,6 +1138,7 @@ $(document).ready(function() {
 				
 			});
 		}
+		
 		var url = formData.attr('action');
 		param_list["sort"] = $("#sort").val();
 		$.ajax({
@@ -1249,8 +1289,6 @@ $(document).ready(function() {
 		var sellerSaleChk;
 		var projChannel;
 		
-		console.log(projSort);
-		
 		
 		var param_list_name = ['projSort', 'projNation', 'projIndus', 
 			'projPrice', 'projMargin', 'projSupplyType', 'ppmemRname', 
@@ -1380,7 +1418,7 @@ $(document).ready(function() {
 				projPrice, projMargin, projSupplyType, ppmemRname, 
 				ppBizCerti, projProdCerti, projProfit, sellermemRname, 
 				sellerBizCerti, sellerChChk, sellerSaleChk, projChannel
-				};
+		};
 		
 		for (var i = 0; i < param_list_name.length; i++) {
 			//초기화

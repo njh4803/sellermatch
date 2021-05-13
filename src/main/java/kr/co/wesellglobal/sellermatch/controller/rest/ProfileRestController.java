@@ -146,8 +146,7 @@ public class ProfileRestController {
 			HttpSession session, 
 			@RequestParam(value="profilePhotoFile", required = false) MultipartFile photo,
 			@ModelAttribute("profileDto") ProfileDto profileDto,
-			@RequestParam(value = "tag", required = false) String tag,
-			@RequestParam(value = "profileIntro2", required = false) String profileIntro2) throws Exception {
+			@RequestParam(value = "tag", required = false) String tag) throws Exception {
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
 		FileDto item = null;
@@ -206,7 +205,7 @@ public class ProfileRestController {
 		if (photo != null && photo.getSize() != 0) {
 			input.setProfilePhoto(item.getFilePath());
 		}
-		input.setProfileIntro(profileIntro2);
+		input.setProfileIntro(profileDto.getProfileIntro());
 		input.setProfileVolume(profileDto.getProfileVolume());
 		input.setProfileCareer(profileDto.getProfileCareer());
 		input.setProfileCh(profileDto.getProfileCh());
