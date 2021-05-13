@@ -28,7 +28,22 @@
 		<div id="list-container">
 			<div class="left-container">
 				<div class="partner_list">
-					<span class="check_list upImg">판매자유형</span>
+            		<span class="check_list upImg">판매채널</span>
+            		<div class="check_list_box">
+		            	<ul>
+		            		<li><input type="checkbox" class="checkAll" id="profileChannel"><label for="profileChannel"><span>전체</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+		            	</ul>
+	            	</div>
+            	</div>
+				<div class="partner_list">
+					<span class="check_list downImg">판매자유형</span>
 					<div class="check_list_box">
 		            	<ul>
 							<li><input type="checkbox" class="checkAll" id="profileBizSort"><label for="profileBizSort"><span>전체</span></label></li>
@@ -48,21 +63,6 @@
 		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileBizCerti" value="1" id="sp2"><label for="sp2"><span>사업자인증</span></label></li>
 		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileChChk" value="1" id="sp3"><label for="sp3"><span>채널검증</span></label></li>
 		            		<li><input type="checkbox" class="check" data-name="sellermemRname" name="profileSaleChk" value="1" id="sp4"><label for="sp4"><span>매출검증</span></label></li>
-		            	</ul>
-	            	</div>
-            	</div>
-				<div class="partner_list">
-            		<span class="check_list downImg">판매채널</span>
-            		<div class="check_list_box">
-		            	<ul>
-		            		<li><input type="checkbox" class="checkAll" id="profileChannel"><label for="profileChannel"><span>전체</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileChannel" value="1" id="c1"><label for="c1"><span>오픈마켓</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileChannel" value="2" id="c2"><label for="c2"><span>종합몰</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileChannel" value="3" id="c3"><label for="c3"><span>폐쇄몰</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileChannel" value="4" id="c4"><label for="c4"><span>커뮤니티</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
-		            		<li><input type="checkbox" class="check" name="profileChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
