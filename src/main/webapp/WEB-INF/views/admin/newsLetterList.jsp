@@ -11,6 +11,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/datatables/dataTables.bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/datatables/yadcf/jquery.dataTables.yadcf.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/datatables/tabletools/dataTables.tableTools.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
 <style>
 .table-center th{
 	text-align: center;
