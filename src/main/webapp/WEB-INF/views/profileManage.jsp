@@ -108,6 +108,8 @@
 		                                	<label for="ch6"><span>오프라인</span></label>
 		                                	<input id="ch7" type="checkbox" name="profileCh" value="7" <c:if test="${fn:contains(output.profileCh,'7')}"> checked </c:if>/>
 		                                	<label for="ch7"><span>해외</span></label>
+		                                	<input id="ch8" type="checkbox" name="profileCh" value="8" <c:if test="${fn:contains(output.profileCh,'8')}"> checked </c:if>/>
+		                                	<label for="ch8"><span>라이브방송</span></label>
 		                                </div>
 									</div>
 									</c:if>

@@ -59,6 +59,11 @@ label.error {
 .btn-group-toggle {
 	display: -webkit-inline-box;
 }
+#memberCount {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 18px;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -99,11 +104,11 @@ label.error {
 	                                                    		<div class="col-sm-8">
 		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberAddModal">회원 등록</button>
 		                                                    		<div class="btn-group btn-group-toggle" data-toggle="buttons" style="float: right;">
-																	<label class="btn btn-secondary <c:if test="${memSortFilter == '0'}">active</c:if>" data-value="0">
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '0'}">active</c:if>" data-value="0" data-page="" data-keyword="${keyword}">
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter0" value="0">전체</label> 
-																	<label class="btn btn-secondary <c:if test="${memSortFilter == '2'}">active</c:if>" data-value="2"> 
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '2'}">active</c:if>" data-value="2"  data-page="" data-keyword="${keyword}"> 
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter2" value="2">판매자</label> 
-																	<label class="btn btn-secondary <c:if test="${memSortFilter == '1'}">active</c:if>" data-value="1"> 
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '1'}">active</c:if>" data-value="1"  data-page="" data-keyword="${keyword}"> 
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter1" value="1">공급자</label>
 																</div>
 		                                                    	</div>
@@ -116,6 +121,7 @@ label.error {
 															</div>
 	                                                    </form>
                                                     </div>
+                                                    <p id="memberCount">총 ${pageData.totalCount}건</p>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
                                                             <table id="simpletable" class="table-center table table-striped table-bordered text-center">
@@ -242,6 +248,7 @@ label.error {
 																			            <c:url value="/admin/memberList" var="prevPageUrl">
 																			                <c:param name="page" value="${pageData.prevPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
+																			                <c:param name="memSortFilter" value="${memSortFilter}" />
 																			            </c:url>
 																			            <li><a href="${prevPageUrl}">&laquo;</a></li>
 																			        </c:when>
@@ -256,6 +263,7 @@ label.error {
 																			        <c:url value="/admin/memberList" var="pageUrl">
 																			            <c:param name="page" value="${i}"/>
 																			            <c:param name="keyword" value="${keyword}"/>
+																			            <c:param name="memSortFilter" value="${memSortFilter}" />
 																			        </c:url>
 																			        
 																			        <%-- 페이지 번호 출력 --%>
@@ -279,6 +287,7 @@ label.error {
 																			            <c:url value="/admin/memberList" var="nextPageUrl">
 																			                <c:param name="page" value="${pageData.nextPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
+																			                <c:param name="memSortFilter" value="${memSortFilter}" />
 																			            </c:url>
 																			            <li><a href="${nextPageUrl}">&raquo;</a></li>
 																			        </c:when>
@@ -433,7 +442,9 @@ $(document).on("click",".profile-modal",function(event){
 $(document).ready(function(){
     // 라디오버튼 클릭시 이벤트 발생
     $(".btn-secondary").click(function(){
-    	var memSortFilter =  $(this).attr("data-value"); 
+    	var memSortFilter =  $(this).attr("data-value");
+    	var dataPage =  $(this).attr("data-page");
+    	var dataKeyWord =  $(this).attr("data-keyword");
     	location.href="/admin/memberList?memSortFilter="+memSortFilter;
     }) 
     

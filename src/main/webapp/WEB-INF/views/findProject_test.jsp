@@ -86,6 +86,7 @@
 		            		<li><input type="checkbox" class="check" name="projChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
 		            		<li><input type="checkbox" class="check" name="projChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+		            		<li><input type="checkbox" class="check" name="projChannel" value="8" id="c8"><label for="c8"><span>라이브방송</span></label></li>
 		            	</ul>
 	            	</div>
 	            </div>

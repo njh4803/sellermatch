@@ -59,7 +59,7 @@
         		<div class="f_btm">
 	        		<div><a href="javascipt:void(0);">페이스북</a></div>
 	        		<div><a href="javascipt:void(0);">유튜브</a></div>
-	        		<div><a href="javascipt:void(0);">블로그</a></div>
+	        		<div><a href="https://blog.naver.com/PostList.nhn?blogId=sellermatchkorea">블로그</a></div>
 	        		<div><a href="javascipt:void(0);">쇼핑몰</a></div>
 	            </div>
         	</div>

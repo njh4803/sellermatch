@@ -39,6 +39,7 @@
 		            		<li><input type="checkbox" class="check" name="profileChannel" value="5" id="c5"><label for="c5"><span>SNS</span></label></li>
 		            		<li><input type="checkbox" class="check" name="profileChannel" value="6" id="c6"><label for="c6"><span>오프라인</span></label></li>
 		            		<li><input type="checkbox" class="check" name="profileChannel" value="7" id="c7"><label for="c7"><span>해외</span></label></li>
+		            		<li><input type="checkbox" class="check" name="profileChannel" value="8" id="c8"><label for="c8"><span>라이브방송</span></label></li>
 		            	</ul>
 	            	</div>
             	</div>
@@ -586,8 +587,8 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 							</div>
 						</div>
 						<div class="rightBox">
-							<div class="infoBox2"><span>등록한 거래</span><span>{{contractCount}}건</span></div>
-							<div class="infoBox2"><span>완료한 거래</span><span>{{projAddCount}}건</span></div>
+							<div class="infoBox2"><span>등록한 거래</span><span>{{projAddCount}}건</span></div>
+							<div class="infoBox2"><span>완료한 거래</span><span>{{contractCount}}건</span></div>
 							<div class="infoBox2"><span>요청 받은 수</span><span>{{recommendCount}}건</span></div>
 							<div class="infoBox2">
 								<span>판매채널</span>

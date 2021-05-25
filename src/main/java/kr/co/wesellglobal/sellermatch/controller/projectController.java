@@ -312,6 +312,7 @@ public class projectController {
 		ReplyDto input3 = new ReplyDto();
 		input.setProjId(projId);
 		input2.setApplyProjId(projId);
+		input2.setApplyType("1");
 		input3.setReplyProjId(projId);
 		
 		ProjectDto output = null;

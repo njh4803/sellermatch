@@ -372,6 +372,9 @@ public class ProfileDto {
 			if (this.profileChannelList[i].equals("7")) {
 				this.profileChannelList[i] = "해외";
 			}
+			if (this.profileChannelList[i].equals("8")) {
+				this.profileChannelList[i] = "라이브방송";
+			}
 		}
 		
 		return this.profileChannelList;
