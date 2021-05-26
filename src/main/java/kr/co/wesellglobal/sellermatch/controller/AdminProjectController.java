@@ -42,7 +42,7 @@ public class AdminProjectController {
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage,
-			@RequestParam(value = "countSort", defaultValue = "5") int countSort) {
+			@RequestParam(value = "countSort", defaultValue = "30") int countSort) {
 		if (member == null) {
 			return new ModelAndView("admin/admin_login");
 		}

@@ -18,6 +18,11 @@
 .table-center th{
 	text-align: center;
 }
+#projectCount {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 18px;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -70,10 +75,9 @@
 		                                                    		<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#projectModal">프로젝트 등록</button> -->
 		                                                    		<button id="P-delBtn" type="button" class="btn btn-primary">선택 삭제</button>
 		                                                    		 <select id="countSort" class="col-2 form-control" style="float: right;">
-		                                                    			<option value="5"<c:if test="${countSort == 5}">selected</c:if>>5개씩 보기</option>
-		                                                    			<option value="10"<c:if test="${countSort == 10}">selected</c:if>>10개씩 보기</option>
-		                                                    			<option value="20"<c:if test="${countSort == 20}">selected</c:if>>20개씩 보기</option>
 		                                                    			<option value="30"<c:if test="${countSort == 30}">selected</c:if>>30개씩 보기</option>
+		                                                    			<option value="50"<c:if test="${countSort == 50}">selected</c:if>>50개씩 보기</option>
+		                                                    			<option value="100"<c:if test="${countSort == 100}">selected</c:if>>100개씩 보기</option>
 		                                                    		</select>
 		                                                    	</div>
 		                                                    	
@@ -85,6 +89,7 @@
 		                                                        </div>
 	                                                    	</div>
 	                                                    </form>
+	                                                <p id="projectCount">총 ${projCount}건</p>
                                                     <div class="card-block">
                                                         <div class="dt-responsive table-responsive">
                                                             <table id="simpletable" class="table table-bordered table-hover table-condensed table-striped text-center">
@@ -184,6 +189,7 @@
 																			            <c:url value="/admin/projectList" var="prevPageUrl">
 																			                <c:param name="page" value="${pageData.prevPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
+																			                <c:param name="countSort" value="${countSort}" />
 																			            </c:url>
 																			            <li><a href="${prevPageUrl}">&laquo;</a></li>
 																			        </c:when>
@@ -198,6 +204,7 @@
 																			        <c:url value="/admin/projectList" var="pageUrl">
 																			            <c:param name="page" value="${i}"/>
 																			            <c:param name="keyword" value="${keyword}"/>
+																			            <c:param name="countSort" value="${countSort}" />
 																			        </c:url>
 																			        
 																			        <%-- 페이지 번호 출력 --%>
@@ -221,6 +228,7 @@
 																			            <c:url value="/admin/projectList" var="nextPageUrl">
 																			                <c:param name="page" value="${pageData.nextPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
+																			                <c:param name="countSort" value="${countSort}" />
 																			            </c:url>
 																			            <li><a href="${nextPageUrl}">&raquo;</a></li>
 																			        </c:when>
