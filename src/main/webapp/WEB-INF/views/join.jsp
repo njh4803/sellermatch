@@ -34,8 +34,8 @@
 					<div class="form-group row userrow">
 						<label class="col-sm-2 colForm-label">회원유형 <span class="identify">*</span></label>
 						<div class="col-sm-9">
-							<input type="radio" id="memSort1" value="2" name="memSort" checked="checked" /><span class="radio-sort"> 판매자로 가입</span>
-							<input type="radio" id="memSort2" value="1" name="memSort" style="margin-left:30px;"/><span class="radio-sort"> 공급자로 가입</span>
+							<input type="checkbox" id="memSort1" value="2" name="memSort" onclick='checkOnlyOne(this)'/><span class="radio-sort"> 판매자로 가입</span>
+							<input type="checkbox" id="memSort2" value="1" name="memSort" onclick='checkOnlyOne(this)' style="margin-left:30px;"/><span class="radio-sort"> 공급자로 가입</span>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -419,8 +419,9 @@
 	src="${pageContext.request.contextPath}/template/assets/daum/exeDaumPostcode.js"></script>
 <script>
 $(function (){
-	$('input[type="radio"][id="memSort1"]').on('click', function(){
-	  var chkValue = $('input[type=radio][id="memSort1"]:checked').val();
+	$('input[type="checkbox"][id="memSort1"]').on('click', function(){
+	  swal('알림', '판매자를 선택하셨습니다.', 'success');
+	  var chkValue = $('input[type=checkbox][id="memSort1"]:checked').val();
 	  if(chkValue){
 	             $('#resultText1').css('display','block');
 	             $('#resultText2').css('display','none');
@@ -431,8 +432,9 @@ $(function (){
 });
 });
 $(function (){
-	$('input[type="radio"][id="memSort2"]').on('click', function(){
-	  var chkValue = $('input[type=radio][id="memSort2"]:checked').val();
+	$('input[type="checkbox"][id="memSort2"]').on('click', function(){
+	  swal('알림', '공급자를 선택하셨습니다.', 'success');
+	  var chkValue = $('input[type=checkbox][id="memSort2"]:checked').val();
 	  if(chkValue){
 	             $('#resultText1').css('display','none');
 	             $('#resultText2').css('display','block');
@@ -508,15 +510,6 @@ $(document).ready(function() {
 			$(".agree-all").prop("checked", false);
 		}
 		
-/* 		if (this.checked) {
-			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
-			$('.join-btn').attr('disabled', false);
-		} else {
-			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
-			$('.join-btn').attr('disabled', true);
-			$(".agree-all").prop("checked", false);
-		} */
-		
 	});
 		
 	$(document).on("click", "#sendAuthEmail", function(){
@@ -557,7 +550,6 @@ $(document).ready(function() {
 	$(document).on("focus blur", "#memNick", function(){
 		var memNick = $('#memNick').val();
 		$('#memNick').val(memNick.trim());
-		console.log($('#memNick').val())
 	});
 	
 	$(document).on("focus", "#join_form", function(e){
@@ -677,6 +669,7 @@ $(document).ready(function() {
 	           data: form.serialize(),
 	           beforeSend: function() {
 	        	   return $('#join_form').valid();
+	        	   
                },
                success: function() {
             	   $('.ajax-loader').hide();
@@ -766,6 +759,18 @@ $(document).ready(function() {
 	    }
 	});	
 });
+
+function checkOnlyOne(element) {
+	  
+	  const checkboxes 
+	      = document.getElementsByName("memSort");
+	  
+	  checkboxes.forEach((cb) => {
+	    cb.checked = false;
+	  })
+	  
+	  element.checked = true;
+	}
 
 </script>
 <script>

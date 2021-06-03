@@ -373,3 +373,6 @@ input[type="checkbox"].findCheck:checked + label span {
 input[type="radio"] {
     display: inline;
 }
+input[type="checkbox"] {
+    display: inline;
+}

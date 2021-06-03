@@ -111,18 +111,20 @@ public class projectController {
 		PageData pageData = null;
 
 		ProjectDto input = new ProjectDto();
-		
+		String[] extraProjSort = new String[2];
 		if (projSort != null) {
 			input.setProjSortArr(projSort);
 		} else {
 			if (member != null) {
 				if (member.getMemSort().equals("1")) {
 					input.setProjSort("2");
+					extraProjSort[1] = "2";
 				} else if (member.getMemSort().equals("2")) {
 					input.setProjSort("1");
+					extraProjSort[0] = "1";
 				}
 			}else {
-				String[] extraProjSort = new String[2];
+				
 				extraProjSort[0] = "1";
 				extraProjSort[1] = "2";
 				input.setProjSortArr(extraProjSort);
@@ -178,6 +180,7 @@ public class projectController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
 		model.addAttribute("projSort", projSort);
+		model.addAttribute("extraProjSort", extraProjSort);
 
 		model.addAttribute("projChannel", projChannel);
 		model.addAttribute("projNation", projNation);

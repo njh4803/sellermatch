@@ -30,12 +30,14 @@
 				<div class="partner_list ppssFilterBox">
 					<div>
 						<input type="checkbox" class="check" name="projSort" id="projSort-pp" value="1" 
-						<c:forEach var="projSort" items="${projSort}"><c:if test="${projSort eq 1}">checked</c:if></c:forEach>>
+						<c:forEach var="projSort" items="${projSort}"><c:if test="${projSort eq 1}">checked</c:if></c:forEach>
+						<c:if test="${projSort eq null and extraProjSort[0] == 1}">checked</c:if>>
 						<label for="projSort-pp">
 							<span class="projSort-pp">공급자 찾기</span>
 						</label>
 						<input type="checkbox" class="check" name="projSort" id="projSort-sp" value="2"
-						<c:forEach var="projSort" items="${projSort}"><c:if test="${projSort eq 2}">checked</c:if></c:forEach>>
+						<c:forEach var="projSort" items="${projSort}"><c:if test="${projSort eq 2}">checked</c:if></c:forEach>
+						<c:if test="${projSort eq null and extraProjSort[1] == 2}">checked</c:if>>
 						<label for="projSort-sp">
 							<span>판매자 찾기</span>
 						</label>
