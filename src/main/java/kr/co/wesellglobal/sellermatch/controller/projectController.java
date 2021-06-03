@@ -111,14 +111,22 @@ public class projectController {
 		PageData pageData = null;
 
 		ProjectDto input = new ProjectDto();
-		if (member != null) {
-			if (member.getMemSort().equals("1")) {
-				input.setProjSort("2");
-			} else if (member.getMemSort().equals("2")) {
-				input.setProjSort("1");
-			}
-		} else {
+		
+		if (projSort != null) {
 			input.setProjSortArr(projSort);
+		} else {
+			if (member != null) {
+				if (member.getMemSort().equals("1")) {
+					input.setProjSort("2");
+				} else if (member.getMemSort().equals("2")) {
+					input.setProjSort("1");
+				}
+			}else {
+				String[] extraProjSort = new String[2];
+				extraProjSort[0] = "1";
+				extraProjSort[1] = "2";
+				input.setProjSortArr(extraProjSort);
+			}
 		}
 		
 		input.setProjNationArr(projNation);
@@ -171,7 +179,23 @@ public class projectController {
 		model.addAttribute("sort", sort);
 		model.addAttribute("projSort", projSort);
 
-		return new ModelAndView("findProject_test");
+		model.addAttribute("projChannel", projChannel);
+		model.addAttribute("projNation", projNation);
+		model.addAttribute("projIndus", projIndus);
+		model.addAttribute("projPrice", projPrice);
+		model.addAttribute("projMargin", projMargin);
+		model.addAttribute("projSupplyType", projSupplyType);
+		model.addAttribute("ppMemRname", ppMemRname);
+		model.addAttribute("ppBizCerti", ppBizCerti);
+		model.addAttribute("projProdCerti", projProdCerti);
+		model.addAttribute("projProfit", projProfit);
+		model.addAttribute("sellerMemRname", sellerMemRname);
+		model.addAttribute("sellerBizCerti", sellerBizCerti);
+		model.addAttribute("sellerChChk", sellerChChk);
+		model.addAttribute("sellerSaleChk", sellerSaleChk);
+		
+
+		return new ModelAndView("findProject2");
 	}
 	
 	@ResponseBody

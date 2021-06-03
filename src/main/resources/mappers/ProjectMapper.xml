@@ -108,7 +108,7 @@
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_thumbnail_img, 
     		proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now())+1 as proj_Day, proj_edit_date, 
-    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
+    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id and apply_type= '1') as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, mem_nick, mem_name, profile_intro, profile_photo, profile_ch_chk, profile_sale_chk,
     		(select Orgin_name FROM fileList where File_path = proj_file) as orgin_name,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
@@ -266,7 +266,7 @@
     		proj_nation, proj_supply_type, proj_recruit_num, proj_detail, proj_detail_img, proj_require, proj_thumbnail_img,
     		proj_file, proj_prod_certi, proj_state,date_format(proj_reg_date, '%Y-%m-%d') as proj_reg_date, proj_hit,
     		date_format(proj_end_date, '%Y-%m-%d') as proj_end_date, TO_DAYS(proj_end_date)-TO_DAYS(now())+1 as proj_Day, proj_edit_date, 
-    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id) as apply_count, proj_profit, proj_profit_chk_date,
+    		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id and apply_type= '1') as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, profile_ch_chk as seller_ch_chk, profile_sale_chk as seller_sale_chk,
     		mem_nick, mem_name, profile_intro, profile_photo,
     		(select Orgin_name FROM fileList where File_path = proj_file) as orgin_name,
@@ -289,7 +289,7 @@
 	<select id="selectCountAll"
 		parameterType="kr.co.wesellglobal.sellermatch.model.ProjectDto"
 		resultType="int"> 
-		SELECT COUNT(proj_idx)
+		SELECT COUNT(1)
     	FROM ProjectList p
 		INNER JOIN IndusList i
 		ON p.proj_indus = i.indus_id

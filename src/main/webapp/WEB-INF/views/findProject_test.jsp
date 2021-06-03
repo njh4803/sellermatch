@@ -863,6 +863,8 @@ $(document).ready(function() {
 	window.onpageshow = function(event) {
 	    if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
 	    	$(".select").trigger("click");
+	    	console.log($(".pageMove").attr("data-value"));
+	    	
 	    }
 	}
 	
@@ -1010,10 +1012,8 @@ $(document).ready(function() {
 			
 			if (data_name == 'ppmemRname') {
 				var total_len = $("input[data-name=ppmemRname]").length;
-				console.log(total_len)
 				//선택된 갯수
 				var len = $("input[data-name=ppmemRname]:checked").length;
-				console.log(len)
 				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 					$("#ppmemRname").prop('checked', true);
 				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
@@ -1022,10 +1022,8 @@ $(document).ready(function() {
 			}
 			if (data_name == 'sellermemRname') {
 				var total_len = $("input[data-name=sellermemRname]").length;
-				console.log(total_len)
 				//선택된 갯수
 				var len = $("input[data-name=sellermemRname]:checked").length;
-				console.log(len)
 				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 					$("#sellermemRname").prop('checked', true);
 				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
@@ -1070,7 +1068,6 @@ $(document).ready(function() {
            		var html = template(contents);
            		
            		var page_contents = json.pageData
-           		console.log(page_contents)
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
@@ -1148,12 +1145,9 @@ $(document).ready(function() {
            data: param_list,
            success: function(json) {
         	   	var contents = json
-        	   	console.log(contents);
            		var template = Handlebars.compile($("#project-list-tmpl").html());
            		var html = template(contents);
-           		
            		var page_contents = json.pageData
-           		console.log(page_contents)
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
@@ -1250,9 +1244,7 @@ $(document).ready(function() {
         	   	var contents = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
            		var html = template(contents);
-           		
            		var page_contents = json.pageData
-           		console.log(page_contents)
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
@@ -1310,10 +1302,8 @@ $(document).ready(function() {
 			
 			if (data_name == 'ppmemRname') {
 				var total_len = $("input[data-name=ppmemRname]").length;
-				console.log(total_len)
 				//선택된 갯수
 				var len = $("input[data-name=ppmemRname]:checked").length;
-				console.log(len)
 				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 					$("#ppmemRname").prop('checked', true);
 				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
@@ -1322,10 +1312,8 @@ $(document).ready(function() {
 			}
 			if (data_name == 'sellermemRname') {
 				var total_len = $("input[data-name=sellermemRname]").length;
-				console.log(total_len)
 				//선택된 갯수
 				var len = $("input[data-name=sellermemRname]:checked").length;
-				console.log(len)
 				if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 					$("#sellermemRname").prop('checked', true);
 				}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
@@ -1364,13 +1352,10 @@ $(document).ready(function() {
            url: ROOT_URL+"/project/find2",
            data: param_list,
            success: function(json) {
-        	   console.log(json);
         	   	var contents = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
            		var html = template(contents);
-           		
            		var page_contents = json.pageData
-           		console.log(page_contents)
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
            		
@@ -1450,7 +1435,6 @@ $(document).ready(function() {
         	   	var contents = json
            		var template = Handlebars.compile($("#project-list-tmpl").html());
            		var html = template(contents);
-           		
            		var page_contents = json.pageData
            		var page_template = Handlebars.compile($("#page-tmpl").html());
            		var page_html = page_template(page_contents);
