@@ -52,15 +52,13 @@
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/template/assets/css/jquery.mCustomScrollbar.css">
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	  
-	  <!-- ckeditor js -->
-	  <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
-	  
 	  <!-- AjaxHelper -->
 	  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/plugins/ajax/ajax_helper.css">
 	  
 	  <!-- sweetalert css -->
 	  <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert2.min.css" />
-	  
+<!-- CKEditor js -->
+<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
   </head>
 <style>
 select.form-control:not([size]):not([multiple]) {

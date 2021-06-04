@@ -149,7 +149,6 @@ $(function(){
 			data: {boardContents : boardContents, boardTitle : comunityTitle2, boardType : type, boardNoticeTop : boardNoticeTop},
 			dataType: "json",
 			success: function(data){
-					console.log(data);
 					swal("알림", "게시판이 등록되었습니다.", "success");
 					
 					window.setTimeout("pageReload()", 2000);

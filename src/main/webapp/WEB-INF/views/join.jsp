@@ -34,8 +34,8 @@
 					<div class="form-group row userrow">
 						<label class="col-sm-2 colForm-label">회원유형 <span class="identify">*</span></label>
 						<div class="col-sm-9">
-							<input type="checkbox" id="memSort1" value="2" name="memSort" onclick='checkOnlyOne(this)'/><span class="radio-sort"> 판매자로 가입</span>
-							<input type="checkbox" id="memSort2" value="1" name="memSort" onclick='checkOnlyOne(this)' style="margin-left:30px;"/><span class="radio-sort"> 공급자로 가입</span>
+							<input type="checkbox" class= "memSortCheckBox" id="memSort1" value="2" name="memSort" onclick='checkOnlyOne(this)'/><span class="radio-sort"> 판매자로 가입</span>
+							<input type="checkbox" class= "memSortCheckBox" id="memSort2" value="1" name="memSort" onclick='checkOnlyOne(this)' style="margin-left:30px;"/><span class="radio-sort"> 공급자로 가입</span>
 						</div>
 					</div>
 					<div class="form-group row">

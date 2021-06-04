@@ -422,6 +422,7 @@ textarea::placeholder {
 	letter-spacing: normal;
 	text-align: left;
 	color: #484848;
+	overflow-wrap: break-word;
 }
 .container3{
 	width: 360px;

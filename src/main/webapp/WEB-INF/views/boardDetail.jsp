@@ -46,8 +46,8 @@
         	</c:if>
         </div>
         <div>
-        	<form action="${pageContext.request.contextPath}/project/reply" method="post" id="question-form" class="text-right">
-				<input class="board-comment" id="replyContents" name="replyContents" type="text" placeholder="댓글입력">
+        	<form action="${pageContext.request.contextPath}/project/reply" method="post" id="question-form" class="text-right" onsubmit="return false;">
+				<input class="board-comment" id="replyContents" name="replyContents" type="text" placeholder="댓글입력" maxlength="1000">
 				<input type="hidden" id="boardId" name="replyBoardId" value="${output.boardId}">
 	    		<input type="hidden" id="replyParentMemId" name="replyParentMemId">
 	    		<input type="hidden" id="replyParent" name="replyParent" value="0">

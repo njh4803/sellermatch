@@ -258,7 +258,6 @@ $(document).on("click",".b-modal",function(event){
 	var boardEditDate = tr.children[11].innerText;
 	var boardNoticeTop = tr.children[12].innerText;
 	
-	console.log(boardNoticeTop);
 	
 	$("#boardModal .modal-body #boardIdx").val(boardIdx);
 	$("#boardModal .modal-body #boardId").val(boardId);
@@ -372,6 +371,5 @@ $(function(){
 </script>
 <!-- bootstrap js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- CKEditor js -->
-<script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+
 <%@ include file="inc/footer.jsp"%>
