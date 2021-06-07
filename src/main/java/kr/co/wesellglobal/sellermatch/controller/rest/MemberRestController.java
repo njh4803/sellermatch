@@ -1,6 +1,9 @@
 package kr.co.wesellglobal.sellermatch.controller.rest;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import kr.co.wesellglobal.sellermatch.helper.MailHelper;
 import kr.co.wesellglobal.sellermatch.helper.RegexHelper;
@@ -54,8 +59,9 @@ public class MemberRestController {
 	WebHelper webHelper;
 	@Autowired
 	MailHelper mailHelper;
-
-	
+	@Autowired
+	private TemplateEngine emailTemplateEngine;	
+	  
 	/** 아이디 중복검사 (jQuery Form Validate 플러그인용) */
 	// controller에서 out 객체의 출력결과를 웹브라우저에게 전달할 수 있게 하는 옵션
 	@ResponseBody
@@ -191,39 +197,13 @@ public class MemberRestController {
 		try {
 			memberService.addMember(input);
 			profileService.addProfile(input2);
-
-			String content = 
-				"<div style='margin:auto;padding:0;width:700px;'>"
-				+ "<table width='700' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;border:1px solid #bcbcbc;text-align:centen;'>"
-			    + "<tbody><tr><td style='padding:0;margin:0;'>"
-			    + "<table width='698' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;'>"
-			    + "<tbody><tr><td width='37' style='padding:0;margin:0;'></td><td width='624' style='padding:0;margin:0;'>"
-			    + "<table width='624' border='0' cellspacing='0' cellpadding='0' style='padding:0;margin:0;'>"
-			    + "<tbody><tr><td style='padding:32px 0;margin:0;text-align:right;'><img style='padding:0;margin:0;vertical-align:top;' src='https://sellermatch.co.kr/assets/img/sellermatch_logo.png' alt='샐러매치' width='250px' loading='lazy'></td></tr>"
-			    + "<tr><td style='padding:35px 0 0;margin:0;border-top:1px solid #999ea3;'>"
-			    + "<p style='padding:0;margin:0 0 20px;text-align:center;font-size:34px;color:#333e48;line-height:45px;font-family:'Malgun Gothic';letter-spacing:-2px;'>셀러매치 가입을 환영합니다.</p>"
-			    + "<p style='padding:0;margin:0 0 35px;text-align:center;font-size:15px;color:#333e48;font-family:'Malgun Gothic';letter-spacing:-1px;font-weight: bold;'>회원가입 안내</p>"
-			    + "<table width='624' border='0' cellspacing='0' cellpadding='0' style='margin:0;padding:0;'>"
-			    + "<tbody><tr><td style='padding:40px 25px 40px 40px;margin:0;text-align:left;background:#f5f5f6;'>"
-			    + "<p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>"
-			    + input.getMemNick()
-			    + "님 안녕하세요.<br>셀러매치 가입을 진심으로 환영합니다!</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><br></p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>판매자와 공급자를 잇는 공간,</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>셀러매치는 단순한 도매사이트가 아닙니다.</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><br></p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>거래처 매칭 1회만 등록하면</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>가장 쉽고, 빠르고, 효율적인 거래를 할 수 있습니다.<br><br>- 돈되는, 팔만한 물건 찾기 OK</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>- 잘파는, 검증된 판매자 찾기 OK</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>- 조건에 맞는 공급제안 받기 OK</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>- 한 번 등록, 간편한 제안서 보내기 OK</p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><br></p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'><b><span style='font-size: 14pt;'>불필요한 시간을 절약하세요</span></b></p><p style='padding:0;margin:0;font-size:15px;color:#323d47;font-family:'Malgun Gothic';letter-spacing:-2px;line-height:22px;'>"
-			    + "<b><span style='font-size: 14pt;'>커머스의 즐거움! 셀러매치가 함께합니다</span></b></p>"
-			    + "</td></tr></tbody></table>"
-			    + "</td></tr><tr><td style='padding:0 0 35px;margin:0;'>"
-			    + "<p style='margin:35px 0 0;padding:0;text-align:center;color:#989ea3;font-size:11px;line-height:16px;font-family:'Malgun Gothic';letter-spacing:-1px;'>본 메일은 발신 전용 메일입니다.<br></p>"
-			    + "</td></tr></tbody></table>"
-			    + "</td><td width='37' style='padding:0;margin:0;'></td></tr></tbody></table>"
-			    + "</td></tr><tr><td style='padding:25px 0 25px;margin:0;background:#f5f5f6;text-align:center;'>"
-			    + "<p align='left' style='text-align: left; margin: 0px 0px 0px 40px; padding: 0px; color: rgb(51, 62, 72); font-size: 11px; line-height: 16px; font-family: Malgun Gothic; letter-spacing: -1px;'><span style='color: rgb(154, 154, 154);'>위셀글로벌(주)</span></p>"
-			    + "<p align='left' style='text-align: left; margin: 0px 0px 0px 40px; padding: 0px; color: rgb(51, 62, 72); font-size: 11px; line-height: 16px; font-family: Malgun Gothic; letter-spacing: -1px;'><span style='color: rgb(154, 154, 154);'>서울특별시 강남구 언주로 147길 43 (호성빌딩 1층)</span></p>"
-			    + "<p align='left' style='text-align: left; margin: 0px 0px 0px 40px; padding: 0px; color: rgb(51, 62, 72); font-size: 11px; line-height: 16px; font-family: Malgun Gothic; letter-spacing: -1px;'><span style='color: rgb(154, 154, 154);'>TEL. 02-515-0923&nbsp; &nbsp; FAX. 0303-3445-2236</span></p>"
-			    + "<p style='margin-left: 40px;'><span style='color: rgb(154, 154, 154);'>"
-			    + "</span></p><p style='text-align: left; margin-top: 10px; color: rgb(152, 158, 163); font-size: 11px; font-family: Malgun Gothic; letter-spacing: -0.5px; margin-left: 40px;'><span style='color: rgb(154, 154, 154);'>Copyright WeSellGlobal All Rights Reserved.</span></p>"
-			    + "</td></tr></tbody></table></div>";
+			
+			Context context = new Context();
+		    context.setVariable("memNick", input.getMemNick());
+			String htmlContent = emailTemplateEngine.process("welcomeMail", context);
 			
 			String subject = "셀러매치 가입을 환영합니다.";
-			mailHelper.sendMail(memId, subject, content);	
+			mailHelper.sendMail(memId, subject, htmlContent);	
 
 		} catch (Exception e) {
 			e.printStackTrace();

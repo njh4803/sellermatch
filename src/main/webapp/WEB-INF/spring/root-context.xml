@@ -23,14 +23,14 @@
         <!-- Mapper 파일들이 위치할 '/src/main/resources' 하위의 경로 -->
         <prop key="mapperPath">/mappers/**/*Mapper.xml</prop>
     </util:properties>
-       
+ 
 	<!-- gmail helper -->
 	<util:properties id="config">
 	   <prop key="encType">UTF-8</prop>
 	   <!-- <prop key="smtpHost">smtps.gmail.com</prop> -->
-	   <prop key="smtpPort">587</prop>
-	   <prop key="smtpUsername">njh4803@gmail.com</prop>
-	   <prop key="smtpPassword">xxnkjmrnnnjczrjm</prop>
+	   <prop key="smtpPort">465</prop>
+	   <prop key="smtpUsername">sellermatch3@daum.net</prop>
+	   <prop key="smtpPassword">090612!23a</prop>
 	   <!-- 업로드 디렉토리 -->
 	   <prop key="uploadDir">/home/ec2-user/usr/local/img</prop>
 	   <!-- <prop key="uploadDir">/usr/local/img</prop> -->
@@ -48,12 +48,12 @@
         <property name="defaultEncoding" value="#{config['encType']}" />
         <property name="javaMailProperties">
             <props>
-            	<prop key="mail.smtp.host">smtp.gmail.com</prop>
+            	<prop key="mail.smtp.host">smtp.daum.net</prop>
                 <prop key="mail.smtp.starttls.enable">true</prop>
                 <prop key="mail.smtp.auth">true</prop>
                 <prop key="mail.smtp.debug">true</prop>
                 <prop key="mail.smtp.socketFactory.port">#{config['smtpPort']}</prop>
-                <!-- <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> -->
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
                 <prop key="mail.smtp.socketFactory.fallback">false</prop>
             </props>
         </property>
@@ -108,5 +108,19 @@
         <property name="defaultEncoding" value="#{config['encType']}" />
         <!-- 업로드에서 사용할 최대 메모리 크기 (0으로 지정할 경우 제한없음) -->
         <property name="maxInMemorySize" value="0" />
-    </bean>			
+    </bean>
+    <bean id="emailTemplateResolver"
+  class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+  <property name="prefix" value="/WEB-INF/mailTemplate/" />
+  <property name="suffix" value=".html" />
+  <property name="templateMode" value="HTML" />
+  <property name="characterEncoding" value="UTF-8" />
+  <property name="cacheable" value="false" />
+</bean>
+
+<bean id="emailTemplateEngine"
+  class="org.thymeleaf.spring4.SpringTemplateEngine">
+  <property name="templateResolver" ref="emailTemplateResolver" />
+</bean>
+    
 </beans>
