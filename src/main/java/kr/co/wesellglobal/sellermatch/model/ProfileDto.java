@@ -1,12 +1,12 @@
 package kr.co.wesellglobal.sellermatch.model;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.io.Serializable;
 
 import lombok.Data;
 
 //프로필 
 @Data
-public class ProfileDto {
+public class ProfileDto implements Serializable{
 
     // 자동번호 
     private int profileIdx;

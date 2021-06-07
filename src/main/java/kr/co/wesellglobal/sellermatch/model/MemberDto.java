@@ -1,12 +1,13 @@
 package kr.co.wesellglobal.sellermatch.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import lombok.Data;
 
 //회원리스트 
 @Data
-public class MemberDto {
+public class MemberDto implements Serializable{
 
 	private int memIdx;		// 자동번호
 	private String memId;	// 회원고유번호 이메일 계정
