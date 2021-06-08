@@ -629,7 +629,15 @@ $(document).ready(function() {
 	}
 	
 	$(document).on("click", ".s-link", function(){
-		
+		var login_id = $('#projectInsert').data('member');
+		if (login_id == '') {
+			swal({
+                title: '알림',
+                text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
 		var idx = $(this).attr('data-index');
 		var profileMemIdx = $("#profileMemIdx"+idx).val();
 		window.location.href = ROOT_URL+"/seller/detail?profileMemIdx="+profileMemIdx;

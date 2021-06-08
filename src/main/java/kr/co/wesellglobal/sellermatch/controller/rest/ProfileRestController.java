@@ -297,12 +297,11 @@ public class ProfileRestController {
 
 		data.put("profileIndus", input.getProfileIndus());
 		
-		// 프로필 등록 후 세션 재설정
-        if ( session.getAttribute("profile") !=null ){
-            // 기존에 profile 세션 값이 존재한다면
-        	session.removeAttribute("profile");// 기존값을 제거해 준다.
-        }
-        session.setAttribute("profile", input);
+		/*
+		 * // 프로필 등록 후 세션 재설정 if ( session.getAttribute("profile") !=null ){ // 기존에
+		 * profile 세션 값이 존재한다면 session.removeAttribute("profile");// 기존값을 제거해 준다. }
+		 * session.setAttribute("profile", input);
+		 */
 		
 		return webHelper.getJsonData(data);
 	};

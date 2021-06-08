@@ -600,6 +600,15 @@ $(document).ready(function() {
 
 	
 	$(document).on("click", ".proj-link", function(){
+		var login_id = $('#projectInsert').data('member');
+		if (login_id == '') {
+			swal({
+                title: '알림',
+                text: '로그인 후 이용가능합니다.',
+               	type: 'warning',
+            });
+			return;
+		}
 		
 		var idx = $(this).data('index');
 		var projId = $("#projId"+idx).val();

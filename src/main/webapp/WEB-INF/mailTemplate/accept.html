@@ -24,7 +24,7 @@
                             <div style="text-align: left;color: #697d71;font-size: 14px;line-height: 21px;font-family: NanumSquare_ac;">
                                 <div style="Margin-left: 20px;Margin-right: 20px;Margin-top: 12px;">
                                     <div style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
-                                        <h1 style="Margin-top: 35px;Margin-bottom: 35px;font-style: normal;font-weight: bold;color: #47805e;font-size: 30px;line-height: 32px;font-family: NanumSquare_ac;text-align: center;" lang="x-size-28"><span><span style="color:#151513">셀러매치 가입을 환영합니다!</span></span></h1>
+                                        <h1 style="Margin-top: 35px;Margin-bottom: 35px;font-style: normal;font-weight: bold;color: #47805e;font-size: 30px;line-height: 32px;font-family: NanumSquare_ac;text-align: center;" lang="x-size-28"><span><span style="color:#151513">셀러매치 거래 승인알림이 도착했습니다!</span></span></h1>
                                     </div>
                                 </div>
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
@@ -38,8 +38,8 @@
                                 </div>
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
                                     <div style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
-                                        <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;text-align: left;"><span style="color:#151513">안녕하세요, </span> <span style="color:#151513" th:text="${memNick}"></span> <span style="color:#151513">님!</span></h3>
-                                        <h3 style="Margin-top: 12px;Margin-bottom: 12px;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;"><span style="color:#151513">셀러매치에 가입해주셔서 감사합니다.</span></h3>
+                                        <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;text-align: left;"><span style="color:#151513">안녕하세요 </span></h3>
+                                        <h3 style="Margin-top: 12px;Margin-bottom: 12px;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;"><span style="color:#151513">저희 셀러매치를 이용해 주셔서 감사합니다.</span></h3>
                                     </div>
                                 </div>
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
@@ -48,8 +48,9 @@
 
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
                                     <div style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
-                                        <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;text-align: left;"><span style="color:#151513">판매자와 공급자를 잇는 공간,</span></h3>
-                                        <h3 style="Margin-top: 12px;Margin-bottom: 12px;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;"><span style="color:#151513">셀러매치는 단순한 도매사이트가 아닙니다.</span></h3>
+                                        <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;text-align: left;"><span style="color:#151513">회원님이</span><span style="color:#151513" th:text="${applyTypeName}"></span><span style="color:#151513">하신</span></h3>
+                                        <h3 style="Margin-top: 12px;Margin-bottom: 12px;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;">
+                                            <span style="color:#151513">[</span><span style="color:#151513" th:text="${projTitle}"></span><span style="color:#151513">]매칭이 승인되어 안내드립니다.</span></h3>
                                     </div>
                                 </div>
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
@@ -57,64 +58,15 @@
                                 </div>
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
                                     <div style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
-                                        <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;text-align: left;"><span style="color:#151513">거래처 매칭 1회만 등록하면</span></h3>
-                                        <h3 style="Margin-top: 12px;Margin-bottom: 12px;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;"><span style="color:#151513">가장 쉽고, 빠르고, 효율적인 거래를 할 수 있습니다.</span></h3>
+                                        <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;text-align: left;"><span style="color:#151513">마이페이지 > 지원한 거래에서</span></h3>
+                                        <h3 style="Margin-top: 12px;Margin-bottom: 12px;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;"><span style="color:#151513">[</span><span style="color:#151513" th:text="${memSortName}"></span><span style="color:#151513">]분의 연락처를 확인해 보세요!</span></h3>
                                     </div>
                                 </div>
                                 <div style="Margin-left: 20px;Margin-right: 20px;">
                                     <div style="mso-line-height-rule: exactly;line-height: 25px;font-size: 1px;">&nbsp;</div>
                                 </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px; margin-bottom: 30px;">
-                                    <div style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
-                                        <h3 style="Margin-top: 0;Margin-bottom: 12px;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;text-align: left;"><span style="color:#151513">앞으로 더욱 좋은 서비스로 보답하겠습니다.</span></h3>
-                                    </div>
-                                </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px;">
-                                    <div style="mso-line-height-rule: exactly;line-height: 25px;font-size: 1px;">&nbsp;</div>
-                                </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px;">
-                                    <div style="mso-line-height-rule: exactly;line-height: 5px;font-size: 1px;">&nbsp;</div>
-                                </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px;">
-                                    <div style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
-                                        <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: bold;color: #d1e9dc;font-size: 18px;line-height: 24px;font-family: NanumSquare_ac;"><span style="color:#151513">셀러매치의 특징</span></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
-                        <div style="border-collapse: collapse;display: table;width: 100%;background-color: #ffffff;">
-                            <div style="text-align: left;color: #697d71;font-size: 14px;line-height: 21px;font-family: NanumSquare_ac;max-width: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float: left;">
-                                <div style="Margin-left: 20px;Margin-right: 20px;Margin-top: 12px;">
-                                    <div style="mso-line-height-rule: exactly;line-height: 5px;font-size: 1px;">&nbsp;</div>
-                                </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px;">
-                                    <div style="Margin-bottom: 20px;text-align: center;">
-                                        <a style="border-radius: 4px;display: block;font-size: 18px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #ff6224;font-family: NanumSquare_ac;" href="https://private.cmail19.com/t/y-i-ojkuttl-l-y/" rel="noopener noreferrer" target="_blank">돈되는, 팔만한 물건 찾기 OK</a>
-                                    </div>
-                                </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px;Margin-bottom: 12px;">
-                                    <div style="text-align: center;">
-                                        <a style="border-radius: 4px;display: block;font-size: 18px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #ff6224;font-family: NanumSquare_ac;" href="https://private.cmail19.com/t/y-i-ojkuttl-l-j/" rel="noopener noreferrer" target="_blank">조건에 맞는 공급제안 받기 OK</a>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="text-align: left;color: #697d71;font-size: 14px;line-height: 21px;font-family: NanumSquare_ac;max-width: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float: left;">
-                                <div style="Margin-left: 20px;Margin-right: 20px;Margin-top: 12px;">
-                                    <div style="mso-line-height-rule: exactly;line-height: 5px;font-size: 1px;">&nbsp;</div>
-                                </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px;">
-                                    <div style="Margin-bottom: 20px;text-align: center;">
-                                        <a style="border-radius: 4px;display: block;font-size: 18px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #ff6224;font-family: NanumSquare_ac;" href="https://private.cmail19.com/t/y-i-ojkuttl-l-t/" rel="noopener noreferrer" target="_blank">잘파는, 검증된 판매자 찾기 OK</a>
-                                    </div>
-                                </div>
-                                <div style="Margin-left: 20px;Margin-right: 20px;Margin-bottom: 12px;">
-                                    <div style="text-align: center;">
-                                        <!--[if !mso]--><a style="border-radius: 4px;display: block;font-size: 18px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #ff6224;font-family: NanumSquare_ac;" href="https://private.cmail19.com/t/y-i-ojkuttl-l-i/" rel="noopener noreferrer" target="_blank">간편한 제안서 보내기OK</a>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -160,16 +112,6 @@
                                     <div emb-flexible-footer-logo="" align="center"></div>
                                 </div>
                             </div>
-                            <div style="text-align: left;font-size: 12px;line-height: 19px;color: #47805e;font-family: NanumSquare_ac;display: none;">
-                                <div style="margin-left: 0;margin-right: 0;Margin-top: 10px;Margin-bottom: 10px;">
-                                    <div>
-
-
-
-
-                                    </div>
-                                </div>
-                            </div>
                             <table style="border-collapse: collapse;table-layout: fixed;display: inline-block;width: 585px;" cellpadding="0" cellspacing="0">
                                 <tbody>
                                     <tr>
@@ -185,7 +127,6 @@
                                                             <p style="Margin-top: 0;Margin-bottom: 0;font-family: NanumSquare_ac;"><span><span style="color:#ffffff">본 메일은 발신전용 이메일 입니다.</span></span></p>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </td>
