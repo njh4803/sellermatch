@@ -98,9 +98,9 @@ label.error {
 																<thead>
 																	<tr class="replace-inputs">
 																		<th class="text-center" style="vertical-align:middle;">일자</th>
-																		<th class="text-center" style="vertical-align:middle;">회원가입자수</th>
-																		<th class="text-center" style="vertical-align:middle;">가입판매자수</th>
-																		<th class="text-center" style="vertical-align:middle;">가입공급자수</th>
+																		<th class="text-center" style="vertical-align:middle;">회원가입</th>
+																		<th class="text-center" style="vertical-align:middle;">판매자 가입</th>
+																		<th class="text-center" style="vertical-align:middle;">공급자 가입</th>
 																	</tr>
 																</thead>
 															</table>

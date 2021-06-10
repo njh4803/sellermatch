@@ -420,6 +420,7 @@ $(document).ready(function(){
 		        profileCh: 'required',
 		     	// [등록자 지역] 필수
 		        profileNation: 'required',
+		        profileBizSort : 'required',
 		    },
 		    messages: {
 		        profileIntro: {
@@ -430,6 +431,7 @@ $(document).ready(function(){
 		        profileIndus: '상품분류를 선택해주세요.',
 		        profileCh: '채널을 선택해주세요.',
 		        profileNation: '등록자 지역을 선택해주세요.',
+		        profileBizSort : '사업자 유형을 선택해 주세요.',
 		    }
 		});
 	});

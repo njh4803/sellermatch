@@ -215,7 +215,9 @@
 								<c:if test="${output.memState == 0}">
 									<div class="seller-status">활동중</div>
 								</c:if>
+								<c:if test="${output.profileBizSortName != null && output.profileBizSortName != ''}">
 								<div class="profileBizSort">${output.profileBizSortName}</div>
+								</c:if>
 							</div>
 							<div class="nick">
 								${output.memNick}
