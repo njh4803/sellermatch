@@ -10,13 +10,16 @@
 <div class="bnr">
 	<div class="main-0000" style="background-image: url('${pageContext.request.contextPath}/assets/img/main0000.png');">
 	 	<div class="main-000">
-<%--  		 	<div class="popup" id="popup_1">
-				<img alt="" src="${pageContext.request.contextPath}/assets/img/event.png">
-				<div class="popup-btnBox">
-					<button id="today">오늘하루 보지않기</button>
-					<button class="popup-close">닫기</button>
+  		 	<div class="popup" id="popup_1" style="background-color:#000000;">
+				<img alt="" src="${pageContext.request.contextPath}/assets/img/popup_1.png"  usemap="#maptag">
+				<map name="maptag">
+					<area shape="rect" coords="130,375,300,410" href="https://forms.gle/FJMWitTgJyvSELneA" title="설문조사" target="_blank">
+				</map>
+				<div class="popup-btnBox" style="background-color:#000000;">
+					<button id="today"  style="color:#ffffff; margin-left: 10px;">오늘하루 보지않기</button>
+					<button class="popup-close"  style="color:#ffffff; margin-right: 10px;">닫기</button>
 				</div>
-			</div> --%>
+			</div>
 	 		<div style="display: inline-block;">
 	 			<div class="main-001">
 		   	        셀러매치는<br>
@@ -423,14 +426,14 @@
 $(document).ready(function() {
 	
 	/* 메인 이벤트팝업 노출 *//* 이벤트팝업 쿠키 설정 */
-/* 	$('.popup').show();
+ 	$('.popup').show();
 	
 	cookiedata = document.cookie;
 	if ( cookiedata.indexOf("popup_1=N") < 0 ){ //쿠키 변경 여부 불러오기
 		document.all['popup_1'].style.visibility = "visible";
 	} else {
 		document.all['popup_1'].style.display = "none";
-	} */
+	} 
 
 	// 오늘하루 보지않기 버튼
 	$('#today').on('click', function(){

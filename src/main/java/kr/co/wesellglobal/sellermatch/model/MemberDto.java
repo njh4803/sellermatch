@@ -52,7 +52,11 @@ public class MemberDto implements Serializable{
 	private String withdrawAuthCode; //회원탈퇴 인증코드
 	private String withdrawReason;	//탈퇴사유 선택
 	private String withdrawReasonText; //탈퇴사유 문장
-	private String withdrawDate; //탈퇴일자
+	private String withdrawDate; //탈퇴일자'
+	
+	private int totalCnt;
+	private int proCnt;
+	private int selCnt;
 	
 	private int withdrawIdx;
 	

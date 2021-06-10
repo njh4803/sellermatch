@@ -109,4 +109,16 @@ public class AdminMemberController {
 		}
 		return new ModelAndView("admin/member_add");
 	}
+	
+	@RequestMapping(value = "/admin/memberStats", method = RequestMethod.GET)
+	public ModelAndView adminMemberStats(Model model,  @SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return new ModelAndView("admin/admin_login");
+		}
+		
+		if (!member.getMemSort().equals("3")) {
+			return webHelper.redirect("temp", "관리자만 접근 가능합니다.");
+		}
+		return new ModelAndView("admin/member_stats");
+	}
 }

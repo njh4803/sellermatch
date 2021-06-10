@@ -29,6 +29,7 @@ response.setDateHeader("Expires", 0L); // Do not cache in proxy server
         
          
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         
 		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
 		
@@ -181,6 +182,20 @@ header #m-search_frm{
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PF9XWLH"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<script type="text/javascript">
+window.onload = function(){
+    var browse = navigator.userAgent.toLowerCase(); 
+    if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
+         alert("본 사이트는 크롬버전에 최적화되어있습니다. 크롬브라우저를 이용해 주세요.");        
+         window.location.href = "https://www.google.co.kr/chrome";
+    }
+
+/*     var isMobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ? true : false;
+    if(isMobile){
+    	window.location.href = "https://m.sellermatch.co.kr";
+    } */
+};
+</script>
 <script type="text/javascript">
 $(function(){
 	

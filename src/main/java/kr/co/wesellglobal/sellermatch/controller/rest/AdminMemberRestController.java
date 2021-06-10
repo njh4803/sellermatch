@@ -386,6 +386,22 @@ public class AdminMemberRestController {
 		return webHelper.getJsonData(data);
 	}
 	
+	@RequestMapping(value = "/admin/memberStats", method = RequestMethod.POST)
+	public Map<String, Object> getMemberStats() {
+		List<MemberDto> result = null;
+		MemberDto input = new MemberDto();
+		
+		try {
+		result = memberService.getMemberStats(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("data", result);
+		
+		return webHelper.getJsonData(data);
+	}
+	
 	
 
 }

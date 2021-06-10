@@ -48,7 +48,12 @@
         <result property="withdrawReasonText" column="WITHDRAW_REASON_TEXT" />
         <result property="withdrawDate" column="WITHDRAW_DATE" />
         <result property="withdrawIdx" column="WITHDRAW_IDX" />
-       
+        
+        <result property="memDate" column="JOIN_DATE" />
+        <result property="totalCnt" column="TOTAL_CNT" />
+        <result property="proCnt" column="PRO_CNT" />
+        <result property="selCnt" column="SEL_CNT" />
+       	
     </resultMap> 
     
     <insert id="insertItem"
@@ -274,5 +279,26 @@
     	FROM TB_WITHDRAW_REASON
 		ORDER BY WITHDRAW_IDX
     </select>
+
+    <select id="memberStats"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto"
+    	resultMap="MemberMap">
+			SELECT 
+				JOIN_DATE,
+				TOTAL_CNT,
+				PRO_CNT,
+				SEL_CNT
+			FROM (
+				SELECT 
+					DATE_FORMAT(mem_date,'%Y-%m-%d') AS JOIN_DATE,
+					COUNT(1) AS TOTAL_CNT,
+					COUNT(CASE WHEN MEM_SORT = 1 THEN 1 END) AS PRO_CNT,
+					COUNT(CASE WHEN MEM_SORT = 2 THEN 1 END) AS SEL_CNT
+				FROM MemList
+				GROUP BY DATE_FORMAT(mem_date,'%Y-%m-%d')
+			) A
+			ORDER BY JOIN_DATE DESC
+    </select>    
+    
     
 </mapper>
