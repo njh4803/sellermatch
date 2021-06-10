@@ -135,6 +135,7 @@
 		AND p.proj_mem_id = pf.profile_mem_id
 		AND p.proj_state = '1'
 		AND p.proj_mem_id = #{projMemId}
+		ORDER BY p.PROJ_REG_DATE DESC
 	</select>
 	<select id="selectpMyProjectCount"
     	parameterType="kr.co.wesellglobal.sellermatch.model.myPageDto"
@@ -203,6 +204,7 @@
 		AND p.proj_mem_id = pf.profile_mem_id
 		AND S.MEM_IDX = m.Mem_idx
 		AND m.mem_id = #{memId}
+		ORDER BY S.FRST_REGIST_DT DESC
 	</select>
 	
 	<select id="selectMyApplyList"
@@ -260,6 +262,7 @@
 		AND p.Proj_mem_id  = ml.Mem_id
 		AND p.proj_state = '2'
 		AND p.proj_mem_id = #{projMemId}
+		ORDER BY proj_end_date DESC
 	</select>
 	
 	<select id="selectRecommandListForPro"
@@ -290,6 +293,7 @@
 		AND al.apply_mem_id  = ml.Mem_id
 		AND al.Apply_type = '2'
 		AND p.Proj_mem_id = #{memId}
+		ORDER BY al.Apply_reg_date DESC
 	</select>
 	
 	<select id="selectRecommandListForSell"
@@ -321,5 +325,6 @@
 		AND p.Proj_mem_id = ml.Mem_id
 		AND al.Apply_type = '2'
 		AND al.Apply_mem_id = #{memId}
+		ORDER BY al.Apply_reg_date DESC
 	</select>
 </mapper>

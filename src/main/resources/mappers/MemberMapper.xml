@@ -103,6 +103,9 @@
 			<if test="memSort != null and memSort != ''">
 				AND mem_Sort = #{memSort}
 			</if>
+			<if test="memDate != null and memDate != ''">
+				AND DATE_FORMAT(mem_date,'%Y.%m.%d') = #{memDate}
+			</if>
 		</where>
 		ORDER BY mem_date DESC
 			LIMIT #{offset}, #{listCount}
@@ -224,6 +227,9 @@
 			</if>
 			<if test="memSort != null and memSort != ''">
 				AND mem_Sort = #{memSort}
+			</if>
+			<if test="memDate != null and memDate != ''">
+				AND DATE_FORMAT(mem_date,'%Y.%m.%d') = #{memDate}
 			</if>
 		</where>
 	</select>

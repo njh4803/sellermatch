@@ -64,6 +64,12 @@ label.error {
     font-weight: 600;
     margin-left: 18px;
 }
+.btn-secondary  {
+	height: 34px;
+}
+#joinDate{
+	margin-left: 10px;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -101,6 +107,7 @@ label.error {
                                                     <div class="card-header">
 	                                                    <form id="search-form" name="search-form" class="form" method="get" action="${pageContext.request.contextPath}/admin/memberList">
 	                                                        <div class="form-group row">
+	                                                        	
 	                                                    		<div class="col-sm-8">
 		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberAddModal">회원 등록</button>
 		                                                    		<div class="btn-group btn-group-toggle" data-toggle="buttons" style="float: right;">
@@ -110,10 +117,11 @@ label.error {
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter2" value="2">판매자</label> 
 																	<label class="btn btn-secondary <c:if test="${memSortFilter == '1'}">active</c:if>" data-value="1"  data-page="" data-keyword="${keyword}"> 
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter1" value="1">공급자</label>
-																</div>
+																	<input class="form-control col-sm-10" type="text" data-language="ko" name="joinDate" id="joinDate" placeholder="일자별 조회" value="${joinDate}"/>
+																	</div>
 		                                                    	</div>
 		                                                        <div class="col-sm-4" style="float: right;">
-		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어">
+		                                                            <input name="keyword" type="search" class="form-control col-sm-10" placeholder="검색어" >
 		                                							<div class="col-sm-2" style="padding: 0;">
 			                                                        	<button type="submit" class="btn btn-primary">조회</button>
 			                                                        </div>
@@ -249,6 +257,7 @@ label.error {
 																			                <c:param name="page" value="${pageData.prevPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
 																			                <c:param name="memSortFilter" value="${memSortFilter}" />
+																			                <c:param name="joinDate" value="${joinDate}" />
 																			            </c:url>
 																			            <li><a href="${prevPageUrl}">&laquo;</a></li>
 																			        </c:when>
@@ -264,6 +273,8 @@ label.error {
 																			            <c:param name="page" value="${i}"/>
 																			            <c:param name="keyword" value="${keyword}"/>
 																			            <c:param name="memSortFilter" value="${memSortFilter}" />
+																			            <c:param name="joinDate" value="${joinDate}" />
+																			            
 																			        </c:url>
 																			        
 																			        <%-- 페이지 번호 출력 --%>
@@ -288,6 +299,7 @@ label.error {
 																			                <c:param name="page" value="${pageData.nextPage}" />
 																			                <c:param name="keyword" value="${keyword}" />
 																			                <c:param name="memSortFilter" value="${memSortFilter}" />
+																			                <c:param name="joinDate" value="${joinDate}" />
 																			            </c:url>
 																			            <li><a href="${nextPageUrl}">&raquo;</a></li>
 																			        </c:when>
@@ -321,6 +333,13 @@ label.error {
             </div>
         </div>
     </div>
+<link href="${pageContext.request.contextPath}/plugins/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/plugins/air-datepicker/dist/js/datepicker.js"></script>
+<script>
+var myDataPicker = $('#joinDate').datepicker({
+	autoClose : true
+});
+</script>
 <script type="text/javascript">
 $(document).on("click",".m-modal",function(event){
 	var parent = event.target.parentNode;

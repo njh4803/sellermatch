@@ -109,7 +109,7 @@
 		AND p.proj_id = a.Apply_proj_id
 		AND a.apply_mem_id = m.mem_id
 		AND a.apply_mem_id = pf.profile_mem_id
-		ORDER BY proj_reg_date DESC
+		ORDER BY a.Apply_reg_date DESC
     </select>
     
     <select id="selectItem"
