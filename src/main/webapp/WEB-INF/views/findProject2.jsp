@@ -600,7 +600,7 @@ $(document).ready(function() {
 
 	
 	$(document).on("click", ".proj-link", function(){
-/* 		var login_id = $('#projectInsert').data('member');
+ 		var login_id = $('#projectInsert').data('member');	//로그인 시에만 상세 확인가능
 		if (login_id == '') {
 			swal({
                 title: '알림',
@@ -608,7 +608,7 @@ $(document).ready(function() {
                	type: 'warning',
             });
 			return;
-		} */
+		} 
 		
 		var idx = $(this).data('index');
 		var projId = $("#projId"+idx).val();
