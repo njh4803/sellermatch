@@ -111,11 +111,11 @@ label.error {
 	                                                    		<div class="col-sm-8">
 		                                                    		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberAddModal">회원 등록</button>
 		                                                    		<div class="btn-group btn-group-toggle" data-toggle="buttons" style="float: right;">
-																	<label class="btn btn-secondary <c:if test="${memSortFilter == '0'}">active</c:if>" data-value="0" data-page="" data-keyword="${keyword}">
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '0'}">active</c:if>" data-value="0" data-page="" data-keyword="${keyword}" data-date="${joinDate}">
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter0" value="0">전체</label> 
-																	<label class="btn btn-secondary <c:if test="${memSortFilter == '2'}">active</c:if>" data-value="2"  data-page="" data-keyword="${keyword}"> 
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '2'}">active</c:if>" data-value="2"  data-page="" data-keyword="${keyword}" data-date="${joinDate}"> 
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter2" value="2">판매자</label> 
-																	<label class="btn btn-secondary <c:if test="${memSortFilter == '1'}">active</c:if>" data-value="1"  data-page="" data-keyword="${keyword}"> 
+																	<label class="btn btn-secondary <c:if test="${memSortFilter == '1'}">active</c:if>" data-value="1"  data-page="" data-keyword="${keyword}" data-date="${joinDate}"> 
 																		<input type="radio" class="memSortFilter" name="memSortFilter" id="memSortFilter1" value="1">공급자</label>
 																	<input class="form-control col-sm-10" type="text" data-language="ko" name="joinDate" id="joinDate" placeholder="일자별 조회" value="${joinDate}"/>
 																	</div>
@@ -464,7 +464,8 @@ $(document).ready(function(){
     	var memSortFilter =  $(this).attr("data-value");
     	var dataPage =  $(this).attr("data-page");
     	var dataKeyWord =  $(this).attr("data-keyword");
-    	location.href="/admin/memberList?memSortFilter="+memSortFilter;
+    	var joinDate =  $(this).attr("data-date");
+    	location.href="/admin/memberList?memSortFilter="+memSortFilter+"&joinDate="+joinDate;
     }) 
     
 });

@@ -105,9 +105,9 @@ $(document).ready(function() {
 <!-- 채널톡 -->
 <!-- Channel Plugin Scripts -->
 <script>
-	var mail = $("#mail").val();
-	var tel = $("#tel").val();
-	var nick = $("#nick").val();
+	var mail = $("#mail").val();	//회원메일세팅
+	var tel = $("#tel").val();		//회원전화번호세팅
+	var nick = $("#nick").val();	//회원닉네임세팅
 	if(mail=='') {
 		mail = null;
 	}
@@ -155,11 +155,11 @@ $(document).ready(function() {
   })();
   ChannelIO('boot', {
     "pluginKey": "a3beb0c0-ce0f-4bf1-a220-f4364195f561", //please fill with your plugin key
-        "memberId": mail, //fill with user id
+        "memberId": mail, //회원아이디(이메일) 적용
         "profile": {
-          "name": nick, //fill with user name
-          "mobileNumber": tel, //fill with user phone number,
-          "email": mail
+          "name": nick, //회원닉네임적용
+          "mobileNumber": tel, //회원전화번호적용
+          "email": mail	//회원메일 적용
         }
     
   });

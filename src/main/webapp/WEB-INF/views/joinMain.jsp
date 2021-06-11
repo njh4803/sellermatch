@@ -24,15 +24,15 @@
 			        	<img class="mail" alt="" src="${pageContext.request.contextPath}/assets/img/mail_2.png">
 			        	<a>이메일로 회원가입</a>
 			        </div>
-			        <div class="joinBox naver" OnClick="location.href ='${ naver_url }'" style="cursor:pointer;">
+			        <div class="joinBox naver" OnClick="location.href ='${cookie.naver_url.value}'" style="cursor:pointer;">
 			        	<img alt="" src="${pageContext.request.contextPath}/assets/img/naver_2.png">
 			        	<a>네이버로 회원가입</a>
 			        </div>
-			        <div class="joinBox kakao" OnClick="location.href ='${ kakao_url }'" style="cursor:pointer;">
+			        <div class="joinBox kakao" OnClick="location.href ='${cookie.kakao_url.value}'" style="cursor:pointer;">
 			        	<img alt="" src="${pageContext.request.contextPath}/assets/img/kakao_2.png">
 			        	<a>카카오톡으로 회원가입</a>
 			        </div>
-			        <div class="joinBox google" OnClick="location.href ='${ google_url }'" style="cursor:pointer;">
+			        <div class="joinBox google" OnClick="location.href ='${cookie.google_url.value}'" style="cursor:pointer;">
 			        	<img alt="" src="${pageContext.request.contextPath}/assets/img/google_2.png">
 			        	<a>구글계정으로 회원가입</a>
 			        </div>
