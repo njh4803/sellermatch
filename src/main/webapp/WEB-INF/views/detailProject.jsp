@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link href="${pageContext.request.contextPath}/assets/css/detailProject.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/share.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr m-detail">
@@ -109,11 +110,11 @@
 				<div class="detailBox3">상세설명
 					<div class="textBox1">
 						${output.projDetail}
-						<c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
+						<%-- <c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
 							<div class="detailImgBox">
 								<img alt="" src="${pageContext.request.contextPath}/upload?name=${projDetailImgList}">
 							</div>
-						</c:forEach>
+						</c:forEach> --%>
 					</div>
 				</div>
 				<div class="detailBox3">필수요건
@@ -176,7 +177,15 @@
        		</div>
 			<div class="text-center">
 				<c:if test="${output.profilePhoto != null}">
-					<img class="profileImgBox"  src="upload/${output.profilePhoto}">
+					<%-- <img class="profileImgBox"  src="upload/${output.profilePhoto}"> --%>
+					<c:choose>
+						<c:when test="${fn:indexOf(output.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+							<img class="profileImgBox"  src="/upload/${output.profilePhoto}">
+						</c:when>
+						<c:otherwise>
+							<img class="profileImgBox"  src="${output.profilePhoto}">
+						</c:otherwise>
+					</c:choose>
 				</c:if>
 				<c:if test="${output.profilePhoto == null}">
 					<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
@@ -334,11 +343,11 @@
 				<div class="detailBox3"><span>상세설명</span>
 					<div class="textBox1">
 						<p>${output.projDetail}</p>
-						<c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
+						<%-- <c:forEach var="projDetailImgList" items="${output.projDetailImgList}">
 							<div class="detailImgBox">
 								<img alt="" src="${pageContext.request.contextPath}/upload?name=${projDetailImgList}">
 							</div>
-						</c:forEach>
+						</c:forEach> --%>
 					</div>
 				</div>
 				<div class="detailBox3"><span>필수요건</span>
@@ -368,7 +377,15 @@
 						<div class="fileBox">
 							<div class="fileInfo">
 								${output.orginName}
-								<a class="download" href="/upload/${output.projFile}" download="${output.orginName}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a>
+								<%-- <a class="download" href="/upload/${output.projFile}" download="${output.orginName}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a> --%>
+								<c:choose>
+									<c:when test="${fn:indexOf(output.projFile, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+										<a class="download" href="/upload/${output.projFile}" download="${output.orginName}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a>
+									</c:when>
+									<c:otherwise>
+										<a class="download" href="${output.projFile}" download="${output.orginName}" style="background: url('${pageContext.request.contextPath}/assets/img/download.png');"></a>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>				
@@ -446,7 +463,15 @@
 			<div class="text-center">
 				<c:choose>
 					<c:when test="${output.profilePhoto != null}">
-						<img class="profileImgBox"  src="${pageContext.request.contextPath}/upload/${output.profilePhoto}">
+						<%-- <img class="profileImgBox"  src="${pageContext.request.contextPath}/upload/${output.profilePhoto}"> --%>
+						<c:choose>
+							<c:when test="${fn:indexOf(output.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+								<img class="profileImgBox"  src="/upload/${output.profilePhoto}">
+							</c:when>
+							<c:otherwise>
+								<img class="profileImgBox"  src="${output.profilePhoto}">
+							</c:otherwise>
+						</c:choose>
 					</c:when>
 					<c:otherwise>
 						<img class="profileImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">
@@ -479,7 +504,15 @@
 					<div class="applyBox">
 						<c:choose>
 							<c:when test="${applyDto.profilePhoto != null}">
-								<img class="miniImgBox"  src="${pageContext.request.contextPath}/upload/${applyDto.profilePhoto}">
+								<%-- <img class="miniImgBox"  src="${pageContext.request.contextPath}/upload/${applyDto.profilePhoto}"> --%>
+								<c:choose>
+									<c:when test="${fn:indexOf(applyDto.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+										<img class="miniImgBox"  src="/upload/${applyDto.profilePhoto}">
+									</c:when>
+									<c:otherwise>
+										<img class="miniImgBox"  src="${applyDto.profilePhoto}">
+									</c:otherwise>
+								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<img class="miniImgBox"  src="${pageContext.request.contextPath}/assets/img/profile.png">

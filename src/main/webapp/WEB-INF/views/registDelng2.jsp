@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css"
@@ -34,8 +35,18 @@
 		    			</div>
 		    			</c:if>
 		    			<div class="imageBox">
-		    			<c:if test="${profile.profilePhoto != null}">
+		    			<%-- <c:if test="${profile.profilePhoto != null}">
 							<img id="profile-img" src="${pageContext.request.contextPath}/upload/${profile.profilePhoto}"/>
+						</c:if> --%>
+						<c:if test="${profile.profilePhoto != null}">
+							<c:choose>
+								<c:when test="${fn:indexOf(profile.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+									<img class="photoBox" alt="" src="https://www.sellermatch.co.kr/upload/${profile.profilePhoto}">
+								</c:when>
+								<c:otherwise>
+									<img class="photoBox" alt="" src="${profile.profilePhoto}">
+								</c:otherwise>
+							</c:choose>
 						</c:if>
 						<c:if test="${profile.profilePhoto == null}">
 							<img id="profile-img" src="${pageContext.request.contextPath}/assets/img/profile.png"/>

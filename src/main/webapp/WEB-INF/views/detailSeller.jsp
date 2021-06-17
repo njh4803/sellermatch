@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <%@ include file="modal/recommendModal.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link href="${pageContext.request.contextPath}/assets/css/detailSeller.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/share.css" rel="stylesheet" type="text/css">
 <div class="partner_bnr m-detail">
@@ -148,9 +149,17 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						<div class="profileImgBox">
+						<%-- <div class="profileImgBox">
 							<img class="profileImg"  src="/upload/${output.profilePhoto}">
-						</div>
+						</div> --%>
+						<c:choose>
+							<c:when test="${fn:indexOf(output.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+								<img class="profileImg"  src="/upload/${output.profilePhoto}">
+							</c:when>
+							<c:otherwise>
+								<img class="profileImg"  src="${output.profilePhoto}">
+							</c:otherwise>
+						</c:choose>
 					</c:otherwise>	
 				</c:choose>
 				<div class="infoBox1 leftBox">

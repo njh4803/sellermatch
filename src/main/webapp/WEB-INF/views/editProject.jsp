@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- jquery file upload Frame work -->
 <link href="${pageContext.request.contextPath}/template/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/tamplate/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
@@ -33,8 +34,18 @@
 		   							<td>
 		    							<div>
 											<div class="imageBox" style="float: left; width: 150px; height: 150px; overflow: hidden; text-align: center;">
-												<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-											    	src="/upload/${output.projThumbnailImg}"/>
+												<%-- <img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
+											    	src="/upload/${output.projThumbnailImg}"/> --%>
+											    <c:choose>
+													<c:when test="${fn:indexOf(output.projThumbnailImg, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+														<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
+												    	src="/upload/${output.projThumbnailImg}"/>
+													</c:when>
+													<c:otherwise>
+														<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
+												    	src="${output.projThumbnailImg}"/>
+													</c:otherwise>
+												</c:choose>
 											</div>	
 		    								<div>
 		                   		            	<input id = "file_route" type="text" name="file_route" class="formControl" readonly="readonly"/>

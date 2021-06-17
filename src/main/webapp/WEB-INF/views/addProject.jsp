@@ -70,7 +70,8 @@
 	    </c:if>
 		<div class="addbox2 projectAdd">
 		    	<div class="text-center projectBox">
-					<form action="${pageContext.request.contextPath}/project/add" id="proj_form" name="proj_form" method="post" enctype="multipart/form-data">
+					<%-- <form action="${pageContext.request.contextPath}/project/add" id="proj_form" method="POST" enctype="multipart/form-data"> --%>
+					<form id="proj_form" method="POST" >
 						<input type="hidden" name="projSort" value="${member.memSort}">
 						<input type="hidden" name="projMemId" value="${member.memId}">
 						<input type="hidden" name="projState" value="1">
@@ -231,39 +232,7 @@
 										</c:if>
 										<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
 			    						<div class="questionBox">판매자가 판매하는 채널(방식)에 대한 것입니다.</div>										
-									</td>	
-			    					<td>
-				    					<div class="inputForm width-100">
-				    						<div class="row1">
-			                                	<input id="chk1" type="checkbox" name="projChannel" value="1" required="required">
-			                                	<label for="chk1"><span>오픈마켓</span></label>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input id="chk2" type="checkbox" name="projChannel" value="2" required="required">
-			                                	<label for="chk2"><span>종합몰</span></label>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input id="chk3" type="checkbox" name="projChannel" value="3" required="required">
-			                                	<label for="chk3"><span>폐쇄몰</span></label>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input id="chk4" type="checkbox" name="projChannel" value="4" required="required">
-			                                	<label for="chk4"><span>커뮤니티</span></label>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input id="chk5" type="checkbox" name="projChannel" value="5" required="required">
-			                                	<label for="chk5"><span>SNS</span></label>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input id="chk6" type="checkbox" name="projChannel" value="6" required="required">
-			                                	<label for="chk6"><span>오프라인</span></label>
-				                           	</div>
-				                           	<div class="row1">
-			                                	<input id="chk7" type="checkbox" name="projChannel" value="7" required="required">
-			                                	<label for="chk7"><span>해외</span></label>
-				                           	</div>
-				                        </div>
-			    					</td>
+									</td>
 			    				</tr>
 			    				<tr>
 			    					<td>모집 마감일</td>
@@ -419,159 +388,7 @@
 								매칭 등록
 							</button>
 					    </div>
-						<div id="profile_form">
-							<input type="hidden" name="profileId" id="profileId" value="${profile.profileId}">
-							<input type="hidden" name="profileSort" id="profileSort" value="${profile.profileSort}">
-							<input type="hidden" name="profileMemId" id="profileMemId" value="${profile.profileMemId}">
-							<div class="infoContainer">
-								<div>
-									<div>
-										<div style="margin-top: 20px;">
-											<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
-												<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/assets/img/profile.png"/>
-											</div>
-										</div>
-										<div style="">
-											<input id = "file_route3" type="text" class="form-control" style="display:none; border: none;" readonly="readonly"/>
-												<label class="fileLable">사진 선택
-													<input id="profile-image" name="profilePhotoFile" class="jFiler-input-button" style="display: none" type="file" 
-													onchange="javascript:document.getElementById('file_route3').value=this.value" accept=".jpg,.jpeg,.png,.gif,.bmp"/>
-												</label>
-										</div>
-									</div>
-								</div>
-								<div class="infoBox">
-									<div class="inputGroup">
-									<c:if test="${member.memSort == '1'}">
-										<label>공급자 소개</label>
-										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="위탁공급 전문입니다">
-									</c:if>
-				    				<c:if test="${member.memSort == '2'}">
-										<label>판매자 소개</label>
-										<input type="text" class="inputForm" id="profileIntro" name="profileIntro" placeholder="오픈마켓 전문 셀러입니다">
-									</c:if>	
-				    					
-									</div>
-									<c:if test="${member.memSort == '2'}">
-									<div class="inputGroup">
-				    					<label>매출 규모</label>
-				    					<input type="text" class="inputForm" id="profileVolume" name="profileVolume" placeholder="연 매출">
-									</div>
-									<div class="inputGroup">
-				    					<label>판매경력</label>
-				    					<select id="profileCareer" name="profileCareer" class="inputForm">
-		                                    <option value="0">경력없음</option>
-		                                    <option value="1">1개월 이상 ~ 3개월 미만</option>
-		                                    <option value="3">3개월 이상 ~ 6개월 미만</option>
-		                                    <option value="6">6개월 이상 ~ 1년 미만</option>
-		                                    <option value="9">1년 이상 ~ 3년 미만</option>
-		                                    <option value="8">3년 이상</option>
-		                                </select>
-									</div>
-									<div class="inputGroup">
-				    					<label>채널</label>
-				    					<div class="inputForm inputGroup2">
-				    						<input id="ch1" type="checkbox" name="profileCh" value="1"/>
-		                                	<label for="ch1"><span>오픈마켓</span></label>
-		                                	<input id="ch2" type="checkbox" name="profileCh" value="2"/>
-		                                	<label for="ch2"><span>종합몰</span></label>
-		                                	<input id="ch3" type="checkbox" name="profileCh" value="3"/>
-		                                	<label for="ch3"><span>폐쇄몰</span></label>
-		                                	<input id="ch4" type="checkbox" name="profileCh" value="4"/>
-		                                	<label for="ch4"><span>커뮤니티</span></label>
-		                                	<input id="ch5" type="checkbox" name="profileCh" value="5"/>
-		                                	<label for="ch5"><span>SNS</span></label>
-		                                	<input id="ch6" type="checkbox" name="profileCh" value="6"/>
-		                                	<label for="ch6"><span>오프라인</span></label>
-		                                	<input id="ch7" type="checkbox" name="profileCh" value="7"/>
-		                                	<label for="ch7"><span>해외</span></label>
-		                                </div>
-									</div>
-									</c:if>
-									<div class="inputGroup">
-				    					<label>등록자 지역</label>
-			    						<select id="profileNation" name="profileNation" class="inputForm">
-		                                    <option value="">선택하세요.</option>
-		                                    <option value="02">서울</option>
-		                                    <option value="031">경기</option>
-		                                    <option value="032">인천</option>
-		                                    <option value="033">강원</option>
-		                                    <option value="041">충남</option>
-		                                    <option value="042">대전</option>
-		                                    <option value="043">충북</option>
-		                                    <option value="051">부산</option>
-		                                    <option value="052">울산</option>
-		                                    <option value="053">대구</option>
-		                                    <option value="054">경북</option>
-		                                    <option value="055">경남</option>
-		                                    <option value="061">전남</option>
-		                                    <option value="062">광주</option>
-		                                    <option value="063">전북</option>
-		                                    <option value="044">세종특별자치시</option>
-		                                    <option value="064">제주특별자치도</option>
-		                                    <option value="999">해외</option>
-		                                </select>
-									</div>
-									<div class="inputGroup">
-				    					<label>상품분야</label>
-			    						<select id="profileIndus" name="profileIndus" class="inputForm">
-		                                    <option value="">선택하세요.</option>
-		                                    <option value="01">가구/인테리어</option>
-		                                    <option value="02">도서</option> 
-		                                    <option value="03">디지털/가전</option>
-		                                    <option value="04">생활/건강</option>
-		                                    <option value="05">스포츠/레저</option>
-		                                    <option value="06">식품</option>
-		                                    <option value="07">여가/생활편의</option>
-		                                    <option value="08">출산/육아</option>
-		                                    <option value="09">패션의류</option>
-		                                    <option value="10">패션잡화</option>
-		                                    <option value="11">화장품/미용</option>
-		                                    <option value="12">기타</option>
-		                                </select>
-									</div>
-									<div class="inputGroup">
-				    					<label>사업자 번호</label>
-			    						<input type="text" name="profileBizNum" id="profileBizNum" class="inputForm"/>
-									</div>
-									<div class="inputGroup">
-				    					<label>사업자 유형</label>
-		   								<select id="profileBizSort" name="profileBizSort" class="inputForm">
-		                                       <option value="">선택하세요.</option>
-		                                       <option value="1">법인사업자</option>
-		                                       <option value="2">개인사업자</option>
-		                                       <option value="3">간이과세자</option>
-		                                       <option value="4">개인</option>
-		                                </select>
-									</div>
-									<c:if test="${member.memSort == '2'}">
-									<div class="inputGroup">
-				    					<label class="hashtag">해시태그</label>
-				    					<div class="inputForm inputGroup2 hashtag">
-			                                <div>
-						                        <ul id="tag-list">
-												</ul>
-					                        	<input type="text" class="inputForm" id="tag" placeholder="태그 입력하기 ( 엔터 또는 스페이스바로 입력가능 )">
-					                        	<input type="hidden" value="" name="tag" id="rdTag" />
-					                        </div>
-				                        </div>
-									</div>
-									</c:if>
-								</div>							
-							</div>
-					   		<div>
-					   			<c:if test="${member.memSort == '1'}">
-			    					<button type="submit" class="proBtn findSeller">
-			    						판매자 찾기 + 프로필 등록하기
-			    					</button>
-			    				</c:if>
-			    				<c:if test="${member.memSort == '2'}">
-			    					<button type="submit" class="proBtn">
-			    						공급자 찾기 + 프로필 등록하기
-			    					</button>
-			    				</c:if>
-		    				</div>	
-					   	</div>	   
+						
 					</form>	   				
 			  	</div>
 			</div>	    
@@ -936,94 +753,6 @@ $(document).ready(function() {
 			$("#projAdd").attr('disabled', true);
 		}
 	});
-	/** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
-	$('#proj_form').validate({
-		/* 
-			required 필수 항목으로 설정한다. (true, false)
-			remote 백엔드와 연동하여 Ajax 처리 결과를 받을 수 있다.(중복검사 등)
-		*/
-	    rules: {
-	    	// 썸네일 이미지 필수
-	    	file_route: 'required',
-	        // [프로젝트 제목] 필수
-	        projTitle: {
-	            required: true, minlength: 5, maxlength: 100, 
-	        },
-	        // [상품가격] 필수
-	        projState: 'required',
-	        // [상품마진] 필수
-	        projPrice: 'required',
-	        // [등록지역] 필수
-	        projMargin: 'required',
-	        // [공급방법] 필수
-	       	projSupplyType: 'required',
-	        // [등록지역] 필수
-	        projIndus: 'required',
-	     	// [상품 상세내용] 필수
-	        projDetail: 'required',
-	        projEndDate: 'required',
-	        projRecruitNum: {
-	            required: true, min: 1, max: 100,
-	        },
-	        projChannel: 'required',
-	        projNation: 'required',
-	        // [자기소개] 필수
-	        profileIntro: {
-	            required: true, minlength: 5, maxlength: 100, 
-	        },
-	        // [상품분류] 필수
-	        profileIndus: 'required',
-	     	// [채널] 필수
-	        profileCh: 'required',
-	     	// [등록자 지역] 필수
-	        profileNation: 'required',
-	    },
-	    messages: {
-	    	file_route: {
-	    		required: '썸네일 이미지를 첨부해주세요.',
-	    	},
-	    	projMemId: {
-	            required: '아이디를 입력하세요.',
-	            email: '아이디는 이메일만 입력 가능합니다.',
-	            remote: '존재 하지 않는 아이디 입니다.'
-	        },
-	    	projTitle: {
-	            required: '프로젝트 제목을 입력해주세요.',
-	            minlength: '제목은 최소 4글자 이상 입력하셔야 합니다.',
-	            maxlength: '제목은 최대 100글자까지 가능합니다.',
-	        },
-	        projState: {
-	            required: '프로젝트 상태를 선택해주세요.',
-	        },
-	        projPrice: {
-	            required: '상품가격을 입력해주세요.',
-	        },
-	        projMargin: {
-	            required: '상품마진률을 선택해주세요.',
-	        },
-	        projSupplyType: {
-	            required: '공급방법을 선택해주세요.',
-	        },
-	        projDetail: '상품 상세내용를 입력해주세요.',
-	        projIndus: '상품분류를 선택해주세요.',
-	        projEndDate: '모집마감일을 선택해주세요.',
-	        projRecruitNum: {
-	            required: '모집인원을 입력해주세요.',
-	            min: '모집인원은 최소 1 명 이상 입력하셔야 합니다.',
-	            max: '모집인원은 최대 100 명까지 가능합니다.',
-	        },
-	        projChannel: '채널을 선택해주세요.',
-	        projNation: '등록지역을 선택해주세요.',
-	        profileIntro: {
-	            required: '소개를 입력해주세요.',
-	            minlength: '제목은 최소 5 글자 이상 입력하셔야 합니다.',
-	            maxlength: '제목은 최대 100 글자까지 가능합니다.',
-	        },
-	        profileIndus: '상품분류를 선택해주세요.',
-	        profileCh: '채널을 선택해주세요.',
-	        profileNation: '등록자 지역을 선택해주세요.',
-	    }
-	});
 	
 	// CKEDITOR 값 저장
 	CKEDITOR.instances.projDetail.on('change', function(e) {
@@ -1031,9 +760,16 @@ $(document).ready(function() {
 		$('#projDetail').text(projDetail);
 	}); 
 
+	// 405 에러
     $('#proj_form').ajaxForm({
+    	url: 'http://192.168.141.74:8080/project/add',
+    	/* contentType : false,
+        processData: false, */
+        enctype: "multipart/form-data",
+        dataType : 'json',
         // submit 전에 호출된다.
-        beforeSubmit: function(arr, form, options) {
+        /* beforeSubmit: function(arr, form, options) {
+        	console.log("비포서브밋 start");
         	$('button[type=submit]').prop('disabled', true);
         	
          	CKupdate();
@@ -1049,40 +785,29 @@ $(document).ready(function() {
         	
             // validation 플러그인을 수동으로 호출하여 결과를 리턴한다.
             // 검사규칙에 위배되어 false가 리턴될 경우 submit을 중단한다.
+            console.log("비포서브밋 stop");
             return $(form).valid();
-        },
+        } */
         success: function(json) {
-            $(".ajax-loader").hide();
+        	console.log("success start");
+        	console.log(json);
+        	console.log("success end");
+            /* $(".ajax-loader").hide();
         	swal('알림', '매칭이 등록되었습니다.', 'success').then(function(result) {
                 window.location = ROOT_URL + '/';
-            });
-        },complete: function () {
+            }); */
+        },
+        error: function(error) {
+        	console.log("error start");
+        	console.log(error);
+        	console.log("error end");
+        },
+        complete: function () {
+        	console.log("complete start");
         	$('button[type=submit]').prop('disabled', false);
+        	console.log("complete end");
         }
-    });	
-
-
-/*     $(document).on("submit", "#proj_form", function(e){
-		e.preventDefault();
-		
-		var form = $(this);
-		var url = form.attr('action');
-       
-        $.ajax({
-			   type: "POST",
-	           url: url,
-	           data: form.serialize(),
-	           beforeSend: function() {
-	        	   return $('#proj_form').valid();
-               },
-               success: function() {
-               	swal('알림', '프로젝트가 등록되었습니다.', 'success').then(function(result) {
-                       window.location = ROOT_URL + '/';
-                   });
-               }
-        });
-        
-    }); */
+    });
     
     /* 썸네일 이미지 업로드 */
     $(document).ready(function() {

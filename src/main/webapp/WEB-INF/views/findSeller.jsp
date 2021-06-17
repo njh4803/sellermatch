@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link href="${pageContext.request.contextPath}/assets/css/findSeller.css" rel="stylesheet" type="text/css">
 
 <div class="partner_bnr w-find">
@@ -194,11 +195,18 @@
 						<input type="hidden" id="profileMemIdx${status.index}" name="profileMemIdx" value="${output.profileIdx}">
 						<div class="leftBox">
 							<div class="photo-container">
+								<c:if test="${output.profilePhoto != null}">
+									<c:choose>
+										<c:when test="${fn:indexOf(output.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+											<img class="photoBox" alt="" src="/upload/${output.profilePhoto}">
+										</c:when>
+										<c:otherwise>
+											<img class="photoBox" alt="" src="${output.profilePhoto}">
+										</c:otherwise>
+									</c:choose>
+								</c:if>
 								<c:if test="${output.profilePhoto == null}">
 									<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/profile.png">
-								</c:if>
-								<c:if test="${output.profilePhoto != null}">
-									<img class="photoBox" alt="" src="/upload/${output.profilePhoto}">
 								</c:if>
 								<div class="star-score">
 									<div>

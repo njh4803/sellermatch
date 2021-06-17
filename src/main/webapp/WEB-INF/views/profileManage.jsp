@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="inc/header.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- jquery file upload Frame work -->
 <%-- <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
@@ -40,7 +41,15 @@
 									<div>
 										<div style="margin-top: 20px;">
 											<div class="imageBox" style="display:inline-block; width: 150px; height: 150px; overflow: hidden; text-align: center; border-radius: 50%;">
-												<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/upload/${output.profilePhoto}"/>
+												<%-- <img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${pageContext.request.contextPath}/upload/${output.profilePhoto}"/> --%>
+												<c:choose>
+													<c:when test="${fn:indexOf(output.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+														<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="/upload/${output.profilePhoto}"/> 
+													</c:when>
+													<c:otherwise>
+														<img id="profile-img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"	src="${output.profilePhoto}"/>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 										<div style="">

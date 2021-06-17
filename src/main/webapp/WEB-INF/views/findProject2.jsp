@@ -272,7 +272,15 @@
 					<div class="clearfix">
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
-							<img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}">
+							<%-- <img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}"> --%>
+							<c:choose>
+								<c:when test="${fn:indexOf(output.projThumbnailImg, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+									<img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}">
+								</c:when>
+								<c:otherwise>
+									<img class="photoBox" alt="" src="${output.projThumbnailImg}">
+								</c:otherwise>
+							</c:choose>
 							<div class="left-infoBox">
 								<c:if test="${output.projSort == 1}">
 					        		<div class="sFindBox">공급자</div>
