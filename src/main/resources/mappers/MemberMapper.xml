@@ -207,6 +207,7 @@
 		SELECT COUNT(*)
 		FROM MemList
 		<where>
+			AND MEM_SORT != '3'
 			<if test="memId != null and memId != ''">
 				OR mem_id LIKE concat('%', #{memId}, '%')
 			</if>
