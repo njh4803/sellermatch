@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminStatsMapper">
+
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="AdminStatsMap"
+        type="kr.co.wesellglobal.sellermatch.model.AdminStatsDto">
+        <result property="statsDate"   			column="Stats_date" />
+        <result property="statsRegDate"   		column="Stats_reg_date" />
+        <result property="statsEditDate"   		column="Stats_edit_date" />
+        
+        <result property="statsMemRegCnt"   	column="Stats_mem_reg_cnt" />
+        <result property="statsMemAccumCnt"   	column="Stats_mem_accum_cnt" />
+        <result property="statsMemSelCnt"   	column="Stats_mem_sel_cnt" />
+        <result property="statsMemSelAccumCnt" 	column="Stats_mem_sel_accum_cnt" />
+        <result property="statsMemProCnt" 		column="Stats_mem_pro_cnt" />
+        <result property="statsMemProAccumCnt" 	column="Stats_mem_pro_accum_cnt" />
+        
+        <result property="statsApplyAplyCnt" 			 column="Stats_apply_aply_cnt" />
+        <result property="statsApplyAplyAccumCnt" 		 column="Stats_apply_aply_accum_cnt" />
+        <result property="statsApplyAplyAcceptCnt" 		 column="Stats_apply_aply_accept_cnt" />
+        <result property="statsApplyAplyAcceptAccumCnt"  column="Stats_apply_aply_accept_accum_cnt" />
+        <result property="statsApplyAplyRejectCnt" 		 column="Stats_apply_aply_reject_cnt" />
+        <result property="statsApplyAplyRejectAccumCnt"  column="Stats_apply_aply_reject_accum_cnt" />
+        
+        <result property="statsApplyRecomCnt" 			 column="Stats_apply_recom_cnt" />
+        <result property="statsApplyRecomAccumCnt" 		 column="Stats_apply_recom_accum_cnt" />
+        <result property="statsApplyRecomAcceptCnt" 	 column="Stats_apply_recom_accept_cnt" />
+        <result property="statsApplyRecomAcceptAccumCnt" column="Stats_apply_recom_accept_accum_cnt" />
+        <result property="statsApplyRecomRejectCnt" 	 column="Stats_apply_recom_reject_cnt" />
+        <result property="statsApplyRecomRejectAccumCnt" column="Stats_apply_recom_reject_accum_cnt" />
+        
+        <result property="statsProjRegCnt" 			column="Stats_proj_reg_cnt" />
+        <result property="statsProjRegAccumCnt" 	column="Stats_proj_reg_accum_cnt" />
+        <result property="statsProjRegSelCnt"	 	column="Stats_proj_reg_sel_cnt" />
+        <result property="statsProjRegSelAccumCnt" 	column="Stats_proj_reg_sel_accum_cnt" />
+        <result property="statsProjRegProCnt" 		column="Stats_proj_reg_pro_cnt" />
+        <result property="statsProjRegProAccumCnt"  column="Stats_proj_reg_pro_accum_cnt" />
+
+    </resultMap>
+
+    <select id="selectList"
+    	parameterType="kr.co.wesellglobal.sellermatch.model.AdminStatsDto"
+    	resultMap="AdminStatsMap">
+    	SELECT
+    		Stats_date
+    		,Stats_reg_date
+    		,Stats_edit_date
+    		,Stats_mem_reg_cnt
+    		,Stats_mem_accum_cnt
+    		,Stats_mem_sel_cnt
+    		,Stats_mem_sel_accum_cnt
+    		,Stats_mem_pro_cnt
+    		,Stats_mem_pro_accum_cnt
+    		,Stats_apply_aply_cnt
+    		,Stats_apply_aply_accum_cnt
+    		,Stats_apply_aply_accept_cnt
+    		,Stats_apply_aply_accept_accum_cnt
+    		,Stats_apply_aply_reject_cnt
+    		,Stats_apply_aply_reject_accum_cnt
+    		,Stats_apply_recom_cnt
+    		,Stats_apply_recom_accum_cnt
+    		,Stats_apply_recom_accept_cnt
+    		,Stats_apply_recom_accept_accum_cnt
+    		,Stats_apply_recom_reject_cnt
+    		,Stats_apply_recom_reject_accum_cnt
+    		,Stats_proj_reg_cnt
+    		,Stats_proj_reg_accum_cnt
+    		,Stats_proj_reg_sel_cnt
+    		,Stats_proj_reg_sel_accum_cnt
+    		,Stats_proj_reg_pro_cnt
+    		,Stats_proj_reg_pro_accum_cnt
+    	FROM StatsList
+    	WHERE 1=1
+    </select>
+
+</mapper>

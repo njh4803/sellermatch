@@ -590,6 +590,13 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                                <li class="">
+                                    <a href="${pageContext.request.contextPath}/admin/totalStats" >
+                                        <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">통계관리</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
                                 <li class="pcoded-trigger">
                                     <a href="${pageContext.request.contextPath}/admin/projectList" >
                                         <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
@@ -658,7 +665,7 @@
                                 <li class="">
                                     <a href="javascript:void(0)" >
                                         <span class="pcoded-micon"><i class="ti-layout-cta-right"></i></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">통계관리</span>
+                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">관리</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>

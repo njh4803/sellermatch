@@ -99,8 +99,8 @@ label.error {
 																	<tr class="replace-inputs">
 																		<th class="text-center" style="vertical-align:middle;">일자</th>
 																		<th class="text-center" style="vertical-align:middle;">회원가입</th>
-																		<th class="text-center" style="vertical-align:middle;">판매자 가입</th>
 																		<th class="text-center" style="vertical-align:middle;">공급자 가입</th>
+																		<th class="text-center" style="vertical-align:middle;">판매자 가입</th>
 																	</tr>
 																</thead>
 															</table>
