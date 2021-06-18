@@ -275,7 +275,7 @@
 							<%-- <img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}"> --%>
 							<c:choose>
 								<c:when test="${fn:indexOf(output.projThumbnailImg, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
-									<img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}">
+									<img class="photoBox" alt="" src="/upload/${fn:replace(fn:replace(fn:replace(fn:replace(fn:replace(output.projThumbnailImg, '.jpeg', '_crop_240x240.jpeg'), '.PNG', '_crop_240x240.PNG'), '.JPG', '_crop_240x240.JPG'), '.jpg', '_crop_240x240.jpg'), '.png', '_crop_240x240.png')}">
 								</c:when>
 								<c:otherwise>
 									<img class="photoBox" alt="" src="${output.projThumbnailImg}">

@@ -273,11 +273,6 @@ public class MemberRestController {
 			return webHelper.getJsonError(e.getLocalizedMessage());
 		}
 		
-        if ( session.getAttribute("member") !=null ){
-            // 기존에 profile 세션 값이 존재한다면
-        	session.removeAttribute("member");// 기존값을 제거해 준다.
-        }
-        session.setAttribute("member", input);
 		/** 4) 결과 표시 */
 		return webHelper.getJsonData();
 	}

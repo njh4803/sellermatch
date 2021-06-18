@@ -61,6 +61,28 @@ label.error {
 .btn-group-toggle {
 	display: -webkit-inline-box;
 }
+.buttons-copy{
+	display: none;
+} 
+.buttons-csv{
+	display: none;
+} 
+.buttons-pdf{
+	display: none;
+} 
+.buttons-print {
+	display: none;
+}
+.buttons-excel {
+	color: #fff !important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
+    width: 80px !important;
+    height: 35px !important;
+}
+.buttons-excel span {
+color: #fff !important;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->
@@ -98,21 +120,27 @@ label.error {
 																<thead>
 																	<tr>
 																		<th class="text-center" style="vertical-align:middle;" rowspan="2">일자</th>
-																		<th class="text-center" style="vertical-align:middle;" colspan="6">회원가입</th>
-																		<th class="text-center" style="vertical-align:middle;" colspan="6">거래처매칭</th>
+																		<th class="text-center" style="vertical-align:middle;" colspan="8">회원가입</th>
+																		<th class="text-center" style="vertical-align:middle;" colspan="8">거래처매칭</th>
 																		<th class="text-center" style="vertical-align:middle;" colspan="6">지원</th>
 																		<th class="text-center" style="vertical-align:middle;" colspan="6">제안</th>
 																	</tr>
 																	<tr class="replace-inputs">
-																		<th class="text-center" style="vertical-align:middle;">전체</th>
 																		<th class="text-center" style="vertical-align:middle;">전체(누적)</th>
-																		<th class="text-center" style="vertical-align:middle;">판매자</th>
-																		<th class="text-center" style="vertical-align:middle;">판매자(누적)</th>
-																		<th class="text-center" style="vertical-align:middle;">공급자</th>
-																		<th class="text-center" style="vertical-align:middle;">공급자(누적)</th>
+																		<th class="text-center" style="vertical-align:middle;">전체</th>
 																		
-																		<th class="text-center" style="vertical-align:middle;">전체</th>
+																		<th class="text-center" style="vertical-align:middle;">판매자(누적)</th>
+																		<th class="text-center" style="vertical-align:middle;">판매자(비율)</th>
+																		<th class="text-center" style="vertical-align:middle;">판매자(증가)</th>
+																		<th class="text-center" style="vertical-align:middle;">공급자(누적)</th>
+																		<th class="text-center" style="vertical-align:middle;">공급자(비율)</th>
+																		<th class="text-center" style="vertical-align:middle;">공급자(증가)</th>
+																		
+																		
 																		<th class="text-center" style="vertical-align:middle;">전체(누적)</th>
+																		<th class="text-center" style="vertical-align:middle;">전체등록율</th>
+																		<th class="text-center" style="vertical-align:middle;">일일등록율</th>
+																		<th class="text-center" style="vertical-align:middle;">전체</th>
 																		<th class="text-center" style="vertical-align:middle;">판매자</th>
 																		<th class="text-center" style="vertical-align:middle;">판매자(누적)</th>
 																		<th class="text-center" style="vertical-align:middle;">공급자</th>
@@ -150,12 +178,17 @@ label.error {
 var BoardDataListTable;
 $(window).ready(function(){
 	BoardDataListTable = $("#BoardDataListTable").dataTable({
-			'stateSave':false,
+			'stateSave':true,
 			'autoWidth':true,
 			'scrollX': true,
 			'order': [[ 0, "desc" ]],
 			'pageLength': 30,
-	        dom: '<"top"i>rt<"bottom"p><"clear">',
+			fixedHeader: true,
+            fixedColumns: {
+                          leftColumns: 1
+           },
+			/* dom: 'Brtp', */
+	        dom: 'B<"top"i>rt<"bottom"p><"clear">',
 			'ajax': {
 				'type' : 'POST',
 				'url' : '/admin/totalStats',
@@ -166,103 +199,230 @@ $(window).ready(function(){
 		            'data':'statsDate',
 		            'className':'text-center hidden-xs hidden-sm coldata applicationIndex'
 			    },
-	            {
-		            'data': 'statsMemRegCnt',
-		            'className':'text-center coldata' 
-		        },
 	            { 
 		            'data': 'statsMemAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata red',
+		            'render': function(data, type) {
+		            	return data + ' 명';
+		            }
+	            	
 		        },
-	            { 
-		            'data': 'statsMemSelCnt',
-	            	'className':'text-center coldata'
+			    {
+		            'data': 'statsMemRegCnt',
+		            'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 명';
+		            }
 		        },
 	            { 
 		            'data': 'statsMemSelAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 명';
+		            }
 		        },
-	            { 
-		            'data': 'statsMemProCnt',
-	            	'className':'text-center coldata'
+		        { 
+		            'data': null,
+	            	'className':'text-center coldata',
+		            'render': function(data, type, row) {
+		            		var text
+            			if(isNaN(Math.floor((data["statsMemSelAccumCnt"]/data["statsMemAccumCnt"])*100))){
+            				text = '0%';
+            			} else {
+            				text = Math.floor((data["statsMemSelAccumCnt"]/data["statsMemAccumCnt"])*100)	+ '%';
+            			}
+		            	return text;
+		            }
+		        },
+		        { 
+		            'data': 'statsMemSelCnt',
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 명';
+		            }
 		        },
 	            { 
 		            'data': 'statsMemProAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 명';
+		            }
 		        },
-	            { 
-		            'data': 'statsProjRegCnt',
-	            	'className':'text-center coldata'
+		        { 
+		            'data': null,
+	            	'className':'text-center coldata',
+		            'render': function(data, type, row) {
+		            		var text
+            			if(isNaN(Math.floor((data["statsMemProAccumCnt"]/data["statsMemAccumCnt"])*100))){
+            				text = '0%';
+            			} else {
+            				text = Math.floor((data["statsMemProAccumCnt"]/data["statsMemAccumCnt"])*100)	+ '%';
+            			}
+		            	return text;
+		            }
 		        },
+		        { 
+		            'data': 'statsMemProCnt',
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + '명';
+		            }
+		        },
+
 	            { 
 		            'data': 'statsProjRegAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },
+		        { 
+		            'data': null,
+	            	'className':'text-center coldata',
+		            'render': function(data, type, row) {
+		            		var text
+            			if(isNaN(Math.floor((data["statsProjRegAccumCnt"]/data["statsMemAccumCnt"])*100))){
+            				text = '0%';
+            			} else {
+            				text = Math.floor((data["statsProjRegAccumCnt"]/data["statsMemAccumCnt"])*100)	+ '%';
+            			}
+		            	return text;
+		            }
+		        },
+		        { 
+		            'data': null,
+	            	'className':'text-center coldata',
+		            'render': function(data, type, row) {
+		            		var text
+            			if(isNaN(Math.floor((data["statsProjRegCnt"]/data["statsMemRegCnt"])*100))){
+            				text = '0%';
+            			} else {
+            				text = Math.floor((data["statsProjRegCnt"]/data["statsMemRegCnt"])*100)	+ '%';
+            			}
+		            	return text;
+		            }
+		        },
+		        { 
+		            'data': 'statsProjRegCnt',
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
+		        },
+
 	            { 
 		            'data': 'statsProjRegSelCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },
 	            { 
 		            'data': 'statsProjRegSelAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },
 	            { 
 		            'data': 'statsProjRegProCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsProjRegProAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 		        
 	            { 
 		            'data': 'statsApplyAplyCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyAplyAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyAplyAcceptCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyAplyAcceptAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyAplyRejectCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyAplyRejectAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 		        
 	            { 
 		            'data': 'statsApplyRecomCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyRecomAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyRecomAcceptCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyRecomAcceptAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyRecomRejectCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	            { 
 		            'data': 'statsApplyRecomRejectAccumCnt',
-	            	'className':'text-center coldata'
+	            	'className':'text-center coldata',
+		            'render': function(data, type) {
+		            	return data + ' 건';
+		            }
 		        },	
 	        ],
 	        'language': {
@@ -276,7 +436,6 @@ $(window).ready(function(){
 });
 </script>
 <%@ include file="inc/footer.jsp"%>
-
 <footer class="main-footer sticky  footer-type-2">
 	<div class="footer-inner">
 		<!-- Add your copyright text here -->

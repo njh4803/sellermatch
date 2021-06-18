@@ -61,6 +61,9 @@ label.error {
 .btn-group-toggle {
 	display: -webkit-inline-box;
 }
+.dt-buttons {
+	display: none;
+}
 </style>
 <%@ include file="inc/navigation.jsp"%>
     <!-- Pre-loader start -->

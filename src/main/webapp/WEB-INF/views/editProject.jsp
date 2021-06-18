@@ -39,7 +39,7 @@
 											    <c:choose>
 													<c:when test="${fn:indexOf(output.projThumbnailImg, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
 														<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
-												    	src="/upload/${output.projThumbnailImg}"/>
+												    	src="/upload/${fn:replace(fn:replace(fn:replace(fn:replace(fn:replace(output.projThumbnailImg, '.jpeg', '_crop_240x240.jpeg'), '.PNG', '_crop_240x240.PNG'), '.JPG', '_crop_240x240.JPG'), '.jpg', '_crop_240x240.jpg'), '.png', '_crop_240x240.png')}"/>
 													</c:when>
 													<c:otherwise>
 														<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
