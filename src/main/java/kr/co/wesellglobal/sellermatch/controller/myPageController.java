@@ -107,11 +107,14 @@ public class myPageController {
 	@RequestMapping(value = "/myPage/delngManage/applyList", method = RequestMethod.GET)
 	public Map<String, Object> applyList(Model model,
 			@SessionAttribute(value = "member", required = false) MemberDto member,
-			@RequestParam(value = "applyProjId", required = false) String applyProjId) {
+			@RequestParam(value = "applyProjId", required = false) String applyProjId,
+			@RequestParam(value = "applyType", required = false) String applyType) { 
 
 		ApplyDto input = new ApplyDto();
 		input.setApplyProjId(applyProjId);
-
+		if(applyType != null) {
+			input.setApplyType(applyType);
+		}
 		List<ApplyDto> output = null;
 
 		Map<String, Object> data = new HashMap<String, Object>();

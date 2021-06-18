@@ -311,7 +311,8 @@ $(document).ready(function(){
 			type: "GET",
 	        url: ROOT_URL + '/myPage/delngManage/applyList',
 	        data:{
-	        	'applyProjId':applyProjId
+	        	'applyProjId':applyProjId,
+	        	'applyType':'1'
 	        },
 			success : function(json) {
 				var content = {

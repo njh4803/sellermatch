@@ -112,7 +112,7 @@
 									<c:if test="${member.memSort == 2}">
 			    					<td>
 			    						<div class="width-100">
-			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="직접 입력가능">
+			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="예시: 전라남도 고랭지 포기김치 1kg, 5kg, 10kg 3종">
 			    						</div>
 			    					</td>
 									</c:if>
@@ -580,10 +580,27 @@
 <%@ include file="inc/footer.jsp"%>
 <script>
 var myDataPicker = $('#projEndDate').datepicker({
-    minDate: new Date(),
+    minDate: new Date(tomorrowDate()),
     firstDay: 0,
     autoClose : true
 });
+
+function tomorrowDate(){ 
+	var tomorrowDate =""; 
+	var today = new Date(); 
+	var dd = today.getDate()+1; 
+	var mm = today.getMonth()+1; //January is 0! 
+	var yyyy = today.getFullYear(); 
+
+	if(dd<10) { 
+	dd='0'+dd 
+	} 
+	if(mm<10) { 
+	mm='0'+mm 
+	}
+	tomorrowDate = yyyy+'-'+mm+'-'+dd; 
+	return tomorrowDate; 
+	}
 </script>
 <script>
 //숫자를  #,###으로 치환
@@ -668,7 +685,6 @@ $(document).ready(function() {
             e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
         }
         var value = projMarginTag(); // return array
-        console.log(value);
         $("#proj-rdTag").val(value); 
     });
 
@@ -703,7 +719,6 @@ $(document).ready(function() {
 	$(document).on("click", ".findCheck", function(){
 		$(".resultText").remove();
 		var memSort = $("#member").val();
-		console.log(memSort);
 		
 		var value = this.value;
 		if (value != memSort) {
@@ -722,8 +737,6 @@ $(document).ready(function() {
 			$(".projectAdd").remove();
 			return;
 		}
-		console.log($("#spBtn").val());
-		console.log(value);
 		var tag;
 		if (this.checked) {
 			if ('판매자' == value) {

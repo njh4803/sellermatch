@@ -403,11 +403,28 @@
 <%@ include file="inc/footer.jsp"%>
 <script>
 var myDataPicker = $('#projEndDate').datepicker({
-    minDate: new Date(),
+    minDate: new Date(tomorrowDate()),
     firstDay: 0,
     autoClose : true
 }).data('datepicker');
 myDataPicker.selectDate(new Date($('#date').val()));
+
+function tomorrowDate(){ 
+	var tomorrowDate =""; 
+	var today = new Date(); 
+	var dd = today.getDate()+1; 
+	var mm = today.getMonth()+1; //January is 0! 
+	var yyyy = today.getFullYear(); 
+
+	if(dd<10) { 
+	dd='0'+dd 
+	} 
+	if(mm<10) { 
+	mm='0'+mm 
+	}
+	tomorrowDate = yyyy+'-'+mm+'-'+dd; 
+	return tomorrowDate; 
+	}
 </script>
 
 <script>
@@ -505,7 +522,6 @@ $(document).ready(function() {
 	$(document).on("click", ".findCheck", function(){
 		$(".resultText").remove();
 		var memSort = $("#member").val();
-		console.log(memSort);
 		
 		var value = this.value;
 		if (value != memSort) {
@@ -692,10 +708,8 @@ $(document).ready(function() {
     
     $(document).on("click",".removeImg",function(event){
     	var parent = event.target.parentNode;
-    	console.log(parent)
     	var imgItem = parent.parentNode.parentNode.parentNode.parentNode.parentNode;
     	var img_src = parent.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].getAttribute('data-src');
-    	console.log(img_src);
     	imgItem.remove();
     	var imgListStr = $("#detailImgList").val();
     	var imgList = [];
@@ -708,7 +722,6 @@ $(document).ready(function() {
 			}
 			result += imgList[i]+"|";
 		}
-    	console.log(result);
     	$('#detailImgList').val(result);
     });
     
