@@ -58,37 +58,21 @@
 		   							</td>
 			    				</tr>
 			    				<tr>
-			    					<td>찾기 제목
+			    					<td>상품명
 			    						<img class="question" alt="" src="${pageContext.request.contextPath}/assets/img/question.png">
-			    						<div class="questionBox">찾고자 하는 공급자 또는 판매자와 관련한 제목을 넣는 곳입니다.</div>			    					
+			    						<div class="questionBox">공급하려는 상품, 판매하려는 상품 관련한 제목을 넣는 곳입니다.</div>			    					
 			    					</td>
 									<c:if test="${member.memSort == 1}">
 			    					<td>
-			    						<div class="width-70">
-			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="직접 입력가능" value="${output.projTitle}">
-			    						</div>
-			    						<div class="width-30">
-				    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
-				    							<option value="" selected="selected">[기본문구선택]</option>
-			                               		<option value="고매출 판매자를 찾습니다">고매출 판매자를 찾습니다</option>
-			                                	<option value="위탁전문 공급업체입니다">위탁전문 공급업체입니다</option>
-			                                	<option value="위탁판매자 찾습니다">위탁판매자 찾습니다</option>
-			                              	</select>
+			    						<div class="width-100">
+			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="전라남도 고랭지 포기김치 1kg, 5kg, 10kg 3종" value="${output.projTitle}">
 			    						</div>
 			    					</td>
 			    					</c:if>
 									<c:if test="${member.memSort == 2}">
 			    					<td>
-			    						<div class="width-70">
-			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="직접 입력가능" value="${output.projTitle}">
-			    						</div>
-			    						<div class="width-30">
-				    						<select id="projTitleSelect" name="projTitleSelect" class="inputForm">
-				    							<option value="" selected="selected">[기본문구선택]</option>
-			                               		<option value="고마진 공급자를 찾습니다">고마진 공급자를 찾습니다</option>
-			                                	<option value="위탁판매 전문셀러입니다">위탁판매 전문셀러입니다</option>
-			                                	<option value="위탁업체 찾습니다">위탁업체 찾습니다 </option>
-			                              	</select>
+			    						<div class="width-100">
+			    							<input type="text" class="inputForm" id="projTitle" name="projTitle" placeholder="전라남도 고랭지 포기김치 1kg, 5kg, 10kg 3종" value="${output.projTitle}">
 			    						</div>
 			    					</td>
 									</c:if>
@@ -188,7 +172,7 @@
 			                            </select>
 			    					</td>
 			    				</tr>
-			    				<tr>
+			    				<tr style="height: 32px;">
 			    					<td>
 										<c:if test="${member.memSort == 1}">
 											채널
@@ -200,7 +184,7 @@
 			    						<div class="questionBox">판매자가 판매하는 채널(방식)에 대한 것입니다.</div>										
 									</td>	
 			    					<td>
-				    					<div class="inputForm width-100">
+				    					<div class="inputForm width-100" style="display: contents;">
 				    						<div class="row1">
 			                                	<input id="chk1" type="checkbox" name="projChannel" value="1" <c:if test="${fn:contains(output.projChannel,'1')}"> checked </c:if>>
 			                                	<label for="chk1"><span>오픈마켓</span></label>
@@ -228,6 +212,10 @@
 				                           	<div class="row1">
 			                                	<input id="chk7" type="checkbox" name="projChannel" value="7" <c:if test="${fn:contains(output.projChannel,'7')}"> checked </c:if>>
 			                                	<label for="chk7"><span>해외</span></label>
+				                           	</div>
+				                           	<div class="row1">
+			                                	<input id="chk8" type="checkbox" name="projChannel" value="8" <c:if test="${fn:contains(output.projChannel,'8')}"> checked </c:if>>
+			                                	<label for="chk8"><span>라이브방송</span></label>
 				                           	</div>
 				                        </div>
 			    					</td>

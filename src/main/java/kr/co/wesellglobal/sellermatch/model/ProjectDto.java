@@ -355,6 +355,9 @@ public class ProjectDto {
 			if (this.projChannelList[i].equals("7")) {
 				this.projChannelList[i] = "해외";
 			}
+			if (this.projChannelList[i].equals("8")) {
+				this.projChannelList[i] = "라이브방송";
+			}
 		}
 		
 		return this.projChannelList;
