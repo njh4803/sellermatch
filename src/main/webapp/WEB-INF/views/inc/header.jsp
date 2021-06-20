@@ -191,17 +191,17 @@ window.onload = function(){
     }
 
     //모바일기기일 경우 모바일 사이트로 옮김
-     //var isMobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ? true : false;
-   // if(isMobile){
-   // 	window.location.href = "https://m.sellermatch.co.kr";
-  //  }
+    var isMobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ? true : false;
+    if(isMobile){
+    	window.location.href = "https://m.sellermatch.co.kr";
+    }
 };
 </script>
 <script type="text/javascript">
 $(function(){
 	
 	$('#login, #login2, #login3').on('click', function(){
-		$('#loginModal .modal-dialog').remove();
+		$('#loginModal .modal-dialog').remove(); 
 		$(".modal-open").attr('style','');
 		var content = {
 				

@@ -154,10 +154,14 @@
 						</div> --%>
 						<c:choose>
 							<c:when test="${fn:indexOf(output.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+							<div class="profileImgBox">
 								<img class="profileImg"  src="/upload/${output.profilePhoto}">
+							</div>
 							</c:when>
 							<c:otherwise>
+							<div class="profileImgBox">
 								<img class="profileImg"  src="${output.profilePhoto}">
+							</div>
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>	

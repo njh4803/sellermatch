@@ -1046,6 +1046,14 @@ $(document).ready(function() {
 	});
 	
 });
-</script>    
+</script>
+<!-- <script>
+function noEvent() { 
+	if (event.keyCode == 116 || event.keyCode == 9) { 
+	return false; 
+	} 
+	} 
+	document.onkeydown = noEvent; 
+</script> -->
     </body>
 </html>
