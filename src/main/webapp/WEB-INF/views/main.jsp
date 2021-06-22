@@ -11,16 +11,16 @@
 	<div class="main-0000" style="background-image: url('${pageContext.request.contextPath}/assets/img/main0000.png');">
 	 	<div class="main-000">
   		 	<div class="popup" id="popup" style="background-color:#000000;">
-				<img alt="" src="${pageContext.request.contextPath}/assets/img/popup_1.png"  usemap="#maptag">
-				<map name="maptag">
+				<img alt="" src="${pageContext.request.contextPath}/assets/img/mobile_open.png">
+<!-- 				<map name="maptag">
 					<area shape="rect" coords="130,375,300,410" href="https://forms.gle/FJMWitTgJyvSELneA" title="설문조사" target="_blank">
-				</map>
+				</map> -->
 				<div class="popup-btnBox" style="background-color:#000000;">
 					<button id="today"  style="color:#ffffff; margin-left: 10px;">오늘하루 보지않기</button>
 					<button class="popup-close"  style="color:#ffffff; margin-right: 10px;">닫기</button>
 				</div>
 			</div>
-			<div class="popup2" id="popup2" style="background-color:#000000;">
+<%--			<div class="popup2" id="popup2" style="background-color:#000000;">
 				<img alt="" src="${pageContext.request.contextPath}/assets/img/P-21623934953919.png"  usemap="#maptag2">
 				<map name="maptag2">
 					<area shape="rect" coords="170,445,330,485" href="https://sellermatch.co.kr/project/detail?projId=P-21623934953919" title="이달의판매자">
@@ -30,7 +30,7 @@
 					<button class="popup-close2"  style="color:#ffffff; margin-right: 10px;">닫기</button>
 				</div>
 			</div>
-<%-- 			<div class="popup3" id="popup3" style="background-color:#000000;">
+ 			<div class="popup3" id="popup3" style="background-color:#000000;">
 				<img alt="" src="${pageContext.request.contextPath}/assets/img/popup_1.png"  usemap="#maptag">
 				<map name="maptag">
 					<area shape="rect" coords="130,375,300,410" href="https://forms.gle/FJMWitTgJyvSELneA" title="이달의회원" target="_blank">
@@ -446,8 +446,8 @@
 $(document).ready(function() {
 	
 	/* 메인 이벤트팝업 노출 *//* 이벤트팝업 쿠키 설정 */
-  	//$('.popup').show();
- 	$('.popup2').show();
+  	$('.popup').show();
+ 	//$('.popup2').show();
  	//$('.popup3').show();
 	
  	cookiedata = document.cookie;
@@ -456,44 +456,47 @@ $(document).ready(function() {
 	} else {
 		document.all['popup'].style.display = "none";
 	}
+/*
 	if ( cookiedata.indexOf("popup2=N") < 0 ){ //쿠키 변경 여부 불러오기
 		document.all['popup2'].style.visibility = "visible";
 	} else {
 		document.all['popup2'].style.display = "none";
 	}  
-/* 	if ( cookiedata.indexOf("popup3=N") < 0 ){ //쿠키 변경 여부 불러오기
+ 	if ( cookiedata.indexOf("popup3=N") < 0 ){ //쿠키 변경 여부 불러오기
 		document.all['popup3'].style.visibility = "visible";
 	} else {
 		document.all['popup3'].style.display = "none";
-	}  */
-
+	} 
+*/
 	// 오늘하루 보지않기 버튼
  	$('#today').on('click', function(){
 		setCookie("popup", "N", 1); //쿠키값 변경
 		$('#popup').hide();
 	});	
-	// 오늘하루 보지않기 버튼
+/*
+// 오늘하루 보지않기 버튼
 	$('#today2').on('click', function(){
 		setCookie("popup2", "N", 1); //쿠키값 변경
 		$('#popup2').hide();
 	});	 
 	// 오늘하루 보지않기 버튼
-/* 	$('#today3').on('click', function(){
+ 	$('#today3').on('click', function(){
 		setCookie("popup3", "N", 1); //쿠키값 변경
 		$('#popup3').hide();
-	});	 */
-	
+	});	
+*/	
 	// 팝업 닫기
  	$('.popup-close').on('click', function(){
 		$('.popup').hide();
 	});
-	$('.popup-close2').on('click', function(){
+/*
+$('.popup-close2').on('click', function(){
 		$('.popup2').hide();
 	}); 
-/* 	$('.popup-close3').on('click', function(){
+ 	$('.popup-close3').on('click', function(){
 		$('.popup3').hide();
-	}); */
-	
+	}); 
+*/	
 	$('.FAQBox').hover(function() {
 
 	     //이부분은 마우스가 올라 요소 위에 올라왔을때 이벤트입니다.

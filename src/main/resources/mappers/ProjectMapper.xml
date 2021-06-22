@@ -111,8 +111,8 @@
     		(SELECT COUNT(*) FROM ApplyList where apply_proj_id = p.Proj_id and apply_type= '1') as apply_count, proj_profit, proj_profit_chk_date,
     		mem_rname, proj_channel, profile_biz_certi, mem_nick, mem_name, profile_intro, profile_photo, profile_ch_chk, profile_sale_chk,
     		(select Orgin_name FROM fileList where File_path = proj_file) as orgin_name,
-    		(select count(*) FROM ProjectList where Proj_mem_id = mem_id) as proj_add_count, 
-    		(select count(*) FROM ApplyList where Apply_mem_id = mem_id and apply_type = 2) as recommend_count,
+    		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
+    		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select hash_nm from HashTagList where Hash_id = (select hash_tag1 from HashTag where id = Proj_id)) as hash_tag1, 
     		(select hash_nm from HashTagList where Hash_id = (select hash_tag2 from HashTag where id = Proj_id)) as hash_tag2,
     		(select hash_nm from HashTagList where Hash_id = (select hash_tag3 from HashTag where id = Proj_id)) as hash_tag3,
@@ -123,6 +123,8 @@
 		ON p.proj_indus = i.indus_id
 		INNER JOIN MemList m
 		ON p.proj_mem_id = m.mem_id
+		INNER JOIN ProfileList pf
+		ON p.proj_mem_id = pf.profile_mem_id
         <where>
         	proj_state != 0
         	<if test="projSort != '' and projSort != null">

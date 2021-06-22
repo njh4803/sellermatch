@@ -37,10 +37,10 @@
 						<c:if test="${profile.profilePhoto != null}">
 							<c:choose>
 								<c:when test="${fn:indexOf(profile.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
-									<img class="photoBox" alt="" src="https://www.sellermatch.co.kr/upload/${profile.profilePhoto}">
+									<img class="photoBox" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;" alt="" src="https://www.sellermatch.co.kr/upload/${profile.profilePhoto}">
 								</c:when>
 								<c:otherwise>
-									<img class="photoBox" alt="" src="${profile.profilePhoto}">
+									<img class="photoBox" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;" alt="" src="${profile.profilePhoto}">
 								</c:otherwise>
 							</c:choose>
 						</c:if>
@@ -98,13 +98,13 @@
 							<textarea id="withdrawReasonText" name="withdrawReasonText" class="inputForm" style="resize: none;" placeholder="상세내용을 입력해주세요. (500자 이내)"></textarea>
 						</div>
 						</form>
-						<div class="myPage_r_withdraw_title">
+<!-- 						<div class="myPage_r_withdraw_title">
 		    				회원 탈퇴 전 메일 본인인증
 		    			</div>
 		    			<div class="myPage_r_withdraw_text">
 		    				회원님의 정보보호를 위해 필수로 확인하는 절차입니다.
-		    			</div>
-		    			<form action="${pageContext.request.contextPath}/sendWithdrawMail" id="sendWithdrawMail" name="sendWithdrawMail" method="post">
+		    			</div> -->
+<%-- 		    			<form action="${pageContext.request.contextPath}/sendWithdrawMail" id="sendWithdrawMail" name="sendWithdrawMail" method="post">
 						<div class="inputGroup">
 							<input type="text" name="memId" class="memId" id="memId" placeholder="인증을 진행 할 이메일을 입력해주세요."/>
 							<button type="button" id="sendAuthEmail" class="btn form-bg-primary">코드전송</button>
@@ -115,7 +115,7 @@
 							<input type="text" name="authCodeText" class="authCodeText" id="authCodeText" placeholder="이메일로 전달받은 코드를 써주세요."/>
 							<button type="button" id="authCode" class="btn form-bg-primary">인증하기</button>
 						</div>
-						</form>
+						</form> --%>
 		    			<div class="myPage_r_withdraw_text cautionText">
 		    			<img class="alert_img" alt="" src="${pageContext.request.contextPath}/assets/img/withdraw_check.png">
 		    				탈퇴 후에도 등록한 게시물은 그대로 남아있습니다.
@@ -126,7 +126,7 @@
 		    				본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.
 		    			</div>
 						<div class="withdraw_btn_group">
-							<button class="withdraw_btn" type="submit" disabled="disabled" style="background-image: linear-gradient(98deg, #D9D9D9, #D9D9D9);">회원 탈퇴 진행하기</button>
+							<button class="withdraw_btn" type="submit">회원 탈퇴 진행하기</button>
 						</div>
 		    			<div class="myPage_r_withdraw_s_contents">
 		    			<img class="alert_img" alt="" src="${pageContext.request.contextPath}/assets/img/withdraw_caution.png">

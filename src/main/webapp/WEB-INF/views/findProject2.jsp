@@ -273,14 +273,19 @@
 						<input type="hidden" id="projId${status.index}" value="${output.projId}">
 						<div class="leftBox">
 							<%-- <img class="photoBox" alt="" src="/upload/${output.projThumbnailImg}"> --%>
-							<c:choose>
-								<c:when test="${fn:indexOf(output.projThumbnailImg, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
-									<img class="photoBox" alt="" src="/upload/${fn:replace(fn:replace(fn:replace(fn:replace(fn:replace(output.projThumbnailImg, '.jpeg', '_crop_240x240.jpeg'), '.PNG', '_crop_240x240.PNG'), '.JPG', '_crop_240x240.JPG'), '.jpg', '_crop_240x240.jpg'), '.png', '_crop_240x240.png')}">
-								</c:when>
-								<c:otherwise>
-									<img class="photoBox" alt="" src="${output.projThumbnailImg}">
-								</c:otherwise>
-							</c:choose>
+							<c:if test="${output.projThumbnailImg == null}">
+								<img class="photoBox" alt="" src="${pageContext.request.contextPath}/assets/img/noneImage.png">
+							</c:if>
+							<c:if test="${output.projThumbnailImg != null}">
+								<c:choose>
+									<c:when test="${fn:indexOf(output.projThumbnailImg, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
+										<img class="photoBox" alt="" src="/upload/${fn:replace(fn:replace(fn:replace(fn:replace(fn:replace(output.projThumbnailImg, '.jpeg', '_crop_240x240.jpeg'), '.PNG', '_crop_240x240.PNG'), '.JPG', '_crop_240x240.JPG'), '.jpg', '_crop_240x240.jpg'), '.png', '_crop_240x240.png')}">
+									</c:when>
+									<c:otherwise>
+										<img class="photoBox" alt="" src="${output.projThumbnailImg}">
+									</c:otherwise>
+								</c:choose>
+							</c:if>
 							<div class="left-infoBox">
 								<c:if test="${output.projSort == 1}">
 					        		<div class="sFindBox">공급자</div>
@@ -357,7 +362,35 @@
 							</div>
 							<div class="infoBox3">
 								<div class="authContainer">
-									<c:if test="${output.memRname == 1}">
+										<div class="authBox">신원인증
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
+										</div>
+										<div class="authBox">사업자인증
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+										</div>
+								</div>
+								<div class="authContainer">
+									<c:if test="${output.projSort == 1}">
+										<div class="authBox">상품검증
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+										</div>
+									</c:if>
+									<c:if test="${output.projSort == 1}">
+										<div class="authBox">수익성검증
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+										</div>
+									</c:if>
+									<c:if test="${output.projSort == 2}">
+										<div class="authBox">채널검증
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+										</div>
+									</c:if>
+									<c:if test="${output.projSort == 2}">
+										<div class="authBox">매출검증
+											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
+										</div>
+									</c:if>	
+<%-- 									<c:if test="${output.memRname == 1}">
 										<div class="authBox">신원인증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/auth.png">
 										</div>
@@ -418,7 +451,7 @@
 										<div class="authBox">매출검증
 											<img class="authImg" alt="" src="${pageContext.request.contextPath}/assets/img/xx-button.png">
 										</div>
-									</c:if>								
+									</c:if>	 --%>							
 								</div>
 							</div>
 						</div>
