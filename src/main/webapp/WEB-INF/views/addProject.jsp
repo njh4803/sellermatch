@@ -87,6 +87,11 @@
 												<img id="img" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;"
 											    	src="${pageContext.request.contextPath}/assets/img/profile.png"/>
 											</div>	
+											<div id="imageBoxInfo">
+											    	<label id="imageBoxInfoTitle">이미지 등록 유의사항</label>
+											    	<label id="imageBoxInfoText">- 공급자 : 공급하려는</label><label id="imageBoxInfoRedText">&nbsp;상품 이미지(썸네일)&nbsp;</label><label id="imageBoxInfoText">등록</label>
+											    	<label id="imageBoxInfoText">- 판매자 : 판매자를 어필할 수 있는 </label><label id="imageBoxInfoRedText">&nbsp;본인 사진, 찾는 상품 사진&nbsp;</label><label id="imageBoxInfoText"> 등 등록</label>
+											</div>
 		    								<div>
 		                   		            	<input id = "file_route" type="text" name="file_route" class="formControl" readonly="readonly"/>
 		                  		           		<label class="fileLable">

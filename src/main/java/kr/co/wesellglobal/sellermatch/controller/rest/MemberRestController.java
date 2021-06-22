@@ -216,7 +216,7 @@ public class MemberRestController {
 
 	
 	@RequestMapping(value = "/member/editOk", method = RequestMethod.POST)
-	public Map<String, Object> editOk(HttpSession session, @RequestParam(value = "memPhoto", required = false) MultipartFile memPhoto,
+	public Map<String, Object> editOk(HttpSession session,
 			@RequestParam(value = "memId", required = false) String memId,
 			@RequestParam(value = "memPw_confirm", required = false) String memPw,
 			@RequestParam(value = "memName", required = false) String memName,
@@ -232,24 +232,8 @@ public class MemberRestController {
 		
 		/** 1) 업로드 처리 */
 		// 업로드 결과가 저장된 Beans를 리턴받는다.
-		FileDto item = null;
-			
-		try {
-			if (memPhoto != null && memPhoto.getSize() != 0) {
-				item = webHelper.saveMultipartFile(memPhoto);
-			}
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return webHelper.getJsonError(e.getLocalizedMessage());
-		}
-		
 		MemberDto input = new MemberDto();
-		if (memPhoto != null && memPhoto.getSize() != 0) {
-			input.setMemPhoto(item.getFilePath());
-		}
+		
 		input.setMemId(memId);
 		// 공백이나 null이 아니면
 		if (regexHelper.isValue(memPw)) {
@@ -331,30 +315,23 @@ public class MemberRestController {
 		session.setAttribute("profileId", profile.getProfileId());
 		
 		// 로그인 유지를 체크했다면
-		if (continueLogin.equals("on")) {
-			int amount =60 *60 *24 *7;
-            // 쿠키를 생성하고 현재 로그인되어 있을 때 생성되었던 세션의 id를 쿠키에 저장한다.
-			Cookie cookie =new Cookie("loginCookie", session.getId());
-            // 쿠키를 찾을 경로를 컨텍스트 경로로 변경해 주고...
-            cookie.setPath("/");
-            cookie.setMaxAge(amount);// 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
-            // 쿠키를 적용해 준다.
-            response.addCookie(cookie);
-            //webHelper.setCookie("loginCookie", session.getId(), amount);// 단위는 (초)임으로 7일정도로 유효시간을 설정
-            log.debug("loginCookie 쿠키 생성 완료 = " + cookie.getName());
-            
-            
-            // currentTimeMills()가 1/1000초 단위임으로 1000곱해서 더해야함
-            Date sessionLimit =new Date(System.currentTimeMillis() + (1000*amount));
-			
-			input.setSessionLimit(sessionLimit);
-			input.setSessionKey(session.getId());
-			try {
-				memberService.keepLogin(input);
-			} catch (Exception e) {
-				return webHelper.getJsonError(e.getLocalizedMessage());
-			}
-		}		
+		/*
+		 * if (continueLogin.equals("on")) { int amount =60 *60 *24 *7; // 쿠키를 생성하고 현재
+		 * 로그인되어 있을 때 생성되었던 세션의 id를 쿠키에 저장한다. Cookie cookie =new Cookie("loginCookie",
+		 * session.getId()); // 쿠키를 찾을 경로를 컨텍스트 경로로 변경해 주고... cookie.setPath("/");
+		 * cookie.setMaxAge(amount);// 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다. // 쿠키를 적용해 준다.
+		 * response.addCookie(cookie); //webHelper.setCookie("loginCookie",
+		 * session.getId(), amount);// 단위는 (초)임으로 7일정도로 유효시간을 설정
+		 * log.debug("loginCookie 쿠키 생성 완료 = " + cookie.getName());
+		 * 
+		 * 
+		 * // currentTimeMills()가 1/1000초 단위임으로 1000곱해서 더해야함 Date sessionLimit =new
+		 * Date(System.currentTimeMillis() + (1000*amount));
+		 * 
+		 * input.setSessionLimit(sessionLimit); input.setSessionKey(session.getId());
+		 * try { memberService.keepLogin(input); } catch (Exception e) { return
+		 * webHelper.getJsonError(e.getLocalizedMessage()); } }
+		 */
 
 		
 		Map<String, Object> data = new HashMap<String, Object>();

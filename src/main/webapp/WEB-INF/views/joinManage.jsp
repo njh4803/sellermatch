@@ -48,7 +48,7 @@
 									</div>
 									<div class="inputGroup">
 										<label>닉네임</label>
-				    					<input type="text" class="inputForm" name="memNick" id="memNick" value="${output.memNick}">
+				    					<input type="text" class="inputForm" name="memNick" id="memNick" value="${output.memNick}" readonly="readonly">
 									</div>
 									<div class="inputGroup">
 										<label>국가</label>
@@ -120,7 +120,7 @@
 			    					<input type="hidden" name="memPost" class="inputForm" id="postcode" maxlength="5" readonly  value="${output.memPost}"/>
 				    				<input type="hidden" name="memAddr" class="inputForm" id="memAddr" readonly  value="${output.memAddr}"/>
 									<input type="hidden" name="memAddr2" class="inputForm" id="memAddr2" value="${output.memAddr2}"/>
-									<div class="inputGroup">
+<%-- 									<div class="inputGroup">
 										<label>이메일 인증</label>
 			    						<input type="text" name="memEmail" class="inputForm" id="memEmail" value="${output.memId}" readonly="readonly"/>
 										<button type="button" id="sendAuthEmail" class="btn form-bg-primary">인증번호 발송</button>
@@ -129,7 +129,7 @@
 				    					<label>이메일 인증번호</label>
 			    						<input type="text" name="auth_confirm" class="inputForm" id="auth_confirm" />
 										<button type="button" id="authConfirm" class="btn form-bg-primary">인증번호 확인</button>			    				
-				    				</div>
+				    				</div> --%>
 				    				<div class="inputGroup">
 				    					<label>회원가입일</label>
 				    					<input type="text" name="memDate" class="inputForm" id="memDate" readonly value="${output.memDate}"/>
