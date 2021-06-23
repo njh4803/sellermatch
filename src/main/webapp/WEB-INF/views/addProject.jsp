@@ -300,6 +300,7 @@
 
 </textarea>
 		    							</c:if>
+		    							<div class="row1">
 			    						<script type="text/javascript">
 											CKEDITOR.replace('projDetail', {
 												height : 200,
@@ -1030,12 +1031,12 @@ $(document).ready(function() {
 	        profileNation: '등록자 지역을 선택해주세요.',
 	    }
 	});
-	
 	// CKEDITOR 값 저장
 	CKEDITOR.instances.projDetail.on('change', function(e) {
 		var projDetail = CKEDITOR.instances.projDetail.getData();
 		$('#projDetail').text(projDetail);
 	}); 
+	
 
     $('#proj_form').ajaxForm({
         // submit 전에 호출된다.

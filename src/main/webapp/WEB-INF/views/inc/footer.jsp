@@ -28,7 +28,7 @@
 					개인정보책임관리자 : 정윤용<br>
 					사업자등록번호 : 181-87-01992<br>
 					통신판매업신고 : 2020-인천연수구-1558<br>
-					연락처 : 02-513-0923<br>
+					연락처 : 032-459-2236<br>
 					호스팅 서비스 제공 : 스마일서브 호스팅 (https://www.cloudv.kr/)
 	            </div>
         	</div>
@@ -68,6 +68,7 @@
     <input type="hidden" id="mail" value="${member.memId}" />
     <input type="hidden" id="tel" value="${member.memTel}" />
     <input type="hidden" id="nick" value="${member.memNick}" />
+    <input type="hidden" id="memSort" value="${member.memSort}" />
 </footer>
 
 <script>
@@ -108,6 +109,7 @@ $(document).ready(function() {
 	var mail = $("#mail").val();	//회원메일세팅
 	var tel = $("#tel").val();		//회원전화번호세팅
 	var nick = $("#nick").val();	//회원닉네임세팅
+	var memSort = $("#memSort").val();	//회원유형세팅
 	if(mail=='') {
 		mail = null;
 	}
@@ -116,6 +118,17 @@ $(document).ready(function() {
 	}
 	if(nick=='') {
 		nick = null;
+	}
+	if(memSort=='') {
+		memSort = null;
+	} else {
+		if(memSort=='1') {
+			memSort = '공급자';
+		} else if(memSort=='2') {
+			memSort = '판매자';
+		} else {
+			memSort = '미분류';
+		}
 	}
 	
   (function() {
@@ -159,7 +172,8 @@ $(document).ready(function() {
         "profile": {
           "name": nick, //회원닉네임적용
           "mobileNumber": tel, //회원전화번호적용
-          "email": mail	//회원메일 적용
+          "email": mail,	//회원메일 적용
+          "memSort":memSort //회원유형 적용
         }
     
   });
