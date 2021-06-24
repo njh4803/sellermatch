@@ -32,7 +32,7 @@
 	        		<div class="pFindBox">공급자 찾음</div>
 	        	</c:if>				
 	           	<div class="projDetail clearfix"  data-index="${status.index}">
-					<div class="titleBox">${output.projTitle}</div>
+					<div class="titleBox">${output.projTitle} <label style="color:red;">&nbsp&nbsp[${output.replyCount}]</label></div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="detailBox1">
@@ -248,7 +248,11 @@
 			<div class="container2 clearfix">
 				<input type="hidden" id="projSort" value="${output.projSort}">
 	           	<div class="projDetail clearfix"  data-index="${status.index}">
-					<div class="titleBox">${output.projTitle}</div>
+					<div class="titleBox">${output.projTitle}
+						<c:if test="${output.replyCount >0}">
+							<label style="color:#ff540f;">&nbsp&nbsp[${output.replyCount}]</label>
+						</c:if>
+					</div>
 					<c:choose>
 						<c:when test="${output.projDday < 0}">
 							<div class="D-day">마감완료</div>
@@ -404,7 +408,6 @@
 					    			<span>비밀글</span>
 					    		</label>
 					    		<!-- <input type="password" class="secretPw" id="replyPw" name="replyPw" placeholder="비밀번호" readonly> -->
-					    		<input type="hidden" id="projId" name="replyProjId" value="${output.projId}">
 					    		<input type="hidden" id="replyParentMemId" name="replyParentMemId">
 					    		<input type="hidden" id="replyParent" name="replyParent" value="0">
 					    		<input type="hidden" id="replySecret" name="replySecret" value="N">

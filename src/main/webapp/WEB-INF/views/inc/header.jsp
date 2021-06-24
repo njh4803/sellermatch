@@ -110,6 +110,7 @@ header #m-search_frm{
  	               <div class="operation_guide_list" style="display: none;">
 	                    <a href="${pageContext.request.contextPath}/board?boardType=1">이용안내</a>
 	                    <a href="${pageContext.request.contextPath}/board?boardType=3">자유게시판</a>
+					   <a href="${pageContext.request.contextPath}/board?boardType=4">홍보요청</a>
 	               </div>
                </li>
            </ul>

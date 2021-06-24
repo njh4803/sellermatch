@@ -431,7 +431,8 @@
    		</div>
     </div>
 </div>
-<input type="text" value="http://sellermatch.co.kr/" id="urlAddress" style="display:none;">
+<input type="text" value="http://sellermatch.co.kr/" id="urlAddress" style="display:none;"/>
+<input type="hidden" id="marketingConsent" value="${output.marketingConsent}" />
 <%@ include file="inc/footer.jsp"%>
 <script>
 	// 24시간 기준 쿠키 설정하기
@@ -444,13 +445,46 @@
 </script>
 <script>
 $(document).ready(function() {
-	
+	cookiedata = document.cookie;
+	var memIdx = $("#memIdx").val();
+	var marketingConsent = $("#marketingConsent").val();	//회원마케팅수신여부
+
+	if (cookiedata.indexOf("marketing=N") < 0 ){ //쿠키 변경 여부 불러오기
+		if(memIdx != null) {
+			if(marketingConsent == 'N') {
+				swal({
+					title: '마케팅 수신동의',
+					html: '셀러매치 회원님들의 아이템을<br>이메일 및 문자로 홍보받을 수 있어요.<br>마케팅 수신동의를 하시겠습니까?',
+					type: "question",
+					width: '400px',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: '동의',
+					cancelButtonText: '미동의'
+				}).then(
+						function(result) {
+					if (result.value) {
+						$.post(ROOT_URL + '/marketingUpdate', {
+							memIdx: memIdx
+						}, function(json) {
+							var url = ROOT_URL + "/";
+							location.href = url;
+						});
+					} else {
+						swal("미동의", "하루동안 보지 않습니다.");
+							setCookie("marketing", "N", 1); //쿠키값 변경
+					}
+				});
+			}
+		}
+	}
+
 	/* 메인 이벤트팝업 노출 *//* 이벤트팝업 쿠키 설정 */
   	$('.popup').show();
  	//$('.popup2').show();
  	//$('.popup3').show();
-	
- 	cookiedata = document.cookie;
+
 	if ( cookiedata.indexOf("popup=N") < 0 ){ //쿠키 변경 여부 불러오기
 		document.all['popup'].style.visibility = "visible";
 	} else {

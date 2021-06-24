@@ -11,8 +11,8 @@
     	<div class="partner_bnr3 clearfix">
     		<div class="clearfix">
 	    		<div class="use-top-left">
-	    			<div class="use-title">커뮤니티</div>
-		    		<div class="use-text">이용자들과 자유롭게 소통할 수 있는 공간입니다.</div>
+	    			<div class="use-title">홍보요청</div>
+		    		<div class="use-text">매칭을 홍보하여 빠르게 거래처를 찾아보세요.</div>
 	    		</div>
 		    	<div class="use-top-right">
 		    		<img class="use-img" alt="" src="${pageContext.request.contextPath}/assets/img/mypage-img.png">
@@ -30,7 +30,7 @@
 					<button type="button" class="cancelBtn">취소하기</button>
 					<button type="button" class="writeBtn">작성하기</button>
 				</div>
-				<input name="boardType" type="hidden" value="3">
+				<input name="boardType" type="hidden" value="4">
 			</form>
 	    </div>
    </div>
@@ -45,7 +45,7 @@ $(document).ready(function(){
 	    extraPlugins : 'confighelper'
 	});
 	$(document).on("click", ".cancelBtn", function(){
-		window.location = ROOT_URL+"/board?boardType=3";
+		window.location = ROOT_URL+"/board?boardType=4";
 	});
 
 	/** 유효성 검사 플러그인이 ajaxForm보다 먼저 명시되어야 한다. */
@@ -92,7 +92,7 @@ $(document).ready(function(){
 	    		return $('#board-form').valid();
             },success: function(json) {
             	swal('알림', '게시물이 등록되었습니다.', 'success').then(function(result) {
-                    window.location = ROOT_URL + '/board/detail?boardId='+json.boardId;
+                    window.location = ROOT_URL + '/board/reqAdDetail?boardId='+json.boardId;
                 });
             },
 	  	});

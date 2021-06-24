@@ -58,10 +58,7 @@ public class TempController {
 			@RequestParam(value = "keyword", required = false) String keyword,
 			// 페이지 구현에서 사용할 현재 페이지 번호
 			@RequestParam(value = "page", defaultValue = "1") int nowPage) {
-		
-		if (boardType.equals("4")) {
-			return new ModelAndView("/boardOneToOne");
-		}
+
 		
 		// 페이지 구현에 필요한 변수값 생성 
 		int totalCount = 0;		// 전체 게시글 수
@@ -72,6 +69,7 @@ public class TempController {
 		PageData pageData = null;
 				
 		BoardDto input = new BoardDto();
+		BoardDto input2 = new BoardDto();
 		input.setBoardType(boardType);
 		if (boardType.equals("2") && boardQaType != null) {
 			input.setBoardQaType(boardQaType);
@@ -95,7 +93,11 @@ public class TempController {
 			BoardDto.setListCount(pageData.getListCount());
 			output = boardService.getBoardList(input);
 			if (boardType.equals("1")) {
-				outputTopNotice = boardService.getBoardListNoticeTop(input);
+				input2.setBoardType("1");
+				outputTopNotice = boardService.getBoardListNoticeTop(input2);
+			} else if (boardType.equals("4")){
+				input2.setBoardType("4");
+				outputTopNotice = boardService.getBoardListNoticeTop(input2);
 			}
 			boardCount = boardService.getBoardCount(input);
 			
@@ -116,6 +118,10 @@ public class TempController {
 		
 		if (boardType.equals("3")) {
 			return new ModelAndView("/boardFree");
+		}
+
+		if (boardType.equals("4")) {
+			return new ModelAndView("/reqAd");
 		}
 		
 		return new ModelAndView("/usageFee");
@@ -155,8 +161,16 @@ public class TempController {
 		}
 		
 		return new ModelAndView("boardWrite");
-	}	
+	}
+	@RequestMapping(value = "/board/reqAdBoardWrite", method = RequestMethod.GET)
+	public ModelAndView getReqAdBoardWrite(Model model,
+			@SessionAttribute(value = "member", required = false) MemberDto member) {
+		if (member == null) {
+			return webHelper.redirect("/", "로그인 후 이용해 주세요.");
+		}
 
+		return new ModelAndView("reqAdBoardWrite");
+	}
 	@RequestMapping(value = "/board/edit", method = RequestMethod.GET)
 	public ModelAndView getBoardEdit(Model model,
 			@SessionAttribute(value = "member", required = false) MemberDto member,
@@ -175,14 +189,15 @@ public class TempController {
 			@RequestParam(value = "boardId", required = false) String boardId,
 			@RequestParam(value = "boardTitle", required = false) String boardTitle,
 			@RequestParam(value = "boardContents", required = false) String boardContents,
-			@RequestParam(value = "boardWriter", required = false) String boardWriter) {
+			@RequestParam(value = "boardWriter", required = false) String boardWriter,
+			@RequestParam(value = "boardType", required = false) String boardType) {
 		
 		BoardDto input = new BoardDto();
 		input.setBoardId(boardId);
 		input.setBoardWriter(boardWriter);
 		input.setBoardContents(boardContents);
 		input.setBoardTitle(boardTitle);
-		input.setBoardType("3");
+		input.setBoardType(boardType);
 		input.setBoardNoticeTop("N");
 		
 		try {
@@ -220,7 +235,33 @@ public class TempController {
 		
 		return new ModelAndView("boardDetail");
 	}
-	
+	@RequestMapping(value = "/board/reqAdDetail", method = RequestMethod.GET)
+	public ModelAndView boardReqAdDetail(Model model,
+									@RequestParam(value = "boardId", required = false) String boardId) {
+
+		BoardDto input = new BoardDto();
+		input.setBoardId(boardId);
+		input.setBoardType("4");
+
+		ReplyDto input2 = new ReplyDto();
+		input2.setReplyBoardId(boardId);
+
+		BoardDto output = null;
+		List<ReplyDto> replyDto = null;
+
+		try {
+			output = boardService.getBoard(input);
+			replyDto = replyService.getReplyList(input2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("output", output);
+		model.addAttribute("replyDto", replyDto);
+
+		return new ModelAndView("reqAdBoardDetail");
+	}
+
 	@ResponseBody
 	@RequestMapping(value = "/board/delete", method = RequestMethod.POST)
 	public Map<String, Object> boardDelete(Model model,

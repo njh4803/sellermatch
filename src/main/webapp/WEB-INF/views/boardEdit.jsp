@@ -22,6 +22,7 @@
 	    	<form action="${pageContext.request.contextPath}/board/edit" id="board-form" method="POST">
 	    		<input type="hidden" id="boardId" name="boardId" value="${boardDto.boardId}">
 	    		<input type="hidden" id="boardWriter" name="boardWriter" value="${boardDto.boardWriter}">
+				<input type="hidden" id="boardType" name="boardType" value="${boardDto.boardType}">
 				<div>
 					<input class="board-title" name="boardTitle" type="text" placeholder="제목" value="${boardDto.boardTitle}" placeholder="제목을 입력해 주세요">
 				</div>

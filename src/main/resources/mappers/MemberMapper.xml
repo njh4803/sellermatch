@@ -48,7 +48,13 @@
         <result property="withdrawReasonText" column="WITHDRAW_REASON_TEXT" />
         <result property="withdrawDate" column="WITHDRAW_DATE" />
         <result property="withdrawIdx" column="WITHDRAW_IDX" />
-        
+
+		<result property="tosConsent" column="TOS_CONSENT" />
+		<result property="privacyConsent" column="PRIVACY_CONSENT" />
+		<result property="ageConsent" column="AGE_CONSENT" />
+		<result property="marketingConsent" column="MARKETING_CONSENT" />
+		<result property="accountActiveConsent" column="ACCOUNT_ACTIVE_CONSENT" />
+
         <result property="memDate" column="JOIN_DATE" />
         <result property="totalCnt" column="TOTAL_CNT" />
         <result property="proCnt" column="PRO_CNT" />
@@ -63,12 +69,11 @@
     	INSERT INTO MemList
     		(`Mem_id`, `Mem_pw`, `Mem_state`, `Mem_class`, `Mem_sort`, `Mem_country`, 
     		`Mem_nation`, `Mem_addr`, `Mem_addr2`, `Mem_post`, `Mem_tel`, `Mem_name`, `Mem_rname`, `Mem_nick`, 
-    		`Mem_photo`, `Mem_sns_ch`, `googleId`, `naverId`, `kakaoId`, `Mem_ip`, `Mem_date`)
+    		`Mem_photo`, `Mem_sns_ch`, `googleId`, `naverId`, `kakaoId`, `Mem_ip`, `Mem_date`,`tos_consent`,`privacy_consent`,`age_consent`,`marketing_consent`,`account_active_consent`)
     	 VALUES 
     	 	(#{memId}, md5(#{memPw}), #{memState}, #{memClass}, #{memSort}, #{memCountry}, 
     	 	#{memNation}, #{memAddr}, #{memAddr2}, #{memPost}, #{memTel}, #{memName}, #{memRname}, #{memNick}, 
-    	 	#{memPhoto}, #{memSnsCh}, #{googleId}, #{naverId}, #{kakaoId}, #{memIp}, now());
-
+    	 	#{memPhoto}, #{memSnsCh}, #{googleId}, #{naverId}, #{kakaoId}, #{memIp}, now(),#{tosConsent},#{privacyConsent},#{ageConsent},#{marketingConsent},#{accountActiveConsent});
     </insert>
     
     <!-- 다중행 조회를 위한 기능 정의 -->
@@ -118,7 +123,8 @@
     		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
     		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
     		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
-    		mem_date, mem_edit_date, profile_grade, profile_ch_chk, profile_sale_chk, profile_biz_certi, 
+    		mem_date, mem_edit_date, profile_grade, profile_ch_chk, profile_sale_chk, profile_biz_certi,
+			tos_consent,privacy_consent,age_consent,marketing_consent,account_active_consent,
     		(select count(*) FROM ProjectList where Proj_mem_id = Profile_mem_id) as proj_add_count, 
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_type = 2) as recommend_count,
     		(select count(*) FROM ApplyList where Apply_mem_id = Profile_mem_id and apply_proj_state = 5) as contract_count
@@ -148,7 +154,7 @@
     		mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
     		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
     		mem_name, mem_rname, mem_nick, mem_photo, mem_sns_ch, googleId, naverId, kakaoId, mem_ip, mem_login_date, mem_out_date, 
-    		mem_date, mem_edit_date, 
+    		mem_date, mem_edit_date, tos_consent,privacy_consent,age_consent,marketing_consent,account_active_consent,
     		(SELECT profile_indus FROM ProfileList where profile_mem_id = #{memId}) as exist_profile
     	FROM MemList WHERE mem_id = #{memId}
     </select>
@@ -175,7 +181,7 @@
 			mem_idx, mem_id, mem_pw, mem_state, mem_class, mem_class_sdate, mem_class_edate,
     		mem_sort, mem_country, mem_nation, mem_addr, mem_addr2, mem_post, mem_tel,
     		mem_name, mem_rname, mem_nick, mem_photo, mem_ip, mem_login_date, mem_out_date, 
-    		mem_date, mem_edit_date, 
+    		mem_date, mem_edit_date, tos_consent,privacy_consent,age_consent,marketing_consent,account_active_consent,
     		(SELECT profile_indus FROM ProfileList where profile_mem_id = #{memId}) as exist_profile
 		FROM MemList
 		WHERE mem_id=#{memId} AND mem_pw=MD5(#{memPw})
@@ -305,7 +311,9 @@
 				GROUP BY DATE_FORMAT(mem_date,'%Y-%m-%d')
 			) A
 			ORDER BY JOIN_DATE DESC
-    </select>    
-    
-    
+    </select>
+
+	<update id="marketingUpdate" parameterType="kr.co.wesellglobal.sellermatch.model.MemberDto">
+		UPDATE MemList SET MARKETING_CONSENT = #{marketingConsent}, Mem_edit_date = now() where mem_idx = #{memIdx}
+	</update>
 </mapper>

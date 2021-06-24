@@ -129,7 +129,12 @@ public class MemberRestController {
 			@RequestParam(value = "memSnsCh", required = false) String memSnsCh,
 			@RequestParam(value = "googleId", required = false) String googleId,
 			@RequestParam(value = "naverId", required = false) String naverId,
-			@RequestParam(value = "kakaoId", required = false) String kakaoId
+			@RequestParam(value = "kakaoId", required = false) String kakaoId,
+			@RequestParam(value = "tosConsent", required = false, defaultValue = "Y") String tosConsent,
+			@RequestParam(value = "privacyConsent", required = false, defaultValue = "Y") String privacyConsent,
+			@RequestParam(value = "ageConsent", required = false, defaultValue = "Y") String ageConsent,
+			@RequestParam(value = "marketingConsent", required = false, defaultValue = "N") String marketingConsent,
+			@RequestParam(value = "accountActiveConsent", required = false, defaultValue = "N") String accountActiveConsent
 			) {
 		
 		/** 1) 업로드 처리 */
@@ -178,6 +183,13 @@ public class MemberRestController {
 		input.setNaverId(naverId);//네이버아이디
 		input.setKakaoId(kakaoId);//카카오아이디
 		input.setMemSnsCh(memSnsCh);	//가입 SNS채널
+
+		//동의정보추가 (이용약관,개인정보처리,마케팅,만14세,계정활성화)
+		input.setTosConsent(tosConsent);
+		input.setPrivacyConsent(privacyConsent);
+		input.setAgeConsent(ageConsent);
+		input.setMarketingConsent(marketingConsent);
+		input.setAccountActiveConsent(accountActiveConsent);
 		
 		
 		// 프로필
@@ -203,7 +215,9 @@ public class MemberRestController {
 			String htmlContent = emailTemplateEngine.process("welcomeMail", context);
 			
 			String subject = "셀러매치 가입을 환영합니다.";
-			mailHelper.sendMail(memId, subject, htmlContent);	
+/*
+			mailHelper.sendMail(memId, subject, htmlContent);
+*/
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -550,6 +564,17 @@ public class MemberRestController {
 		data.put("output2", output2);
 		data.put("memSort", member.getMemSort());
 		
+		return webHelper.getJsonData(data);
+	}
+
+	@RequestMapping(value = "/marketingUpdate", method = RequestMethod.POST)
+	public Map<String, Object> marketingUpdate(@RequestParam(value = "memIdx", required = true) Integer memIdx) throws Exception {
+		MemberDto input = new MemberDto();
+		input.setMemIdx(memIdx);
+		input.setMarketingConsent("Y");
+
+		memberService.marketingUpdate(input);
+		Map<String, Object> data = new HashMap<String, Object>();
 		return webHelper.getJsonData(data);
 	}
 	 

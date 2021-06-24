@@ -9,8 +9,8 @@
     	<div class="partner_bnr3">
     		<div class="clearfix">
 	    		<div class="use-top-left">
-	    			<div class="use-title">커뮤니티</div>
-		    		<div class="use-text">이용자들과 자유롭게 소통할 수 있는 공간입니다.</div>
+	    			<div class="use-title">홍보요청</div>
+		    		<div class="use-text">매칭을 홍보하여 빠르게 거래처를 찾아보세요.</div>
 	    		</div>
 		    	<div class="use-top-right">
 		    		<img class="use-img" alt="" src="${pageContext.request.contextPath}/assets/img/mypage-img.png">
@@ -27,6 +27,14 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="outputTopNotice" items="${outputTopNotice}" varStatus="status">
+					<tr>
+						<td class="useTopNotice">공지사항</td>
+						<td class="noticeTopDetail" data-id="${outputTopNotice.boardId}">${outputTopNotice.boardTitle}</td>
+						<td>관리자</td>
+						<td>${outputTopNotice.boardRegDate}</td>
+					</tr>
+				</c:forEach>
 				<c:forEach var="output" items="${output}" varStatus="status">
 					<tr>
 						<td>${boardCount - minusCount - status.count +1} </td>
@@ -37,10 +45,10 @@
 						</td>
 						<td>
 							<c:if test="${output.boardWriterSort=='2'}">
-								<span class="memSort">판매자</span>
+							<span class="memSort">판매자</span>
 							</c:if>
 							<c:if test="${output.boardWriterSort=='1'}">
-								<span class="memSort producer">공급자</span>
+							<span class="memSort producer">공급자</span>
 							</c:if>
 								${output.boardWriterNick}
 						</td>
@@ -62,7 +70,7 @@
 					        <%-- 이전 그룹으로 이동 가능하다면? --%>
 					        <c:when test="${pageData.prevPage > 0}">
 					            <%-- 이동할 URL 생성 --%>
-					            <c:url value="/board?boardType=3" var="prevPageUrl">
+					            <c:url value="/board?boardType=4" var="prevPageUrl">
 					                <c:param name="page" value="${pageData.prevPage}" />
 					                <c:param name="keyword" value="${keyword}" />
 					            </c:url>
@@ -76,7 +84,7 @@
 					    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
 					    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 					        <%-- 이동할 URL 생성 --%>
-					        <c:url value="/board?boardType=3" var="pageUrl">
+					        <c:url value="/board?boardType=4" var="pageUrl">
 					            <c:param name="page" value="${i}"/>
 					            <c:param name="keyword" value="${keyword}"/>
 					        </c:url>
@@ -99,7 +107,7 @@
 					        <%-- 다음 그룹으로 이동 가능하다면? --%>
 					        <c:when test="${pageData.nextPage > 0}">
 					            <%-- 이동할 URL 생성 --%>
-					            <c:url value="/board?boardType=3" var="nextPageUrl">
+					            <c:url value="/board?boardType=4" var="nextPageUrl">
 					                <c:param name="page" value="${pageData.nextPage}" />
 					                <c:param name="keyword" value="${keyword}" />
 					            </c:url>
@@ -113,12 +121,6 @@
 					</div>
 				</div>
 			</div>
-<%-- 			<div>
-				<form action="${pageContext.request.contextPath}/usageFee2" id="board-form">
-					<input type="search" id="boardSearch" class="boardSearch" placeholder="제목 또는 내용으로 검색">
-					<button type="submit" class="searchBtn"></button>
-				</form>
-			</div> --%>
 	    </div>
    </div>
 </div>
@@ -177,7 +179,6 @@ $(document).ready(function(){
 	        	'page' : page,
 	        },
 			success : function(json) {
-				console.log(json)
 				var content = {
 					keyword : json.keyword,
 					boardCount : json.boardCount,
@@ -201,7 +202,11 @@ $(document).ready(function(){
 
 	$(document).on("click", ".boardDetail", function(){
 		var boardId = $(this).data('id');
-		window.location = ROOT_URL + '/board/detail?boardId='+boardId;
+		window.location = ROOT_URL + '/board/reqAdDetail?boardId='+boardId;
+	});
+	$(document).on("click", ".noticeTopDetail", function(){
+		var boardId = $(this).data('id');
+		window.location = ROOT_URL + '/board/reqAdDetail?boardId='+boardId;
 	});
 	$(document).on("click", ".board-write", function(){
 		var login_id = $('.projectInsert').data('member');
@@ -213,7 +218,7 @@ $(document).ready(function(){
                	type: 'warning',
             });
 		} else {
-			window.location = ROOT_URL + '/board/write';	
+			window.location = ROOT_URL + '/board/reqAdBoardWrite';
 		}
 	});
 });

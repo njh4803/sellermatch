@@ -368,4 +368,16 @@ public class MemberServiceImpl implements MemberService{
 		
 		return result;
 	}
+
+	@Override
+	public void marketingUpdate(MemberDto input) throws Exception {
+		int result = 0;
+
+		try {
+			sqlSession.update("MemberMapper.marketingUpdate", input);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 수정에 실패했습니다.");
+		}
+	}
 }

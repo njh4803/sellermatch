@@ -308,7 +308,17 @@
 								</c:choose>
 							</div>
 							<div class="project-titleBox">
-								${output.projTitle}
+									<c:choose>
+										<c:when test="${fn:length(output.projTitle) > 29}">
+											<c:out value="${fn:substring(output.projTitle,0,28)}"/>...
+										</c:when>
+										<c:otherwise>
+											<c:out value="${output.projTitle}"/>
+										</c:otherwise>
+									</c:choose>
+									<c:if test="${output.replyCount >0}">
+										<label style="color:#ff540f;">&nbsp&nbsp[${output.replyCount}]</label>
+									</c:if>
 							</div>
 							<div class="project-detailBox">
 								${output.projDetail}

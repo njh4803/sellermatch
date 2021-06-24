@@ -65,6 +65,7 @@
         	</div>
         </div>
     </div>
+	<input type="hidden" id="memIdx" value="${member.memIdx}" />
     <input type="hidden" id="mail" value="${member.memId}" />
     <input type="hidden" id="tel" value="${member.memTel}" />
     <input type="hidden" id="nick" value="${member.memNick}" />

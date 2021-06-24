@@ -48,7 +48,7 @@
   color: #858585;	
 }
 /* 공지사항 */
-.boardDetail,.boardTopDetail {
+.boardDetail,.boardTopDetail,.noticeTopDetail {
 	cursor: pointer;
 }
 
@@ -203,4 +203,13 @@ input::placeholder {
   font-stretch: normal;
   text-align: center;
   color: #ffffff;	
+}
+.useTopNotice {
+	color: #ea551f !important;
+
+	font-weight: bold !important;
+}
+.noticeTopDetail {
+	font-weight: bold !important;
+
 }

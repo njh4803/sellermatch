@@ -86,7 +86,7 @@
 						</div>
 						<div class="Agreement-box clearfix">
 							<div class="Agreement" style="float: left;">
-								<input type="checkbox" id="chk1" class="agree-chk chk">
+								<input type="checkbox" id="chk1" class="agree-chk chk" name="tosConsent" value="Y">
 								<label for="chk1"><span class="r-span">(필수) 이용약관동의</span></label>
 							</div>
 							<!-- 						<div id="termsOfService" href="javascipt:void(0);" style="float: right;">
@@ -274,7 +274,7 @@
 								
 								</textarea>
 							<div class="Agreement" style="float: left;">
-								<input type="checkbox" id="chk2" class="select-chk chk">
+								<input type="checkbox" id="chk2" class="select-chk chk" name="privacyConsent" value="Y">
 								<label for="chk2"><span class="r-span">(필수) 개인정보 수집 및 이용동의</span></label>
 							</div>
 								<textarea style="width: 100%; height: 100px; padding: 15px; resize: none;">
@@ -397,6 +397,18 @@
 ④ 개인정보의 암호화
 이용자의 개인정보는 비밀번호는 암호화 되어 저장 및 관리되고 있어, 본인만이 알 수 있으며 중요한 데이터는 파일 및 전송 데이터를 암호화 하거나 파일 잠금 기능을 사용하는 등의 별도 보안기능을 사용하고 있습니다.</textarea>
 						</div>
+						<div class="Agreement" style="float: left; margin-left:10px;">
+							<input type="checkbox" id="chk3" class="select-chk chk" name="ageConsent" value="Y">
+							<label for="chk3"><span class="r-span">(필수) 만 14세 이상입니다.</span></label>
+						</div>
+						<div class="Agreement" style="float: left; margin-left:10px;">
+							<input type="checkbox" id="chk4" class="select-chk chk" name="marketingConsent" value="Y">
+							<label for="chk4"><span class="r-span">(선택) 신규 공급자/판매자 정보 등 이메일/문자 수신 동의</span></label>
+						</div>
+						<div class="Agreement" style="float: left; margin-left:10px;">
+							<input type="checkbox" id="chk5" class="select-chk chk" name="accountActiveConsent" value="Y">
+							<label for="chk5"><span class="r-span">(선택) 계정 활성 상태를 유지합니다.</span></label>
+						</div>
 						<div class="join-btn-div" style="text-align-last: center;">
 							<button class="join-btn" type="submit" disabled="disabled" style="background-image: linear-gradient(98deg, #D9D9D9, #D9D9D9);">가입하기</button>
 						</div>
@@ -474,19 +486,21 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", ".select-chk", function(){
-		
 		var total_len = $(".chk").length;
 		//선택된 갯수
 		var len = $(".chk:checked").length;
 		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 			$(".agree-all").prop('checked', true);
+		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
+			$(".agree-all").prop('checked', false);
+			$(".agree-all").prop("checked", false);
+		}
+		if($("#chk1:checked").val()=='Y'&&$("#chk2:checked").val()=='Y'&&$("#chk3:checked").val()=='Y'){
 			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
 			$('.join-btn').attr('disabled', false);
-		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
-			$(".agree-all").prop('checked', false);	
+		}else{
 			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
 			$('.join-btn').attr('disabled', true);
-			$(".agree-all").prop("checked", false);
 		}
 		
 		if (this.checked == false) {
@@ -495,21 +509,24 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", ".agree-chk", function(){
-		
 		var total_len = $(".chk").length;
 		//선택된 갯수
 		var len = $(".chk:checked").length;
 		if(len == total_len){ // 선택된 갯수가 총 갯수랑 같으면 전체선택체크박스 체크 표시
 			$(".agree-all").prop('checked', true);
-			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
-			$('.join-btn').attr('disabled', false);
+
 		}else if(len >= 0){ // 선택된 갯수가 0보다 크거나 같으면 전체선택체크박스 체크 해제 
 			$(".agree-all").prop('checked', false);
-			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
-			$('.join-btn').attr('disabled', true);
 			$(".agree-all").prop("checked", false);
 		}
-		
+
+		if($("#chk1:checked").val()=='Y'&&$("#chk2:checked").val()=='Y'&&$("#chk3:checked").val()=='Y'){
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #ff8000, #ff540f)");
+			$('.join-btn').attr('disabled', false);
+		}else{
+			$('.join-btn').css("background-image", "linear-gradient(98deg, #D9D9D9, #D9D9D9)");
+			$('.join-btn').attr('disabled', true);
+		}
 	});
 		
 	$(document).on("click", "#sendAuthEmail", function(){

@@ -116,6 +116,8 @@ public class ProjectDto {
 	
 	// 지원자 수
 	private int applyCount;
+	// 댓글 수
+	private int replyCount;
 	
 	// 상세사진 리스트
 	private String[] projDetailImgList;

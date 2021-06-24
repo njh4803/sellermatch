@@ -138,7 +138,8 @@ public class BoardRestController {
 	public Map<String, Object> postBoardWrite(Model model,
 			@SessionAttribute(value = "member", required = false) MemberDto member,
 			@RequestParam(value = "boardTitle", required = false) String boardTitle,
-			@RequestParam(value = "boardContents", required = false) String boardContents) {
+			@RequestParam(value = "boardContents", required = false) String boardContents,
+			@RequestParam(value = "boardType", required = false) String boardType) {
 		
 		if (!regexHelper.isValue(boardContents)) {
 			return webHelper.getJsonError("상세내용을 입력해 주세요.");
@@ -149,7 +150,7 @@ public class BoardRestController {
 		input.setBoardId(webHelper.getUniqueId("B-", 3));
 		input.setBoardContents(boardContents);
 		input.setBoardTitle(boardTitle);
-		input.setBoardType("3");
+		input.setBoardType(boardType);
 		input.setBoardNoticeTop("N");
 		input.setBoardWriter(member.getMemId());
 		

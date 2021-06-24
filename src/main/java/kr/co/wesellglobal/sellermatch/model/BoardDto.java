@@ -52,6 +52,8 @@ public class BoardDto {
 	
 	// 작성자 닉네임
 	private String boardWriterNick;
+	private String boardWriterSort;
+
 	
 	/**관리자페이지 회원조회 페이지 구현을 위한 static변수*/
 	private static int offset;
@@ -84,7 +86,7 @@ public class BoardDto {
 			return "문의하기";
 		}
 		if (this.boardType.equals("4")) {
-			return "1대1 문의";
+			return "홍보요청";
 		}
 		return "";
 	}

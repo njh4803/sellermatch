@@ -22,6 +22,8 @@
          <result property="replyCount" column="reply_count" />
          <result property="boardNoticeTop" column="board_notice_top" />
          <result property="boardWriterNick" column="board_writer_nick" />
+		 <result property="boardWriterSort" column="board_writer_sort" />
+
     </resultMap>
     
     <insert id="insertItem"
@@ -45,8 +47,9 @@
 	   		b.board_title, 
 	   		b.board_contents, 
 	   		b.board_writer, 
-	   		(SELECT mem_nick FROM MemList where mem_id = board_writer) as board_writer_nick, 
-	   		b.board_type, 
+	   		(SELECT mem_nick FROM MemList where mem_id = board_writer) as board_writer_nick,
+			(SELECT mem_sort FROM MemList where mem_id = board_writer) as board_writer_sort,
+			b.board_type,
 	   		b.board_qa_type, 
 	   		b.board_email, 
 	   		b.board_hit, 
@@ -82,6 +85,7 @@
 	   		FROM BoardList b
 	   	WHERE 1=1
 	   	AND  b.board_Notice_Top = 'Y'
+		AND  b.board_Type = #{boardType}
 	   	</select>
     
     <select id="selectItem"
@@ -90,9 +94,10 @@
     	SELECT 
     		board_idx, board_id, board_title, board_contents, board_writer, board_type, board_qa_type, board_email, board_hit, 
 	   		board_file, date_format(board_reg_date, '%Y-%m-%d') as board_reg_date, board_edit_date,
-	   		(SELECT mem_nick FROM MemList where mem_id = board_writer) as board_writer_nick
+	   		(SELECT mem_nick FROM MemList where mem_id = board_writer) as board_writer_nick,
+			(SELECT mem_sort FROM MemList where mem_id = board_writer) as board_writer_sort
     	FROM BoardList
-    	where board_id = #{boardId} AND board_type IN ('1','2','3')
+    	where board_id = #{boardId} AND board_type IN ('1','2','3','4')
     </select>
 
 	<update id="updateItem"
