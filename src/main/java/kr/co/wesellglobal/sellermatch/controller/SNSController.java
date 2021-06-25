@@ -126,7 +126,7 @@ public class SNSController {
 		    	
 				log.debug("member 세션 생성 완료 = " + webHelper.getSession("member"));
 				// 로그인 유지를 체크했다면
-				if (continueLogin.equals("on")) {
+/*				if (continueLogin.equals("on")) {
 					int amount =60 *60 *24 *7;
 		            // 쿠키를 생성하고 현재 로그인되어 있을 때 생성되었던 세션의 id를 쿠키에 저장한다.
 					Cookie cookie =new Cookie("loginCookie", session.getId());
@@ -149,7 +149,7 @@ public class SNSController {
 					} catch (Exception e) {
 						return new ModelAndView ("main");
 					}
-				}
+				}*/
 	        }
 	    	
 	        return new ModelAndView ("main");

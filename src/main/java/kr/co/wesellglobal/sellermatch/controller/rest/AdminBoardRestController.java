@@ -48,7 +48,7 @@ public class AdminBoardRestController {
 		input.setBoardEmail(dto.getBoardEmail());
 		input.setBoardQaType(dto.getBoardQaType());
 		input.setBoardType(dto.getBoardType());
-		if(dto.getBoardType().equals("1")) {
+		if(dto.getBoardType().equals("1")||dto.getBoardType().equals("4")) {
 			input.setBoardNoticeTop(dto.getBoardNoticeTop());
 		} else {
 			input.setBoardNoticeTop("N"); 	//공지글이 아니면 모두 상단공지 여부 N으로 세팅

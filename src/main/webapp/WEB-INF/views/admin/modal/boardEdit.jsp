@@ -112,7 +112,7 @@ label.error {
 								<option value="1">공지사항</option>
 								<option value="2">자주하는 질문</option>
 								<option value="3">문의하기</option>
-								<option value="4">1대1 문의</option>
+								<option value="4">홍보요청</option>
 							</select>
 						</div>
 					</div>

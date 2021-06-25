@@ -37,7 +37,7 @@
 						<c:if test="${profile.profilePhoto != null}">
 							<c:choose>
 								<c:when test="${fn:indexOf(profile.profilePhoto, 'https://sellmatchimg.s3.ap-northeast-2.amazonaws.com') == -1}">
-									<img class="photoBox" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;" alt="" src="/upload/${output.profilePhoto}">
+									<img class="photoBox" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;" alt="" src="/upload/${profile.profilePhoto}">
 								</c:when>
 								<c:otherwise>
 									<img class="photoBox" style="width: 150px; height: 150px; max-width: 150px; max-height: 150px;" alt="" src="${profile.profilePhoto}">

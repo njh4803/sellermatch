@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class MemberDto implements Serializable{
 
+	//private static final long serialVersionUID = 6529685098267757690L;
+
 	private int memIdx;		// 자동번호
 	private String memId;	// 회원고유번호 이메일 계정
 	private String memPw;	// 비밀번호 

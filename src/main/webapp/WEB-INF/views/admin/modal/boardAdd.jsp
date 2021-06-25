@@ -58,6 +58,7 @@ label.error {
                                                                 	<select id="boardType2" name="boardType" class="form-control">
 						                                                <option value="1">공지사항</option>
 						                                                <option value="2">자주하는 질문</option>
+                                                                        <option value="4">홍보요청게시판</option>
 						                                            </select>
                                                                 </div>
                                                             </div>
@@ -141,12 +142,13 @@ $(function(){
 		var boardContents = CKEDITOR.instances.addBoardContents.getData();
 		var comunityTitle2 = $("#boardTitle2").val();
 		var type = $("#boardType2").val();
-		var boardNoticeTop =  $("#boardNoticeTop").val();
-		
+		var boardNoticeTop =  $("#boardNoticeTop option:selected").val();
+        CKupdate();
+        var formData = form.serialize();
 		$.ajax({
 			type: "POST",
 			url: url,
-			data: {boardContents : boardContents, boardTitle : comunityTitle2, boardType : type, boardNoticeTop : boardNoticeTop},
+            data: formData,
 			dataType: "json",
 			success: function(data){
 					swal("알림", "게시판이 등록되었습니다.", "success");

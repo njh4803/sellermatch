@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 public class ProfileDto implements Serializable{
 
+	//private static final long serialVersionUID = 6529685098267733690L;
+
     // 자동번호 
     private int profileIdx;
 

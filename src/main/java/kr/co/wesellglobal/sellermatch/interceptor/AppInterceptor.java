@@ -82,7 +82,7 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
 		 */
 
 		// login처리를 담당하는 사용자 정보를 담고 있는 객체를 가져옴
-		Object loginSession = webHelper.getSession("member");
+/*		Object loginSession = webHelper.getSession("member");
 
 		if (loginSession == null) { // 로그인된 세션이 없는 경우
 			// 우리가 만들어 논 쿠키 loginCookie의 값을 꺼내온다 -> 저장해놓은 세션ID
@@ -104,7 +104,7 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
 				}
 			}
 
-		}
+		}*/
 
 		log.debug("AppInterceptor.preHandle 실행됨");
 
